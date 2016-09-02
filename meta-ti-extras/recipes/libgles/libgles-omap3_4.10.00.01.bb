@@ -38,6 +38,7 @@ SRC_URI = "http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/gf
            file://cputype \
            file://rc.pvr \
            file://99-bufferclass.rules  \
+           file://99-fb.rules \
 "
 
 SRC_URI[md5sum] := "${@base_contains('TUNE_FEATURES', 'callconvention-hard', '${MD5SUM_HARDFP}', '${MD5SUM_SOFTFP}', d)}"
@@ -52,4 +53,8 @@ do_configure_append() {
     for mak in $(find ${S} -name "*.mak" -o -name Makefile) ; do
         sed -i -e s:\$\(PLAT_CC\):\$\(CC\):g $mak
     done
+}
+
+do_install_append() {
+    install -m 0644 ${WORKDIR}/99-fb.rules ${D}${sysconfdir}/udev/rules.d/
 }
