@@ -43,6 +43,7 @@ SRC_URI = " \
     file://Allow-updating-files-in-the-boot-directory.patch \
     file://u-boot-add-bootdir-to-the-generated-uEnv.txt.patch \
     file://Create-firmware-convenience-symlinks.patch \
+    file://Print-pull-progress-also-when-not-on-console.patch \
     "
 
 SRCREV = "8ece4d6d51bdbe3e41ab318259276bb83e553aa0"
