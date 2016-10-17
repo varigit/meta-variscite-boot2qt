@@ -39,4 +39,4 @@ LIC_FILES_CHKSUM = " \
 EXTRA_QMAKEVARS_PRE_emulator += "SENSORS_PLUGINS=simulator"
 DEPENDS_emulator += "qtsimulator"
 
-SRCREV = "beac0b2e3ea4b292f0473c00bcf68d75360f89ef"
+SRCREV = "ecd018fe2ee4508e094f631d882ecc1360abec01"

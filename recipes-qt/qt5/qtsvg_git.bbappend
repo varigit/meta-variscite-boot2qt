@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-SRCREV = "4469fbecd4e004979dada2da72573c06719fee3c"
+SRCREV = "d3d3db5a75fe2ba992742e418bfefa25eddf7684"
 
 LIC_FILES_CHKSUM = " \
     file://LICENSE.LGPLv21;md5=4bfd28363f541b10d9f024181b8df516 \
