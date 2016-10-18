@@ -55,5 +55,3 @@ do_configure_prepend() {
 
 SRCREV = "6feec9da93032d11a768802ac2187d9d4153b1ec"
 
-# Temporarily here, until merged upstream
-PACKAGECONFIG[kms] = "-kms,-no-kms,drm virtual/egl"
