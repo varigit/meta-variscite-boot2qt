@@ -151,7 +151,9 @@ mirror() {
   mkdir -p .repo/manifests
   cp ${DIR}/scripts/manifest.xml .repo/manifests/
   MANIFEST="manifest.xml"
-  ${REPO} init ${REPO_URL} -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g all --mirror
+  DEVICE=${DEVICE:-all}
+  get_groups
+  ${REPO} init ${REPO_URL} -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g "${PROJECT_GROUPS}" --mirror
   ${REPO} sync
 }
 
@@ -172,7 +174,7 @@ init() {
     MANIFEST="manifest.xml"
   fi
   ${REPO} init ${REPO_URL} -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g "${PROJECT_GROUPS}" ${REFERENCE}
-  ${REPO} sync
+  ${REPO} sync --optimized-fetch
 
   if [ ! -e "sources/meta-boot2qt" ]; then
     ln -s ${DIR} sources/meta-boot2qt
