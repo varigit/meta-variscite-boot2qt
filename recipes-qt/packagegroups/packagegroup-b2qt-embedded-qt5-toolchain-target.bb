@@ -55,6 +55,7 @@ RDEPENDS_${PN} += " \
     qtimageformats-dev \
     qtlocation-dev \
     qtmultimedia-dev \
+    qtotaupdate-dev \
     qtquickcontrols-dev \
     qtquickcontrols2-dev \
     qtsensors-dev \

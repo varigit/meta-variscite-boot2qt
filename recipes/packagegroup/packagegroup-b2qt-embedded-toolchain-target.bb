@@ -58,6 +58,7 @@ RDEPENDS_${PN} += "\
     libpq-dev \
     atk-dev \
     libevent-dev \
+    ostree-dev \
     ${@base_contains("DISTRO_FEATURES", "wayland", "libxkbcommon-dev libgbm-dev libdrm-dev", "", d)} \
     ${@base_contains("DISTRO_FEATURES", "bluetooth", "${BLUEZ}-dev", "", d)} \
     ${MACHINE_EXTRA_INSTALL_SDK} \
