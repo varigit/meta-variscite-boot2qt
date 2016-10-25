@@ -29,12 +29,9 @@
 
 FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 
-SRC_URI += " \
-    file://0001-Disable-angle-for-embedded-linux.patch \
-    "
 SRC_URI_append_mx6 = " \
     file://0001-Fix-slow-video-with-webengine-on-nitrogen6x.patch \
     "
 
-SRCREV_qtwebengine = "6106d6b0b3833e63aeb568f37a47fc6adca8fdb9"
-SRCREV_chromium = "8158f645b0cfea734b5ff99777227380f615873f"
+SRCREV_qtwebengine = "4894406d111d7c7c0fb06b56e52706a20b35d0b3"
+SRCREV_chromium = "f3ce802c71aeaeb7dd218180a3bc5c6ac63b445d"
