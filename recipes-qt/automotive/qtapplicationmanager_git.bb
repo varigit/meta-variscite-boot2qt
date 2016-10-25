@@ -31,19 +31,17 @@ DESCRIPTION = "Qt component for application lifecycle management"
 LICENSE = "(GFDL-1.3 & The-Qt-Company-GPL-Exception-1.0 & (LGPL-3.0 | GPL-2.0+)) | The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=317fda864ac33d41406ff3938c3e78d1"
 
-inherit qmake5
+inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
-SRCREV = "39230c74667a70b66b19c541ae0ba4d0d9620ed0"
+SRCREV = "977c2d96b5114273b49b5dba5dcaf99bba7595d7"
 
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \
            ${@base_contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
-RDEPENDS_${PN} = "libcrypto"
+RDEPENDS_${PN} = "libcrypto ${PN}-tools"
 
 EXTRA_QMAKEVARS_PRE += "\
     ${@base_contains("DISTRO_FEATURES", "wayland", "-config force-multiprocess", "-config force-singleprocess", d)} \
-    -config enable-dummydata \
-    -config enable-ivi-logging \
     -config install-prefix=/usr \
     -config systemd-workaround \
     -config hardware-id=neptune \
@@ -56,7 +54,5 @@ do_install_append() {
 
 FILES_${PN} += "\
     /opt/am \
-    ${libdir}/appman \
-    ${datadir}/dbus-1"
-FILES_${PN}-dbg += "${libdir}/appman/.debug"
-FILES_${PN}-dev += "${OE_QMAKE_PATH_LIBS}/*.prl"
+    ${datadir}/dbus-1 \
+    "
