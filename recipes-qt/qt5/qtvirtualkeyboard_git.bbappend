@@ -31,8 +31,4 @@ inherit qtquickcompiler
 
 SRCREV = "5ac6b611b196c66bc8b01c23aa50d175ae7a7308"
 
-PACKAGECONFIG ?= "lipi-toolkit lang-all hunspell"
-
-FILES_${PN}-dbg += "${OE_QMAKE_PATH_DATA}/qtvirtualkeyboard/lipi_toolkit/lib/.debug"
-INSANE_SKIP_${PN} += "libdir"
-INSANE_SKIP_${PN}-dbg += "libdir"
+PACKAGECONFIG = "lipi-toolkit lang-all hunspell"
