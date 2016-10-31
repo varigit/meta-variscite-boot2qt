@@ -36,7 +36,6 @@ inherit packagegroup
 RDEPENDS_${PN} = "\
         kernel-modules \
         adbd \
-        psplash \
         openssh-sftp-server \
         openssl \
         openssl-misc \

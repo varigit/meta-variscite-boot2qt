@@ -45,21 +45,21 @@ SYSTEMD_PACKAGES =+ "${PN}-session-init"
 FILES_${PN}-session-init = " \
     ${sysconfdir}/init.d/dbus-session \
     ${sysconfdir}/profile.d/dbus-session-address \
-    ${bindir}/dbus-session.init \
+    ${bindir}/dbus-session.init.sh \
     ${systemd_unitdir}/system/dbus-session.service \
     "
 
 do_install_append_class-target() {
-    sed 's:@bindir@:${bindir}:' < ${WORKDIR}/dbus-session.init >${WORKDIR}/dbus-session.init
+    sed 's:@bindir@:${bindir}:' < ${WORKDIR}/dbus-session.init >${WORKDIR}/dbus-session.init.sh
 
     if ${@base_contains('DISTRO_FEATURES', 'sysvinit', 'true', 'false', d)}; then
         install -d ${D}${sysconfdir}/init.d
-        install -m 0755 ${WORKDIR}/dbus-session.init ${D}${sysconfdir}/init.d/dbus-session
+        install -m 0755 ${WORKDIR}/dbus-session.init.sh ${D}${sysconfdir}/init.d/dbus-session
     fi
 
     if ${@base_contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         install -m 0755 -d ${D}${bindir}/
-        install -m 0755 ${WORKDIR}/dbus-session.init ${D}${bindir}/
+        install -m 0755 ${WORKDIR}/dbus-session.init.sh ${D}${bindir}/
 
         install -m 0755 -d ${D}${systemd_unitdir}/system
         install -m 0644 ${WORKDIR}/dbus-session.service ${D}${systemd_unitdir}/system/
