@@ -43,7 +43,3 @@ MACHINE_EXTRA_INSTALL += "\
     ti-sgx-ddk-km \
     ti-sgx-ddk-um \
     "
-
-MACHINE_EXTRA_INSTALL_SDK += "\
-    ti-sgx-ddk-um-dev \
-    "

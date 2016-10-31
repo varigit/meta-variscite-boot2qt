@@ -36,10 +36,6 @@ BOOTFS_CONTENT = "\
 
 BOOTFS_DEPENDS = "bcm2835-bootfiles:do_deploy virtual/kernel:do_deploy"
 
-MACHINE_EXTRA_INSTALL_SDK += " \
-        userland-dev \
-        "
-
 MACHINE_EXTRA_INSTALL += "\
         userland \
         omxplayer \

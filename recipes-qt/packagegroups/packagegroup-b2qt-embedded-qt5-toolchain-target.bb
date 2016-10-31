@@ -35,11 +35,11 @@ inherit packagegroup qtquickcompiler
 
 PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
-MACHINE_EXTRA_INSTALL_QT_SDK ?= ""
+MACHINE_EXTRA_INSTALL_SDK ?= ""
 
 RDEPENDS_${PN} += " \
-    ${MACHINE_EXTRA_INSTALL_QT_SDK} \
-    packagegroup-b2qt-embedded-toolchain-target \
+    ${MACHINE_EXTRA_INSTALL_SDK} \
+    packagegroup-core-standalone-sdk-target \
     \
     qt3d-dev \
     qtbase-dev \

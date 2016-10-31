@@ -27,39 +27,6 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Target packages for B2Qt on embedded Linux SDK"
-PR = "r0"
-LICENSE = "The-Qt-Company-DCLA-2.1"
+require recipes-qt/meta/meta-toolchain-b2qt-embedded-qt5-sdk.bb
 
-inherit packagegroup
-inherit bluetooth
-
-RDEPENDS_${PN} += "\
-    packagegroup-core-standalone-sdk-target \
-    base-files \
-    glib-2.0-dev \
-    openssl-dev \
-    libpng-dev \
-    tiff-dev \
-    alsa-dev \
-    dbus-dev \
-    freetype-dev \
-    fontconfig-dev \
-    ${@base_contains("DISTRO_FEATURES", "gstreamer010", "gstreamer-dev gst-plugins-base-dev", "", d)} \
-    ${@base_contains("DISTRO_FEATURES", "gstreamer", "gstreamer1.0-dev gstreamer1.0-plugins-base-dev", "", d)} \
-    icu-dev \
-    libxslt-dev \
-    ${@base_contains("DISTRO_FEATURES", "systemd", "systemd-dev", "udev-dev", d)} \
-    tslib-dev \
-    hunspell-dev \
-    libcap-dev \
-    wpa-supplicant-dev \
-    libmysqlclient-dev \
-    libpq-dev \
-    atk-dev \
-    libevent-dev \
-    ostree-dev \
-    ${@base_contains("DISTRO_FEATURES", "wayland", "libxkbcommon-dev libgbm-dev libdrm-dev", "", d)} \
-    ${@base_contains("DISTRO_FEATURES", "bluetooth", "${BLUEZ}-dev", "", d)} \
-    ${MACHINE_EXTRA_INSTALL_SDK} \
-    "
+SDKIMAGE_FEATURES = "dev-pkgs"

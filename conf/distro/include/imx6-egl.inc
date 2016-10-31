@@ -31,11 +31,3 @@ MACHINE_EXTRA_INSTALL += "\
     libegl-mx6 \
     libgles2-mx6 \
     "
-
-MACHINE_EXTRA_INSTALL_SDK += " \
-    libegl-mx6 \
-    libegl-mx6-dev \
-    libgles2-mx6 \
-    libgles2-mx6-dev \
-    ${@base_contains("DISTRO_FEATURES", "wayland", "libwayland-egl-mx6-dev", "", d)} \
-    "

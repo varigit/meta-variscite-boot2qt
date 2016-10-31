@@ -36,8 +36,3 @@ MACHINE_EXTRA_INSTALL += "\
     ${@base_contains("DISTRO_FEATURES", "gstreamer010", "gst-fsl-plugin", "", d)} \
     ${@base_contains("DISTRO_FEATURES", "gstreamer", "gstreamer1.0-plugins-imx-meta", "", d)} \
     "
-
-MACHINE_EXTRA_INSTALL_SDK += " \
-    libgal-mx6 \
-    "
-
