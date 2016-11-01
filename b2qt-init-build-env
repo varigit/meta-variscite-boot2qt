@@ -115,9 +115,6 @@ get_groups() {
     smarc-samx6i)
       PROJECT_GROUPS="smx6"
     ;;
-    tibidabo)
-      PROJECT_GROUPS="architech"
-    ;;
     beagleboard|beaglebone|am335x-evm)
       PROJECT_GROUPS="ti"
     ;;

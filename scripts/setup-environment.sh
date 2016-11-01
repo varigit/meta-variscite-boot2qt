@@ -65,9 +65,6 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     smarc-samx6i)
       LAYERSCONF="bblayers.conf.smx6.sample"
     ;;
-    tibidabo)
-      LAYERSCONF="bblayers.conf.tibidabo.sample"
-    ;;
     beagleboard|beaglebone|am335x-evm)
       LAYERSCONF="bblayers.conf.ti.sample"
     ;;

@@ -6,7 +6,6 @@
   <remote fetch="git://git.yoctoproject.org" name="yocto"/>
   <remote fetch="git://git.openembedded.org" name="oe"/>
   <remote fetch="git://github.com/Freescale" name="freescale"/>
-  <remote fetch="git://github.com/architech-boards" name="architech"/>
   <remote fetch="git://github.com/meta-qt5" name="meta-qt5"/>
   <remote fetch="git://code.qt.io/yocto" name="qtyocto"/>
   <remote fetch="ssh://codereview.qt-project.org/yocto" name="gerrit"/>
@@ -35,7 +34,7 @@
            remote="yocto"
            revision="a6b95df4d7ab122f1e5b7632e2273b75f853af4b"
            path="sources/meta-fsl-arm"
-           groups="notdefault,external,fsl,architech,ti,smx6,renesas"/>
+           groups="notdefault,external,fsl,ti,smx6,renesas"/>
   <project name="meta-ti"
            remote="yocto"
            revision="f807c7185321fb407e82c529ddff310dc037f727"
@@ -50,12 +49,7 @@
            remote="freescale"
            revision="99649b72f60fda4a2cfb2333791fe0f92997fa9e"
            path="sources/meta-fsl-arm-extra"
-           groups="notdefault,external,fsl,architech,smx6"/>
-  <project name="meta-tibidabo"
-           remote="architech"
-           revision="06c6b09e0776507e1230aa98b5ca10d9d3968286"
-           path="sources/meta-tibidabo"
-           groups="notdefault,external,architech"/>
+           groups="notdefault,external,fsl,smx6"/>
   <project name="meta-intel"
            remote="intel"
            revision="b8c199201ffe026485a14e1fcfc398e2b3551512"
