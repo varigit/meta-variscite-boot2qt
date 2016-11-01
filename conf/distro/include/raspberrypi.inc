@@ -29,15 +29,7 @@
 
 IMAGE_FSTYPES += "ext3 rpi-sdimg"
 
-BOOTFS_CONTENT = "\
-    bcm2835-bootfiles/*: \
-    ${KERNEL_IMAGETYPE}:kernel.img \
-    "
-
-BOOTFS_DEPENDS = "bcm2835-bootfiles:do_deploy virtual/kernel:do_deploy"
-
 MACHINE_EXTRA_INSTALL += "\
-        userland \
         omxplayer \
         "
 

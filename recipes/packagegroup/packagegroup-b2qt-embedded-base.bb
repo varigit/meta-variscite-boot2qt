@@ -33,42 +33,24 @@ PR = "r0"
 
 inherit packagegroup
 
+MACHINE_EXTRA_INSTALL ?= ""
+
 RDEPENDS_${PN} = "\
         kernel-modules \
-        adbd \
-        openssh-sftp-server \
-        openssl \
-        openssl-misc \
-        libpng \
-        tiff \
-        libxslt \
-        icu \
-        freetype \
-        fontconfig \
-        liberation-fonts \
-        tslib \
-        tslib-calibrate \
-        alsa-utils-amixer \
-        hunspell \
-        ca-certificates \
         linux-firmware \
+        openssl-misc \
+        ca-certificates \
+        liberation-fonts \
         ttf-devanagari \
         ttf-opensans \
         ttf-dejavu-common \
         ttf-dejavu-sans \
-        dbus-session-init \
         otf-noto \
-        libmysqlclient \
-        libpq \
+        dbus-session-init \
         tzdata \
         tzdata-americas \
         tzdata-asia \
         tzdata-europe \
-        atk \
-        libevent \
-        ostree \
-        dracut \
         connman \
-        ${@base_contains("DISTRO_FEATURES", "wayland", "wayland weston weston-examples", "", d)} \
         ${MACHINE_EXTRA_INSTALL} \
         "

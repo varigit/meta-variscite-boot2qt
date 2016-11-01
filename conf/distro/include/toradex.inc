@@ -27,7 +27,11 @@
 ##
 ############################################################################
 
+include conf/distro/include/fsl.inc
+
 PREFERRED_PROVIDER_u-boot = "u-boot-toradex"
+
+EXTRA_IMAGEDEPENDS += "u-boot u-boot-script-toradex"
 
 MACHINEDIR = "${@d.getVar('MACHINE', True).replace('-','_')}"
 BOOT_SCRIPTS += " \

@@ -43,13 +43,9 @@ IMAGE_FEATURES += "\
         "
 
 inherit core-image
-inherit bootfs-image
 inherit consistent_timestamps
 
-MACHINE_EXTRA_INSTALL_QT ?= ""
-
 IMAGE_INSTALL += "\
-    ${MACHINE_EXTRA_INSTALL_QT} \
     packagegroup-b2qt-embedded-base \
     packagegroup-b2qt-embedded-tools \
     ${@base_contains("DISTRO_FEATURES", "gstreamer010", "packagegroup-b2qt-embedded-gstreamer010", "", d)} \

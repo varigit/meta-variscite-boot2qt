@@ -40,11 +40,35 @@ IMAGE_FEATURES += "\
         "
 
 inherit core-image
-inherit bootfs-image
 
 IMAGE_INSTALL += "\
     packagegroup-b2qt-embedded-base \
     packagegroup-b2qt-embedded-tools \
     ${@base_contains("DISTRO_FEATURES", "gstreamer010", "packagegroup-b2qt-embedded-gstreamer010", "", d)} \
     ${@base_contains("DISTRO_FEATURES", "gstreamer", "packagegroup-b2qt-embedded-gstreamer", "", d)} \
+    packagegroup-b2qt-qt5-modules \
     "
+
+ROOTFS_POSTINSTALL_COMMAND += "remove_qt_from_rootfs;"
+
+python remove_qt_from_rootfs() {
+    import subprocess
+
+    # remove qtbase and all dependent packages
+    image_rootfs = d.getVar('IMAGE_ROOTFS', True)
+    opkg_conf = d.getVar("IPKGCONF_TARGET", True)
+    opkg_cmd = bb.utils.which(os.getenv('PATH'), "opkg")
+    opkg_args = "--volatile-cache -f %s -o %s " % (opkg_conf, image_rootfs)
+    opkg_args += d.getVar("OPKG_ARGS", True)
+
+    cmd = "%s %s --force-remove --force-removal-of-dependent-packages remove %s" % \
+        (opkg_cmd, opkg_args, 'qtbase')
+
+    try:
+        bb.note(cmd)
+        output = subprocess.check_output(cmd.split(), stderr=subprocess.STDOUT)
+        bb.note(output)
+    except subprocess.CalledProcessError as e:
+        bb.fatal("Unable to remove packages. Command '%s' "
+                 "returned %d:\n%s" % (e.cmd, e.returncode, e.output))
+}

@@ -27,19 +27,16 @@
 ##
 ############################################################################
 
-BBMASK += "meta-fsl-arm/qt5-layer/recipes-qt/qt5"
-
-IMAGE_FSTYPES += "ext3 sdcard"
-IMAGE_CLASSES += "image_types_fsl"
+include conf/distro/include/fsl.inc
 
 UBOOT_SUFFIX = "img"
-BOOT_SCRIPTS = "${BOOTFS_CONTENT}"
+BOOT_SCRIPTS += "\
+    MLO-${MACHINE}:MLO \
+    u-boot-${MACHINE}.img:u-boot.img \
+    "
+
+EXTRA_IMAGEDEPENDS += "u-boot"
 
 PREFERRED_PROVIDER_virtual/egl = "ti-sgx-ddk-um"
 PREFERRED_PROVIDER_virtual/libgles1 = "ti-sgx-ddk-um"
 PREFERRED_PROVIDER_virtual/libgles2 = "ti-sgx-ddk-um"
-
-MACHINE_EXTRA_INSTALL += "\
-    ti-sgx-ddk-km \
-    ti-sgx-ddk-um \
-    "

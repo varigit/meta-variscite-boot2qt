@@ -34,15 +34,19 @@ PR = "r0"
 inherit packagegroup
 
 RDEPENDS_${PN} = "\
-        ldd \
+        adbd \
+        alsa-utils-amixer \
         binutils \
         binutils-symlinks \
-        i2c-tools \
-        perf \
-        htop \
-        ntp \
         connman-client \
+        htop \
+        i2c-tools \
         iproute2 \
+        ldd \
+        ntp \
+        openssh-sftp-server \
+        perf \
         rsync \
+        tslib-calibrate \
         ${@base_contains("DISTRO_FEATURES", "systemd", "systemd-analyze", "", d)} \
         "
