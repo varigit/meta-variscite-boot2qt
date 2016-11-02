@@ -27,7 +27,11 @@
 ##
 ############################################################################
 
-PACKAGECONFIG_GL = "gles2 eglfs"
+PACKAGECONFIG_GL = "${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'gles2 eglfs', 'no-opengl', d)}"
+
+# emulator is exception due to qtglesstream
+PACKAGECONFIG_GL_emulator = "gles2 eglfs"
+
 PACKAGECONFIG += " \
     accessibility \
     alsa \
@@ -56,3 +60,6 @@ do_configure_prepend() {
 }
 
 SRCREV = "016b5bc949b6dfb2f76db2e8b40a40e7eaee6828"
+
+# temporarily here
+PACKAGECONFIG[no-opengl] = "-no-opengl"
