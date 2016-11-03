@@ -34,7 +34,7 @@ SRC_URI += " \
     file://0001-arm-Export-cache-flush-management-symbols-when-MULTI.patch \
     "
 
-do_configure_prepend() {
+do_preconfigure_prepend() {
     sed -e '/CONFIG_USB_FUNCTIONFS_ETH=/d' \
         -e '/CONFIG_USB_FUNCTIONFS_RNDIS=/d' \
         -i ${WORKDIR}/defconfig

@@ -29,7 +29,7 @@
 
 RDEPENDS_kernel-base = "kernel-image kernel-devicetree"
 
-do_configure_prepend () {
+do_preconfigure_prepend () {
     # FunctionFS for adb
     echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
     echo "CONFIG_USB_ACM=m"         >> ${WORKDIR}/defconfig
