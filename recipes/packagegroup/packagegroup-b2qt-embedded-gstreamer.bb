@@ -33,6 +33,8 @@ PR = "r0"
 
 inherit packagegroup
 
+MACHINE_GSTREAMER_1_0_PLUGIN ?= ""
+
 RDEPENDS_${PN} = "\
         gstreamer1.0-meta-base \
         gstreamer1.0-meta-video \
@@ -42,4 +44,5 @@ RDEPENDS_${PN} = "\
         gstreamer1.0-plugins-ugly-meta \
         gstreamer1.0-plugins-bad-meta \
         gstreamer1.0-libav \
+        ${MACHINE_GSTREAMER_1_0_PLUGIN} \
         "
