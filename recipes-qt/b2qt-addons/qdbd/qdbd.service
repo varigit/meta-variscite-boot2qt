@@ -1,0 +1,13 @@
+[Unit]
+Description=Qt Debug Bridge Daemon
+After=network.target
+Before=adbd.service
+Conflicts=adbd.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/qdbd-init.sh start
+ExecStop=/usr/bin/qdbd-init.sh stop
+
+[Install]
+WantedBy=multi-user.target
