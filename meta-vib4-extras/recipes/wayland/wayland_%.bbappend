@@ -27,14 +27,10 @@
 ##
 ############################################################################
 
-# We have a conf and classes directory, append to BBPATH
-BBPATH .= ":${LAYERDIR}"
+FILESEXTRAPATHS_append := ":${NVLAYER_DIR}/packages:${LNX_TOPDIR}/${PN}:${THISDIR}/${PN}"
 
-# We have a recipes directory, add to BBFILES
-BBFILES += "${LAYERDIR}/recipes*/*/*.bb \
-            ${LAYERDIR}/recipes*/*/*.bbappend \
-"
-
-BBFILE_COLLECTIONS += "b2qt_vib3"
-BBFILE_PATTERN_b2qt_vib3 := "^${LAYERDIR}/"
-BBFILE_PRIORITY_b2qt_vib3 = "20"
+SRC_URI_remove = "file://${NVLAYER_DIR}/packages/wayland-1.8.1-src.tar.gz"
+SRC_URI = "\
+    file://wayland-1.8.1-src.tar.gz \
+    file://always-build-scanner.patch \
+    "

@@ -27,8 +27,10 @@
 ##
 ############################################################################
 
-SRC_URI_remove = " \
-    file://${PLATFORM_TOPDIR}/lib-target/NETB_img.bin \
-    file://${PLATFORM_TOPDIR}/lib-target/nvhost_msenc031.fw \
-    file://${PLATFORM_TOPDIR}/lib-target/vic03_ucode.bin \
-"
+FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
+S = "${WORKDIR}/${LNX_TOPDIR}/samples/wayland/weston"
+
+do_install_prepend() {
+    mkdir -p ${WORKDIR}/${LNX_TOPDIR}/samples/weston/tools
+    cp ${WORKDIR}/${LNX_TOPDIR}/samples/wayland/weston/tools/weston.ini ${WORKDIR}/${LNX_TOPDIR}/samples/weston/tools/weston.ini
+}
