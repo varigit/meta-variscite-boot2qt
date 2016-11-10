@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Package>
+  <Version>@VERSION@</Version>
+  <ReleaseDate>@RELEASEDATE@</ReleaseDate>
+  <DisplayName>@NAME@</DisplayName>
+  <Description>Boot to Qt for @NAME@ with Embedded Linux baselayer</Description>
+  <Dependencies>@LICENSEDEPENDENCY@</Dependencies>
+</Package>

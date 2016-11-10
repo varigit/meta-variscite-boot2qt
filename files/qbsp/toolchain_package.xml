@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<Package>
+  <Version>@VERSION@</Version>
+  <ReleaseDate>@RELEASEDATE@</ReleaseDate>
+  <DisplayName>@NAME@ Linux Toolchain</DisplayName>
+  <Description>Toolchain and system root for @NAME@ with Embedded Linux baselayer</Description>
+  <DownloadableArchives>toolchain.7z</DownloadableArchives>
+  <Dependencies>qt.tools.qtcreator</Dependencies>
+  <Script>installscript.qs</Script>
+</Package>

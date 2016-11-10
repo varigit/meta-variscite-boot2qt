@@ -1,4 +1,3 @@
-#!/bin/sh
 ############################################################################
 ##
 ## Copyright (C) 2016 The Qt Company Ltd.
@@ -28,19 +27,21 @@
 ##
 ############################################################################
 
-set -x
-set -e
+DESCRIPTION = "Meta task for QBSP creation"
 
-RELEASE=5.8
-UPLOADPATH=QT@ci-files02-hki.ci.local:/srv/jenkins_data/enterprise/b2qt/yocto/${RELEASE}/
-UPLOADS="\
-    tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.7z \
-    tmp/deploy/sdk/b2qt-x86_64-meta-toolchain-b2qt-${PROJECT}-qt5-sdk-${MACHINE}.sh \
-    tmp/deploy/sdk/b2qt-i686-mingw32-meta-toolchain-b2qt-${PROJECT}-qt5-sdk-${MACHINE}.7z \
-    "
+LICENSE = "The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
 
-for f in ${UPLOADS}; do
-    if [ -e ${f} ]; then
-        rsync -L ${f} ${UPLOADPATH}/
-    fi
-done
+# get Qt version number
+require recipes-qt/qt5/qt5-git.inc
+S = "${WORKDIR}"
+
+inherit qbsp
+
+PV = "1.1"
+
+QBSP_INSTALLER_COMPONENT = "qt.automotive.10.yocto.${MACHINE}"
+QBSP_INSTALL_PATH = "/${QT_MODULE_BRANCH}/Automotive/${MACHINE}"
+
+QBSP_SDK_TASK = "meta-toolchain-b2qt-automotive-qt5-sdk"
+QBSP_IMAGE_TASK = "b2qt-automotive-qt5-image"

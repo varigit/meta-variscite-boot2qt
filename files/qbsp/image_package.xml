@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Package>
+  <Version>@VERSION@</Version>
+  <ReleaseDate>@RELEASEDATE@</ReleaseDate>
+  <DisplayName>@NAME@ Linux System</DisplayName>
+  <Description>SD-Card image for @NAME@ hardware with Embedded Linux baselayer</Description>
+  <DownloadableArchives>image.7z</DownloadableArchives>
+</Package>

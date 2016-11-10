@@ -1,4 +1,3 @@
-#!/bin/sh
 ############################################################################
 ##
 ## Copyright (C) 2016 The Qt Company Ltd.
@@ -28,19 +27,27 @@
 ##
 ############################################################################
 
-set -x
-set -e
+QBSP_IMAGE_CONTENT ??= ""
 
-RELEASE=5.8
-UPLOADPATH=QT@ci-files02-hki.ci.local:/srv/jenkins_data/enterprise/b2qt/yocto/${RELEASE}/
-UPLOADS="\
-    tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.7z \
-    tmp/deploy/sdk/b2qt-x86_64-meta-toolchain-b2qt-${PROJECT}-qt5-sdk-${MACHINE}.sh \
-    tmp/deploy/sdk/b2qt-i686-mingw32-meta-toolchain-b2qt-${PROJECT}-qt5-sdk-${MACHINE}.7z \
-    "
-
-for f in ${UPLOADS}; do
-    if [ -e ${f} ]; then
-        rsync -L ${f} ${UPLOADPATH}/
+fakeroot do_qbsp_image () {
+    if [ -z "${QBSP_IMAGE_CONTENT}" ]; then
+        exit 0
     fi
-done
+
+    mkdir -p ${S}/qbsp
+
+    for item in ${QBSP_IMAGE_CONTENT}; do
+        src=`echo $item | awk -F':' '{ print $1 }'`
+        dst=`echo $item | awk -F':' '{ print $2 }'`
+
+        install -D -m 0755 ${DEPLOY_DIR_IMAGE}/$src ${S}/qbsp/$dst
+    done
+
+    cd ${S}/qbsp
+    7z a ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.7z .
+
+    rm -f ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.7z
+    ln -s ${IMAGE_NAME}.7z ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.7z
+}
+
+IMAGE_POSTPROCESS_COMMAND += "do_qbsp_image;"
