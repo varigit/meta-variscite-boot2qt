@@ -59,7 +59,7 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     apalis-imx6|colibri-imx6|colibri-vf|colibri-imx7)
       LAYERSCONF="bblayers.conf.fsl.sample"
     ;;
-    imx6qsabresd|imx6dlsabresd|nitrogen6x|imx7dsabresd)
+    imx6qsabresd|imx6dlsabresd|nitrogen6x|imx7dsabresd|imx7s-warp)
       LAYERSCONF="bblayers.conf.fsl.sample"
     ;;
     smarc-samx6i)
