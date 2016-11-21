@@ -53,5 +53,5 @@ do_configure_prepend() {
     install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
 }
 
-SRCREV = "3654a401f8e046e2fa5a340d0380cc0088a03048"
+SRCREV = "db6c31af0177025f178cb42d5febbdc47dc87778"
 
