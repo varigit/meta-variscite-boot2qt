@@ -33,11 +33,13 @@ LIC_FILES_CHKSUM = "file://about-b2qt/AboutBoot2Qt.qml;md5=b0a1a6eef4a172b0a8cb4
 
 inherit qmake5
 
+QT_PROJECT_GIT = "git://github.com/qtproject"
+
 SRC_URI = " \
-    ${QT_GIT}/qt-apps-boot2qt-demos.git;branch=${BRANCH};name=demos \
+    ${QT_PROJECT_GIT}/qt-apps-boot2qt-demos.git;branch=${BRANCH};name=demos \
     ${QT_GIT}/qtcanvas3d.git;branch=${QT_BRANCH};name=qtcanvas3d;destsuffix=qtcanvas3d \
     ${QT_GIT}/qtquickcontrols.git;branch=${QT_BRANCH};name=qtquickcontrols;destsuffix=qtquickcontrols \
-    ${QT_GIT}/qt-apps-qtwebbrowser.git;branch=${BROWSER_BRANCH};name=qtwebbrowser;destsuffix=git/basicsuite/qtwebbrowser/tqtc-qtwebbrowser \
+    ${QT_PROJECT_GIT}/qt-apps-qtwebbrowser.git;branch=${BROWSER_BRANCH};name=qtwebbrowser;destsuffix=git/basicsuite/qtwebbrowser/tqtc-qtwebbrowser \
     https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt_video_720p.webm;name=video1 \
     https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt+World+Summit+2015+Recap.mp4;name=video2 \
     "

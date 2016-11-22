@@ -34,6 +34,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 inherit qmake5
 require recipes-qt/qt5/qt5-git.inc
 
+QT_GIT = "git://github.com/qtproject"
 QT_MODULE = "qt-apps-boot2qt-launcher"
 
 SRC_URI += " \

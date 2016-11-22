@@ -34,6 +34,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=bc0cb4bfd3f72b3fe47b2b2d0d89762c"
 inherit qt5-module systemd
 require recipes-qt/qt5/qt5-git.inc
 
+QT_GIT = "git://github.com/qtproject"
 QT_MODULE = "qt-apps-neptune-ui"
 QT_MODULE_BRANCH = "master"
 
