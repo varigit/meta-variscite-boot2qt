@@ -12,7 +12,8 @@ BRANCH = "master"
 SRCREV = "6262eaeaee74109f9c1bd85de99c9b039d8938f5"
 PV = "master+git${SRCPV}"
 
-DEPENDS = "qtdeclarative qtlocation qtsvg qttools qtconnectivity qt3d"
+DEPENDS = "qtdeclarative qtlocation qtsvg qttools qtconnectivity qt3d qtivi \
+           ${@base_contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
 
 S = "${WORKDIR}/git"
 
