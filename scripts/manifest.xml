@@ -23,12 +23,12 @@
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="qtyocto"
-           revision="4e113c7b8e0a7512d2f0ad306decc8b4885ef807"
+           revision="c4a0a450b4275cc3869cf389c92e86b62f09fcea"
            path="sources/meta-qt5"/>
   <project name="meta-mingw"
            remote="qtyocto"
            path="sources/meta-mingw"
-           revision="70e42fd678d494bf11a12cb57eff820142543159"/>
+           revision="4a877547146f32f4540664b0c677d99b33d12bfd"/>
 
   <project name="meta-fsl-arm"
            remote="yocto"

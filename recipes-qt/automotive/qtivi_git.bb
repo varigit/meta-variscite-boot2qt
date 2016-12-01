@@ -38,6 +38,11 @@ LIC_FILES_CHKSUM = "file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
 inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
-SRCREV = "ccc1f3af652e4f2785d9ac60eeae521130740b1a"
+PACKAGECONFIG ?= "taglib"
+PACKAGECONFIG[taglib] = "CONFIG+=config_taglib CONFIG+=done_config_taglib,CONFIG+=done_config_taglib,taglib"
 
-DEPENDS = "qtbase qtdeclarative"
+EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
+
+SRCREV = "1163c5e8e269d73b4e422a12e47f7db34285c4a0"
+
+DEPENDS = "qtbase qtdeclarative qtmultimedia"

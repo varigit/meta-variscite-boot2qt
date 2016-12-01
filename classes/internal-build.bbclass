@@ -35,7 +35,7 @@ python enable_internal_build () {
         return
 
     e.data.setVar('ENABLE_QDBD', "1")
-    e.data.setVar('ENABLE_QTQUICKCOMPILER', "1")
+#    e.data.setVar('ENABLE_QTQUICKCOMPILER', "1")
     e.data.setVar('SSTATE_MIRRORS', "file://.* http://yocto-cache.ci.local/sstate-caches/${DISTRO_CODENAME}/PATH")
     e.data.setVar('PREMIRRORS', "\
         ftp://.*/.*   http://yocto-cache.ci.local/sources/ \n \

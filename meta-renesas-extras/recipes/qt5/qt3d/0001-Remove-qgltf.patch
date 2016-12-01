@@ -1,4 +1,4 @@
-From 49a04f4faa135fa6ef56fc35dfb9dfe55ff2a3c4 Mon Sep 17 00:00:00 2001
+From 9966e10f36876daa910ce301a175633771470e82 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@theqtcompany.com>
 Date: Wed, 18 Nov 2015 10:14:18 +0200
 Subject: [PATCH] Remove qgltf
@@ -12,14 +12,11 @@ Task-number: QTBUG-49153
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tools/tools.pro b/tools/tools.pro
-index 055f412..c1eba7f 100644
+index 09c7d8e..8f093ce 100644
 --- a/tools/tools.pro
 +++ b/tools/tools.pro
 @@ -1,3 +1,3 @@
  TEMPLATE = subdirs
--SUBDIRS = qgltf
-+#SUBDIRS = qgltf
+-!android:SUBDIRS += qgltf
++#!android:SUBDIRS += qgltf
  qgltf.CONFIG += host_build
--- 
-1.9.1
-

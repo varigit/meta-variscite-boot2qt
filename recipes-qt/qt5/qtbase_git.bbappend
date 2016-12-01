@@ -34,12 +34,10 @@ PACKAGECONFIG_GL_emulator = "gles2 eglfs"
 
 PACKAGECONFIG += " \
     accessibility \
-    alsa \
     cups \
     fontconfig \
     freetype \
     glib \
-    iconv \
     icu \
     libinput \
     linuxfb \
@@ -59,7 +57,4 @@ do_configure_prepend() {
     install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
 }
 
-SRCREV = "969bb10eed646313209fcdd9b84605aa98fc88de"
-
-# temporarily here
-PACKAGECONFIG[no-opengl] = "-no-opengl"
+SRCREV = "947cace7993807d173656300f4440ae5166624fe"
