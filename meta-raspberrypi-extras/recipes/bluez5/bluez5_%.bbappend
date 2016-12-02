@@ -27,4 +27,4 @@
 ##
 ############################################################################
 
-SYSTEMD_SERVICE_${PN}_append_raspberrypi3 = " bluetooth.service"
+SYSTEMD_SERVICE_${PN}_raspberrypi3 = "brcm43438.service bluetooth.service"
