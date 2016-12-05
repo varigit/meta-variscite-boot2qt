@@ -47,7 +47,7 @@ S = "${WORKDIR}/git"
 export DTC = "dtc"
 
 do_install() {
-    DESTDIR="${D}" oe_runmake install
+    oe_runmake install DESTDIR="${D}"
 }
 
 FILES_${PN} += "/lib/firmware"
