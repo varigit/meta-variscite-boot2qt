@@ -36,6 +36,8 @@ SRC_URI = "\
     file://image_package.xml \
     file://toolchain_package.xml \
     file://toolchain_installscript.qs \
+    file://license_package.xml \
+    file://NXP-EULA \
     "
 
 INHIBIT_DEFAULT_DEPS = "1"
@@ -49,8 +51,10 @@ QBSP_VERSION ?= "${PV}${VERSION_AUTO_INCREMENT}"
 QBSP_INSTALLER_COMPONENT ?= "${MACHINE}"
 QBSP_INSTALL_PATH ?= "/Extras/${MACHINE}"
 
-QBSP_LICENSE_DEPENDENCY ?= ""
-QBSP_LICENSE_DEPENDENCY_imx = "qt.embedded.b2qt.freescalelicense"
+QBSP_LICENSE_FILE ?= ""
+QBSP_LICENSE_NAME ?= ""
+QBSP_LICENSE_FILE_imx = "NXP-EULA"
+QBSP_LICENSE_NAME_imx = "NXP Semiconductors Software License Agreement"
 
 VERSION_AUTO_INCREMENT = "-0-${DATETIME}"
 VERSION_AUTO_INCREMENT[vardepsexclude] = "DATETIME"
@@ -68,60 +72,77 @@ SDK_MACHINE = "${@d.getVar('SDKMACHINE', True) or '${SDK_ARCH}'}"
 B = "${WORKDIR}/build"
 
 patch_installer_files() {
-    sed -e 's#@NAME@#${DEPLOY_CONF_NAME}#' \
-        -e 's#@VERSION@#${QBSP_VERSION}#' \
-        -e 's#@RELEASEDATE@#${RELEASEDATE}#' \
-        -e 's#@MACHINE@#${MACHINE}#' \
-        -e 's#@SYSROOT@#${REAL_MULTIMACH_TARGET_SYS}#' \
-        -e 's#@TARGET@#${TARGET_SYS}#' \
-        -e 's#@ABI@#${ABI}#' \
-        -e 's#@INSTALLPATH@#${QBSP_INSTALL_PATH}#' \
-        -e 's#@SDKPATH@#${SDKPATH}#' \
-        -e 's#@SDKFILE@#${SDK_NAME}#' \
-        -e 's#@LICENSEDEPENDENCY@#${QBSP_LICENSE_DEPENDENCY}#' \
+    LICENSE_DEPENDENCY=""
+    if [ -n "${QBSP_LICENSE_FILE}" ]; then
+        LICENSE_DEPENDENCY="${QBSP_INSTALLER_COMPONENT}.license"
+    fi
+
+    sed -e "s#@NAME@#${DEPLOY_CONF_NAME}#" \
+        -e "s#@VERSION@#${QBSP_VERSION}#" \
+        -e "s#@RELEASEDATE@#${RELEASEDATE}#" \
+        -e "s#@MACHINE@#${MACHINE}#" \
+        -e "s#@SYSROOT@#${REAL_MULTIMACH_TARGET_SYS}#" \
+        -e "s#@TARGET@#${TARGET_SYS}#" \
+        -e "s#@ABI@#${ABI}#" \
+        -e "s#@INSTALLPATH@#${QBSP_INSTALL_PATH}#" \
+        -e "s#@SDKPATH@#${SDKPATH}#" \
+        -e "s#@SDKFILE@#${SDK_NAME}#" \
+        -e "s#@LICENSEDEPENDENCY@#${LICENSE_DEPENDENCY}#" \
+        -e "s#@LICENSEFILE@#${QBSP_LICENSE_FILE}#" \
+        -e "s#@LICENSENAME@#${QBSP_LICENSE_NAME}#" \
         -i ${1}/*
 }
 
 prepare_qbsp() {
     # Toolchain component
-    TOOLCHAIN_PATH="${B}/pkg/${QBSP_INSTALLER_COMPONENT}.toolchain"
-    mkdir -p ${TOOLCHAIN_PATH}/meta
-    mkdir -p ${TOOLCHAIN_PATH}/data
+    COMPONENT_PATH="${B}/pkg/${QBSP_INSTALLER_COMPONENT}.toolchain"
+    mkdir -p ${COMPONENT_PATH}/meta
+    mkdir -p ${COMPONENT_PATH}/data
 
-    cp ${WORKDIR}/toolchain_package.xml ${TOOLCHAIN_PATH}/meta/package.xml
-    cp ${WORKDIR}/toolchain_installscript.qs ${TOOLCHAIN_PATH}/meta/installscript.qs
-    patch_installer_files ${TOOLCHAIN_PATH}/meta
+    cp ${WORKDIR}/toolchain_package.xml ${COMPONENT_PATH}/meta/package.xml
+    cp ${WORKDIR}/toolchain_installscript.qs ${COMPONENT_PATH}/meta/installscript.qs
+    patch_installer_files ${COMPONENT_PATH}/meta
 
     mkdir -p ${B}/toolchain/${QBSP_INSTALL_PATH}/toolchain
-    if [ "${SDK_POSTFIX}" == "7z" ]; then
+    if [ "${SDK_POSTFIX}" = "7z" ]; then
         7z x ${DEPLOY_DIR}/sdk/${SDK_NAME} -o${B}/toolchain/${QBSP_INSTALL_PATH}/toolchain/
     else
         cp ${DEPLOY_DIR}/sdk/${SDK_NAME} ${B}/toolchain/${QBSP_INSTALL_PATH}/toolchain/
     fi
 
     cd ${B}/toolchain
-    archivegen ${TOOLCHAIN_PATH}/data/toolchain.7z *
+    7z a ${COMPONENT_PATH}/data/toolchain.7z *
 
     # Image component
-    IMAGE_PATH="${B}/pkg/${QBSP_INSTALLER_COMPONENT}.system"
-    mkdir -p ${IMAGE_PATH}/meta
-    mkdir -p ${IMAGE_PATH}/data
+    COMPONENT_PATH="${B}/pkg/${QBSP_INSTALLER_COMPONENT}.system"
+    mkdir -p ${COMPONENT_PATH}/meta
+    mkdir -p ${COMPONENT_PATH}/data
 
-    cp ${WORKDIR}/image_package.xml ${IMAGE_PATH}/meta/package.xml
-    patch_installer_files ${IMAGE_PATH}/meta
+    cp ${WORKDIR}/image_package.xml ${COMPONENT_PATH}/meta/package.xml
+    patch_installer_files ${COMPONENT_PATH}/meta
 
     mkdir -p ${B}/images/${QBSP_INSTALL_PATH}/images
     7z x ${DEPLOY_DIR_IMAGE}/${IMAGE_PACKAGE} -o${B}/images/${QBSP_INSTALL_PATH}/images/
 
     cd ${B}/images
-    archivegen ${IMAGE_PATH}/data/image.7z *
+    7z a ${COMPONENT_PATH}/data/image.7z *
+
+    # License component
+    if [ -n "${QBSP_LICENSE_FILE}" ]; then
+        COMPONENT_PATH="${B}/pkg/${QBSP_INSTALLER_COMPONENT}.license"
+        mkdir -p ${COMPONENT_PATH}/meta
+
+        cp ${WORKDIR}/license_package.xml ${COMPONENT_PATH}/meta/package.xml
+        cp ${WORKDIR}/${QBSP_LICENSE_FILE} ${COMPONENT_PATH}/meta/
+        patch_installer_files ${COMPONENT_PATH}/meta
+    fi
 
     # Base component
-    BASE_PATH="${B}/pkg/${QBSP_INSTALLER_COMPONENT}"
-    mkdir -p ${BASE_PATH}/meta
+    COMPONENT_PATH="${B}/pkg/${QBSP_INSTALLER_COMPONENT}"
+    mkdir -p ${COMPONENT_PATH}/meta
 
-    cp ${WORKDIR}/base_package.xml ${BASE_PATH}/meta/package.xml
-    patch_installer_files ${BASE_PATH}/meta
+    cp ${WORKDIR}/base_package.xml ${COMPONENT_PATH}/meta/package.xml
+    patch_installer_files ${COMPONENT_PATH}/meta
 }
 
 create_qbsp() {
@@ -131,10 +152,10 @@ create_qbsp() {
     repogen -p ${B}/pkg ${B}/repository
 
     mkdir -p ${DEPLOY_DIR}/qbsp
-    rm -f ${DEPLOY_DIR}/qbsp/${PN}-${MACHINE}.qbsp
+    rm -f ${DEPLOY_DIR}/qbsp/${PN}-${SDK_MACHINE}-${MACHINE}.qbsp
 
     cd ${B}/repository
-    archivegen ${DEPLOY_DIR}/qbsp/${PN}-${SDK_MACHINE}-${MACHINE}.qbsp *
+    7z a ${DEPLOY_DIR}/qbsp/${PN}-${SDK_MACHINE}-${MACHINE}.qbsp *
 }
 
 python do_qbsp() {
