@@ -34,7 +34,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=317fda864ac33d41406ff3938c3e78d1"
 inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
-SRCREV = "c23f2cd6daffbed3c8b7f219d75bf0e657359755"
+SRCREV = "d9d1e0851089978d44d943d7125af1e51e0c3e3c"
 
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \
            ${@base_contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
@@ -54,5 +54,4 @@ do_install_append() {
 
 FILES_${PN} += "\
     /opt/am \
-    ${datadir}/dbus-1 \
     "
