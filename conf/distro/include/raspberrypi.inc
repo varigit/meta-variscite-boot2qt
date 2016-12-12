@@ -40,5 +40,4 @@ module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"
 # video camera support
 VIDEO_CAMERA = "1"
 
-RPI_FT5604 = "1"
 MACHINE_FEATURES += "pitft"
