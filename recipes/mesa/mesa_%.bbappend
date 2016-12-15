@@ -27,13 +27,4 @@
 ##
 ############################################################################
 
-DEPENDS_${PN}_append_sdkmingw32 = " nativesdk-prebuild-python"
-RDEPENDS_${PN}_append_sdkmingw32 = " nativesdk-prebuild-python"
-EXTRA_OECONF_remove_sdkmingw32 = " --with-python=no"
-EXTRA_OECONF_append_sdkmingw32 = " --with-python"
-
-do_install_append_sdkmingw32() {
-    mkdir -p ${D}${bindir}/lib
-    cp -r ${STAGING_DIR_HOST}${exec_prefix}/lib/python2.7/* -d ${D}${bindir}/lib
-    cp ${STAGING_DIR_HOST}${exec_prefix}/bin/python27.dll ${D}${bindir}
-}
+RDEPENDS_libgles2-mesa-dev += "libgles3-mesa-dev"
