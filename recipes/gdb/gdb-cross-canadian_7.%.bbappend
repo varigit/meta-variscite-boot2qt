@@ -29,7 +29,7 @@
 
 DEPENDS_${PN}_append_sdkmingw32 = " nativesdk-prebuild-python"
 RDEPENDS_${PN}_append_sdkmingw32 = " nativesdk-prebuild-python"
-EXTRA_OECONF_remove_sdkmingw32 = " --with-python=no"
+EXTRA_OECONF_remove_sdkmingw32 = " --without-python"
 EXTRA_OECONF_append_sdkmingw32 = " --with-python"
 
 do_install_append_sdkmingw32() {
