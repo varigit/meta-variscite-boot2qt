@@ -42,7 +42,7 @@ SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "3d36a7b8e53770c91db60cec9586ef572a2f2814"
+SRCREV = "fd18dcbb9f53eb3948da890704530007327c476f"
 
 DEPENDS = "qtbase qtdeclarative"
 RDEPENDS_${PN} = "qtapplicationmanager qtivi qtvirtualkeyboard \
@@ -55,10 +55,6 @@ do_configure_prepend() {
 do_install_append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/neptune.service ${D}${systemd_unitdir}/system/
-
-    install -m 0644 ${S}/Main*.qml ${D}/opt/neptune
-    install -m 0644 ${S}/MainWithCluster.qml ${D}/opt/neptune
-    install -m 0644 ${S}/am-config.yaml ${D}/opt/neptune
 }
 
 PACKAGES =+ "${PN}-apps"

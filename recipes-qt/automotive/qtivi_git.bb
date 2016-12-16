@@ -43,6 +43,6 @@ PACKAGECONFIG[taglib] = "CONFIG+=config_taglib CONFIG+=done_config_taglib,CONFIG
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
-SRCREV = "1163c5e8e269d73b4e422a12e47f7db34285c4a0"
+SRCREV = "ef2d628c7f34bf40a7a146a71a10c1f7e6f8d29e"
 
 DEPENDS = "qtbase qtdeclarative qtmultimedia"
