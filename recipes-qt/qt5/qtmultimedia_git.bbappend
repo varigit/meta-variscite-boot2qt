@@ -31,4 +31,4 @@ PACKAGECONFIG += "${@bb.utils.contains('DISTRO_FEATURES', 'alsa', 'alsa', '', d)
                   ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio', '', d)} \
                   ${@bb.utils.contains('DISTRO_FEATURES', 'gstreamer010', 'gstreamer010', 'gstreamer', d)}"
 
-SRCREV = "77567bad82081ffb166578bdeac52fb1f2dce464"
+SRCREV = "544a8a4251ff9694780e563ddb6e4af1325e0115"
