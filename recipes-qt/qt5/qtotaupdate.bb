@@ -37,6 +37,6 @@ require recipes-qt/qt5/qt5-git.inc
 QT_GIT = "git://github.com/qt"
 QT_MODULE_BRANCH = "master"
 
-SRCREV = "9aff4083765a62a2b6d629971dba602646ffd3d4"
+SRCREV = "0e71fd622c82f692dac7ea422988f5ba10e57e1f"
 
 DEPENDS = "qtbase qtdeclarative ostree"
