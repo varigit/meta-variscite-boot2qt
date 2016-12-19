@@ -51,12 +51,6 @@ S = "${WORKDIR}/git"
 
 EXTRA_QMAKEVARS_PRE = "CONFIG+=daemon_only"
 
-do_configure_append() {
-    if [ -n "${ADB_PRODUCTID}" ]; then
-        sed -i -e 's/PRODUCT=.*/PRODUCT=${ADB_PRODUCTID}/' ${WORKDIR}/defaults
-    fi
-}
-
 do_install_append() {
     install -m 0755 ${WORKDIR}/qdbd-init.sh ${D}${bindir}/
     install -m 0755 -d ${D}${sysconfdir}/init.d
