@@ -36,3 +36,5 @@ do_install_append() {
 }
 
 FILES_${PN} += "${base_libdir}/udev/rules.d/*.rules"
+
+RRECOMMENDS_${PN} += "ti-sgx-ddk-km"
