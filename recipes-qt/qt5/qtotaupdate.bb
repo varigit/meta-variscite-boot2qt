@@ -39,4 +39,5 @@ QT_MODULE_BRANCH = "master"
 
 SRCREV = "0e71fd622c82f692dac7ea422988f5ba10e57e1f"
 
+RDEPENDS_${PN} = "dracut"
 DEPENDS = "qtbase qtdeclarative ostree"
