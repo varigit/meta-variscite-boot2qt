@@ -105,13 +105,13 @@ prepare_qbsp() {
 
     mkdir -p ${B}/toolchain/${QBSP_INSTALL_PATH}/toolchain
     if [ "${SDK_POSTFIX}" = "7z" ]; then
-        7z x ${DEPLOY_DIR}/sdk/${SDK_NAME} -o${B}/toolchain/${QBSP_INSTALL_PATH}/toolchain/
+        7zr x ${DEPLOY_DIR}/sdk/${SDK_NAME} -o${B}/toolchain/${QBSP_INSTALL_PATH}/toolchain/
     else
         cp ${DEPLOY_DIR}/sdk/${SDK_NAME} ${B}/toolchain/${QBSP_INSTALL_PATH}/toolchain/
     fi
 
     cd ${B}/toolchain
-    7z a ${COMPONENT_PATH}/data/toolchain.7z *
+    7zr a ${COMPONENT_PATH}/data/toolchain.7z *
 
     # Image component
     COMPONENT_PATH="${B}/pkg/${QBSP_INSTALLER_COMPONENT}.system"
@@ -122,10 +122,10 @@ prepare_qbsp() {
     patch_installer_files ${COMPONENT_PATH}/meta
 
     mkdir -p ${B}/images/${QBSP_INSTALL_PATH}/images
-    7z x ${DEPLOY_DIR_IMAGE}/${IMAGE_PACKAGE} -o${B}/images/${QBSP_INSTALL_PATH}/images/
+    7zr x ${DEPLOY_DIR_IMAGE}/${IMAGE_PACKAGE} -o${B}/images/${QBSP_INSTALL_PATH}/images/
 
     cd ${B}/images
-    7z a ${COMPONENT_PATH}/data/image.7z *
+    7zr a ${COMPONENT_PATH}/data/image.7z *
 
     # License component
     if [ -n "${QBSP_LICENSE_FILE}" ]; then
@@ -155,7 +155,7 @@ create_qbsp() {
     rm -f ${DEPLOY_DIR}/qbsp/${PN}-${SDK_MACHINE}-${MACHINE}.qbsp
 
     cd ${B}/repository
-    7z a ${DEPLOY_DIR}/qbsp/${PN}-${SDK_MACHINE}-${MACHINE}.qbsp *
+    7zr a ${DEPLOY_DIR}/qbsp/${PN}-${SDK_MACHINE}-${MACHINE}.qbsp *
 }
 
 python do_qbsp() {

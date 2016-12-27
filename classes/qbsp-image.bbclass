@@ -44,7 +44,7 @@ fakeroot do_qbsp_image () {
     done
 
     cd ${S}/qbsp
-    7z a ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.7z .
+    7zr a ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.7z .
 
     rm -f ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.7z
     ln -s ${IMAGE_NAME}.7z ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.7z
