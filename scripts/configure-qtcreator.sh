@@ -97,7 +97,9 @@ BASEID="byos.${RELEASE}.${MACHINE}"
 
 ${SDKTOOL} rmKit --id ${BASEID}.kit 2>/dev/null || true
 ${SDKTOOL} rmQt --id ${BASEID}.qt || true
-${SDKTOOL} rmTC --id ProjectExplorer.ToolChain.Gcc:${BASEID}.tc || true
+${SDKTOOL} rmTC --id ProjectExplorer.ToolChain.Gcc:${BASEID}.gcc || true
+${SDKTOOL} rmTC --id ProjectExplorer.ToolChain.Gcc:${BASEID}.g++ || true
+${SDKTOOL} rmDebugger --id ${BASEID}.gdb || true
 
 if [ -n "${REMOVEONLY}" ]; then
     echo "Kit removed: ${NAME}"
@@ -105,10 +107,25 @@ if [ -n "${REMOVEONLY}" ]; then
 fi
 
 ${SDKTOOL} addTC \
-    --id "ProjectExplorer.ToolChain.Gcc:${BASEID}.tc" \
+    --id "ProjectExplorer.ToolChain.Gcc:${BASEID}.gcc" \
     --name "GCC (${NAME})" \
-    --path "$(type -p ${OE_QMAKE_CXX})" \
-    --abi "${ABI}"
+    --path "$(type -p ${CC})" \
+    --abi "${ABI}" \
+    --language 1
+
+${SDKTOOL} addTC \
+    --id "ProjectExplorer.ToolChain.Gcc:${BASEID}.g++" \
+    --name "G++ (${NAME})" \
+    --path "$(type -p ${CXX})" \
+    --abi "${ABI}" \
+    --language 2
+
+${SDKTOOL} addDebugger \
+    --id "${BASEID}.gdb" \
+    --name "GDB (${NAME})" \
+    --engine 1 \
+    --binary "$(type -p ${GDB})" \
+    --abis "${ABI}"
 
 ${SDKTOOL} addQt \
     --id "${BASEID}.qt" \
@@ -120,11 +137,11 @@ ${SDKTOOL} addKit \
     --id "${BASEID}.kit" \
     --name "${NAME}" \
     --qt "${BASEID}.qt" \
-    --debuggerengine "1" \
-    --debugger "$(type -p ${GDB})" \
+    --debuggerid "${BASEID}.gdb" \
     --sysroot "${SDKTARGETSYSROOT}" \
     --devicetype "Boot2Qt.HwDevice" \
-    --toolchain "ProjectExplorer.ToolChain.Gcc:${BASEID}.tc" \
+    --Ctoolchain "ProjectExplorer.ToolChain.Gcc:${BASEID}.gcc" \
+    --Cxxtoolchain "ProjectExplorer.ToolChain.Gcc:${BASEID}.g++" \
     --icon ":/boot2qt/images/B2Qt_QtC_icon.png" \
     --mkspec "${MKSPEC}"
 
