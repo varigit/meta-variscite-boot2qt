@@ -51,16 +51,14 @@ Component.prototype.createOperations = function()
         component.addOperation("Execute", "{0}", script, "-y", "-d", path, "UNDOEXECUTE", "rm", "-rf", path);
         component.addOperation("Execute", "{0}", "/bin/rm", script);
     } else {
-        var search = sdkPath;
         path = path.replace(/\\/g,"/");
         component.addOperation("Replace",
                                 path + "/sysroots/i686-pokysdk-mingw32/usr/bin/qt.conf",
-                                search, path);
+                                sdkPath, path);
     }
-    // qt.embedded.b2qt.xx
-    var baseid = component.name.substring(17,19);
     var basecomponent = component.name.substring(0, component.name.lastIndexOf("."));
     var toolchainId = "ProjectExplorer.ToolChain.Gcc:" + component.name;
+    var debuggerId = basecomponent + ".gdb";
     var qtId = basecomponent + ".qt";
     var icon = installer.value("B2QtDeviceIcon");
     var executableExt = "";
@@ -73,12 +71,33 @@ Component.prototype.createOperations = function()
 
     component.addOperation("Execute",
         ["@SDKToolBinary@", "addTC",
-        "--id", toolchainId,
+        "--id", toolchainId + ".gcc",
         "--name", "GCC (Boot2Qt " + platform + ")",
+        "--path", path + "/sysroots/" + hostSysroot + "/usr/bin/" + target + "/" + target + "-gcc" + executableExt,
+        "--abi", abi,
+        "--language", "1",
+        "UNDOEXECUTE",
+        "@SDKToolBinary@", "rmTC", "--id", toolchainId + ".gcc"]);
+
+    component.addOperation("Execute",
+        ["@SDKToolBinary@", "addTC",
+        "--id", toolchainId + ".g++",
+        "--name", "G++ (Boot2Qt " + platform + ")",
         "--path", path + "/sysroots/" + hostSysroot + "/usr/bin/" + target + "/" + target + "-g++" + executableExt,
         "--abi", abi,
+        "--language", "2",
         "UNDOEXECUTE",
-        "@SDKToolBinary@", "rmTC", "--id", toolchainId]);
+        "@SDKToolBinary@", "rmTC", "--id", toolchainId + ".g++"]);
+
+    component.addOperation("Execute",
+        ["@SDKToolBinary@", "addDebugger",
+        "--id", debuggerId,
+        "--name", "GDB (Boot2Qt " + platform + ")",
+        "--engine", "1",
+        "--binary", path + "/sysroots/" + hostSysroot + "/usr/bin/" + target + "/" + target + "-gdb" + executableExt,
+        "--abis", abi,
+        "UNDOEXECUTE",
+        "@SDKToolBinary@", "rmDebugger", "--id", debuggerId]);
 
     component.addOperation("Execute",
         ["@SDKToolBinary@", "addQt",
@@ -89,19 +108,18 @@ Component.prototype.createOperations = function()
          "UNDOEXECUTE",
          "@SDKToolBinary@", "rmQt", "--id", qtId]);
 
-    var addKitOperations = ["@SDKToolBinary@", "addKit",
+    component.addOperation("Execute",
+        ["@SDKToolBinary@", "addKit",
          "--id", basecomponent,
          "--name", "Boot2Qt %{Qt:Version} " + platform,
          "--mkspec", "devices/linux-oe-generic-g++",
          "--qt", qtId,
-         "--debuggerengine", "1",
-         "--debugger", path + "/sysroots/" + hostSysroot + "/usr/bin/" + target + "/" + target + "-gdb" + executableExt,
+         "--debuggerid", debuggerId,
          "--sysroot", path + "/sysroots/" + sysroot,
          "--devicetype", deviceType,
-         "--toolchain", toolchainId,
-         "--icon", icon];
-
-    addKitOperations.push("UNDOEXECUTE", "@SDKToolBinary@", "rmKit", "--id", basecomponent);
-
-    component.addOperation("Execute", addKitOperations);
+         "--Ctoolchain", toolchainId + ".gcc",
+         "--Cxxtoolchain", toolchainId + ".g++",
+         "--icon", icon,
+         "UNDOEXECUTE",
+         "@SDKToolBinary@", "rmKit", "--id", basecomponent]);
 }
