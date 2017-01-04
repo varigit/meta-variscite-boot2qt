@@ -31,3 +31,8 @@ BBMASK += "meta-fsl-arm/qt5-layer/recipes-qt/qt5"
 
 IMAGE_FSTYPES += "ext3 sdcard"
 IMAGE_CLASSES += "image_types_fsl"
+
+QBSP_IMAGE_CONTENT ?= "\
+    ${IMAGE_LINK_NAME}.img \
+    ${IMAGE_LINK_NAME}.conf \
+    "

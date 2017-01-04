@@ -55,6 +55,8 @@
 #   $ bitbake b2qt-embedded-image
 #
 
+include conf/distro/include/fsl.inc
+
 # internal copy of R-Car_Series_Evaluation_Software_Packages used for CI
 FILESEXTRAPATHS_append = "${BSPDIR}/sources/renesas-rcar-gen2/${PN}:"
 
@@ -69,9 +71,6 @@ GLES_DRIVER_r8a7790 = "rgx"
 
 DISTRO_FEATURES += "wayland bluetooth bluez5 h264avcenc_lib"
 MACHINE_FEATURES += "multimedia ${GLES_DRIVER}"
-
-IMAGE_FSTYPES += "ext3 sdcard"
-IMAGE_CLASSES += "image_types_fsl"
 
 PREFERRED_VERSION_gstreamer1.0-libav = "1.2.3"
 
