@@ -58,3 +58,6 @@ do_configure_prepend() {
 }
 
 SRCREV = "179045f36a16ce2f6cfaad1dbd9443b52b1bf8d3"
+
+# make other libgbm providers possible
+PACKAGECONFIG[gbm] = "-gbm,-no-gbm,virtual/libgbm"

@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,5 +27,4 @@
 ##
 ############################################################################
 
-RDEPENDS_libgles2-mesa-dev += "libgles3-mesa-dev"
 PROVIDES += "virtual/libgbm"
