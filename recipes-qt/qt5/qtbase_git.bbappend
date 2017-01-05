@@ -57,7 +57,7 @@ do_configure_prepend() {
     install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
 }
 
-SRCREV = "179045f36a16ce2f6cfaad1dbd9443b52b1bf8d3"
+SRCREV = "4a738424aaef7958917b92bd64a08eb6208d9c06"
 
 # make other libgbm providers possible
 PACKAGECONFIG[gbm] = "-gbm,-no-gbm,virtual/libgbm"
