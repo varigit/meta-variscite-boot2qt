@@ -40,9 +40,10 @@ require recipes-qt/qt5/qt5-git.inc
 
 PACKAGECONFIG ?= "taglib"
 PACKAGECONFIG[taglib] = "CONFIG+=config_taglib CONFIG+=done_config_taglib,CONFIG+=done_config_taglib,taglib"
+PACKAGECONFIG[geniviextras-only] = "CONFIG+=geniviextras-only"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
-SRCREV = "ef2d628c7f34bf40a7a146a71a10c1f7e6f8d29e"
+SRCREV = "a15c13d6255d23ce90997913b7c1347fef396fa8"
 
 DEPENDS = "qtbase qtdeclarative qtmultimedia"
