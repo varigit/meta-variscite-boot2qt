@@ -40,9 +40,9 @@ SRC_URI = "git://codereview.qt-project.org/tqtc-boot2qt/qdb;branch=${BRANCH};pro
            file://qdbd-init.sh \
           "
 
-SRCREV = "02a7d1ab030b83feb3300df5149b9ec0518975f4"
-BRANCH = "master"
-PV = "0.1+git${SRCPV}"
+SRCREV = "c3f54cedb1fc2805eb21b2499514284941445e85"
+BRANCH = "5.8"
+PV = "1.0.0+git${SRCPV}"
 
 DEPENDS = "qtbase"
 RRECOMMENDS_${PN} += "kernel-module-usb-f-fs kernel-module-usb-f-rndis"
