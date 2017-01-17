@@ -56,9 +56,11 @@ RDEPENDS_${PN} += " \
     qtimageformats-dev \
     qtlocation-dev \
     qtmultimedia-dev \
+    qtnetworkauth-dev \
     qtotaupdate-dev \
     qtquickcontrols-dev \
     qtquickcontrols2-dev \
+    qtscxml-dev \
     qtsensors-dev \
     qtserialbus-dev \
     qtserialport-dev \
