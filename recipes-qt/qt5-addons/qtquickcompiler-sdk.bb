@@ -33,11 +33,12 @@ LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
 
 inherit allarch qmake5_paths
 
-DEPENDS = "qtbase"
+SRC_URI = "http://download.qt.io/development_releases/prebuilt/mingw_32/i686-4.9.2-release-posix-dwarf-rt_v3-rev1-runtime.7z"
+
+SRC_URI[md5sum] = "a7d673c4ad8bcef9e464ea5386492cb3"
+SRC_URI[sha256sum] = "f7e58b0fb1f5aa4c23eefdc60abb88cb642eaa272fb741dca23068c70ca86542"
 
 S = "${WORKDIR}"
-
-QT_VERSION = "5.6"
 
 NATIVESDK_BINARY = "qtquickcompiler"
 NATIVESDK_BINARY_mingw32 = "qtquickcompiler.exe"
@@ -54,6 +55,13 @@ do_install() {
     elif [ "${PN}" = "nativesdk-qtquickcompiler-sdk" ]; then
         install -d ${D}${OE_QMAKE_PATH_BINS}
         install -m 0755 ${THISDIR}/qtquickcompiler-sdk/bin/${NATIVESDK_BINARY} ${D}${OE_QMAKE_PATH_BINS}
+    fi
+}
+
+do_install_append_mingw32() {
+    if [ "${PN}" = "nativesdk-qtquickcompiler-sdk" ]; then
+        install -m 0644 ${WORKDIR}/libgcc_s_dw2-1.dll ${D}${OE_QMAKE_PATH_BINS}
+        install -m 0644 ${WORKDIR}/libwinpthread-1.dll ${D}${OE_QMAKE_PATH_BINS}
     fi
 }
 
