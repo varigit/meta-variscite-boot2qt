@@ -38,4 +38,7 @@ do_install_append() {
 
     install -m 0755 -d ${D}${sysconfdir}/modprobe.d
     install -m 0644 ${WORKDIR}/blacklist.conf ${D}${sysconfdir}/modprobe.d
+
+    # Add quotes around command expansion, since tty may return "not a tty"
+    sed -i 's#test `tty | cut -c1-8`#test "`tty | cut -c1-8`"#' ${D}${sysconfdir}/profile
 }
