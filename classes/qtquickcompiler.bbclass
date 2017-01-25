@@ -28,6 +28,9 @@
 ############################################################################
 
 python __anonymous() {
+    if d.getVar('DISABLE_QTQUICKCOMPILER', True) == "1":
+        return
+
     provider = ""
     sdk_path = d.getVar('B2QTBASE', True) + "/recipes-qt/qt5-addons/qtquickcompiler-sdk"
     pn = d.getVar("PN", True)
