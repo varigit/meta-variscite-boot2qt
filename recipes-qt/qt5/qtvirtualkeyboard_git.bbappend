@@ -30,5 +30,3 @@
 inherit qtquickcompiler
 
 PACKAGECONFIG = "lipi-toolkit lang-all hunspell"
-
-SRCREV = "cfa4ab4cbf13971d4b71ee920353822755a3bf31"
