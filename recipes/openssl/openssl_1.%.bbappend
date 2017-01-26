@@ -32,7 +32,3 @@ SRC_URI += "file://0001-Support-SYSROOT-in-c_rehash.patch"
 
 PACKAGECONFIG += "perl"
 
-do_install_append () {
-    rmdir ${D}${libdir}/ssl/certs
-    ln -s ${sysconfdir}/ssl/certs ${D}${libdir}/ssl/
-}
