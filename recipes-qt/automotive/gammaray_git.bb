@@ -13,7 +13,7 @@ SRCREV = "b961eb1b84718256acc678ec16a2b45e98990cd7"
 PV = "master+git${SRCPV}"
 
 DEPENDS = "qtdeclarative qtlocation qtsvg qttools qtconnectivity qt3d qtivi qtscxml \
-           ${@base_contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
+           ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
 
 S = "${WORKDIR}/git"
 

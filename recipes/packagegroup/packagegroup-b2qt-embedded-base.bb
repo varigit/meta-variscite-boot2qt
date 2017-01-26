@@ -51,6 +51,6 @@ RDEPENDS_${PN} = "\
         tzdata-asia \
         tzdata-europe \
         connman \
-        ${@base_contains("DISTRO_FEATURES", "wayland", "weston weston-examples", "", d)} \
+        ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "weston weston-examples", "", d)} \
         ${MACHINE_EXTRA_INSTALL} \
         "

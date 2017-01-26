@@ -50,7 +50,7 @@ RDEPENDS_${PN}_append_linux = "\
     nativesdk-python-modules \
     nativesdk-python-misc \
     nativesdk-perl-modules \
-    ${@base_contains("DISTRO_FEATURES", "wayland", "nativesdk-wayland-dev", "", d)} \
+    ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "nativesdk-wayland-dev", "", d)} \
     "
 
 RDEPENDS_${PN}_append_mingw32 = "\

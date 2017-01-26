@@ -48,8 +48,8 @@ inherit consistent_timestamps
 IMAGE_INSTALL += "\
     packagegroup-b2qt-embedded-base \
     packagegroup-b2qt-embedded-tools \
-    ${@base_contains("DISTRO_FEATURES", "gstreamer010", "packagegroup-b2qt-embedded-gstreamer010", "", d)} \
-    ${@base_contains("DISTRO_FEATURES", "gstreamer", "packagegroup-b2qt-embedded-gstreamer", "", d)} \
+    ${@bb.utils.contains("DISTRO_FEATURES", "gstreamer010", "packagegroup-b2qt-embedded-gstreamer010", "", d)} \
+    ${@bb.utils.contains("DISTRO_FEATURES", "gstreamer", "packagegroup-b2qt-embedded-gstreamer", "", d)} \
     packagegroup-b2qt-qt5-modules \
     packagegroup-b2qt-automotive-addons \
     "

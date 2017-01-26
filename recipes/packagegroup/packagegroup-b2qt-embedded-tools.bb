@@ -48,5 +48,5 @@ RDEPENDS_${PN} = "\
         perf \
         rsync \
         tslib-calibrate \
-        ${@base_contains("DISTRO_FEATURES", "systemd", "systemd-analyze", "", d)} \
+        ${@bb.utils.contains("DISTRO_FEATURES", "systemd", "systemd-analyze", "", d)} \
         "
