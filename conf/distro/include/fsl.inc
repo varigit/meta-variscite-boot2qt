@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-BBMASK += "meta-fsl-arm/qt5-layer/recipes-qt/qt5"
+BBMASK += "meta-freescale/dynamic-layers/qt5-layer/recipes-qt/qt5"
 
 IMAGE_FSTYPES += "ext3 sdcard"
 IMAGE_CLASSES += "image_types_fsl"

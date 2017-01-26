@@ -16,25 +16,25 @@
 
   <project name="poky"
            remote="yocto"
-           revision="fc75bea445bb57e1e942b5049ee2b6e5245649ea"
+           revision="6a1f33cc40bfac33cf030fe41e1a8efd1e5fad6f"
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
-           revision="247b1267bbe95719cd4877d2d3cfbaf2a2f4865a"
+           revision="1efa5d623bc64659b57389e50be2568b1355d5f7"
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="qtyocto"
-           revision="0cc8a8a21e1ba7ffa237c64608b2a6678897c096"
+           revision="d1ddf0cc4482b8e8e46f3be66870778ba9a42a13"
            path="sources/meta-qt5"/>
   <project name="meta-mingw"
            remote="qtyocto"
            path="sources/meta-mingw"
-           revision="4a877547146f32f4540664b0c677d99b33d12bfd"/>
+           revision="bfda0f040958b3c533123071ff031037389eed62"/>
 
-  <project name="meta-fsl-arm"
-           remote="yocto"
-           revision="a6b95df4d7ab122f1e5b7632e2273b75f853af4b"
-           path="sources/meta-fsl-arm"
+  <project name="meta-freescale"
+           remote="freescale"
+           revision="ec54f623eee97b75b7ad87503477316495c7fc26"
+           path="sources/meta-freescale"
            groups="notdefault,external,fsl,ti,smx6,renesas"/>
   <project name="meta-ti"
            remote="yocto"
@@ -46,10 +46,10 @@
            revision="2745399f75d7564fcc586d0365ff73be47849d0e"
            path="sources/meta-raspberrypi"
            groups="notdefault,external,rpi"/>
-  <project name="meta-fsl-arm-extra"
+  <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="99649b72f60fda4a2cfb2333791fe0f92997fa9e"
-           path="sources/meta-fsl-arm-extra"
+           revision="065228815a7ca5201df1ed4c030b152054a5eda3"
+           path="sources/meta-freescale-3rdparty"
            groups="notdefault,external,fsl,smx6"/>
   <project name="meta-intel"
            remote="intel"
@@ -63,7 +63,7 @@
            groups="notdefault,external,renesas"/>
   <project name="meta-tegra"
            remote="madisongh"
-           revision="9f5ffd3f8320ec3379e63e75e7c47328920751d5"
+           revision="fba09b70a8ac36248e5fcea611e3bb661bb089fc"
            path="sources/meta-tegra"
            groups="notdefault,external,jetson"/>
 

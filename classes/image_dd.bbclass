@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-# This class is based on meta-fsl-arm/classes/image_types_fsl.bbclass::generate_imx_sdcard()
+# This class is based on meta-freescale/classes/image_types_fsl.bbclass::generate_imx_sdcard()
 DESCRIPTION = "The base class for building images that can be deployed with GNU coreutils dd tool."
 inherit image_types
 
