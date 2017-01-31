@@ -47,3 +47,22 @@ build_hddimg_append() {
     rm -f ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
     ln -s ${IMAGE_NAME}.hddimg ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
 }
+
+IMAGE_DEPENDS_tegraflash_append = " parted-native:do_populate_sysroot"
+create_tegraflash_pkg_prepend() {
+    # Create partition table
+    SDCARD=${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.img
+    SDCARD_ROOTFS=${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.ext3
+    SDCARD_SIZE=$(expr ${IMAGE_ROOTFS_ALIGNMENT} + $ROOTFS_SIZE + ${IMAGE_ROOTFS_ALIGNMENT})
+
+    dd if=/dev/zero of=${SDCARD} bs=1 count=0 seek=$(expr 1024 \* ${SDCARD_SIZE})
+
+    parted -s ${SDCARD} mklabel msdos
+    parted -s ${SDCARD} unit KiB mkpart primary ${IMAGE_ROOTFS_ALIGNMENT} $(expr ${IMAGE_ROOTFS_ALIGNMENT} \+ ${ROOTFS_SIZE})
+    parted ${SDCARD} print
+
+    dd if=${SDCARD_ROOTFS} of=${SDCARD} conv=notrunc,fsync seek=1 bs=$(expr ${IMAGE_ROOTFS_ALIGNMENT} \* 1024)
+
+    rm -f ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
+    ln -s ${IMAGE_NAME}.img ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
+}

@@ -11,6 +11,7 @@
   <remote fetch="ssh://codereview.qt-project.org/yocto" name="gerrit"/>
   <remote fetch="git://git.yoctoproject.org" name="intel"/>
   <remote fetch="git://github.com/openembedded" name="oe-mirror"/>
+  <remote fetch="git://github.com/madisongh" name="madisongh"/>
   <remote fetch="ssh://git@git.qt.io/boot2qt" name="playground"/>
 
   <project name="poky"
@@ -60,6 +61,11 @@
            revision="d20e5bffb582c6bfabdadc22e903df86c8cfd66b"
            path="sources/meta-renesas"
            groups="notdefault,external,renesas"/>
+  <project name="meta-tegra"
+           remote="madisongh"
+           revision="9f5ffd3f8320ec3379e63e75e7c47328920751d5"
+           path="sources/meta-tegra"
+           groups="notdefault,external,jetson"/>
 
   <project name="nvidia-layer"
            remote="playground"

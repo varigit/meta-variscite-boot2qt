@@ -83,6 +83,9 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     emulator)
       LAYERSCONF="bblayers.conf.emulator.sample"
     ;;
+    jetson-tx1|jetson-tk1)
+      LAYERSCONF="bblayers.conf.jetson.sample"
+    ;;
     *)
       LAYERSCONF="bblayers.conf.sample"
       echo "Unknown MACHINE, bblayers.conf might need manual editing"
