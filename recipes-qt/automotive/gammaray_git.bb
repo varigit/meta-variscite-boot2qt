@@ -2,15 +2,15 @@ SUMMARY = "GammaRay Qt introspection probe"
 HOMEPAGE = "http://www.kdab.com/gammaray"
 
 LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://LICENSE.GPL.txt;md5=5996517d53e3c2722d457fb633e970ed"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL.txt;md5=560b8b2e529f7a17ee5dde6e5d0c0d69"
 
 inherit cmake_qt5
 
 SRC_URI = "git://github.com/KDAB/GammaRay;branch=${BRANCH}"
 
-BRANCH = "master"
-SRCREV = "b961eb1b84718256acc678ec16a2b45e98990cd7"
-PV = "master+git${SRCPV}"
+BRANCH = "2.7"
+SRCREV = "dc7a5d383bf7aa7b3e0361fa1d871eb7fad1a04a"
+PV = "${BRANCH}+git${SRCPV}"
 
 DEPENDS = "qtdeclarative qtlocation qtsvg qttools qtconnectivity qt3d qtivi qtscxml \
            ${@base_contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
