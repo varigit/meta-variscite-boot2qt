@@ -28,31 +28,31 @@
 ############################################################################
 
 IMAGE_ROOTFS_EXTRA_SPACE = "100000"
-SDCARD_ROOTFS = "${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.ext3"
+SDCARD_ROOTFS = "${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.ext3"
 SDCARD_GENERATION_COMMAND ?= "generate_imx_sdcard"
 
 IMAGE_CMD_sdcard_append() {
     parted -s ${SDCARD} set 1 boot on
 
-    rm -f ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
-    ln -s ${IMAGE_NAME}.rootfs.sdcard ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
+    rm -f ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
+    ln -s ${IMAGE_NAME}.rootfs.sdcard ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
 }
 
 IMAGE_CMD_rpi-sdimg_append() {
-    rm -f ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
-    ln -s ${IMAGE_NAME}.rootfs.rpi-sdimg ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
+    rm -f ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
+    ln -s ${IMAGE_NAME}.rootfs.rpi-sdimg ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
 }
 
 build_hddimg_append() {
-    rm -f ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
-    ln -s ${IMAGE_NAME}.hddimg ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
+    rm -f ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
+    ln -s ${IMAGE_NAME}.hddimg ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
 }
 
 IMAGE_DEPENDS_tegraflash_append = " parted-native:do_populate_sysroot"
 create_tegraflash_pkg_prepend() {
     # Create partition table
-    SDCARD=${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.img
-    SDCARD_ROOTFS=${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.ext3
+    SDCARD=${IMGDEPLOYDIR}/${IMAGE_NAME}.img
+    SDCARD_ROOTFS=${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.ext3
     SDCARD_SIZE=$(expr ${IMAGE_ROOTFS_ALIGNMENT} + $ROOTFS_SIZE + ${IMAGE_ROOTFS_ALIGNMENT})
 
     dd if=/dev/zero of=${SDCARD} bs=1 count=0 seek=$(expr 1024 \* ${SDCARD_SIZE})
@@ -63,6 +63,6 @@ create_tegraflash_pkg_prepend() {
 
     dd if=${SDCARD_ROOTFS} of=${SDCARD} conv=notrunc,fsync seek=1 bs=$(expr ${IMAGE_ROOTFS_ALIGNMENT} \* 1024)
 
-    rm -f ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
-    ln -s ${IMAGE_NAME}.img ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
+    rm -f ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
+    ln -s ${IMAGE_NAME}.img ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
 }

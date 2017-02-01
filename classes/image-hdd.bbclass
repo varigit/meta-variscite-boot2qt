@@ -36,9 +36,9 @@ SYSLINUX_DEFAULT_CONSOLE = "console=ttyS0,115200"
 inherit image_types image-vm
 
 create_hdd_image () {
-    cd ${DEPLOY_DIR_IMAGE}
-    rm -f ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.hdd
-    ln -s ${IMAGE_NAME}.hdddirect ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.hdd
+    cd ${IMGDEPLOYDIR}
+    rm -f ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.hdd
+    ln -s ${IMAGE_NAME}.hdddirect ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.hdd
 }
 
 python do_hddimg() {

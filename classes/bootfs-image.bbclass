@@ -44,15 +44,15 @@ fakeroot do_bootfs () {
         src=`echo $item | awk -F':' '{ print $1 }'`
         dst=`echo $item | awk -F':' '{ print $2 }'`
 
-        install -D -m 0755 ${DEPLOY_DIR_IMAGE}/$src ${S}/bootfs/$dst
+        install -D -m 0755 ${IMGDEPLOYDIR}/$src ${S}/bootfs/$dst
     done
 
     cd ${S}/bootfs
-    rm -f ${DEPLOY_DIR_IMAGE}/${BOOTFS_NAME}.tar.gz ${DEPLOY_DIR_IMAGE}/${BOOTFS_LINK_NAME}.tar.gz
+    rm -f ${IMGDEPLOYDIR}/${BOOTFS_NAME}.tar.gz ${IMGDEPLOYDIR}/${BOOTFS_LINK_NAME}.tar.gz
 
-    mkdir -p ${DEPLOY_DIR_IMAGE}
-    tar czvf ${DEPLOY_DIR_IMAGE}/${BOOTFS_NAME}.tar.gz .
-    ln -s ${BOOTFS_NAME}.tar.gz ${DEPLOY_DIR_IMAGE}/${BOOTFS_LINK_NAME}.tar.gz
+    mkdir -p ${IMGDEPLOYDIR}
+    tar czvf ${IMGDEPLOYDIR}/${BOOTFS_NAME}.tar.gz .
+    ln -s ${BOOTFS_NAME}.tar.gz ${IMGDEPLOYDIR}/${BOOTFS_LINK_NAME}.tar.gz
 }
 
 addtask bootfs before do_rootfs

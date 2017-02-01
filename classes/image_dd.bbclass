@@ -31,7 +31,7 @@
 DESCRIPTION = "The base class for building images that can be deployed with GNU coreutils dd tool."
 inherit image_types
 
-IMAGE="${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.img"
+IMAGE="${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.img"
 
 # Boot partition size [in KiB]
 BOOT_SPACE ?= "8192"
@@ -53,7 +53,7 @@ EXPORT_FUNCTIONS do_populate_boot
 
 IMAGE_CMD_dd() {
 
-    ROOTFS="${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.ext3"
+    ROOTFS="${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.ext3"
 
     # Align boot partition and calculate total binary image size
     BOOT_SPACE_ALIGNED=$(expr ${BOOT_SPACE} + ${IMAGE_ROOTFS_ALIGNMENT} - 1)
@@ -80,7 +80,7 @@ IMAGE_CMD_dd() {
     dd if=${WORKDIR}/boot.img of=${IMAGE} conv=notrunc seek=1 bs=$(expr ${IMAGE_ROOTFS_ALIGNMENT} \* 1024) && sync && sync
     dd if=${ROOTFS} of=${IMAGE} conv=notrunc seek=1 bs=$(expr ${BOOT_SPACE_ALIGNED} \* 1024 + ${IMAGE_ROOTFS_ALIGNMENT} \* 1024) && sync && sync
 
-    rm -f ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
-    ln -s ${IMAGE_NAME}.rootfs.img ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
+    rm -f ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
+    ln -s ${IMAGE_NAME}.rootfs.img ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
 }
 

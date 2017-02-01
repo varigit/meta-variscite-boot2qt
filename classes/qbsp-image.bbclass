@@ -40,14 +40,14 @@ fakeroot do_qbsp_image () {
         src=`echo $item | awk -F':' '{ print $1 }'`
         dst=`echo $item | awk -F':' '{ print $2 }'`
 
-        install -D -m 0755 ${DEPLOY_DIR_IMAGE}/$src ${S}/qbsp/$dst
+        install -D -m 0755 ${IMGDEPLOYDIR}/$src ${S}/qbsp/$dst
     done
 
     cd ${S}/qbsp
-    7zr a ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.7z .
+    7zr a ${IMGDEPLOYDIR}/${IMAGE_NAME}.7z .
 
-    rm -f ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.7z
-    ln -s ${IMAGE_NAME}.7z ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.7z
+    rm -f ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.7z
+    ln -s ${IMAGE_NAME}.7z ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.7z
 }
 
 IMAGE_POSTPROCESS_COMMAND += "do_qbsp_image;"

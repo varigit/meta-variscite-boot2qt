@@ -33,7 +33,7 @@ DEPLOY_CONF_NAME ?= "${MACHINE}"
 DEPLOY_CONF_TYPE ?= "Boot2Qt"
 
 IMAGE_CMD_conf() {
-    cat > ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.conf <<EOF
+    cat > ${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.conf <<EOF
 [${DEPLOY_CONF_TYPE} | ${DEPLOY_CONF_NAME}]
 platform=${MACHINE}
 os=linux
