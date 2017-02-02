@@ -45,6 +45,7 @@ SRC_URI = " \
     file://Create-firmware-convenience-symlinks.patch \
     file://Print-pull-progress-also-when-not-on-console.patch \
     file://Workaround-the-SIGCHLD-handler-issue.patch \
+    file://workaround-gtkdocize-configure-issue-in-autog.patch \
     "
 
 SRCREV = "8ece4d6d51bdbe3e41ab318259276bb83e553aa0"
