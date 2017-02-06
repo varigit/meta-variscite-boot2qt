@@ -99,7 +99,7 @@ ${SDKTOOL} rmKit --id ${BASEID}.kit 2>/dev/null || true
 ${SDKTOOL} rmQt --id ${BASEID}.qt || true
 ${SDKTOOL} rmTC --id ProjectExplorer.ToolChain.Gcc:${BASEID}.gcc || true
 ${SDKTOOL} rmTC --id ProjectExplorer.ToolChain.Gcc:${BASEID}.g++ || true
-${SDKTOOL} rmDebugger --id ${BASEID}.gdb || true
+${SDKTOOL} rmDebugger --id ${BASEID}.gdb 2>/dev/null || true
 
 if [ -n "${REMOVEONLY}" ]; then
     echo "Kit removed: ${NAME}"
