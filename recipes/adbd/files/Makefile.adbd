@@ -25,7 +25,7 @@ LIBCUTILS_SRC_FILES := \
 LIBCUTILS_OBJ_FILES=$(LIBCUTILS_SRC_FILES:%.c=%.o)
 
 adbd: $(LOCAL_OBJ_FILES) $(LIBCUTILS_OBJ_FILES)
-	$(CC) $^ -o $@ -lcrypto -Wl,--as-needed -ldl -lpthread -lresolv
+	$(CC) $(LDFLAGS) $^ -o $@ -lcrypto -Wl,--as-needed -ldl -lpthread -lresolv
 
 ../libcutils/%.o: ../libcutils/%.c
 	$(CC) -O2 -g -DADB_HOST=1 -Wall -Wno-unused-parameter -D_XOPEN_SOURCE -D_GNU_SOURCE -c $^ -o $@ -I../include/ -DHAVE_TERMIO_H -DHAVE_FORKEXEC
