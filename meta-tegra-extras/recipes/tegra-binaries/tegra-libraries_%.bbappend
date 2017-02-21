@@ -29,6 +29,15 @@
 
 DEPENDS += "${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'mesa', '', d)}"
 
+PACKAGES += "${PN}-dev"
+RRECOMMENDS_${PN}-dev += "\
+    libgles1-mesa-dev \
+    libgles2-mesa-dev \
+    libgles3-mesa-dev \
+    libegl-mesa-dev \
+    libgl-mesa-dev \
+    "
+
 do_install_append() {
     install -m 0644 ${DRVROOT}/tegra/libdrm* ${D}${libdir}
 }
