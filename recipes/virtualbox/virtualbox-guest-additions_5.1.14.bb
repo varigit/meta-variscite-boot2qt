@@ -38,8 +38,8 @@ PR = "${MACHINE_KERNEL_PR}"
 
 SRC_URI = "http://download.virtualbox.org/virtualbox/${PV}/VirtualBox-${PV}.tar.bz2"
 
-SRC_URI[md5sum] = "e25a6a1f3c113c373dc0433f9c2526f3"
-SRC_URI[sha256sum] = "b9a14a7771059c55c44b97f8d4eef9bea84544f3e215e0caa563bc35e2f16aaf"
+SRC_URI[md5sum] = "21eaec9f21477d555559a63761779880"
+SRC_URI[sha256sum] = "8267bb026717c6e55237eb798210767d9c703cfcdf01224d9bc26f7dac9f228a"
 
 S = "${WORKDIR}/vbox"
 
