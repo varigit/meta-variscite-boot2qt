@@ -46,6 +46,7 @@ SRCREV = "fd18dcbb9f53eb3948da890704530007327c476f"
 
 DEPENDS = "qtbase qtdeclarative"
 RDEPENDS_${PN} = "qtapplicationmanager qtivi qtvirtualkeyboard \
+                  qtquickcontrols-qmlplugins qtgraphicaleffects-qmlplugins \
                   ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
 
 do_configure_prepend() {
