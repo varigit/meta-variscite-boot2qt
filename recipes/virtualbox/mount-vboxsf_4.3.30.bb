@@ -42,7 +42,7 @@ SRC_URI[sha256sum] = "ea9569ec16cd6202ee61bcadb2506d31ac12fd343adb91565773a05eaa
 S = "${WORKDIR}/VirtualBox-${PV}/src/VBox/Additions/linux/sharedfolders"
 
 do_compile() {
-    ${CC} mount.vboxsf.c vbsfmount.c -o mount.vboxsf
+    ${CC} ${LDFLAGS} mount.vboxsf.c vbsfmount.c -o mount.vboxsf
 }
 
 do_install() {
