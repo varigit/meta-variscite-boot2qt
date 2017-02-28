@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,38 +27,4 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Neptune IVI UI"
-LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=bc0cb4bfd3f72b3fe47b2b2d0d89762c"
-
-inherit qt5-module systemd
-require recipes-qt/qt5/qt5-git.inc
-
-QT_GIT = "git://github.com/qtproject"
-QT_MODULE = "qt-apps-neptune-ui"
-
-SRC_URI += " \
-    file://neptune.service \
-    "
-
-SRCREV = "7d865406d6ccc538f9fd658a0d2b557e115d6919"
-
-DEPENDS = "qtbase qtdeclarative"
-RDEPENDS_${PN} = "qtapplicationmanager qtivi qtvirtualkeyboard \
-                  qtquickcontrols-qmlplugins qtgraphicaleffects-qmlplugins \
-                  ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
-
-do_install_append() {
-    install -m 0755 -d ${D}${systemd_unitdir}/system
-    install -m 0644 ${WORKDIR}/neptune.service ${D}${systemd_unitdir}/system/
-}
-
-PACKAGES =+ "${PN}-apps"
-RRECOMMENDS_${PN} += "${PN}-apps"
-
-FILES_${PN}-apps += "/opt/neptune/apps"
-FILES_${PN} += "\
-    /opt/neptune \
-    "
-
-SYSTEMD_SERVICE_${PN} = "neptune.service"
+SRCREV = "7d527c1914710a511c06713bbda1572b767cea34"
