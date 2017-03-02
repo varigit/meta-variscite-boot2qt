@@ -29,6 +29,8 @@
 
 LICENSE = "PSFv2"
 
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/Python-2.0;md5=6b60258130e4ed10d3101517eb5b9385"
+
 inherit bin_package nativesdk
 
 COMPATIBLE_HOST = ".*-mingw.*"
