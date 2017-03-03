@@ -29,7 +29,7 @@
 
 LICENSE = "PSFv2"
 
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/Python-2.0;md5=6b60258130e4ed10d3101517eb5b9385"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/Python-2.0;md5=a5c8025e305fb49e6d405769358851f6"
 
 inherit bin_package nativesdk
 
