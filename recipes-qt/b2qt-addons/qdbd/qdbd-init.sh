@@ -61,6 +61,7 @@ function disable_gadget() {
 
 case "$1" in
 start)
+    b2qt-gadget-network.sh --reset
     modprobe libcomposite
     # Gadget configuration
     mkdir -p $GADGET_CONFIG
@@ -104,6 +105,7 @@ stop)
 restart)
     disable_gadget
     start-stop-daemon --stop --quiet --exec $DAEMON
+    b2qt-gadget-network.sh --reset
     sleep 1
     shift
     start-stop-daemon --start --quiet --exec $DAEMON -- $@ &
