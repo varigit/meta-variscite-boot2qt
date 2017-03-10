@@ -30,7 +30,7 @@
 RDEPENDS_kernel-base = "kernel-image kernel-devicetree"
 
 do_preconfigure_prepend () {
-    # FunctionFS for adb
+    # FunctionFS for qdbd
     echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
     echo "TOUCHSCREEN_FUSION_F0710A=y" >> ${WORKDIR}/defconfig
 }

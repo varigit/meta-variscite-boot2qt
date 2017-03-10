@@ -81,5 +81,7 @@ INITSCRIPT_NAME = "adb-init"
 INITSCRIPT_PARAMS = "defaults 96"
 
 SYSTEMD_SERVICE_${PN} = "adbd.service"
+# qdbd is started by default instead of adbd
+SYSTEMD_AUTO_ENABLE = "disable"
 
 inherit update-rc.d systemd

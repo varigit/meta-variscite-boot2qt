@@ -67,7 +67,5 @@ do_install_append() {
 }
 
 SYSTEMD_SERVICE_${PN} = "qdbd.service"
-# adbd is started by default instead of qdbd
-SYSTEMD_AUTO_ENABLE = "disable"
 
 inherit systemd

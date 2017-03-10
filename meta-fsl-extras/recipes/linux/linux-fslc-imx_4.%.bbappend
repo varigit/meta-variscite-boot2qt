@@ -31,7 +31,7 @@
 RDEPENDS_kernel-base = ""
 
 do_preconfigure_prepend() {
-    # FunctionFS for adb
+    # FunctionFS for qdbd
     echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
 
     # Enable USB serial support
