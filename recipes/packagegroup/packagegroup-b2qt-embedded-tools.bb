@@ -43,7 +43,6 @@ RDEPENDS_${PN} = "\
         i2c-tools \
         iproute2 \
         ldd \
-        ntp \
         openssh-sftp-server \
         perf \
         rsync \
