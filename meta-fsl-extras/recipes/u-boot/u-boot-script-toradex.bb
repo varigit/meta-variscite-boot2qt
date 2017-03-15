@@ -50,7 +50,7 @@ do_mkimage () {
     for scr in ${WORKDIR}/*.scr; do
         uboot-mkimage -A arm -O linux -T script -C none -a 0 -e 0 \
                   -n "update script" -d ${scr} \
-                  $(basename ${scr} .scr).img
+                  ${S}/$(basename ${scr} .scr).img
     done
 }
 
