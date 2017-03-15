@@ -37,8 +37,8 @@ PV = "1.0.0"
 require opengldummy.inc
 
 do_compile() {
-    ${CC} -DQGS_BUILD_CLIENT_DLL -fPIC -shared -Wl,-soname,libEGL.so.1 -I${WORKDIR}/headers -o libEGL.so.1 ${WORKDIR}/egl.cpp
-    ${CC} -DQGS_BUILD_CLIENT_DLL -fPIC -shared -Wl,-soname,libGLESv2.so.2 -I${WORKDIR}/headers -o libGLESv2.so.2 ${WORKDIR}/gles2.cpp
+    ${CC} ${LDFLAGS} -DQGS_BUILD_CLIENT_DLL -fPIC -shared -Wl,-soname,libEGL.so.1 -I${WORKDIR}/headers -o libEGL.so.1 ${WORKDIR}/egl.cpp
+    ${CC} ${LDFLAGS} -DQGS_BUILD_CLIENT_DLL -fPIC -shared -Wl,-soname,libGLESv2.so.2 -I${WORKDIR}/headers -o libGLESv2.so.2 ${WORKDIR}/gles2.cpp
 }
 
 do_install_append() {
