@@ -34,4 +34,7 @@ do_preconfigure_prepend () {
     echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
     echo "CONFIG_USB_ACM=m"         >> ${WORKDIR}/defconfig
     echo "TOUCHSCREEN_FUSION_F0710A=y" >> ${WORKDIR}/defconfig
+
+    echo "CONFIG_EXTCON=y"          >> ${WORKDIR}/defconfig
+    echo "CONFIG_EXTCON_USB_GPIO=y" >> ${WORKDIR}/defconfig
 }
