@@ -38,7 +38,7 @@
            groups="notdefault,external,fsl,ti,smx6,renesas"/>
   <project name="meta-ti"
            remote="yocto"
-           revision="f807c7185321fb407e82c529ddff310dc037f727"
+           revision="0862a33b8d642e5fad031a78f90410d497453415"
            path="sources/meta-ti"
            groups="notdefault,external,ti"/>
   <project name="meta-raspberrypi"
