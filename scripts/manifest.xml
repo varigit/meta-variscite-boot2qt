@@ -43,7 +43,7 @@
            groups="notdefault,external,ti"/>
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="2745399f75d7564fcc586d0365ff73be47849d0e"
+           revision="cce6292e41493158c26f5b1b7fded97faacf10d7"
            path="sources/meta-raspberrypi"
            groups="notdefault,external,rpi"/>
   <project name="meta-freescale-3rdparty"
