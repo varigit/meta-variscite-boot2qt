@@ -27,5 +27,13 @@
 ##
 ############################################################################
 
-EXTRA_QMAKEVARS_PRE_append_emulator = " CONFIG+=simulator"
-DEPENDS_append_emulator = " qtsimulator"
+DESCRIPTION = "Host packages for B2Qt automotive Qt5 SDK"
+LICENSE = "The-Qt-Company-DCLA-2.1"
+PR = "r0"
+
+inherit nativesdk packagegroup qtquickcompiler
+
+RDEPENDS_${PN} += "\
+    nativesdk-packagegroup-b2qt-embedded-qt5-toolchain-host \
+    nativesdk-qtapplicationmanager-tools \
+    "

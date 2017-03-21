@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,5 +27,23 @@
 ##
 ############################################################################
 
-EXTRA_QMAKEVARS_PRE_append_emulator = " CONFIG+=simulator"
-DEPENDS_append_emulator = " qtsimulator"
+DESCRIPTION = "GNU FreeFont is a free family of scalable outline fonts"
+HOMEPAGE = "http://savannah.gnu.org/projects/freefont"
+LICENSE = "GPLv3"
+LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
+
+require recipes-graphics/ttf-fonts/ttf.inc
+
+inherit allarch fontcache
+
+S = "${WORKDIR}/freefont-${PV}"
+
+SRC_URI = "http://ftp.gnu.org/gnu/freefont/freefont-ttf-${PV}.zip"
+
+SRC_URI[md5sum] = "879b76d2e3c8003d567b555743f39154"
+SRC_URI[sha256sum] = "7c85baf1bf82a1a1845d1322112bc6ca982221b484e3b3925022e25b5cae89af"
+
+PACKAGES = "${PN}-sans ${PN}-mono ${PN}-serif"
+FILES_${PN}-sans = "${datadir}/fonts/truetype/FreeSans*.ttf"
+FILES_${PN}-mono = "${datadir}/fonts/truetype/FreeMono*.ttf"
+FILES_${PN}-serif = "${datadir}/fonts/truetype/FreeSerif*.ttf"

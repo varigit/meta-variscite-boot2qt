@@ -37,7 +37,7 @@ INHIBIT_DEFAULT_DEPS = "1"
 
 inherit allarch fontcache
 
-SRC_URI = "https://fedorahosted.org/releases/l/o/lohit/lohit-devanagari-ttf-${PV}.tar.gz"
+SRC_URI = "https://releases.pagure.org/lohit/lohit-devanagari-ttf-${PV}.tar.gz"
 
 SRC_URI[md5sum] = "57527ee536a18b443cf786d4b8fd5ec8"
 SRC_URI[sha256sum] = "a6618aeb1d25df46d3c22e528c38ea1d1147654e19904497a1e97f4684c55353"

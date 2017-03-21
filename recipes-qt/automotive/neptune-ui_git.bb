@@ -36,21 +36,17 @@ require recipes-qt/qt5/qt5-git.inc
 
 QT_GIT = "git://github.com/qtproject"
 QT_MODULE = "qt-apps-neptune-ui"
-QT_MODULE_BRANCH = "master"
 
 SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "fd18dcbb9f53eb3948da890704530007327c476f"
+SRCREV = "504d9720ed7ef921af7e5f1ebf709662baac6555"
 
 DEPENDS = "qtbase qtdeclarative"
 RDEPENDS_${PN} = "qtapplicationmanager qtivi qtvirtualkeyboard \
+                  qtquickcontrols-qmlplugins qtgraphicaleffects-qmlplugins \
                   ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
-
-do_configure_prepend() {
-    echo "qml.path = /opt/neptune" >> ${S}/neptuneui.pro
-}
 
 do_install_append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system

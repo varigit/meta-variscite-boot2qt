@@ -27,5 +27,4 @@
 ##
 ############################################################################
 
-EXTRA_QMAKEVARS_PRE_append_emulator = " CONFIG+=simulator"
-DEPENDS_append_emulator = " qtsimulator"
+BBCLASSEXTEND += "nativesdk"

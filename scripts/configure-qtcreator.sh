@@ -35,13 +35,16 @@ CONFIG=""
 
 printUsage ()
 {
-    echo "Usage: $0 --config <environment-setup-file> [--remove] [--qtcreator <path>] [--name <basename>]"
+    echo "Usage: $0 --config <environment-setup-file> [--remove] [--qtcreator <path>] [--name <basename>] [--appman]"
 }
 
 while test -n "$1"; do
   case "$1" in
     "--remove")
       REMOVEONLY=1
+      ;;
+    "--appman")
+      APPMAN=1
       ;;
     "--qtcreator")
       shift
@@ -96,10 +99,12 @@ NAME=${NAME:-"Custom Qt ${RELEASE} ${MACHINE}"}
 BASEID="byos.${RELEASE}.${MACHINE}"
 
 ${SDKTOOL} rmKit --id ${BASEID}.kit 2>/dev/null || true
+${SDKTOOL} rmKit --id ${BASEID}.am.kit 2>/dev/null || true
 ${SDKTOOL} rmQt --id ${BASEID}.qt || true
+${SDKTOOL} rmQt --id ${BASEID}.am.qt || true
 ${SDKTOOL} rmTC --id ProjectExplorer.ToolChain.Gcc:${BASEID}.gcc || true
 ${SDKTOOL} rmTC --id ProjectExplorer.ToolChain.Gcc:${BASEID}.g++ || true
-${SDKTOOL} rmDebugger --id ${BASEID}.gdb || true
+${SDKTOOL} rmDebugger --id ${BASEID}.gdb 2>/dev/null || true
 
 if [ -n "${REMOVEONLY}" ]; then
     echo "Kit removed: ${NAME}"
@@ -144,5 +149,25 @@ ${SDKTOOL} addKit \
     --Cxxtoolchain "ProjectExplorer.ToolChain.Gcc:${BASEID}.g++" \
     --icon ":/boot2qt/images/B2Qt_QtC_icon.png" \
     --mkspec "${MKSPEC}"
+
+if [ -n "${APPMAN}" ]; then
+    ${SDKTOOL} addQt \
+        --id "${BASEID}.am.qt" \
+        --name "${NAME} [Application Manager]" \
+        --type "AM.Qt" \
+        --qmake "$(type -p qmake)"
+
+    ${SDKTOOL} addKit \
+        --id "${BASEID}.am.kit" \
+        --name "${NAME} [Application Manager]" \
+        --qt "${BASEID}.am.qt" \
+        --debuggerid "${BASEID}.gdb" \
+        --sysroot "${SDKTARGETSYSROOT}" \
+        --devicetype "AM.Device.Type" \
+        --Ctoolchain "ProjectExplorer.ToolChain.Gcc:${BASEID}.gcc" \
+        --Cxxtoolchain "ProjectExplorer.ToolChain.Gcc:${BASEID}.g++" \
+        --icon ":/boot2qt/images/B2Qt_QtC_icon.png" \
+        --mkspec "${MKSPEC}"
+fi
 
 echo "Configured Qt Creator with new kit: ${NAME}"

@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,5 +27,39 @@
 ##
 ############################################################################
 
-EXTRA_QMAKEVARS_PRE_append_emulator = " CONFIG+=simulator"
-DEPENDS_append_emulator = " qtsimulator"
+DESCRIPTION = "Multiscreen Demo"
+LICENSE = "GPLv3 | The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3-EXCEPT;md5=763d8c535a234d9a3fb682c7ecb6c073"
+
+inherit qt5-module systemd
+require recipes-qt/qt5/qt5-git.inc
+
+QT_GIT = "git://code.qt.io/qt-apps"
+QT_MODULE_BRANCH = "master"
+
+SRC_URI += "git://github.com/qtproject/qt-apps-demo-assets;protocol=git;name=assets;destsuffix=git/demo-assets"
+
+SRCREV_multiscreen = "77ecd7d03aeea3bb7d10ac8ef448920da11ae306"
+SRCREV_assets = "0d47d21f082d6c9e355a55809ebd38a31ea02264"
+
+SRCREV_FORMAT = "multiscreen_assets"
+SRCREV = "${SRCREV_multiscreen}"
+
+DEPENDS = "qtbase qtdeclarative qt3d"
+RDEPENDS_${PN} = "qtapplicationmanager qtivi qtvirtualkeyboard"
+
+EXTRA_QMAKEVARS_PRE += "INSTALL_PREFIX=/opt"
+
+do_install_append() {
+    install -m 0755 ${S}/start.sh ${D}/opt/automotivedemo/
+
+    install -d ${D}${systemd_system_unitdir}
+    install -m 0644 ${S}/scripts/automotivedemo.service ${D}${systemd_system_unitdir}/
+}
+
+FILES_${PN} += "\
+    /opt/automotivedemo \
+    "
+
+SYSTEMD_SERVICE_${PN} = "automotivedemo.service"
+SYSTEMD_AUTO_ENABLE = "disable"

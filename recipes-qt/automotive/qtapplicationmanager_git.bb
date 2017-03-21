@@ -29,16 +29,18 @@
 
 DESCRIPTION = "Qt component for application lifecycle management"
 LICENSE = "(GFDL-1.3 & The-Qt-Company-GPL-Exception-1.0 & (LGPL-3.0 | GPL-2.0+)) | The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=317fda864ac33d41406ff3938c3e78d1"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=43a31c6abffdd61c938811959b3c1b71"
 
 inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
-SRCREV = "be9e9a37c2cd848cfdbb97990e0047f1a0834a8a"
+SRCREV = "f472ef3662cf0a9bc2bf727c7cef18fd884df5a2"
 
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \
            ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
+
 RDEPENDS_${PN} = "libcrypto ${PN}-tools"
+RDEPENDS_${PN}_remove_mingw32 = "libcrypto"
 
 EXTRA_QMAKEVARS_PRE += "\
     ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "-config force-multiprocess", "-config force-singleprocess", d)} \
@@ -54,4 +56,13 @@ do_install_append() {
 
 FILES_${PN} += "\
     /opt/am \
+    "
+
+BBCLASSEXTEND += "nativesdk"
+
+DEPENDS_class-nativesdk = "qtbase nativesdk-glibc-locale"
+DEPENDS_class-nativesdk_remove_mingw32 += "nativesdk-glibc-locale"
+
+EXTRA_QMAKEVARS_PRE_class-nativesdk += "\
+    -config tools-only \
     "

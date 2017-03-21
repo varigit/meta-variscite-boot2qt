@@ -27,5 +27,5 @@
 ##
 ############################################################################
 
-EXTRA_QMAKEVARS_PRE_emulator += "SENSORS_PLUGINS=simulator"
-DEPENDS_emulator += "qtsimulator"
+EXTRA_QMAKEVARS_PRE_append_emulator = " SENSORS_PLUGINS=simulator"
+DEPENDS_append_emulator = " qtsimulator"

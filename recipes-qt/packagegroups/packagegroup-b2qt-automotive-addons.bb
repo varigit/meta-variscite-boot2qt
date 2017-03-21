@@ -42,4 +42,5 @@ RDEPENDS_${PN} += " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebbrowser', '', d)} \
     gammaray \
     qmllive-target \
+    multiscreen-demo \
     "
