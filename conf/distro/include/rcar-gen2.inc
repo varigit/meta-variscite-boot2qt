@@ -69,7 +69,7 @@ KERNEL_MODULE_AUTOLOAD += " \
 GLES_DRIVER = "sgx"
 GLES_DRIVER_r8a7790 = "rgx"
 
-DISTRO_FEATURES += "wayland bluetooth bluez5 h264avcenc_lib"
+DISTRO_FEATURES += "h264avcenc_lib"
 MACHINE_FEATURES += "multimedia ${GLES_DRIVER}"
 
 PREFERRED_VERSION_gstreamer1.0-libav = "1.2.3"

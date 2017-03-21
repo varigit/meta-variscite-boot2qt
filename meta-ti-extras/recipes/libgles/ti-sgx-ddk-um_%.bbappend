@@ -30,6 +30,9 @@
 FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 SRC_URI += "file://99-fb.rules"
 
+# for supporting weston
+PROVIDES += "virtual/mesa"
+
 do_install_append() {
     install -d ${D}${base_libdir}/udev/rules.d
     install -m 0644 ${WORKDIR}/99-fb.rules ${D}${base_libdir}/udev/rules.d

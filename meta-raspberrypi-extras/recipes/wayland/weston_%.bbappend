@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,29 +27,5 @@
 ##
 ############################################################################
 
-IMAGE_CLASSES += "image-hdd"
-IMAGE_ROOTFS_ALIGNMENT = "1048576"
-ROOTFS ?= "${IMGDEPLOYDIR}/${IMAGE_BASENAME}-${MACHINE}.ext3"
-IMAGE_FSTYPES = "ext3"
-
-QBSP_IMAGE_CONTENT = "${IMAGE_LINK_NAME}.hdd"
-
-MACHINE_EXTRA_RRECOMMENDS += "\
-        kernel-module-snd-intel8x0 \
-        "
-
-PREFERRED_PROVIDER_virtual/egl = "qtglesstream-dummy-client"
-PREFERRED_PROVIDER_virtual/libgles2 = "qtglesstream-dummy-client"
-
-KERNEL_MODULE_AUTOLOAD += "snd-intel8x0 vboxguest vboxsf"
-
-DISTRO_FEATURES_remove = "webengine opengl wayland"
-
-MACHINE_EXTRA_INSTALL += "\
-        mount-vboxsf \
-        qtsystems \
-        qtglesstream \
-        b2qt-emulator-proxy \
-        b2qt-emulator-vinput \
-        b2qt-emulator-sdcardmountd \
-        "
+# from https://www.mail-archive.com/yocto@yoctoproject.org/msg33193.html
+PACKAGECONFIG_remove_rpi = "${@bb.utils.contains('MACHINE_FEATURES', 'vc4graphics', 'fbdev', 'kms', d)}"
