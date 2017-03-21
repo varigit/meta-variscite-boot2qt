@@ -38,7 +38,7 @@ do_populate_boot() {
 
     mkdir -p ${WORKDIR}/EFI/BOOT/
     # Path where EFI firmware searches for EFI executable
-    cp ${IMGDEPLOYDIR}/bootx64.efi ${WORKDIR}/EFI/BOOT/
+    cp ${DEPLOY_DIR_IMAGE}/bootx64.efi ${WORKDIR}/EFI/BOOT/
     mcopy -s -i ${WORKDIR}/boot.img ${WORKDIR}/EFI ::/EFI
 }
 

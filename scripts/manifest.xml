@@ -53,7 +53,7 @@
            groups="notdefault,external,fsl,smx6"/>
   <project name="meta-intel"
            remote="intel"
-           revision="b8c199201ffe026485a14e1fcfc398e2b3551512"
+           revision="6add41510412ca196efb3e4f949d403a8b6f35d7"
            path="sources/meta-intel"
            groups="notdefault,external,intel"/>
   <project name="meta-renesas"

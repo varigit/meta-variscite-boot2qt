@@ -50,8 +50,8 @@ do_install_append() {
     install -m 644 ${WORKDIR}/grub.cfg ${D}/boot/grub2/
 
     # https://www.kernel.org/doc/Documentation/x86/early-microcode.txt
-    microcode="${@bb.utils.contains('MACHINE_FEATURES', 'intel-ucode', '${IMGDEPLOYDIR}/microcode.cpio ', '', d)}"
-    cat ${microcode} ${IMGDEPLOYDIR}/${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz > ${D}/boot/initramfs
+    microcode="${@bb.utils.contains('MACHINE_FEATURES', 'intel-ucode', '${DEPLOY_DIR_IMAGE}/microcode.cpio ', '', d)}"
+    cat ${microcode} ${DEPLOY_DIR_IMAGE}/${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz > ${D}/boot/initramfs
     chmod 0644 ${D}/boot/initramfs
 }
 
