@@ -35,7 +35,7 @@
            remote="freescale"
            revision="ec54f623eee97b75b7ad87503477316495c7fc26"
            path="sources/meta-freescale"
-           groups="notdefault,external,fsl,ti,smx6,renesas"/>
+           groups="notdefault,external,fsl,ti,smx6"/>
   <project name="meta-ti"
            remote="yocto"
            revision="0862a33b8d642e5fad031a78f90410d497453415"
@@ -56,11 +56,6 @@
            revision="6add41510412ca196efb3e4f949d403a8b6f35d7"
            path="sources/meta-intel"
            groups="notdefault,external,intel"/>
-  <project name="meta-renesas"
-           remote="yocto"
-           revision="d20e5bffb582c6bfabdadc22e903df86c8cfd66b"
-           path="sources/meta-renesas"
-           groups="notdefault,external,renesas"/>
   <project name="meta-tegra"
            remote="madisongh"
            revision="fba09b70a8ac36248e5fcea611e3bb661bb089fc"
@@ -82,11 +77,5 @@
            revision="c2f639ef4b2fd5809ab95fb330d28c2716aa290d"
            path="sources/meta-smx6"
            groups="notdefault,internal"/>
-  <project name="renesas-rcar-gen2"
-           remote="playground"
-           revision="93b2464ca1c6200a1bdf2afcabac0c2c7e9bdf6d"
-           path="sources/renesas-rcar-gen2"
-           groups="notdefault,internal"/>
-
 </manifest>
 
