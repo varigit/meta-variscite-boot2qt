@@ -41,7 +41,7 @@ SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "504d9720ed7ef921af7e5f1ebf709662baac6555"
+SRCREV = "a4b46cdb7a6b4123a341857ff71a47332479acea"
 
 DEPENDS = "qtbase qtdeclarative"
 RDEPENDS_${PN} = "qtapplicationmanager qtivi qtvirtualkeyboard \
