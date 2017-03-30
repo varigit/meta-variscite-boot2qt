@@ -44,6 +44,6 @@ PACKAGECONFIG[geniviextras-only] = "CONFIG+=geniviextras-only"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
-SRCREV = "a15c13d6255d23ce90997913b7c1347fef396fa8"
+SRCREV = "8cabf3fb534d572c905fc0a783dbb4ebc98df41c"
 
 DEPENDS = "qtbase qtdeclarative qtmultimedia"
