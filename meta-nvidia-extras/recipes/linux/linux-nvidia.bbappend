@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,43 +27,31 @@
 ##
 ############################################################################
 
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+SRC_URI += "file://0001-Fix-misleading-indentation-error.patch;patchdir=.."
+
+CROSS_COMPILE_PREFIX = "${CROSS_COMPILE}"
+
+PACKAGES += "kernel-devicetree"
+FILES_kernel-devicetree = "/boot/*.dtb"
+
+RDEPENDS_kernel-base = "kernel-image kernel-devicetree"
+
+python do_patch () {
+    bb.build.exec_func('patch_do_patch', d)
+}
+
 do_unpack_append() {
+    mkdir -p ${STAGING_KERNEL_DIR}
     rm -rf ${STAGING_KERNEL_DIR}
     ln -s ${S} ${STAGING_KERNEL_DIR}
 }
 
-do_kernel_defconfig_prepend () {
-}
-
-do_compile_prepend () {
-    # cross_compile_exports
-    export ARCH=${KERNEL_ARCH}
-    export CROSS_COMPILE=${CROSS_COMPILE}
-
-    echo "CONFIG_USB_FUNCTIONFS=m"  >> ${B}/.config
-    echo "CONFIG_USB_ACM=m"         >> ${B}/.config
-
-    make olddefconfig
-}
-
-do_install () {
+do_install_append() {
     kernel_do_install
-
-    s=$(readlink -m "${S}")
-    kernsrc="${STAGING_KERNEL_DIR}"
-
-    if [ "${s}" != "${kernsrc}" ]; then
-        mkdir -p "${kernsrc}"
-        rm -rf "${kernsrc}"
-        mv "${S}" "${STAGING_KERNEL_DIR}"
-        ln -sf "${kernsrc}" "${s}"
-    fi
+    install -m 0664 -t ${D}/boot/ ${B}/arch/arm64/boot/dts/*.dtb
 }
 
-do_deploy() {
-    kernel_do_deploy
-}
-
-do_compile () {
-    kernel_do_compile
+dtbs_deploy() {
+    install -m 0664 -t ${DEPLOY_DIR_IMAGE} ${B}/arch/arm64/boot/dts/*.dtb
 }

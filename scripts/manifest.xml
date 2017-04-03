@@ -64,12 +64,12 @@
 
   <project name="nvidia-layer"
            remote="playground"
-           revision="7c95fabf8d71617130f71464207dd55c3079facd"
+           revision="1fa971efec70d999ac2a57782c12625fb70e5c76"
            path="sources/nvidia-layer"
            groups="notdefault,internal"/>
   <project name="vibrante-t186"
            remote="playground"
-           revision="e947e8f412b41ef673714e752a4065dc2f4fb04e"
+           revision="5e04f79155936ae10bbbea72e012336be6631448"
            path="sources/vibrante-t186"
            groups="notdefault,internal"/>
   <project name="meta-smx6"

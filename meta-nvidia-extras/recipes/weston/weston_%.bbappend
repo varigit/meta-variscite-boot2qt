@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,10 +27,6 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
-S = "${WORKDIR}/${LNX_TOPDIR}/samples/wayland/weston"
+PACKAGECONFIG_remove = "kms"
 
-do_install_prepend() {
-    mkdir -p ${WORKDIR}/${LNX_TOPDIR}/samples/weston/tools
-    cp ${WORKDIR}/${LNX_TOPDIR}/samples/wayland/weston/tools/weston.ini ${WORKDIR}/${LNX_TOPDIR}/samples/weston/tools/weston.ini
-}
+TARGET_CFLAGS += "-DWIN_INTERFACE_CUSTOM"
