@@ -39,7 +39,7 @@ QT_MODULE_BRANCH = "master"
 
 SRC_URI += "git://github.com/qtproject/qt-apps-demo-assets;protocol=git;name=assets;destsuffix=git/demo-assets"
 
-SRCREV_multiscreen = "77ecd7d03aeea3bb7d10ac8ef448920da11ae306"
+SRCREV_multiscreen = "c4e489dc70974212e47edbf876bd02e1e7fd7877"
 SRCREV_assets = "0d47d21f082d6c9e355a55809ebd38a31ea02264"
 
 SRCREV_FORMAT = "multiscreen_assets"
