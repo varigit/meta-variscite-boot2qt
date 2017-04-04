@@ -44,7 +44,7 @@ SRC_URI += " \
 SRCREV = "b41bbb2e3d9bca3a5f29dcf5995e4ed2d1664d9d"
 
 DEPENDS = "qtbase qtdeclarative"
-RDEPENDS_${PN} = "qtapplicationmanager qtivi qtvirtualkeyboard \
+RDEPENDS_${PN} = "qtapplicationmanager qtivi qtvirtualkeyboard dbus-session \
                   qtquickcontrols-qmlplugins qtgraphicaleffects-qmlplugins \
                   ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
 
