@@ -20,7 +20,7 @@
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
-           revision="1efa5d623bc64659b57389e50be2568b1355d5f7"
+           revision="fe5c83312de11e80b85680ef237f8acb04b4b26e"
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="qtyocto"
