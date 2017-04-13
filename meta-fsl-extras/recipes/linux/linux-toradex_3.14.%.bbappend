@@ -33,5 +33,4 @@ RDEPENDS_kernel-base = ""
 do_preconfigure_prepend () {
     # FunctionFS for adb
     echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
-    echo "CONFIG_USB_ACM=m"         >> ${WORKDIR}/defconfig
 }

@@ -35,12 +35,7 @@ do_preconfigure_prepend() {
     echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
 
     # Enable USB serial support
-    echo "CONFIG_USB_SERIAL=m"              >> ${WORKDIR}/defconfig
-    echo "CONFIG_USB_SERIAL_GENERIC=y"      >> ${WORKDIR}/defconfig
-    echo "CONFIG_USB_SERIAL_FTDI_SIO=m"     >> ${WORKDIR}/defconfig
     echo "CONFIG_USB_SERIAL_PL2303=m"       >> ${WORKDIR}/defconfig
-    echo "CONFIG_USB_ACM=m"                 >> ${WORKDIR}/defconfig
 
     echo "CONFIG_NAMESPACES=y"              >> ${WORKDIR}/defconfig
-    echo "CONFIG_FHANDLE=y"                 >> ${WORKDIR}/defconfig
 }

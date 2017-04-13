@@ -33,7 +33,7 @@
 
   <project name="meta-freescale"
            remote="freescale"
-           revision="ec54f623eee97b75b7ad87503477316495c7fc26"
+           revision="fc804d29ee85d58e9bb66f7319e749b53e192457"
            path="sources/meta-freescale"
            groups="notdefault,external,fsl,ti,smx6"/>
   <project name="meta-ti"
@@ -48,7 +48,7 @@
            groups="notdefault,external,rpi"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="065228815a7ca5201df1ed4c030b152054a5eda3"
+           revision="a78b17c24e66567f272ad47f9d6300e6b1b90c29"
            path="sources/meta-freescale-3rdparty"
            groups="notdefault,external,fsl,smx6"/>
   <project name="meta-intel"
