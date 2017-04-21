@@ -28,7 +28,7 @@
 ############################################################################
 
 do_configure_prepend() {
-    echo "CONFIG_NAMESPACES=y"      >> ${WORKDIR}/defconfig
-    echo "CONFIG_FHANDLE=y"         >> ${WORKDIR}/defconfig
-    echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
+    echo "CONFIG_NAMESPACES=y"      >> ${B}/.config
+    echo "CONFIG_FHANDLE=y"         >> ${B}/.config
+    echo "CONFIG_USB_FUNCTIONFS=m"  >> ${B}/.config
 }
