@@ -41,10 +41,10 @@ SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "504d9720ed7ef921af7e5f1ebf709662baac6555"
+SRCREV = "1770881783025b04ff5b4c7da7810d1648485b92"
 
-DEPENDS = "qtbase qtdeclarative"
-RDEPENDS_${PN} = "qtapplicationmanager qtivi qtvirtualkeyboard \
+DEPENDS = "qtbase qtdeclarative qttools-native"
+RDEPENDS_${PN} = "qtapplicationmanager qtivi qtvirtualkeyboard dbus \
                   qtquickcontrols-qmlplugins qtgraphicaleffects-qmlplugins \
                   ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
 

@@ -29,4 +29,4 @@
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${MACHINE}:"
 
-COMPATIBLE_MACHINE = "(nitrogen6x|nitrogen6x-lite|wandboard-dual|wandboard-quad)"
+COMPATIBLE_MACHINE = "(cubox-i|nitrogen6x|nitrogen6x-lite|wandboard|imx6sl-warp)"

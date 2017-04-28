@@ -1,0 +1,23 @@
+From 59d272d9df5337bb4bd62a96fc16c8e280c49344 Mon Sep 17 00:00:00 2001
+From: Mikko Gronoff <mikko.gronoff@qt.io>
+Date: Sun, 23 Apr 2017 21:47:01 +0300
+Subject: [PATCH] set CMA reserved size to 384MB
+
+Increased from 256MB (the default) to 384MB. Without this, HW-accelerated
+video decoding cannot work for high resolution videos.
+---
+ include/configs/nitrogen6x.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/configs/nitrogen6x.h b/include/configs/nitrogen6x.h
+index 646c505..ddbb4c5 100644
+--- a/include/configs/nitrogen6x.h
++++ b/include/configs/nitrogen6x.h
+@@ -28,6 +28,7 @@
+ #define CONFIG_USB_MAX_CONTROLLER_COUNT 2
+ #define CONFIG_VIDEO
+ #define BD_I2C_MASK	7
++#define BD_CMA		"384M"
+ 
+ #if defined(CONFIG_SABRELITE)
+ #define CONFIG_ENV_IS_IN_MMC

@@ -29,6 +29,5 @@
 
 FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 SRC_URI += " \
-        file://0001-set-CMA-reserved-size-to-384MB.patch \
         file://0001-Set-screen-resolution-for-ft5x06_ts-based-on-selecte.patch \
         "

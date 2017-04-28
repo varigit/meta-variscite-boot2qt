@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,8 +27,8 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
-SRC_URI += " \
-        file://0001-Add-support-for-KOE-tx31d200vm0baa-display.patch \
-        file://0002-set-CMA-reserved-size-to-384MB.patch \
-        "
+do_configure_prepend() {
+    echo "CONFIG_NAMESPACES=y"      >> ${B}/.config
+    echo "CONFIG_FHANDLE=y"         >> ${B}/.config
+    echo "CONFIG_USB_FUNCTIONFS=m"  >> ${B}/.config
+}
