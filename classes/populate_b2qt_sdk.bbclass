@@ -46,6 +46,8 @@ replace_sysroot_symlink() {
         done
 }
 
+do_populate_sysroot[depends] += "p7zip-native:do_populate_sysroot"
+
 fakeroot tar_sdk_sdkmingw32() {
         replace_sysroot_symlink ${SDK_OUTPUT}${SDKTARGETSYSROOT} ${SDK_OUTPUT}${SDKTARGETSYSROOT}
         replace_sysroot_symlink ${SDK_OUTPUT}${SDKPATHNATIVE} ${SDK_OUTPUT}${SDKPATHNATIVE}

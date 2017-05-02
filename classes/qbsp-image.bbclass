@@ -29,6 +29,8 @@
 
 QBSP_IMAGE_CONTENT ??= ""
 
+do_image_complete[depends] += "p7zip-native:do_populate_sysroot"
+
 fakeroot do_qbsp_image () {
     if [ -z "${QBSP_IMAGE_CONTENT}" ]; then
         exit 0
