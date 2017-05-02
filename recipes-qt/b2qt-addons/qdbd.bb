@@ -35,7 +35,7 @@ LIC_FILES_CHKSUM = "file://qdbd/main.cpp;md5=37093977d3f09e6366def8955c8c71e6;be
 inherit distro_features_check
 inherit qmake5
 
-SRC_URI = "git://codereview.qt-project.org/tqtc-boot2qt/qdb;branch=${BRANCH};protocol=ssh \
+SRC_URI = "git://codereview.qt-project.org/qt-apps/qdb;branch=${BRANCH};protocol=ssh \
            file://b2qt-gadget-network.sh \
            file://defaults \
            file://qdbd.service \

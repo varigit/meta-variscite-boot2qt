@@ -39,5 +39,5 @@ RDEPENDS_${PN} += " \
     b2qt-launcher \
     b2qt-demos \
     ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "democompositor", "", d)} \
-    ${@bb.utils.contains("ENABLE_QDBD", "1", "qdbd", "", d)} \
+    qdbd \
     "
