@@ -29,8 +29,8 @@
 
 DESCRIPTION = "Qt Debug Bridge Daemon"
 SECTION = "devel"
-LICENSE = "The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://qdbd/main.cpp;md5=37093977d3f09e6366def8955c8c71e6;beginline=1;endline=18"
+LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit distro_features_check
 inherit qmake5
@@ -42,7 +42,7 @@ SRC_URI = "git://codereview.qt-project.org/qt-apps/qdb;branch=${BRANCH};protocol
            file://qdbd-init.sh \
           "
 
-SRCREV = "c3f54cedb1fc2805eb21b2499514284941445e85"
+SRCREV = "430e26a747c1df605d1f6b55f4a7f7125d100dca"
 BRANCH = "5.8"
 PV = "1.0.0+git${SRCPV}"
 
