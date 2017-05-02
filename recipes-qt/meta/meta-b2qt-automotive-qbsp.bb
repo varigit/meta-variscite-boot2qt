@@ -40,7 +40,8 @@ inherit qbsp
 
 PV = "1.1"
 
-QBSP_INSTALLER_COMPONENT = "qt.automotive.10.yocto.${MACHINE}"
+QBSP_MACHINE = "${@d.getVar('MACHINE', True).replace('-','')}"
+QBSP_INSTALLER_COMPONENT = "qt.automotive.10.yocto.${QBSP_MACHINE}"
 QBSP_INSTALL_PATH = "/${QT_MODULE_BRANCH}/Automotive/${MACHINE}"
 
 QBSP_SDK_TASK = "meta-toolchain-b2qt-automotive-qt5-sdk"

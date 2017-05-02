@@ -48,7 +48,7 @@ do_qbsp[depends] += "\
     "
 
 QBSP_VERSION ?= "${PV}${VERSION_AUTO_INCREMENT}"
-QBSP_INSTALLER_COMPONENT ?= "${MACHINE}"
+QBSP_INSTALLER_COMPONENT ?= "${@d.getVar('MACHINE', True).replace('-','')}"
 QBSP_INSTALL_PATH ?= "/Extras/${MACHINE}"
 
 QBSP_LICENSE_FILE ?= ""
@@ -122,7 +122,7 @@ prepare_qbsp() {
     patch_installer_files ${COMPONENT_PATH}/meta
 
     mkdir -p ${B}/images/${QBSP_INSTALL_PATH}/images
-    7zr x ${IMGDEPLOYDIR}/${IMAGE_PACKAGE} -o${B}/images/${QBSP_INSTALL_PATH}/images/
+    7zr x ${DEPLOY_DIR_IMAGE}/${IMAGE_PACKAGE} -o${B}/images/${QBSP_INSTALL_PATH}/images/
 
     cd ${B}/images
     7zr a ${COMPONENT_PATH}/data/image.7z *
