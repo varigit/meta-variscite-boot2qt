@@ -37,7 +37,9 @@ PACKAGECONFIG += " \
     cups \
     fontconfig \
     freetype \
+    gif \
     glib \
+    ico \
     icu \
     libinput \
     linuxfb \
