@@ -135,7 +135,7 @@ ${SDKTOOL} addDebugger \
 ${SDKTOOL} addQt \
     --id "${BASEID}.qt" \
     --name "${NAME}" \
-    --type "Boot2Qt.QtVersionType" \
+    --type "Qdb.EmbeddedLinuxQt" \
     --qmake "$(type -p qmake)"
 
 ${SDKTOOL} addKit \
@@ -144,7 +144,7 @@ ${SDKTOOL} addKit \
     --qt "${BASEID}.qt" \
     --debuggerid "${BASEID}.gdb" \
     --sysroot "${SDKTARGETSYSROOT}" \
-    --devicetype "Boot2Qt.HwDevice" \
+    --devicetype "QdbLinuxOsType" \
     --Ctoolchain "ProjectExplorer.ToolChain.Gcc:${BASEID}.gcc" \
     --Cxxtoolchain "ProjectExplorer.ToolChain.Gcc:${BASEID}.g++" \
     --icon ":/boot2qt/images/B2Qt_QtC_icon.png" \
