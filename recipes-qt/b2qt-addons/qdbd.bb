@@ -34,23 +34,24 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit distro_features_check
 inherit qmake5
+require recipes-qt/qt5/qt5-git.inc
 
-SRC_URI = "git://codereview.qt-project.org/qt-apps/qdb;branch=${BRANCH};protocol=ssh \
-           file://b2qt-gadget-network.sh \
+QT_GIT = "git://github.com/qtproject"
+QT_MODULE = "qt-apps-qdb"
+QT_MODULE_BRANCH = "5.8"
+
+SRC_URI += "file://b2qt-gadget-network.sh \
            file://defaults \
            file://qdbd.service \
            file://qdbd-init.sh \
           "
 
 SRCREV = "430e26a747c1df605d1f6b55f4a7f7125d100dca"
-BRANCH = "5.8"
 PV = "1.0.0+git${SRCPV}"
 
 REQUIRED_DISTRO_FEATURES = "systemd"
 DEPENDS = "qtbase"
 RRECOMMENDS_${PN} += "kernel-module-usb-f-fs kernel-module-usb-f-rndis"
-
-S = "${WORKDIR}/git"
 
 EXTRA_QMAKEVARS_PRE = "CONFIG+=daemon_only"
 
