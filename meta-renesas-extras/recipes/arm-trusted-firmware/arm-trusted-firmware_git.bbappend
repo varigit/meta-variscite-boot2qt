@@ -27,6 +27,5 @@
 ##
 ############################################################################
 
-PACKAGECONFIG_remove = "kms"
-
-TARGET_CFLAGS += "-DWIN_INTERFACE_CUSTOM"
+CFLAGS[unexport] = ""
+CFLAGS = "-Wno-error=pedantic"

@@ -27,6 +27,4 @@
 ##
 ############################################################################
 
-PACKAGECONFIG_remove = "kms"
-
-TARGET_CFLAGS += "-DWIN_INTERFACE_CUSTOM"
+PROVIDES += "virtual/libgbm"

@@ -27,6 +27,4 @@
 ##
 ############################################################################
 
-PACKAGECONFIG_remove = "kms"
-
-TARGET_CFLAGS += "-DWIN_INTERFACE_CUSTOM"
+CFLAGS = "-Wno-error=unused-const-variable= -Wno-error=strict-aliasing -Wno-error=shift-negative-value"

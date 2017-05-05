@@ -27,6 +27,6 @@
 ##
 ############################################################################
 
-PACKAGECONFIG_remove = "kms"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-TARGET_CFLAGS += "-DWIN_INTERFACE_CUSTOM"
+PACKAGECONFIG += "gbm kms"

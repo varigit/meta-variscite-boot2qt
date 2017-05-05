@@ -27,6 +27,12 @@
 ##
 ############################################################################
 
-PACKAGECONFIG_remove = "kms"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-TARGET_CFLAGS += "-DWIN_INTERFACE_CUSTOM"
+SRC_URI += "file://kms.conf"
+
+FILES_${PN} += "${sysconfdir}/kms.conf"
+
+do_install_append() {
+    install -m 0644 ${WORKDIR}/kms.conf ${D}${sysconfdir}/
+}

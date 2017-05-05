@@ -27,6 +27,10 @@
 ##
 ############################################################################
 
-PACKAGECONFIG_remove = "kms"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-TARGET_CFLAGS += "-DWIN_INTERFACE_CUSTOM"
+SRC_URI += "file://0001-compiler-.h-sync-include-linux-compiler-.h-with-Linu.patch"
+
+do_deploy_prepend() {
+    cp ${B}/${UBOOT_SREC} ${S}/${UBOOT_SREC}
+}
