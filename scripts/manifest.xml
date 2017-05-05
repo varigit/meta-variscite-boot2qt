@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-
-  <default sync-j="4" revision="dizzy"/>
-
   <remote fetch="git://git.yoctoproject.org" name="yocto"/>
   <remote fetch="git://git.openembedded.org" name="oe"/>
   <remote fetch="git://github.com/Freescale" name="freescale"/>
@@ -13,6 +10,8 @@
   <remote fetch="git://github.com/openembedded" name="oe-mirror"/>
   <remote fetch="git://github.com/madisongh" name="madisongh"/>
   <remote fetch="ssh://git@git.qt.io/boot2qt" name="playground"/>
+  <remote fetch="git://github.com/renesas-rcar" name="renesas"/>
+  <remote fetch="git://git.linaro.org/openembedded" name="linaro"/>
 
   <project name="poky"
            remote="yocto"
@@ -35,7 +34,7 @@
            remote="freescale"
            revision="fc804d29ee85d58e9bb66f7319e749b53e192457"
            path="sources/meta-freescale"
-           groups="notdefault,external,fsl,ti,smx6"/>
+           groups="notdefault,external,fsl,ti,smx6,renesas-gen3"/>
   <project name="meta-ti"
            remote="yocto"
            revision="0862a33b8d642e5fad031a78f90410d497453415"
@@ -61,16 +60,31 @@
            revision="fba09b70a8ac36248e5fcea611e3bb661bb089fc"
            path="sources/meta-tegra"
            groups="notdefault,external,jetson"/>
+  <project name="meta-renesas"
+           remote="renesas"
+           revision="95cb48ba09bc7e55fd549817e3e26723409e68d5"
+           path="sources/meta-renesas"
+           groups="notdefault,external,renesas-gen3"/>
+  <project name="meta-linaro"
+           remote="linaro"
+           revision="c44bd0ebc8ca2e6201996ef7cba8b71421d3aff7"
+           path="sources/meta-linaro"
+           groups="notdefault,external,renesas-gen3"/>
 
   <project name="nvidia-layer"
            remote="playground"
-           revision="7c95fabf8d71617130f71464207dd55c3079facd"
+           revision="1fa971efec70d999ac2a57782c12625fb70e5c76"
            path="sources/nvidia-layer"
            groups="notdefault,internal"/>
   <project name="vibrante-t186"
            remote="playground"
-           revision="e947e8f412b41ef673714e752a4065dc2f4fb04e"
+           revision="5e04f79155936ae10bbbea72e012336be6631448"
            path="sources/vibrante-t186"
+           groups="notdefault,internal"/>
+  <project name="renesas-rcar-gen3"
+           remote="playground"
+           revision="41c966df95fad1d8fca5c24676c437a46e997c5f"
+           path="sources/renesas-rcar-gen3"
            groups="notdefault,internal"/>
   <project name="meta-smx6"
            remote="playground"

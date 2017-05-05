@@ -1,0 +1,42 @@
+From 33d112e943590020f2cda2a403a755531833b016 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Fri, 31 Mar 2017 09:42:18 +0300
+Subject: [PATCH] Fix misleading-indentation error
+
+error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+   if (!runlist->active_channels)
+---
+ nvgpu/drivers/gpu/nvgpu/vgpu/fifo_vgpu.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/nvgpu/drivers/gpu/nvgpu/vgpu/fifo_vgpu.c b/nvgpu/drivers/gpu/nvgpu/vgpu/fifo_vgpu.c
+index 3e57c67..e2fe4db 100644
+--- a/nvgpu/drivers/gpu/nvgpu/vgpu/fifo_vgpu.c
++++ b/nvgpu/drivers/gpu/nvgpu/vgpu/fifo_vgpu.c
+@@ -209,15 +209,15 @@ static int init_runlist(struct gk20a *g, struct fifo_gk20a *f)
+ 		if (!runlist->active_channels)
+ 			goto clean_up_runlist;
+ 
+-			runlist_size  = sizeof(u16) * f->num_channels;
+-			for (i = 0; i < MAX_RUNLIST_BUFFERS; i++) {
+-				int err = gk20a_gmmu_alloc_sys(g, runlist_size,
+-						&runlist->mem[i]);
+-				if (err) {
+-					dev_err(d, "memory allocation failed\n");
+-					goto clean_up_runlist;
+-				}
++		runlist_size  = sizeof(u16) * f->num_channels;
++		for (i = 0; i < MAX_RUNLIST_BUFFERS; i++) {
++			int err = gk20a_gmmu_alloc_sys(g, runlist_size,
++					&runlist->mem[i]);
++			if (err) {
++				dev_err(d, "memory allocation failed\n");
++				goto clean_up_runlist;
+ 			}
++		}
+ 		mutex_init(&runlist->mutex);
+ 
+ 		/* None of buffers is pinned if this value doesn't change.
+-- 
+2.7.4
+

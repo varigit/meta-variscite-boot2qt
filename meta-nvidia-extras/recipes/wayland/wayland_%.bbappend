@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,10 +27,8 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_append := ":${NVLAYER_DIR}/packages:${LNX_TOPDIR}/${PN}:${THISDIR}/${PN}"
+FILESEXTRAPATHS_append := ":${LNX_TOPDIR}_src/wayland"
 
-SRC_URI_remove = "file://${NVLAYER_DIR}/packages/wayland-1.8.1-src.tar.gz"
-SRC_URI = "\
-    file://wayland-1.8.1-src.tar.gz \
-    file://always-build-scanner.patch \
-    "
+SRC_URI = "file://wayland-1.11.0-src.tar.gz"
+
+DEPENDS_class-target += "wayland-egl"

@@ -133,6 +133,9 @@ get_groups() {
     jetson-tx1|jetson-tk1)
       PROJECT_GROUPS="jetson"
     ;;
+    salvator-x|h3ulcb|m3ulcb)
+      PROJECT_GROUPS="renesas-gen3"
+    ;;
     *)
       echo "Unknown device configuration, including all meta layers"
       PROJECT_GROUPS="external"
