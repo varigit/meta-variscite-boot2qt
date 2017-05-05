@@ -27,6 +27,11 @@
 ##
 ############################################################################
 
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+SRC_URI += " \
+        file://0001-genksyms-fix-typeof-handling.patch \
+        "
+
 # kernel image files are not needed in the image
 RDEPENDS_kernel-base = ""
 
