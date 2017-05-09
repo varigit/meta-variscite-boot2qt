@@ -57,7 +57,7 @@ create_tegraflash_pkg_prepend() {
 
     dd if=/dev/zero of=${SDCARD} bs=1 count=0 seek=$(expr 1024 \* ${SDCARD_SIZE})
 
-    parted -s ${SDCARD} mklabel msdos
+    parted -s ${SDCARD} mklabel gpt
     parted -s ${SDCARD} unit KiB mkpart primary ${IMAGE_ROOTFS_ALIGNMENT} $(expr ${IMAGE_ROOTFS_ALIGNMENT} \+ ${ROOTFS_SIZE})
     parted ${SDCARD} print
 
