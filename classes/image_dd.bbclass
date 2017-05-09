@@ -73,6 +73,7 @@ IMAGE_CMD_dd() {
     # Create boot partition image
     BOOT_BLOCKS=$(LC_ALL=C parted -s ${IMAGE} unit b print \
                       | awk '/ 1 / { print substr($4, 1, length($4 -1)) / 1024 }')
+    rm -f ${WORKDIR}/boot.img
     mkfs.vfat -n "${BOOTDD_VOLUME_ID}" -S 512 -C ${WORKDIR}/boot.img $BOOT_BLOCKS
     do_populate_boot
 
