@@ -30,4 +30,5 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += "\
     file://wlan-realtek.cfg \
+    file://b2qt.cfg \
     "
