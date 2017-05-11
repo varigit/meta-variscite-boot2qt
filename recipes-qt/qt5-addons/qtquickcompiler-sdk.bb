@@ -70,5 +70,6 @@ ALLOW_EMPTY_${PN} = "1"
 PACKAGES =+ "${PN}-tools"
 FILES_${PN}-tools = "${OE_QMAKE_PATH_BINS}"
 FILES_${PN}-dev = "${OE_QMAKE_PATH_ARCHDATA}"
+INSANE_SKIP_${PN} += "already-stripped"
 
 BBCLASSEXTEND = "native nativesdk"
