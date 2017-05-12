@@ -1,6 +1,6 @@
 [Unit]
 Description=Qt Debug Bridge Daemon
-After=network.target
+After=basic.target
 Before=adbd.service
 Conflicts=adbd.service
 

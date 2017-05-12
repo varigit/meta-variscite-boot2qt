@@ -63,6 +63,7 @@ case "$1" in
 start)
     b2qt-gadget-network.sh --reset
     modprobe libcomposite
+    sleep 1
     # Gadget configuration
     mkdir -p $GADGET_CONFIG
     echo $VENDOR > $GADGET_CONFIG/idVendor
