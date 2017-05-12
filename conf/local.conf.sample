@@ -288,3 +288,5 @@ ACCEPT_FSL_EULA = "1"
 LICENSE_FLAGS_WHITELIST = "commercial"
 
 QT_SDK_PATH = ""
+
+include conf/distro/include/${MACHINE}.pre.inc

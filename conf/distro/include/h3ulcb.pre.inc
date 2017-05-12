@@ -1,0 +1,1 @@
+SOC_FAMILY = "r8a7795"
