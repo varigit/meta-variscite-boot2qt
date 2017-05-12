@@ -60,6 +60,7 @@ RDEPENDS_${PN} += " \
     qtotaupdate-dev \
     qtquickcontrols-dev \
     qtquickcontrols2-dev \
+    qtremoteobjects-dev \
     qtscxml-dev \
     qtsensors-dev \
     qtserialbus-dev \
