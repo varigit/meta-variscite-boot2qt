@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -31,7 +31,7 @@ LICENSE = "The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
 DEPENDS = "u-boot-mkimage-native"
 
-PV = "v2.6"
+PV = "2.7"
 
 SRC_URI = " \
     file://fwd_mmc.scr \
@@ -59,8 +59,8 @@ addtask mkimage after do_compile before do_install
 do_deploy () {
     install -d ${DEPLOYDIR}/${MACHINE}
     install -m 0644 -t ${DEPLOYDIR} ${S}/*.img
-    ln -s ../flash_blk.img ${DEPLOYDIR}/${MACHINE}/
-    ln -s ../flash_eth.img ${DEPLOYDIR}/${MACHINE}/
+    ln -fs ../flash_blk.img ${DEPLOYDIR}/${MACHINE}/
+    ln -fs ../flash_eth.img ${DEPLOYDIR}/${MACHINE}/
 }
 
 addtask deploy after do_install before do_build

@@ -12,6 +12,7 @@
   <remote fetch="ssh://git@git.qt.io/boot2qt" name="playground"/>
   <remote fetch="git://github.com/renesas-rcar" name="renesas"/>
   <remote fetch="git://git.linaro.org/openembedded" name="linaro"/>
+  <remote fetch="git://git.toradex.com" name="toradex"/>
 
   <project name="poky"
            remote="yocto"
@@ -34,7 +35,12 @@
            remote="freescale"
            revision="fc804d29ee85d58e9bb66f7319e749b53e192457"
            path="sources/meta-freescale"
-           groups="notdefault,external,fsl,ti,smx6,renesas-gen3"/>
+           groups="notdefault,external,fsl,toradex,ti,smx6,renesas-gen3"/>
+  <project name="meta-freescale-3rdparty"
+           remote="freescale"
+           revision="a78b17c24e66567f272ad47f9d6300e6b1b90c29"
+           path="sources/meta-freescale-3rdparty"
+           groups="notdefault,external,fsl,toradex,smx6"/>
   <project name="meta-ti"
            remote="yocto"
            revision="0862a33b8d642e5fad031a78f90410d497453415"
@@ -45,11 +51,6 @@
            revision="cce6292e41493158c26f5b1b7fded97faacf10d7"
            path="sources/meta-raspberrypi"
            groups="notdefault,external,rpi"/>
-  <project name="meta-freescale-3rdparty"
-           remote="freescale"
-           revision="a78b17c24e66567f272ad47f9d6300e6b1b90c29"
-           path="sources/meta-freescale-3rdparty"
-           groups="notdefault,external,fsl,smx6"/>
   <project name="meta-intel"
            remote="intel"
            revision="6add41510412ca196efb3e4f949d403a8b6f35d7"
@@ -70,6 +71,16 @@
            revision="c44bd0ebc8ca2e6201996ef7cba8b71421d3aff7"
            path="sources/meta-linaro"
            groups="notdefault,external,renesas-gen3"/>
+  <project name="meta-toradex-bsp-common"
+           remote="toradex"
+           revision="554adccf11f2ba2947ed221307ddd703c0889967"
+           path="sources/meta-toradex-bsp-common"
+           groups="notdefault,external,toradex"/>
+  <project name="meta-toradex-nxp"
+           remote="toradex"
+           revision="d351e11b76c004afbf0f37d5481266bafdb015ee"
+           path="sources/meta-toradex-nxp"
+           groups="notdefault,external,toradex"/>
 
   <project name="nvidia-layer"
            remote="playground"

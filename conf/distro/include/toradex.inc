@@ -39,5 +39,4 @@ BOOT_SCRIPTS += " \
     fwd_eth.img:flash_eth.img \
     fwd_mmc.img:flash_mmc.img \
     ${MACHINE}:${MACHINEDIR} \
-    u-boot-${MACHINE}.imx:${MACHINEDIR}/u-boot.imx \
     "

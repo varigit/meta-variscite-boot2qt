@@ -107,7 +107,7 @@ get_groups() {
       PROJECT_GROUPS="external"
     ;;
     apalis-imx6|colibri-imx6|colibri-vf|colibri-imx7)
-      PROJECT_GROUPS="fsl"
+      PROJECT_GROUPS="toradex"
     ;;
     imx6qsabresd|imx6dlsabresd|nitrogen6x|imx7dsabresd|imx7s-warp)
       PROJECT_GROUPS="fsl"
