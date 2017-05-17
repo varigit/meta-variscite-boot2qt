@@ -60,6 +60,7 @@ FILESEXTRAPATHS_append = "${BSPDIR}/sources/renesas-rcar-gen3/${PN}:"
 BBMASK += "\
     meta-linaro/meta-optee/recipes-security/optee \
     meta-rcar-gen3/recipes-connectivity/ppp \
+    meta-rcar-gen3/recipes-core/packagegroups \
     meta-rcar-gen3/recipes-graphics/mesa \
     meta-rcar-gen3/recipes-multimedia/gstreamer \
     meta-rcar-gen3/recipes-multimedia/webp \
