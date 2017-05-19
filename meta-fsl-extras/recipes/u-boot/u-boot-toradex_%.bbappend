@@ -30,4 +30,5 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += " \
         file://0001-Make-sdboot-default-on-all-boards.patch \
+        file://0001-apalis-imx6-enable-Fusion10-display-if-found-during-.patch \
         "
