@@ -122,7 +122,7 @@ ${SDKTOOL} addTC \
     --id "ProjectExplorer.ToolChain.Gcc:${BASEID}.g++" \
     --name "G++ (${NAME})" \
     --path "$(type -p ${CXX})" \
-    --abi "${ABI}" \
+    --abi "${ABI}" \
     --language 2
 
 ${SDKTOOL} addDebugger \
