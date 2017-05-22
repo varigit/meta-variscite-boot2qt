@@ -1,3 +1,7 @@
 VENDOR=0xdbdb
 PRODUCT=0x0001
-SERIAL=$(hostname)-$(cat /etc/machine-id)
+if [ -e /sys/class/net/eth0/address ]; then
+  SERIAL=$(hostname)-$(sed -e 's/://g' /sys/class/net/eth0/address)
+else
+  SERIAL=$(hostname)-$(cat /etc/machine-id)
+fi
