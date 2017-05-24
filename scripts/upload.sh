@@ -31,7 +31,7 @@
 set -x
 set -e
 
-RELEASE=5.9
+RELEASE=5.10
 UPLOADPATH=QT@ci-files02-hki.ci.local:/srv/jenkins_data/enterprise/b2qt/yocto/${RELEASE}/
 UPLOADS="\
     tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.7z \
