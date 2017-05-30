@@ -61,7 +61,6 @@ do_install() {
 do_install_append_mingw32() {
     if [ "${PN}" = "nativesdk-qtquickcompiler-sdk" ]; then
         install -m 0644 ${WORKDIR}/libgcc_s_dw2-1.dll ${D}${OE_QMAKE_PATH_BINS}
-        install -m 0644 ${WORKDIR}/libwinpthread-1.dll ${D}${OE_QMAKE_PATH_BINS}
     fi
 }
 

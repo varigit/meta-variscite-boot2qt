@@ -57,4 +57,5 @@ RDEPENDS_${PN}_append_mingw32 = "\
     nativesdk-make \
     nativesdk-libgcc \
     nativesdk-libstdc++ \
+    nativesdk-mingw-w64-winpthreads \
     "

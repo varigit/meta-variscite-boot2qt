@@ -24,12 +24,12 @@
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="qtyocto"
-           revision="e91e6a01a6623225290059073e806217f23e1f07"
+           revision="044ba1621532deed80ef79a15f5b225d8b9471ec"
            path="sources/meta-qt5"/>
   <project name="meta-mingw"
            remote="qtyocto"
-           path="sources/meta-mingw"
-           revision="bfda0f040958b3c533123071ff031037389eed62"/>
+           revision="46d0746d53f863d9d76fa117f1259459803a36e3"
+           path="sources/meta-mingw"/>
 
   <project name="meta-freescale"
            remote="freescale"
