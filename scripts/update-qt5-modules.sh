@@ -47,6 +47,12 @@ for S in $SHA1S; do
     elif [ "${PROJECT}" = "qtwebengine/src/3rdparty" ]; then
         sed -i -e "/^SRCREV_chromium/s/\".*\"/\"${SHA1}\"/" qtwebengine_git.bb*
         echo "qtwebengine (chromium) -> ${SHA1}"
+    elif [ "${PROJECT}" = "qtlocation" ]; then
+        sed -i -e "/^SRCREV_qtlocation/s/\".*\"/\"${SHA1}\"/" qtlocation_git.bb*
+        echo "qtlocation -> ${SHA1}"
+    elif [ "${PROJECT}" = "qtlocation/src/3rdparty/mapbox-gl-native" ]; then
+        sed -i -e "/^SRCREV_qtlocation-mapboxgl/s/\".*\"/\"${SHA1}\"/" qtlocation_git.bb*
+        echo "qtlocation (mapboxgl) -> ${SHA1}"
     elif [ "${PROJECT}" = "tqtc-qmlcompiler" ] && [ -e "qtquickcompiler_git.bb" ]; then
         sed -i -e "/^SRCREV/s/\".*\"/\"${SHA1}\"/" qtquickcompiler_git.bb
         echo "qtquickcompiler -> ${SHA1}"
