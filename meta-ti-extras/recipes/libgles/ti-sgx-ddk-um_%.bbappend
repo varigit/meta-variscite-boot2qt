@@ -28,7 +28,14 @@
 ############################################################################
 
 FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
-SRC_URI += "file://99-fb.rules"
+SRC_URI += "\
+    file://99-fb.rules \
+    file://pvr.service \
+    "
+
+inherit systemd
+
+SYSTEMD_SERVICE_${PN} = "pvr.service"
 
 # for supporting weston
 PROVIDES += "virtual/mesa"
@@ -36,9 +43,18 @@ PROVIDES += "virtual/mesa"
 do_install_append() {
     install -d ${D}${base_libdir}/udev/rules.d
     install -m 0644 ${WORKDIR}/99-fb.rules ${D}${base_libdir}/udev/rules.d
+
+    install -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/pvr.service ${D}${systemd_unitdir}/system
+
+    install -d ${D}${bindir}
+    install -m 0755 ${D}${sysconfdir}/init.d/rc.pvr ${D}${bindir}
 }
 
-FILES_${PN} += "${base_libdir}/udev/rules.d/*.rules"
+FILES_${PN} += "\
+    ${base_libdir}/udev/rules.d/*.rules \
+    ${systemd_unitdir}/system/pvr.service \
+    "
 
 RRECOMMENDS_${PN} += "ti-sgx-ddk-km"
 
