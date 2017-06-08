@@ -1,0 +1,28 @@
+From fdbf7768bcd14b182b0372631fe762a3fde16a49 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Thu, 8 Jun 2017 15:42:58 +0300
+Subject: [PATCH] Change typedef for EGLNativeDisplayType
+
+Change EGLNativeDisplayType to void* as it's in more recent versions
+---
+ targetfs/ti335x/include/EGL/eglplatform.h | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/targetfs/ti335x/include/EGL/eglplatform.h b/targetfs/ti335x/include/EGL/eglplatform.h
+index 7943741..e71df55 100644
+--- a/targetfs/ti335x/include/EGL/eglplatform.h
++++ b/targetfs/ti335x/include/EGL/eglplatform.h
+@@ -94,12 +94,7 @@ typedef Window   EGLNativeWindowType;
+ 
+ /* NULLWS fallback */
+ 
+-#if defined(_WIN64) ||  __WORDSIZE == 64
+-typedef khronos_int64_t EGLNativeDisplayType;
+-#else
+-typedef int EGLNativeDisplayType;
+-#endif
+-
++typedef void*	EGLNativeDisplayType;
+ typedef void*	EGLNativePixmapType;
+ typedef void*	EGLNativeWindowType;
+ 

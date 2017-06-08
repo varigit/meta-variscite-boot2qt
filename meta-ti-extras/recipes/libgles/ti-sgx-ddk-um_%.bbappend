@@ -29,6 +29,7 @@
 
 FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 SRC_URI += "\
+    file://0001-Change-typedef-for-EGLNativeDisplayType.patch \
     file://99-fb.rules \
     file://pvr.service \
     "
