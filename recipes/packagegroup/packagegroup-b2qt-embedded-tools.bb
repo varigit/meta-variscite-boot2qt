@@ -34,7 +34,6 @@ PR = "r0"
 inherit packagegroup
 
 RDEPENDS_${PN} = "\
-        adbd \
         alsa-utils-amixer \
         binutils \
         binutils-symlinks \

@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,12 +27,12 @@
 ##
 ############################################################################
 
-PV = "044+git${SRCREV}"
-SRCREV = "1bc3e733f96033a508841e97fe08da7a12851782"
-SRC_URI = "git://git.kernel.org/pub/scm/boot/dracut/dracut.git;protocol=http"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-# Upstream recipe mistakenly depends on systemd, we remove that dependency here.
-RDEPENDS_${PN}_remove = "systemd"
-REQUIRED_DISTRO_FEATURES_remove = "systemd"
-# https://bugzilla.yoctoproject.org/show_bug.cgi?id=8522
-RDEPENDS_${PN} +=  "util-linux"
+SRC_URI += "file://kms.conf"
+
+FILES_${PN} += "${sysconfdir}/kms.conf"
+
+do_install_append() {
+    install -m 0644 ${WORKDIR}/kms.conf ${D}${sysconfdir}/
+}

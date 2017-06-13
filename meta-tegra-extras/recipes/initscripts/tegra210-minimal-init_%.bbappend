@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,10 +27,7 @@
 ##
 ############################################################################
 
-include conf/distro/include/ti.inc
-
-DEPLOY_CONF_NAME = "BeagleBone Black"
-
-DISTRO_FEATURES_remove = "webengine"
-
-BOOT_SPACE = "33792"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI += "\
+    file://init-boot.sh \
+    "

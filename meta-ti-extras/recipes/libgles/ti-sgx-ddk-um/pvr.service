@@ -1,0 +1,11 @@
+[Unit]
+Description=PVR Services
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/rc.pvr start
+ExecStop=/usr/bin/rc.pvr stop
+
+[Install]
+WantedBy=multi-user.target
