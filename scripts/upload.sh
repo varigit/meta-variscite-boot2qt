@@ -31,7 +31,7 @@
 set -x
 set -e
 
-RELEASE=5.9
+RELEASE=$(grep PV ../sources/meta-qt5/recipes-qt/qt5/qt5-git.inc | grep -o [0-9.]*)
 UPLOADPATH=QT@ci-files02-hki.ci.local:/srv/jenkins_data/enterprise/b2qt/yocto/${RELEASE}/
 UPLOADS="\
     tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.7z \
