@@ -48,7 +48,7 @@
            groups="notdefault,external,ti"/>
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="cce6292e41493158c26f5b1b7fded97faacf10d7"
+           revision="380bf2ff445c2049bdea15f3bb36e8cb36540345"
            path="sources/meta-raspberrypi"
            groups="notdefault,external,rpi"/>
   <project name="meta-intel"
