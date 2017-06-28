@@ -85,7 +85,7 @@ fi
 source $CONFIG
 
 MKSPEC="devices/linux-oe-generic-g++"
-MKSPECPATH=$(find ${OECORE_TARGET_SYSROOT} -name $(basename ${MKSPEC}))
+MKSPECPATH=$(find ${OECORE_TARGET_SYSROOT} -name $(basename ${MKSPEC}) 2>/dev/null || true)
 if [ ! -d "${MKSPECPATH}" ]; then
     echo "Error: could not find mkspec ${MKSPEC} from the toolchain"
     exit 1
