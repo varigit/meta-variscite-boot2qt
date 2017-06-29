@@ -31,6 +31,7 @@ DEPENDS_append_sdkmingw32 = " nativesdk-prebuild-python"
 RDEPENDS_${PN}_append_sdkmingw32 = " nativesdk-prebuild-python"
 EXTRA_OECONF_remove_sdkmingw32 = " --without-python"
 EXTRA_OECONF_append_sdkmingw32 = " --with-python"
+CXXFLAGS_append_sdkmingw32 = " -D_hypot=hypot"
 
 do_install_append_sdkmingw32() {
     mkdir -p ${D}${bindir}/lib
