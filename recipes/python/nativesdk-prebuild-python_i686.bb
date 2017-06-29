@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,29 +27,11 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend_sdkmingw32 := "${THISDIR}/${BPN}:"
-SRC_URI_append_sdkmingw32 = " file://0001-Do-not-use-win32-specific-filehandling.patch"
+require nativesdk-prebuild-python.inc
 
-DEPENDS_append_sdkmingw32 = " nativesdk-prebuild-python"
-RDEPENDS_${PN}_append_sdkmingw32 = " nativesdk-prebuild-python"
-EXTRA_OECONF_remove_sdkmingw32 = "--without-python --with-python=no"
-EXTRA_OECONF_append_sdkmingw32 = " --with-python=${WORKDIR}/python_win"
-CXXFLAGS_append_sdkmingw32 = " -D_hypot=hypot"
+COMPATIBLE_HOST = "i686.*-mingw.*"
 
-do_configure_prepend_sdkmingw32() {
-cat > ${WORKDIR}/python_win << EOF
-#! /bin/sh
-case "\$2" in
-        --includes) echo "-I${STAGING_INCDIR}/${PYTHON_DIR}" ;;
-        --ldflags) echo "-Wl,-rpath-link,${STAGING_LIBDIR}/.. -lpython35" ;;
-        --exec-prefix) echo "${exec_prefix}" ;;
-        *) exit 1 ;;
-esac
-exit 0
-EOF
-        chmod +x ${WORKDIR}/python_win
-}
+SRC_URI = "http://download.qt.io/development_releases/prebuilt/python/Python35-win-x86.7z"
 
-do_install_append_sdkmingw32() {
-    ln -s ../python35.dll ${D}${bindir}/
-}
+SRC_URI[md5sum] = "3da266445a4e6a93ff1949810141da8f"
+SRC_URI[sha256sum] = "b60c49227c6e920904d784681c16ee3591a18824c3abb89613813f93fde1c1f2"

@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -29,32 +29,29 @@
 
 LICENSE = "PSFv2"
 
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/Python-2.0;md5=a5c8025e305fb49e6d405769358851f6"
+LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=4b8a9367e6bb2acb6f26dc08654f6ee5"
 
-inherit bin_package nativesdk
+do_unpack[depends] += "p7zip-native:do_populate_sysroot"
 
-COMPATIBLE_HOST = ".*-mingw.*"
+DEPENDS = "unzip-native"
 
-SRC_URI[md5sum] = "6d37712f01fa836b1303141a6d4cabda"
-SRC_URI[sha256sum] = "3835868c171dddb8cb68ed5578b6d4d639387a038e999a5b008f393b704d6ad7"
-SRC_URI = "http://download.qt.io/development_releases/prebuilt/gdb/build-prerequisites/python.zip"
+inherit bin_package nativesdk python3-dir
+
+PV = "3.5.2"
 
 S = "${WORKDIR}"
 
 do_install() {
-    install -d ${D}${bindir}
-    install ${WORKDIR}/python/python27.dll ${D}${bindir}
-    install -d ${D}${includedir}
-    install ${WORKDIR}/python/include/* ${D}${includedir}
+    install -d ${D}${includedir}/${PYTHON_DIR}
+    install -m 0644 ${S}/include/* ${D}${includedir}/${PYTHON_DIR}
+
     install -d ${D}${libdir}
-    install ${WORKDIR}/python/libs/* ${D}${libdir}
-    install -d ${D}${libdir}/python2.7
-    cp -r ${WORKDIR}/python/lib/* ${D}${libdir}/python2.7
-}
+    install -m 0644 ${S}/libs/*.a ${D}${libdir}
 
-sysroot_stage_dirs_append() {
-    sysroot_stage_dir $from${bindir} $to${bindir}
-}
+    install -d ${D}${bindir}
+    install -m 0644 ${S}/python.exe ${D}${bindir}
+    install -m 0644 ${S}/python35.dll ${D}${bindir}
 
-# requires /usr/local/bin/python, but no providers found
-INSANE_SKIP_${PN} += "file-rdeps"
+    install -d ${D}${libdir}/${PYTHON_DIR}
+    unzip ${S}/python35.zip -d ${D}${libdir}/${PYTHON_DIR}
+}
