@@ -136,6 +136,9 @@ get_groups() {
     salvator-x|h3ulcb|m3ulcb)
       PROJECT_GROUPS="renesas-gen3"
     ;;
+    var-som-mx6|imx6ul-var-dart|imx7-var-som)
+      PROJECT_GROUPS="variscite"
+    ;;
     *)
       echo "Unknown device configuration, including all meta layers"
       PROJECT_GROUPS="external"

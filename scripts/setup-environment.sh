@@ -86,6 +86,9 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     jetson-tx1|jetson-tk1)
       LAYERSCONF="bblayers.conf.jetson.sample"
     ;;
+    var-som-mx6|imx6ul-var-dart|imx7-var-som)
+      LAYERSCONF="bblayers.conf.variscite.sample"
+    ;;
     *)
       LAYERSCONF="bblayers.conf.sample"
       echo "Unknown MACHINE, bblayers.conf might need manual editing"

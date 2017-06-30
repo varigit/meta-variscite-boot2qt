@@ -13,6 +13,7 @@
   <remote fetch="git://github.com/renesas-rcar" name="renesas"/>
   <remote fetch="git://git.linaro.org/openembedded" name="linaro"/>
   <remote fetch="git://git.toradex.com" name="toradex"/>
+  <remote fetch="git://github.com/varigit" name="variscite"/>
 
   <project name="poky"
            remote="yocto"
@@ -35,12 +36,12 @@
            remote="freescale"
            revision="fc804d29ee85d58e9bb66f7319e749b53e192457"
            path="sources/meta-freescale"
-           groups="notdefault,external,fsl,toradex,ti,smx6,renesas-gen3"/>
+           groups="notdefault,external,fsl,toradex,ti,smx6,renesas-gen3,variscite"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
            revision="a78b17c24e66567f272ad47f9d6300e6b1b90c29"
            path="sources/meta-freescale-3rdparty"
-           groups="notdefault,external,fsl,toradex,smx6"/>
+           groups="notdefault,external,fsl,toradex,smx6,variscite"/>
   <project name="meta-ti"
            remote="yocto"
            revision="0862a33b8d642e5fad031a78f90410d497453415"
@@ -102,5 +103,15 @@
            revision="c2f639ef4b2fd5809ab95fb330d28c2716aa290d"
            path="sources/meta-smx6"
            groups="notdefault,internal"/>
+  <project name="meta-freescale-distro"
+           remote="freescale"
+           revision="cd5c7a2539f40004f74126e9fdf08254fd9a6390"
+           path="sources/meta-freescale-distro"
+           groups="variscite"/>
+  <project name="meta-variscite-fslc"
+           remote="variscite"
+           revision="7dd3ac0cdfc47468b40f619f13514e015ba71730"
+           path="sources/meta-variscite-fslc"
+           groups="notdefault,internal, variscite"/>
 </manifest>
 
