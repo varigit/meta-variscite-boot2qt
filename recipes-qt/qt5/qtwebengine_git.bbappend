@@ -31,4 +31,5 @@ FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 
 SRC_URI_append_mx6 = " \
     file://0001-Fix-slow-video-with-webengine-on-nitrogen6x.patch \
+    file://0002-Always-compile-QWebEnginePage-print.patch \
     "
