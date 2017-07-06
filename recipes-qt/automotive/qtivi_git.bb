@@ -43,8 +43,8 @@ inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
 PACKAGECONFIG ?= "taglib"
-PACKAGECONFIG[taglib] = "CONFIG+=config_taglib CONFIG+=done_config_taglib,CONFIG+=done_config_taglib,taglib"
-PACKAGECONFIG[geniviextras-only] = "CONFIG+=geniviextras-only"
+PACKAGECONFIG[taglib] = "QMAKE_EXTRA_ARGS+=-feature-taglib,QMAKE_EXTRA_ARGS+=-no-feature-taglib,taglib"
+PACKAGECONFIG[geniviextras-only] = "QMAKE_EXTRA_ARGS+=--geniviextras-only"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
