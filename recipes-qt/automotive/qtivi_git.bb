@@ -42,8 +42,9 @@ SRCREV = "40e8ba1c8dd89474c4d890a3e050890d0cd9654e"
 inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
-PACKAGECONFIG ?= "taglib"
+PACKAGECONFIG ?= "taglib dlt"
 PACKAGECONFIG[taglib] = "QMAKE_EXTRA_ARGS+=-feature-taglib,QMAKE_EXTRA_ARGS+=-no-feature-taglib,taglib"
+PACKAGECONFIG[dlt] = "QMAKE_EXTRA_ARGS+=-feature-dlt,QMAKE_EXTRA_ARGS+=-no-feature-dlt,dlt-daemon"
 PACKAGECONFIG[geniviextras-only] = "QMAKE_EXTRA_ARGS+=--geniviextras-only"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
