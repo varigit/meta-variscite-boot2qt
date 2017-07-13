@@ -60,8 +60,8 @@ FILES_${PN} += "\
 
 BBCLASSEXTEND += "nativesdk"
 
-DEPENDS_class-nativesdk = "qtbase nativesdk-glibc-locale"
-DEPENDS_class-nativesdk_remove_mingw32 += "nativesdk-glibc-locale"
+DEPENDS_class-nativesdk = "qtbase nativesdk-glibc-locale nativesdk-libarchive"
+DEPENDS_class-nativesdk_remove_mingw32 += "nativesdk-glibc-locale nativesdk-libarchive"
 
 EXTRA_QMAKEVARS_PRE_class-nativesdk += "\
     -config tools-only \
