@@ -31,3 +31,22 @@ include conf/distro/include/fsl.inc
 include conf/distro/include/opencv.inc
 
 IMAGE_FSTYPES = "conf tar.bz2 ext4 sdcard ubi"
+
+IMAGE_INSTALL_append = " \
+	bluez5-obex \
+	bluez5-noinst-tools \
+	e2fsprogs-mke2fs \
+	mtd-utils \
+	mtd-utils-ubifs \
+	dosfstools \
+	usbutils \
+	alsa-utils \
+	pciutils \
+	can-utils \
+	memtester \
+	variscite-bluetooth-snd-dev \
+"
+
+DISTRO_FEATURES_append = " \
+	pulseaudio \
+"
