@@ -33,7 +33,7 @@ LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
 
 inherit bin_package native
 
-SRC_URI = "http://ci-files02-hki.ci.local/packages/jenkins/opensource/ifw/installer-framework/installer-framework-build-stripped-linux-x64.7z"
+SRC_URI = "http://ci-files02-hki.intra.qt.io/packages/jenkins/opensource/ifw/installer-framework/installer-framework-build-stripped-linux-x64.7z"
 
 SRC_URI[md5sum] = "08beb5450c3938fcfd1b380f6aaec75d"
 SRC_URI[sha256sum] = "91bfef896db58f28e4c2c6db437b958101a59e87aa880c38b6ddc40ebe6c38e6"

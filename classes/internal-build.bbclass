@@ -30,24 +30,24 @@
 python enable_internal_build () {
     import socket
     try:
-        socket.gethostbyname('yocto-cache.ci.local')
+        socket.gethostbyname('yocto-cache.intra.qt.io')
     except:
         return
 
     e.data.setVar('ENABLE_QTQUICKCOMPILER', "1")
-    e.data.setVar('SSTATE_MIRRORS', "file://.* http://yocto-cache.ci.local/sstate-caches/${DISTRO_CODENAME}/PATH")
+    e.data.setVar('SSTATE_MIRRORS', "file://.* http://yocto-cache.intra.qt.io/sstate-caches/${DISTRO_CODENAME}/PATH")
     e.data.setVar('PREMIRRORS', "\
-        ftp://.*/.*   http://yocto-cache.ci.local/sources/ \n \
-        http://.*/.*  http://yocto-cache.ci.local/sources/ \n \
-        https://.*/.* http://yocto-cache.ci.local/sources/ \n \
-        bzr://.*/.*   http://yocto-cache.ci.local/sources/ \n \
-        cvs://.*/.*   http://yocto-cache.ci.local/sources/ \n \
-        git://.*/.*   http://yocto-cache.ci.local/sources/ \n \
-        gitsm://.*/.* http://yocto-cache.ci.local/sources/ \n \
-        hg://.*/.*    http://yocto-cache.ci.local/sources/ \n \
-        osc://.*/.*   http://yocto-cache.ci.local/sources/ \n \
-        p4://.*/.*    http://yocto-cache.ci.local/sources/ \n \
-        svn://.*/.*   http://yocto-cache.ci.local/sources/ \n \
+        ftp://.*/.*   http://yocto-cache.intra.qt.io/sources/ \n \
+        http://.*/.*  http://yocto-cache.intra.qt.io/sources/ \n \
+        https://.*/.* http://yocto-cache.intra.qt.io/sources/ \n \
+        bzr://.*/.*   http://yocto-cache.intra.qt.io/sources/ \n \
+        cvs://.*/.*   http://yocto-cache.intra.qt.io/sources/ \n \
+        git://.*/.*   http://yocto-cache.intra.qt.io/sources/ \n \
+        gitsm://.*/.* http://yocto-cache.intra.qt.io/sources/ \n \
+        hg://.*/.*    http://yocto-cache.intra.qt.io/sources/ \n \
+        osc://.*/.*   http://yocto-cache.intra.qt.io/sources/ \n \
+        p4://.*/.*    http://yocto-cache.intra.qt.io/sources/ \n \
+        svn://.*/.*   http://yocto-cache.intra.qt.io/sources/ \n \
         ")
 }
 
