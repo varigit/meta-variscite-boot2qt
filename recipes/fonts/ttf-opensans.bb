@@ -29,15 +29,16 @@
 
 SUMMARY = "Open Sans Fonts"
 SECTION = "fonts"
-HOMEPAGE = "https://www.google.com/fonts"
+HOMEPAGE = "https://fonts.google.com"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/LICENSE.txt;md5=d273d63619c9aeaf15cdaf76422c4f87"
 
 INHIBIT_DEFAULT_DEPS = "1"
+do_unpack[depends] += "unzip-native:do_populate_sysroot"
 
 inherit allarch fontcache
 
-SRC_URI = "https://www.google.com/fonts/download?kit=3hvsV99qyKCBS55e5pvb3ltkqrIMaAZWyLYEoB48lSQ;downloadfilename=Open_Sans.zip"
+SRC_URI = "https://fonts.google.com/download?family=Open%20Sans;downloadfilename=Open_Sans.zip"
 # Google packs fonts package on demand which results in unpredictable md5sum, so disable checksum check
 BB_STRICT_CHECKSUM = ""
 

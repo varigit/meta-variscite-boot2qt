@@ -29,6 +29,8 @@
 
 include conf/distro/include/fsl.inc
 
+BBMASK += "meta-toradex-nxp/recipes-graphics/xorg-xserver"
+
 PREFERRED_PROVIDER_u-boot = "u-boot-toradex"
 
 EXTRA_IMAGEDEPENDS += "u-boot u-boot-script-toradex"

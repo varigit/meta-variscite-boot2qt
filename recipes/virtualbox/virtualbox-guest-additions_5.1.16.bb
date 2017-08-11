@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -38,8 +38,8 @@ PR = "${MACHINE_KERNEL_PR}"
 
 SRC_URI = "http://download.virtualbox.org/virtualbox/${PV}/VirtualBox-${PV}.tar.bz2"
 
-SRC_URI[md5sum] = "21eaec9f21477d555559a63761779880"
-SRC_URI[sha256sum] = "8267bb026717c6e55237eb798210767d9c703cfcdf01224d9bc26f7dac9f228a"
+SRC_URI[md5sum] = "37ebbd51370841eed8ab80f2f38446d6"
+SRC_URI[sha256sum] = "78071c3172f3bd3c7981c352c3ae6c6a9c01f6ab24bc0aa7ec79f3528b2291a7"
 
 S = "${WORKDIR}/vbox"
 
