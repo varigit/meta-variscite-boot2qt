@@ -1,0 +1,5 @@
+[global]
+OfflineMode=false
+
+[Gadget]
+Enable=true

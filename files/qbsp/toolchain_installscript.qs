@@ -67,7 +67,6 @@ Component.prototype.createOperations = function()
         executableExt = ".exe";
         hostSysroot = "i686-pokysdk-mingw32";
     }
-    var deviceType = "Boot2Qt.HwDevice"
 
     component.addOperation("Execute",
         ["@SDKToolBinary@", "addTC",
@@ -103,7 +102,7 @@ Component.prototype.createOperations = function()
         ["@SDKToolBinary@", "addQt",
          "--id", qtId,
          "--name", "Boot2Qt %{Qt:Version} " + platform,
-         "--type", "Boot2Qt.QtVersionType",
+         "--type", "Qdb.EmbeddedLinuxQt",
          "--qmake", path + "/sysroots/" + hostSysroot + "/usr/bin/qmake" + executableExt,
          "UNDOEXECUTE",
          "@SDKToolBinary@", "rmQt", "--id", qtId]);
@@ -116,7 +115,7 @@ Component.prototype.createOperations = function()
          "--qt", qtId,
          "--debuggerid", debuggerId,
          "--sysroot", path + "/sysroots/" + sysroot,
-         "--devicetype", deviceType,
+         "--devicetype", "QdbLinuxOsType",
          "--Ctoolchain", toolchainId + ".gcc",
          "--Cxxtoolchain", toolchainId + ".g++",
          "--icon", icon,
