@@ -35,15 +35,48 @@ LIC_FILES_CHKSUM = "file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
                     file://LICENSE.GPL3-EXCEPT;md5=763d8c535a234d9a3fb682c7ecb6c073 \
                     file://LICENSE.LGPL3;md5=e6a600fd5e1d9cbde2d983680233ad02"
 
+DEPENDS = "qtbase qtdeclarative qtmultimedia qtivi-native"
+DEPENDS_class-native = "qtbase"
+DEPENDS_class-nativesdk = "qtbase"
+
 inherit qt5-module
+inherit python3native
 require recipes-qt/qt5/qt5-git.inc
 
-PACKAGECONFIG ?= "taglib"
-PACKAGECONFIG[taglib] = "CONFIG+=config_taglib CONFIG+=done_config_taglib,CONFIG+=done_config_taglib,taglib"
-PACKAGECONFIG[geniviextras-only] = "CONFIG+=geniviextras-only"
+QT_MODULE_BRANCH_QFACE = "upstream/develop"
 
-EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
+SRC_URI += " \
+    ${QT_GIT}/qtivi-qface.git;name=qface;branch=${QT_MODULE_BRANCH_QFACE};protocol=${QT_GIT_PROTOCOL};destsuffix=git/src/3rdparty/qface \
+"
 
-SRCREV = "40e8ba1c8dd89474c4d890a3e050890d0cd9654e"
+SRCREV_qtivi = "3205b6e8f57273096ae60d8f6fcdbe597c350393"
+SRCREV_qface = "b1d96d85a7c43ac74335b9a1a99a68507047f5bc"
+SRCREV = "${SRCREV_qtivi}"
+SRCREV_FORMAT = "qtivi_qface"
 
-DEPENDS = "qtbase qtdeclarative qtmultimedia"
+PACKAGECONFIG ?= "taglib dlt ivigenerator"
+PACKAGECONFIG[taglib] = "QMAKE_EXTRA_ARGS+=-feature-taglib,QMAKE_EXTRA_ARGS+=-no-feature-taglib,taglib"
+PACKAGECONFIG[dlt] = "QMAKE_EXTRA_ARGS+=-feature-dlt,QMAKE_EXTRA_ARGS+=-no-feature-dlt,dlt-daemon"
+PACKAGECONFIG[geniviextras-only] = "QMAKE_EXTRA_ARGS+=--geniviextras-only"
+# For cross-compiling tell qtivi to use the system-ivigenerator, which is installed by the native recipe"
+PACKAGECONFIG[ivigenerator] = "QMAKE_EXTRA_ARGS+=-system-ivigenerator"
+PACKAGECONFIG[ivigenerator-native] = "QMAKE_EXTRA_ARGS+=-qt-ivigenerator,,python3 python3-virtualenv"
+PACKAGECONFIG[host-tools-only] = "QMAKE_EXTRA_ARGS+=-host-tools-only"
+
+PACKAGECONFIG_class-native ??= "host-tools-only ivigenerator-native"
+PACKAGECONFIG_class-nativesdk ??= "${PACKAGECONFIG_class-native}"
+
+EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS} ${@bb.utils.contains_any('PACKAGECONFIG', 'ivigenerator ivigenerator-native', '', 'QMAKE_EXTRA_ARGS+=-no-ivigenerator', d)}"
+
+do_compile_prepend() {
+    # Otherwise pip might cache or reuse something from our home folder
+    export HOME="${STAGING_DATADIR_NATIVE}"
+    # This is needed as otherwise the virtualenv tries to use the libs from the host
+    export LD_LIBRARY_PATH="${STAGING_LIBDIR_NATIVE}"
+    # Let qtivi use the python3-native binaries
+    export PYTHON3_PATH="${STAGING_BINDIR_NATIVE}/python3-native"
+}
+
+BBCLASSEXTEND += "native nativesdk"
+
+INSANE_SKIP_${PN}_class-native = "already-stripped"

@@ -1,7 +1,6 @@
-#!/bin/sh
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -28,19 +27,16 @@
 ##
 ############################################################################
 
-set -x
-set -e
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-RELEASE=$(grep PV ../sources/meta-qt5/recipes-qt/qt5/qt5-git.inc | grep -o [0-9.]*)
-UPLOADPATH=QT@ci-files02-hki.ci.local:/srv/jenkins_data/enterprise/b2qt/yocto/${RELEASE}/
-UPLOADS="\
-    tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.7z \
-    tmp/deploy/sdk/b2qt-x86_64-meta-toolchain-b2qt-${PROJECT}-qt5-sdk-${MACHINE}.sh \
-    tmp/deploy/sdk/b2qt-i686-mingw32-meta-toolchain-b2qt-${PROJECT}-qt5-sdk-${MACHINE}.7z \
-    "
+CONNMAN_SETTINGS_DIR := "${localstatedir}/lib/connman"
 
-for f in ${UPLOADS}; do
-    if [ -e ${f} ]; then
-        rsync -L ${f} ${UPLOADPATH}/
-    fi
-done
+FILES_${PN} += "${CONNMAN_SETTINGS_DIR}/settings"
+
+SRC_URI += "file://settings \
+          "
+
+do_install_append() {
+    install -d ${D}/${CONNMAN_SETTINGS_DIR}
+    install -m 0644 ${WORKDIR}/settings ${D}/${CONNMAN_SETTINGS_DIR}/settings
+}
