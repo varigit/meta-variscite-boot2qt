@@ -52,16 +52,16 @@ IMAGE_DEPENDS_tegraflash_append = " parted-native:do_populate_sysroot"
 create_tegraflash_pkg_prepend() {
     # Create partition table
     SDCARD=${IMGDEPLOYDIR}/${IMAGE_NAME}.img
-    SDCARD_ROOTFS=${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.ext3
-    SDCARD_SIZE=$(expr ${IMAGE_ROOTFS_ALIGNMENT} + $ROOTFS_SIZE + ${IMAGE_ROOTFS_ALIGNMENT})
+    SDCARD_ROOTFS=${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.ext4
+    SDCARD_SIZE=$(expr ${IMAGE_ROOTFS_ALIGNMENT} + ${ROOTFS_SIZE} + ${IMAGE_ROOTFS_ALIGNMENT})
 
-    dd if=/dev/zero of=${SDCARD} bs=1 count=0 seek=$(expr 1024 \* ${SDCARD_SIZE})
+    dd if=/dev/zero of=$SDCARD bs=1 count=0 seek=$(expr 1024 \* $SDCARD_SIZE)
 
-    parted -s ${SDCARD} mklabel gpt
-    parted -s ${SDCARD} unit KiB mkpart primary ${IMAGE_ROOTFS_ALIGNMENT} $(expr ${IMAGE_ROOTFS_ALIGNMENT} \+ ${ROOTFS_SIZE})
-    parted ${SDCARD} print
+    parted -s $SDCARD mklabel gpt
+    parted -s $SDCARD unit KiB mkpart primary ${IMAGE_ROOTFS_ALIGNMENT} $(expr ${IMAGE_ROOTFS_ALIGNMENT} \+ ${ROOTFS_SIZE})
+    parted $SDCARD print
 
-    dd if=${SDCARD_ROOTFS} of=${SDCARD} conv=notrunc,fsync seek=1 bs=$(expr ${IMAGE_ROOTFS_ALIGNMENT} \* 1024)
+    dd if=$SDCARD_ROOTFS of=$SDCARD conv=notrunc,fsync seek=1 bs=$(expr ${IMAGE_ROOTFS_ALIGNMENT} \* 1024)
 
     rm -f ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
     ln -s ${IMAGE_NAME}.img ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
