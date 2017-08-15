@@ -35,10 +35,15 @@ inherit image_dd
 EXTRA_IMAGECMD_ext3 += "-L rootfs"
 
 do_populate_boot() {
+    GRUB_IMAGE="grub-efi-bootia32.efi"
+    DEST_IMAGE="bootia32.efi"
+    if [ "${TARGET_ARCH}" = "x86_64" ]; then
+        GRUB_IMAGE="grub-efi-bootx64.efi"
+        DEST_IMAGE="bootx64.efi"
+    fi
 
     mkdir -p ${WORKDIR}/EFI/BOOT/
     # Path where EFI firmware searches for EFI executable
-    cp ${DEPLOY_DIR_IMAGE}/bootx64.efi ${WORKDIR}/EFI/BOOT/
+    cp ${DEPLOY_DIR_IMAGE}/${GRUB_IMAGE} ${WORKDIR}/EFI/BOOT/${DEST_IMAGE}
     mcopy -s -i ${WORKDIR}/boot.img ${WORKDIR}/EFI ::/EFI
 }
-
