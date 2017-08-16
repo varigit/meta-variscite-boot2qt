@@ -28,5 +28,6 @@
 ############################################################################
 
 PACKAGECONFIG_remove = "kms"
+DEPENDS += "drm"
 
 TARGET_CFLAGS += "-DWIN_INTERFACE_CUSTOM"
