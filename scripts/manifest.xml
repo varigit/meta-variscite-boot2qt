@@ -73,12 +73,12 @@
            groups="notdefault,external,renesas-gen3"/>
   <project name="meta-toradex-bsp-common"
            remote="toradex"
-           revision="554adccf11f2ba2947ed221307ddd703c0889967"
+           revision="b128af95613557af8deaea30212e89e6316eab88"
            path="sources/meta-toradex-bsp-common"
            groups="notdefault,external,toradex"/>
   <project name="meta-toradex-nxp"
            remote="toradex"
-           revision="d351e11b76c004afbf0f37d5481266bafdb015ee"
+           revision="89a17628efef01fd5af202e88d79188df08f636f"
            path="sources/meta-toradex-nxp"
            groups="notdefault,external,toradex"/>
 
