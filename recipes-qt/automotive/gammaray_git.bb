@@ -12,7 +12,7 @@ BRANCH = "2.7"
 SRCREV = "a22da6d63cab08f3ef8588611fdbda3f96731efe"
 PV = "${BRANCH}+git${SRCPV}"
 
-DEPENDS = "qtdeclarative qtlocation qtsvg qttools qtconnectivity qt3d qtivi qtscxml \
+DEPENDS = "qtdeclarative qtlocation qtsvg qttools qtconnectivity qt3d qtivi qtscxml qtscxml-native \
            ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
 
 S = "${WORKDIR}/git"
