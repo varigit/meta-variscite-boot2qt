@@ -27,14 +27,4 @@
 ##
 ############################################################################
 
-LICENSE = "GPLv2+"
-
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
-SRC_URI += "file://0001-compiler-.h-sync-include-linux-compiler-.h-with-Linu.patch"
-
-S = "${WORKDIR}/git"
-
-do_deploy_prepend() {
-    cp ${B}/${UBOOT_SREC} ${S}/${UBOOT_SREC}
-}
+DEPENDS += "wayland-native"

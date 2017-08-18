@@ -27,4 +27,12 @@
 ##
 ############################################################################
 
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+
+SRC_URI_append = " file://gl3ext.h"
+
 DEPENDS = "mesa"
+
+do_install_append() {
+    install -m 644 ${WORKDIR}/gl3ext.h ${D}/${includedir}/GLES3/
+}
