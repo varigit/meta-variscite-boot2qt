@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -29,7 +29,10 @@
 
 include conf/distro/include/fsl.inc
 
-BBMASK += "meta-toradex-nxp/recipes-graphics/xorg-xserver"
+BBMASK += "\
+   meta-toradex-nxp/recipes-graphics/xorg-xserver \
+   meta-toradex-bsp-common/recipes-devtools/python \
+   "
 
 PREFERRED_PROVIDER_u-boot = "u-boot-toradex"
 
