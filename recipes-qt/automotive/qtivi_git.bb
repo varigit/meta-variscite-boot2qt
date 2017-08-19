@@ -68,7 +68,7 @@ PACKAGECONFIG_class-nativesdk ??= "${PACKAGECONFIG_class-native}"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS} ${@bb.utils.contains_any('PACKAGECONFIG', 'ivigenerator ivigenerator-native', '', 'QMAKE_EXTRA_ARGS+=-no-ivigenerator', d)}"
 
-do_compile_prepend() {
+set_python_paths() {
     # Otherwise pip might cache or reuse something from our home folder
     export HOME="${STAGING_DATADIR_NATIVE}"
     # This is needed as otherwise the virtualenv tries to use the libs from the host
@@ -76,6 +76,13 @@ do_compile_prepend() {
     # Let qtivi use the python3-native binaries
     export PYTHON3_PATH="${STAGING_BINDIR_NATIVE}/python3-native"
 }
+do_compile_prepend() {
+    set_python_paths
+}
+do_install_prepend() {
+    set_python_paths
+}
+
 
 BBCLASSEXTEND += "native nativesdk"
 
