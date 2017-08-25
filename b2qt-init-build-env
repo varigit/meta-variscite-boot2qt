@@ -109,7 +109,7 @@ get_groups() {
     apalis-imx6|colibri-imx6|colibri-vf|colibri-imx7)
       PROJECT_GROUPS="toradex"
     ;;
-    nitrogen6x)
+    nitrogen6x|nitrogen7)
       PROJECT_GROUPS="boundary"
     ;;
     imx6qsabresd|imx6dlsabresd|imx7dsabresd|imx7s-warp)
