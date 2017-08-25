@@ -42,4 +42,5 @@ RDEPENDS_${PN} += "\
     nativesdk-qtdeclarative-staticdev \
     nativesdk-qt3d-tools \
     nativesdk-qtscxml-tools \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'nativesdk-qtwayland-tools', '', d)} \
     "
