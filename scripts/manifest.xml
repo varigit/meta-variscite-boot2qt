@@ -13,6 +13,7 @@
   <remote fetch="git://github.com/renesas-rcar" name="renesas"/>
   <remote fetch="git://git.linaro.org/openembedded" name="linaro"/>
   <remote fetch="git://git.toradex.com" name="toradex"/>
+  <remote fetch="git://github.com/boundarydevices" name="boundary"/>
 
   <project name="poky"
            remote="yocto"
@@ -35,12 +36,12 @@
            remote="freescale"
            revision="10d8ccb5ff2c31d2a5b13e088a8ec9511cbc3e72"
            path="sources/meta-freescale"
-           groups="notdefault,external,fsl,toradex,ti,smx6,renesas-gen3"/>
+           groups="notdefault,external,fsl,toradex,ti,smx6,renesas-gen3,boundary"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
            revision="35badbde05d4f10d4faeefc30bc126b5bd228e2e"
            path="sources/meta-freescale-3rdparty"
-           groups="notdefault,external,fsl,toradex,smx6"/>
+           groups="notdefault,external,fsl,toradex,smx6,boundary"/>
   <project name="meta-ti"
            remote="yocto"
            revision="aca8f5d6ff8a529e00bdeae5b401c791ed6ecb2b"
@@ -81,6 +82,11 @@
            revision="45c33b79a734d016dddb997c1895b53202286f23"
            path="sources/meta-toradex-nxp"
            groups="notdefault,external,toradex"/>
+  <project name="meta-boundary"
+           remote="boundary"
+           revision="42b00061076b2a6e15c1eeed7da6fc14a0dae9d8"
+           path="sources/meta-boundary"
+           groups="notdefault,external,boundary"/>
 
   <project name="nvidia-layer"
            remote="playground"
