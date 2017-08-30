@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -29,7 +29,7 @@
 
 DESCRIPTION = "QtGlesStream"
 LICENSE = "The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://qtglesstream.pro;md5=e95d9351d26ed899188e02d44133cae0"
+LIC_FILES_CHKSUM = "file://qtglesstream.pro;md5=875f34471470b09977705aed7863e440"
 
 inherit qt5-module
 
@@ -38,7 +38,7 @@ SRC_URI = " \
     "
 
 PV = "1.0.0"
-SRCREV = "c11bf065f7630b7800dda157e4bc1aeba7a533d2"
+SRCREV = "17f5dc862f6669261cd08e948b2083bb7dca2b28"
 BRANCH = "dev"
 
 S = "${WORKDIR}/git"
