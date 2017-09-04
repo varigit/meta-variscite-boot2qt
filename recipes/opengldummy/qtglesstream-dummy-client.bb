@@ -38,6 +38,8 @@ SOLIBMINOR = "0"
 
 require opengldummy.inc
 
+inherit nopackages
+
 S = "${WORKDIR}"
 
 do_compile() {

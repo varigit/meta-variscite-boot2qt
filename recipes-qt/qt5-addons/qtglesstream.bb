@@ -44,8 +44,6 @@ BRANCH = "dev"
 S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase"
-RREPLACES_${PN} = "qtglesstream-dummy-client"
-RREPLACES_${PN}-dev = "qtglesstream-dummy-client-dev"
 
 do_install_append() {
     install -m 0755 -d ${D}${includedir}/EGL
