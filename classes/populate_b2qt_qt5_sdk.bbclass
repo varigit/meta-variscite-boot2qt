@@ -67,6 +67,9 @@ EOF
     echo 'TargetSpec = devices/linux-oe-generic-g++' >> $qtconf
 
     create_qtcreator_configure_script
+
+    # Link /etc/resolv.conf is broken in the toolchain sysroot, remove it
+    rm -f ${SDK_OUTPUT}${SDKTARGETSYSROOT}${sysconfdir}/resolv.conf
 }
 
 create_qtcreator_configure_script () {

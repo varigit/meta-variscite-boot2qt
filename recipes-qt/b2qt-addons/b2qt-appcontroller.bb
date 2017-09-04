@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -29,7 +29,7 @@
 
 DESCRIPTION = "Boot to Qt Appcontroller"
 LICENSE = "The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://main.cpp;md5=1fcdf6b49fbbf2bc9c831893cca1b279;beginline=1;endline=17"
+LIC_FILES_CHKSUM = "file://main.cpp;md5=f25c7436dbc72d4719a5684b28dbcf4b;beginline=1;endline=17"
 
 inherit qmake5
 require recipes-qt/qt5/qt5-git.inc
@@ -39,7 +39,7 @@ SRC_URI = " \
     file://appcontroller.conf \
     "
 
-SRCREV = "1e3c96e0e4f28a072c835775f7fdc310eb3b4f28"
+SRCREV = "5ab7fdbf0845c40418272bafa565295511055d3b"
 
 DEPENDS = "qtbase"
 
