@@ -8,8 +8,8 @@ inherit cmake_qt5
 
 SRC_URI = "git://github.com/KDAB/GammaRay;branch=${BRANCH}"
 
-BRANCH = "2.7"
-SRCREV = "a22da6d63cab08f3ef8588611fdbda3f96731efe"
+BRANCH = "master"
+SRCREV = "fb918ea49c816dea915a7e7899ad6a765fef28a8"
 PV = "${BRANCH}+git${SRCPV}"
 
 DEPENDS = "qtdeclarative qtlocation qtsvg qttools qtconnectivity qt3d qtivi qtscxml qtscxml-native \
