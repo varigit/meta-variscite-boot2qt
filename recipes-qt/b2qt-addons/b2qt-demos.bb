@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -44,12 +44,12 @@ SRC_URI = " \
     https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt+World+Summit+2015+Recap.mp4;name=video2 \
     "
 
-PV = "5.7+git${SRCPV}"
+PV = "5.10.0+git${SRCPV}"
 
-BRANCH = "5.7"
+BRANCH = "5.10"
 BROWSER_BRANCH = "dev"
-QT_BRANCH = "5.7"
-SRCREV_demos = "cd9f0c40f30226c7ce1c3259aea8ebca08acfbb8"
+QT_BRANCH = "5.10"
+SRCREV_demos = "55ce120e6ceccb40f19a941fbda05edefd22d64c"
 SRCREV_qtcanvas3d = "32404e27101c5ec81b4ab965faf38263429bbc5a"
 SRCREV_qtquickcontrols = "c6713e212ef0b97c45d6466b73220567e94a05f1"
 SRCREV_qtwebbrowser = "7c570ee4297946f3ed70565a630d690070533cbd"
