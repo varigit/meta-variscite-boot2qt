@@ -31,4 +31,5 @@ FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 SRC_URI += " \
         file://0001-Updated-kernel-arguments-for-sabre-sd.patch \
         file://0001-Use-hdmi-as-primary-display-only-if-connected.patch \
+        file://0001-use-imx7d-warp.dtb.patch \
         "

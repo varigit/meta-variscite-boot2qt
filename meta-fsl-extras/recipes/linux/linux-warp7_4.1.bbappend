@@ -27,8 +27,18 @@
 ##
 ############################################################################
 
+SRCBRANCH = "linux_4.1.29"
+SRCREV = "881845d84e3c2e58a00b9c36616203d748b7df0e"
+LOCALVERSION = "-warp7"
+
 do_configure_prepend() {
     echo "CONFIG_NAMESPACES=y"      >> ${B}/.config
     echo "CONFIG_FHANDLE=y"         >> ${B}/.config
     echo "CONFIG_USB_FUNCTIONFS=m"  >> ${B}/.config
+
+    echo "CONFIG_MXC_CAMERA_OV2680_MIPI=m"              >> ${B}/.config
+    echo "CONFIG_FB_MXC_TRULY_PANEL_TDO_ST7796H=y"      >> ${B}/.config
+    echo "CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_CORE=y"      >> ${B}/.config
+    echo "CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_RMI_DEV=y    >> ${B}/.config
+    echo "CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_FW_UPDATE=y  >> ${B}/.config
 }
