@@ -31,6 +31,11 @@ SRCBRANCH = "linux_4.1.29"
 SRCREV = "881845d84e3c2e58a00b9c36616203d748b7df0e"
 LOCALVERSION = "-warp7"
 
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+SRC_URI += " \
+        file://0001-Fix-dev-hwrng-by-enabling-warp7-crypto-device.patch \
+        "
+
 do_configure_prepend() {
     echo "CONFIG_NAMESPACES=y"      >> ${B}/.config
     echo "CONFIG_FHANDLE=y"         >> ${B}/.config

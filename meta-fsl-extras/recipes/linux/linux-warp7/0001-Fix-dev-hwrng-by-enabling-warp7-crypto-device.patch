@@ -1,0 +1,25 @@
+From 9ffa222dbaa3b11c3b1399192e0abd478fc3b564 Mon Sep 17 00:00:00 2001
+From: Sami Nurmenniemi <sami.nurmenniemi@qt.io>
+Date: Mon, 18 Sep 2017 12:45:54 +0300
+Subject: [PATCH 1/1] Fix /dev/hwrng by enabling warp7 crypto-device
+
+---
+ arch/arm/boot/dts/imx7d-warp.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/imx7d-warp.dts b/arch/arm/boot/dts/imx7d-warp.dts
+index ee72690..19aee0e 100755
+--- a/arch/arm/boot/dts/imx7d-warp.dts
++++ b/arch/arm/boot/dts/imx7d-warp.dts
+@@ -181,7 +181,7 @@
+ };
+ 
+ &crypto {
+-	status = "disabled";
++	status = "okay";
+ };
+ 
+ &clks {
+-- 
+2.7.4
+
