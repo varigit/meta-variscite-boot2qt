@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,5 +27,6 @@
 ##
 ############################################################################
 
+PACKAGECONFIG += "geoservices_mapboxgl"
 EXTRA_QMAKEVARS_PRE_append_emulator = " CONFIG+=simulator"
 DEPENDS_append_emulator = " qtsimulator"
