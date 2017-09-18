@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,32 +27,19 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Packagegroup for B2Qt embedded Linux image"
-LICENSE = "The-Qt-Company-DCLA-2.1"
-PR = "r0"
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+SRC_URI += "\
+    file://rngd.service \
+    "
 
-inherit packagegroup
+inherit systemd
 
-MACHINE_EXTRA_INSTALL ?= ""
+do_install_append() {
+    if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
+        install -d ${D}${systemd_unitdir}/system
+        install -m 644 ${WORKDIR}/rngd.service ${D}${systemd_unitdir}/system
+        sed -i -e 's,@SBINDIR@,${sbindir},g' ${D}${systemd_unitdir}/system/rngd.service
+    fi
+}
 
-RDEPENDS_${PN} = "\
-        kernel-modules \
-        linux-firmware \
-        ca-certificates \
-        liberation-fonts \
-        ttf-devanagari \
-        ttf-opensans \
-        ttf-dejavu-common \
-        ttf-dejavu-sans \
-        ttf-freefont-mono \
-        otf-noto \
-        dbus-session-init \
-        tzdata \
-        tzdata-americas \
-        tzdata-asia \
-        tzdata-europe \
-        connman \
-        rng-tools \
-        ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "weston weston-examples", "", d)} \
-        ${MACHINE_EXTRA_INSTALL} \
-        "
+SYSTEMD_SERVICE_${PN} = "rngd.service"
