@@ -46,19 +46,6 @@ GADGET_CONFIG=$CONFIGFS_PATH/usb_gadget/g1
 
 . /etc/default/qdbd
 
-initialize_gadget() {
-    # Initialize gadget with first UDC driver
-    for driverpath in /sys/class/udc/*; do
-        drivername=`basename $driverpath`
-        echo "$drivername" > $GADGET_CONFIG/UDC
-        break
-    done
-}
-
-disable_gadget() {
-    echo "" > $GADGET_CONFIG/UDC
-}
-
 case "$1" in
 start)
     b2qt-gadget-network.sh --reset
@@ -86,11 +73,8 @@ start)
     mount -t functionfs qdb /dev/usb-ffs/qdb -o uid=0,gid=0
     shift
     start-stop-daemon --start --quiet --exec $DAEMON -- $@ &
-    sleep 1
-    initialize_gadget
     ;;
 stop)
-    disable_gadget
     start-stop-daemon --stop --quiet --exec $DAEMON
     sleep 1
     umount /dev/usb-ffs/qdb
@@ -104,14 +88,11 @@ stop)
     rmdir $GADGET_CONFIG
     ;;
 restart)
-    disable_gadget
     start-stop-daemon --stop --quiet --exec $DAEMON
     b2qt-gadget-network.sh --reset
     sleep 1
     shift
     start-stop-daemon --start --quiet --exec $DAEMON -- $@ &
-    sleep 1
-    initialize_gadget
     ;;
 *)
     echo "Usage: $0 {start|stop|restart}"

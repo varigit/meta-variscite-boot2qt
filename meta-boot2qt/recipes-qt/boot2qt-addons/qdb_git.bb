@@ -45,8 +45,8 @@ SRC_URI += "file://b2qt-gadget-network.sh \
            file://qdbd-init.sh \
           "
 
-SRCREV = "69f95b6a8d2ca0912a8d502a2b6871109725731e"
-PV = "1.1.0+git${SRCPV}"
+SRCREV = "59ea3a9ed6c10248ecdfb7cf111c3b7d1f70cba6"
+PV = "1.2.0+git${SRCPV}"
 
 REQUIRED_DISTRO_FEATURES = "systemd"
 DEPENDS = "qtbase"
