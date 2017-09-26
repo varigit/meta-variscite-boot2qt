@@ -43,4 +43,9 @@ S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase qtdeclarative"
 
+do_install_append() {
+    # Use the EffectivePath instead of installation path
+    sed -i -e 's|QT_HOST_BINS|QT_HOST_BINS/get|' ${D}${OE_QMAKE_PATH_ARCHDATA}/mkspecs/features/qtquickcompiler.prf
+}
+
 BBCLASSEXTEND = "native nativesdk"
