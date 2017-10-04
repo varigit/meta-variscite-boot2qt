@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -37,7 +37,7 @@ SRC_URI = " \
     git://codereview.qt-project.org/qt/tqtc-qmlcompiler;nobranch=1;protocol=ssh \
     "
 
-SRCREV = "0203d381423a6423bf8816905f08d65e6f0755b7"
+SRCREV = "dd96b1d76162d719f9ba572d2c4659f7bcd47710"
 
 S = "${WORKDIR}/git"
 
