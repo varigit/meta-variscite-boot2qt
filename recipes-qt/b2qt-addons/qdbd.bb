@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -46,8 +46,8 @@ SRC_URI += "file://b2qt-gadget-network.sh \
            file://qdbd-init.sh \
           "
 
-SRCREV = "430e26a747c1df605d1f6b55f4a7f7125d100dca"
-PV = "1.0.0+git${SRCPV}"
+SRCREV = "ade3c7f1978f608e3d1c9520552c7345939aa567"
+PV = "1.0.2+git${SRCPV}"
 
 REQUIRED_DISTRO_FEATURES = "systemd"
 DEPENDS = "qtbase"
