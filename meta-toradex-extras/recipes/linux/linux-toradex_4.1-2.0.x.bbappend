@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,29 +27,6 @@
 ##
 ############################################################################
 
-# POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf
-# changes incompatibly
-POKY_BBLAYERS_CONF_VERSION = "2"
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 
-BBPATH = "${TOPDIR}"
-BBFILES ?= ""
-BSPDIR := "${@os.path.abspath(os.path.dirname(d.getVar('FILE', True)) + '/../..')}"
-
-BBLAYERS ?= " \
-  ${BSPDIR}/sources/poky/meta \
-  ${BSPDIR}/sources/poky/meta-poky \
-  ${BSPDIR}/sources/meta-toradex-bsp-common \
-  ${BSPDIR}/sources/meta-toradex-nxp \
-  ${BSPDIR}/sources/meta-freescale \
-  ${BSPDIR}/sources/meta-freescale-3rdparty \
-  ${BSPDIR}/sources/meta-openembedded/meta-oe \
-  ${BSPDIR}/sources/meta-openembedded/meta-python \
-  ${BSPDIR}/sources/meta-openembedded/meta-networking \
-  ${BSPDIR}/sources/meta-openembedded/meta-initramfs \
-  ${BSPDIR}/sources/meta-openembedded/meta-multimedia \
-  ${BSPDIR}/sources/meta-boot2qt \
-  ${BSPDIR}/sources/meta-boot2qt/meta-fsl-extras \
-  ${BSPDIR}/sources/meta-boot2qt/meta-toradex-extras \
-  ${BSPDIR}/sources/meta-mingw \
-  ${BSPDIR}/sources/meta-qt5 \
-  "
+SRC_URI += "file://0001-Enable-atmel-mxt-multitouch-controller.patch"
