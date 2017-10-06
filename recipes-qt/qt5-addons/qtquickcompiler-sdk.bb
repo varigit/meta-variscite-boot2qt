@@ -56,6 +56,9 @@ do_install() {
         install -d ${D}${OE_QMAKE_PATH_BINS}
         install -m 0755 ${THISDIR}/qtquickcompiler-sdk/bin/${NATIVESDK_BINARY} ${D}${OE_QMAKE_PATH_BINS}
     fi
+
+    # Use the EffectivePath instead of installation path
+    sed -i -e 's|QT_HOST_BINS|QT_HOST_BINS/get|' ${D}${OE_QMAKE_PATH_ARCHDATA}/mkspecs/features/qtquickcompiler.prf
 }
 
 do_install_append_mingw32() {

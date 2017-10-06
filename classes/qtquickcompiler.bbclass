@@ -49,5 +49,5 @@ python __anonymous() {
         d.appendVar('RDEPENDS_' + pn, " %s-dev" % provider)
     else:
         d.appendVar('DEPENDS', " %s %s-native" % (provider, provider))
-        d.appendVar('EXTRA_QMAKEVARS_PRE', " CONFIG+=qtquickcompiler CONFIG+=no_qtquickcompiler_depend")
+        d.appendVar('EXTRA_QMAKEVARS_PRE', " CONFIG+=qtquickcompiler")
 }

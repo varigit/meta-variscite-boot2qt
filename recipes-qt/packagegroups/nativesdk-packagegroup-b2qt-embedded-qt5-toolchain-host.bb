@@ -43,6 +43,7 @@ RDEPENDS_${PN} += "\
     nativesdk-packagegroup-b2qt-embedded-toolchain-host \
     nativesdk-qttools-tools \
     nativesdk-qtbase-tools \
+    nativesdk-qtbase-tools-dev \
     nativesdk-qtbase-tools-staticdev \
     nativesdk-qtdeclarative-tools \
     nativesdk-qtdeclarative-staticdev \

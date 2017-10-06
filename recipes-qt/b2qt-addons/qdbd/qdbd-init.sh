@@ -46,7 +46,7 @@ GADGET_CONFIG=$CONFIGFS_PATH/usb_gadget/g1
 
 . /etc/default/qdbd
 
-function initialize_gadget() {
+initialize_gadget() {
     # Initialize gadget with first UDC driver
     for driverpath in /sys/class/udc/*; do
         drivername=`basename $driverpath`
@@ -55,7 +55,7 @@ function initialize_gadget() {
     done
 }
 
-function disable_gadget() {
+disable_gadget() {
     echo "" > $GADGET_CONFIG/UDC
 }
 

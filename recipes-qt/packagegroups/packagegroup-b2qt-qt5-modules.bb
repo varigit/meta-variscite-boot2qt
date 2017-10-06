@@ -69,7 +69,7 @@ RDEPENDS_${PN} += " \
     qttranslations-qtwebsockets \
     qttranslations-qtxmlpatterns \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine qttranslations-qtwebengine', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine qttranslations-qtwebengine qtwebview', '', d)} \
     qtwebsockets \
     qtwebchannel \
     qtxmlpatterns \
