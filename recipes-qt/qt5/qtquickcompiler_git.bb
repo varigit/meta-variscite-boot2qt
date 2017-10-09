@@ -37,7 +37,7 @@ SRC_URI = " \
     git://codereview.qt-project.org/qt/tqtc-qmlcompiler;nobranch=1;protocol=ssh \
     "
 
-SRCREV = "a08a79fa904a316a52c49323b4250f0fc948dca7"
+SRCREV = "cd3e5533e0597aece6d1e536e2b57beff15e1c5f"
 
 S = "${WORKDIR}/git"
 
