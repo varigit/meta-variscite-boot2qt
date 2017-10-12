@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -31,4 +31,5 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += " \
         file://0001-Make-sdboot-default-on-all-boards.patch \
         file://0002-apalis-imx6-test-for-Capacitive-Touch-Display-7-Para.patch \
+        file://0003-apalis-imx6-Ixora-v1.0-support.patch \
         "

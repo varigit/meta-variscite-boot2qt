@@ -1,0 +1,37 @@
+From 1f3926a8e90a7e582d28b845e812d0642a4dc5ce Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Thu, 12 Oct 2017 11:02:54 +0300
+Subject: [PATCH 3/3] apalis-imx6: Ixora v1.0 support
+
+Add sddrive variable that can be changed to boot from different mmc card
+slot when using different versions of ixora carrier board.
+Default to drive 1, which is correct for Ixora v1.1.
+---
+ include/configs/apalis_imx6.h | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/include/configs/apalis_imx6.h b/include/configs/apalis_imx6.h
+index 121eaa7..77a8874 100644
+--- a/include/configs/apalis_imx6.h
++++ b/include/configs/apalis_imx6.h
+@@ -227,15 +227,16 @@
+ 		"&& setenv dtbparam \" - ${fdt_addr_r}\" && true\0"
+ 
+ #define SD_BOOTCMD \
+-	"sdargs=ip=off root=/dev/mmcblk1p2 ro rootfstype=ext4 " \
++	"sddrive=1\0" \
++	"sdsetup=setenv sdargs ip=off root=/dev/mmcblk${sddrive}p2 ro rootfstype=ext4 " \
+ 		"rootwait\0" \
+-	"sdboot=run setup; " \
++	"sdboot=run setup; run sdsetup; " \
+ 		"setenv bootargs ${defargs} ${sdargs} ${setupargs} " \
+ 		"${vidargs}; echo Booting from SD card; " \
+-		"run sddtbload; load mmc 1:1 ${kernel_addr_r} " \
++		"run sddtbload; load mmc ${sddrive}:1 ${kernel_addr_r} " \
+ 		"${boot_file} && run fdt_fixup && " \
+ 		"bootm ${kernel_addr_r} ${dtbparam}\0" \
+-	"sddtbload=setenv dtbparam; load mmc 1:1 ${fdt_addr_r} " \
++	"sddtbload=setenv dtbparam; load mmc ${sddrive}:1 ${fdt_addr_r} " \
+ 		"${fdt_file} && setenv dtbparam \" - ${fdt_addr_r}\" && true\0"
+ 
+ #define USB_BOOTCMD \
