@@ -30,3 +30,4 @@
 inherit qtquickcompiler
 
 PACKAGECONFIG = "lipi-toolkit lang-all hunspell"
+RDEPENDS_${PN} += "hunspell-dicts"

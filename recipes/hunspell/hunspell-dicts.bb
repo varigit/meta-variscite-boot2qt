@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,33 +27,31 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Hunspell"
-LICENSE = "LGPLv2"
-LIC_FILES_CHKSUM = "file://${WORKDIR}/hunspell-${PV}/COPYING;md5=ed3a37b3ba6d6be3e08ab45987cf1b88"
+DESCRIPTION = "Hunspell Dictionaries"
 
-SRC_URI = "http://downloads.sourceforge.net/hunspell/hunspell-${PV}.tar.gz;name=hunspell \
-           git://github.com/libreoffice/dictionaries.git;branch=libreoffice-4-3-2;name=dictionaries \
-          "
+LICENSE = "GPL-2.0 & (GPL-2.0|LGPL-2.1|MPL-1.1)"
+LIC_FILES_CHKSUM = " \
+    file://en/license.txt;md5=686e6cb566fd6382c9fcc7a557bf4544 \
+    file://ar/COPYING.txt;md5=ccafd10563b9ffba693011bf470062c6 \
+"
 
-SRC_URI[hunspell.md5sum] = "3121aaf3e13e5d88dfff13fb4a5f1ab8"
-SRC_URI[hunspell.sha256sum] = "b4edd4a4ee944cb9f485b35473e46b729ed768e9d24da8e78e4c4c6ca56addbd"
-# using branch libreoffice-4.3.2 for dictionaries
-SRCREV_dictionaries = "aa497b3c345133a1dc180dfb95dd1b3677b92afa"
+SRC_URI = "git://github.com/libreoffice/dictionaries.git;branch=libreoffice-5-4-2"
 
-PR = "r0"
+S = "${WORKDIR}/git"
 
-inherit autotools gettext
+inherit bin_package
 
-PACKAGES += "${PN}-dicts"
-RRECOMMENDS_${PN} += "${PN}-dicts"
-FILES_${PN}-dicts = "${datadir}/hunspell"
+# using branch libreoffice-5.4.2 for dictionaries
+SRCREV = "28016713cf482d2ac466d03e007ce91ddb8b76aa"
 
-do_install_append() {
+FILES_${PN} = "${datadir}/hunspell"
+
+do_install() {
     install -m 0755 -d ${D}${datadir}/hunspell
 
-    install -m 0755 ${WORKDIR}/git/ar/ar.dic ${D}${datadir}/hunspell/ar_EG.dic
-    install -m 0755 ${WORKDIR}/git/ar/ar.aff ${D}${datadir}/hunspell/ar_EG.aff
+    install -m 0755 ${S}/ar/ar.dic ${D}${datadir}/hunspell/ar_EG.dic
+    install -m 0755 ${S}/ar/ar.aff ${D}${datadir}/hunspell/ar_EG.aff
 
-    install -m 0755 ${WORKDIR}/git/en/en_GB.dic ${D}${datadir}/hunspell
-    install -m 0755 ${WORKDIR}/git/en/en_GB.aff ${D}${datadir}/hunspell
+    install -m 0755 ${S}/en/en_GB.dic ${D}${datadir}/hunspell
+    install -m 0755 ${S}/en/en_GB.aff ${D}${datadir}/hunspell
 }
