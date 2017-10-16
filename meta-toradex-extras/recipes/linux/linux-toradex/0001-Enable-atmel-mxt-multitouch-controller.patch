@@ -1,0 +1,31 @@
+From 37a2e407172b37a880d04c5a7721aeff498854ad Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Fri, 6 Oct 2017 15:54:35 +0300
+Subject: [PATCH] Enable atmel mxt multitouch controller for ixora v1.1 dtb
+
+Need to disable fusion touch to get the new atmel mxt multitouch
+controller to work.
+---
+ arch/arm/boot/dts/imx6qdl-apalis-ixora-v1.1.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/imx6qdl-apalis-ixora-v1.1.dtsi b/arch/arm/boot/dts/imx6qdl-apalis-ixora-v1.1.dtsi
+index 354bf80d..1181502 100644
+--- a/arch/arm/boot/dts/imx6qdl-apalis-ixora-v1.1.dtsi
++++ b/arch/arm/boot/dts/imx6qdl-apalis-ixora-v1.1.dtsi
+@@ -166,7 +166,6 @@
+ 		reg = <0x4a>;
+ 		interrupt-parent = <&gpio6>;
+ 		interrupts = <10 IRQ_TYPE_EDGE_FALLING>;
+-		status = "disabled";
+ 	};
+ 
+ 	pcap@10 {
+@@ -176,6 +175,7 @@
+ 		gpios = <&gpio6 10 0 /* MXM3 11, Pen down interrupt */
+ 			 &gpio6  9 0 /* MXM3 13, Reset */
+ 			>;
++		status = "disabled";
+ 	};
+ 
+ 	/* M41T0M6 real time clock on carrier board */

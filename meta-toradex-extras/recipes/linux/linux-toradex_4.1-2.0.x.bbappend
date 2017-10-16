@@ -27,10 +27,6 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-SRC_URI += " \
-        file://0001-Make-sdboot-default-on-all-boards.patch \
-        file://0002-apalis-imx6-test-for-Capacitive-Touch-Display-7-Para.patch \
-        file://0003-apalis-imx6-Ixora-v1.0-support.patch \
-        "
-DEPENDS += "dtc-native"
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+
+SRC_URI += "file://0001-Enable-atmel-mxt-multitouch-controller.patch"
