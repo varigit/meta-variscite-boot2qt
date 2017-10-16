@@ -29,7 +29,7 @@
   <project name="meta-mingw"
            remote="qtyocto"
            path="sources/meta-mingw"
-           revision="bfda0f040958b3c533123071ff031037389eed62"/>
+           revision="4a621def8529c3a55c6fcaef72e3b1832a9327b3"/>
 
   <project name="meta-freescale"
            remote="freescale"
