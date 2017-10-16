@@ -33,12 +33,12 @@
 
   <project name="meta-freescale"
            remote="freescale"
-           revision="98d57b06d88cb22129bd417a9a3edbaf24612460"
+           revision="10d8ccb5ff2c31d2a5b13e088a8ec9511cbc3e72"
            path="sources/meta-freescale"
            groups="notdefault,external,fsl,toradex,ti,smx6,renesas-gen3"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="fd3962a994b2f477d3e81fa7083f6b3d4e666df5"
+           revision="35badbde05d4f10d4faeefc30bc126b5bd228e2e"
            path="sources/meta-freescale-3rdparty"
            groups="notdefault,external,fsl,toradex,smx6"/>
   <project name="meta-ti"
