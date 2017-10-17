@@ -17,29 +17,29 @@
 
   <project name="poky"
            remote="yocto"
-           revision="8ab3fa375891eba3dc102b6ee7fee3582070654b"
+           revision="e2fcc721c2af8e2785a91eaceea1d81f503ea2ec"
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
-           revision="fe5c83312de11e80b85680ef237f8acb04b4b26e"
+           revision="b40116cf457b88a2db14b86fda9627fb34d56ae6"
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="qtyocto"
-           revision="5df9d273194e89498ea7fa93ac4ec987007253d2"
+           revision="e0db5666f9c04c92683514ca220b0aafd0a49df2"
            path="sources/meta-qt5"/>
   <project name="meta-mingw"
            remote="qtyocto"
            path="sources/meta-mingw"
-           revision="bfda0f040958b3c533123071ff031037389eed62"/>
+           revision="4a621def8529c3a55c6fcaef72e3b1832a9327b3"/>
 
   <project name="meta-freescale"
            remote="freescale"
-           revision="fc804d29ee85d58e9bb66f7319e749b53e192457"
+           revision="05681fdf8298bb441c15135eae424c7601b07e98"
            path="sources/meta-freescale"
            groups="notdefault,external,fsl,toradex,ti,smx6,renesas-gen3,variscite"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="a78b17c24e66567f272ad47f9d6300e6b1b90c29"
+           revision="1879485e63ce369292c89b5902ff6df13509090b"
            path="sources/meta-freescale-3rdparty"
            groups="notdefault,external,fsl,toradex,smx6,variscite"/>
   <project name="meta-ti"
@@ -74,12 +74,12 @@
            groups="notdefault,external,renesas-gen3"/>
   <project name="meta-toradex-bsp-common"
            remote="toradex"
-           revision="554adccf11f2ba2947ed221307ddd703c0889967"
+           revision="429d294f9b271433d4d0130530677dc417e6ec6e"
            path="sources/meta-toradex-bsp-common"
            groups="notdefault,external,toradex"/>
   <project name="meta-toradex-nxp"
            remote="toradex"
-           revision="d351e11b76c004afbf0f37d5481266bafdb015ee"
+           revision="45c33b79a734d016dddb997c1895b53202286f23"
            path="sources/meta-toradex-nxp"
            groups="notdefault,external,toradex"/>
 

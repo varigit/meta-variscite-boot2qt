@@ -33,13 +33,24 @@ PR = "r0"
 
 inherit nativesdk packagegroup qtquickcompiler
 
+python __anonymous() {
+    overrides = d.getVar("OVERRIDES", True).split(":")
+    if "mingw32" not in overrides:
+        d.appendVar("OVERRIDES", ":linux")
+}
+
 RDEPENDS_${PN} += "\
     nativesdk-packagegroup-b2qt-embedded-toolchain-host \
     nativesdk-qttools-tools \
     nativesdk-qtbase-tools \
+    nativesdk-qtbase-tools-dev \
     nativesdk-qtbase-tools-staticdev \
     nativesdk-qtdeclarative-tools \
     nativesdk-qtdeclarative-staticdev \
     nativesdk-qt3d-tools \
     nativesdk-qtscxml-tools \
+    "
+
+RDEPENDS_${PN}_append_linux = "\
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'nativesdk-qtwayland-tools', '', d)} \
     "

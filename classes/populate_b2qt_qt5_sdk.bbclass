@@ -30,6 +30,7 @@
 inherit populate_b2qt_sdk populate_sdk_qt5_base abi-arch siteinfo
 
 SDK_MKSPEC_DIR = "${SDK_OUTPUT}${SDKTARGETSYSROOT}${libdir}/${QT_DIR_NAME}/mkspecs"
+NATIVE_SDK_MKSPEC_DIR = "${SDK_OUTPUT}${SDKPATHNATIVE}${libdir}/${QT_DIR_NAME}/mkspecs"
 SDK_MKSPEC = "devices/linux-oe-generic-g++"
 SDK_DEVICE_PRI = "${SDK_MKSPEC_DIR}/qdevice.pri"
 SDK_DYNAMIC_FLAGS = "-O. -pipe -g"
@@ -66,7 +67,18 @@ EOF
     echo 'HostSpec = linux-g++' >> $qtconf
     echo 'TargetSpec = devices/linux-oe-generic-g++' >> $qtconf
 
+    # Update correct host_build ARCH and ABI to mkspecs/qconfig.pri
+    QT_ARCH=$(grep QT_ARCH ${NATIVE_SDK_MKSPEC_DIR}/qconfig.pri | tail -1)
+    QT_BUILDABI=$(grep QT_BUILDABI ${NATIVE_SDK_MKSPEC_DIR}/qconfig.pri | tail -1)
+
+    sed -e "0,/QT_ARCH/s/^.*QT_ARCH.*/$QT_ARCH/" \
+        -e "0,/QT_BUILDABI/s/^.*QT_BUILDABI.*/$QT_BUILDABI/" \
+        -i ${SDK_MKSPEC_DIR}/qconfig.pri
+
     create_qtcreator_configure_script
+
+    # Link /etc/resolv.conf is broken in the toolchain sysroot, remove it
+    rm -f ${SDK_OUTPUT}${SDKTARGETSYSROOT}${sysconfdir}/resolv.conf
 }
 
 create_qtcreator_configure_script () {

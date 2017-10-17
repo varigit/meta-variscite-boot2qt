@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -29,3 +29,5 @@
 
 EXTRA_QMAKEVARS_PRE_append_emulator = " CONFIG+=simulator"
 DEPENDS_append_emulator = " qtsimulator"
+
+SRCREV = "434af789f0d56ca7a521ca2d9ec8cf3b1057fd37"

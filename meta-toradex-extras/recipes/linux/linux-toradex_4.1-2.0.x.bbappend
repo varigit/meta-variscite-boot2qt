@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,22 +27,6 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Qt Installer Framework"
-LICENSE = "The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 
-inherit bin_package native
-
-SRC_URI = "http://ci-files02-hki.intra.qt.io/packages/jenkins/opensource/ifw/installer-framework/installer-framework-build-stripped-linux-x64.7z"
-
-SRC_URI[md5sum] = "08beb5450c3938fcfd1b380f6aaec75d"
-SRC_URI[sha256sum] = "91bfef896db58f28e4c2c6db437b958101a59e87aa880c38b6ddc40ebe6c38e6"
-
-S = "${WORKDIR}/ifw-pkg"
-
-do_install() {
-    install -d ${D}${bindir}
-    install -m 0755 -t ${D}${bindir} ${S}/bin/*
-}
-
-INSANE_SKIP_${PN} += "already-stripped"
+SRC_URI += "file://0001-Enable-atmel-mxt-multitouch-controller.patch"
