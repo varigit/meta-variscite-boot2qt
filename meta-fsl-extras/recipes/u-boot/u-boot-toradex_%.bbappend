@@ -32,4 +32,5 @@ SRC_URI += " \
         file://0001-Make-sdboot-default-on-all-boards.patch \
         file://0002-apalis-imx6-test-for-Capacitive-Touch-Display-7-Para.patch \
         file://0003-apalis-imx6-Ixora-v1.0-support.patch \
+        file://0004-apalis-imx6-lower-default-resolution-on-HDMI-to-720p.patch \
         "
