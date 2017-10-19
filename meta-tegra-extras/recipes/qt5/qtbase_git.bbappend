@@ -28,3 +28,6 @@
 ############################################################################
 
 PACKAGECONFIG += "kms"
+
+# Disable getentropy because of older than 3.17 kernel
+QT_CONFIG_FLAGS += "--no-feature-getentropy"
