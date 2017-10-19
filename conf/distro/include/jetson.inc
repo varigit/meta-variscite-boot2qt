@@ -27,9 +27,17 @@
 ##
 ############################################################################
 
-PACKAGECONFIG += "kms"
+# use mmc0
 
-# Disable getentropy for jetson-tx1 because of older than 3.17 kernel.
-# The kernel version in jetson-tx2 is 4.4.
+ROOTFS_DEVICE = "mmcblk1p1"
 
-QT_CONFIG_FLAGS_append_jetson-tx1 = " --no-feature-getentropy"
+INITRAMFS_MAXSIZE = "165888"
+IMAGE_CLASSES += "image_types_tegra"
+IMAGE_FSTYPES += "tegraflash"
+IMAGE_ROOTFS_ALIGNMENT = "1024"
+UBOOT_SUFFIX = "bin"
+
+QBSP_IMAGE_CONTENT = "\
+    ${IMAGE_LINK_NAME}.img \
+    ${IMAGE_LINK_NAME}.conf \
+    "

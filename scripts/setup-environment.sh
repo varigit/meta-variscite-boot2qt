@@ -83,7 +83,7 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     emulator)
       LAYERSCONF="bblayers.conf.emulator.sample"
     ;;
-    jetson-tx1|jetson-tk1)
+    jetson-tx1|jetson-tx2|jetson-tk1)
       LAYERSCONF="bblayers.conf.jetson.sample"
     ;;
     *)

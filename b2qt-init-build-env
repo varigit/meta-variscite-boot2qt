@@ -130,7 +130,7 @@ get_groups() {
     emulator)
       PROJECT_GROUPS="emulator"
     ;;
-    jetson-tx1|jetson-tk1)
+    jetson-tx1|jetson-tx2|jetson-tk1)
       PROJECT_GROUPS="jetson"
     ;;
     salvator-x|h3ulcb|m3ulcb)
