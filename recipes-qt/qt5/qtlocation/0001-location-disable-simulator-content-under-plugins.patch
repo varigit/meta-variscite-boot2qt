@@ -1,0 +1,23 @@
+From a7af02fe34bd8e067c7654ac366e19783b89e990 Mon Sep 17 00:00:00 2001
+From: Mikko Gronoff <mikko.gronoff@qt.io>
+Date: Wed, 25 Oct 2017 13:22:16 +0300
+Subject: [PATCH] location: disable simulator content under plugins
+
+Does not build against more recent simulator
+---
+ src/plugins/position/position.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/plugins/position/position.pro b/src/plugins/position/position.pro
+index 1687a9d..347963f 100644
+--- a/src/plugins/position/position.pro
++++ b/src/plugins/position/position.pro
+@@ -5,7 +5,7 @@ QT_FOR_CONFIG += positioning-private
+ qtHaveModule(dbus):SUBDIRS += geoclue
+ qtConfig(gypsy):SUBDIRS += gypsy
+ qtConfig(winrt_geolocation):SUBDIRS += winrt
+-qtHaveModule(simulator):SUBDIRS += simulator
++#qtHaveModule(simulator):SUBDIRS += simulator
+ osx|ios|tvos:SUBDIRS += corelocation
+ android:SUBDIRS += android
+ win32:qtHaveModule(serialport):SUBDIRS += serialnmea

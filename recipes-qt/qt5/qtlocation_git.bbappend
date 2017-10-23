@@ -28,5 +28,7 @@
 ############################################################################
 
 PACKAGECONFIG += "geoservices_mapboxgl"
-EXTRA_QMAKEVARS_PRE_append_emulator = " CONFIG+=simulator"
-DEPENDS_append_emulator = " qtsimulator"
+
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+
+SRC_URI += "file://0001-location-disable-simulator-content-under-plugins.patch"

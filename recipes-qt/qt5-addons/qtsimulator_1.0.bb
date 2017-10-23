@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -29,17 +29,35 @@
 
 DESCRIPTION = "QtSimulator"
 LICENSE = "The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://src/simulator/version.h;md5=eb588a9fa3a2a45f725e9eb9f864e74b;beginline=1;endline=17"
+LIC_FILES_CHKSUM = "file://src/simulator/simulatorglobal.h;md5=3daa1a609195439d0292259a74c7d615;beginline=1;endline=20"
 
 inherit qt5-module
 
 SRC_URI = " \
     git://codereview.qt-project.org/tqtc-boot2qt/qtsimulator;branch=${BRANCH};protocol=ssh \
+    file://emulatorproxyd.sh \
+    file://emulatorproxy.service \
     "
 
-SRCREV = "0307e85a8d3a8b83a346aa3910e88aabb7b7b2ac"
+SRCREV = "f98633ebee7dbce79c00fbfec86537c6330e2b5f"
 BRANCH = "master"
 
 S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase"
+
+# Proxy daemon for QtSimulator
+do_install_append() {
+    install -m 0755 -d ${D}${sysconfdir}/init.d
+    install -m 0755 ${WORKDIR}/emulatorproxyd.sh ${D}${sysconfdir}/init.d/
+
+    install -m 0755 -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/emulatorproxy.service ${D}${systemd_unitdir}/system/
+}
+
+INITSCRIPT_NAME = "emulatorproxyd.sh"
+INITSCRIPT_PARAMS = "defaults 97 10"
+
+SYSTEMD_SERVICE_${PN} = "emulatorproxy.service"
+
+inherit update-rc.d systemd
