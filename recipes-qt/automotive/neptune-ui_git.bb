@@ -29,7 +29,7 @@
 
 DESCRIPTION = "Neptune IVI UI"
 LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=bc0cb4bfd3f72b3fe47b2b2d0d89762c"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=c41b4a3e669de55dfe304b8376b04a82"
 
 inherit qt5-module systemd
 require recipes-qt/qt5/qt5-git.inc
@@ -41,12 +41,14 @@ SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "6ddea70fd06d78ca7672f18221b91b3e8990aee8"
+SRCREV = "2a242aa65f267d010d8c10b8c5da5a1e728d0551"
 
-DEPENDS = "qtbase qtdeclarative qttools-native"
-RDEPENDS_${PN} = "qtapplicationmanager qtivi qtvirtualkeyboard dbus \
+DEPENDS = "qtbase qtdeclarative qttools-native qtquickcontrols2 qtapplicationmanager"
+RDEPENDS_${PN} = "qtivi qtvirtualkeyboard dbus \
                   qtquickcontrols-qmlplugins qtgraphicaleffects-qmlplugins \
                   ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
+
+EXTRA_QMAKEVARS_PRE += "INSTALL_PREFIX=/opt"
 
 do_install_append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system
@@ -56,9 +58,9 @@ do_install_append() {
 PACKAGES =+ "${PN}-apps"
 RRECOMMENDS_${PN} += "${PN}-apps"
 
-FILES_${PN}-apps += "/opt/neptune/apps"
+FILES_${PN}-apps += "/opt/neptune-ui/apps"
 FILES_${PN} += "\
-    /opt/neptune \
+    /opt/neptune-ui \
     "
 
 SYSTEMD_SERVICE_${PN} = "neptune.service"

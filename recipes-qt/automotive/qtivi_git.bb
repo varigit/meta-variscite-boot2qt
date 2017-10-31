@@ -47,10 +47,11 @@ QT_MODULE_BRANCH_QFACE = "upstream/develop"
 
 SRC_URI += " \
     ${QT_GIT}/qtivi-qface.git;name=qface;branch=${QT_MODULE_BRANCH_QFACE};protocol=${QT_GIT_PROTOCOL};destsuffix=git/src/3rdparty/qface \
+    file://0001-Use-QT_HOST_BINS-get-for-getting-correct-path.patch \
 "
 
-SRCREV_qtivi = "3205b6e8f57273096ae60d8f6fcdbe597c350393"
-SRCREV_qface = "b1d96d85a7c43ac74335b9a1a99a68507047f5bc"
+SRCREV_qtivi = "705acb8d595d772778dd4985b762ed6a604473d9"
+SRCREV_qface = "295824c8df7f74af8f3d1f368ec15942e6622f22"
 SRCREV = "${SRCREV_qtivi}"
 SRCREV_FORMAT = "qtivi_qface"
 
