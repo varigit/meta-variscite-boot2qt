@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -31,23 +31,22 @@ SUMMARY = "Noto Sans CJK"
 SECTION = "fonts"
 HOMEPAGE = "http://www.google.com/get/noto"
 LICENSE = "OFL-1.1"
-LIC_FILES_CHKSUM = "file://${WORKDIR}/LICENSE_OFL.txt;md5=55719faa0112708e946b820b24b14097"
+LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=55719faa0112708e946b820b24b14097"
 
 INHIBIT_DEFAULT_DEPS = "1"
 
 inherit allarch fontcache
 
 PV = "1.004"
-SRC_URI = "https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKsc-hinted.zip"
+SRC_URI = "git://github.com/googlei18n/noto-cjk.git"
+SRCREV = "40d9f5b179a59a06b98373c76bdc3e2119e4e6b2"
 
-SRC_URI[md5sum] = "539a04d2a14a12096897f84ba046d110"
-SRC_URI[sha256sum] = "c0a77b24ce1964c5d244be7576ada5899d681638e0abd0917e6a661df56e0232"
-
-S = "${WORKDIR}"
+S = "${WORKDIR}/git"
 
 do_install() {
     install -m 0755 -d ${D}${datadir}/fonts/otf/noto
-    install -m 0644 ${WORKDIR}/*.otf ${D}${datadir}/fonts/otf/noto
+    install -m 0644 ${S}/NotoSansCJKsc-*.otf ${D}${datadir}/fonts/otf/noto
+    install -m 0644 ${S}/NotoSansMonoCJKsc-*.otf ${D}${datadir}/fonts/otf/noto
 }
 
 PACKAGES = "${PN}"
