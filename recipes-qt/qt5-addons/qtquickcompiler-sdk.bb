@@ -33,6 +33,8 @@ LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
 
 inherit allarch qmake5_paths
 
+do_unpack[depends] += "p7zip-native:do_populate_sysroot"
+
 SRC_URI = "http://download.qt.io/development_releases/prebuilt/mingw_32/i686-4.9.2-release-posix-dwarf-rt_v3-rev1-runtime.7z"
 
 SRC_URI[md5sum] = "a7d673c4ad8bcef9e464ea5386492cb3"
