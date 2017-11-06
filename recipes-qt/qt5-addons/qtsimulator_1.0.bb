@@ -45,6 +45,7 @@ BRANCH = "master"
 S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase"
+RRECOMMENDS_${PN} += "${PN}-tools"
 
 # Proxy daemon for QtSimulator
 do_install_append() {
