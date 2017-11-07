@@ -16,14 +16,14 @@ NULL pointer dereference in fbcon_switch.
 Fix the issue by using the variable screen info structure also when adding
 new mode to the modelist.
 ---
- drivers/video/modedb.c | 7 ++++---
+ drivers/video/fbdev/core/modedb.c | 7 ++++---
  1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/video/modedb.c b/drivers/video/modedb.c
-index 12dadab..e5093cf 100644
---- a/drivers/video/modedb.c
-+++ b/drivers/video/modedb.c
-@@ -2190,13 +2190,14 @@ int fb_add_videomode(const struct fb_videomode *mode, struct list_head *head)
+diff --git a/drivers/video/fbdev/core/modedb.c b/drivers/video/fbdev/core/modedb.c
+index f5a53a6..a8fd871 100644
+--- a/drivers/video/fbdev/core/modedb.c
++++ b/drivers/video/fbdev/core/modedb.c
+@@ -2187,13 +2187,14 @@ int fb_add_videomode(const struct fb_videomode *mode, struct list_head *head)
  {
  	struct list_head *pos;
  	struct fb_modelist *modelist;

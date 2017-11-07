@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,8 +27,9 @@
 ##
 ############################################################################
 
-# use mmc0
+PREFERRED_PROVIDER_libdrm-tegra = "libdrm-tegra"
 
+# use mmc0
 ROOTFS_DEVICE = "mmcblk1p1"
 
 INITRAMFS_MAXSIZE = "165888"

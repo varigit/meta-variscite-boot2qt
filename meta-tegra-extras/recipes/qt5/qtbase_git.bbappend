@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -28,8 +28,3 @@
 ############################################################################
 
 PACKAGECONFIG += "kms"
-
-# Disable getentropy for jetson-tx1 because of older than 3.17 kernel.
-# The kernel version in jetson-tx2 is 4.4.
-
-QT_CONFIG_FLAGS_append_jetson-tx1 = " --no-feature-getentropy"
