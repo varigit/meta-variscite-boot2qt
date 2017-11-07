@@ -77,6 +77,7 @@ do_install_append() {
     # but none of the source files
     find ${D}/data/user/qt/ \( -name '*.cpp' -or -name '*.h' -or -name '*.pro' \) -delete
     rm -rf ${D}/data/user/qt/qtwebbrowser/tqtc-qtwebbrowser
+    rm -rf ${D}/data/user/qt/qtwebbrowser/qmldir
 
     if [ -d ${WORKDIR}/git/images ]; then
         install -d 0755 ${D}/data/images
