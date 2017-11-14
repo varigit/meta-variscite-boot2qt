@@ -5,6 +5,7 @@ After=systemd-user-sessions.service
 [Service]
 Type=forking
 ExecStart=/usr/bin/emulatorproxyd
+EnvironmentFile=/etc/default/emulator
 
 [Install]
 WantedBy=multi-user.target

@@ -37,6 +37,8 @@ SRC_URI = " \
     git://codereview.qt-project.org/tqtc-boot2qt/qtsimulator;branch=${BRANCH};protocol=ssh \
     file://emulatorproxyd.sh \
     file://emulatorproxy.service \
+    file://emulator-hostname \
+    file://emulator \
     "
 
 SRCREV = "f98633ebee7dbce79c00fbfec86537c6330e2b5f"
@@ -54,6 +56,9 @@ do_install_append() {
 
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/emulatorproxy.service ${D}${systemd_unitdir}/system/
+
+    install -m 0644 ${WORKDIR}/emulator-hostname.sh ${D}${sysconfdir}/profile.d/
+    install -m 0644 ${WORKDIR}/emulator ${D}${sysconfdir}/default/
 }
 
 INITSCRIPT_NAME = "emulatorproxyd.sh"
