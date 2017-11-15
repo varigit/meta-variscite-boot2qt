@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -33,10 +33,12 @@ LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
 
 inherit bin_package native
 
-SRC_URI = "http://ci-files02-hki.intra.qt.io/packages/jenkins/opensource/ifw/installer-framework/installer-framework-build-stripped-linux-x64.7z"
+do_unpack[depends] += "p7zip-native:do_populate_sysroot"
 
-SRC_URI[md5sum] = "08beb5450c3938fcfd1b380f6aaec75d"
-SRC_URI[sha256sum] = "91bfef896db58f28e4c2c6db437b958101a59e87aa880c38b6ddc40ebe6c38e6"
+SRC_URI = "http://download.qt.io/development_releases/installer-framework/${PV}/installer-framework-build-stripped-${PV}-linux-x64.7z"
+
+SRC_URI[md5sum] = "68b7c1f761ca0dba18f1d165d66005d6"
+SRC_URI[sha256sum] = "c2eb769351025e0c7df2882116390fffaf958368f873a2abab99e37caee0a498"
 
 S = "${WORKDIR}/ifw-pkg"
 

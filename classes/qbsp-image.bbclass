@@ -42,7 +42,14 @@ fakeroot do_qbsp_image () {
         src=`echo $item | awk -F':' '{ print $1 }'`
         dst=`echo $item | awk -F':' '{ print $2 }'`
 
-        install -D -m 0755 ${IMGDEPLOYDIR}/$src ${S}/qbsp/$dst
+        if [ -e "${IMGDEPLOYDIR}/$src" ]; then
+            install -D -m 0755 ${IMGDEPLOYDIR}/$src ${S}/qbsp/$dst
+        elif [ -e "${DEPLOY_DIR_IMAGE}/$src" ]; then
+            install -D -m 0755 ${DEPLOY_DIR_IMAGE}/$src ${S}/qbsp/$dst
+        else
+            echo "Could not copy file $src"
+            exit 1
+        fi
     done
 
     cd ${S}/qbsp
