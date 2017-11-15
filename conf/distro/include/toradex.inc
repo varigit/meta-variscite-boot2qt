@@ -32,6 +32,7 @@ include conf/distro/include/fsl.inc
 BBMASK += "\
    meta-toradex-nxp/recipes-graphics/xorg-xserver \
    meta-toradex-bsp-common/recipes-devtools/python \
+   meta-toradex-bsp-common/recipes-devtools/e2fsprogs \
    "
 
 PREFERRED_PROVIDER_u-boot = "u-boot-toradex"
