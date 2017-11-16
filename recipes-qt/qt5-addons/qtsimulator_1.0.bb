@@ -37,7 +37,7 @@ SRC_URI = " \
     git://codereview.qt-project.org/tqtc-boot2qt/qtsimulator;branch=${BRANCH};protocol=ssh \
     file://emulatorproxyd.sh \
     file://emulatorproxy.service \
-    file://emulator-hostname \
+    file://emulator-hostname.sh \
     file://emulator \
     "
 
