@@ -57,7 +57,10 @@ do_install_append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/emulatorproxy.service ${D}${systemd_unitdir}/system/
 
+    install -m 0755 -d ${D}${sysconfdir}/profile.d
     install -m 0644 ${WORKDIR}/emulator-hostname.sh ${D}${sysconfdir}/profile.d/
+
+    install -m 0755 -d ${D}${sysconfdir}/default
     install -m 0644 ${WORKDIR}/emulator ${D}${sysconfdir}/default/
 }
 
