@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -60,9 +60,11 @@ FILES_${PN} += "\
 
 BBCLASSEXTEND += "nativesdk"
 
-DEPENDS_class-nativesdk = "qtbase nativesdk-glibc-locale nativesdk-libarchive"
-DEPENDS_class-nativesdk_remove_mingw32 += "nativesdk-glibc-locale nativesdk-libarchive"
+# nativesdk-qtdeclarative is added only to make build deterministic, can be removed once
+# there is a configure option to disable its usage.
+DEPENDS_class-nativesdk = "qtbase nativesdk-qtdeclarative nativesdk-glibc-locale nativesdk-libarchive"
+DEPENDS_class-nativesdk_remove_mingw32 = "nativesdk-glibc-locale nativesdk-libarchive"
 
-EXTRA_QMAKEVARS_PRE_class-nativesdk += "\
+EXTRA_QMAKEVARS_PRE_class-nativesdk = "\
     -config tools-only \
     "
