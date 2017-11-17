@@ -78,7 +78,8 @@ patch_installer_files() {
         LICENSE_DEPENDENCY="${QBSP_INSTALLER_COMPONENT}.license"
     fi
 
-    sed -e "s#@NAME@#${DEPLOY_CONF_NAME}#" \
+    sed -e "s#@NAME@#${QBSP_NAME}#" \
+        -e "s#@TARGET@#${DEPLOY_CONF_NAME}#" \
         -e "s#@VERSION@#${QBSP_VERSION}#" \
         -e "s#@RELEASEDATE@#${RELEASEDATE}#" \
         -e "s#@MACHINE@#${MACHINE}#" \

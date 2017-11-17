@@ -2,8 +2,8 @@
 <Package>
   <Version>@VERSION@</Version>
   <ReleaseDate>@RELEASEDATE@</ReleaseDate>
-  <DisplayName>@NAME@ Linux Toolchain</DisplayName>
-  <Description>Toolchain and system root for @NAME@ with Embedded Linux baselayer</Description>
+  <DisplayName>@MACHINE@ Linux Toolchain</DisplayName>
+  <Description>Toolchain and system root for @TARGET@</Description>
   <DownloadableArchives>toolchain.7z</DownloadableArchives>
   <Dependencies>qt.tools.qtcreator</Dependencies>
   <Script>installscript.qs</Script>
