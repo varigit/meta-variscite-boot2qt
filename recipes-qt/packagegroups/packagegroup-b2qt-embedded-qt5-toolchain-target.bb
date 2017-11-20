@@ -57,6 +57,7 @@ RDEPENDS_${PN} += " \
     qtlocation-dev \
     qtmultimedia-dev \
     qtnetworkauth-dev \
+    qtotaupdate-dev \
     qtquickcontrols-dev \
     qtquickcontrols2-dev \
     qtremoteobjects-dev \

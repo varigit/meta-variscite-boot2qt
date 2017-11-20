@@ -52,7 +52,7 @@ SRCREV = "8ece4d6d51bdbe3e41ab318259276bb83e553aa0"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "glib-2.0 e2fsprogs gpgme attr libsoup-2.4 libassuan xz systemd"
+DEPENDS = "glib-2.0 glib-2.0-native e2fsprogs gpgme attr libsoup-2.4 libassuan xz systemd"
 # Bash is needed by the shipped dracut module. This dracut module is used to generate initramfs image.
 # The production image do not require bash for proper working.
 RDEPENDS_${PN} += "bash"
