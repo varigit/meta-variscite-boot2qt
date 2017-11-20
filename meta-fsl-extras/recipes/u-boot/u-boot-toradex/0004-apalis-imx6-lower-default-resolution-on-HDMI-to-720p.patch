@@ -1,0 +1,22 @@
+From 0b31b8e73bfbc02e7687ea521e9e92f892e7052a Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Wed, 18 Oct 2017 13:20:25 +0300
+Subject: [PATCH 4/4] apalis-imx6: lower default resolution on HDMI to 720p
+
+---
+ include/configs/apalis_imx6.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/configs/apalis_imx6.h b/include/configs/apalis_imx6.h
+index 77a8874..0292e74 100644
+--- a/include/configs/apalis_imx6.h
++++ b/include/configs/apalis_imx6.h
+@@ -295,7 +295,7 @@
+ 		"source ${loadaddr}\0" \
+ 	"splashpos=m,m\0" \
+ 	"vidargs=mxc_hdmi.only_cea=1 " \
+-		"video=mxcfb0:dev=hdmi,1920x1080M@60,if=RGB24 " \
++		"video=mxcfb0:dev=hdmi,1280x720M@60,if=RGB24 " \
+ 		"video=mxcfb1:off video=mxcfb2:off video=mxcfb3:off " \
+ 		"fbmem=32M\0 "
+ 
