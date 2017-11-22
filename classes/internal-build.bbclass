@@ -35,8 +35,8 @@ python enable_internal_build () {
         return
 
     e.data.setVar('ENABLE_QTQUICKCOMPILER', "1")
-    e.data.setVar('SSTATE_MIRRORS', "file://.* http://yocto-cache.intra.qt.io/sstate-caches/${DISTRO_CODENAME}/PATH")
-    e.data.setVar('PREMIRRORS', "\
+    e.data.prependVar('SSTATE_MIRRORS', "file://.* http://yocto-cache.intra.qt.io/sstate-caches/${DISTRO_CODENAME}/PATH")
+    e.data.prependVar('PREMIRRORS', "\
         ftp://.*/.*   http://yocto-cache.intra.qt.io/sources/ \n \
         http://.*/.*  http://yocto-cache.intra.qt.io/sources/ \n \
         https://.*/.* http://yocto-cache.intra.qt.io/sources/ \n \
