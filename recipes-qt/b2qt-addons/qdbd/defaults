@@ -5,3 +5,4 @@ if [ -e /sys/class/net/eth0/address ]; then
 else
   SERIAL=$(hostname)-$(cat /etc/machine-id)
 fi
+export QT_HASH_SEED=0
