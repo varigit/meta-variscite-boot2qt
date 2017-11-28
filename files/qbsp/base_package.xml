@@ -3,6 +3,6 @@
   <Version>@VERSION@</Version>
   <ReleaseDate>@RELEASEDATE@</ReleaseDate>
   <DisplayName>@NAME@</DisplayName>
-  <Description>Boot to Qt for @NAME@ with Embedded Linux baselayer</Description>
+  <Description>@NAME@ for @TARGET@</Description>
   <Dependencies>@LICENSEDEPENDENCY@</Dependencies>
 </Package>

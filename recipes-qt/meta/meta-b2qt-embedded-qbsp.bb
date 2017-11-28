@@ -40,10 +40,11 @@ inherit qbsp
 
 PV := "${@d.getVar('PV', True)[0:5]}"
 
-VERSION_SHORT = "${@d.getVar('QT_MODULE_BRANCH', True).replace('.','')}"
+VERSION_SHORT = "${@d.getVar('PV', True).replace('.','')}"
+QBSP_NAME = "Boot to Qt"
 QBSP_MACHINE = "${@d.getVar('MACHINE', True).replace('-','')}"
 QBSP_INSTALLER_COMPONENT = "qt.embedded.b2qt.${VERSION_SHORT}.yocto.${QBSP_MACHINE}"
-QBSP_INSTALL_PATH = "/${QT_MODULE_BRANCH}/Boot2Qt/${MACHINE}"
+QBSP_INSTALL_PATH = "/${PV}/Boot2Qt/${MACHINE}"
 
 QBSP_SDK_TASK = "meta-toolchain-b2qt-embedded-qt5-sdk"
 QBSP_IMAGE_TASK = "b2qt-embedded-qt5-image"
