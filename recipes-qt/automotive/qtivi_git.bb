@@ -50,7 +50,7 @@ SRC_URI += " \
     file://0001-Use-QT_HOST_BINS-get-for-getting-correct-path.patch \
 "
 
-SRCREV_qtivi = "705acb8d595d772778dd4985b762ed6a604473d9"
+SRCREV_qtivi = "da3d3770f1ba310e0879b1767cf436c5bea67da4"
 SRCREV_qface = "295824c8df7f74af8f3d1f368ec15942e6622f22"
 SRCREV = "${SRCREV_qtivi}"
 SRCREV_FORMAT = "qtivi_qface"
@@ -63,6 +63,8 @@ PACKAGECONFIG[geniviextras-only] = "QMAKE_EXTRA_ARGS+=--geniviextras-only"
 PACKAGECONFIG[ivigenerator] = "QMAKE_EXTRA_ARGS+=-system-ivigenerator"
 PACKAGECONFIG[ivigenerator-native] = "QMAKE_EXTRA_ARGS+=-qt-ivigenerator,,python3 python3-virtualenv"
 PACKAGECONFIG[host-tools-only] = "QMAKE_EXTRA_ARGS+=-host-tools-only"
+PACKAGECONFIG[simulator] = "QMAKE_EXTRA_ARGS+=-feature-simulator,QMAKE_EXTRA_ARGS+=-no-feature-simulator,qtsimulator"
+PACKAGECONFIG[simulator-native] = "QMAKE_EXTRA_ARGS+=-feature-simulator QMAKE_EXTRA_ARGS+=--force-ivigenerator-qtsimulator"
 
 PACKAGECONFIG_class-native ??= "host-tools-only ivigenerator-native"
 PACKAGECONFIG_class-nativesdk ??= "${PACKAGECONFIG_class-native}"
