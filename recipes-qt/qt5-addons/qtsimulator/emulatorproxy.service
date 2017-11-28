@@ -1,6 +1,7 @@
 [Unit]
 Description=QtSimulator Proxy Daemon
-After=systemd-user-sessions.service
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 Type=forking
