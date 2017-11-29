@@ -39,6 +39,7 @@ SRC_URI = " \
     file://emulatorproxy.service \
     file://emulator-hostname.sh \
     file://emulator \
+    file://custom.target \
     "
 
 SRCREV = "f98633ebee7dbce79c00fbfec86537c6330e2b5f"
@@ -56,6 +57,7 @@ do_install_append() {
 
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/emulatorproxy.service ${D}${systemd_unitdir}/system/
+    install -m 0644 ${WORKDIR}/custom.target ${D}${systemd_unitdir}/system/
 
     install -m 0755 -d ${D}${sysconfdir}/profile.d
     install -m 0644 ${WORKDIR}/emulator-hostname.sh ${D}${sysconfdir}/profile.d/
@@ -67,6 +69,6 @@ do_install_append() {
 INITSCRIPT_NAME = "emulatorproxyd.sh"
 INITSCRIPT_PARAMS = "defaults 97 10"
 
-SYSTEMD_SERVICE_${PN} = "emulatorproxy.service"
+SYSTEMD_SERVICE_${PN} = "emulatorproxy.service custom.target"
 
 inherit update-rc.d systemd

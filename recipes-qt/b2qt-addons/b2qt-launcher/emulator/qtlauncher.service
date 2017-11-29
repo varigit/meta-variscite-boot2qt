@@ -1,0 +1,11 @@
+[Unit]
+Description=B2Qt Launcher Demo
+After=multi-user.target
+
+ConditionPathExists=!/usr/bin/b2qt
+
+[Service]
+ExecStart=-/usr/bin/appcontroller /usr/bin/qtlauncher --applications-root /data/user/qt
+
+[Install]
+WantedBy=custom.target

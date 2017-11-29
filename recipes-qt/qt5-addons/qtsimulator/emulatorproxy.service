@@ -1,7 +1,6 @@
 [Unit]
 Description=QtSimulator Proxy Daemon
-Wants=network-online.target
-After=network-online.target
+After=multi-user.target
 
 [Service]
 Type=forking
@@ -9,4 +8,4 @@ ExecStart=/usr/bin/emulatorproxyd
 EnvironmentFile=/etc/default/emulator
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=custom.target
