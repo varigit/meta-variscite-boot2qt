@@ -31,7 +31,12 @@ require nativesdk-prebuild-python.inc
 
 COMPATIBLE_HOST = "i686.*-mingw.*"
 
-SRC_URI = "http://download.qt.io/development_releases/prebuilt/python/Python35-win-x86.7z"
+SRC_URI = "\
+    https://download.qt.io/development_releases/prebuilt/python/Python35-win-x86.7z \
+    https://www.python.org/ftp/python/${PV}/python-${PV}-embed-win32.zip;name=bin \
+    "
 
 SRC_URI[md5sum] = "3da266445a4e6a93ff1949810141da8f"
 SRC_URI[sha256sum] = "b60c49227c6e920904d784681c16ee3591a18824c3abb89613813f93fde1c1f2"
+SRC_URI[bin.md5sum] = "ad637a1db7cf91e344318d55c94ad3ca"
+SRC_URI[bin.sha256sum] = "75f05800fbe4a8cd6672b268ca53244838684561e03c60c668a7dccb050eb954"
