@@ -43,7 +43,7 @@ SRC_URI = "\
 INHIBIT_DEFAULT_DEPS = "1"
 do_qbsp[depends] += "\
     p7zip-native:do_populate_sysroot \
-    installer-framework:do_populate_sysroot \
+    installer-framework-native:do_populate_sysroot \
     ${QBSP_SDK_TASK}:do_populate_sdk \
     ${QBSP_IMAGE_TASK}:do_image_complete \
     "
