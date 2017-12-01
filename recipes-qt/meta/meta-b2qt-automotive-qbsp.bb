@@ -38,7 +38,7 @@ S = "${WORKDIR}"
 
 inherit qbsp
 
-PV := "${@d.getVar('PV', True)[0:5]}"
+PV := "${@d.getVar('PV', True).split('+')[0]}"
 
 QBSP_NAME = "Qt Automotive"
 QBSP_MACHINE = "${@d.getVar('MACHINE', True).replace('-','')}"

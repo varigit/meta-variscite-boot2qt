@@ -38,7 +38,7 @@ S = "${WORKDIR}"
 
 inherit qbsp
 
-PV := "${@d.getVar('PV', True)[0:5]}"
+PV := "${@d.getVar('PV', True).split('+')[0]}"
 
 VERSION_SHORT = "${@d.getVar('PV', True).replace('.','')}"
 QBSP_NAME = "Boot to Qt"
