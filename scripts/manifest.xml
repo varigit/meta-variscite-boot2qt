@@ -17,11 +17,11 @@
 
   <project name="poky"
            remote="yocto"
-           revision="827eb5b232d54909377e2b18d39d34d6c1c21413"
+           revision="b9ad197bbc88cad4ef8d2245a2d262b8d8dd757e"
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
-           revision="5e82995148a2844c6f483ae5ddd1438d87ea9fb7"
+           revision="b2ce52334cf88e07f703cf25ced92302edd5b0e9"
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="qtyocto"
@@ -34,12 +34,12 @@
 
   <project name="meta-freescale"
            remote="freescale"
-           revision="10d8ccb5ff2c31d2a5b13e088a8ec9511cbc3e72"
+           revision="06178400afbd641a6709473fd21d893dcd3cfbfa"
            path="sources/meta-freescale"
            groups="notdefault,external,fsl,toradex,ti,smx6,renesas-gen3,boundary"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="35badbde05d4f10d4faeefc30bc126b5bd228e2e"
+           revision="9613dbc02ca970122a01c935bc9e5789ced73a9d"
            path="sources/meta-freescale-3rdparty"
            groups="notdefault,external,fsl,toradex,smx6,boundary"/>
   <project name="meta-ti"
@@ -69,7 +69,7 @@
            groups="notdefault,external,renesas-gen3"/>
   <project name="meta-linaro"
            remote="linaro"
-           revision="c44bd0ebc8ca2e6201996ef7cba8b71421d3aff7"
+           revision="74dacb34c13d1c85fe4627a890b9c04940f9ffeb"
            path="sources/meta-linaro"
            groups="notdefault,external,renesas-gen3"/>
   <project name="meta-toradex-bsp-common"
