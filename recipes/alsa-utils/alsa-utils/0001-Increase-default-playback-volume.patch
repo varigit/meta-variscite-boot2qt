@@ -1,0 +1,26 @@
+From 804c0ca68e18a3e83ccbf49d0476fce3eb739477 Mon Sep 17 00:00:00 2001
+From: Kari Oikarinen <kari.oikarinen@qt.io>
+Date: Mon, 11 Dec 2017 13:55:27 +0200
+Subject: [PATCH] Increase default playback volume
+
+It is too quiet otherwise on Apalis iMX6.
+---
+ alsactl/init/default | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/alsactl/init/default b/alsactl/init/default
+index 1c84f3e..af41576 100644
+--- a/alsactl/init/default
++++ b/alsactl/init/default
+@@ -12,7 +12,7 @@
+ 
+ ENV{ppercent}:="75%"
+ ENV{cpercent}:="75%"
+-ENV{pvolume}:="-20dB"
++ENV{pvolume}:="5dB"
+ ENV{cvolume}:="12dB"
+ ENV{has_pmaster_vol}:="false"
+ 
+-- 
+2.11.0
+
