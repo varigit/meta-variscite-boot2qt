@@ -43,6 +43,6 @@ SRC_URI = " \
     git://codereview.qt-project.org/qt/qtdeviceutilities;${QT_MODULE_BRANCH_PARAM};protocol=http \
     "
 
-SRCREV = "03b3e6fd62ff9e9a80212a313340e0a0c2f0135f"
+SRCREV = "9421f40d1eb977889fb6cd2fc8e554efd41d5453"
 
 DEPENDS = "qtbase qtdeclarative qtconnectivity"
