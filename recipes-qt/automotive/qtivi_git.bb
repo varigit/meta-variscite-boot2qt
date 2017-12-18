@@ -68,6 +68,9 @@ PACKAGECONFIG[simulator-native] = "QMAKE_EXTRA_ARGS+=-feature-simulator QMAKE_EX
 
 PACKAGECONFIG_class-native ??= "host-tools-only ivigenerator-native"
 PACKAGECONFIG_class-nativesdk ??= "${PACKAGECONFIG_class-native}"
+PACKAGECONFIG_class-nativesdk_mingw32 ??= "host-tools-only"
+
+ALLOW_EMPTY_${PN}-tools = "1"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS} ${@bb.utils.contains_any('PACKAGECONFIG', 'ivigenerator ivigenerator-native', '', 'QMAKE_EXTRA_ARGS+=-no-ivigenerator', d)}"
 
@@ -90,3 +93,5 @@ do_install_prepend() {
 BBCLASSEXTEND += "native nativesdk"
 
 INSANE_SKIP_${PN}_class-native = "already-stripped"
+INSANE_SKIP_${PN}_class-nativesdk = "already-stripped"
+INSANE_SKIP_${PN}-tools_class-nativesdk = "staticdev"
