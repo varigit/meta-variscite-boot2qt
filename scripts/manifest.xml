@@ -24,7 +24,7 @@
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="qtyocto"
-           revision="c9d88f7ccc4695a4a5874f54305c485ed1c925d3"
+           revision="8e507ffdf81ea6c169065ce487ca02048d17a6cd"
            path="sources/meta-qt5"/>
   <project name="meta-mingw"
            remote="qtyocto"
