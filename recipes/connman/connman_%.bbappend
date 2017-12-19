@@ -21,4 +21,4 @@
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
-SRC_URI += "file://0001-disable-connman-when-booting-over-nfs.patch"
+SRC_URI += "file://0001-disable-connman-when-booting-over-nfs-${PV}.patch"

@@ -1,0 +1,11 @@
+--- a/src/connman.service.in
++++ b/src/connman.service.in
+@@ -7,6 +7,7 @@
+ Before=network.target multi-user.target shutdown.target
+ Wants=network.target
+ Conflicts=systemd-resolved.service
++ConditionKernelCommandLine=!root=/dev/nfs
+ 
+ [Service]
+ Type=dbus
+
