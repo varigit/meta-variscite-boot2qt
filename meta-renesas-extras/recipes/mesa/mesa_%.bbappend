@@ -27,6 +27,5 @@
 ##
 ############################################################################
 
-PROVIDES += "virtual/libgbm"
-
-DEPENDS_append_draak = " udev"
+# pick random header to make build work
+INSTALLED_HEADER_draak = "src/egl/wayland/wayland-egl/wayland-egl-backend.h"

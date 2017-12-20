@@ -27,6 +27,4 @@
 ##
 ############################################################################
 
-PROVIDES += "virtual/libgbm"
-
-DEPENDS_append_draak = " udev"
+EXTRA_OEMAKE_append_draak = " COMMON_FLAGS="-Wno-error=expansion-to-defined""

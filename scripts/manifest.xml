@@ -63,11 +63,16 @@
            revision="276e6ae724d7e604e0d28e4670b8c9edea2957e3"
            path="sources/meta-renesas"
            groups="notdefault,external,renesas-gen3"/>
+  <project name="meta-renesas"
+           remote="renesas"
+           revision="0f865eb8b464ca717b1651e10c4ddc0c4f798423"
+           path="sources/meta-renesas-D3"
+           groups="notdefault,external,renesas-draak"/>
   <project name="meta-linaro"
            remote="linaro"
            revision="282b47a10940c26854c1cca0ec40950192af16fc"
            path="sources/meta-linaro"
-           groups="notdefault,external,renesas-gen3"/>
+           groups="notdefault,external,renesas-gen3,renesas-draak"/>
   <project name="meta-toradex-bsp-common"
            remote="toradex"
            revision="3e713eef6e056c955b82adaf4b45286a98c3fcdf"

@@ -27,6 +27,5 @@
 ##
 ############################################################################
 
-PROVIDES += "virtual/libgbm"
-
-DEPENDS_append_draak = " udev"
+# upstream recipe includes kernel module to wrong package
+FILES_${PN}_draak = ""

@@ -139,6 +139,9 @@ get_groups() {
     salvator-x|h3ulcb|m3ulcb|ebisu)
       PROJECT_GROUPS="renesas-gen3"
     ;;
+    draak)
+      PROJECT_GROUPS="renesas-draak"
+    ;;
     *)
       echo "Unknown device configuration, including all meta layers"
       PROJECT_GROUPS="external"

@@ -27,6 +27,4 @@
 ##
 ############################################################################
 
-PROVIDES += "virtual/libgbm"
-
-DEPENDS_append_draak = " udev"
+EXTRA_OECONF_append_draak = " WAYLAND_PROTOCOLS_SYSROOT_DIR="

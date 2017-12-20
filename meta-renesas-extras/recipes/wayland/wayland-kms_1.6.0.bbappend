@@ -27,6 +27,4 @@
 ##
 ############################################################################
 
-PROVIDES += "virtual/libgbm"
-
-DEPENDS_append_draak = " udev"
+DEPENDS_append_draak = " wayland-native"

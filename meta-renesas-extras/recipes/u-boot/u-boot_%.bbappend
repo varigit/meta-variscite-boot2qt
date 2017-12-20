@@ -27,6 +27,14 @@
 ##
 ############################################################################
 
-PROVIDES += "virtual/libgbm"
+FILESEXTRAPATHS_prepend_draak := "${THISDIR}/${PN}:"
 
-DEPENDS_append_draak = " udev"
+SRC_URI_append_draak = " file://0001-compiler-.h-sync-include-linux-compiler-.h-with-Linu.patch"
+
+LICENSE_draak = "GPLv2+"
+
+S_draak = "${WORKDIR}/git"
+
+do_deploy_prepend_draak() {
+    cp ${B}/${UBOOT_SREC} ${S}/${UBOOT_SREC}
+}

@@ -27,6 +27,6 @@
 ##
 ############################################################################
 
-PROVIDES += "virtual/libgbm"
+FILESEXTRAPATHS_prepend_draak := "${THISDIR}/${PN}:"
 
-DEPENDS_append_draak = " udev"
+SRC_URI_append_draak = " file://0001-give-up-on-gcc-ilog2-constant-optimizations.patch"

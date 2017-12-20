@@ -83,6 +83,9 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     salvator-x|h3ulcb|m3ulcb|ebisu)
       LAYERSCONF="bblayers.conf.rcar-gen3.sample"
     ;;
+    draak)
+      LAYERSCONF="bblayers.conf.draak.sample"
+    ;;
     emulator)
       LAYERSCONF="bblayers.conf.emulator.sample"
     ;;
