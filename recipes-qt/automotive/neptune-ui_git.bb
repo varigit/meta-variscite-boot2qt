@@ -29,7 +29,10 @@
 
 DESCRIPTION = "Neptune IVI UI"
 LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=c41b4a3e669de55dfe304b8376b04a82"
+LIC_FILES_CHKSUM = "\
+    file://LICENSE.GPL3;md5=c41b4a3e669de55dfe304b8376b04a82 \
+    file://imports/assets/fonts/OFL.txt;md5=a729250f3548d9d2deab9bfeb8a7ad51 \
+"
 
 inherit qt5-module systemd
 require recipes-qt/qt5/qt5-git.inc
@@ -41,7 +44,7 @@ SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "2cf65ed117e8e4494b1ab66b35e3dc9a70234659"
+SRCREV = "24f9e00960ccbb3da1ab41899fee38864efe265f"
 
 DEPENDS = "qtbase qtdeclarative qttools-native qtquickcontrols2 qtapplicationmanager"
 RDEPENDS_${PN} = "qtivi qtvirtualkeyboard dbus \
@@ -51,14 +54,20 @@ RDEPENDS_${PN} = "qtivi qtvirtualkeyboard dbus \
 do_install_append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/neptune.service ${D}${systemd_unitdir}/system/
+
+    # Move the fonts to the system-wide font location
+    install -m 0755 -d ${D}${datadir}/fonts/ttf/
+    mv ${D}/usr/neptune-ui/imports/assets/fonts/*.ttf ${D}${datadir}/fonts/ttf/
+    rm -rf ${D}/usr/neptune-ui/imports/assets/fonts/
 }
 
 PACKAGES =+ "${PN}-apps"
 RRECOMMENDS_${PN} += "${PN}-apps"
 
-FILES_${PN}-apps += "/opt/neptune/apps"
+FILES_${PN}-apps += "/usr/neptune-ui/apps"
 FILES_${PN} += "\
-    /opt/neptune \
-    "
+    /usr/neptune-ui \
+    ${datadir}/fonts/ttf \
+"
 
 SYSTEMD_SERVICE_${PN} = "neptune.service"
