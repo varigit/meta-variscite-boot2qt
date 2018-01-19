@@ -27,19 +27,4 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
-SRC_URI += " \
-    file://0001-ARM-8158-1-LLVMLinux-use-static-inline-in-ARM-ftrace.patch \
-    file://0001-ARM-LLVMLinux-Change-extern-inline-to-static-inline-.patch \
-    file://0001-arm-Export-cache-flush-management-symbols-when-MULTI.patch \
-    "
-
-do_preconfigure_prepend() {
-    sed -e '/CONFIG_USB_FUNCTIONFS_ETH=/d' \
-        -e '/CONFIG_USB_FUNCTIONFS_RNDIS=/d' \
-        -i ${WORKDIR}/defconfig
-
-    echo "CONFIG_NAMESPACES=y"              >> ${WORKDIR}/defconfig
-    echo "CONFIG_FHANDLE=y"                 >> ${WORKDIR}/defconfig
-    echo "CONFIG_CGROUPS=y"                 >> ${WORKDIR}/defconfig
-}
+PACKAGECONFIG += "gbm kms"
