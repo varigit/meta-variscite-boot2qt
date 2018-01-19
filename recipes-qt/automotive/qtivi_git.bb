@@ -89,6 +89,19 @@ do_install_prepend() {
     set_python_paths
 }
 
+# This needs a modified python3 recipe which copies the binary into a path where this recipe can pick it up
+# This is needed to provide a proper executable using the correct interpreter in the SDK.
+# See https://bugreports.qt.io/browse/AUTOSUITE-176
+do_install_append_class-nativesdk() {
+    export IVIGENERATOR_ENABLED="${@bb.utils.contains("PACKAGECONFIG", "ivigenerator-native", "1", "0", d)}"
+
+    if [ "${IVIGENERATOR_ENABLED}" = "1" ]; then
+        cp ${STAGING_BINDIR}/qt5/python3* ${D}/${OE_QMAKE_PATH_BINS}/ivigenerator/qtivi_qface_virtualenv/bin/
+        rm -f ${D}/${OE_QMAKE_PATH_BINS}/ivigenerator/qtivi_qface_virtualenv/bin/python
+        ln -sf python3 ${D}/${OE_QMAKE_PATH_BINS}/ivigenerator/qtivi_qface_virtualenv/bin/python
+    fi
+}
+
 
 BBCLASSEXTEND += "native nativesdk"
 
