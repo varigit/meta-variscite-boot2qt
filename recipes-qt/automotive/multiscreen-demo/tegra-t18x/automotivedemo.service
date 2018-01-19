@@ -1,0 +1,13 @@
+[Unit]
+Description=AutomotiveDemo
+After=dbus.service dbus-session.service systemd-user-sessions.service
+Conflicts=neptune.service
+
+[Service]
+ExecStart=/usr/bin/appcontroller /usr/bin/appman -r --dbus session -c am-config.yaml
+Restart=on-failure
+WorkingDirectory=/opt/automotivedemo
+Environment=QT_QPA_EGLFS_KMS_CONFIG=kms_config.json
+
+[Install]
+WantedBy=multi-user.target
