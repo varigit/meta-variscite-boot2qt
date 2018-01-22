@@ -49,6 +49,8 @@ PACKAGECONFIG += " \
     xkbcommon-evdev \
     "
 
+PACKAGECONFIG_remove = "tests"
+
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
