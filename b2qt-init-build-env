@@ -106,6 +106,9 @@ get_groups() {
     all)
       PROJECT_GROUPS="external"
     ;;
+    apalis-imx8|imx8qmlpddr4arm2)
+      PROJECT_GROUPS="fsl-imx8"
+    ;;
     apalis-imx6|colibri-imx6|colibri-vf|colibri-imx7)
       PROJECT_GROUPS="toradex"
     ;;

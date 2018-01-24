@@ -14,6 +14,7 @@
   <remote fetch="git://git.linaro.org/openembedded" name="linaro"/>
   <remote fetch="git://git.toradex.com" name="toradex"/>
   <remote fetch="git://github.com/boundarydevices" name="boundary"/>
+  <remote fetch="git://github.com/toradex" name="toradex-github"/>
 
   <project name="poky"
            remote="yocto"
@@ -36,12 +37,12 @@
            remote="freescale"
            revision="06178400afbd641a6709473fd21d893dcd3cfbfa"
            path="sources/meta-freescale"
-           groups="notdefault,external,fsl,toradex,ti,smx6,renesas-gen3,boundary"/>
+           groups="notdefault,external,fsl,toradex,ti,smx6,renesas-gen3,boundary,fsl-imx8"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
            revision="9613dbc02ca970122a01c935bc9e5789ced73a9d"
            path="sources/meta-freescale-3rdparty"
-           groups="notdefault,external,fsl,toradex,smx6,boundary"/>
+           groups="notdefault,external,fsl,toradex,smx6,boundary,fsl-imx8"/>
   <project name="meta-ti"
            remote="yocto"
            revision="aca8f5d6ff8a529e00bdeae5b401c791ed6ecb2b"
@@ -87,6 +88,11 @@
            revision="42b00061076b2a6e15c1eeed7da6fc14a0dae9d8"
            path="sources/meta-boundary"
            groups="notdefault,external,boundary"/>
+  <project name="meta-fsl-bsp-release"
+           remote="toradex-github"
+           revision="d2b0d14c82da830584bc7f43ba1b83097c890454"
+           path="sources/meta-fsl-bsp-release"
+           groups="notdefault,external,fsl-imx8"/>
 
   <project name="nvidia-layer"
            remote="playground"
