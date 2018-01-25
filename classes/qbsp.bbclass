@@ -57,7 +57,7 @@ QBSP_LICENSE_NAME ?= ""
 QBSP_LICENSE_FILE_imx = "NXP-EULA"
 QBSP_LICENSE_NAME_imx = "NXP Semiconductors Software License Agreement"
 
-VERSION_AUTO_INCREMENT = "-0-${DATETIME}"
+VERSION_AUTO_INCREMENT = "-${DATETIME}"
 VERSION_AUTO_INCREMENT[vardepsexclude] = "DATETIME"
 
 DEPLOY_CONF_NAME ?= "${MACHINE}"
@@ -84,7 +84,7 @@ patch_installer_files() {
         -e "s#@RELEASEDATE@#${RELEASEDATE}#" \
         -e "s#@MACHINE@#${MACHINE}#" \
         -e "s#@SYSROOT@#${REAL_MULTIMACH_TARGET_SYS}#" \
-        -e "s#@TARGET@#${TARGET_SYS}#" \
+        -e "s#@TARGET_SYS@#${TARGET_SYS}#" \
         -e "s#@ABI@#${ABI}#" \
         -e "s#@INSTALLPATH@#${QBSP_INSTALL_PATH}#" \
         -e "s#@SDKPATH@#${SDKPATH}#" \

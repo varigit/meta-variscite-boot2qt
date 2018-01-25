@@ -40,7 +40,7 @@ inherit qbsp
 
 PV := "${@d.getVar('PV', True)[0:5]}"
 
-QBSP_NAME = "Qt Automotive"
+QBSP_NAME = "Automotive ${PV}"
 QBSP_MACHINE = "${@d.getVar('MACHINE', True).replace('-','')}"
 QBSP_INSTALLER_COMPONENT = "automotive.10.yocto.${QBSP_MACHINE}"
 QBSP_INSTALL_PATH = "/${PV}/Automotive/${MACHINE}"

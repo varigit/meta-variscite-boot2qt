@@ -2,7 +2,7 @@
 <Package>
   <Version>@VERSION@</Version>
   <ReleaseDate>@RELEASEDATE@</ReleaseDate>
-  <DisplayName>@MACHINE@ Linux System</DisplayName>
+  <DisplayName>@TARGET@ Linux System</DisplayName>
   <Description>System image for @TARGET@ hardware</Description>
   <DownloadableArchives>image.7z</DownloadableArchives>
 </Package>
