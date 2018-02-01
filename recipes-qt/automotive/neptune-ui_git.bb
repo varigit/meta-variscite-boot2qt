@@ -1,6 +1,7 @@
 ############################################################################
 ##
 ## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 Pelagicore AG.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -41,7 +42,7 @@ SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "644c1e15abebe0e2cc71bfc2f36253c0cb0f4b61"
+SRCREV = "dedb15175d6efc9489b6b9894757b4d7cc260e0e"
 
 DEPENDS = "qtbase qtdeclarative qttools-native qtquickcontrols2 qtapplicationmanager"
 RDEPENDS_${PN} = "qtivi qtvirtualkeyboard dbus \
