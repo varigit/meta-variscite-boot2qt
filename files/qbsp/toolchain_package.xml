@@ -2,7 +2,7 @@
 <Package>
   <Version>@VERSION@</Version>
   <ReleaseDate>@RELEASEDATE@</ReleaseDate>
-  <DisplayName>@MACHINE@ Linux Toolchain</DisplayName>
+  <DisplayName>@TARGET@ Linux Toolchain</DisplayName>
   <Description>Toolchain and system root for @TARGET@</Description>
   <DownloadableArchives>toolchain.7z</DownloadableArchives>
   <Dependencies>qt.tools.qtcreator</Dependencies>

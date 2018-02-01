@@ -41,7 +41,7 @@ inherit qbsp
 PV := "${@d.getVar('PV', True).split('+')[0]}"
 
 VERSION_SHORT = "${@d.getVar('PV', True).replace('.','')}"
-QBSP_NAME = "Boot to Qt"
+QBSP_NAME = "Boot2Qt ${PV}"
 QBSP_MACHINE = "${@d.getVar('MACHINE', True).replace('-','')}"
 QBSP_INSTALLER_COMPONENT = "qt.embedded.b2qt.${VERSION_SHORT}.yocto.${QBSP_MACHINE}"
 QBSP_INSTALL_PATH = "/${PV}/Boot2Qt/${MACHINE}"

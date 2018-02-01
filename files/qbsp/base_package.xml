@@ -2,7 +2,7 @@
 <Package>
   <Version>@VERSION@</Version>
   <ReleaseDate>@RELEASEDATE@</ReleaseDate>
-  <DisplayName>@NAME@</DisplayName>
+  <DisplayName>@TARGET@</DisplayName>
   <Description>@NAME@ for @TARGET@</Description>
   <Dependencies>@LICENSEDEPENDENCY@</Dependencies>
 </Package>
