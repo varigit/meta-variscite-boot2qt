@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -34,7 +34,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=43a31c6abffdd61c938811959b3c1b71"
 inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
-SRCREV = "b956d8ff205eaaf2e8f83446e2023fd491562669"
+SRCREV = "2c5aa14677e3038ee46bf727122f090497e777ba"
 
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \
            ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"

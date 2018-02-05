@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -50,7 +50,7 @@ SRC_URI += " \
     file://0001-Use-QT_HOST_BINS-get-for-getting-correct-path.patch \
 "
 
-SRCREV_qtivi = "30cda3fdc858b0bc53fd018c77f79b80a1d312aa"
+SRCREV_qtivi = "81fc854f8652438fd8e9d9e0c3accd0bfeb74f68"
 SRCREV_qface = "9da793d6cbc63d617ad5e2ffd13e9f6d055c88e8"
 SRCREV = "${SRCREV_qtivi}"
 SRCREV_FORMAT = "qtivi_qface"
