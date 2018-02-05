@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,25 +27,8 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Qt Quick Compiler"
-LICENSE = "The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://compiler/qtquickcompiler.h;md5=02f6307ab0d6c4bd38a1540f16ea705d;beginline=1;endline=17"
+PACKAGECONFIG += "qml-debug"
 
-inherit qt5-module
-
-SRC_URI = " \
-    git://codereview.qt-project.org/qt/tqtc-qmlcompiler;nobranch=1;protocol=ssh \
-    "
-
-SRCREV = "4e05e09f19bac2901cb16bf1229e396930b831ee"
-
-S = "${WORKDIR}/git"
-
-DEPENDS = "qtbase qtdeclarative"
-
-do_install_append() {
-    # Use the EffectivePath instead of installation path
-    sed -i -e 's|QT_HOST_BINS|QT_HOST_BINS/get|' ${D}${OE_QMAKE_PATH_ARCHDATA}/mkspecs/features/qtquickcompiler.prf
-}
-
-BBCLASSEXTEND = "native nativesdk"
+FILES_${PN}-plugins_mingw32 = " \
+    ${OE_QMAKE_PATH_PLUGINS}/*/*.dll \
+"

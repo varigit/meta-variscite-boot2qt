@@ -27,7 +27,5 @@
 ##
 ############################################################################
 
-inherit qtquickcompiler
-
-PACKAGECONFIG = "lipi-toolkit lang-all hunspell"
+PACKAGECONFIG_append = " hunspell"
 RDEPENDS_${PN} += "hunspell-dicts"

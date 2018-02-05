@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,27 +27,4 @@
 ##
 ############################################################################
 
-python __anonymous() {
-    if d.getVar('DISABLE_QTQUICKCOMPILER', True) == "1":
-        return
-
-    provider = ""
-    sdk_path = d.getVar('B2QTBASE', True) + "/recipes-qt/qt5-addons/qtquickcompiler-sdk"
-    pn = d.getVar("PN", True)
-
-    if d.getVar('ENABLE_QTQUICKCOMPILER', True) == "1":
-        provider = "qtquickcompiler"
-    elif os.path.isdir(sdk_path):
-        provider = "qtquickcompiler-sdk"
-    else:
-        bb.note("qtquickcompiler not enabled for %s" % pn)
-        return
-
-    if "toolchain-host" in pn:
-        d.appendVar('RDEPENDS_' + pn, " nativesdk-%s-tools" % provider)
-    if "toolchain-target" in pn:
-        d.appendVar('RDEPENDS_' + pn, " %s-dev" % provider)
-    else:
-        d.appendVar('DEPENDS', " %s %s-native" % (provider, provider))
-        d.appendVar('EXTRA_QMAKEVARS_PRE', " CONFIG+=qtquickcompiler")
-}
+EXTRA_QMAKEVARS_PRE += "CONFIG+=qtquickcompiler"

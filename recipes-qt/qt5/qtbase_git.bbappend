@@ -43,7 +43,6 @@ PACKAGECONFIG += " \
     icu \
     libinput \
     linuxfb \
-    qml-debug \
     sql-sqlite \
     tslib \
     xkbcommon-evdev \
