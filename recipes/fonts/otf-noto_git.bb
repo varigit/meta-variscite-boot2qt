@@ -45,8 +45,7 @@ S = "${WORKDIR}/git"
 
 do_install() {
     install -m 0755 -d ${D}${datadir}/fonts/otf/noto
-    install -m 0644 ${S}/NotoSansCJKsc-*.otf ${D}${datadir}/fonts/otf/noto
-    install -m 0644 ${S}/NotoSansMonoCJKsc-*.otf ${D}${datadir}/fonts/otf/noto
+    install -m 0644 ${S}/NotoSansCJKsc-Regular.otf ${D}${datadir}/fonts/otf/noto
 }
 
 PACKAGES = "${PN}"
