@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -43,6 +43,6 @@ SRC_URI = " \
     git://codereview.qt-project.org/qt/qtdeviceutilities;${QT_MODULE_BRANCH_PARAM};protocol=http \
     "
 
-SRCREV = "b5eea82532059738a7da751222ebef68539508f1"
+SRCREV = "e0a8b06317bb51ca844818682ebec3cd2c2b5108"
 
 DEPENDS = "qtbase qtdeclarative qtconnectivity"
