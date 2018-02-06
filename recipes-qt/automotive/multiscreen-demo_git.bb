@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -42,7 +42,7 @@ SRC_URI += "\
     file://automotivedemo.service \
     "
 
-SRCREV_multiscreen-demo = "e7126b85bacab4571da6d8b5ba8517f3bb0abd47"
+SRCREV_multiscreen-demo = "6d02e36c4280cee5b0c31323016ae666c73afef4"
 SRCREV_assets = "0d47d21f082d6c9e355a55809ebd38a31ea02264"
 
 SRCREV_FORMAT = "multiscreen-demo_assets"
