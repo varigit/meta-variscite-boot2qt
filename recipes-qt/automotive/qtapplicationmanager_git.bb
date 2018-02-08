@@ -29,12 +29,12 @@
 
 DESCRIPTION = "Qt component for application lifecycle management"
 LICENSE = "(GFDL-1.3 & The-Qt-Company-GPL-Exception-1.0 & (LGPL-3.0 | GPL-2.0+)) | The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=43a31c6abffdd61c938811959b3c1b71"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=ff238b33ff354a0d8d79851a9c061717"
 
 inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
-SRCREV = "76cb60941c69e049f7cd740a099f020dd2ed0ba5"
+SRCREV = "8df633d8195f16221ca348d527ab8671142f7426"
 
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \
            ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
