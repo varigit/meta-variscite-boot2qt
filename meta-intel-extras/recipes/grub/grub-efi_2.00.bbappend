@@ -34,7 +34,7 @@ CFLAGS_append_class-native = " -Wno-error=packed-not-aligned"
 
 do_install[depends] += " \
     virtual/kernel:do_deploy \
-    ${INITRAMFS_IMAGE}:do_rootfs \
+    ${INITRAMFS_IMAGE}:do_image_complete \
     ${@bb.utils.contains('MACHINE_FEATURES', 'intel-ucode', 'intel-microcode:do_deploy', '', d)} \
 "
 
