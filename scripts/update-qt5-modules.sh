@@ -53,9 +53,8 @@ for S in $SHA1S; do
     elif [ "${PROJECT}" = "qtlocation/src/3rdparty/mapbox-gl-native" ]; then
         sed -i -e "/^SRCREV_qtlocation-mapboxgl/s/\".*\"/\"${SHA1}\"/" qtlocation_git.bb*
         echo "qtlocation (mapboxgl) -> ${SHA1}"
-    elif [ "${PROJECT}" = "tqtc-qmlcompiler" ] && [ -e "qtquickcompiler_git.bb" ]; then
-        sed -i -e "/^SRCREV/s/\".*\"/\"${SHA1}\"/" qtquickcompiler_git.bb
-        echo "qtquickcompiler -> ${SHA1}"
+    elif [ "${PROJECT}" = "qtenginio" ] || [ "${PROJECT}" = "qtquick1" ] || [ "${PROJECT}" = "qtsystems" ]; then
+        echo "${PROJECT} -> ignored"
     elif [ "$(echo *${PROJECT}*_git.bb*)" != "*${PROJECT}*_git.bb*" ]; then
         sed -i -e "/^SRCREV/s/\".*\"/\"${SHA1}\"/" *${PROJECT}*_git.bb*
         echo "${PROJECT} -> ${SHA1}"

@@ -31,7 +31,7 @@ DESCRIPTION = "Host packages for B2Qt embedded Qt5 SDK"
 LICENSE = "The-Qt-Company-DCLA-2.1"
 PR = "r0"
 
-inherit nativesdk packagegroup qtquickcompiler
+inherit nativesdk packagegroup
 
 python __anonymous() {
     overrides = d.getVar("OVERRIDES", True).split(":")
