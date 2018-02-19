@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -43,7 +43,7 @@ SRC_URI += " \
     file://b2qt.service \
     "
 
-SRCREV = "d2ec2dc7034c31e3602003b55d5f2a2c98983651"
+SRCREV = "8d7fe0e4b8852a16469a6d0fe910309e8964ab58"
 
 DEPENDS = "qtbase qtdeclarative \
            ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
