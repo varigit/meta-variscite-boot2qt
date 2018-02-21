@@ -46,5 +46,6 @@ RDEPENDS_${PN} = "\
         perf \
         rsync \
         tslib-calibrate \
+        valgrind \
         ${@bb.utils.contains("DISTRO_FEATURES", "systemd", "systemd-analyze", "", d)} \
         "
