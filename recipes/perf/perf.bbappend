@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,5 +27,4 @@
 ##
 ############################################################################
 
-PERF_FEATURES_ENABLE = "perf-libunwind"
-EXTRA_OEMAKE_remove = "NO_DWARF=1"
+PACKAGECONFIG_append = " libunwind"
