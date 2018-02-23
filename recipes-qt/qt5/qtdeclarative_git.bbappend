@@ -27,8 +27,6 @@
 ##
 ############################################################################
 
-PACKAGECONFIG += "qml-debug"
-
 FILES_${PN}-plugins_mingw32 = " \
     ${OE_QMAKE_PATH_PLUGINS}/*/*.dll \
 "
