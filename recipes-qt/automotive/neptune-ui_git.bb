@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -37,8 +37,7 @@ LIC_FILES_CHKSUM = "\
 inherit qt5-module systemd
 require recipes-qt/qt5/qt5-git.inc
 
-QT_GIT = "git://github.com/qtproject"
-QT_MODULE = "qt-apps-neptune-ui"
+QT_GIT_PROJECT = "qt-apps"
 
 SRC_URI += " \
     file://neptune.service \

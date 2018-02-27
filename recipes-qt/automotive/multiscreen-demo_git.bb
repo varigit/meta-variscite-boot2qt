@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -34,7 +34,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL3-EXCEPT;md5=763d8c535a234d9a3fb682c7ecb6c
 inherit qt5-module systemd
 require recipes-qt/qt5/qt5-git.inc
 
-QT_GIT = "git://code.qt.io/qt-apps"
+QT_GIT_PROJECT = "qt-apps"
 QT_MODULE_BRANCH = "master"
 
 SRC_URI += "git://github.com/qtproject/qt-apps-demo-assets;protocol=git;name=assets;destsuffix=git/demo-assets"
