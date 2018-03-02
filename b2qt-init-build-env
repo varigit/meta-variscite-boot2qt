@@ -153,7 +153,7 @@ get_groups() {
 
 list_devices() {
   echo "Available device configurations:"
-  for device in $(ls $DIR/conf/distro/include/*.conf); do
+  for device in $(ls ${DIR}/meta-boot2qt-distro/conf/distro/include/*.conf); do
     echo "  $(basename ${device%%.conf})"
   done
 }
