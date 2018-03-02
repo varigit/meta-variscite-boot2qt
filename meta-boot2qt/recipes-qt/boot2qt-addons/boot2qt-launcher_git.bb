@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,30 +27,38 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Boot to Qt Appcontroller"
-LICENSE = "The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://main.cpp;md5=f25c7436dbc72d4719a5684b28dbcf4b;beginline=1;endline=17"
+DESCRIPTION = "Boot to Qt Demo Launcher"
+LICENSE = "(BSD & GPL-3.0) | The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit qmake5
 require recipes-qt/qt5/qt5-git.inc
 
-SRC_URI = " \
-    git://codereview.qt-project.org/qt-apps/boot2qt-appcontroller;${QT_MODULE_BRANCH_PARAM};protocol=http \
-    file://appcontroller.conf \
+QT_GIT_PROJECT = "qt-apps"
+
+SRC_URI += " \
+    file://b2qt-startup.sh \
+    file://qtlauncher.service \
+    file://b2qt.service \
     "
 
-SRCREV = "5ab7fdbf0845c40418272bafa565295511055d3b"
+SRCREV = "8d7fe0e4b8852a16469a6d0fe910309e8964ab58"
 
-DEPENDS = "qtbase"
-
-do_configure_append() {
-    sed -i -e '/^platform=/d' ${WORKDIR}/appcontroller.conf
-    echo platform=${MACHINE} >> ${WORKDIR}/appcontroller.conf
-}
+DEPENDS = "qtbase qtdeclarative \
+           ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
 
 do_install_append() {
-    install -m 0755 -d ${D}${sysconfdir}
-    install -m 0755 ${WORKDIR}/appcontroller.conf ${D}${sysconfdir}/
+    install -m 0755 -d ${D}${sysconfdir}/init.d
+    install -m 0755 ${WORKDIR}/b2qt-startup.sh ${D}${sysconfdir}/init.d/
+
+    install -m 0755 -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/qtlauncher.service ${D}${systemd_unitdir}/system/
+    install -m 0644 ${WORKDIR}/b2qt.service ${D}${systemd_unitdir}/system/
 }
 
-FILES_${PN} += "${sysconfdir}/appcontroller.conf"
+INITSCRIPT_NAME = "b2qt-startup.sh"
+INITSCRIPT_PARAMS = "defaults 30"
+
+SYSTEMD_SERVICE_${PN} = "qtlauncher.service b2qt.service"
+
+inherit update-rc.d systemd

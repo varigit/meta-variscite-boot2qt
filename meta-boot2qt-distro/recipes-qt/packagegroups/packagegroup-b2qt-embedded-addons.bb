@@ -35,9 +35,9 @@ inherit packagegroup
 PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
 RDEPENDS_${PN} += " \
-    b2qt-appcontroller \
-    b2qt-launcher \
-    b2qt-demos \
+    boot2qt-appcontroller \
+    boot2qt-launcher \
+    boot2qt-demos \
     ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "democompositor", "", d)} \
-    qdbd \
+    qdb \
     "

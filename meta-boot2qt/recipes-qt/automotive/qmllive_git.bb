@@ -27,46 +27,23 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Qt Debug Bridge Daemon"
-SECTION = "devel"
-LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
+DESCRIPTION = "QML Live target runtime"
 
-inherit distro_features_check
+LICENSE = "GPL-3.0"
+LIC_FILES_CHKSUM = "file://../../LICENSE.GPL3;md5=75cd0dbc6f2d24e7eeb128ff59b74f4c"
+
 inherit qmake5
 require recipes-qt/qt5/qt5-git.inc
 
 QT_GIT_PROJECT = "qt-apps"
-QT_MODULE = "qdb"
-QT_MODULE_BRANCH = "5.9"
+QT_MODULE_BRANCH = "master"
 
-SRC_URI += "file://b2qt-gadget-network.sh \
-           file://defaults \
-           file://qdbd.service \
-           file://qdbd-init.sh \
-          "
+SRC_URI += " \
+    file://qmllive-target.patch \
+    "
 
-SRCREV = "69f95b6a8d2ca0912a8d502a2b6871109725731e"
-PV = "1.1.0+git${SRCPV}"
+SRCREV = "d0d41c71c4691a5f3e2b72e22917f314b4190ffc"
 
-REQUIRED_DISTRO_FEATURES = "systemd"
-DEPENDS = "qtbase"
-RRECOMMENDS_${PN} += "kernel-module-usb-f-fs kernel-module-usb-f-rndis"
+S = "${WORKDIR}/git/src/runtime"
 
-EXTRA_QMAKEVARS_PRE = "CONFIG+=daemon_only"
-
-do_install_append() {
-    install -m 0755 ${WORKDIR}/b2qt-gadget-network.sh ${D}${bindir}/
-
-    install -m 0755 ${WORKDIR}/qdbd-init.sh ${D}${bindir}/
-
-    install -m 0755 -d ${D}${systemd_unitdir}/system
-    install -m 0644 ${WORKDIR}/qdbd.service ${D}${systemd_unitdir}/system/
-
-    install -m 0755 -d ${D}${sysconfdir}/default
-    install -m 0644 ${WORKDIR}/defaults ${D}${sysconfdir}/default/qdbd
-}
-
-SYSTEMD_SERVICE_${PN} = "qdbd.service"
-
-inherit systemd
+DEPENDS = "qtbase qtdeclarative"

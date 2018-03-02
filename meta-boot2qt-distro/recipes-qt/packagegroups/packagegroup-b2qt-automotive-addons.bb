@@ -35,13 +35,13 @@ inherit packagegroup
 PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
 RDEPENDS_${PN} += " \
-    b2qt-appcontroller \
+    boot2qt-appcontroller \
     qtivi \
     neptune-ui \
     neptune-ui-apps \
     ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebbrowser', '', d)} \
     gammaray \
-    qmllive-target \
+    qmllive \
     multiscreen-demo \
-    qdbd \
+    qdb \
     "

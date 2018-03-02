@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,24 +27,29 @@
 ##
 ############################################################################
 
-DESCRIPTION = "QML Live target runtime"
-
-LICENSE = "GPL-3.0"
-LIC_FILES_CHKSUM = "file://../../LICENSE.GPL3;md5=75cd0dbc6f2d24e7eeb128ff59b74f4c"
+DESCRIPTION = "Boot to Qt Appcontroller"
+LICENSE = "The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://main.cpp;md5=f25c7436dbc72d4719a5684b28dbcf4b;beginline=1;endline=17"
 
 inherit qmake5
 require recipes-qt/qt5/qt5-git.inc
 
 QT_GIT_PROJECT = "qt-apps"
-QT_MODULE = "qmllive"
-QT_MODULE_BRANCH = "master"
 
-SRC_URI += " \
-    file://qmllive-target.patch \
-    "
+SRC_URI += "file://appcontroller.conf"
 
-SRCREV = "d0d41c71c4691a5f3e2b72e22917f314b4190ffc"
+SRCREV = "5ab7fdbf0845c40418272bafa565295511055d3b"
 
-S = "${WORKDIR}/git/src/runtime"
+DEPENDS = "qtbase"
 
-DEPENDS = "qtbase qtdeclarative"
+do_configure_append() {
+    sed -i -e '/^platform=/d' ${WORKDIR}/appcontroller.conf
+    echo platform=${MACHINE} >> ${WORKDIR}/appcontroller.conf
+}
+
+do_install_append() {
+    install -m 0755 -d ${D}${sysconfdir}
+    install -m 0755 ${WORKDIR}/appcontroller.conf ${D}${sysconfdir}/
+}
+
+FILES_${PN} += "${sysconfdir}/appcontroller.conf"
