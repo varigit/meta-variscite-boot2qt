@@ -191,10 +191,6 @@ init() {
     ln -s ${DIR} sources/meta-boot2qt
   fi
 
-  if [ ! -e "sources/meta-qt5" ]  && [ -e "${DIR}/../meta-qt5" ]; then
-    ln -s $(readlink -f ${DIR}/../meta-qt5) sources/meta-qt5
-  fi
-
   if [ ! -e "setup-environment.sh" ]; then
     ln -s ${DIR}/scripts/setup-environment.sh setup-environment.sh
   fi
