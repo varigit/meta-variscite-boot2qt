@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -34,8 +34,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPLv3;md5=a40e2bb02b1ac431f461afd03ff9d1d6"
 inherit qmake5
 require recipes-qt/qt5/qt5-git.inc
 
-QT_GIT = "git://github.com/qtproject"
-QT_MODULE = "qt-apps-qtwebbrowser"
+QT_GIT_PROJECT = "qt-apps"
 QT_MODULE_BRANCH = "dev"
 
 SRCREV = "023733af5523a5ad84359926224fa106001215f4"

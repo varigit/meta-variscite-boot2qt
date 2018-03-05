@@ -35,7 +35,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=c41b4a3e669de55dfe304b8376b04a82"
 inherit qt5-module systemd
 require recipes-qt/qt5/qt5-git.inc
 
-QT_GIT = "git://code.qt.io/qt-apps"
+QT_GIT_PROJECT = "qt-apps"
 
 SRC_URI += " \
     file://neptune.service \

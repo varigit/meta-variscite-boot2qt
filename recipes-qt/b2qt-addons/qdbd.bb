@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -36,9 +36,9 @@ inherit distro_features_check
 inherit qmake5
 require recipes-qt/qt5/qt5-git.inc
 
-QT_GIT = "git://github.com/qtproject"
-QT_MODULE = "qt-apps-qdb"
-QT_MODULE_BRANCH = "5.8"
+QT_GIT_PROJECT = "qt-apps"
+QT_MODULE = "qdb"
+QT_MODULE_BRANCH = "5.9"
 
 SRC_URI += "file://b2qt-gadget-network.sh \
            file://defaults \
