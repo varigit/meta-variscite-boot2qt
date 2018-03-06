@@ -44,6 +44,7 @@ RDEPENDS_${PN} = "\
         ldd \
         openssh-sftp-server \
         perf \
+        procps \
         rsync \
         tslib-calibrate \
         valgrind \
