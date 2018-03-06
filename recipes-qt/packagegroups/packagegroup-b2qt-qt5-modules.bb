@@ -73,6 +73,7 @@ RDEPENDS_${PN} += " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine qttranslations-qtwebengine qtwebview', '', d)} \
     qtwebsockets \
     qtwebchannel \
+    qtwebglplugin \
     qtxmlpatterns \
     qtvirtualkeyboard \
     "
