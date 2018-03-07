@@ -36,4 +36,5 @@ inherit nativesdk packagegroup
 RDEPENDS_${PN} += "\
     nativesdk-packagegroup-b2qt-embedded-qt5-toolchain-host \
     nativesdk-qtapplicationmanager-tools \
+    nativesdk-qtivi-tools \
     "

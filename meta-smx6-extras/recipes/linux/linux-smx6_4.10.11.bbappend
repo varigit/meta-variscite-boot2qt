@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,19 +27,7 @@
 ##
 ############################################################################
 
-include conf/distro/include/fsl.inc
-
-DEPLOY_CONF_NAME = "Kontron SMARC-sAMX6i"
-
-KERNEL_IMAGETYPE = "uImage"
-
-MACHINE_EXTRA_INSTALL += "\
-        kernel-devicetree \
-        "
-
-KERNEL_MODULE_AUTOLOAD += "mxc_v4l2_capture"
-
-BBMASK += "meta-smx6/recipes-qt"
-
-# examples is added in meta-smx6 layer conf
-PACKAGECONFIG_remove_pn-qtbase = "examples"
+do_configure_prepend() {
+    echo "CONFIG_NAMESPACES=y"              >> ${WORKDIR}/defconfig
+    echo "CONFIG_CGROUPS=y"                 >> ${WORKDIR}/defconfig
+}

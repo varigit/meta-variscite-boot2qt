@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -50,8 +50,8 @@ SRC_URI += " \
     file://0001-Use-QT_HOST_BINS-get-for-getting-correct-path.patch \
 "
 
-SRCREV_qtivi = "aeb240744ce9fc7937f5879271aca2f84a682e6a"
-SRCREV_qface = "295824c8df7f74af8f3d1f368ec15942e6622f22"
+SRCREV_qtivi = "8d482b27c6c0c2b664104fd777ddee92652ab65c"
+SRCREV_qface = "9da793d6cbc63d617ad5e2ffd13e9f6d055c88e8"
 SRCREV = "${SRCREV_qtivi}"
 SRCREV_FORMAT = "qtivi_qface"
 
@@ -63,9 +63,14 @@ PACKAGECONFIG[geniviextras-only] = "QMAKE_EXTRA_ARGS+=--geniviextras-only"
 PACKAGECONFIG[ivigenerator] = "QMAKE_EXTRA_ARGS+=-system-ivigenerator"
 PACKAGECONFIG[ivigenerator-native] = "QMAKE_EXTRA_ARGS+=-qt-ivigenerator,,python3 python3-virtualenv"
 PACKAGECONFIG[host-tools-only] = "QMAKE_EXTRA_ARGS+=-host-tools-only"
+PACKAGECONFIG[simulator] = "QMAKE_EXTRA_ARGS+=-feature-simulator,QMAKE_EXTRA_ARGS+=-no-feature-simulator,qtsimulator"
+PACKAGECONFIG[simulator-native] = "QMAKE_EXTRA_ARGS+=-feature-simulator QMAKE_EXTRA_ARGS+=--force-ivigenerator-qtsimulator"
 
 PACKAGECONFIG_class-native ??= "host-tools-only ivigenerator-native"
 PACKAGECONFIG_class-nativesdk ??= "${PACKAGECONFIG_class-native}"
+PACKAGECONFIG_class-nativesdk_mingw32 ??= "host-tools-only"
+
+ALLOW_EMPTY_${PN}-tools = "1"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS} ${@bb.utils.contains_any('PACKAGECONFIG', 'ivigenerator ivigenerator-native', '', 'QMAKE_EXTRA_ARGS+=-no-ivigenerator', d)}"
 
@@ -84,7 +89,22 @@ do_install_prepend() {
     set_python_paths
 }
 
+# This needs a modified python3 recipe which copies the binary into a path where this recipe can pick it up
+# This is needed to provide a proper executable using the correct interpreter in the SDK.
+# See https://bugreports.qt.io/browse/AUTOSUITE-176
+do_install_append_class-nativesdk() {
+    export IVIGENERATOR_ENABLED="${@bb.utils.contains("PACKAGECONFIG", "ivigenerator-native", "1", "0", d)}"
+
+    if [ "${IVIGENERATOR_ENABLED}" = "1" ]; then
+        cp ${STAGING_BINDIR}/qt5/python3* ${D}/${OE_QMAKE_PATH_BINS}/ivigenerator/qtivi_qface_virtualenv/bin/
+        rm -f ${D}/${OE_QMAKE_PATH_BINS}/ivigenerator/qtivi_qface_virtualenv/bin/python
+        ln -sf python3 ${D}/${OE_QMAKE_PATH_BINS}/ivigenerator/qtivi_qface_virtualenv/bin/python
+    fi
+}
+
 
 BBCLASSEXTEND += "native nativesdk"
 
 INSANE_SKIP_${PN}_class-native = "already-stripped"
+INSANE_SKIP_${PN}_class-nativesdk = "already-stripped"
+INSANE_SKIP_${PN}-tools_class-nativesdk = "staticdev"
