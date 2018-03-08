@@ -96,6 +96,11 @@ main() {
 
     early_setup
     read_args
+
+    if [ -f init-device ]; then
+        source init-device
+    fi
+
     switch_real_root
 }
 
