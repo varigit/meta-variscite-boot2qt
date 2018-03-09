@@ -39,4 +39,5 @@ RDEPENDS_${PN} += " \
     qtivi-dev \
     libarchive-dev \
     qtapplicationmanager-dev \
+    qtapplicationmanager-staticdev \
     "

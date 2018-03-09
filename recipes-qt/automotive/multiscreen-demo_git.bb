@@ -37,13 +37,15 @@ require recipes-qt/qt5/qt5-git.inc
 QT_GIT_PROJECT = "qt-apps"
 QT_MODULE_BRANCH = "master"
 
-SRC_URI += "git://github.com/qtproject/qt-apps-demo-assets;protocol=git;name=assets;destsuffix=git/demo-assets"
+SRC_URI += "\
+    git://github.com/qtproject/qt-apps-demo-assets;protocol=git;name=assets;destsuffix=git/demo-assets \
+    file://automotivedemo.service \
+    "
 
-SRCREV_multiscreen = "f4cd6b9667b4649b4ef8b4bb645850b05aceebde"
+SRCREV_multiscreen-demo = "6d02e36c4280cee5b0c31323016ae666c73afef4"
 SRCREV_assets = "0d47d21f082d6c9e355a55809ebd38a31ea02264"
 
-SRCREV_FORMAT = "multiscreen_assets"
-SRCREV = "${SRCREV_multiscreen}"
+SRCREV_FORMAT = "multiscreen-demo_assets"
 
 DEPENDS = "qtbase qtdeclarative qt3d"
 RDEPENDS_${PN} = "qtapplicationmanager qtivi qtvirtualkeyboard"
@@ -51,10 +53,10 @@ RDEPENDS_${PN} = "qtapplicationmanager qtivi qtvirtualkeyboard"
 EXTRA_QMAKEVARS_PRE += "INSTALL_PREFIX=/opt"
 
 do_install_append() {
-    install -m 0755 ${S}/start.sh ${D}/opt/automotivedemo/
+    rm ${D}/opt/automotivedemo/start.sh
 
     install -d ${D}${systemd_system_unitdir}
-    install -m 0644 ${S}/scripts/automotivedemo.service ${D}${systemd_system_unitdir}/
+    install -m 0644 ${WORKDIR}/automotivedemo.service ${D}${systemd_system_unitdir}/
 }
 
 FILES_${PN} += "\

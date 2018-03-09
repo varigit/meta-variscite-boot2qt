@@ -105,7 +105,7 @@
            groups="notdefault,internal"/>
   <project name="meta-smx6"
            remote="playground"
-           revision="c2f639ef4b2fd5809ab95fb330d28c2716aa290d"
+           revision="ba2b99a9a5895033f081ffce25b0fd45e847c4c2"
            path="sources/meta-smx6"
            groups="notdefault,internal"/>
 </manifest>

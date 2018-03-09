@@ -1,6 +1,7 @@
 ############################################################################
 ##
 ## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2018 Pelagicore AG.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -43,7 +44,7 @@ SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "24f9e00960ccbb3da1ab41899fee38864efe265f"
+SRCREV = "7b64754e5d1aa3ea3b63347bc5637bae9795e193"
 
 DEPENDS = "qtbase qtdeclarative qttools-native qtquickcontrols2 qtapplicationmanager"
 RDEPENDS_${PN} = "qtivi qtvirtualkeyboard dbus \
@@ -67,6 +68,6 @@ FILES_${PN}-apps += "/usr/neptune-ui/apps"
 FILES_${PN} += "\
     /usr/neptune-ui \
     ${datadir}/fonts/ttf \
-"
+    "
 
 SYSTEMD_SERVICE_${PN} = "neptune.service"

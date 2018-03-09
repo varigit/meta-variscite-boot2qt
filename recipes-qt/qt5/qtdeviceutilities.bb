@@ -39,10 +39,6 @@ PACKAGECONFIG[wpasupplicant] = "CONFIG+=wpasupplicant,,wpa-supplicant"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
-SRC_URI = " \
-    git://codereview.qt-project.org/qt/qtdeviceutilities;${QT_MODULE_BRANCH_PARAM};protocol=http \
-    "
-
 SRCREV = "796fff1debaa161483515779bb68999948d48c59"
 
 DEPENDS = "qtbase qtdeclarative qtconnectivity"
