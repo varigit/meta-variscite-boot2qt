@@ -77,3 +77,7 @@ RDEPENDS_${PN} += " \
     qtxmlpatterns \
     qtvirtualkeyboard \
     "
+
+RDEPENDS_${PN} += "\
+    ${@ "qtquicktimeline qmlpreview" if (d.getVar("QT_INTERNAL_BUILD")) else "" } \
+    "

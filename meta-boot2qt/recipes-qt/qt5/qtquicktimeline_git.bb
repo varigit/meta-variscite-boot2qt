@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,55 +27,18 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Target packages for B2Qt embedded Qt5 SDK"
+DESCRIPTION = "Qt Quick Timeline"
 LICENSE = "The-Qt-Company-DCLA-2.1"
-PR = "r0"
+LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
 
-inherit packagegroup
+inherit qt5-module
+require recipes-qt/qt5/qt5-git.inc
 
-PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
+SRCREV = "7ee1adca536b422623de1fe8da44135aeee6e9cf"
+BRANCH = "dev"
 
-MACHINE_EXTRA_INSTALL_SDK ?= ""
-
-RDEPENDS_${PN} += " \
-    ${MACHINE_EXTRA_INSTALL_SDK} \
-    packagegroup-core-standalone-sdk-target \
-    \
-    qt3d-dev \
-    qtbase-dev \
-    qtbase-staticdev \
-    qtbase-doc \
-    qtcanvas3d-dev \
-    qtcharts-dev \
-    qtconnectivity-dev \
-    qtdatavis3d-dev \
-    qtdeclarative-dev \
-    qtdeclarative-staticdev \
-    qtdeviceutilities-dev \
-    qtgraphicaleffects-dev \
-    qtimageformats-dev \
-    qtlocation-dev \
-    qtmultimedia-dev \
-    qtnetworkauth-dev \
-    qtotaupdate-dev \
-    qtquickcontrols-dev \
-    qtquickcontrols2-dev \
-    qtremoteobjects-dev \
-    qtscxml-dev \
-    qtsensors-dev \
-    qtserialbus-dev \
-    qtserialport-dev \
-    qtsvg-dev \
-    qttools-dev \
-    qttools-staticdev \
-    qtvirtualkeyboard-dev \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland-dev', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine-dev qtwebview-dev', '', d)} \
-    qtwebsockets-dev \
-    qtwebchannel-dev \
-    qtxmlpatterns-dev \
+SRC_URI = " \
+    git://codereview.qt-project.org/qt/tqtc-qtquicktimeline;branch=${BRANCH};protocol=ssh \
     "
 
-RDEPENDS_${PN} += "\
-    ${@ "qtquicktimeline-dev" if (d.getVar("QT_INTERNAL_BUILD")) else "" } \
-    "
+DEPENDS = "qtbase qtdeclarative"
