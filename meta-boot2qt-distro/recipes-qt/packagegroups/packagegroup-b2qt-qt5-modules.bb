@@ -54,6 +54,7 @@ RDEPENDS_${PN} += " \
     qtotaupdate \
     qtquickcontrols \
     qtquickcontrols2 \
+    qtquicktimeline \
     qtremoteobjects \
     qtscxml \
     qtsensors \
@@ -78,8 +79,4 @@ RDEPENDS_${PN} += " \
     qtwebglplugin \
     qtxmlpatterns \
     qtvirtualkeyboard \
-    "
-
-RDEPENDS_${PN} += "\
-    ${@ "qtquicktimeline qmlpreview" if (d.getVar("QT_INTERNAL_BUILD")) else "" } \
     "
