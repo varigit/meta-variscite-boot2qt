@@ -98,7 +98,7 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
   mkdir -p ${PWD}/${BUILDDIRECTORY}/conf
   cp ${PWD}/sources/meta-boot2qt/meta-boot2qt-distro/conf/${LAYERSCONF} ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf
 
-  if [ ! -d ${PWD}/sources/meta-boot2qt/.git ]; then
+  if [ -e ${PWD}/sources/meta-boot2qt/.QT-FOR-DEVICE-CREATION-LICENSE-AGREEMENT ]; then
     QT_SDK_PATH=$(readlink -f ${PWD}/sources/meta-boot2qt/../../../../)
   fi
 fi
