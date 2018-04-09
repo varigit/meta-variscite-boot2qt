@@ -42,3 +42,8 @@ QBSP_IMAGE_CONTENT = "\
     ${IMAGE_LINK_NAME}.img \
     ${IMAGE_LINK_NAME}.conf \
     "
+
+BBMASK += "\
+    meta-tegra/recipes-graphics/drm \
+    meta-tegra/external/openembedded-layer/recipes-support/opencv \
+    "

@@ -60,7 +60,7 @@
            groups="notdefault,external,intel"/>
   <project name="meta-tegra"
            remote="madisongh"
-           revision="34ddb90840f9bb895cd5d275922d153e35620fa3"
+           revision="4aea5e3785dc400e31981467f475b54e652dbd67"
            path="sources/meta-tegra"
            groups="notdefault,external,jetson"/>
   <project name="meta-renesas"

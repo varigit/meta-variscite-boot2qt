@@ -31,3 +31,5 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += "\
     file://0001-fbcon-Compare-variable-screen-info-instead-of-modes-.patch \
     "
+
+require recipes-kernel/linux/linux-dtb.inc
