@@ -30,7 +30,7 @@
 DESCRIPTION = "QML Live target runtime"
 
 LICENSE = "GPL-3.0"
-LIC_FILES_CHKSUM = "file://../../LICENSE.GPL3;md5=75cd0dbc6f2d24e7eeb128ff59b74f4c"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=75cd0dbc6f2d24e7eeb128ff59b74f4c"
 
 inherit qmake5
 require recipes-qt/qt5/qt5-git.inc
@@ -38,12 +38,9 @@ require recipes-qt/qt5/qt5-git.inc
 QT_GIT_PROJECT = "qt-apps"
 QT_MODULE_BRANCH = "master"
 
-SRC_URI += " \
-    file://qmllive-target.patch \
-    "
-
-SRCREV = "d0d41c71c4691a5f3e2b72e22917f314b4190ffc"
-
-S = "${WORKDIR}/git/src/runtime"
+SRCREV = "4d360892c7a21b4b2aad0ec47ef3f60fb0b0b381"
 
 DEPENDS = "qtbase qtdeclarative"
+
+EXTRA_QMAKEVARS_PRE += "CONFIG+=skip-tests CONFIG+=skip-examples"
+EXTRA_QMAKEVARS_POST += "QMAKE_RPATHDIR="

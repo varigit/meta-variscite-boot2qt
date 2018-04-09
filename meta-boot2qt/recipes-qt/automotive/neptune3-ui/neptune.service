@@ -5,7 +5,7 @@ After=dbus.service dbus-session.service systemd-user-sessions.service
 [Service]
 ExecStart=/usr/bin/appcontroller /usr/bin/appman -r --dbus session -c am-config.yaml
 Restart=on-failure
-WorkingDirectory=/usr/neptune-ui
+WorkingDirectory=/opt/neptune3
 
 [Install]
 WantedBy=multi-user.target

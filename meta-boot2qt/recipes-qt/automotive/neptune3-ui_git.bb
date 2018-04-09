@@ -28,11 +28,11 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Neptune IVI UI"
-LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
+DESCRIPTION = "Neptune 3 IVI UI"
+LICENSE = "Apache-2.0 & ( GPL-3.0 | The-Qt-Company-DCLA-2.1 )"
 LIC_FILES_CHKSUM = "\
-    file://LICENSE.GPL3;md5=c41b4a3e669de55dfe304b8376b04a82 \
-    file://imports/assets/fonts/OFL.txt;md5=a729250f3548d9d2deab9bfeb8a7ad51 \
+    file://LICENSE.GPL3;md5=0d02f21f8e2533ecc519e2ed96bc94a2 \
+    file://imports/assets/fonts/LICENSE.txt;md5=3b83ef96387f14655fc854ddc3c6bd57 \
 "
 
 inherit qt5-module systemd
@@ -44,12 +44,26 @@ SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "7b64754e5d1aa3ea3b63347bc5637bae9795e193"
+SRCREV = "716aadcbd88fbaa8f2b7bbf399cde1a4754e0def"
 
-DEPENDS = "qtbase qtdeclarative qttools-native qtquickcontrols2 qtapplicationmanager"
-RDEPENDS_${PN} = "qtivi qtvirtualkeyboard dbus \
-                  qtquickcontrols-qmlplugins qtgraphicaleffects-qmlplugins \
-                  ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
+DEPENDS = "\
+    qtbase \
+    qtdeclarative \
+    qttools-native \
+    qtquickcontrols2 \
+    qtapplicationmanager \
+    qtivi qtivi-native \
+    qtremoteobjects qtremoteobjects-native \
+    "
+RDEPENDS_${PN} = "\
+    dbus \
+    otf-noto ttf-opensans \
+    qtapplicationmanager qtapplicationmanager-tools \
+    qtvirtualkeyboard \
+    qtquickcontrols2-qmlplugins \
+    qtgraphicaleffects-qmlplugins \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)} \
+    "
 
 do_install_append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system
@@ -57,17 +71,23 @@ do_install_append() {
 
     # Move the fonts to the system-wide font location
     install -m 0755 -d ${D}${datadir}/fonts/ttf/
-    mv ${D}/usr/neptune-ui/imports/assets/fonts/*.ttf ${D}${datadir}/fonts/ttf/
-    rm -rf ${D}/usr/neptune-ui/imports/assets/fonts/
+    mv ${D}/opt/neptune3/imports/assets/fonts/*.ttf ${D}${datadir}/fonts/ttf/
+    rm -rf ${D}/opt/neptune3/imports/assets/fonts/
+
+    # Don't package tests
+    rm -rf ${D}/usr/share/tests
 }
 
 PACKAGES =+ "${PN}-apps"
 RRECOMMENDS_${PN} += "${PN}-apps"
 
-FILES_${PN}-apps += "/usr/neptune-ui/apps"
+FILES_${PN}-apps += "/opt/neptune3/apps"
 FILES_${PN} += "\
-    /usr/neptune-ui \
+    /opt/neptune3 \
     ${datadir}/fonts/ttf \
+    "
+FILES_${PN}-dev += "\
+    /opt/neptune3/lib/*.so \
     "
 
 SYSTEMD_SERVICE_${PN} = "neptune.service"

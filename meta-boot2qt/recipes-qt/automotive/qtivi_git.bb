@@ -37,7 +37,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
 
 DEPENDS = "qtbase qtdeclarative qtmultimedia qtivi-native"
 DEPENDS_class-native = "qtbase"
-DEPENDS_class-nativesdk = "qtbase"
+DEPENDS_class-nativesdk = "qtbase qtivi-native"
 
 inherit qt5-module
 inherit python3native
@@ -50,12 +50,12 @@ SRC_URI += " \
     file://0001-Use-QT_HOST_BINS-get-for-getting-correct-path.patch \
 "
 
-SRCREV_qtivi = "8d482b27c6c0c2b664104fd777ddee92652ab65c"
+SRCREV_qtivi = "8658258f2f8d8dac3327a870573dc046029b74bc"
 SRCREV_qface = "9da793d6cbc63d617ad5e2ffd13e9f6d055c88e8"
 SRCREV = "${SRCREV_qtivi}"
 SRCREV_FORMAT = "qtivi_qface"
 
-PACKAGECONFIG ?= "taglib ivigenerator"
+PACKAGECONFIG ?= "taglib ivigenerator remoteobjects"
 PACKAGECONFIG[taglib] = "QMAKE_EXTRA_ARGS+=-feature-taglib,QMAKE_EXTRA_ARGS+=-no-feature-taglib,taglib"
 PACKAGECONFIG[dlt] = "QMAKE_EXTRA_ARGS+=-feature-dlt,QMAKE_EXTRA_ARGS+=-no-feature-dlt,dlt-daemon"
 PACKAGECONFIG[geniviextras-only] = "QMAKE_EXTRA_ARGS+=--geniviextras-only"
@@ -65,8 +65,10 @@ PACKAGECONFIG[ivigenerator-native] = "QMAKE_EXTRA_ARGS+=-qt-ivigenerator,,python
 PACKAGECONFIG[host-tools-only] = "QMAKE_EXTRA_ARGS+=-host-tools-only"
 PACKAGECONFIG[simulator] = "QMAKE_EXTRA_ARGS+=-feature-simulator,QMAKE_EXTRA_ARGS+=-no-feature-simulator,qtsimulator"
 PACKAGECONFIG[simulator-native] = "QMAKE_EXTRA_ARGS+=-feature-simulator QMAKE_EXTRA_ARGS+=--force-ivigenerator-qtsimulator"
+PACKAGECONFIG[remoteobjects] = "QMAKE_EXTRA_ARGS+=-feature-remoteobjects,QMAKE_EXTRA_ARGS+=-no-feature-simulator,qtremoteobjects"
+PACKAGECONFIG[remoteobjects-native] = "QMAKE_EXTRA_ARGS+=-feature-remoteobjects QMAKE_EXTRA_ARGS+=--force-ivigenerator-qtremoteobjects"
 
-PACKAGECONFIG_class-native ??= "host-tools-only ivigenerator-native"
+PACKAGECONFIG_class-native ??= "host-tools-only ivigenerator-native remoteobjects-native"
 PACKAGECONFIG_class-nativesdk ??= "${PACKAGECONFIG_class-native}"
 PACKAGECONFIG_class-nativesdk_mingw32 ??= "host-tools-only"
 

@@ -34,10 +34,10 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=ff238b33ff354a0d8d79851a9c061717"
 inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
-SRCREV = "5581e400c95a1ff736c55c9d93bd451302970c11"
+SRCREV = "6aa3295386b0a0f0b8c7ae1b0f827dd28b6323ca"
 
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \
-           ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
+           ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "qtwayland qtwayland-native", "", d)}"
 
 RDEPENDS_${PN} = "libcrypto ${PN}-tools"
 RDEPENDS_${PN}_remove_mingw32 = "libcrypto"

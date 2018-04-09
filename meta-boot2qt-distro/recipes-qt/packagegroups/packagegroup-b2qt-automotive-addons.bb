@@ -37,11 +37,10 @@ PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 RDEPENDS_${PN} += " \
     boot2qt-appcontroller \
     qtivi \
-    neptune-ui \
-    neptune-ui-apps \
+    neptune3-ui \
+    neptune3-ui-apps \
     ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebbrowser', '', d)} \
     gammaray \
     qmllive \
-    multiscreen-demo \
     qdb \
     "
