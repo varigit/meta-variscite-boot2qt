@@ -52,7 +52,7 @@ IMAGE_DEPENDS_tegraflash_append = " parted-native:do_populate_sysroot"
 create_tegraflash_pkg_prepend() {
     # Create partition table
     SDCARD=${IMGDEPLOYDIR}/${IMAGE_NAME}.img
-    SDCARD_ROOTFS=${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.ext4
+    SDCARD_ROOTFS=${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE}
     SDCARD_SIZE=$(expr ${IMAGE_ROOTFS_ALIGNMENT} + ${ROOTFS_SIZE} + ${IMAGE_ROOTFS_ALIGNMENT})
 
     dd if=/dev/zero of=$SDCARD bs=1 count=0 seek=$(expr 1024 \* $SDCARD_SIZE)
@@ -65,4 +65,25 @@ create_tegraflash_pkg_prepend() {
 
     rm -f ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
     ln -s ${IMAGE_NAME}.img ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
+}
+
+# create flash package that utilizes the SD card image
+create_tegraflash_pkg_append() {
+    cd ${WORKDIR}/tegraflash
+    cat > prepare-image.sh <<END
+#!/bin/sh -e
+if [ ! -e "${IMAGE_BASENAME}.img" ]; then
+    dd if=../${IMAGE_LINK_NAME}.img of=${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE} skip=1 bs=$(expr ${IMAGE_ROOTFS_ALIGNMENT} \* 1024) count=$(expr ${ROOTFS_SIZE} / 1024)
+    ./tegra*-flash/mksparse -v --fillpattern=0 ${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE} ${IMAGE_BASENAME}.img
+    rm -f ${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE}
+fi
+echo "Flash image ready"
+END
+    chmod +x prepare-image.sh
+    rm ${IMAGE_BASENAME}.img
+
+    cd ..
+    rm -f ${IMGDEPLOYDIR}/${IMAGE_NAME}.flasher.tar.gz
+    tar czhf ${IMGDEPLOYDIR}/${IMAGE_NAME}.flasher.tar.gz tegraflash
+    ln -sf ${IMAGE_NAME}.flasher.tar.gz ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.flasher.tar.gz
 }
