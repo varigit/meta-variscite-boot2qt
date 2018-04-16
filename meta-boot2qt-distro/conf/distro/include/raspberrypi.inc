@@ -46,3 +46,9 @@ module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"
 VIDEO_CAMERA = "1"
 
 MACHINE_FEATURES += "pitft"
+
+BBMASK += "\
+    meta-raspberrypi/recipes-multimedia/gstreamer/gstreamer1.0-omx_1.12%.bbappend \
+    "
+
+MACHINE_GSTREAMER_1_0_PLUGIN += "gstreamer1.0-omx"
