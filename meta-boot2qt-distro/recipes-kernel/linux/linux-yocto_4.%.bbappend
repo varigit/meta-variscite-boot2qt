@@ -30,6 +30,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += "\
     file://snd_intel8x0.cfg \
+    file://uprobe_event.cfg \
     "
 
 KMACHINE_emulator = "qemux86"
