@@ -33,4 +33,8 @@ do_preconfigure_prepend () {
     # FunctionFS for qdbd
     echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
     echo "TOUCHSCREEN_FUSION_F0710A=y" >> ${WORKDIR}/defconfig
+
+    # Enable uprobe for profiling
+    echo "CONFIG_UPROBE_EVENT=y" >> ${WORKDIR}/defconfig
+    echo "CONFIG_FTRACE=y"       >> ${WORKDIR}/defconfig
 }
