@@ -59,6 +59,7 @@ RDEPENDS_${PN} += " \
     qtserialport \
     qtsvg \
     qttools \
+    qttools-tools \
     qttranslations-qt \
     qttranslations-qtbase \
     qttranslations-qtdeclarative \
