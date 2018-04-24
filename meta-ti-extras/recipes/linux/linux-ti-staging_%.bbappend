@@ -30,8 +30,10 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += "\
     file://usb-serial.cfg \
+    file://uprobe-event.cfg \
     "
 KERNEL_CONFIG_FRAGMENTS += "${WORKDIR}/usb-serial.cfg"
+KERNEL_CONFIG_FRAGMENTS += "${WORKDIR}/uprobe-event.cfg"
 
 KERNEL_GIT_URI_beaglebone = "git://github.com/beagleboard/linux;nobranch=1"
 BRANCH_beaglebone = "4.4"
