@@ -29,15 +29,19 @@
 
 inherit image_types
 
+IMAGE_DEPENDS_conf = "qtbase-native"
+
 DEPLOY_CONF_NAME ?= "${MACHINE}"
 DEPLOY_CONF_TYPE ?= "Boot2Qt"
 
 IMAGE_CMD_conf() {
+    QT_VERSION=$(qmake -query QT_VERSION)
     cat > ${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.conf <<EOF
-[${DEPLOY_CONF_TYPE} | ${DEPLOY_CONF_NAME}]
+[${DEPLOY_CONF_NAME}]
 platform=${MACHINE}
+product=${DEPLOY_CONF_TYPE}
+qt=Qt $QT_VERSION
 os=linux
-board=
 imagefile=${IMAGE_LINK_NAME}.img
 asroot=true
 EOF
