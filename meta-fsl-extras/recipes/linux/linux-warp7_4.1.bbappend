@@ -46,4 +46,7 @@ do_configure_prepend() {
     echo "CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_CORE=y"      >> ${B}/.config
     echo "CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_RMI_DEV=y    >> ${B}/.config
     echo "CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_FW_UPDATE=y  >> ${B}/.config
+
+    echo "CONFIG_FTRACE=y"                              >> ${B}/.config
+    echo "CONFIG_UPROBE_EVENT=y"                        >> ${B}/.config
 }
