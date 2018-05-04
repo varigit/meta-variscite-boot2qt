@@ -30,4 +30,6 @@
 do_configure_prepend() {
     echo "CONFIG_NAMESPACES=y"              >> ${WORKDIR}/defconfig
     echo "CONFIG_CGROUPS=y"                 >> ${WORKDIR}/defconfig
+    echo "CONFIG_FTRACE=y"                  >> ${WORKDIR}/defconfig
+    echo "CONFIG_UPROBE_EVENT=y"            >> ${WORKDIR}/defconfig
 }
