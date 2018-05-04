@@ -38,4 +38,7 @@ do_preconfigure_prepend() {
     echo "CONFIG_USB_SERIAL_PL2303=m"       >> ${WORKDIR}/defconfig
 
     echo "CONFIG_NAMESPACES=y"              >> ${WORKDIR}/defconfig
+
+    # Enable uprobe for profiling
+    echo "CONFIG_UPROBE_EVENT=y"            >> ${WORKDIR}/defconfig
 }
