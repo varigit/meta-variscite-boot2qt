@@ -37,8 +37,6 @@ QT_GIT_PROJECT=""
 
 SRC_URI = " \
     ${QT_GIT}qt-apps/boot2qt-demos.git;branch=${BRANCH};name=demos \
-    ${QT_GIT}qt/qtcanvas3d.git;branch=${BRANCH};name=qtcanvas3d;destsuffix=qtcanvas3d \
-    ${QT_GIT}qt/qtquickcontrols.git;branch=${BRANCH};name=qtquickcontrols;destsuffix=qtquickcontrols \
     ${QT_GIT}qt-apps/qtwebbrowser.git;branch=${BROWSER_BRANCH};name=qtwebbrowser;destsuffix=git/basicsuite/qtwebbrowser/tqtc-qtwebbrowser \
     https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt_video_720p.webm;name=video1 \
     https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt+World+Summit+2015+Recap.mp4;name=video2 \
@@ -49,11 +47,9 @@ PV = "5.11.0+git${SRCPV}"
 BRANCH = "5.11"
 BROWSER_BRANCH = "dev"
 
-SRCREV_demos = "0909f9baabc446e4a7bb85593e39fad474af88ab"
-SRCREV_qtcanvas3d = "80d7f92b9628076b681e509ddf8eae43cac550d5"
-SRCREV_qtquickcontrols = "710058343297bba7cc44fa2369b7cec742f34cb2"
+SRCREV_demos = "6ed3d300c256a0b75c5cca1f57263f064bf31e42"
 SRCREV_qtwebbrowser = "09d629199fa153ea7954321d81f647d5eb52fb6c"
-SRCREV_FORMAT = "demos_qtcanvas3d_qtquickcontrols_qtwebbrowser"
+SRCREV_FORMAT = "demos_qtwebbrowser"
 
 SRC_URI[video1.md5sum] = "56de4dcfd5201952dce9af9c69fcec9b"
 SRC_URI[video1.sha256sum] = "809123419acac99353439e52c870e2e497dfa8f434ef0777e6c7303e6ad27f89"
@@ -62,7 +58,7 @@ SRC_URI[video2.sha256sum] = "651e0b4d2b3272dc10bfc9edba4f0c1a7084cd087c75e8a098f
 
 S = "${WORKDIR}/git/basicsuite"
 
-DEPENDS = "qtbase qtdeclarative qtxmlpatterns qtquickcontrols qtgraphicaleffects qtsensors qtmultimedia qtcanvas3d \
+DEPENDS = "qtbase qtdeclarative qtxmlpatterns qtquickcontrols2 qtgraphicaleffects qtmultimedia \
            ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
 
 do_install_append() {
@@ -88,39 +84,21 @@ do_install_append() {
     install -m 0644 ${WORKDIR}/Qt_video_720p.webm ${D}/data/videos
     install -m 0644 ${WORKDIR}/Qt+World+Summit+2015+Recap.mp4 ${D}/data/videos
 
-    cp ${WORKDIR}/qtcanvas3d/examples/canvas3d/threejs/planets/*.qml  ${D}/data/user/qt/canvas3d-planets
-    cp ${WORKDIR}/qtcanvas3d/examples/canvas3d/threejs/planets/*.js ${D}/data/user/qt/canvas3d-planets
-    cp -r ${WORKDIR}/qtcanvas3d/examples/canvas3d/threejs/planets/images ${D}/data/user/qt/canvas3d-planets
-    cp ${WORKDIR}/qtcanvas3d/examples/canvas3d/threejs/controls/ControlEventSource.qml ${D}/data/user/qt/canvas3d-planets
-    cp ${WORKDIR}/qtcanvas3d/examples/canvas3d/3rdparty/*.js ${D}/data/user/qt/canvas3d-planets
+    # Common settings
+    sed -i 's#settings.js#../../shared/settings.js#' \
+        ${D}/data/user/qt/enterprise-charts/*.qml \
+        ${D}/data/user/qt/graphicaleffects/*.qml \
+        ${D}/data/user/qt/mediaplayer/*.qml
 
-    # get rid of qrc:/ prefixes and the custom slider
-    sed -i 's/qrc:\(\/\)\?//g' ${D}/data/user/qt/canvas3d-planets/*.qml
-    sed -i 's/qrc:\(\/\)\?//g' ${D}/data/user/qt/canvas3d-planets/*.js
-    sed -i 's/StyledSlider/Slider/g' ${D}/data/user/qt/canvas3d-planets/planets.qml
-    sed -i '/import QtCanvas3D/a import QtQuick.Controls 1.2' ${D}/data/user/qt/canvas3d-planets/planets.qml
+    # Image paths
+    sed -i 's#arrow.png#images/arrow.png#' ${D}/data/user/qt/qtquickcontrols2/*.qml
+    sed -i 's#qt-logo.png#images/qt-logo.png#' ${D}/data/user/qt/qtquickcontrols2/*.qml
+    sed -i 's#back.png#icons/gallery/20x20/back.png#' ${D}/data/user/qt/qtquickcontrols2/*.qml
+    sed -i 's#drawer.png#icons/gallery/20x20/drawer.png#' ${D}/data/user/qt/qtquickcontrols2/*.qml
+    sed -i 's#menu.png#icons/gallery/20x20/menu.png#' ${D}/data/user/qt/qtquickcontrols2/*.qml
 
-    # Qt Quick Extras
-    cp -r ${WORKDIR}/qtquickcontrols/examples/quickcontrols/extras/dashboard/qml ${D}/data/user/qt/enterprise-dashboard/
-    cp -r ${WORKDIR}/qtquickcontrols/examples/quickcontrols/extras/dashboard/images ${D}/data/user/qt/enterprise-dashboard/
-
-    cp -r ${WORKDIR}/qtquickcontrols/examples/quickcontrols/extras/gallery/qml ${D}/data/user/qt/enterprise-gallery/
-    cp -r ${WORKDIR}/qtquickcontrols/examples/quickcontrols/extras/gallery/images ${D}/data/user/qt/enterprise-gallery/
-    cp -r ${WORKDIR}/qtquickcontrols/examples/quickcontrols/extras/gallery/fonts ${D}/data/user/qt/enterprise-gallery/
-
-    cp -r ${WORKDIR}/qtquickcontrols/examples/quickcontrols/extras/flat/images ${D}/data/user/qt/enterprise-flat-controls/
-    cp ${WORKDIR}/qtquickcontrols/examples/quickcontrols/extras/flat/*.qml ${D}/data/user/qt/enterprise-flat-controls/
-
-    sed -i '/import QtQuick.Window/c\' ${D}/data/user/qt/enterprise-dashboard/qml/dashboard.qml ${D}/data/user/qt/enterprise-gallery/qml/gallery.qml
-    sed -i 's/Window /Rectangle /1' ${D}/data/user/qt/enterprise-dashboard/qml/dashboard.qml ${D}/data/user/qt/enterprise-gallery/qml/gallery.qml
-    sed -i 's/ApplicationWindow /Rectangle /1' ${D}/data/user/qt/enterprise-flat-controls/main.qml
-    sed -i '/title: "Qt Quick Extras Demo"/c\' ${D}/data/user/qt/enterprise-dashboard/qml/dashboard.qml ${D}/data/user/qt/enterprise-gallery/qml/gallery.qml
-    sed -i '/title: "Flat Example"/c\' ${D}/data/user/qt/enterprise-flat-controls/main.qml
-    sed -i 's/"Light Flat UI Demo"/"Qt Quick Controls"/1' ${D}/data/user/qt/enterprise-flat-controls/main.qml
-    sed -i '/{ name: "Exit", action: null }/c\' ${D}/data/user/qt/enterprise-flat-controls/main.qml
-
-    sed -i -e 's/qrc:/../g' ${D}/data/user/qt/enterprise-dashboard/qml/* ${D}/data/user/qt/enterprise-gallery/qml/*
-    sed -i 's/qrc:\///g' ${D}/data/user/qt/enterprise-flat-controls/Content.qml
+    # Page references (source: "SomePage.qml" -> source: "pages/SomePage.qml")
+    sed -i 's#source: \"\(.*\)Page.qml#source: \"pages/\1Page.qml#' ${D}/data/user/qt/qtquickcontrols2/main.qml
 }
 
 FILES_${PN} += " \

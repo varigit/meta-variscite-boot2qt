@@ -42,9 +42,9 @@ SRC_URI += " \
     file://b2qt.service \
     "
 
-SRCREV = "8d7fe0e4b8852a16469a6d0fe910309e8964ab58"
+SRCREV = "b97aefc4961afd953ae698ac3cdd35f842c44b91"
 
-DEPENDS = "qtbase qtdeclarative \
+DEPENDS = "qtbase qtdeclarative qtquickcontrols2 \
            ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
 
 do_install_append() {
