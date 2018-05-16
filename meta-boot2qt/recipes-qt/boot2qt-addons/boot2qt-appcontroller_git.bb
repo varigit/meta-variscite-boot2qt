@@ -50,6 +50,8 @@ do_configure_append() {
 do_install_append() {
     install -m 0755 -d ${D}${sysconfdir}
     install -m 0755 ${WORKDIR}/appcontroller.conf ${D}${sysconfdir}/
-}
 
-FILES_${PN} += "${sysconfdir}/appcontroller.conf"
+    # loginctl enable-linger root
+    install -d ${D}/var/lib/systemd/linger
+    touch ${D}/var/lib/systemd/linger/root
+}
