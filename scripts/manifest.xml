@@ -90,7 +90,7 @@
            groups="notdefault,external,boundary"/>
   <project name="meta-fsl-bsp-release"
            remote="toradex-github"
-           revision="d2b0d14c82da830584bc7f43ba1b83097c890454"
+           revision="28c1b2adfb6445a64a42d082299203ec2035ea9f"
            path="sources/meta-fsl-bsp-release"
            groups="notdefault,external,fsl-imx8"/>
 
