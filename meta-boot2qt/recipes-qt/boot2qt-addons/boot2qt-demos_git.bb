@@ -85,10 +85,9 @@ do_install_append() {
     install -m 0644 ${WORKDIR}/Qt+World+Summit+2015+Recap.mp4 ${D}/data/videos
 
     # Common settings
-    sed -i 's#settings.js#../../shared/settings.js#' \
-        ${D}/data/user/qt/enterprise-charts/*.qml \
-        ${D}/data/user/qt/graphicaleffects/*.qml \
-        ${D}/data/user/qt/mediaplayer/*.qml
+    cp ${D}/data/user/qt/shared/settings.js ${D}/data/user/qt/enterprise-charts/
+    cp ${D}/data/user/qt/shared/settings.js ${D}/data/user/qt/graphicaleffects/
+    cp ${D}/data/user/qt/shared/settings.js ${D}/data/user/qt/mediaplayer/
 
     # Image paths
     sed -i 's#arrow.png#images/arrow.png#' ${D}/data/user/qt/qtquickcontrols2/*.qml
