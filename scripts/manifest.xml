@@ -18,7 +18,7 @@
 
   <project name="poky"
            remote="yocto"
-           revision="b9ad197bbc88cad4ef8d2245a2d262b8d8dd757e"
+           revision="ebb42af2829edfca1a23c7a51a431c656ffc2090"
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
@@ -30,7 +30,7 @@
            path="sources/meta-qt5"/>
   <project name="meta-mingw"
            remote="qtyocto"
-           revision="27ccecd47b5e745d4c6a11708dd42a90cc235fb3"
+           revision="2a5619ffdc0f02f57e0c36387fd25c8540c60a8a"
            path="sources/meta-mingw"/>
 
   <project name="meta-freescale"
