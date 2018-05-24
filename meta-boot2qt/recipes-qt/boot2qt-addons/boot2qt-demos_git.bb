@@ -42,12 +42,12 @@ SRC_URI = " \
     https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt+World+Summit+2015+Recap.mp4;name=video2 \
     "
 
-PV = "5.11.0+git${SRCPV}"
+PV = "5.11.1+git${SRCPV}"
 
 BRANCH = "5.11"
 BROWSER_BRANCH = "dev"
 
-SRCREV_demos = "6ed3d300c256a0b75c5cca1f57263f064bf31e42"
+SRCREV_demos = "054a2eabcae4a3eb6f7036b0706a96ed0c1f9a00"
 SRCREV_qtwebbrowser = "09d629199fa153ea7954321d81f647d5eb52fb6c"
 SRCREV_FORMAT = "demos_qtwebbrowser"
 
@@ -58,7 +58,7 @@ SRC_URI[video2.sha256sum] = "651e0b4d2b3272dc10bfc9edba4f0c1a7084cd087c75e8a098f
 
 S = "${WORKDIR}/git/basicsuite"
 
-DEPENDS = "qtbase qtdeclarative qtxmlpatterns qtquickcontrols2 qtgraphicaleffects qtmultimedia \
+DEPENDS = "qtbase qtdeclarative qtxmlpatterns qtquickcontrols2 qtgraphicaleffects qtmultimedia qtcharts \
            ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
 
 do_install_append() {

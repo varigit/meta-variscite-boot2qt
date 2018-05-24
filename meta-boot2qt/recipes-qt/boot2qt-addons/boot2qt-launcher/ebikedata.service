@@ -1,0 +1,10 @@
+[Unit]
+Description=B2Qt ebike demo data collector daemon
+ConditionPathExists=!/usr/bin/b2qt
+
+[Service]
+ExecStart=/data/user/qt/datacollector/datacollector
+KillSignal=SIGKILL
+
+[Install]
+WantedBy=qtlauncher.service
