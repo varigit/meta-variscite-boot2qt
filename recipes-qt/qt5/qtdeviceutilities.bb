@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -39,10 +39,6 @@ PACKAGECONFIG[wpasupplicant] = "CONFIG+=wpasupplicant,,wpa-supplicant"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
-SRC_URI = " \
-    git://codereview.qt-project.org/qt/qtdeviceutilities;${QT_MODULE_BRANCH_PARAM};protocol=http \
-    "
-
-SRCREV = "03b3e6fd62ff9e9a80212a313340e0a0c2f0135f"
+SRCREV = "f6730013c51c6b8d1da6df4eae5c774e34bcbc4d"
 
 DEPENDS = "qtbase qtdeclarative qtconnectivity"

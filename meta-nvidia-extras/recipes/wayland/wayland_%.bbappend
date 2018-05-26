@@ -31,4 +31,4 @@ FILESEXTRAPATHS_append := ":${LNX_TOPDIR}_src/wayland"
 
 SRC_URI = "file://wayland-1.11.0-src.tar.gz"
 
-DEPENDS_class-target += "wayland-egl"
+DEPENDS_append_class-target = " wayland-egl"

@@ -38,11 +38,12 @@ S = "${WORKDIR}"
 
 inherit qbsp
 
-PV = "1.1"
+PV := "${@d.getVar('PV', True)[0:5]}"
 
+QBSP_NAME = "Automotive ${PV}"
 QBSP_MACHINE = "${@d.getVar('MACHINE', True).replace('-','')}"
-QBSP_INSTALLER_COMPONENT = "qt.automotive.10.yocto.${QBSP_MACHINE}"
-QBSP_INSTALL_PATH = "/${QT_MODULE_BRANCH}/Automotive/${MACHINE}"
+QBSP_INSTALLER_COMPONENT = "automotive.10.yocto.${QBSP_MACHINE}"
+QBSP_INSTALL_PATH = "/${PV}/Automotive/${MACHINE}"
 
 QBSP_SDK_TASK = "meta-toolchain-b2qt-automotive-qt5-sdk"
 QBSP_IMAGE_TASK = "b2qt-automotive-qt5-image"

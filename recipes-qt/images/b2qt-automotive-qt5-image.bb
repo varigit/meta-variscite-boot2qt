@@ -32,7 +32,7 @@ LICENSE = "The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
 PR = "r0"
 
-DEPLOY_CONF_TYPE = "Automotive"
+DEPLOY_CONF_TYPE = "Qt Automotive Suite 2.0.1"
 
 IMAGE_FEATURES += "\
         package-management \

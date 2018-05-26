@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2017 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,19 +27,24 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
-SRC_URI += " \
-    file://0001-ARM-8158-1-LLVMLinux-use-static-inline-in-ARM-ftrace.patch \
-    file://0001-ARM-LLVMLinux-Change-extern-inline-to-static-inline-.patch \
-    file://0001-arm-Export-cache-flush-management-symbols-when-MULTI.patch \
-    "
+DESCRIPTION = "Qt Installer Framework"
+LICENSE = "The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
 
-do_preconfigure_prepend() {
-    sed -e '/CONFIG_USB_FUNCTIONFS_ETH=/d' \
-        -e '/CONFIG_USB_FUNCTIONFS_RNDIS=/d' \
-        -i ${WORKDIR}/defconfig
+inherit bin_package native
 
-    echo "CONFIG_NAMESPACES=y"              >> ${WORKDIR}/defconfig
-    echo "CONFIG_FHANDLE=y"                 >> ${WORKDIR}/defconfig
-    echo "CONFIG_CGROUPS=y"                 >> ${WORKDIR}/defconfig
+do_unpack[depends] += "p7zip-native:do_populate_sysroot"
+
+SRC_URI = "http://download.qt.io/development_releases/installer-framework/${PV}/installer-framework-build-stripped-${PV}-linux-x64.7z"
+
+SRC_URI[md5sum] = "68b7c1f761ca0dba18f1d165d66005d6"
+SRC_URI[sha256sum] = "c2eb769351025e0c7df2882116390fffaf958368f873a2abab99e37caee0a498"
+
+S = "${WORKDIR}/ifw-pkg"
+
+do_install() {
+    install -d ${D}${bindir}
+    install -m 0755 -t ${D}${bindir} ${S}/bin/*
 }
+
+INSANE_SKIP_${PN} += "already-stripped"

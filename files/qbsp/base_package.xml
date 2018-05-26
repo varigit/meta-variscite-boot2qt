@@ -2,7 +2,7 @@
 <Package>
   <Version>@VERSION@</Version>
   <ReleaseDate>@RELEASEDATE@</ReleaseDate>
-  <DisplayName>@NAME@</DisplayName>
-  <Description>Boot to Qt for @NAME@ with Embedded Linux baselayer</Description>
+  <DisplayName>@TARGET@</DisplayName>
+  <Description>@NAME@ for @TARGET@</Description>
   <Dependencies>@LICENSEDEPENDENCY@</Dependencies>
 </Package>

@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -29,5 +29,12 @@
 
 EXTRA_QMAKEVARS_PRE_append_emulator = " CONFIG+=simulator"
 DEPENDS_append_emulator = " qtsimulator"
+
+LIC_FILES_CHKSUM = " \
+    file://LICENSE.LGPLv21;md5=4193e7f1d47a858f6b7c0f1ee66161de \
+    file://LICENSE.GPLv3;md5=d32239bcb673463ab874e80d47fae504 \
+    file://LGPL_EXCEPTION.txt;md5=0145c4d1b6f96a661c2c139dfb268fb6 \
+    file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
+"
 
 SRCREV = "434af789f0d56ca7a521ca2d9ec8cf3b1057fd37"

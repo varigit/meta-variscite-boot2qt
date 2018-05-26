@@ -43,4 +43,5 @@ RDEPENDS_${PN} += " \
     gammaray \
     qmllive-target \
     multiscreen-demo \
+    qdbd \
     "

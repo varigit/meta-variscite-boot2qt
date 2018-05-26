@@ -38,6 +38,7 @@ Component.prototype.createOperations = function()
     var device = "@MACHINE@"
     var platform = "@NAME@"
     var sysroot = "@SYSROOT@"
+    var target_sys = "@TARGET_SYS@"
     var target = "@TARGET@"
     var abi = "@ABI@"
     var installPath = "@INSTALLPATH@/toolchain"
@@ -71,8 +72,8 @@ Component.prototype.createOperations = function()
     component.addOperation("Execute",
         ["@SDKToolBinary@", "addTC",
         "--id", toolchainId + ".gcc",
-        "--name", "GCC (Boot2Qt " + platform + ")",
-        "--path", path + "/sysroots/" + hostSysroot + "/usr/bin/" + target + "/" + target + "-gcc" + executableExt,
+        "--name", "GCC (" + platform + " " + target + ")",
+        "--path", path + "/sysroots/" + hostSysroot + "/usr/bin/" + target_sys + "/" + target_sys + "-gcc" + executableExt,
         "--abi", abi,
         "--language", "1",
         "UNDOEXECUTE",
@@ -81,8 +82,8 @@ Component.prototype.createOperations = function()
     component.addOperation("Execute",
         ["@SDKToolBinary@", "addTC",
         "--id", toolchainId + ".g++",
-        "--name", "G++ (Boot2Qt " + platform + ")",
-        "--path", path + "/sysroots/" + hostSysroot + "/usr/bin/" + target + "/" + target + "-g++" + executableExt,
+        "--name", "G++ (" + platform + " " + target + ")",
+        "--path", path + "/sysroots/" + hostSysroot + "/usr/bin/" + target_sys + "/" + target_sys + "-g++" + executableExt,
         "--abi", abi,
         "--language", "2",
         "UNDOEXECUTE",
@@ -91,9 +92,9 @@ Component.prototype.createOperations = function()
     component.addOperation("Execute",
         ["@SDKToolBinary@", "addDebugger",
         "--id", debuggerId,
-        "--name", "GDB (Boot2Qt " + platform + ")",
+        "--name", "GDB (" + platform + " " + target + ")",
         "--engine", "1",
-        "--binary", path + "/sysroots/" + hostSysroot + "/usr/bin/" + target + "/" + target + "-gdb" + executableExt,
+        "--binary", path + "/sysroots/" + hostSysroot + "/usr/bin/" + target_sys + "/" + target_sys + "-gdb" + executableExt,
         "--abis", abi,
         "UNDOEXECUTE",
         "@SDKToolBinary@", "rmDebugger", "--id", debuggerId]);
@@ -101,7 +102,7 @@ Component.prototype.createOperations = function()
     component.addOperation("Execute",
         ["@SDKToolBinary@", "addQt",
          "--id", qtId,
-         "--name", "Boot2Qt %{Qt:Version} " + platform,
+         "--name", platform + " " + target,
          "--type", "Qdb.EmbeddedLinuxQt",
          "--qmake", path + "/sysroots/" + hostSysroot + "/usr/bin/qmake" + executableExt,
          "UNDOEXECUTE",
@@ -110,7 +111,7 @@ Component.prototype.createOperations = function()
     component.addOperation("Execute",
         ["@SDKToolBinary@", "addKit",
          "--id", basecomponent,
-         "--name", "Boot2Qt %{Qt:Version} " + platform,
+         "--name", platform + " " + target,
          "--mkspec", "devices/linux-oe-generic-g++",
          "--qt", qtId,
          "--debuggerid", debuggerId,

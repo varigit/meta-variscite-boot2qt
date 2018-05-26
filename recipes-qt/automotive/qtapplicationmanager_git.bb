@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -29,12 +29,12 @@
 
 DESCRIPTION = "Qt component for application lifecycle management"
 LICENSE = "(GFDL-1.3 & The-Qt-Company-GPL-Exception-1.0 & (LGPL-3.0 | GPL-2.0+)) | The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=43a31c6abffdd61c938811959b3c1b71"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=ff238b33ff354a0d8d79851a9c061717"
 
 inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
-SRCREV = "f472ef3662cf0a9bc2bf727c7cef18fd884df5a2"
+SRCREV = "5581e400c95a1ff736c55c9d93bd451302970c11"
 
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \
            ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
@@ -60,9 +60,11 @@ FILES_${PN} += "\
 
 BBCLASSEXTEND += "nativesdk"
 
-DEPENDS_class-nativesdk = "qtbase nativesdk-glibc-locale"
-DEPENDS_class-nativesdk_remove_mingw32 += "nativesdk-glibc-locale"
+# nativesdk-qtdeclarative is added only to make build deterministic, can be removed once
+# there is a configure option to disable its usage.
+DEPENDS_class-nativesdk = "qtbase nativesdk-qtdeclarative nativesdk-glibc-locale nativesdk-libarchive"
+DEPENDS_class-nativesdk_remove_mingw32 = "nativesdk-glibc-locale nativesdk-libarchive"
 
-EXTRA_QMAKEVARS_PRE_class-nativesdk += "\
+EXTRA_QMAKEVARS_PRE_class-nativesdk = "\
     -config tools-only \
     "
