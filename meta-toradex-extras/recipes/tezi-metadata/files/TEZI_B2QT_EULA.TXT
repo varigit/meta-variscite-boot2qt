@@ -1,0 +1,75 @@
+1. QT DEMO IMAGE END USER LICENSE AGREEMENT
+
+This Qt Demo Image End User License Agreement ("Agreement") is a legal agreement between The Qt Company Ltd ("The Qt Company") with its registered office at Bertel Jungin aukio D3A, 02600 Espoo, Finland and You (either an individual or a legal entity) ("Licensee") for the Licensed Software.
+For the purpose of this Agreement Licensed Software shall mean a Qt Demo Image (Boot to Qt software stack) (i) containing demos to highlight the Qt capability on the target hardware for evaluation and demonstration proposes and (ii) supporting deployment of Qt application from Qt Creator.
+Please, read these license terms through carefully. By downloading the Licensed Software, you are deemed to accept these license terms and to commit yourself to observing them. When representing a legal entity, you should ensure your due authorization to approve these terms before such acceptance. Otherwise, we hold you as personally responsible for compliance with this Agreement.
+Under this Agreement, The Qt Company grants the Licensee a license to use Licensed Software solely for the purpose of Licensee's internal testing and evaluation of a Qt Demo Image (Boot to Qt software stack) ("Purpose") for a period of 60 days following the download of the Licensed Software ("Term").
+
+1. OWNERSHIP
+
+The Licensed Software is protected by copyright laws and international copyright treaties, as well as other intellectual property laws and treaties. The Licensed Software is licensed, not sold.
+All The Qt Company's and/or its licensors' trademarks, service marks, trade names, logos or other words or symbols are and shall remain the exclusive property of The Qt Company or its licensors respectively.
+
+2. LICENSE GRANTED
+
+The Qt Company grants to Licensee a personal, non-exclusive, revocable, non-transferable, free-of-charge license to use the Licensed Software solely for the Purpose during the Term.
+The license granted above in this Section 2 by The Qt Company to Licensee are conditional and subject to Licensee's compliance with the following terms:
+(i)    Licensee shall not remove or alter any copyright, trademark or other proprietary rights notice contained in any portion of the Licensed Software;
+(ii)   Licensee shall not
+- alter, modify (including creating derivative works), translate or adapt the Licensed Software;
+- reverse engineer, reverse assemble, reverse translate, decompile or reduce to source code form any portion of the Licensed Software; or
+- transfer, publish, disclose, display or otherwise make the Licensed Software available to any third party.
+Any use of Licensed Software beyond the provisions of this Agreement is strictly prohibited and requires an additional license from The Qt Company.
+
+3. WARRANTY DISCLAIMER
+
+LICENSED SOFTWARE IS LICENSED TO LICENSEE "AS IS". TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE QT COMPANY ON BEHALF OF ITSELF AND ITS SUPPLIERS, DISCLAIMS ALL WARRANTIES AND CONDITIONS, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT REGARDING TO THE LICENSED SOFTWARE.
+
+4. LIMITATION OF LIABILITY
+
+IN NO EVENT SHALL THE QT COMPANY OR ANY OF ITS AFFILIATES OR THEIR RESPECTIVE LICENSORS BE LIABLE TO LICENSEE FOR ANY INCIDENTAL, CONSEQUENTIAL OR SPECIAL DAMAGES, INCLUDING BUT NOT LIMITED TO ANY LOST PROFITS, LOST SAVINGS, OR OTHER INCIDENTAL DAMAGES, ARISING OUT OF THE USE OR INABILITY TO USE THE LICENSED SOFTWARE, OR ANY BREACH OF ANY OBLIGATION UNDER THIS AGREEMENT. THE FOREGOING LIMITATION OF LIABILITY SHALL REMAIN IN FULL FORCE AND EFFECT REGARDLESS OF WHETHER LICENSEE'S REMEDIES HEREUNDER ARE DETERMINED TO HAVE FAILED OF THEIR ESSENTIAL PURPOSE. THE ENTIRE LIABILITY OF THE QT COMPANY AND THE SOLE AND EXCLUSIVE REMEDY OF LICENSEE, FOR ANY CLAIM OR CAUSE OF ACTION ARISING HEREUNDER (WHETHER IN CONTRACT, TORT, OR OTHERWISE) SHALL NOT EXCEED ONE THOUSAND (1,000) EUROS.
+
+5. CONFIDENTIALITY
+
+Licensee acknowledges and agrees that the Licensed Software contains trade secrets of The Qt Company, its affiliates and/or their respective Licensors and are confidential and proprietary information of the same. Licensee undertakes to keep the Licensed Software strictly confidential and shall not disclose any such information to any third party without the prior written consent of The Qt Company. Licensee shall limit the use and disclosure of the Licensed Software within its organization to the extent necessary for the Purpose, and shall ensure that any of its employees, to whom it gives access hereunder shall comply with the obligations of confidentiality set forth in this Agreement. The Parties acknowledge and agree that monetary damages may not be a sufficient remedy for unauthorized disclosure of The Qt Company's confidential information and that The Qt Company shall be entitled, without waiving any other rights or remedies, to injunctive or equitable relief as may be deemed proper by a court of competent jurisdiction.
+
+6. GENERAL PROVISIONS
+
+6.1 No Assignment
+
+Licensee shall not be entitled to assign or transfer all or any of its rights, benefits and obligations under this Agreement without the prior written consent of The Qt Company, which shall not be unreasonably withheld. The Qt Company shall be entitled to assign or transfer any of its rights, benefits or obligations under this Agreement on an unrestricted basis.
+
+6.2 Term and Termination
+
+This Agreement, and any and all rights of the Licensee thereunder, shall automatically expire three (3) months after the first download of the Licensed Software by the Licensee.
+The Qt Company may terminate the Agreement at any time immediately upon written notice by The Qt Company to Licensee if Licensee breaches this Agreement.
+Either party shall have the right to terminate this Agreement immediately upon written notice in the event that the other party becomes insolvent, files for any form of bankruptcy, makes any assignment for the benefit of creditors, has a receiver, administrative receiver or officer appointed over the whole or a substantial part of its assets, ceases to conduct business, or an act equivalent to any of the above occurs under the laws of the jurisdiction of the other party.
+Upon termination of the Agreement, Licensee shall cease using the Licensed Software. All other copies of Licensed Software in the possession or control of Licensee must be erased or destroyed. An officer of Licensee must, upon request, promptly deliver to The Qt Company a written confirmation that this has occurred.
+
+6.3 Surviving Sections
+
+Any terms and conditions that by their nature or otherwise reasonably should survive a cancellation or termination of this Agreement shall also be deemed to survive. Such surviving terms and conditions include, but are not limited to the Section 5.
+
+6.4 Entire Agreement
+
+This Agreement constitutes the complete agreement between the parties and supersedes all prior or contemporaneous discussions, representations, and proposals, written or oral, with respect to the subject matters discussed herein. No modification of this Agreement shall be effective unless contained in a writing executed by an authorized representative of each party. If any provision of the Agreement is found void or unenforceable, the remainder shall remain valid and enforceable according to its terms.
+
+6.5 Notices
+
+Any notice given by one party to the other shall be deemed properly given and deemed received if specifically acknowledged by the receiving party in writing or when successfully delivered to the recipient by hand, fax, or special courier during normal business hours on a business day to the addresses specified below. Each communication and document made or delivered by one party to the other party pursuant to this Agreement shall be in the English language or accompanied by a translation thereof.
+
+Notices to The Qt Company shall be given to:
+The Qt Company Ltd
+Attn: Legal
+Bertel Jungin Aukio D3A
+FI-02600 Espoo
+Finland
+Fax: +358 10 313 3700
+
+6.6 Governing Law and Legal Venue
+
+This Agreement shall be construed and interpreted in accordance with the laws of Finland, excluding its choice of law provisions. Any disputes, controversy or claim arising out of or relating to this Agreement, or the breach, termination or validity thereof shall be shall be finally settled by arbitration in accordance with the Arbitration Rules of the Finland Chamber of Commerce . The arbitration tribunal shall consist of one (1), or if either Party so requires, of three (3), arbitrators. The award shall be final and binding and enforceable in any court of competent jurisdiction. The arbitration shall be held in Helsinki, Finland and the process shall be conducted in the English language. Notwithstanding the above, the Parties shall also be entitled to seek injunctive or other interim relief in relation to a breach of this Agreement in general courts.
+
+6.7 No Implied License
+
+There are no implied licenses or other implied rights granted under this Agreement, and all rights, save for those expressly granted hereunder, shall remain with The Qt Company and its licensors.

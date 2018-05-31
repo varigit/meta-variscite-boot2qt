@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,28 +27,14 @@
 ##
 ############################################################################
 
-SUMMARY = "Qt for Device Creation Demo Image"
-LICENSE = "The-Qt-Company-Commercial"
-LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=948f8877345cd66106f11031977a4625"
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
-DEPLOY_CONF_TYPE = "Boot2Qt $QT_VERSION"
-
-IMAGE_FEATURES += "\
-        package-management \
-        ssh-server-dropbear \
-        tools-debug \
-        debug-tweaks \
-        hwcodecs \
-        "
-
-inherit core-image qbsp-image
-inherit consistent_timestamps
-
-IMAGE_INSTALL += "\
-    packagegroup-b2qt-embedded-base \
-    packagegroup-b2qt-embedded-tools \
-    ${@bb.utils.contains("DISTRO_FEATURES", "gstreamer010", "packagegroup-b2qt-embedded-gstreamer010", "", d)} \
-    ${@bb.utils.contains("DISTRO_FEATURES", "gstreamer", "packagegroup-b2qt-embedded-gstreamer", "", d)} \
-    packagegroup-b2qt-qt5-modules \
-    packagegroup-b2qt-embedded-addons \
+SRC_URI += "\
+    file://TEZI_B2QT_EULA.TXT \
+    file://Built_with_Qt.png \
     "
+
+do_deploy_append () {
+    install -m 644 ${WORKDIR}/TEZI_B2QT_EULA.TXT ${DEPLOYDIR}
+    install -m 644 ${WORKDIR}/Built_with_Qt.png ${DEPLOYDIR}
+}
