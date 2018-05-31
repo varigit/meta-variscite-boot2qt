@@ -40,6 +40,7 @@ MACHINE_EXTRA_INSTALL_SDK ?= ""
 RDEPENDS_${PN} += " \
     ${MACHINE_EXTRA_INSTALL_SDK} \
     packagegroup-core-standalone-sdk-target \
+    gcc-sanitizers \
     \
     qt3d-dev \
     qtbase-dev \

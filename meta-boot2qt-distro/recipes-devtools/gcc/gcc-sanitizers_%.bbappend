@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,27 +27,7 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Additional tools packagegroup for B2Qt embedded Linux image"
-LICENSE = "The-Qt-Company-DCLA-2.1"
-PR = "r0"
-
-inherit packagegroup
-
-RDEPENDS_${PN} = "\
-        alsa-utils-amixer \
-        binutils \
-        binutils-symlinks \
-        connman-client \
-        gcc-sanitizers \
-        htop \
-        i2c-tools \
-        iproute2 \
-        ldd \
-        openssh-sftp-server \
-        perf \
-        procps \
-        rsync \
-        tslib-calibrate \
-        valgrind \
-        ${@bb.utils.contains("DISTRO_FEATURES", "systemd", "systemd-analyze", "", d)} \
-        "
+# aarch64 is compatible since GCC 5.1. See poky/master commit
+# b46caed47b0f74520cd9280bbe3e3676d9a19046
+RRECOMMENDS_${PN}_append_aarch64 = " liblsan libtsan"
+COMPATIBLE_HOST = '(x86_64|i.86|powerpc|arm|aarch64).*-linux'
