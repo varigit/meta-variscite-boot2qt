@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Automotive specific Qt packages"
-LICENSE = "The-Qt-Company-DCLA-2.1"
+LICENSE = "The-Qt-Company-Commercial"
 
 inherit packagegroup
 

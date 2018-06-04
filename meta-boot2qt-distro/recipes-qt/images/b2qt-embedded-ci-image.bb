@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "B2Qt on embedded Linux SDK image"
-LICENSE = "The-Qt-Company-DCLA-2.1"
+LICENSE = "The-Qt-Company-Commercial"
 PR = "r0"
 
 IMAGE_FEATURES += "\

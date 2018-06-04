@@ -29,7 +29,7 @@
 
 DESCRIPTION = "Host packages for B2Qt on embedded Linux SDK"
 PR = "r0"
-LICENSE = "The-Qt-Company-DCLA-2.1"
+LICENSE = "The-Qt-Company-Commercial"
 
 inherit nativesdk packagegroup
 

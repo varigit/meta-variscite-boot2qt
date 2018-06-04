@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Boot to Qt Demo Launcher"
-LICENSE = "(BSD & GPL-3.0) | The-Qt-Company-DCLA-2.1"
+LICENSE = "(BSD & GPL-3.0) | The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit qmake5

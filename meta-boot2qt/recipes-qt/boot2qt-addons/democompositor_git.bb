@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Boot to Qt Wayland Demo Compositor"
-LICENSE = "BSD | The-Qt-Company-DCLA-2.1"
+LICENSE = "BSD | The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://main.cpp;md5=b0a1a6eef4a172b0a8cb4dad9a167d91;beginline=1;endline=49"
 
 inherit qmake5

@@ -29,7 +29,7 @@
 
 DESCRIPTION = "Qt Debug Bridge Daemon"
 SECTION = "devel"
-LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
+LICENSE = "GPL-3.0 | The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit distro_features_check

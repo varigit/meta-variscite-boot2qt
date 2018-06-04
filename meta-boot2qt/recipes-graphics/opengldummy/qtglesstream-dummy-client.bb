@@ -29,8 +29,8 @@
 
 DESCRIPTION = "QtGlesStream dummy client provides headers and a dummy library for EGL/GLES"
 SECTION = "devel"
-LICENSE = "The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
+LICENSE = "The-Qt-Company-Commercial"
+LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=948f8877345cd66106f11031977a4625"
 
 PV = "1.0.0"
 SOLIBMAJOR = "1"

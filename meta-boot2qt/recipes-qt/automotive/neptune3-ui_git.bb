@@ -29,7 +29,7 @@
 ############################################################################
 
 DESCRIPTION = "Neptune 3 IVI UI"
-LICENSE = "Apache-2.0 & ( GPL-3.0 | The-Qt-Company-DCLA-2.1 )"
+LICENSE = "Apache-2.0 & ( GPL-3.0 | The-Qt-Company-Commercial )"
 LIC_FILES_CHKSUM = "\
     file://LICENSE.GPL3;md5=0d02f21f8e2533ecc519e2ed96bc94a2 \
     file://imports/assets/fonts/LICENSE.txt;md5=3b83ef96387f14655fc854ddc3c6bd57 \
