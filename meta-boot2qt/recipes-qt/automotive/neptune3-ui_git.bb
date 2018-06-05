@@ -44,7 +44,7 @@ SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "16d723ff470ee7856c987e97bea549e9405fefc9"
+SRCREV = "7de2453cd37e4010c01bc4b8506b4df7bc47ff80"
 
 QMAKE_PROFILES = "${S}/neptune3-ui.pro"
 
