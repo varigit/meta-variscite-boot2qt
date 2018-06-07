@@ -50,7 +50,7 @@
            groups="notdefault,external,ti"/>
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="acfb857227f1216cd64767952f0c25d633df10b8"
+           revision="f2e2a4376e84dec6e5efeabaa86a4406fddf7dcd"
            path="sources/meta-raspberrypi"
            groups="notdefault,external,rpi"/>
   <project name="meta-intel"
