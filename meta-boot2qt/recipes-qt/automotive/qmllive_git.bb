@@ -36,9 +36,8 @@ inherit qmake5
 require recipes-qt/qt5/qt5-git.inc
 
 QT_GIT_PROJECT = "qt-apps"
-QT_MODULE_BRANCH = "master"
 
-SRCREV = "4d360892c7a21b4b2aad0ec47ef3f60fb0b0b381"
+SRCREV = "3e8e1de30c09fda84a66c31df1ac28ee33689ad1"
 
 DEPENDS = "qtbase qtdeclarative"
 
