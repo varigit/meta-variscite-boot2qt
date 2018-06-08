@@ -41,14 +41,15 @@ python __anonymous() {
 
 RDEPENDS_${PN} += "\
     nativesdk-packagegroup-b2qt-embedded-toolchain-host \
-    nativesdk-qttools-tools \
+    nativesdk-qt3d-tools \
     nativesdk-qtbase-tools \
     nativesdk-qtbase-tools-dev \
     nativesdk-qtbase-tools-staticdev \
-    nativesdk-qtdeclarative-tools \
     nativesdk-qtdeclarative-staticdev \
-    nativesdk-qt3d-tools \
+    nativesdk-qtdeclarative-tools \
+    nativesdk-qtremoteobjects-tools \
     nativesdk-qtscxml-tools \
+    nativesdk-qttools-tools \
     "
 
 RDEPENDS_${PN}_append_linux = "\
