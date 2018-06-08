@@ -53,6 +53,12 @@ for S in $SHA1S; do
     elif [ "${PROJECT}" = "qtlocation/src/3rdparty/mapbox-gl-native" ]; then
         sed -i -e "/^SRCREV_qtlocation-mapboxgl/s/\".*\"/\"${SHA1}\"/" qtlocation_git.bb*
         echo "qtlocation (mapboxgl) -> ${SHA1}"
+    elif [ "${PROJECT}" = "qtivi" ]; then
+        sed -i -e "/^SRCREV_qtivi/s/\".*\"/\"${SHA1}\"/" qtivi_git.bb*
+        echo "qtivi -> ${SHA1}"
+    elif [ "${PROJECT}" = "qtivi/src/3rdparty/qface" ]; then
+        sed -i -e "/^SRCREV_qface/s/\".*\"/\"${SHA1}\"/" qtivi_git.bb*
+        echo "qtivi (qface) -> ${SHA1}"
     elif [ "${PROJECT}" = "qtenginio" ] || [ "${PROJECT}" = "qtquick1" ] || [ "${PROJECT}" = "qtsystems" ]; then
         echo "${PROJECT} -> ignored"
     elif [ "$(echo *${PROJECT}*_git.bb*)" != "*${PROJECT}*_git.bb*" ]; then
