@@ -47,7 +47,7 @@ PV = "5.11.1+git${SRCPV}"
 BRANCH = "5.11"
 BROWSER_BRANCH = "dev"
 
-SRCREV_demos = "054a2eabcae4a3eb6f7036b0706a96ed0c1f9a00"
+SRCREV_demos = "a60797871ea11ade6b583869e361ffef88e2213b"
 SRCREV_qtwebbrowser = "09d629199fa153ea7954321d81f647d5eb52fb6c"
 SRCREV_FORMAT = "demos_qtwebbrowser"
 
