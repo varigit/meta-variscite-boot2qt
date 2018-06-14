@@ -35,7 +35,7 @@
 
   <project name="meta-freescale"
            remote="freescale"
-           revision="06178400afbd641a6709473fd21d893dcd3cfbfa"
+           revision="af5a8cf74d488ba45715ed0b0e0441e60b10c31d"
            path="sources/meta-freescale"
            groups="notdefault,external,fsl,toradex,ti,smx6,renesas-gen3,boundary,fsl-imx8"/>
   <project name="meta-freescale-3rdparty"
@@ -55,7 +55,7 @@
            groups="notdefault,external,rpi"/>
   <project name="meta-intel"
            remote="intel"
-           revision="7e8f98aa326f16edd679a95f7bb2daf4256479f3"
+           revision="9b37952d6af36358b6397cedf3dd53ec8962b6bf"
            path="sources/meta-intel"
            groups="notdefault,external,intel"/>
   <project name="meta-tegra"
