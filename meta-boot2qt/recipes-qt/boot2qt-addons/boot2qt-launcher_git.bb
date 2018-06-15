@@ -43,7 +43,7 @@ SRC_URI += " \
     file://ebikedata.service \
     "
 
-SRCREV = "e4ebb7da2fa883c6f8a494a336ca45ea54466b27"
+SRCREV = "ff2baeb7fd583d0c81a63a65966647cdf495f6a5"
 
 DEPENDS = "qtbase qtdeclarative qtquickcontrols2 \
            ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
