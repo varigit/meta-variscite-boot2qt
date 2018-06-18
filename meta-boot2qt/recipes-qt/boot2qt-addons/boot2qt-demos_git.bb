@@ -37,7 +37,6 @@ QT_GIT_PROJECT=""
 
 SRC_URI = " \
     ${QT_GIT}qt-apps/boot2qt-demos.git;branch=${BRANCH};name=demos \
-    ${QT_GIT}qt-apps/qtwebbrowser.git;branch=${BROWSER_BRANCH};name=qtwebbrowser;destsuffix=git/basicsuite/qtwebbrowser/tqtc-qtwebbrowser \
     https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt_video_720p.webm;name=video1 \
     https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt+World+Summit+2015+Recap.mp4;name=video2 \
     "
@@ -47,9 +46,7 @@ PV = "5.11.1+git${SRCPV}"
 BRANCH = "5.11"
 BROWSER_BRANCH = "dev"
 
-SRCREV_demos = "a60797871ea11ade6b583869e361ffef88e2213b"
-SRCREV_qtwebbrowser = "09d629199fa153ea7954321d81f647d5eb52fb6c"
-SRCREV_FORMAT = "demos_qtwebbrowser"
+SRCREV = "cc9de3791859538441fc5a174c69f556638cce03"
 
 SRC_URI[video1.md5sum] = "56de4dcfd5201952dce9af9c69fcec9b"
 SRC_URI[video1.sha256sum] = "809123419acac99353439e52c870e2e497dfa8f434ef0777e6c7303e6ad27f89"
@@ -67,18 +64,23 @@ do_install_append() {
     rm -rf ${D}/data/user/sensorexplorer
     rm -rf ${D}/data/user/qtwebbrowser
 
-    # we need all qml and content files
-    cp -r ${S}/* ${D}/data/user/qt/
+    # we need all qml and content files from the demos we want to use
+    cp -r ${S}/datacollector ${D}/data/user/qt/
+    cp -r ${S}/ebike-ui ${D}/data/user/qt/
+    cp -r ${S}/enterprise-charts ${D}/data/user/qt/
+    cp -r ${S}/graphicaleffects ${D}/data/user/qt/
+    cp -r ${S}/launchersettings ${D}/data/user/qt/
+    cp -r ${S}/mediaplayer ${D}/data/user/qt/
+    cp -r ${S}/qtquickcontrols2 ${D}/data/user/qt/
+    cp -r ${S}/textinput ${D}/data/user/qt/
+    cp -r ${S}/shared ${D}/data/user/qt/
+    cp -r ${S}/qtwebbrowser ${D}/data/user/qt/
+    cp ${S}/demos.xml ${D}/data/user/qt/
 
     # but none of the source files
     find ${D}/data/user/qt/ \( -name '*.cpp' -or -name '*.h' -or -name '*.pro' \) -delete
     rm -rf ${D}/data/user/qt/qtwebbrowser/tqtc-qtwebbrowser
     rm -rf ${D}/data/user/qt/qtwebbrowser/qmldir
-
-    if [ -d ${WORKDIR}/git/images ]; then
-        install -d 0755 ${D}/data/images
-        install -m 0644 ${WORKDIR}/git/images/* ${D}/data/images/
-    fi
 
     install -d -m 0755 ${D}/data/videos
     install -m 0644 ${WORKDIR}/Qt_video_720p.webm ${D}/data/videos
