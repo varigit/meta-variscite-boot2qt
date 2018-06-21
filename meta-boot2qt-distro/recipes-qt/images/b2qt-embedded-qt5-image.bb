@@ -32,7 +32,7 @@ LICENSE = "The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
 PR = "r0"
 
-DEPLOY_CONF_TYPE = "Boot2Qt"
+DEPLOY_CONF_TYPE = "Boot2Qt $QT_VERSION"
 
 IMAGE_FEATURES += "\
         package-management \
