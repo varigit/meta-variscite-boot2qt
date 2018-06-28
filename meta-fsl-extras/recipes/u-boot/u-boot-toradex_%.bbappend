@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -34,4 +34,3 @@ SRC_URI += " \
         file://0003-apalis-imx6-Ixora-v1.0-support.patch \
         file://0004-apalis-imx6-lower-default-resolution-on-HDMI-to-720p.patch \
         "
-DEPENDS += "dtc-native"
