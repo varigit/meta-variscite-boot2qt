@@ -43,6 +43,7 @@ RDEPENDS_${PN} += " \
     gcc-sanitizers \
     \
     qt3d-dev \
+    qt3d-runtime-dev \
     qtbase-dev \
     qtbase-staticdev \
     qtbase-doc \

@@ -36,6 +36,8 @@ PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
 RDEPENDS_${PN} += " \
     qt3d \
+    qt3d-runtime \
+    qt3d-runtime-tools \
     qtbase \
     qtcanvas3d \
     qtcharts \
