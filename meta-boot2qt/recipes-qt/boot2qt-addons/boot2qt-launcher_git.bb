@@ -43,10 +43,13 @@ SRC_URI += " \
     file://ebikedata.service \
     "
 
-SRCREV = "6187ed3df6f8f749259ed059e56ba0ed85dea8fd"
+SRCREV = "56d6c566fc434c159d573eba07a4397e5aea3638"
 
-DEPENDS = "qtbase qtdeclarative qtquickcontrols2 \
-           ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
+DEPENDS = "\
+    qtbase qtdeclarative qtquickcontrols2 \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'qt5-static', 'qtdeclarative-native qtvirtualkeyboard qtdeviceutilities', '', d)} \
+    "
 
 do_install_append() {
     install -m 0755 -d ${D}${sysconfdir}/init.d

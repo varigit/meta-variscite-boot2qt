@@ -39,6 +39,9 @@ PACKAGECONFIG[wpasupplicant] = "CONFIG+=wpasupplicant,,wpa-supplicant"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
-SRCREV = "e1ff105e6e6f518ac35afc315c67ad1a009e510e"
+SRCREV = "1dabfa51cb834efd85ccb60e70e2ce3558b4deaf"
 
-DEPENDS = "qtbase qtdeclarative qtconnectivity"
+DEPENDS = "\
+    qtbase qtdeclarative qtconnectivity qtdeclarative-native \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'qt5-static', 'qtsvg qtvirtualkeyboard', '', d)} \
+    "

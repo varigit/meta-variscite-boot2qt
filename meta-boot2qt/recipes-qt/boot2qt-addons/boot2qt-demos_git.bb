@@ -55,8 +55,11 @@ SRC_URI[video2.sha256sum] = "651e0b4d2b3272dc10bfc9edba4f0c1a7084cd087c75e8a098f
 
 S = "${WORKDIR}/git/basicsuite"
 
-DEPENDS = "qtbase qtdeclarative qtxmlpatterns qtquickcontrols2 qtgraphicaleffects qtmultimedia qtcharts qtlocation \
-           ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
+DEPENDS = " \
+    qtbase qtdeclarative qtxmlpatterns qtquickcontrols2 qtgraphicaleffects qtmultimedia qtcharts qtlocation \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'qt5-static', 'qtdeclarative-native', '', d)} \
+    "
 
 do_install_append() {
     # we only need plugins from the demos
@@ -110,4 +113,7 @@ FILES_${PN} += " \
 
 FILES_${PN}-dbg += " \
     /data/user/qt/qmlplugins/*/.debug/ \
+    "
+FILES_${PN}-staticdev += " \
+    /data/user/qt/qmlplugins/*/*.a \
     "
