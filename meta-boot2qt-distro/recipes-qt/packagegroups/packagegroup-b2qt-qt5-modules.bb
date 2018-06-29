@@ -62,7 +62,6 @@ RDEPENDS_${PN} += " \
     qtsvg \
     qttools \
     qttools-tools \
-    qttranslations-qt \
     qttranslations-qtbase \
     qttranslations-qtdeclarative \
     qttranslations-qtconnectivity \
