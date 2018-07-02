@@ -44,12 +44,16 @@ PACKAGECONFIG += " \
     icu \
     libinput \
     linuxfb \
+    ltcg \
     sql-sqlite \
     tslib \
     xkbcommon-evdev \
     "
 
 PACKAGECONFIG_remove = "tests"
+
+# Disable on emulator due to QTBUG-69252
+PACKAGECONFIG_remove_emulator = "ltcg"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
