@@ -16,11 +16,11 @@
 KERN_DIR := "${LNX_TOPDIR}_src/kernel"
 # Kernel source is the kernel tarball in PDK
 SRC_URI = "file://${KERN_DIR}/linux.tar.bz2"
-PV = "4.4"
+PV = "4.9"
 
 # Extracting linux.tar.bz2 creates directories
-# <top>/vibrante-oss-src/kernel
-S = "${WORKDIR}/vibrante-oss-src/kernel"
+# <top>/drive-oss-src/kernel
+S = "${WORKDIR}/drive-oss-src/kernel"
 
 # Need to pass this to for oe_runmake explicitly for building outside kerneldir
 EXTRA_OEMAKE += " -C ${S} O=${B}"

@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -26,9 +26,5 @@
 ## $QT_END_LICENSE$
 ##
 ############################################################################
-
-FILESEXTRAPATHS_append := ":${LNX_TOPDIR}_src/wayland"
-
-SRC_URI = "file://wayland-1.11.0-src.tar.gz"
 
 DEPENDS_append_class-target = " wayland-egl"

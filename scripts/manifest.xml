@@ -91,13 +91,13 @@
 
   <project name="nvidia-layer"
            remote="playground"
-           revision="1fa971efec70d999ac2a57782c12625fb70e5c76"
+           revision="af6f41cb527f35263cf7bfde222d92600f5e66e2"
            path="sources/nvidia-layer"
            groups="notdefault,internal"/>
-  <project name="vibrante-t186"
+  <project name="drive-t186"
            remote="playground"
-           revision="5e04f79155936ae10bbbea72e012336be6631448"
-           path="sources/vibrante-t186"
+           revision="a3dc22511ed845b7fe85a7b26c64b1c37a4763c4"
+           path="sources/drive-t186"
            groups="notdefault,internal"/>
   <project name="renesas-rcar-gen3"
            remote="playground"

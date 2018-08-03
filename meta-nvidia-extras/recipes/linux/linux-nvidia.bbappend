@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -28,14 +28,11 @@
 ############################################################################
 
 FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
-SRC_URI += "file://0001-Fix-misleading-indentation-error.patch;patchdir=.."
+SRC_URI += "file://0001-Disable-more-warnings.patch"
 
 CROSS_COMPILE_PREFIX = "${CROSS_COMPILE}"
 
-PACKAGES += "kernel-devicetree"
-FILES_kernel-devicetree = "/boot/*.dtb"
-
-RDEPENDS_kernel-base = "kernel-image kernel-devicetree"
+RDEPENDS_${KERNEL_PACKAGE_NAME}-base = "${KERNEL_PACKAGE_NAME}-image ${KERNEL_PACKAGE_NAME}-devicetree"
 
 python do_patch () {
     bb.build.exec_func('patch_do_patch', d)

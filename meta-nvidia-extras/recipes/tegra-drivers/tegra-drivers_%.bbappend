@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,11 +27,6 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
-
-SRC_URI += " file://egl.pc"
-FILES_${PN} += "egl.pc"
-
 GRAPHICS_PACKAGES = " \
     virtual/libgles2 \
     virtual/libegl \
@@ -42,8 +37,5 @@ GRAPHICS_PACKAGES = " \
     libgbm \
     libgbm-dev \
     "
-
-do_install_append_tegra-t18x() {
-    install -d ${D}/usr/lib/pkgconfig
-    install -m 0775 ${WORKDIR}/egl.pc ${D}/${libdir}/pkgconfig
-}
+RDEPENDS_${PN}-nvidia-egl-wayland += "wayland"
+INSANE_SKIP_${PN}-gst += "file-rdeps"

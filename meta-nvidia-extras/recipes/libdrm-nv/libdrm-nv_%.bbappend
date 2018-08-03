@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,14 +27,4 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
-FILES_${PN} += "etc/connman/main.conf"
-
-SRC_URI += "file://main.conf \
-          "
-
-do_install_append() {
-    install -d ${D}${sysconfdir}/connman
-    install -m 0644 ${WORKDIR}/main.conf ${D}${sysconfdir}/connman/main.conf
-}
+RDEPENDS_${PN} += "tegra-drivers"
