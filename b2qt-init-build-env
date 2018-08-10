@@ -121,9 +121,6 @@ get_groups() {
     smarc-samx6i)
       PROJECT_GROUPS="smx6"
     ;;
-    beagleboard|beaglebone|am335x-evm)
-      PROJECT_GROUPS="ti"
-    ;;
     raspberrypi0|raspberrypi|raspberrypi2|raspberrypi3)
       PROJECT_GROUPS="rpi"
     ;;

@@ -1,1 +1,0 @@
-KERNEL=="fb0", TAG+="systemd"

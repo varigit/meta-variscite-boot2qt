@@ -71,9 +71,6 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     smarc-samx6i)
       LAYERSCONF="bblayers.conf.smx6.sample"
     ;;
-    beagleboard|beaglebone|am335x-evm)
-      LAYERSCONF="bblayers.conf.ti.sample"
-    ;;
     raspberrypi0|raspberrypi|raspberrypi2|raspberrypi3)
       LAYERSCONF="bblayers.conf.rpi.sample"
     ;;
