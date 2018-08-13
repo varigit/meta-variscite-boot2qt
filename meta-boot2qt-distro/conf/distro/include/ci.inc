@@ -27,4 +27,4 @@
 ##
 ############################################################################
 
-MACHINE_EXTRA_INSTALL += "libnss-mdns"
+MACHINE_EXTRA_INSTALL_SDK += "libnss-mdns"
