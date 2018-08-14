@@ -38,6 +38,8 @@ UPLOADS="\
     tmp/deploy/sdk/b2qt-x86_64-meta-toolchain-b2qt-${PROJECT}-qt5-sdk-${MACHINE}.sh \
     tmp/deploy/sdk/b2qt-i686-mingw32-meta-toolchain-b2qt-${PROJECT}-qt5-sdk-${MACHINE}.7z \
     tmp/deploy/sdk/b2qt-x86_64-meta-toolchain-b2qt-embedded-sdk-${MACHINE}.sh \
+    tmp/deploy/qbsp/meta-b2qt-${PROJECT}-qbsp-x86_64-${MACHINE}.qbsp \
+    tmp/deploy/qbsp/meta-b2qt-${PROJECT}-qbsp-i686-mingw32-${MACHINE}.qbsp \
     "
 
 for f in ${UPLOADS}; do
