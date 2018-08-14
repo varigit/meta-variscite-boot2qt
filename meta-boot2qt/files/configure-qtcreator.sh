@@ -100,6 +100,7 @@ ${SDKTOOL} rmQt --id ${BASEID}.qt || true
 ${SDKTOOL} rmTC --id ProjectExplorer.ToolChain.Gcc:${BASEID}.gcc || true
 ${SDKTOOL} rmTC --id ProjectExplorer.ToolChain.Gcc:${BASEID}.g++ || true
 ${SDKTOOL} rmDebugger --id ${BASEID}.gdb 2>/dev/null || true
+${SDKTOOL} rmCMake --id ${BASEID}.cmake 2>/dev/null || true
 
 if [ -n "${REMOVEONLY}" ]; then
     echo "Kit removed: ${NAME}"
@@ -133,6 +134,11 @@ ${SDKTOOL} addQt \
     --type "Qdb.EmbeddedLinuxQt" \
     --qmake "$(type -p qmake)"
 
+${SDKTOOL} addCMake \
+    --id "${BASEID}.cmake" \
+    --name "CMake ${NAME}" \
+    --path "$(type -p cmake)"
+
 ${SDKTOOL} addKit \
     --id "${BASEID}.kit" \
     --name "${NAME}" \
@@ -143,6 +149,10 @@ ${SDKTOOL} addKit \
     --Ctoolchain "ProjectExplorer.ToolChain.Gcc:${BASEID}.gcc" \
     --Cxxtoolchain "ProjectExplorer.ToolChain.Gcc:${BASEID}.g++" \
     --icon ":/boot2qt/images/B2Qt_QtC_icon.png" \
-    --mkspec "${MKSPEC}"
+    --mkspec "${MKSPEC}" \
+    --cmake "${BASEID}.cmake" \
+    --cmake-config "CMAKE_TOOLCHAIN_FILE:FILEPATH=${OECORE_NATIVE_SYSROOT}/usr/share/cmake/OEToolchainConfig.cmake" \
+    --cmake-config "CMAKE_CXX_COMPILER:FILEPATH=$(type -p ${CXX})" \
+    --cmake-config "CMAKE_C_COMPILER:FILEPATH=$(type -p ${CC})"
 
 echo "Configured Qt Creator with new kit: ${NAME}"

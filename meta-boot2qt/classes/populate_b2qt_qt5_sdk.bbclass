@@ -34,6 +34,7 @@ NATIVE_SDK_MKSPEC_DIR = "${SDK_OUTPUT}${SDKPATHNATIVE}${libdir}/${QT_DIR_NAME}/m
 SDK_MKSPEC = "devices/linux-oe-generic-g++"
 SDK_DEVICE_PRI = "${SDK_MKSPEC_DIR}/qdevice.pri"
 SDK_DYNAMIC_FLAGS = "-O. -pipe -g"
+MACHINE_CMAKE = "${SDK_OUTPUT}${SDKPATHNATIVE}${datadir}/cmake/OEToolchainConfig.cmake.d/${MACHINE}.cmake"
 
 create_sdk_files_append () {
     # Create the toolchain user's generic device mkspec
@@ -79,6 +80,16 @@ EOF
 
     # Link /etc/resolv.conf is broken in the toolchain sysroot, remove it
     rm -f ${SDK_OUTPUT}${SDKTARGETSYSROOT}${sysconfdir}/resolv.conf
+
+    # Create and add cmake toolchain file
+    echo "set(CMAKE_SYSROOT ${SDKTARGETSYSROOT})" > ${MACHINE_CMAKE}
+    echo "set(CMAKE_PREFIX_PATH ${SDKTARGETSYSROOT}${OE_QMAKE_PATH_LIBS}/cmake)" >> ${MACHINE_CMAKE}
+    echo "set(compiler_flags \"${TARGET_CC_ARCH}\")" >> ${MACHINE_CMAKE}
+    echo "set(CMAKE_C_COMPILER_ARG1 \"\${compiler_flags}\")" >> ${MACHINE_CMAKE}
+    echo "set(CMAKE_CXX_COMPILER_ARG1 \"\${compiler_flags}\")" >> ${MACHINE_CMAKE}
+    echo "set(OE_QMAKE_PATH_EXTERNAL_HOST_BINS ${SDKPATHNATIVE}${OE_QMAKE_PATH_HOST_BINS})" >> ${MACHINE_CMAKE}
+    mkdir -p ${D}${datadir}/cmake/OEToolchainConfig.cmake.d/
+    install -m 0644 ${MACHINE_CMAKE} ${D}${datadir}/cmake/OEToolchainConfig.cmake.d/
 }
 
 create_qtcreator_configure_script () {
