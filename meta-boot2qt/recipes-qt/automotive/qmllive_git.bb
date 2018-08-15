@@ -29,7 +29,7 @@
 
 DESCRIPTION = "QML Live target runtime"
 
-LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
+LICENSE = "GPL-3.0 | The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=75cd0dbc6f2d24e7eeb128ff59b74f4c"
 
 inherit qmake5
@@ -37,7 +37,7 @@ require recipes-qt/qt5/qt5-git.inc
 
 QT_GIT_PROJECT = "qt-apps"
 
-SRCREV = "448d7ce1e2cfad09dbe2de87d9cc9b1615bd92ff"
+SRCREV = "a0f2af7fc25b49d082111f6c853e64188e6b4743"
 
 DEPENDS = "qtbase qtdeclarative"
 
