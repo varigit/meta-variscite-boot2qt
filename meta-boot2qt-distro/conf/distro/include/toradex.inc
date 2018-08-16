@@ -46,3 +46,7 @@ BOOT_SCRIPTS += " \
     fwd_mmc.img:flash_mmc.img \
     ${MACHINE}:${MACHINEDIR} \
     "
+
+# fix: basehash value changed from ... to ....
+# The metadata is not deterministic and this needs to be fixed.
+rootfs_tezi_json[vardepsexclude] = "DATE"
