@@ -12,9 +12,9 @@ diff --git a/flash_blk.scr b/flash_blk.scr
 index 401c47a..8fa5af9 100644
 --- a/flash_blk.scr
 +++ b/flash_blk.scr
-@@ -11,7 +11,7 @@ setenv update_kernel 'fatload ${interface} 0:1 ${loadaddr} ${board_name}/zImage
- setenv update_fdt 'fatload ${interface} 0:1 ${loadaddr} ${board_name}/${soc}-colibri-${fdt_board}.dtb && ubi write ${loadaddr} dtb ${filesize}'
- setenv update_rootfs 'fatload ${interface} 0:1 ${loadaddr} ${board_name}/ubifs.img && ubi write ${loadaddr} rootfs ${filesize}'
+@@ -11,7 +11,7 @@ setenv update_kernel 'fatload ${interface} 0:1 ${fdt_addr_r} ${board_name}/zImage
+ setenv update_fdt 'fatload ${interface} 0:1 ${fdt_addr_r} ${board_name}/${soc}-colibri-${fdt_board}.dtb && ubi write ${loadaddr} dtb ${filesize}'
+ setenv update_rootfs 'fatload ${interface} 0:1 ${fdt_addr_r} ${board_name}/ubifs.img && ubi write ${loadaddr} rootfs ${filesize}'
  
 -setenv update_new 'run update_uboot; run prepare_ubi && run update_kernel && run update_fdt && run update_rootfs; reset'
 +setenv update_new 'run update_uboot; reset'
@@ -38,9 +38,9 @@ diff --git a/flash_eth.scr b/flash_eth.scr
 index 15aab1c..aa98b3a 100644
 --- a/flash_eth.scr
 +++ b/flash_eth.scr
-@@ -11,7 +11,7 @@ setenv update_kernel 'tftpboot ${loadaddr} ${board_name}/zImage && ubi write ${l
- setenv update_fdt 'tftpboot ${loadaddr} ${board_name}/${soc}-colibri-${fdt_board}.dtb && ubi write ${loadaddr} dtb ${filesize}'
- setenv update_rootfs 'tftpboot ${loadaddr} ${board_name}/ubifs.img && ubi write ${loadaddr} rootfs ${filesize}'
+@@ -11,7 +11,7 @@ setenv update_kernel 'tftpboot ${fdt_addr_r} ${board_name}/zImage && ubi write ${l
+ setenv update_fdt 'tftpboot ${fdt_addr_r} ${board_name}/${soc}-colibri-${fdt_board}.dtb && ubi write ${loadaddr} dtb ${filesize}'
+ setenv update_rootfs 'tftpboot ${fdt_addr_r} ${board_name}/ubifs.img && ubi write ${loadaddr} rootfs ${filesize}'
  
 -setenv update_new 'run update_uboot; run prepare_ubi && run update_kernel && run update_fdt && run update_rootfs; reset'
 +setenv update_new 'run update_uboot; reset'

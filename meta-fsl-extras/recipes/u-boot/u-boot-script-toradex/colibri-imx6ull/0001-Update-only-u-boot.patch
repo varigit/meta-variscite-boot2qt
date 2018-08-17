@@ -1,0 +1,21 @@
+From c563131a55ebf0f2956d5e6df400c45ae72cff38 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Wed, 14 Sep 2016 10:19:28 +0300
+Subject: [PATCH] Update only u-boot
+
+---
+ flash_blk.scr | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/flash_blk.scr b/flash_blk.scr
+index b8b8a93..824b6dc 100644
+--- a/flash_blk.scr
++++ b/flash_blk.scr
+@@ -10,6 +10,6 @@ setenv update_kernel 'fatload ${interface} 0:1 ${fdt_addr_r} ${board_name}/zImag
+ setenv update_fdt 'fatload ${interface} 0:1 ${fdt_addr_r} ${board_name}/imx6ull-colibri${variant}-${fdt_board}.dtb && ubi write ${fdt_addr_r} dtb ${filesize}'
+ setenv update_rootfs 'fatload ${interface} 0:1 ${fdt_addr_r} ${board_name}/ubifs.img && ubi write ${fdt_addr_r} rootfs ${filesize}'
+ 
+-setenv update 'mtdparts default && run update_uboot && run prepare_ubi && run update_kernel && run update_fdt && run update_rootfs && reset'
++setenv update 'mtdparts default && run update_uboot && reset'
+ 
+ echo 'enter "run update" to update the entire module'

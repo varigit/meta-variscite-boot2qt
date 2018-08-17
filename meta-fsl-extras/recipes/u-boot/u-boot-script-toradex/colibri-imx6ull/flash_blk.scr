@@ -1,0 +1,15 @@
+setenv create_bcb 'nand erase.part mx6ull-bcb && writebcb 80000 200000'
+setenv recreate_bcb 'nand read ${fdt_addr_r} 0x800 0x800 && run create_bcb && nand write ${fdt_addr_r} 0x800 0x800'
+
+setenv prepare_kernel_fdt 'ubi create kernel 0x800000 static && ubi create dtb 0x20000 static'
+setenv prepare_rootfs 'ubi create rootfs 0 dynamic'
+setenv prepare_ubi 'ubi part ubi && if ubi check rootfs; then else run prepare_kernel_fdt && && run prepare_rootfs; fi'
+
+setenv update_uboot 'fatload ${interface} 0:1 ${fdt_addr_r} ${board_name}/u-boot-nand.imx && nand erase.part u-boot1 && nand write ${fdt_addr_r} u-boot1 ${filesize} && nand erase.part u-boot2 && nand write ${fdt_addr_r} u-boot2 ${filesize}'
+setenv update_kernel 'fatload ${interface} 0:1 ${fdt_addr_r} ${board_name}/zImage && ubi write ${fdt_addr_r} kernel ${filesize}'
+setenv update_fdt 'fatload ${interface} 0:1 ${fdt_addr_r} ${board_name}/imx6ull-colibri${variant}-${fdt_board}.dtb && ubi write ${fdt_addr_r} dtb ${filesize}'
+setenv update_rootfs 'fatload ${interface} 0:1 ${fdt_addr_r} ${board_name}/ubifs.img && ubi write ${fdt_addr_r} rootfs ${filesize}'
+
+setenv update 'mtdparts default && run update_uboot && run prepare_ubi && run update_kernel && run update_fdt && run update_rootfs && reset'
+
+echo 'enter "run update" to update the entire module'

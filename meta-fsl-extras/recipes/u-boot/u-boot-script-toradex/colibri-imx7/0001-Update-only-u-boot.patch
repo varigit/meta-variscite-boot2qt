@@ -12,8 +12,8 @@ diff --git a/flash_blk.scr b/flash_blk.scr
 index cc4cf38..b63366a 100644
 --- a/flash_blk.scr
 +++ b/flash_blk.scr
-@@ -15,7 +15,7 @@ setenv update_fdt 'fatload ${interface} 0:1 ${loadaddr} ${board_name}/${soc}-col
- setenv update_rootfs 'fatload ${interface} 0:1 ${loadaddr} ${board_name}/ubifs.img && ubi write ${loadaddr} rootfs ${filesize}'
+@@ -15,7 +15,7 @@ setenv update_fdt 'fatload ${interface} 0:1 ${fdt_addr_r} ${board_name}/${soc}-col
+ setenv update_rootfs 'fatload ${interface} 0:1 ${fdt_addr_r} ${board_name}/ubifs.img && ubi write ${loadaddr} rootfs ${filesize}'
  
  # Test which version of U-Boot we are currently running on
 -setenv update 'mtdparts default && env default -f updlevel && if test $updlevel -lt 1; then; run update_uboot_old; else; run update_uboot && run prepare_ubi && run update_kernel && run update_fdt && run update_rootfs && reset; fi'
@@ -25,8 +25,8 @@ diff --git a/flash_eth.scr b/flash_eth.scr
 index 01be124..13025de 100644
 --- a/flash_eth.scr
 +++ b/flash_eth.scr
-@@ -15,7 +15,7 @@ setenv update_fdt 'tftpboot ${loadaddr} ${board_name}/${soc}-colibri-${fdt_board
- setenv update_rootfs 'tftpboot ${loadaddr} ${board_name}/ubifs.img && ubi write ${loadaddr} rootfs ${filesize}'
+@@ -15,7 +15,7 @@ setenv update_fdt 'tftpboot ${fdt_addr_r} ${board_name}/${soc}-colibri-${fdt_board
+ setenv update_rootfs 'tftpboot ${fdt_addr_r} ${board_name}/ubifs.img && ubi write ${loadaddr} rootfs ${filesize}'
  
  # Test which version of U-Boot we are currently running on
 -setenv update 'mtdparts default && env default -f updlevel && if test $updlevel -lt 1; then; run update_uboot_old; else; run update_uboot && run prepare_ubi && run update_kernel && run update_fdt && run update_rootfs && reset; fi'
