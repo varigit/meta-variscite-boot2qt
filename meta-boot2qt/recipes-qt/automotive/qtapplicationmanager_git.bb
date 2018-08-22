@@ -34,7 +34,8 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=ff238b33ff354a0d8d79851a9c061717"
 inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
-SRCREV = "37ec2100342e3447552f0948aac11c155408254f"
+QT_MODULE_BRANCH = "dev"
+SRCREV = "08ee6cf6bfff3bfc1cde8552231da12a51dd3b49"
 
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \
            ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "qtwayland qtwayland-native", "", d)}"

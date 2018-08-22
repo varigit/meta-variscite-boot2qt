@@ -43,6 +43,7 @@ inherit qt5-module
 inherit python3native
 require recipes-qt/qt5/qt5-git.inc
 
+QT_MODULE_BRANCH = "dev"
 QT_MODULE_BRANCH_QFACE = "upstream/develop"
 
 SRC_URI += " \
@@ -50,7 +51,7 @@ SRC_URI += " \
     file://0001-Use-QT_HOST_BINS-get-for-getting-correct-path.patch \
 "
 
-SRCREV_qtivi = "2469660f37f15303508c0864c1a57aa5e189077a"
+SRCREV_qtivi = "e507a49be6387361ae4862ec6c6dc5aaac9d0c77"
 SRCREV_qface = "9da793d6cbc63d617ad5e2ffd13e9f6d055c88e8"
 SRCREV = "${SRCREV_qtivi}"
 SRCREV_FORMAT = "qtivi_qface"
