@@ -41,12 +41,11 @@ SRC_URI = " \
     https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt+World+Summit+2015+Recap.mp4;name=video2 \
     "
 
-PV = "5.11.1+git${SRCPV}"
+PV = "5.11.2+git${SRCPV}"
 
 BRANCH = "5.11"
-BROWSER_BRANCH = "dev"
 
-SRCREV = "a60eb6782491ca42dd9139ad0a14866cdf064d40"
+SRCREV = "3594ea2a2dec8a74c2e8baf307c13671ebbdf18c"
 
 SRC_URI[video1.md5sum] = "56de4dcfd5201952dce9af9c69fcec9b"
 SRC_URI[video1.sha256sum] = "809123419acac99353439e52c870e2e497dfa8f434ef0777e6c7303e6ad27f89"
@@ -88,21 +87,6 @@ do_install_append() {
     install -d -m 0755 ${D}/data/videos
     install -m 0644 ${WORKDIR}/Qt_video_720p.webm ${D}/data/videos
     install -m 0644 ${WORKDIR}/Qt+World+Summit+2015+Recap.mp4 ${D}/data/videos
-
-    # Common settings
-    cp ${D}/data/user/qt/shared/settings.js ${D}/data/user/qt/enterprise-charts/
-    cp ${D}/data/user/qt/shared/settings.js ${D}/data/user/qt/graphicaleffects/
-    cp ${D}/data/user/qt/shared/settings.js ${D}/data/user/qt/mediaplayer/
-
-    # Image paths
-    sed -i 's#arrow.png#images/arrow.png#' ${D}/data/user/qt/qtquickcontrols2/*.qml
-    sed -i 's#qt-logo.png#images/qt-logo.png#' ${D}/data/user/qt/qtquickcontrols2/*.qml
-    sed -i 's#back.png#icons/gallery/20x20/back.png#' ${D}/data/user/qt/qtquickcontrols2/*.qml
-    sed -i 's#drawer.png#icons/gallery/20x20/drawer.png#' ${D}/data/user/qt/qtquickcontrols2/*.qml
-    sed -i 's#menu.png#icons/gallery/20x20/menu.png#' ${D}/data/user/qt/qtquickcontrols2/*.qml
-
-    # Page references (source: "SomePage.qml" -> source: "pages/SomePage.qml")
-    sed -i 's#source: \"\(.*\)Page.qml#source: \"pages/\1Page.qml#' ${D}/data/user/qt/qtquickcontrols2/main.qml
 }
 
 FILES_${PN} += " \
