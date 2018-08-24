@@ -37,8 +37,9 @@ QT_GIT_PROJECT=""
 
 SRC_URI = " \
     ${QT_GIT}qt-apps/boot2qt-demos.git;branch=${BRANCH};name=demos \
-    https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt_video_720p.webm;name=video1 \
-    https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt+World+Summit+2015+Recap.mp4;name=video2 \
+    https://qt-files.s3.amazonaws.com/examples/Videos/Qt+for+Designers+and+Developers.mp4;name=video1 \
+    https://qt-files.s3.amazonaws.com/examples/Videos/Qt+for+Device+Creation.mp4;name=video2 \
+    https://qt-files.s3.amazonaws.com/examples/Videos/The+Future+is+Written+with+Qt.mp4;name=video3 \
     "
 
 PV = "5.11.2+git${SRCPV}"
@@ -47,10 +48,12 @@ BRANCH = "5.11"
 
 SRCREV = "3594ea2a2dec8a74c2e8baf307c13671ebbdf18c"
 
-SRC_URI[video1.md5sum] = "56de4dcfd5201952dce9af9c69fcec9b"
-SRC_URI[video1.sha256sum] = "809123419acac99353439e52c870e2e497dfa8f434ef0777e6c7303e6ad27f89"
-SRC_URI[video2.md5sum] = "e03422de1dba27189872e7d579e7da1b"
-SRC_URI[video2.sha256sum] = "651e0b4d2b3272dc10bfc9edba4f0c1a7084cd087c75e8a098f7ba3454c7e485"
+SRC_URI[video1.md5sum] = "25d9e963a02675a4f3ba83abeebb32da"
+SRC_URI[video1.sha256sum] = "33125518c2eb7848f378ddb6bebaf39f3327c92f1e33daa7fc09e4260e54d54a"
+SRC_URI[video2.md5sum] = "828f4babda370b5d73688ff833e95583"
+SRC_URI[video2.sha256sum] = "eba7d3322e63ce47c3433e920f423febfc3533ab05d13ca2f09a4af7d8c6bc44"
+SRC_URI[video3.md5sum] = "00966663950a8e7ddcfd6def2a87d57a"
+SRC_URI[video3.sha256sum] = "b20ba98464e85cb979f1c505387b0407c4fbec2eaa2170d1360a77ec4c1c2700"
 
 S = "${WORKDIR}/git/basicsuite"
 
@@ -85,8 +88,7 @@ do_install_append() {
     rm -rf ${D}/data/user/qt/qtwebbrowser/qmldir
 
     install -d -m 0755 ${D}/data/videos
-    install -m 0644 ${WORKDIR}/Qt_video_720p.webm ${D}/data/videos
-    install -m 0644 ${WORKDIR}/Qt+World+Summit+2015+Recap.mp4 ${D}/data/videos
+    install -m 0644 ${WORKDIR}/*.mp4 ${D}/data/videos
 }
 
 FILES_${PN} += " \
