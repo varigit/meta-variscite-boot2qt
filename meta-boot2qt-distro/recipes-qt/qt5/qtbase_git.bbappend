@@ -44,7 +44,6 @@ PACKAGECONFIG += " \
     icu \
     libinput \
     linuxfb \
-    ltcg \
     sql-sqlite \
     tslib \
     xkbcommon-evdev \
