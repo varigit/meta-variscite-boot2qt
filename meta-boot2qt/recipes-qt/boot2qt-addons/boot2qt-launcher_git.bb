@@ -43,7 +43,7 @@ SRC_URI += " \
     file://ebikedata.service \
     "
 
-SRCREV = "56d6c566fc434c159d573eba07a4397e5aea3638"
+SRCREV = "5d8d87f96559a577bb72d2eb02a3ed798c480948"
 
 DEPENDS = "\
     qtbase qtdeclarative qtquickcontrols2 \
