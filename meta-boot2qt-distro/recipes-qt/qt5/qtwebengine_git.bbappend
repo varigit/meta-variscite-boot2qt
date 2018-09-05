@@ -27,43 +27,5 @@
 ##
 ############################################################################
 
-PACKAGECONFIG_GL = "${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'gles2 eglfs', 'no-opengl', d)}"
-
-# emulator is exception due to qtglesstream
-PACKAGECONFIG_GL_emulator = "gles2 eglfs"
-
-PACKAGECONFIG += " \
-    accessibility \
-    cups \
-    fontconfig \
-    freetype \
-    getentropy \
-    gif \
-    glib \
-    ico \
-    icu \
-    libinput \
-    linuxfb \
-    ltcg \
-    sql-sqlite \
-    tslib \
-    xkbcommon-evdev \
-    "
-
-PACKAGECONFIG_remove = "tests"
-
-# Disable on emulator due to QTBUG-69252
-PACKAGECONFIG_remove_emulator = "ltcg"
-
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
-SRC_URI += " \
-    file://oe-device-extra.pri \
-    file://0001-Add-win32-g-oe-mkspec-that-uses-the-OE_-environment.patch \
-    "
-do_configure_prepend() {
-    install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
-}
-
-# make other libgbm providers possible
-PACKAGECONFIG[gbm] = "-gbm,-no-gbm,virtual/libgbm"
+# QTBUG-70348
+EXTRA_QMAKEVARS_PRE_append_arm = " CONFIG-=ltcg"
