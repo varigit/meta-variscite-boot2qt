@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,5 +27,5 @@
 ##
 ############################################################################
 
-CFLAGS[unexport] = ""
-CFLAGS = "-Wno-error=pedantic"
+LIC_FILES_CHKSUM = "file://license.rst;md5=e927e02bca647e14efd87e9e914b2443"
+SRCREV = "dcb310296c07bce69149fa9d74f1848cdfd01f5a"

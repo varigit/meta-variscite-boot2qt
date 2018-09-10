@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,14 +27,28 @@
 ##
 ############################################################################
 
-include conf/distro/include/fsl.inc
+IMAGE_FSTYPES += "wic"
+WKS_FILE = "sdimage-bootpart.wks"
+WIC_CREATE_EXTRA_ARGS = "--no-fstab-update"
+WKS_FILE_DEPENDS += "u-boot optee-os"
+
+IMAGE_BOOT_FILES = "\
+    Image \
+    r*.dtb \
+    "
 
 QBSP_IMAGE_CONTENT = "\
     ${IMAGE_LINK_NAME}.img \
     ${IMAGE_LINK_NAME}.conf \
+    bl2-${MACHINE}.srec \
+    bl31-${MACHINE}.srec \
+    tee-${MACHINE}.srec \
+    bootparam_sa0.srec \
+    cert_header_sa6.srec \
+    u-boot-elf-${MACHINE}.srec \
     "
 
-BOOT_SPACE = "16384"
+BOOT_SPACE = "32768"
 
 # uncomment following if using the evaluation drivers
 #DISTRO_FEATURES_append = " use_eva_pkg"
@@ -46,7 +60,7 @@ MULTI_PROVIDER_WHITELIST += "virtual/libgl virtual/egl virtual/libgles1 virtual/
 #DISTRO_FEATURES_append = " pam"
 PREFERRED_PROVIDER_virtual/libgles1 = ""
 PREFERRED_PROVIDER_virtual/libgles2 = "gles-user-module"
-PREFERRED_PROVIDER_virtual/egl = "gles-user-module"
+PREFERRED_PROVIDER_virtual/egl = "libegl"
 PREFERRED_PROVIDER_virtual/libgl = ""
 PREFERRED_PROVIDER_virtual/mesa = ""
 PREFERRED_PROVIDER_libgbm = "libgbm"
@@ -59,9 +73,5 @@ FILESEXTRAPATHS_append = "${BSPDIR}/sources/renesas-rcar-gen3/${PN}:"
 
 BBMASK += "\
     meta-linaro/meta-optee/recipes-security/optee \
-    meta-rcar-gen3/recipes-connectivity/ppp \
     meta-rcar-gen3/recipes-core/packagegroups \
-    meta-rcar-gen3/recipes-graphics/mesa \
-    meta-rcar-gen3/recipes-multimedia/gstreamer \
-    meta-rcar-gen3/recipes-multimedia/webp \
     "

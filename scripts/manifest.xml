@@ -37,7 +37,7 @@
            remote="freescale"
            revision="2813c0c59a81498afab26a2b1f90db07728df2ed"
            path="sources/meta-freescale"
-           groups="notdefault,external,fsl,toradex,smx6,renesas-gen3,boundary,fsl-imx8"/>
+           groups="notdefault,external,fsl,toradex,smx6,boundary,fsl-imx8"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
            revision="ba684412e6983eeda0ef7158a724305f0f1a2f0a"
@@ -60,12 +60,12 @@
            groups="notdefault,external,jetson"/>
   <project name="meta-renesas"
            remote="renesas"
-           revision="95cb48ba09bc7e55fd549817e3e26723409e68d5"
+           revision="276e6ae724d7e604e0d28e4670b8c9edea2957e3"
            path="sources/meta-renesas"
            groups="notdefault,external,renesas-gen3"/>
   <project name="meta-linaro"
            remote="linaro"
-           revision="74dacb34c13d1c85fe4627a890b9c04940f9ffeb"
+           revision="282b47a10940c26854c1cca0ec40950192af16fc"
            path="sources/meta-linaro"
            groups="notdefault,external,renesas-gen3"/>
   <project name="meta-toradex-bsp-common"
@@ -101,7 +101,7 @@
            groups="notdefault,internal"/>
   <project name="renesas-rcar-gen3"
            remote="playground"
-           revision="41c966df95fad1d8fca5c24676c437a46e997c5f"
+           revision="53a345942e4207b2fa1b19d932b5b72bd5c4761c"
            path="sources/renesas-rcar-gen3"
            groups="notdefault,internal"/>
   <project name="meta-smx6"

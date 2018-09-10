@@ -80,7 +80,7 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     tegra-x1|tegra-t18x)
       LAYERSCONF="bblayers.conf.nvidia-tegra.sample"
     ;;
-    salvator-x|h3ulcb|m3ulcb)
+    salvator-x|h3ulcb|m3ulcb|ebisu)
       LAYERSCONF="bblayers.conf.rcar-gen3.sample"
     ;;
     emulator)

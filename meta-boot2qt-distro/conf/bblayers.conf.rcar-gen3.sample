@@ -39,7 +39,6 @@ BBLAYERS ?= " \
   ${BSPDIR}/sources/poky/meta \
   ${BSPDIR}/sources/poky/meta-poky \
   ${BSPDIR}/sources/meta-renesas/meta-rcar-gen3 \
-  ${BSPDIR}/sources/meta-freescale \
   ${BSPDIR}/sources/meta-linaro/meta-optee \
   ${BSPDIR}/sources/meta-openembedded/meta-oe \
   ${BSPDIR}/sources/meta-openembedded/meta-python \
