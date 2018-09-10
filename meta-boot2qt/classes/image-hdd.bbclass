@@ -45,4 +45,4 @@ python do_hddimg() {
         bb.build.exec_func('create_hdd_image', d)
 }
 
-addtask hddimg after do_bootdirectdisk before do_build
+addtask hddimg after do_bootdirectdisk before do_image_complete

@@ -27,8 +27,8 @@
 ##
 ############################################################################
 
-LICENSE = "The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
+LICENSE = "The-Qt-Company-Commercial"
+LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=948f8877345cd66106f11031977a4625"
 DEPENDS = "u-boot-mkimage-native"
 
 PV = "2.7"
@@ -67,7 +67,6 @@ addtask deploy after do_install before do_build
 
 do_compile[noexec] = "1"
 do_install[noexec] = "1"
-do_populate_sysroot[noexec] = "1"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 COMPATIBLE_MACHINE = "(apalis-imx6|colibri-vf|colibri-imx6|colibri-imx7)"

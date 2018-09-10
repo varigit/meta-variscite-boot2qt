@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Packagegroup for B2Qt embedded Linux image"
-LICENSE = "The-Qt-Company-DCLA-2.1"
+LICENSE = "The-Qt-Company-Commercial"
 PR = "r0"
 
 inherit packagegroup

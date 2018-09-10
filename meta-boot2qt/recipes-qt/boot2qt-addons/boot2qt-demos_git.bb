@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Boot to Qt Demos"
-LICENSE = "BSD | The-Qt-Company-DCLA-2.1"
+LICENSE = "BSD | The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://about-b2qt/AboutBoot2Qt.qml;md5=b0a1a6eef4a172b0a8cb4dad9a167d91;beginline=1;endline=49"
 
 inherit qmake5
@@ -37,21 +37,23 @@ QT_GIT_PROJECT=""
 
 SRC_URI = " \
     ${QT_GIT}qt-apps/boot2qt-demos.git;branch=${BRANCH};name=demos \
-    https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt_video_720p.webm;name=video1 \
-    https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt+World+Summit+2015+Recap.mp4;name=video2 \
+    https://qt-files.s3.amazonaws.com/examples/Videos/Qt+for+Designers+and+Developers.mp4;name=video1 \
+    https://qt-files.s3.amazonaws.com/examples/Videos/Qt+for+Device+Creation.mp4;name=video2 \
+    https://qt-files.s3.amazonaws.com/examples/Videos/The+Future+is+Written+with+Qt.mp4;name=video3 \
     "
 
-PV = "5.11.1+git${SRCPV}"
+PV = "5.11.2+git${SRCPV}"
 
 BRANCH = "5.11"
-BROWSER_BRANCH = "dev"
 
-SRCREV = "a60eb6782491ca42dd9139ad0a14866cdf064d40"
+SRCREV = "ca03367f33d6430d3ddbbd70edf832bced59ff74"
 
-SRC_URI[video1.md5sum] = "56de4dcfd5201952dce9af9c69fcec9b"
-SRC_URI[video1.sha256sum] = "809123419acac99353439e52c870e2e497dfa8f434ef0777e6c7303e6ad27f89"
-SRC_URI[video2.md5sum] = "e03422de1dba27189872e7d579e7da1b"
-SRC_URI[video2.sha256sum] = "651e0b4d2b3272dc10bfc9edba4f0c1a7084cd087c75e8a098f7ba3454c7e485"
+SRC_URI[video1.md5sum] = "25d9e963a02675a4f3ba83abeebb32da"
+SRC_URI[video1.sha256sum] = "33125518c2eb7848f378ddb6bebaf39f3327c92f1e33daa7fc09e4260e54d54a"
+SRC_URI[video2.md5sum] = "828f4babda370b5d73688ff833e95583"
+SRC_URI[video2.sha256sum] = "eba7d3322e63ce47c3433e920f423febfc3533ab05d13ca2f09a4af7d8c6bc44"
+SRC_URI[video3.md5sum] = "00966663950a8e7ddcfd6def2a87d57a"
+SRC_URI[video3.sha256sum] = "b20ba98464e85cb979f1c505387b0407c4fbec2eaa2170d1360a77ec4c1c2700"
 
 S = "${WORKDIR}/git/basicsuite"
 
@@ -86,23 +88,7 @@ do_install_append() {
     rm -rf ${D}/data/user/qt/qtwebbrowser/qmldir
 
     install -d -m 0755 ${D}/data/videos
-    install -m 0644 ${WORKDIR}/Qt_video_720p.webm ${D}/data/videos
-    install -m 0644 ${WORKDIR}/Qt+World+Summit+2015+Recap.mp4 ${D}/data/videos
-
-    # Common settings
-    cp ${D}/data/user/qt/shared/settings.js ${D}/data/user/qt/enterprise-charts/
-    cp ${D}/data/user/qt/shared/settings.js ${D}/data/user/qt/graphicaleffects/
-    cp ${D}/data/user/qt/shared/settings.js ${D}/data/user/qt/mediaplayer/
-
-    # Image paths
-    sed -i 's#arrow.png#images/arrow.png#' ${D}/data/user/qt/qtquickcontrols2/*.qml
-    sed -i 's#qt-logo.png#images/qt-logo.png#' ${D}/data/user/qt/qtquickcontrols2/*.qml
-    sed -i 's#back.png#icons/gallery/20x20/back.png#' ${D}/data/user/qt/qtquickcontrols2/*.qml
-    sed -i 's#drawer.png#icons/gallery/20x20/drawer.png#' ${D}/data/user/qt/qtquickcontrols2/*.qml
-    sed -i 's#menu.png#icons/gallery/20x20/menu.png#' ${D}/data/user/qt/qtquickcontrols2/*.qml
-
-    # Page references (source: "SomePage.qml" -> source: "pages/SomePage.qml")
-    sed -i 's#source: \"\(.*\)Page.qml#source: \"pages/\1Page.qml#' ${D}/data/user/qt/qtquickcontrols2/main.qml
+    install -m 0644 ${WORKDIR}/*.mp4 ${D}/data/videos
 }
 
 FILES_${PN} += " \

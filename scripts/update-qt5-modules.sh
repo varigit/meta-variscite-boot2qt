@@ -1,7 +1,7 @@
 #!/bin/bash
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -28,41 +28,47 @@
 ##
 ############################################################################
 
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 <qt5.git>"
-    echo "Update SRCREVs for all Qt modules in the current folder."
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <qt5.git> [<layerdir>]"
+    echo "Update SRCREVs for all Qt modules in the current layer."
     echo "The <qt5.git> is path to the qt5 super repo, where modules' SHA1 is taken."
     exit 1
 fi
 
 SHA1S=$(git -C $1 submodule status --recursive |  cut -c2- | awk '{print $1$2}')
+LAYERDIR=${2:-$PWD}
 
 for S in $SHA1S; do
     SHA1=${S:0:40}
     PROJECT=${S:40}
 
     if [ "${PROJECT}" = "qtwebengine" ]; then
-        sed -i -e "/^SRCREV_qtwebengine/s/\".*\"/\"${SHA1}\"/" qtwebengine_git.bb*
-        echo "${PROJECT} -> ${SHA1}"
+        RECIPE="qtwebengine"
+        TAG="SRCREV_qtwebengine"
     elif [ "${PROJECT}" = "qtwebengine/src/3rdparty" ]; then
-        sed -i -e "/^SRCREV_chromium/s/\".*\"/\"${SHA1}\"/" qtwebengine_git.bb*
-        echo "qtwebengine (chromium) -> ${SHA1}"
+        RECIPE="qtwebengine"
+        TAG="SRCREV_chromium"
     elif [ "${PROJECT}" = "qtlocation" ]; then
-        sed -i -e "/^SRCREV_qtlocation/s/\".*\"/\"${SHA1}\"/" qtlocation_git.bb*
-        echo "qtlocation -> ${SHA1}"
+        RECIPE="qtlocation"
+        TAG="SRCREV_qtlocation"
     elif [ "${PROJECT}" = "qtlocation/src/3rdparty/mapbox-gl-native" ]; then
-        sed -i -e "/^SRCREV_qtlocation-mapboxgl/s/\".*\"/\"${SHA1}\"/" qtlocation_git.bb*
-        echo "qtlocation (mapboxgl) -> ${SHA1}"
+        RECIPE="qtlocation"
+        TAG="SRCREV_qtlocation-mapboxgl"
     elif [ "${PROJECT}" = "qtivi" ]; then
-        sed -i -e "/^SRCREV_qtivi/s/\".*\"/\"${SHA1}\"/" qtivi_git.bb*
-        echo "qtivi -> ${SHA1}"
+        RECIPE="qtivi"
+        TAG="SRCREV_qtivi"
     elif [ "${PROJECT}" = "qtivi/src/3rdparty/qface" ]; then
-        sed -i -e "/^SRCREV_qface/s/\".*\"/\"${SHA1}\"/" qtivi_git.bb*
-        echo "qtivi (qface) -> ${SHA1}"
-    elif [ "${PROJECT}" = "qtenginio" ] || [ "${PROJECT}" = "qtquick1" ] || [ "${PROJECT}" = "qtsystems" ]; then
-        echo "${PROJECT} -> ignored"
-    elif [ "$(echo *${PROJECT}*_git.bb*)" != "*${PROJECT}*_git.bb*" ]; then
-        sed -i -e "/^SRCREV/s/\".*\"/\"${SHA1}\"/" *${PROJECT}*_git.bb*
+        RECIPE="qtivi"
+        TAG="SRCREV_qface"
+    else
+        RECIPE="${PROJECT}"
+        TAG="SRCREV"
+    fi
+
+    RECIPES=$(find ${LAYERDIR} -regextype egrep -regex ".*/(nativesdk-)?${RECIPE}(-native)?_git.bb(append)?")
+
+    if [ "${RECIPES}" != "" ]; then
+        sed -i -e "/^${TAG}/s/\".*\"/\"${SHA1}\"/" ${RECIPES}
         echo "${PROJECT} -> ${SHA1}"
     else
         echo "${PROJECT} -> no recipe found"

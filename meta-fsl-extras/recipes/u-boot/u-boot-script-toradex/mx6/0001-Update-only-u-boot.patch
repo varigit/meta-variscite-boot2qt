@@ -1,4 +1,4 @@
-From 25c3ac90c9d0313e4f7d99a68886f8f43d5a0b52 Mon Sep 17 00:00:00 2001
+From 735a68d1e110edead4b858499c8d97be3e90d0f8 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@qt.io>
 Date: Mon, 15 May 2017 14:04:38 +0300
 Subject: [PATCH] Update only u-boot
@@ -8,13 +8,13 @@ Subject: [PATCH] Update only u-boot
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/flash_blk.scr b/flash_blk.scr
-index ec3e00b..367b910 100644
+index 5c75100..5c8486d 100644
 --- a/flash_blk.scr
 +++ b/flash_blk.scr
-@@ -41,7 +41,7 @@ setenv update_v2.5b3 'run check_configblock || run migrate_configblock; run migr
+@@ -38,7 +38,7 @@ setenv update_v2.5b3 'run check_configblock || run migrate_configblock; run migr
  
  # Not migrated to SPL if no U-Boot Image Magic Number at 69k into the eMMC
- setenv update_to_spl 'mmc dev 0 1; mmc read $loadaddr 8a 1; itest.l *12000000 -ne 56190527 && run update_spl'
+ setenv update_to_spl 'mmc dev 0 1; mmc read $fdt_addr_r 8a 1; itest.l *12000000 -ne 56190527 && run update_spl'
 -setenv update_latest 'run update_to_spl; run update_uboot; run update_1; run update_2; run update_kernel; run update_fdt; run update_3'
 +setenv update_latest 'run update_to_spl; run update_uboot'
  # 'updt_fuse' not available in V2.5 Beta 3 and earlier, migration needed

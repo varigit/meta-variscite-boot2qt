@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Boot to Qt Demo Launcher"
-LICENSE = "(BSD & GPL-3.0) | The-Qt-Company-DCLA-2.1"
+LICENSE = "(BSD & GPL-3.0) | The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit qmake5
@@ -43,7 +43,7 @@ SRC_URI += " \
     file://ebikedata.service \
     "
 
-SRCREV = "56d6c566fc434c159d573eba07a4397e5aea3638"
+SRCREV = "ce4d3833f5193168fb61392d08f61e73997632eb"
 
 DEPENDS = "\
     qtbase qtdeclarative qtquickcontrols2 \

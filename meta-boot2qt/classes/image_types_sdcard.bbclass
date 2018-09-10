@@ -87,3 +87,21 @@ END
     tar czhf ${IMGDEPLOYDIR}/${IMAGE_NAME}.flasher.tar.gz tegraflash
     ln -sf ${IMAGE_NAME}.flasher.tar.gz ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.flasher.tar.gz
 }
+
+IMAGE_DEPENDS_teziimg_append = " qtbase-native:do_populate_sysroot"
+IMAGE_CMD_teziimg_append() {
+    ${IMAGE_CMD_TAR} --transform 's,^,${IMAGE_NAME}-Tezi_${PV}/,' -rhf ${IMGDEPLOYDIR}/${IMAGE_NAME}-Tezi_${PV}${TDX_VERDATE}.tar TEZI_B2QT_EULA.TXT Built_with_Qt.png
+    ln -fs ${IMAGE_NAME}-Tezi_${PV}${TDX_VERDATE}.tar ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.tezi.tar
+}
+python rootfs_tezi_json_append() {
+    import subprocess
+    qtversion = subprocess.check_output(['qmake', '-query', 'QT_VERSION']).decode('utf-8').strip()
+
+    data["license_title"] = "QT DEMO IMAGE END USER LICENSE AGREEMENT"
+    data["license"] = "TEZI_B2QT_EULA.TXT"
+    data["version"] = "Qt " + qtversion
+    data["icon"] = "Built_with_Qt.png"
+
+    with open(os.path.join(deploy_dir, 'image.json'), 'w') as outfile:
+        json.dump(data, outfile, indent=4)
+}

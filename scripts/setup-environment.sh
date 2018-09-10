@@ -59,7 +59,7 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     apalis-imx8|imx8qmlpddr4arm2)
       LAYERSCONF="bblayers.conf.fsl-imx8.sample"
     ;;
-    apalis-imx6|colibri-imx6|colibri-vf|colibri-imx7)
+    apalis-imx6|colibri-imx6|colibri-imx6ull|colibri-vf|colibri-imx7)
       LAYERSCONF="bblayers.conf.toradex.sample"
     ;;
     nitrogen6x|nitrogen7)
@@ -70,9 +70,6 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     ;;
     smarc-samx6i)
       LAYERSCONF="bblayers.conf.smx6.sample"
-    ;;
-    beagleboard|beaglebone|am335x-evm)
-      LAYERSCONF="bblayers.conf.ti.sample"
     ;;
     raspberrypi0|raspberrypi|raspberrypi2|raspberrypi3)
       LAYERSCONF="bblayers.conf.rpi.sample"
@@ -101,7 +98,7 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
   mkdir -p ${PWD}/${BUILDDIRECTORY}/conf
   cp ${PWD}/sources/meta-boot2qt/meta-boot2qt-distro/conf/${LAYERSCONF} ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf
 
-  if [ ! -d ${PWD}/sources/meta-boot2qt/.git ]; then
+  if [ -e ${PWD}/sources/meta-boot2qt/.QT-FOR-DEVICE-CREATION-LICENSE-AGREEMENT ]; then
     QT_SDK_PATH=$(readlink -f ${PWD}/sources/meta-boot2qt/../../../../)
   fi
 fi

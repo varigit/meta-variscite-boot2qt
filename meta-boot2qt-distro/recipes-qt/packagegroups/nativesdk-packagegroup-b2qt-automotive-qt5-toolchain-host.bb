@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Host packages for B2Qt automotive Qt5 SDK"
-LICENSE = "The-Qt-Company-DCLA-2.1"
+LICENSE = "The-Qt-Company-Commercial"
 PR = "r0"
 
 inherit nativesdk packagegroup

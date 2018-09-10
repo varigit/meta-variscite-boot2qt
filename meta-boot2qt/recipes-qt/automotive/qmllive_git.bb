@@ -29,7 +29,7 @@
 
 DESCRIPTION = "QML Live target runtime"
 
-LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
+LICENSE = "GPL-3.0 | The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=75cd0dbc6f2d24e7eeb128ff59b74f4c"
 
 inherit qmake5

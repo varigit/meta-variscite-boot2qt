@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,27 +27,5 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Device Tree Overlays for bb.org boards"
-HOMEPAGE = "https://github.com/beagleboard/bb.org-overlays"
-SECTION = "kernel"
-LICENSE = "GPLv2"
-
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
-
-DEPENDS += "dtc-native"
-
-SRC_URI = "git://github.com/beagleboard/bb.org-overlays"
-SRCREV = "c34e3ee970befc511c57e7a42791e588e029b226"
-
-COMPATIBLE_MACHINE = "(beaglebone)"
-PACKAGE_ARCH = "${MACHINE_ARCH}"
-
-S = "${WORKDIR}/git"
-
-export DTC = "dtc"
-
-do_install() {
-    oe_runmake install DESTDIR="${D}"
-}
-
-FILES_${PN} += "/lib/firmware"
+# QTBUG-70348
+EXTRA_QMAKEVARS_PRE_append_arm = " CONFIG-=ltcg"

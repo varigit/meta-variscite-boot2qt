@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,10 +27,18 @@
 ##
 ############################################################################
 
-include conf/distro/include/ti.inc
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
-DEPLOY_CONF_NAME = "BeagleBone Black"
+SRC_URI += "\
+    file://TEZI_B2QT_EULA.TXT \
+    file://Built_with_Qt.png \
+    https://qt-files.s3.amazonaws.com/examples/tezi-marketing-20180905.tar;unpack=false;downloadfilename=marketing.tar \
+    "
 
-DISTRO_FEATURES_remove = "webengine"
+SRC_URI[md5sum] = "281877560900c6481eee019a923f5e28"
+SRC_URI[sha256sum] = "36c31c812e6d6223f46f2a32cad37f46060a7c05420a4ba491cbea6193039eee"
 
-BOOT_SPACE = "33792"
+do_deploy_append () {
+    install -m 644 ${WORKDIR}/TEZI_B2QT_EULA.TXT ${DEPLOYDIR}
+    install -m 644 ${WORKDIR}/Built_with_Qt.png ${DEPLOYDIR}
+}

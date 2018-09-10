@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Qt Device Utilities"
-LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
+LICENSE = "GPL-3.0 | The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit qt5-module
@@ -39,7 +39,7 @@ PACKAGECONFIG[wpasupplicant] = "CONFIG+=wpasupplicant,,wpa-supplicant"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
-SRCREV = "1dabfa51cb834efd85ccb60e70e2ce3558b4deaf"
+SRCREV = "0ecd391912f6338d5aef6105600fc8c321c83bd8"
 
 DEPENDS = "\
     qtbase qtdeclarative qtconnectivity qtdeclarative-native \

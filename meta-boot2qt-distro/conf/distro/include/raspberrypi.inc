@@ -52,3 +52,8 @@ BBMASK += "\
     "
 
 MACHINE_GSTREAMER_1_0_PLUGIN += "gstreamer1.0-omx"
+
+KERNEL_DEVICETREE += "\
+    overlays/mcp2515-can0.dtbo \
+    overlays/mcp2515-can1.dtbo \
+    "

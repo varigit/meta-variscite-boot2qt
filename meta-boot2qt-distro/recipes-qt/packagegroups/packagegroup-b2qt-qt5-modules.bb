@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Qt5 modules"
-LICENSE = "The-Qt-Company-DCLA-2.1"
+LICENSE = "The-Qt-Company-Commercial"
 
 inherit packagegroup
 
@@ -54,6 +54,7 @@ RDEPENDS_${PN} += " \
     qtotaupdate \
     qtquickcontrols \
     qtquickcontrols2 \
+    qtquicktimeline \
     qtremoteobjects \
     qtscxml \
     qtsensors \
@@ -78,8 +79,4 @@ RDEPENDS_${PN} += " \
     qtwebglplugin \
     qtxmlpatterns \
     qtvirtualkeyboard \
-    "
-
-RDEPENDS_${PN} += "\
-    ${@ "qtquicktimeline" if (d.getVar("QT_INTERNAL_BUILD")) else "" } \
     "

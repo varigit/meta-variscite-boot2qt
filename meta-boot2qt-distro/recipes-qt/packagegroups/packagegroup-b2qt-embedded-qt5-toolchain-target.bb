@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Target packages for B2Qt embedded Qt5 SDK"
-LICENSE = "The-Qt-Company-DCLA-2.1"
+LICENSE = "The-Qt-Company-Commercial"
 PR = "r0"
 
 inherit packagegroup
@@ -62,6 +62,7 @@ RDEPENDS_${PN} += " \
     qtotaupdate-dev \
     qtquickcontrols-dev \
     qtquickcontrols2-dev \
+    qtquicktimeline-dev \
     qtremoteobjects-dev \
     qtscxml-dev \
     qtsensors-dev \
@@ -76,8 +77,4 @@ RDEPENDS_${PN} += " \
     qtwebsockets-dev \
     qtwebchannel-dev \
     qtxmlpatterns-dev \
-    "
-
-RDEPENDS_${PN} += "\
-    ${@ "qtquicktimeline-dev" if (d.getVar("QT_INTERNAL_BUILD")) else "" } \
     "
