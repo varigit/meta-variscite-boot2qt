@@ -42,11 +42,11 @@ SRC_URI = " \
     https://qt-files.s3.amazonaws.com/examples/Videos/The+Future+is+Written+with+Qt.mp4;name=video3 \
     "
 
-PV = "5.11.2+git${SRCPV}"
+PV = "5.12.0+git${SRCPV}"
 
-BRANCH = "5.11"
+BRANCH = "5.12"
 
-SRCREV = "ca03367f33d6430d3ddbbd70edf832bced59ff74"
+SRCREV = "b12865b21e3f950e417fcab6c03fbcb6cefbbd10"
 
 SRC_URI[video1.md5sum] = "25d9e963a02675a4f3ba83abeebb32da"
 SRC_URI[video1.sha256sum] = "33125518c2eb7848f378ddb6bebaf39f3327c92f1e33daa7fc09e4260e54d54a"
@@ -70,6 +70,7 @@ do_install_append() {
     rm -rf ${D}/data/user/qtwebbrowser
 
     # we need all qml and content files from the demos we want to use
+    cp -r ${S}/advancedcustommaterial ${D}/data/user/qt/
     cp -r ${S}/datacollector ${D}/data/user/qt/
     cp -r ${S}/ebike-ui ${D}/data/user/qt/
     cp -r ${S}/enterprise-charts ${D}/data/user/qt/
