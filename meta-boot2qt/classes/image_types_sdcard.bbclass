@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -28,14 +28,10 @@
 ############################################################################
 
 IMAGE_ROOTFS_EXTRA_SPACE = "100000"
-SDCARD_ROOTFS = "${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.ext3"
-SDCARD_GENERATION_COMMAND ?= "generate_imx_sdcard"
 
-IMAGE_CMD_sdcard_append() {
-    parted -s ${SDCARD} set 1 boot on
-
+IMAGE_CMD_wic_append() {
     rm -f ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
-    ln -s ${IMAGE_NAME}.rootfs.sdcard ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
+    ln -s ${IMAGE_NAME}.rootfs.wic ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
 }
 
 IMAGE_CMD_rpi-sdimg_append() {
@@ -48,7 +44,7 @@ build_hddimg_append() {
     ln -s ${IMAGE_NAME}.hddimg ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
 }
 
-IMAGE_DEPENDS_tegraflash_append = " parted-native:do_populate_sysroot"
+do_image_tegraflash[depends] += "parted-native:do_populate_sysroot"
 create_tegraflash_pkg_prepend() {
     # Create partition table
     SDCARD=${IMGDEPLOYDIR}/${IMAGE_NAME}.img
@@ -88,7 +84,7 @@ END
     ln -sf ${IMAGE_NAME}.flasher.tar.gz ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.flasher.tar.gz
 }
 
-IMAGE_DEPENDS_teziimg_append = " qtbase-native:do_populate_sysroot"
+do_image_teziimg[depends] += "qtbase-native:do_populate_sysroot"
 IMAGE_CMD_teziimg_append() {
     ${IMAGE_CMD_TAR} --transform 's,^,${IMAGE_NAME}-Tezi_${PV}/,' -rhf ${IMGDEPLOYDIR}/${IMAGE_NAME}-Tezi_${PV}${TDX_VERDATE}.tar TEZI_B2QT_EULA.TXT Built_with_Qt.png
     ln -fs ${IMAGE_NAME}-Tezi_${PV}${TDX_VERDATE}.tar ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.tezi.tar

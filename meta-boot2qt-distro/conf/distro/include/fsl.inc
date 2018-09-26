@@ -29,7 +29,7 @@
 
 BBMASK += "meta-freescale/dynamic-layers/qt5-layer/recipes-qt/qt5"
 
-IMAGE_FSTYPES += "ext3 sdcard"
+IMAGE_FSTYPES += "ext3 wic"
 IMAGE_CLASSES += "image_types_fsl"
 
 QBSP_IMAGE_CONTENT ?= "\

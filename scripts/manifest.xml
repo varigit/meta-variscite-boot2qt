@@ -18,11 +18,11 @@
 
   <project name="poky"
            remote="yocto"
-           revision="ebb42af2829edfca1a23c7a51a431c656ffc2090"
+           revision="5b5ebab2998b2f6c05edf933cd54a1592d4bcc5c"
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
-           revision="9eaebc6e783f1394bb5444326cd05a976b3122e9"
+           revision="b0950aeff5b630256bb5e25ca15f4d59c115e7c1"
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="qtyocto"
@@ -30,17 +30,17 @@
            path="sources/meta-qt5"/>
   <project name="meta-mingw"
            remote="qtyocto"
-           revision="2a5619ffdc0f02f57e0c36387fd25c8540c60a8a"
+           revision="fde300483f2133489c1f16b5b03a22050613787b"
            path="sources/meta-mingw"/>
 
   <project name="meta-freescale"
            remote="freescale"
-           revision="af5a8cf74d488ba45715ed0b0e0441e60b10c31d"
+           revision="2813c0c59a81498afab26a2b1f90db07728df2ed"
            path="sources/meta-freescale"
            groups="notdefault,external,fsl,toradex,smx6,renesas-gen3,boundary,fsl-imx8"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="9613dbc02ca970122a01c935bc9e5789ced73a9d"
+           revision="ba684412e6983eeda0ef7158a724305f0f1a2f0a"
            path="sources/meta-freescale-3rdparty"
            groups="notdefault,external,fsl,toradex,smx6,boundary,fsl-imx8"/>
   <project name="meta-raspberrypi"
@@ -80,7 +80,7 @@
            groups="notdefault,external,toradex"/>
   <project name="meta-boundary"
            remote="boundary"
-           revision="42b00061076b2a6e15c1eeed7da6fc14a0dae9d8"
+           revision="107a7ceba84b87e1e2a463fea27ae5c53c4e452f"
            path="sources/meta-boundary"
            groups="notdefault,external,boundary"/>
   <project name="meta-fsl-bsp-release"

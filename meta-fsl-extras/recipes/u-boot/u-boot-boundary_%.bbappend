@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -31,4 +31,7 @@ FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 SRC_URI += " \
         file://0001-Add-support-for-KOE-tx31d200vm0baa-display.patch \
         file://0002-set-CMA-reserved-size-to-384MB.patch \
+        file://0003-Disable-build-for-tools.patch \
         "
+
+DEPENDS += "u-boot-mkimage-native"

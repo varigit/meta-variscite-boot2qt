@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -29,7 +29,7 @@
 
 inherit image_types
 
-IMAGE_DEPENDS_conf = "qtbase-native"
+do_image_conf[depends] += "qtbase-native:do_populate_sysroot"
 
 DEPLOY_CONF_NAME ?= "${MACHINE}"
 DEPLOY_CONF_TYPE ?= "Boot2Qt"

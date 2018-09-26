@@ -28,7 +28,7 @@
 ############################################################################
 
 # kernel image files are not needed in the image
-RDEPENDS_kernel-base = ""
+RDEPENDS_${KERNEL_PACKAGE_NAME}-base = ""
 
 do_preconfigure_prepend() {
     # FunctionFS for qdbd

@@ -1,23 +1,23 @@
-From 554d219b3485402c6992abc0aa32c74e8f251876 Mon Sep 17 00:00:00 2001
+From 07234c1c0f991a560010672a619740e385778f90 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@theqtcompany.com>
 Date: Thu, 11 Feb 2016 10:17:51 +0200
 Subject: [PATCH] Add support for KOE tx31d200vm0baa display
 
 Used for the cluster demo
 ---
- arch/arm/include/asm/imx-common/fbpanel.h    | 27 +++++++++++++++++++++++++++
+ arch/arm/include/asm/imx-common/fbpanel.h    | 27 ++++++++++++++++++++
  board/boundary/nitrogen6_max/nitrogen6_max.c |  1 +
  board/boundary/nitrogen6sx/nitrogen6sx.c     |  1 +
  board/boundary/nitrogen6x/nitrogen6x.c       |  1 +
  4 files changed, 30 insertions(+)
 
 diff --git a/arch/arm/include/asm/imx-common/fbpanel.h b/arch/arm/include/asm/imx-common/fbpanel.h
-index b6f7af4..b8acdae 100644
+index f5465c3c80..643cd86e29 100644
 --- a/arch/arm/include/asm/imx-common/fbpanel.h
 +++ b/arch/arm/include/asm/imx-common/fbpanel.h
-@@ -39,6 +39,33 @@ void fbp_enable_fb(struct display_info_t const *di, int enable);
- int fbp_detect_i2c(struct display_info_t const *di);
- void fbp_setup_display(const struct display_info_t *displays, int cnt);
+@@ -116,6 +116,33 @@ void fbp_setup_display(const struct display_info_t *displays, int cnt);
+ 	.fbtype = FB_##_mode,\
+ 	.fbflags = _flags
  
 +/* tx31d200vm0baa == koe */
 +#define IMX_VD_KOE(_mode, _detect, _bus) \
@@ -47,44 +47,41 @@ index b6f7af4..b8acdae 100644
 +}
 +
  /* hdmi settings */
- #define IMX_VD50_1280_720M_60(_mode, _detect, _bus) \
+ #define VDF_1280_720M_60(_mode, _name, _fmt, _flags, _detect, _bus, _addr) \
  {\
 diff --git a/board/boundary/nitrogen6_max/nitrogen6_max.c b/board/boundary/nitrogen6_max/nitrogen6_max.c
-index 337e9b5..ba29aee 100644
+index 1c4106e735..51bc0bd8f3 100644
 --- a/board/boundary/nitrogen6_max/nitrogen6_max.c
 +++ b/board/boundary/nitrogen6_max/nitrogen6_max.c
-@@ -568,6 +568,7 @@ void board_enable_lcd(const struct display_info_t *di, int enable)
+@@ -497,6 +497,7 @@ int fbp_detect_serializer(struct display_info_t const *di)
  }
  
  static const struct display_info_t displays[] = {
 +	IMX_VD_KOE(LVDS, 0, 2),
  	/* hdmi */
- 	IMX_VD50_1280_720M_60(HDMI, 1, 1),
- 	IMX_VD50_1920_1080M_60(HDMI, 0, 1),
+ 	VD_1280_720M_60(HDMI, fbp_detect_i2c, 1, 0x50),
+ 	VD_1920_1080M_60(HDMI, NULL, 1, 0x50),
 diff --git a/board/boundary/nitrogen6sx/nitrogen6sx.c b/board/boundary/nitrogen6sx/nitrogen6sx.c
-index cdabcd8..de6582e 100644
+index dc05042add..3725d63cf3 100644
 --- a/board/boundary/nitrogen6sx/nitrogen6sx.c
 +++ b/board/boundary/nitrogen6sx/nitrogen6sx.c
-@@ -685,6 +685,7 @@ void board_enable_lcd(const struct display_info_t *di, int enable)
- 
+@@ -436,6 +436,7 @@ void board_enable_lcd(const struct display_info_t *di, int enable)
+ }
  
  static const struct display_info_t displays[] = {
 +	IMX_VD_KOE(LVDS, 0, 2),
- 	/* hdmi/lcd */
- 	_IMX_VD_1280_720M_60(LCD, 1, 2, 50, 0),
- 	_IMX_VD_1920_1080M_60(LCD, 0, 2, 50, 0),
+ 	/* hdmi/lcd via tfp410 */
+ 	VDF_1280_720M_60(LCD, "1280x720M@60", RGB24, 0, fbp_detect_i2c, 2, 0x50),
+ 	VDF_1920_1080M_60(LCD, "1920x1080M@60", RGB24, 0, NULL, 2, 0x50),
 diff --git a/board/boundary/nitrogen6x/nitrogen6x.c b/board/boundary/nitrogen6x/nitrogen6x.c
-index 21d6cd7..b24f2f6 100644
+index d9f6a829f1..80b102e206 100644
 --- a/board/boundary/nitrogen6x/nitrogen6x.c
 +++ b/board/boundary/nitrogen6x/nitrogen6x.c
-@@ -525,6 +525,7 @@ void board_enable_lcd(const struct display_info_t *di, int enable)
+@@ -359,6 +359,7 @@ void board_pre_enable(const struct display_info_t *di)
  }
  
  static const struct display_info_t displays[] = {
 +	IMX_VD_KOE(LVDS, 0, 2),
  	/* hdmi */
- 	IMX_VD50_1280_720M_60(HDMI, 1, 1),
- 	IMX_VD50_1920_1080M_60(HDMI, 0, 1),
--- 
-1.9.1
-
+ 	VD_1280_720M_60(HDMI, fbp_detect_i2c, 1, 0x50),
+ 	VD_1920_1080M_60(HDMI, NULL, 1, 0x50),

@@ -35,8 +35,6 @@ BBMASK += " \
     meta-boundary/recipes-mozilla/firefox \
     "
 
-EXTRA_IMAGEDEPENDS += "u-boot u-boot-script-boundary"
-
 MACHINE_EXTRA_INSTALL += "\
     kernel-module-qcacld \
     linux-firmware-bdsdmac-wlan \
