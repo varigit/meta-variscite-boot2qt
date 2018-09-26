@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,8 +27,6 @@
 ##
 ############################################################################
 
-PREFERRED_PROVIDER_libdrm-tegra = "libdrm-tegra"
-
 # use mmc0
 ROOTFS_DEVICE = "mmcblk1p1"
 
@@ -42,9 +40,4 @@ QBSP_IMAGE_CONTENT = "\
     ${IMAGE_LINK_NAME}.img \
     ${IMAGE_LINK_NAME}.conf \
     ${IMAGE_LINK_NAME}.flasher.tar.gz \
-    "
-
-BBMASK += "\
-    meta-tegra/recipes-graphics/drm \
-    meta-tegra/external/openembedded-layer/recipes-support/opencv \
     "
