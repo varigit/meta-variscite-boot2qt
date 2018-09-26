@@ -29,6 +29,9 @@
 
 include conf/distro/include/fsl.inc
 
+# include file from meta-toradex-nxp
+require conf/machine/include/${MACHINE}.inc
+
 BBMASK += "\
    meta-toradex-nxp/recipes-graphics/xorg-xserver \
    meta-toradex-bsp-common/recipes-devtools/python \
@@ -37,16 +40,12 @@ BBMASK += "\
 
 PREFERRED_PROVIDER_u-boot = "u-boot-toradex"
 
-EXTRA_IMAGEDEPENDS += "u-boot u-boot-script-toradex"
+WKS_FILE_DEPENDS += "u-boot-script-toradex"
 
 MACHINEDIR = "${@d.getVar('MACHINE', True).replace('-','_')}"
-BOOT_SCRIPTS += " \
-    fwd_blk.img:flash_blk.img \
-    fwd_eth.img:flash_eth.img \
-    fwd_mmc.img:flash_mmc.img \
-    ${MACHINE}:${MACHINEDIR} \
+IMAGE_BOOT_FILES += " \
+    fwd_blk.img;flash_blk.img \
+    fwd_eth.img;flash_eth.img \
+    fwd_mmc.img;flash_mmc.img \
+    ${MACHINE}/*;${MACHINEDIR}/ \
     "
-
-# fix: basehash value changed from ... to ....
-# The metadata is not deterministic and this needs to be fixed.
-rootfs_tezi_json[vardepsexclude] = "DATE"

@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -31,7 +31,7 @@ LICENSE = "The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=948f8877345cd66106f11031977a4625"
 DEPENDS = "u-boot-mkimage-native"
 
-PV = "2.7"
+PV = "2.8b3"
 
 SRC_URI = " \
     file://fwd_mmc.scr \

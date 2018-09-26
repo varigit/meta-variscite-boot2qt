@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-RDEPENDS_kernel-base = "kernel-image kernel-devicetree"
+RDEPENDS_${KERNEL_PACKAGE_NAME}-base = "${KERNEL_PACKAGE_NAME}-image ${KERNEL_PACKAGE_NAME}-devicetree"
 
 do_preconfigure_prepend () {
     # FunctionFS for qdbd

@@ -1,19 +1,19 @@
-From c02da9f92f6ffaee65f428e1978bd3ff379a2612 Mon Sep 17 00:00:00 2001
+From 7e05ac9e6dc984bd060d766740ff494e0e3519d7 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@qt.io>
 Date: Wed, 14 Sep 2016 10:19:28 +0300
 Subject: [PATCH] Update only u-boot
 
 ---
- flash_blk.scr   | 4 ++--
- flash_eth.scr   | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ flash_blk.scr | 2 +-
+ flash_eth.scr | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/flash_blk.scr b/flash_blk.scr
-index cc4cf38..b63366a 100644
+index 9fa6296..e599070 100644
 --- a/flash_blk.scr
 +++ b/flash_blk.scr
-@@ -15,7 +15,7 @@ setenv update_fdt 'fatload ${interface} 0:1 ${fdt_addr_r} ${board_name}/${soc}-col
- setenv update_rootfs 'fatload ${interface} 0:1 ${fdt_addr_r} ${board_name}/ubifs.img && ubi write ${loadaddr} rootfs ${filesize}'
+@@ -15,7 +15,7 @@ setenv update_fdt 'fatload ${interface} 0:1 ${fdt_addr_r} ${board_name}/${soc}-c
+ setenv update_rootfs 'fatload ${interface} 0:1 ${fdt_addr_r} ${board_name}/ubifs.img && ubi write ${fdt_addr_r} rootfs ${filesize}'
  
  # Test which version of U-Boot we are currently running on
 -setenv update 'mtdparts default && env default -f updlevel && if test $updlevel -lt 1; then; run update_uboot_old; else; run update_uboot && run prepare_ubi && run update_kernel && run update_fdt && run update_rootfs && reset; fi'
@@ -22,11 +22,11 @@ index cc4cf38..b63366a 100644
  if itest.b *0x30360800 -lt 0x11; then
  echo &&
 diff --git a/flash_eth.scr b/flash_eth.scr
-index 01be124..13025de 100644
+index 20244d7..7f3372c 100644
 --- a/flash_eth.scr
 +++ b/flash_eth.scr
-@@ -15,7 +15,7 @@ setenv update_fdt 'tftpboot ${fdt_addr_r} ${board_name}/${soc}-colibri-${fdt_board
- setenv update_rootfs 'tftpboot ${fdt_addr_r} ${board_name}/ubifs.img && ubi write ${loadaddr} rootfs ${filesize}'
+@@ -15,7 +15,7 @@ setenv update_fdt 'tftpboot ${fdt_addr_r} ${board_name}/${soc}-colibri-${fdt_boa
+ setenv update_rootfs 'tftpboot ${fdt_addr_r} ${board_name}/ubifs.img && ubi write ${fdt_addr_r} rootfs ${filesize}'
  
  # Test which version of U-Boot we are currently running on
 -setenv update 'mtdparts default && env default -f updlevel && if test $updlevel -lt 1; then; run update_uboot_old; else; run update_uboot && run prepare_ubi && run update_kernel && run update_fdt && run update_rootfs && reset; fi'

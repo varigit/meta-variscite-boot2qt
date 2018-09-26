@@ -15,10 +15,10 @@ setenv migrate_uboot 'run update_spl && run update_uboot_bin && mmc bootbus 0 2 
 setenv cp_file_chunk 'tftpboot ${fdt_addr_r} ${board_name}/root.ext4-${filenum} || setenv filesize 0; run set_blkcnt; mmc dev 0 0 && mmc write ${fdt_addr_r} ${blkstart} ${blkcnt}'
 
 setenv update_spl 'tftpboot ${fdt_addr_r} ${board_name}/SPL && run set_blkcnt && mmc dev 0 ${uboot_hwpart} && mmc write ${fdt_addr_r} 2 ${blkcnt}'
-setenv update_uboot_bin 'tftpboot ${fdt_addr_r} ${board_name}/u-boot.imx-spl && run set_blkcnt && mmc dev 0 ${uboot_hwpart} && mmc write ${fdt_addr_r} 8a ${blkcnt}'
+setenv update_uboot_bin 'tftpboot ${fdt_addr_r} ${board_name}/u-boot.img && run set_blkcnt && mmc dev 0 ${uboot_hwpart} && mmc write ${fdt_addr_r} 8a ${blkcnt}'
 setenv update_uboot 'run update_uboot_bin && updt_fuse && mmc bootbus 0 2 0 1 && mmc partconf 0 1 1 0 && mmc rst-function 0 1'
 
-setenv update_kernel 'tftpboot ${fdt_addr_r} ${board_name}/uImage && fatwrite mmc 0:1 ${fdt_addr_r} uImage ${filesize}'
+setenv update_kernel 'tftpboot ${fdt_addr_r} ${board_name}/zImage && fatwrite mmc 0:1 ${fdt_addr_r} zImage ${filesize}'
 
 setenv update_fdt 'tftpboot ${fdt_addr_r} ${board_name}/${fdt_file} && fatwrite mmc 0:1 ${fdt_addr_r} ${fdt_file} ${filesize}'
 
