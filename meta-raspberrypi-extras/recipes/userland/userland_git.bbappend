@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,6 +27,9 @@
 ##
 ############################################################################
 
-do_deploy_append() {
-    echo "dtparam=audio=on" >>${DEPLOYDIR}/bcm2835-bootfiles/config.txt
-}
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+
+SRC_URI += "file://0001-khronos-backport-typedef-for-EGL_EXT_image_dma_buf_i.patch"
+
+SRCREV = "2448644657e5fbfd82299416d218396ee1115ece"
+PV = "20180511"

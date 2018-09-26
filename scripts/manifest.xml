@@ -45,7 +45,7 @@
            groups="notdefault,external,fsl,toradex,smx6,boundary,fsl-imx8"/>
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="f2e2a4376e84dec6e5efeabaa86a4406fddf7dcd"
+           revision="2d40b000021bc8a9ef7f329ed0ad410f8d227b97"
            path="sources/meta-raspberrypi"
            groups="notdefault,external,rpi"/>
   <project name="meta-intel"
