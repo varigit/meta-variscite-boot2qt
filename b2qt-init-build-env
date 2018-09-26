@@ -115,7 +115,7 @@ get_groups() {
     nitrogen6x|nitrogen7)
       PROJECT_GROUPS="boundary"
     ;;
-    imx6qsabresd|imx6dlsabresd|imx7dsabresd|imx7s-warp)
+    imx6qdlsabresd|imx7dsabresd|imx7s-warp)
       PROJECT_GROUPS="fsl"
     ;;
     smarc-samx6i)

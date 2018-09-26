@@ -65,7 +65,7 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     nitrogen6x|nitrogen7)
       LAYERSCONF="bblayers.conf.boundary.sample"
     ;;
-    imx6qsabresd|imx6dlsabresd|imx7dsabresd|imx7s-warp)
+    imx6qdlsabresd|imx7dsabresd|imx7s-warp)
       LAYERSCONF="bblayers.conf.fsl.sample"
     ;;
     smarc-samx6i)
