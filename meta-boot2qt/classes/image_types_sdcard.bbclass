@@ -34,14 +34,14 @@ IMAGE_CMD_wic_append() {
     ln -s ${IMAGE_NAME}.rootfs.wic ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
 }
 
+IMAGE_CMD_wic_append_emulator() {
+    rm -f ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.hdd
+    ln -s ${IMAGE_NAME}.rootfs.wic ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.hdd
+}
+
 IMAGE_CMD_rpi-sdimg_append() {
     rm -f ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
     ln -s ${IMAGE_NAME}.rootfs.rpi-sdimg ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
-}
-
-build_hddimg_append() {
-    rm -f ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
-    ln -s ${IMAGE_NAME}.hddimg ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
 }
 
 do_image_tegraflash[depends] += "parted-native:do_populate_sysroot"

@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -36,13 +36,13 @@ SRC_URI = "http://download.virtualbox.org/virtualbox/${PV}/VirtualBox-${PV}.tar.
           file://mount-vboxsf.service \
           "
 
-SRC_URI[md5sum] = "cc053340f88922a11ad9d4fab56557bd"
-SRC_URI[sha256sum] = "ea9569ec16cd6202ee61bcadb2506d31ac12fd343adb91565773a05eaaea9a36"
+SRC_URI[md5sum] = "d8e291525b84569356773eef507c49ce"
+SRC_URI[sha256sum] = "ed0a7efd56c7f39fae79c7ec3321473da412ef0d7914457b66f42679d513efcf"
 
 S = "${WORKDIR}/VirtualBox-${PV}/src/VBox/Additions/linux/sharedfolders"
 
 do_compile() {
-    ${CC} ${LDFLAGS} mount.vboxsf.c vbsfmount.c -o mount.vboxsf
+    ${CC} ${LDFLAGS} -I../../../../../include -DIN_RING3 mount.vboxsf.c vbsfmount.c -o mount.vboxsf
 }
 
 do_install() {
