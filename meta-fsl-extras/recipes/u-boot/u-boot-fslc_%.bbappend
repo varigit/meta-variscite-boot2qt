@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -30,6 +30,4 @@
 FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 SRC_URI += " \
         file://0001-Updated-kernel-arguments-for-sabre-sd.patch \
-        file://0001-Use-hdmi-as-primary-display-only-if-connected.patch \
-        file://0001-use-imx7d-warp.dtb.patch \
         "
