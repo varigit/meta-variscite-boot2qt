@@ -37,22 +37,22 @@ LIC_FILES_CHKSUM = "file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
 
 DEPENDS = "qtbase qtdeclarative qtmultimedia qtivi-native"
 DEPENDS_class-native = "qtbase"
-DEPENDS_class-nativesdk = "qtbase qtivi-native"
+DEPENDS_class-nativesdk = "qtbase qtivi-native libxcrypt"
 
 inherit qt5-module
 inherit python3native
 require recipes-qt/qt5/qt5-git.inc
 
 QT_MODULE_BRANCH = "dev"
-QT_MODULE_BRANCH_QFACE = "upstream/develop"
+QT_MODULE_BRANCH_QFACE = "upstream/master"
 
 SRC_URI += " \
     ${QT_GIT}/qtivi-qface.git;name=qface;branch=${QT_MODULE_BRANCH_QFACE};protocol=${QT_GIT_PROTOCOL};destsuffix=git/src/3rdparty/qface \
     file://0001-Use-QT_HOST_BINS-get-for-getting-correct-path.patch \
 "
 
-SRCREV_qtivi = "e507a49be6387361ae4862ec6c6dc5aaac9d0c77"
-SRCREV_qface = "9da793d6cbc63d617ad5e2ffd13e9f6d055c88e8"
+SRCREV_qtivi = "142d7174863c2acf2792ba723c8dd273f8d07b22"
+SRCREV_qface = "0a3ae7686e1100be452b8c435bdcd84ec242340e"
 SRCREV = "${SRCREV_qtivi}"
 SRCREV_FORMAT = "qtivi_qface"
 
@@ -110,4 +110,4 @@ BBCLASSEXTEND += "native nativesdk"
 
 INSANE_SKIP_${PN}_class-native = "already-stripped"
 INSANE_SKIP_${PN}_class-nativesdk = "already-stripped"
-INSANE_SKIP_${PN}-tools_class-nativesdk = "staticdev"
+INSANE_SKIP_${PN}-tools_class-nativesdk = "staticdev file-rdeps libdir"
