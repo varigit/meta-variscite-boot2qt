@@ -37,7 +37,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
 
 DEPENDS = "qtbase qtdeclarative qtmultimedia qtivi-native"
 DEPENDS_class-native = "qtbase"
-DEPENDS_class-nativesdk = "qtbase qtivi-native libxcrypt"
+DEPENDS_class-nativesdk = "qtbase qtivi-native"
 
 inherit qt5-module
 inherit python3native
@@ -110,4 +110,4 @@ BBCLASSEXTEND += "native nativesdk"
 
 INSANE_SKIP_${PN}_class-native = "already-stripped"
 INSANE_SKIP_${PN}_class-nativesdk = "already-stripped"
-INSANE_SKIP_${PN}-tools_class-nativesdk = "staticdev file-rdeps libdir"
+INSANE_SKIP_${PN}-tools_class-nativesdk = "staticdev file-rdeps libdir build-deps"
