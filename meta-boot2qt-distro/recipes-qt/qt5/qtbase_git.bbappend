@@ -40,6 +40,7 @@ PACKAGECONFIG += " \
     getentropy \
     gif \
     glib \
+    harfbuzz \
     ico \
     icu \
     libinput \
