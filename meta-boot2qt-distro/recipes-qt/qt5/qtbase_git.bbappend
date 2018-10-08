@@ -65,6 +65,3 @@ SRC_URI += " \
 do_configure_prepend() {
     install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
 }
-
-# make other libgbm providers possible
-PACKAGECONFIG[gbm] = "-gbm,-no-gbm,virtual/libgbm"
