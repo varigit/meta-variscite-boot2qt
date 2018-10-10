@@ -33,6 +33,7 @@ FILESEXTRAPATHS_prepend := "${B2QTBASE}/files/qbsp:"
 
 SRC_URI = "\
     file://base_package.xml \
+    file://base_installscript.qs \
     file://image_package.xml \
     file://toolchain_package.xml \
     file://toolchain_installscript.qs \
@@ -144,6 +145,7 @@ prepare_qbsp() {
     mkdir -p ${COMPONENT_PATH}/meta
 
     cp ${WORKDIR}/base_package.xml ${COMPONENT_PATH}/meta/package.xml
+    cp ${WORKDIR}/base_installscript.qs ${COMPONENT_PATH}/meta/installscript.qs
     patch_installer_files ${COMPONENT_PATH}/meta
 }
 

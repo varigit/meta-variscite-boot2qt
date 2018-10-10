@@ -5,4 +5,5 @@
   <DisplayName>@TARGET@ Linux System</DisplayName>
   <Description>System image for @TARGET@ hardware</Description>
   <DownloadableArchives>image.7z</DownloadableArchives>
+  <Default>true</Default>
 </Package>

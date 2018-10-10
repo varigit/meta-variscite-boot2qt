@@ -5,4 +5,6 @@
   <DisplayName>@TARGET@</DisplayName>
   <Description>@NAME@ for @TARGET@</Description>
   <Dependencies>@LICENSEDEPENDENCY@</Dependencies>
+  <Script>installscript.qs</Script>
+  <Default>true</Default>
 </Package>

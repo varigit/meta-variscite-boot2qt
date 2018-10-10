@@ -7,4 +7,5 @@
   <DownloadableArchives>toolchain.7z</DownloadableArchives>
   <Dependencies>qt.tools.qtcreator</Dependencies>
   <Script>installscript.qs</Script>
+  <Default>true</Default>
 </Package>
