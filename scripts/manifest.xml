@@ -68,7 +68,7 @@
            groups="notdefault,external,renesas-gen3"/>
   <project name="meta-linaro"
            remote="linaro"
-           revision="c44bd0ebc8ca2e6201996ef7cba8b71421d3aff7"
+           revision="d73e794c7e7ebb1cc5bf495a52a72b26fb118250"
            path="sources/meta-linaro"
            groups="notdefault,external,renesas-gen3"/>
   <project name="meta-toradex-bsp-common"
