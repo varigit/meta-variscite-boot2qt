@@ -36,7 +36,6 @@ PACKAGECONFIG += " \
     accessibility \
     cups \
     fontconfig \
-    freetype \
     getentropy \
     gif \
     glib \
