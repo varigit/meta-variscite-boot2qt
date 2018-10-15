@@ -30,3 +30,8 @@
 PROVIDES += "virtual/libgbm"
 
 DEPENDS_append_draak = " udev"
+
+SRCREV = "a0c7d6c97fe1fffe45eee524060cbb12767c6461"
+SRCREV_draak = "bc04aefc9d5322f8b2dc1ecb15d0713bbab684b8"
+
+SRC_URI = "git://github.com/renesas-rcar/libgbm;branch=rcar-gen3"
