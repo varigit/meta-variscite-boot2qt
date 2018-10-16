@@ -1,0 +1,28 @@
+From 4b59d8fa3ba5647834d29fad58b9231c154b9136 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Tue, 16 Oct 2018 13:43:43 +0300
+Subject: [PATCH] Workaround missing eglGetProcAddress
+
+Renesas boards are unable to find address for the eglGetProcAddress
+symbol at runtime, instead do it already at link time.
+
+Task-number: QTBUG-71152
+Change-Id: Ibc4251c0ab7e878a65d8c6e7b4da3952807cbc91
+---
+ src/core/ozone/gl_ozone_egl_qt.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/core/ozone/gl_ozone_egl_qt.cpp b/src/core/ozone/gl_ozone_egl_qt.cpp
+index 2fa86d79..d2362477 100644
+--- a/src/core/ozone/gl_ozone_egl_qt.cpp
++++ b/src/core/ozone/gl_ozone_egl_qt.cpp
+@@ -98,6 +98,9 @@ bool GLOzoneEGLQt::LoadGLES2Bindings(gl::GLImplementation /*implementation*/)
+     }
+ #endif
+ 
++    if (!get_proc_address)
++        get_proc_address = &eglGetProcAddress;
++
+     if (!get_proc_address) {
+         LOG(ERROR) << "eglGetProcAddress not found.";
+         base::UnloadNativeLibrary(eglgles2Library);
