@@ -54,6 +54,7 @@ RDEPENDS_${PN} += " \
     qtdeclarative-dev \
     qtdeclarative-staticdev \
     qtdeviceutilities-dev \
+    qtgamepad-dev \
     qtgraphicaleffects-dev \
     qtimageformats-dev \
     qtlocation-dev \
