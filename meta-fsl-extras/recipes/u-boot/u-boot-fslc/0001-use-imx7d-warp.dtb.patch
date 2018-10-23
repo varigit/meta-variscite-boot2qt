@@ -1,0 +1,22 @@
+From d9489c704107e85a0c3ba68211adbca695c88644 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Wed, 13 Sep 2017 09:40:44 +0300
+Subject: [PATCH] use imx7d-warp.dtb
+
+---
+ include/configs/warp7.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/configs/warp7.h b/include/configs/warp7.h
+index 2a7789baa2..7b44f85a87 100644
+--- a/include/configs/warp7.h
++++ b/include/configs/warp7.h
+@@ -39,7 +39,7 @@
+ 	"ethact=usb_ether\0" \
+ 	"fdt_high=0xffffffff\0" \
+ 	"initrd_high=0xffffffff\0" \
+-	"fdt_file=imx7s-warp.dtb\0" \
++	"fdt_file=imx7d-warp.dtb\0" \
+ 	"fdt_addr=" __stringify(CONFIG_SYS_FDT_ADDR)"\0" \
+ 	"optee_addr=" __stringify(CONFIG_OPTEE_LOAD_ADDR)"\0" \
+ 	"boot_fdt=try\0" \

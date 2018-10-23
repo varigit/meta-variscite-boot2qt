@@ -27,8 +27,5 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
-SRC_URI += " \
-        file://0001-Updated-kernel-arguments-for-sabre-sd.patch \
-        file://0001-use-imx7d-warp.dtb.patch \
-        "
+PERF_SRC_append_imx7s-warp = " lib"
+PERF_SRC_remove_imx7s-warp = "tools/arch"
