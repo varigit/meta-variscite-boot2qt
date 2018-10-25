@@ -56,17 +56,22 @@ Component.prototype.createOperations = function()
         component.addOperation("Replace",
                                 path + "/sysroots/i686-pokysdk-mingw32/usr/bin/qt.conf",
                                 sdkPath, path);
+        component.addOperation("Replace",
+                                path + "/sysroots/i686-pokysdk-mingw32/usr/share/cmake/OEToolchainConfig.cmake.d/" + device + ".cmake",
+                                sdkPath, path);
     }
     var basecomponent = component.name.substring(0, component.name.lastIndexOf("."));
     var toolchainId = "ProjectExplorer.ToolChain.Gcc:" + component.name;
     var debuggerId = basecomponent + ".gdb";
     var qtId = basecomponent + ".qt";
+    var cmakeId = basecomponent + ".cmake";
     var icon = installer.value("B2QtDeviceIcon");
     var executableExt = "";
     var hostSysroot = "x86_64-pokysdk-linux";
     if (systemInfo.kernelType === "winnt") {
         executableExt = ".exe";
         hostSysroot = "i686-pokysdk-mingw32";
+        toolchainId = "ProjectExplorer.ToolChain.Mingw:" + component.name;
     }
 
     component.addOperation("Execute",
@@ -109,6 +114,14 @@ Component.prototype.createOperations = function()
          "@SDKToolBinary@", "rmQt", "--id", qtId]);
 
     component.addOperation("Execute",
+        ["@SDKToolBinary@", "addCMake",
+        "--id", cmakeId,
+        "--name", "CMake (" + platform + " " + target + ")",
+        "--path", path + "/sysroots/" + hostSysroot + "/usr/bin/cmake" + executableExt,
+        "UNDOEXECUTE",
+        "@SDKToolBinary@", "rmCMake", "--id", cmakeId]);
+
+    component.addOperation("Execute",
         ["@SDKToolBinary@", "addKit",
          "--id", basecomponent,
          "--name", platform + " " + target,
@@ -120,6 +133,11 @@ Component.prototype.createOperations = function()
          "--Ctoolchain", toolchainId + ".gcc",
          "--Cxxtoolchain", toolchainId + ".g++",
          "--icon", icon,
+         "--cmake", cmakeId,
+         "--cmake-config", "CMAKE_TOOLCHAIN_FILE:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/share/cmake/OEToolchainConfig.cmake",
+         "--cmake-config", "CMAKE_MAKE_PROGRAM:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/bin/make" + executableExt,
+         "--cmake-config", "CMAKE_CXX_COMPILER:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/bin/" + target_sys + "/" + target_sys + "-g++" + executableExt,
+         "--cmake-config", "CMAKE_C_COMPILER:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/bin/" + target_sys + "/" + target_sys + "-gcc" + executableExt,
          "UNDOEXECUTE",
          "@SDKToolBinary@", "rmKit", "--id", basecomponent]);
 }

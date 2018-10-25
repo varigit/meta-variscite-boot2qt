@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,36 +27,4 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Host packages for B2Qt on embedded Linux SDK"
-PR = "r0"
-LICENSE = "The-Qt-Company-Commercial"
-
-inherit nativesdk packagegroup
-
-MACHINE_EXTRA_INSTALL_SDK_HOST ?= ""
-
-python __anonymous() {
-    overrides = d.getVar("OVERRIDES", True).split(":")
-    if "mingw32" not in overrides:
-        d.appendVar("OVERRIDES", ":linux")
-}
-
-RDEPENDS_${PN} = "\
-    nativesdk-gperf \
-    nativesdk-cmake \
-    nativesdk-make \
-    ${MACHINE_EXTRA_INSTALL_SDK_HOST} \
-    "
-
-RDEPENDS_${PN}_append_linux = "\
-    nativesdk-python3-modules \
-    nativesdk-python3-misc \
-    nativesdk-perl-modules \
-    ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "nativesdk-wayland-dev", "", d)} \
-    "
-
-RDEPENDS_${PN}_append_mingw32 = "\
-    nativesdk-make \
-    nativesdk-libgcc \
-    nativesdk-libstdc++ \
-    "
+EXTRA_OECONF_append_mingw32 = " --without-cng"

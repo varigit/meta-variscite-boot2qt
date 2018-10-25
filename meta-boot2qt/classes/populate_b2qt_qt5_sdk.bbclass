@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -88,8 +88,10 @@ EOF
     echo "set(CMAKE_C_COMPILER_ARG1 \"\${compiler_flags}\")" >> ${MACHINE_CMAKE}
     echo "set(CMAKE_CXX_COMPILER_ARG1 \"\${compiler_flags}\")" >> ${MACHINE_CMAKE}
     echo "set(OE_QMAKE_PATH_EXTERNAL_HOST_BINS ${SDKPATHNATIVE}${OE_QMAKE_PATH_HOST_BINS})" >> ${MACHINE_CMAKE}
-    mkdir -p ${D}${datadir}/cmake/OEToolchainConfig.cmake.d/
-    install -m 0644 ${MACHINE_CMAKE} ${D}${datadir}/cmake/OEToolchainConfig.cmake.d/
+}
+
+create_sdk_files_append_sdkmingw32 () {
+    echo "set(OE_QMAKE_BIN_SUFFIX .exe)" >> ${MACHINE_CMAKE}
 }
 
 create_qtcreator_configure_script () {

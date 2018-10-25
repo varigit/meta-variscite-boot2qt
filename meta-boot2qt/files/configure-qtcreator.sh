@@ -152,6 +152,7 @@ ${SDKTOOL} addKit \
     --mkspec "${MKSPEC}" \
     --cmake "${BASEID}.cmake" \
     --cmake-config "CMAKE_TOOLCHAIN_FILE:FILEPATH=${OECORE_NATIVE_SYSROOT}/usr/share/cmake/OEToolchainConfig.cmake" \
+    --cmake-config "CMAKE_MAKE_PROGRAM:FILEPATH=$(type -p make)" \
     --cmake-config "CMAKE_CXX_COMPILER:FILEPATH=$(type -p ${CXX})" \
     --cmake-config "CMAKE_C_COMPILER:FILEPATH=$(type -p ${CC})"
 
