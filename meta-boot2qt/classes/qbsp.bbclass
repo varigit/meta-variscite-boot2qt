@@ -156,10 +156,10 @@ create_qbsp() {
     repogen -p ${B}/pkg ${B}/repository
 
     mkdir -p ${DEPLOY_DIR}/qbsp
-    rm -f ${DEPLOY_DIR}/qbsp/${PN}-${SDK_MACHINE}-${MACHINE}.qbsp
+    rm -f ${DEPLOY_DIR}/qbsp/${PN}-${SDK_MACHINE}-${MACHINE}-${PV}.qbsp
 
     cd ${B}/repository
-    7zr a ${DEPLOY_DIR}/qbsp/${PN}-${SDK_MACHINE}-${MACHINE}.qbsp *
+    7zr a ${DEPLOY_DIR}/qbsp/${PN}-${SDK_MACHINE}-${MACHINE}-${PV}.qbsp *
 }
 
 python do_qbsp() {
