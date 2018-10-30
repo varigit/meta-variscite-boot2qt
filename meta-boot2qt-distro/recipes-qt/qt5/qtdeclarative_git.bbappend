@@ -27,6 +27,10 @@
 ##
 ############################################################################
 
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+
+SRC_URI += "file://0001-Always-use-commit-sha1-for-QML_COMPILE_HASH.patch"
+
 FILES_${PN}-plugins_mingw32 = " \
     ${OE_QMAKE_PATH_PLUGINS}/*/*.dll \
 "
