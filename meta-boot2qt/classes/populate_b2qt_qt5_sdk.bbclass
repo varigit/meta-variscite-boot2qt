@@ -33,7 +33,6 @@ SDK_MKSPEC_DIR = "${SDK_OUTPUT}${SDKTARGETSYSROOT}${libdir}/${QT_DIR_NAME}/mkspe
 NATIVE_SDK_MKSPEC_DIR = "${SDK_OUTPUT}${SDKPATHNATIVE}${libdir}/${QT_DIR_NAME}/mkspecs"
 SDK_MKSPEC = "devices/linux-oe-generic-g++"
 SDK_DEVICE_PRI = "${SDK_MKSPEC_DIR}/qdevice.pri"
-SDK_DYNAMIC_FLAGS = "-O. -pipe -g"
 MACHINE_CMAKE = "${SDK_OUTPUT}${SDKPATHNATIVE}${datadir}/cmake/OEToolchainConfig.cmake.d/${MACHINE}.cmake"
 
 create_sdk_files_append () {
@@ -50,23 +49,17 @@ EOF
 #include "../../linux-g++/qplatformdefs.h"
 EOF
 
-    # Fill in the qdevice.pri file which will be used by the device mksspec
-    static_cflags="${TARGET_CFLAGS}"
-    static_cxxflags="${TARGET_CXXFLAGS}"
-    for i in ${SDK_DYNAMIC_FLAGS}; do
-        static_cflags=$(echo $static_cflags | sed -e "s/$i //")
-        static_cxxflags=$(echo $static_cxxflags | sed -e "s/$i //")
-    done
+    # Fill in the qdevice.pri file which will be used by the device mkspec
     echo "MACHINE = ${MACHINE}" > ${SDK_DEVICE_PRI}
     echo "CROSS_COMPILE = \$\$[QT_HOST_PREFIX]${bindir_nativesdk}/${TARGET_SYS}/${TARGET_PREFIX}" >> ${SDK_DEVICE_PRI}
-    echo "QMAKE_CFLAGS *= ${TARGET_CC_ARCH} ${static_cflags}" >> ${SDK_DEVICE_PRI}
-    echo "QMAKE_CXXFLAGS *= ${TARGET_CC_ARCH} ${static_cxxflags}" >> ${SDK_DEVICE_PRI}
-    echo "QMAKE_LFLAGS *= ${TARGET_CC_ARCH} ${TARGET_LDFLAGS}" >> ${SDK_DEVICE_PRI}
+    echo "QMAKE_CFLAGS *= ${TARGET_CC_ARCH}" >> ${SDK_DEVICE_PRI}
+    echo "QMAKE_CXXFLAGS *= ${TARGET_CC_ARCH}" >> ${SDK_DEVICE_PRI}
+    echo "QMAKE_LFLAGS *= ${TARGET_LDFLAGS}" >> ${SDK_DEVICE_PRI}
 
     # Setup qt.conf to point at the device mkspec by default
     qtconf=${SDK_OUTPUT}/${SDKPATHNATIVE}${OE_QMAKE_PATH_HOST_BINS}/qt.conf
     echo 'HostSpec = linux-g++' >> $qtconf
-    echo 'TargetSpec = devices/linux-oe-generic-g++' >> $qtconf
+    echo 'TargetSpec = ${SDK_MKSPEC}' >> $qtconf
 
     # Update correct host_build ARCH and ABI to mkspecs/qconfig.pri
     QT_ARCH=$(grep QT_ARCH ${NATIVE_SDK_MKSPEC_DIR}/qconfig.pri | tail -1)
@@ -101,5 +94,7 @@ create_qtcreator_configure_script () {
     sed -i -e '/^ABI=/c\ABI="${ABI}-linux-generic-elf-${SITEINFO_BITS}bit"' ${SDK_OUTPUT}/${SDKPATH}/configure-qtcreator.sh
 }
 
-create_qtcreator_configure_script_mingw32 () {
+create_qtcreator_configure_script_sdkmingw32 () {
+    # no script available for mingw
+    true
 }
