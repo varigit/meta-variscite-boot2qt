@@ -34,9 +34,10 @@ usage() {
    echo "Usage: $(basename $0) COMMAND [ARGS]"
    echo
    echo "Initialize build environment:"
-   echo "  $(basename $0) init --device <name> [--reference <mirror path>] [--internal]"
+   echo "  $(basename $0) init --device <name> [--reference <mirror path>] [--manifest-dir <dir path>] [--internal]"
    echo "    --device <name>: target device name or 'all'"
    echo "    --reference <mirror path>: path to local mirror, initialized previously with '$(basename $0) mirror'"
+   echo "    --manifest-dir <dir path>: path to a directory containing repo manifest file(s)"
    echo "    --internal: fetch internal repositories, available only inside The Qt Company network."
    echo "Initialize local mirror:"
    echo "  $(basename $0) mirror"
@@ -62,6 +63,10 @@ while test -n "$1"; do
       shift
       REPO_URL="--repo-url $1"
       ;;
+    "--manifest-dir")
+      shift
+      MANIFEST_DIR=$1
+      ;;
     "--internal")
       INTERNAL="y"
       ;;
@@ -85,6 +90,10 @@ fi
 DIR=$(readlink -f $(dirname $0))
 if [ -n "${REFERENCE}" ]; then
     REFERENCE="--reference $(readlink -f ${REFERENCE})"
+fi
+
+if [ -n "${MANIFEST_DIR}" ]; then
+    MANIFEST_DIR="$(readlink -f ${MANIFEST_DIR})"
 fi
 
 if [ -z "${REPO_URL}" ]; then
@@ -161,9 +170,18 @@ list_devices() {
   done
 }
 
-mirror() {
+copy_manifests() {
   mkdir -p .repo/manifests
-  cp ${DIR}/scripts/manifest.xml .repo/manifests/
+  rm -f .repo/manifests/manifest*.xml
+  if [ -z "${MANIFEST_DIR}" ]; then
+      cp ${DIR}/scripts/manifest*.xml .repo/manifests/
+  else
+      cp ${MANIFEST_DIR}/manifest*.xml .repo/manifests/
+  fi
+}
+
+mirror() {
+  copy_manifests
   MANIFEST="manifest.xml"
   DEVICE=${DEVICE:-all}
   get_groups
@@ -179,9 +197,7 @@ init() {
   fi
 
   get_groups
-  mkdir -p .repo/manifests
-  rm -f .repo/manifests/manifest*.xml
-  cp ${DIR}/scripts/manifest*.xml .repo/manifests
+  copy_manifests
   if [ -f .repo/manifests/manifest_${DEVICE}.xml ]; then
     MANIFEST="manifest_${DEVICE}.xml"
   else
