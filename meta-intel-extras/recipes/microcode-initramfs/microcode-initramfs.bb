@@ -27,4 +27,26 @@
 ##
 ############################################################################
 
-PACKAGE_INSTALL += "kernel-module-rtsx-pci-sdmmc"
+SUMMARY = "Initramfs with early load intel microcode"
+LICENSE = "The-Qt-Company-Commercial"
+LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=948f8877345cd66106f11031977a4625"
+
+inherit deploy nopackages
+
+do_compile[depends] += " \
+    ${INITRAMFS_IMAGE}:do_image_complete \
+    ${@bb.utils.contains('MACHINE_FEATURES', 'intel-ucode', 'intel-microcode:do_deploy', '', d)} \
+    "
+
+do_compile() {
+    # https://www.kernel.org/doc/Documentation/x86/microcode.txt
+    microcode="${@bb.utils.contains('MACHINE_FEATURES', 'intel-ucode', '${DEPLOY_DIR_IMAGE}/microcode.cpio ', '', d)}"
+    cat ${microcode} ${DEPLOY_DIR_IMAGE}/${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz > ${S}/microcode-initramfs
+}
+
+do_deploy() {
+    install -d ${DEPLOYDIR}
+    install -m 0644 ${S}/microcode-initramfs ${DEPLOYDIR}/
+}
+
+addtask deploy before do_build after do_compile

@@ -1,0 +1,8 @@
+#!/bin/sh
+rtsx_pci_sdmmc_enabled() {
+    return 0
+}
+
+rtsx_pci_sdmmc_run() {
+    load_kernel_module rtsx_pci_sdmmc
+}

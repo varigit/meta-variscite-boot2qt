@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,24 +27,5 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Basic initramfs image. Useful as a template for more advanced functionality."
-LICENSE = "The-Qt-Company-Commercial"
-LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=948f8877345cd66106f11031977a4625"
-
-# findfs from busybox fails to do its jobs, the full version from util-linux-findfs works fine
-PACKAGE_INSTALL = "init-basic busybox util-linux-findfs ${ROOTFS_BOOTSTRAP_INSTALL}"
-
-# Do not pollute the initramfs image with rootfs features
-IMAGE_FEATURES = ""
-
-export IMAGE_BASENAME = "initramfs-basic"
-IMAGE_LINGUAS = ""
-
-IMAGE_FSTYPES = "cpio.gz"
-inherit core-image
-
-IMAGE_ROOTFS_SIZE = "8192"
-IMAGE_ROOTFS_EXTRA_SPACE = "0"
-
-BAD_RECOMMENDATIONS += "busybox-syslog"
-
+INITRAMFS_SCRIPTS += "initramfs-module-rtsx-pci-sdmmc"
+PACKAGE_INSTALL += "kernel-module-rtsx-pci-sdmmc"

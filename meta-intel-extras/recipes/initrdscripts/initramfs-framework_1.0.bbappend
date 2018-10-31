@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,17 +27,16 @@
 ##
 ############################################################################
 
-SUMMARY = "Simple init script that mounts root filesystem by label."
-LICENSE = "The-Qt-Company-Commercial"
-LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=948f8877345cd66106f11031977a4625"
-SRC_URI = "file://init.sh"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-S = "${WORKDIR}"
+SRC_URI += "file://rtsx_pci_sdmmc"
 
-do_install () {
-    install -m 0755 ${WORKDIR}/init.sh ${D}/init
+do_install_append() {
+    install -m 0755 ${WORKDIR}/rtsx_pci_sdmmc ${D}/init.d/20-rtsx_pci_sdmmc
 }
 
-inherit allarch
+PACKAGES += "initramfs-module-rtsx-pci-sdmmc"
 
-FILES_${PN} += "/init"
+SUMMARY_initramfs-module-rtsx-pci-sdmmc = "initramfs support for rtsx_pci_sdmmc"
+RDEPENDS_initramfs-module-rtsx-pci-sdmmc = "${PN}-base"
+FILES_initramfs-module-rtsx-pci-sdmmc = "/init.d/20-rtsx_pci_sdmmc"
