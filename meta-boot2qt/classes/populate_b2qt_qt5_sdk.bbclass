@@ -54,7 +54,7 @@ EOF
     echo "CROSS_COMPILE = \$\$[QT_HOST_PREFIX]${bindir_nativesdk}/${TARGET_SYS}/${TARGET_PREFIX}" >> ${SDK_DEVICE_PRI}
     echo "QMAKE_CFLAGS *= ${TARGET_CC_ARCH}" >> ${SDK_DEVICE_PRI}
     echo "QMAKE_CXXFLAGS *= ${TARGET_CC_ARCH}" >> ${SDK_DEVICE_PRI}
-    echo "QMAKE_LFLAGS *= ${TARGET_LDFLAGS}" >> ${SDK_DEVICE_PRI}
+    echo "QMAKE_LFLAGS *= ${TARGET_CC_ARCH} ${TARGET_LDFLAGS}" >> ${SDK_DEVICE_PRI}
 
     # Setup qt.conf to point at the device mkspec by default
     qtconf=${SDK_OUTPUT}/${SDKPATHNATIVE}${OE_QMAKE_PATH_HOST_BINS}/qt.conf
