@@ -1,0 +1,30 @@
+From 9b541f4f6272c4ed4bb5bf6591e9a65cded6fdfa Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Tue, 23 Oct 2018 09:54:57 +0300
+Subject: [PATCH] Disable ltcg for host_build
+
+debug-prefix-map does not work correctly for static libraries
+when using ltcg, and since host_build compilations link agaist
+the libQt5Bootstrap.a library, it breaks source file packaging
+into debug packages.
+
+Also disable ltcg when compiling on Windows host platform,
+as GCC7 does not support lto with mingw.
+
+Task-number: QTBUG-71230
+Change-Id: I5bea76ea03bf1943b0cfaf03d46a4840bd99a28b
+Upstream-Status: Inappropriate [embedded specific]
+---
+ mkspecs/features/ltcg.prf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mkspecs/features/ltcg.prf b/mkspecs/features/ltcg.prf
+index ccf0226272..00118be872 100644
+--- a/mkspecs/features/ltcg.prf
++++ b/mkspecs/features/ltcg.prf
+@@ -1,4 +1,4 @@
+-CONFIG(release, debug|release) {
++CONFIG(release, debug|release):!host_build:!equals(QMAKE_HOST.os, Windows) {
+     # We need fat object files when creating static libraries on some platforms
+     # so the linker will know to load a particular object from the library
+     # in the first place. On others, we have special ar and nm to create the symbol
