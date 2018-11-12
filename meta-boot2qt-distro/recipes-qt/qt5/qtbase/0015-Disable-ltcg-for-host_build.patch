@@ -11,6 +11,9 @@ into debug packages.
 Also disable ltcg when compiling on Windows host platform,
 as GCC7 does not support lto with mingw.
 
+Disable also for static builds since those libraries can be linked
+on Windows host, where the lto built binaries won't work.
+
 Task-number: QTBUG-71230
 Change-Id: I5bea76ea03bf1943b0cfaf03d46a4840bd99a28b
 Upstream-Status: Inappropriate [embedded specific]
@@ -24,7 +27,7 @@ index ccf0226272..00118be872 100644
 +++ b/mkspecs/features/ltcg.prf
 @@ -1,4 +1,4 @@
 -CONFIG(release, debug|release) {
-+CONFIG(release, debug|release):!host_build:!equals(QMAKE_HOST.os, Windows) {
++CONFIG(release, debug|release):!host_build:!equals(QMAKE_HOST.os, Windows):!staticlib {
      # We need fat object files when creating static libraries on some platforms
      # so the linker will know to load a particular object from the library
      # in the first place. On others, we have special ar and nm to create the symbol
