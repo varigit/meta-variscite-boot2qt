@@ -18,7 +18,7 @@
 
   <project name="poky"
            remote="yocto"
-           revision="ebb42af2829edfca1a23c7a51a431c656ffc2090"
+           revision="b0ede5088b2f4338ea5faf5db46d67eb1c7e8243"
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
