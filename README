@@ -64,7 +64,8 @@ Samuli Piippo <samuli.piippo@qt.io>
 Setting up build environment
 ----------------------------
 
-To initialize build environment, use the b2qt-init-build-env script.
+To initialize build environment, use the b2qt-init-build-env script. Create a
+new directory for Yocto builds and run the script in it.
 
 Usage: b2qt-init-build-env COMMAND [ARGS]
 
