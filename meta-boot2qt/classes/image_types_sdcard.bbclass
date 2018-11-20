@@ -86,7 +86,7 @@ END
 
 # fix: basehash value changed from ... to ....
 # The metadata is not deterministic and this needs to be fixed.
-do_image_teziimg[vardepsexclude] += "DATETIME DATE TIME"
+IMAGE_CMD_teziimg[vardepsexclude] = "DATE"
 do_image_teziimg[depends] += "qtbase-native:do_populate_sysroot"
 IMAGE_CMD_teziimg_append() {
     ${IMAGE_CMD_TAR} --transform 's,^,${IMAGE_NAME}-Tezi_${PV}/,' -rhf ${IMGDEPLOYDIR}/${IMAGE_NAME}-Tezi_${PV}${TDX_VERDATE}.tar TEZI_B2QT_EULA.TXT Built_with_Qt.png
