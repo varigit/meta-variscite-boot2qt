@@ -31,7 +31,7 @@ FEATURES := "${THISDIR}/features/${QT_MODULE}.opt"
 do_configure[file-checksums] += "${FEATURES}:True"
 
 def qt_features(d):
-    featurefile = d.getVar('FEATURES', True)
+    featurefile = d.getVar('FEATURES')
     with open(featurefile, 'r') as f:
         features = f.read().replace('\n', ' ')
     return features

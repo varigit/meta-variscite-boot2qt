@@ -36,7 +36,7 @@ inherit nativesdk packagegroup
 MACHINE_EXTRA_INSTALL_SDK_HOST ?= ""
 
 python __anonymous() {
-    overrides = d.getVar("OVERRIDES", True).split(":")
+    overrides = d.getVar("OVERRIDES").split(":")
     if "mingw32" not in overrides:
         d.appendVar("OVERRIDES", ":linux")
 }

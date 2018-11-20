@@ -55,11 +55,11 @@ python remove_qt_from_rootfs() {
     import subprocess
 
     # remove qtbase and all dependent packages
-    image_rootfs = d.getVar('IMAGE_ROOTFS', True)
-    opkg_conf = d.getVar("IPKGCONF_TARGET", True)
+    image_rootfs = d.getVar('IMAGE_ROOTFS')
+    opkg_conf = d.getVar("IPKGCONF_TARGET")
     opkg_cmd = bb.utils.which(os.getenv('PATH'), "opkg")
     opkg_args = "--volatile-cache -f %s -o %s " % (opkg_conf, image_rootfs)
-    opkg_args += d.getVar("OPKG_ARGS", True)
+    opkg_args += d.getVar("OPKG_ARGS")
 
     cmd = "%s %s --force-remove --force-removal-of-dependent-packages remove %s" % \
         (opkg_cmd, opkg_args, 'qtbase')

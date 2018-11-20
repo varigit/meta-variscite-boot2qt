@@ -28,11 +28,11 @@
 ############################################################################
 
 python do_fetch () {
-    src_uri = (d.getVar('SRC_URI', True) or "").split()
+    src_uri = (d.getVar('SRC_URI') or "").split()
     if len(src_uri) == 0:
         return
 
-    sdk_path = d.getVar('QT_SDK_PATH', True) or ""
+    sdk_path = d.getVar('QT_SDK_PATH') or ""
     if len(sdk_path) != 0:
         uris = list(src_uri);
         for url in uris:
@@ -53,13 +53,13 @@ python do_fetch () {
 
 python do_unpack () {
     sdk_uds = [];
-    src_uri = (d.getVar('SRC_URI', True) or "").split()
+    src_uri = (d.getVar('SRC_URI') or "").split()
     if len(src_uri) == 0:
         return
 
-    rootdir = d.getVar('WORKDIR', True)
+    rootdir = d.getVar('WORKDIR')
 
-    sdk_path = d.getVar('QT_SDK_PATH', True) or ""
+    sdk_path = d.getVar('QT_SDK_PATH') or ""
     if len(sdk_path) != 0:
         uris = list(src_uri);
         for url in uris:
@@ -81,8 +81,8 @@ python do_unpack () {
 
 def unpack_local_uri(ud, d):
     import subprocess
-    rootdir = d.getVar('WORKDIR', True)
-    sdk_path = d.getVar('QT_SDK_PATH', True)
+    rootdir = d.getVar('WORKDIR')
+    sdk_path = d.getVar('QT_SDK_PATH')
 
     destdir = os.path.join(rootdir, ud[5].get("destsuffix", "git"))
     srcdir = os.path.join(sdk_path, ud[5].get("sdk-uri"))

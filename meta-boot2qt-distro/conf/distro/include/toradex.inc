@@ -42,7 +42,7 @@ PREFERRED_PROVIDER_u-boot = "u-boot-toradex"
 
 WKS_FILE_DEPENDS += "u-boot-script-toradex"
 
-MACHINEDIR = "${@d.getVar('MACHINE', True).replace('-','_')}"
+MACHINEDIR = "${@d.getVar('MACHINE').replace('-','_')}"
 IMAGE_BOOT_FILES += " \
     fwd_blk.img;flash_blk.img \
     fwd_eth.img;flash_eth.img \

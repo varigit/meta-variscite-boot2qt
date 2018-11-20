@@ -33,7 +33,7 @@ valid_archs = "arm x86 itanium mips ppc sh"
 def map_abi_arch(a, d):
     import re
 
-    valid_archs = d.getVar('valid_archs', True).split()
+    valid_archs = d.getVar('valid_archs').split()
 
     if   re.match('i.86$', a):                  return 'x86'
     elif re.match('x86.64$', a):                return 'x86'
@@ -46,4 +46,4 @@ def map_abi_arch(a, d):
     else:
         bb.error("cannot map '%s' to a abi architecture" % a)
 
-ABI = "${@map_abi_arch(d.getVar('TARGET_ARCH', True), d)}"
+ABI = "${@map_abi_arch(d.getVar('TARGET_ARCH'), d)}"

@@ -61,7 +61,7 @@ BBMASK += "\
     meta-fsl-bsp-release/imx/meta-sdk/recipes-qt5/qt5 \
     "
 
-KERNEL_MODULE_PACKAGE_SUFFIX ?= "-${@d.getVar('KERNEL_VERSION', True).replace('_','-')}"
+KERNEL_MODULE_PACKAGE_SUFFIX ?= "-${@d.getVar('KERNEL_VERSION').replace('_','-')}"
 EXTRA_OECONF_append_pn-gstreamer1.0-plugins-base = " --disable-introspection"
 
 MACHINE_GSTREAMER_1_0_PLUGIN += "imx-gst1.0-plugin"

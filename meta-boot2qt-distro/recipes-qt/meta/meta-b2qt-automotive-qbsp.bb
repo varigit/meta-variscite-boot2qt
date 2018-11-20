@@ -38,11 +38,11 @@ S = "${WORKDIR}"
 
 inherit qbsp
 
-PV := "${@d.getVar('PV', True).split('+')[0]}"
+PV := "${@d.getVar('PV').split('+')[0]}"
 
-VERSION_SHORT = "${@d.getVar('PV', True).replace('.','')}"
+VERSION_SHORT = "${@d.getVar('PV').replace('.','')}"
 QBSP_NAME = "Automotive ${PV}"
-QBSP_MACHINE = "${@d.getVar('MACHINE', True).replace('-','')}"
+QBSP_MACHINE = "${@d.getVar('MACHINE').replace('-','')}"
 QBSP_INSTALLER_COMPONENT = "automotive.${VERSION_SHORT}.yocto.${QBSP_MACHINE}"
 QBSP_INSTALL_PATH = "/${PV}/Automotive/${MACHINE}"
 

@@ -34,7 +34,7 @@ PR = "r0"
 inherit nativesdk packagegroup
 
 python __anonymous() {
-    overrides = d.getVar("OVERRIDES", True).split(":")
+    overrides = d.getVar("OVERRIDES").split(":")
     if "mingw32" not in overrides:
         d.appendVar("OVERRIDES", ":linux")
 }

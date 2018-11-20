@@ -50,7 +50,7 @@ do_qbsp[depends] += "\
     "
 
 QBSP_VERSION ?= "${PV}${VERSION_AUTO_INCREMENT}"
-QBSP_INSTALLER_COMPONENT ?= "${@d.getVar('MACHINE', True).replace('-','')}"
+QBSP_INSTALLER_COMPONENT ?= "${@d.getVar('MACHINE').replace('-','')}"
 QBSP_INSTALL_PATH ?= "/Extras/${MACHINE}"
 
 QBSP_LICENSE_FILE ?= ""
@@ -69,7 +69,7 @@ SDK_NAME = "${DISTRO}-${SDK_MACHINE}-${QBSP_SDK_TASK}-${MACHINE}.${SDK_POSTFIX}"
 SDK_POSTFIX = "sh"
 SDK_POSTFIX_sdkmingw32 = "7z"
 REAL_MULTIMACH_TARGET_SYS = "${TUNE_PKGARCH}${TARGET_VENDOR}-${TARGET_OS}"
-SDK_MACHINE = "${@d.getVar('SDKMACHINE', True) or '${SDK_ARCH}'}"
+SDK_MACHINE = "${@d.getVar('SDKMACHINE') or '${SDK_ARCH}'}"
 
 B = "${WORKDIR}/build"
 
