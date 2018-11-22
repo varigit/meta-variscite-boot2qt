@@ -1,0 +1,327 @@
+From 1115b5113bc31d048441cc138c6d2f45785bd53e Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Tue, 20 Nov 2018 15:43:47 +0200
+Subject: [PATCH] draak: change lvds timings to match KOE 1280x480 display
+
+Add new dtb for Draak that enables LVDS output and changes
+the panel timings to match KOE tx31d200vm0baa display.
+---
+ arch/arm64/boot/dts/renesas/Makefile          |   1 +
+ .../boot/dts/renesas/r8a77995-draak-lvds.dts  | 296 ++++++++++++++++++
+ 2 files changed, 297 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/renesas/r8a77995-draak-lvds.dts
+
+diff --git a/arch/arm64/boot/dts/renesas/Makefile b/arch/arm64/boot/dts/renesas/Makefile
+index 3daccfdfc5ea..b24e31d6a1ce 100644
+--- a/arch/arm64/boot/dts/renesas/Makefile
++++ b/arch/arm64/boot/dts/renesas/Makefile
+@@ -4,6 +4,7 @@ dtb-$(CONFIG_ARCH_R8A7795) += r8a7795-es1-salvator-x.dtb r8a7795-es1-h3ulcb.dtb
+ dtb-$(CONFIG_ARCH_R8A7796) += r8a7796-salvator-x.dtb r8a7796-m3ulcb.dtb
+ dtb-$(CONFIG_ARCH_R8A7796) += r8a7796-salvator-xs.dtb
+ dtb-$(CONFIG_ARCH_R8A77995) += r8a77995-draak.dtb
++dtb-$(CONFIG_ARCH_R8A77995) += r8a77995-draak-lvds.dtb
+ 
+ always		:= $(dtb-y)
+ clean-files	:= *.dtb
+diff --git a/arch/arm64/boot/dts/renesas/r8a77995-draak-lvds.dts b/arch/arm64/boot/dts/renesas/r8a77995-draak-lvds.dts
+new file mode 100644
+index 000000000000..53df48a99c30
+--- /dev/null
++++ b/arch/arm64/boot/dts/renesas/r8a77995-draak-lvds.dts
+@@ -0,0 +1,296 @@
++/*
++ * Device Tree Source for the Draak board
++ *
++ * Copyright (C) 2017 Renesas Electronics Corp.
++ *
++ * This file is licensed under the terms of the GNU General Public License
++ * version 2.  This program is licensed "as is" without any warranty of any
++ * kind, whether express or implied.
++ */
++
++/dts-v1/;
++#include "r8a77995.dtsi"
++#include <dt-bindings/gpio/gpio.h>
++
++/ {
++	model = "Renesas Draak board based on r8a77995";
++	compatible = "renesas,draak", "renesas,r8a77995";
++
++	aliases {
++		serial0 = &scif2;
++		ethernet0 = &avb;
++	};
++
++	chosen {
++		bootargs = "ignore_loglevel";
++		stdout-path = "serial0:115200n8";
++	};
++
++	memory@48000000 {
++		device_type = "memory";
++		/* first 128MB is reserved for secure area. */
++		reg = <0x0 0x48000000 0x0 0x18000000>;
++	};
++
++	reserved-memory {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++
++		/* global autoconfigured region for contiguous allocations */
++		linux,cma {
++			compatible = "shared-dma-pool";
++			reusable;
++			reg = <0x00000000 0x58000000 0x0 0x8000000>;
++			linux,cma-default;
++		};
++	};
++
++	reg_1p8v: regulator0 {
++		compatible = "regulator-fixed";
++		regulator-name = "fixed-1.8V";
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		regulator-boot-on;
++		regulator-always-on;
++	};
++
++	reg_3p3v: regulator1 {
++		compatible = "regulator-fixed";
++		regulator-name = "fixed-3.3V";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		regulator-boot-on;
++		regulator-always-on;
++	};
++
++	lvds0 {
++		compatible = "panel-lvds";
++
++		width-mm = <210>;
++		height-mm = <158>;
++
++		data-mapping = "jeida-24";
++
++		panel-timing {
++			/* 1280x480 @60Hz */
++			clock-frequency = <43248000>;
++			hactive = <1280>;
++			vactive = <480>;
++			hback-porch = <40>;
++			hfront-porch = <30>;
++			vback-porch = <30>;
++			vfront-porch = <10>;
++			hsync-len = <10>;
++			vsync-len = <10>;
++		};
++		port {
++			lvds0_in: endpoint {
++				remote-endpoint = <&du_out_lvds0>;
++			};
++		};
++	};
++
++	lvds1 {
++		compatible = "panel-lvds";
++
++		width-mm = <210>;
++		height-mm = <158>;
++
++		data-mapping = "jeida-24";
++
++		panel-timing {
++			/* 1280x480 @60Hz */
++			clock-frequency = <43248000>;
++			hactive = <1280>;
++			vactive = <480>;
++			hback-porch = <40>;
++			hfront-porch = <30>;
++			vback-porch = <30>;
++			vfront-porch = <10>;
++			hsync-len = <10>;
++			vsync-len = <10>;
++		};
++		port {
++			lvds1_in: endpoint {
++				remote-endpoint = <&du_out_lvds1>;
++			};
++		};
++	};
++};
++
++&pfc {
++	avb_pins: avb {
++		groups = "avb0_td", "avb0_tx_ctl", "avb0_txc",
++			 "avb0_rd", "avb0_rx_ctl", "avb0_rxc",
++			 "avb0_txcrefclk", "avb0_mdc", "avb0_mdio";
++		function = "avb0";
++	};
++
++	sdhi2_pins: sd2 {
++		groups = "mmc_data8", "mmc_ctrl";
++		function = "mmc";
++		power-source = <3300>;
++	};
++
++	sdhi2_pins_uhs: sd2_uhs {
++		groups = "mmc_data8", "mmc_ctrl";
++		function = "mmc";
++		power-source = <1800>;
++	};
++
++	usb0_pins: usb0 {
++		groups = "usb0";
++		function = "usb0";
++	};
++
++};
++
++&extal_clk {
++	clock-frequency = <48000000>;
++};
++
++&du_dotclkin0 {
++	clock-frequency = <74250000>;
++};
++
++&i2c0 {
++	status = "okay";
++
++	clock-frequency = <400000>;
++
++	adv7180: adv7180@20 {
++		compatible = "adi,adv7180";
++		reg = <0x20>;
++		remote = <&vin4>;
++
++		port {
++			cvbs_in: endpoint {
++				bus-width = <8>;
++				remote-endpoint = <&vin4ep0>;
++			};
++		};
++	};
++
++	adv7612: adv7612@4c {
++		compatible = "adi,adv7612";
++		reg = <0x4c>;
++		remote = <&vin4>;
++
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		default-input = <0>;
++
++		port@0 {
++			reg = <0>;
++		};
++		port@1 {
++			reg = <1>;
++			hdmi_in: endpoint {
++				remote-endpoint = <&vin4ep0>;
++			};
++		};
++	};
++};
++
++&avb {
++	pinctrl-0 = <&avb_pins>;
++	pinctrl-names = "default";
++	renesas,no-ether-link;
++	phy-handle = <&phy0>;
++	status = "okay";
++	phy-gpios = <&gpio5 19 GPIO_ACTIVE_LOW>;
++	phy-reset-gpios = <&gpio5 18 GPIO_ACTIVE_LOW>;
++
++	phy0: ethernet-phy@0 {
++		rxc-skew-ps = <1500>;
++		rxdv-skew-ps = <420>; /* default */
++		rxd0-skew-ps = <420>; /* default */
++		rxd1-skew-ps = <420>; /* default */
++		rxd2-skew-ps = <420>; /* default */
++		rxd3-skew-ps = <420>; /* default */
++		txc-skew-ps = <900>; /* default */
++		txen-skew-ps = <420>; /* default */
++		txd0-skew-ps = <420>; /* default */
++		txd1-skew-ps = <420>; /* default */
++		txd2-skew-ps = <420>; /* default */
++		txd3-skew-ps = <420>; /* default */
++		reg = <0>;
++		interrupt-parent = <&gpio5>;
++		interrupts = <20 IRQ_TYPE_LEVEL_LOW>;
++	};
++};
++
++&scif2 {
++	status = "okay";
++};
++
++&vin4 {
++	status = "okay";
++	port {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		vin4ep0: endpoint {
++			remote-endpoint = <&hdmi_in>;
++			bus-width = <8>;
++		};
++	};
++};
++
++&usb2_phy0 {
++	pinctrl-0 = <&usb0_pins>;
++	pinctrl-names = "default";
++
++	status = "okay";
++};
++
++&ehci0 {
++	status = "okay";
++};
++
++&ohci0 {
++	status = "okay";
++};
++
++&sdhi2 {
++	/* used for on-board 8bit eMMC */
++	pinctrl-0 = <&sdhi2_pins>;
++	pinctrl-1 = <&sdhi2_pins_uhs>;
++	pinctrl-names = "default", "state_uhs";
++
++	vmmc-supply = <&reg_3p3v>;
++	vqmmc-supply = <&reg_1p8v>;
++	mmc-hs200-1_8v;
++	bus-width = <8>;
++	non-removable;
++	status = "okay";
++};
++
++&du {
++	status = "okay";
++
++	/* update <du_dotclkin0/1> */
++	clocks = <&cpg CPG_MOD 724>,
++		 <&cpg CPG_MOD 723>,
++		 <&cpg CPG_MOD 727>,
++		 <&cpg CPG_MOD 727>,
++		 <&du_dotclkin0>;
++
++	backlight0-gpios = <&gpio2 31 GPIO_ACTIVE_HIGH>;/* LVDS0 */
++	backlight1-gpios = <&gpio4 0 GPIO_ACTIVE_HIGH>;	/* LVDS1 */
++
++    ports {
++		port@1 {
++			endpoint {
++				remote-endpoint = <&lvds0_in>;
++			};
++		};
++	    port@2 {
++			endpoint {
++				remote-endpoint = <&lvds1_in>;
++			};
++		};
++	};
++};

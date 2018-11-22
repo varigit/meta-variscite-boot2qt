@@ -29,4 +29,7 @@
 
 FILESEXTRAPATHS_prepend_draak := "${THISDIR}/${PN}:"
 
-SRC_URI_append_draak = " file://0001-give-up-on-gcc-ilog2-constant-optimizations.patch"
+SRC_URI_append_draak = " \
+    file://0001-give-up-on-gcc-ilog2-constant-optimizations.patch \
+    file://0001-draak-change-lvds-timings-to-match-KOE-1280x480-disp.patch \
+    "
