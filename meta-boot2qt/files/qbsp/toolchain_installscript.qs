@@ -65,6 +65,7 @@ Component.prototype.createOperations = function()
     var debuggerId = basecomponent + ".gdb";
     var qtId = basecomponent + ".qt";
     var cmakeId = basecomponent + ".cmake";
+    var cmakeGenerator = "Unix Makefiles";
     var icon = installer.value("B2QtDeviceIcon");
     var executableExt = "";
     var hostSysroot = "x86_64-pokysdk-linux";
@@ -134,6 +135,7 @@ Component.prototype.createOperations = function()
          "--Cxxtoolchain", toolchainId + ".g++",
          "--icon", icon,
          "--cmake", cmakeId,
+         "--cmake-generator", cmakeGenerator,
          "--cmake-config", "CMAKE_TOOLCHAIN_FILE:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/share/cmake/OEToolchainConfig.cmake",
          "--cmake-config", "CMAKE_MAKE_PROGRAM:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/bin/make" + executableExt,
          "--cmake-config", "CMAKE_CXX_COMPILER:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/bin/" + target_sys + "/" + target_sys + "-g++" + executableExt,
