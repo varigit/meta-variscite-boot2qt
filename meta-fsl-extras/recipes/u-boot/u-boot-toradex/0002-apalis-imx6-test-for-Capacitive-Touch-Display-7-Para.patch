@@ -1,4 +1,4 @@
-From 41be67109ab0c0fd156ee8615592827624fab12e Mon Sep 17 00:00:00 2001
+From 22ded9f935249b8a3980e1a392b2598128f071d6 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@qt.io>
 Date: Fri, 19 May 2017 12:41:38 +0300
 Subject: [PATCH] apalis-imx6: test for Capacitive Touch Display 7" Parallel
@@ -13,7 +13,7 @@ support for the atmel_mxt_ts touch controller.
  1 file changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/include/configs/apalis_imx6.h b/include/configs/apalis_imx6.h
-index b687dab91d..3351a18e4c 100644
+index 8dcb5cc5e4..59e74d41c0 100644
 --- a/include/configs/apalis_imx6.h
 +++ b/include/configs/apalis_imx6.h
 @@ -249,7 +249,7 @@
@@ -31,10 +31,10 @@ index b687dab91d..3351a18e4c 100644
  		"source ${loadaddr}\0" \
 -	"setup=setenv setupargs fec_mac=${ethaddr} " \
 +	"setup=run setupvideo; setenv setupargs fec_mac=${ethaddr} " \
- 		"consoleblank=0 no_console_suspend=1 " \
+ 		"consoleblank=0 no_console_suspend=1 console=tty1 " \
  		"console=${console},${baudrate}n8\0" \
 +	"setupvideo=i2c dev 0; if i2c probe 4A; " \
-+        "then setenv vidargs mxc_hdmi.only_cea=1 " \
++		"then setenv vidargs mxc_hdmi.only_cea=1 " \
 +		"video=mxcfb0:dev=lcd,FusionF07A,if=RGB24 " \
 +		"video=mxcfb1:off video=mxcfb2:off video=mxcfb3:off " \
 +		"fbmem=32M; fi\0" \

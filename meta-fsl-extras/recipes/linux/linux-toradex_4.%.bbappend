@@ -36,6 +36,9 @@ do_preconfigure_prepend () {
     # FunctionFS for qdbd
     echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
 
+    # disable all console messages from framebuffers
+    echo "CONFIG_FRAMEBUFFER_CONSOLE=n" >> ${WORKDIR}/defconfig
+
     # Enable uprobe for profiling
     echo "CONFIG_UPROBE_EVENT=y" >> ${WORKDIR}/defconfig
     echo "CONFIG_FTRACE=y"       >> ${WORKDIR}/defconfig

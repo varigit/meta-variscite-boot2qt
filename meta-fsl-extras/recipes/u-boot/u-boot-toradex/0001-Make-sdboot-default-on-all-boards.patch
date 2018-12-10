@@ -1,18 +1,18 @@
-From 0f7d6eecead2c079ac050e6d16b64f280d9feab0 Mon Sep 17 00:00:00 2001
+From 1abe757120dd19518fd09d2013f518fba46c4d06 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@qt.io>
 Date: Mon, 15 May 2017 15:31:36 +0300
 Subject: [PATCH] Make sdboot default on all boards
 
 ... and remove console=tty1 from kernel args
 ---
- include/configs/apalis_imx6.h  | 5 +++--
- include/configs/colibri_imx6.h | 5 +++--
- include/configs/colibri_imx7.h | 4 ++--
- include/configs/colibri_vf.h   | 4 ++--
- 4 files changed, 10 insertions(+), 8 deletions(-)
+ include/configs/apalis_imx6.h  | 3 ++-
+ include/configs/colibri_imx6.h | 3 ++-
+ include/configs/colibri_imx7.h | 2 +-
+ include/configs/colibri_vf.h   | 2 +-
+ 4 files changed, 6 insertions(+), 4 deletions(-)
 
 diff --git a/include/configs/apalis_imx6.h b/include/configs/apalis_imx6.h
-index 71dfeb56f5..b687dab91d 100644
+index 71dfeb56f5..8dcb5cc5e4 100644
 --- a/include/configs/apalis_imx6.h
 +++ b/include/configs/apalis_imx6.h
 @@ -256,7 +256,8 @@
@@ -25,17 +25,8 @@ index 71dfeb56f5..b687dab91d 100644
  		"run distro_bootcmd ; " \
  		"usb start ;" \
  		"setenv stdout serial,vga ; setenv stdin serial,usbkbd\0" \
-@@ -279,7 +280,7 @@
- 		" ${loadaddr} flash_blk.img && " \
- 		"source ${loadaddr}\0" \
- 	"setup=setenv setupargs fec_mac=${ethaddr} " \
--		"consoleblank=0 no_console_suspend=1 console=tty1 " \
-+		"consoleblank=0 no_console_suspend=1 " \
- 		"console=${console},${baudrate}n8\0" \
- 	"setupdate=run setsdupdate || run setusbupdate || run setethupdate\0" \
- 	"setusbupdate=usb start && setenv interface usb; setenv drive 0; " \
 diff --git a/include/configs/colibri_imx6.h b/include/configs/colibri_imx6.h
-index f1fd5b422e..c7d75cea2a 100644
+index f1fd5b422e..ae0f3c9bfa 100644
 --- a/include/configs/colibri_imx6.h
 +++ b/include/configs/colibri_imx6.h
 @@ -231,7 +231,8 @@
@@ -48,17 +39,8 @@ index f1fd5b422e..c7d75cea2a 100644
  		"run distro_bootcmd ; " \
  		"usb start ;" \
  		"setenv stdout serial,vga ; setenv stdin serial,usbkbd\0" \
-@@ -252,7 +253,7 @@
- 		"${interface} ${drive}:1 ${loadaddr} flash_blk.img && " \
- 		"source ${loadaddr}\0" \
- 	"setup=setenv setupargs fec_mac=${ethaddr} " \
--		"consoleblank=0 no_console_suspend=1 console=tty1 " \
-+		"consoleblank=0 no_console_suspend=1 " \
- 		"console=${console},${baudrate}n8\0" \
- 	"setupdate=run setsdupdate || run setusbupdate || run setethupdate\0" \
- 	"setusbupdate=usb start && setenv interface usb; setenv drive 0; " \
 diff --git a/include/configs/colibri_imx7.h b/include/configs/colibri_imx7.h
-index ea04762b49..ca827a8a58 100644
+index ea04762b49..47e8bd266d 100644
 --- a/include/configs/colibri_imx7.h
 +++ b/include/configs/colibri_imx7.h
 @@ -104,7 +104,7 @@
@@ -70,17 +52,8 @@ index ea04762b49..ca827a8a58 100644
  	"setenv fdtfile ${soc}-colibri-${fdt_board}.dtb && run distro_bootcmd;"
  
  #define BOOTENV_RUN_NET_USB_START ""
-@@ -138,7 +138,7 @@
- 		"fatload ${interface} 0:1 ${loadaddr} " \
- 		"${board}/flash_blk.img && source ${loadaddr}\0" \
- 	"setup=setenv setupargs " \
--		"console=tty1 console=${console}" \
-+		"console=${console}" \
- 		",${baudrate}n8 ${memargs} consoleblank=0\0" \
- 	"setupdate=run setsdupdate || run setusbupdate || run setethupdate\0" \
- 	"setusbupdate=usb start && setenv interface usb && " \
 diff --git a/include/configs/colibri_vf.h b/include/configs/colibri_vf.h
-index db610d53f1..aafd4bc95e 100644
+index db610d53f1..a2c942cafe 100644
 --- a/include/configs/colibri_vf.h
 +++ b/include/configs/colibri_vf.h
 @@ -155,7 +155,7 @@
@@ -92,12 +65,3 @@ index db610d53f1..aafd4bc95e 100644
  	"setenv fdtfile ${soc}-colibri-${fdt_board}.dtb && run distro_bootcmd;"
  
  #define BOOTENV_RUN_NET_USB_START ""
-@@ -190,7 +190,7 @@
- 		"fatload ${interface} 0:1 ${loadaddr} " \
- 		"${board}/flash_blk.img && source ${loadaddr}\0" \
- 	"setup=setenv setupargs " \
--		"console=tty1 console=${console}" \
-+		"console=${console}" \
- 		",${baudrate}n8 ${memargs} consoleblank=0 ${mtdparts}\0" \
- 	"setupdate=run setsdupdate || run setusbupdate || run setethupdate\0" \
- 	"setusbupdate=usb start && setenv interface usb && " \
