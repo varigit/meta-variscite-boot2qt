@@ -42,11 +42,11 @@ SRC_URI = " \
     https://qt-files.s3.amazonaws.com/examples/Videos/The+Future+is+Written+with+Qt.mp4;name=video3 \
     "
 
-PV = "5.12.0+git${SRCPV}"
+PV = "5.12.1+git${SRCPV}"
 
 BRANCH = "5.12"
 
-SRCREV = "0fad7db4b7d34972b5b11fe31ceede43b3e6d0ea"
+SRCREV = "76322dd776d99367c8425f1bd116ad3dec66e52a"
 
 SRC_URI[video1.md5sum] = "25d9e963a02675a4f3ba83abeebb32da"
 SRC_URI[video1.sha256sum] = "33125518c2eb7848f378ddb6bebaf39f3327c92f1e33daa7fc09e4260e54d54a"
