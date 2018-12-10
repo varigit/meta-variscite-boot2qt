@@ -32,7 +32,7 @@ DESCRIPTION = "Neptune 3 IVI UI"
 LICENSE = "Apache-2.0 & ( GPL-3.0 | The-Qt-Company-Commercial )"
 LIC_FILES_CHKSUM = "\
     file://LICENSE.GPL3;md5=0d02f21f8e2533ecc519e2ed96bc94a2 \
-    file://imports/assets/fonts/LICENSE.txt;md5=3b83ef96387f14655fc854ddc3c6bd57 \
+    file://imports_shared/assets/fonts/LICENSE.txt;md5=3b83ef96387f14655fc854ddc3c6bd57 \
 "
 
 inherit qt5-module systemd
@@ -45,7 +45,7 @@ SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "d8332c73ccda36e1da2661317d7ed3c787b17c68"
+SRCREV = "c80d9aba17b1b50618ae6311d48f35ec726a4007"
 
 QMAKE_PROFILES = "${S}/neptune3-ui.pro"
 
@@ -74,8 +74,8 @@ do_install_append() {
 
     # Move the fonts to the system-wide font location
     install -m 0755 -d ${D}${datadir}/fonts/ttf/
-    mv ${D}/opt/neptune3/imports/assets/fonts/*.ttf ${D}${datadir}/fonts/ttf/
-    rm -rf ${D}/opt/neptune3/imports/assets/fonts/
+    mv ${D}/opt/neptune3/imports_shared/assets/fonts/*.ttf ${D}${datadir}/fonts/ttf/
+    rm -rf ${D}/opt/neptune3/imports_shared/assets/fonts/
 
     # Don't package tests
     rm -rf ${D}/usr/share/tests
