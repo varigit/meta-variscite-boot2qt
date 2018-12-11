@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -37,6 +37,10 @@ PACKAGECONFIG += "openssl"
 PACKAGECONFIG_remove_mingw32 += "openssl"
 
 PACKAGECONFIG[openssl] = "-openssl,-no-openssl,openssl,libssl"
+
+FILES_${PN}-dev += " \
+   ${datadir}/cmake \
+"
 
 fakeroot do_generate_qt_environment_file_mingw32() {
 }
