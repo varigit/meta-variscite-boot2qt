@@ -47,7 +47,7 @@ PACKAGECONFIG += " \
     ltcg \
     sql-sqlite \
     tslib \
-    xkbcommon-evdev \
+    xkbcommon \
     "
 
 PACKAGECONFIG_remove = "tests"
