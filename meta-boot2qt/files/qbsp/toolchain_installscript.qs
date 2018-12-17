@@ -73,6 +73,7 @@ Component.prototype.createOperations = function()
         executableExt = ".exe";
         hostSysroot = "i686-pokysdk-mingw32";
         toolchainId = "ProjectExplorer.ToolChain.Mingw:" + component.name;
+        cmakeGenerator = "MinGW Makefiles";
     }
 
     component.addOperation("Execute",
