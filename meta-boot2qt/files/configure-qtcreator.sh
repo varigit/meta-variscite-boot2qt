@@ -30,7 +30,7 @@
 
 set -e
 
-ABI="arm-linux-generic-elf-32bit"
+ABI="arm-linux-poky-elf-32bit"
 CONFIG=""
 
 printUsage ()
@@ -106,6 +106,10 @@ if [ -n "${REMOVEONLY}" ]; then
     echo "Kit removed: ${NAME}"
     exit 0
 fi
+
+${SDKTOOL} addAbiFlavor \
+    --flavor poky \
+    --oses linux || true
 
 ${SDKTOOL} addTC \
     --id "ProjectExplorer.ToolChain.Gcc:${BASEID}.gcc" \
