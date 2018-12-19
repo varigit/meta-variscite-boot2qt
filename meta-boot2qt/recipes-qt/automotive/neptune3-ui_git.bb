@@ -31,7 +31,7 @@
 DESCRIPTION = "Neptune 3 IVI UI"
 LICENSE = "Apache-2.0 & ( GPL-3.0 | The-Qt-Company-Commercial )"
 LIC_FILES_CHKSUM = "\
-    file://LICENSE.GPL3;md5=0d02f21f8e2533ecc519e2ed96bc94a2 \
+    file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504 \
     file://imports_shared/assets/fonts/LICENSE.txt;md5=3b83ef96387f14655fc854ddc3c6bd57 \
 "
 
@@ -45,7 +45,7 @@ SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "438ed13a0043efb7beefa46c47f9fb3f80dd9eef"
+SRCREV = "792d987cc5797e6dae2d111de068a685513b6f63"
 
 QMAKE_PROFILES = "${S}/neptune3-ui.pro"
 
