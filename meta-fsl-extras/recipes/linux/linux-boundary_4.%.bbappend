@@ -36,6 +36,5 @@ SRC_URI += " \
 RDEPENDS_${KERNEL_PACKAGE_NAME}-base = ""
 
 do_preconfigure_prepend() {
-    echo "CONFIG_HID_MULTITOUCH=m"              >> ${WORKDIR}/defconfig
     echo "CONFIG_UPROBE_EVENT=y"                >> ${WORKDIR}/defconfig
 }

@@ -30,12 +30,10 @@
 include conf/distro/include/fsl.inc
 
 BBMASK += " \
-    meta-boundary/recipes-browser/chromium \
     meta-boundary/recipes-core/init-ifupdown \
-    meta-boundary/recipes-mozilla/firefox \
     "
 
 MACHINE_EXTRA_INSTALL += "\
     kernel-module-qcacld \
-    linux-firmware-bdsdmac-wlan \
+    linux-firmware-bdsdmac \
     "
