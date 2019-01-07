@@ -1,4 +1,4 @@
-From 9b541f4f6272c4ed4bb5bf6591e9a65cded6fdfa Mon Sep 17 00:00:00 2001
+From 4de366eeb48038da4140c3dcb3e96070e7d56429 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@qt.io>
 Date: Tue, 23 Oct 2018 09:54:57 +0300
 Subject: [PATCH] Disable ltcg for host_build
@@ -22,11 +22,11 @@ Upstream-Status: Inappropriate [embedded specific]
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/mkspecs/features/ltcg.prf b/mkspecs/features/ltcg.prf
-index ccf0226272..00118be872 100644
+index 482e5b5..de00842 100644
 --- a/mkspecs/features/ltcg.prf
 +++ b/mkspecs/features/ltcg.prf
 @@ -1,4 +1,4 @@
--CONFIG(release, debug|release) {
+-CONFIG(release, debug|release):!host_build {
 +CONFIG(release, debug|release):!host_build:!equals(QMAKE_HOST.os, Windows):!staticlib {
      # We need fat object files when creating static libraries on some platforms
      # so the linker will know to load a particular object from the library
