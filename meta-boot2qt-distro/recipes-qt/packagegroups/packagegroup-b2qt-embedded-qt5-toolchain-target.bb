@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -40,7 +40,7 @@ MACHINE_EXTRA_INSTALL_SDK ?= ""
 RDEPENDS_${PN} += " \
     ${MACHINE_EXTRA_INSTALL_SDK} \
     packagegroup-core-standalone-sdk-target \
-    gcc-sanitizers \
+    ${@contains_regex('MACHINEOVERRIDES', '(x86_64|i.86|powerpc|sparc|s390|arm|aarch64)', 'gcc-sanitizers', '', d)} \
     \
     qt3d-dev \
     qt3d-runtime-dev \
