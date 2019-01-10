@@ -44,10 +44,8 @@ RDEPENDS_${PN} = "\
         iproute2 \
         ldd \
         openssh-sftp-server \
-        perf \
         procps \
         rsync \
         tslib-calibrate \
-        valgrind \
         ${@bb.utils.contains("DISTRO_FEATURES", "systemd", "systemd-analyze", "", d)} \
         "

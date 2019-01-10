@@ -37,6 +37,7 @@ IMAGE_FEATURES += "\
         package-management \
         ssh-server-dropbear \
         tools-debug \
+        tools-profile \
         debug-tweaks \
         hwcodecs \
         "

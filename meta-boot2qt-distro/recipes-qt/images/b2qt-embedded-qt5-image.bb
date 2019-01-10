@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -37,6 +37,7 @@ IMAGE_FEATURES += "\
         package-management \
         ssh-server-dropbear \
         tools-debug \
+        tools-profile \
         debug-tweaks \
         hwcodecs \
         "
