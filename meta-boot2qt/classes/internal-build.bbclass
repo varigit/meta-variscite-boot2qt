@@ -53,7 +53,3 @@ python enable_internal_build () {
 
 addhandler enable_internal_build
 enable_internal_build[eventmask] = "bb.event.ConfigParsed"
-
-# bring back base_conditional as Draak is using too old meta layer
-def base_conditional(variable, checkvalue, truevalue, falsevalue, d):
-    return oe.utils.conditional(variable, checkvalue, truevalue, falsevalue, d)

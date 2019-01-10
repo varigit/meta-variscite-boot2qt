@@ -34,3 +34,7 @@ def contains_regex(variable, regex, truevalue, falsevalue, d):
         if re.match(regex, m):
             return truevalue
     return falsevalue
+
+# bring back base_conditional as Draak is using too old meta layer
+def base_conditional(variable, checkvalue, truevalue, falsevalue, d):
+    return oe.utils.conditional(variable, checkvalue, truevalue, falsevalue, d)
