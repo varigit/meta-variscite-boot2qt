@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-inherit meta nopackages abi-arch
+inherit meta nopackages abi-arch siteinfo
 
 FILESEXTRAPATHS_prepend := "${B2QTBASE}/files/qbsp:"
 
@@ -87,6 +87,7 @@ patch_installer_files() {
         -e "s#@SYSROOT@#${REAL_MULTIMACH_TARGET_SYS}#" \
         -e "s#@TARGET_SYS@#${TARGET_SYS}#" \
         -e "s#@ABI@#${ABI}#" \
+        -e "s#@BITS@#${SITEINFO_BITS}#" \
         -e "s#@INSTALLPATH@#${QBSP_INSTALL_PATH}#" \
         -e "s#@SDKPATH@#${SDKPATH}#" \
         -e "s#@SDKFILE@#${SDK_NAME}#" \

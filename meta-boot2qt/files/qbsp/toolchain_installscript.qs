@@ -40,7 +40,7 @@ Component.prototype.createOperations = function()
     var sysroot = "@SYSROOT@"
     var target_sys = "@TARGET_SYS@"
     var target = "@TARGET@"
-    var abi = "@ABI@"
+    var abi = "@ABI@-linux-poky-elf-@BITS@bit"
     var installPath = "@INSTALLPATH@/toolchain"
     var sdkPath = "@SDKPATH@"
     var sdkFile = "@SDKFILE@"
@@ -73,7 +73,13 @@ Component.prototype.createOperations = function()
         executableExt = ".exe";
         hostSysroot = "i686-pokysdk-mingw32";
         toolchainId = "ProjectExplorer.ToolChain.Mingw:" + component.name;
+        cmakeGenerator = "MinGW Makefiles";
     }
+
+    component.addOperation("Execute", "{0,2}",
+        ["@SDKToolBinary@", "addAbiFlavor",
+         "--flavor", "poky",
+         "--oses", "linux"]);
 
     component.addOperation("Execute",
         ["@SDKToolBinary@", "addTC",
@@ -111,6 +117,7 @@ Component.prototype.createOperations = function()
          "--name", platform + " " + target,
          "--type", "Qdb.EmbeddedLinuxQt",
          "--qmake", path + "/sysroots/" + hostSysroot + "/usr/bin/qmake" + executableExt,
+         "--abis", abi,
          "UNDOEXECUTE",
          "@SDKToolBinary@", "rmQt", "--id", qtId]);
 
