@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -41,3 +41,6 @@ QBSP_IMAGE_CONTENT = "\
     ${IMAGE_LINK_NAME}.conf \
     ${IMAGE_LINK_NAME}.flasher.tar.gz \
     "
+
+# NVIDIA's Vulkan support is for X only
+DISTRO_FEATURES_remove = "vulkan"

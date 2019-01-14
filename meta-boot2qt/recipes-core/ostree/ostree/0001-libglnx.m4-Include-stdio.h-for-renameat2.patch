@@ -1,0 +1,26 @@
+From aa04ed9af553b979b19ef31a9ea2241789a15a60 Mon Sep 17 00:00:00 2001
+From: Colin Walters <walters@verbum.org>
+Date: Wed, 11 Jul 2018 14:56:32 -0400
+Subject: [PATCH] libglnx.m4: Include stdio.h for renameat2
+
+glibc added it upstream:
+https://sourceware.org/git/?p=glibc.git;a=commit;h=d6da5cb6a8e0e8a9ce92b7d951a254cf325248d7
+
+But we need the right header.
+Ref: https://github.com/flatpak/flatpak/issues/1890
+---
+ libglnx.m4 | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libglnx.m4 b/libglnx.m4
+index 43dff97..fd68717 100644
+--- a/libglnx.m4
++++ b/libglnx.m4
+@@ -6,6 +6,7 @@ AC_CHECK_DECLS([
+         [], [], [[
+ #include <sys/types.h>
+ #include <unistd.h>
++#include <stdio.h>
+ #include <sys/mount.h>
+ #include <fcntl.h>
+ #include <sched.h>

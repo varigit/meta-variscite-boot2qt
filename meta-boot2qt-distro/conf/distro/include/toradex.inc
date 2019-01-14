@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -34,8 +34,10 @@ require conf/machine/include/${MACHINE}.inc
 
 BBMASK += "\
    meta-toradex-nxp/recipes-graphics/xorg-xserver \
+   meta-toradex-nxp/recipes-multimedia/gstreamer \
    meta-toradex-bsp-common/recipes-devtools/python \
    meta-toradex-bsp-common/recipes-devtools/e2fsprogs \
+   meta-toradex-bsp-common/recipes-core/systemd \
    "
 
 PREFERRED_PROVIDER_u-boot = "u-boot-toradex"
@@ -49,3 +51,7 @@ IMAGE_BOOT_FILES += " \
     fwd_mmc.img;flash_mmc.img \
     ${MACHINE}/*;${MACHINEDIR}/ \
     "
+
+# use 1.14.0 that matches the imx version of gstreamer
+PREFERRED_VERSION_gstreamer1.0-plugins-ugly = "1.14.0"
+PREFERRED_VERSION_gstreamer1.0-libav = "1.14.0"

@@ -1,4 +1,4 @@
-From ccbaab75abc8d5f5cbadc6a0285dd496a45252cf Mon Sep 17 00:00:00 2001
+From 166dae45bcfcd92cd2802db785a30072f65c0900 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@qt.io>
 Date: Thu, 12 Oct 2017 11:02:54 +0300
 Subject: [PATCH] apalis-imx6: Ixora v1.0 support
@@ -7,29 +7,27 @@ Add sddrive variable that can be changed to boot from different mmc card
 slot when using different versions of ixora carrier board.
 Default to drive 1, which is correct for Ixora v1.1.
 ---
- include/configs/apalis_imx6.h | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ include/configs/apalis_imx6.h | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
 diff --git a/include/configs/apalis_imx6.h b/include/configs/apalis_imx6.h
-index 3351a18e4c..7aabb1334b 100644
+index 3f224e54b8..9e1b5a0f75 100644
 --- a/include/configs/apalis_imx6.h
 +++ b/include/configs/apalis_imx6.h
-@@ -226,15 +226,16 @@
+@@ -238,12 +238,14 @@
  		"&& setenv dtbparam \" - ${fdt_addr_r}\" && true\0"
  
  #define SD_BOOTCMD \
--	"sdargs=ip=off root=/dev/mmcblk1p2 ro rootfstype=ext4 " \
-+	"sddrive=1\0" \
-+	"sdsetup=setenv sdargs ip=off root=/dev/mmcblk${sddrive}p2 ro rootfstype=ext4 " \
- 		"rootwait\0" \
--	"sdboot=run setup; " \
-+	"sdboot=run setup; run sdsetup; " \
- 		"setenv bootargs ${defargs} ${sdargs} ${setupargs} " \
- 		"${vidargs}; echo Booting from SD card; " \
--		"run sddtbload; load mmc 1:1 ${kernel_addr_r} " \
-+		"run sddtbload; load mmc ${sddrive}:1 ${kernel_addr_r} " \
- 		"${boot_file} && run fdt_fixup && " \
- 		"bootz ${kernel_addr_r} ${dtbparam}\0" \
+-	"sdargs=ip=off root=/dev/mmcblk1p2 ro rootfstype=ext4 rootwait\0" \
+-	"sdboot=run setup; setenv bootargs ${defargs} ${sdargs} ${setupargs} " \
++        "sddrive=1\0" \
++        "sdsetup=setenv sdargs ip=off root=/dev/mmcblk${sddrive}p2 ro rootfstype=ext4 rootwait\0" \
++        "sdboot=run setup; run sdsetup; " \
++                "setenv bootargs ${defargs} ${sdargs} ${setupargs} " \
+ 		"${vidargs}; echo Booting from MMC/SD card in 8-bit slot...; " \
+-		"run sddtbload; load mmc 1:1 ${kernel_addr_r} ${boot_file} " \
++		"run sddtbload; load mmc ${sddrive}:1 ${kernel_addr_r} ${boot_file} " \
+ 		"&& run fdt_fixup && bootz ${kernel_addr_r} ${dtbparam}\0" \
 -	"sddtbload=setenv dtbparam; load mmc 1:1 ${fdt_addr_r} " \
 +	"sddtbload=setenv dtbparam; load mmc ${sddrive}:1 ${fdt_addr_r} " \
  		"${fdt_file} && setenv dtbparam \" - ${fdt_addr_r}\" && true\0"

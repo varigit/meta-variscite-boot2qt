@@ -1,0 +1,22 @@
+From 2a9d175360f1ed3ef85e336a329a9e803226096e Mon Sep 17 00:00:00 2001
+From: Max Krummenacher <max.oss.09@gmail.com>
+Date: Thu, 29 Oct 2015 19:38:50 +0100
+Subject: [PATCH] systemd-udevd.service.in: set MountFlags=shared
+
+This allows for udevd automounting of drives accessible to all.
+---
+ units/systemd-udevd.service.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/units/systemd-udevd.service.in b/units/systemd-udevd.service.in
+index 6a3814e5d9..e3f3ad3293 100644
+--- a/units/systemd-udevd.service.in
++++ b/units/systemd-udevd.service.in
+@@ -25,7 +25,6 @@ ExecStart=@rootlibexecdir@/systemd-udevd
+ KillMode=mixed
+ WatchdogSec=3min
+ TasksMax=infinity
+-PrivateMounts=yes
+ MemoryDenyWriteExecute=yes
+ RestrictRealtime=yes
+ RestrictAddressFamilies=AF_UNIX AF_NETLINK AF_INET AF_INET6

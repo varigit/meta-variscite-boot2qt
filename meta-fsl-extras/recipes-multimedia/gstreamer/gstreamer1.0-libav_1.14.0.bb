@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,16 +27,9 @@
 ##
 ############################################################################
 
-# We have a conf and classes directory, append to BBPATH
-BBPATH .= ":${LAYERDIR}"
+require recipes-multimedia/gstreamer/gstreamer1.0-libav_1.14.2.bb
 
-# We have a recipes directory, add to BBFILES
-BBFILES += "${LAYERDIR}/recipes*/*/*.bb \
-            ${LAYERDIR}/recipes*/*/*.bbappend \
-            "
+FILESEXTRAPATHS_prepend := "${BSPDIR}/sources/poky/meta/recipes-multimedia/gstreamer/${PN}:"
 
-BBFILE_COLLECTIONS += "b2qt_intel"
-BBFILE_PATTERN_b2qt_intel := "^${LAYERDIR}/"
-BBFILE_PRIORITY_b2qt_intel = "20"
-
-LAYERSERIES_COMPAT_b2qt_intel = "thud"
+SRC_URI[md5sum] = "943045b9e937ffc5c6cfa0bd5c44230d"
+SRC_URI[sha256sum] = "fb134b4d3e054746ef8b922ff157b0c7903d1fdd910708a45add66954da7ef89"

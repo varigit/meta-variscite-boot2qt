@@ -32,6 +32,9 @@ SUMMARY = "Shared library with a reference command line tool for managing bootab
 LICENSE = "LGPL-2.1"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5f30f0716dfdd0d91eb439ebec522ec2"
 
+SRC_URI[libglnx.md5sum] = "110edb31abcea2fbdacbe0b3adf7eee4"
+SRC_URI[libglnx.sha256sum] = "b2de841b0efe12803930f5e21fe46ef4f4c5180fb59576feb5902c944761d27a"
+
 inherit autotools pkgconfig systemd
 
 SRC_URI = " \
@@ -47,12 +50,19 @@ SRC_URI = " \
     file://Workaround-the-SIGCHLD-handler-issue.patch \
     file://workaround-gtkdocize-configure-issue-in-autog.patch \
     "
+SRC_URI += " \
+    git://gitlab.gnome.org/GNOME/libglnx;name=libglnx;branch=master;protocol=https;destsuffix=git/libglnx \
+    file://0001-libglnx.m4-Include-stdio.h-for-renameat2.patch;patchdir=libglnx \
+    "
 
-SRCREV = "8ece4d6d51bdbe3e41ab318259276bb83e553aa0"
+SRCREV_ostree = "8ece4d6d51bdbe3e41ab318259276bb83e553aa0"
+SRCREV_libglnx = "4ae5e3beaaa674abfabf7404ab6fafcc4ec547db"
+SRCREV = "${SRCREV_ostree}"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "glib-2.0 glib-2.0-native e2fsprogs gpgme attr libsoup-2.4 libassuan xz systemd"
+DEPENDS = "glib-2.0 glib-2.0-native e2fsprogs gpgme attr libsoup-2.4 libassuan xz systemd bison-native"
+
 # Bash is needed by the shipped dracut module. This dracut module is used to generate initramfs image.
 # The production image do not require bash for proper working.
 RDEPENDS_${PN} += "bash"

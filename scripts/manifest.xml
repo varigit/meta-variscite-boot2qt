@@ -18,11 +18,11 @@
 
   <project name="poky"
            remote="yocto"
-           revision="623b77885051174d0e05198843e739110977bd18"
+           revision="84eecb017ef92ef36b4df730908828e54aeff85c"
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
-           revision="8760facba1bceb299b3613b8955621ddaa3d4c3f"
+           revision="6094ae18c8a35e5cc9998ac39869390d7f3bb1e2"
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="qtyocto"
@@ -35,17 +35,17 @@
 
   <project name="meta-freescale"
            remote="freescale"
-           revision="407c6cf408969445031a492e2d25e0e2749582ea"
+           revision="9d1463c9af81edadf8c5a343a030555b6156f8cf"
            path="sources/meta-freescale"
            groups="notdefault,external,fsl,toradex,smx6,boundary,fsl-imx8"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="88a29631809d1af0df618245430db29f2a7012b5"
+           revision="47848bff9478999019947f69a719b3d2c2a6b558"
            path="sources/meta-freescale-3rdparty"
            groups="notdefault,external,fsl,toradex,smx6,boundary,fsl-imx8"/>
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="2d40b000021bc8a9ef7f329ed0ad410f8d227b97"
+           revision="a48743dc36e31170cf737e200cc88f273e13611a"
            path="sources/meta-raspberrypi"
            groups="notdefault,external,rpi"/>
   <project name="meta-intel"
@@ -55,7 +55,7 @@
            groups="notdefault,external,intel"/>
   <project name="meta-tegra"
            remote="madisongh"
-           revision="6b6942c8dd15c2b4a460d46e803b962663955fde"
+           revision="da90b42297f5d14d362015be1c5a888f5cac946a"
            path="sources/meta-tegra"
            groups="notdefault,external,jetson"/>
   <project name="meta-renesas"
@@ -75,12 +75,12 @@
            groups="notdefault,external,renesas-gen3,renesas-draak"/>
   <project name="meta-toradex-bsp-common"
            remote="toradex"
-           revision="3e713eef6e056c955b82adaf4b45286a98c3fcdf"
+           revision="b3fe56eec075ccd719b0ec1fde32ad9c37f0cca0"
            path="sources/meta-toradex-bsp-common"
            groups="notdefault,external,toradex"/>
   <project name="meta-toradex-nxp"
            remote="toradex"
-           revision="656677f4a68e6747971a4a30550cd72c3beb6a76"
+           revision="53d4be5b9b8f609ae713e6eea8e935a73f7f7fd6"
            path="sources/meta-toradex-nxp"
            groups="notdefault,external,toradex"/>
   <project name="meta-boundary"
