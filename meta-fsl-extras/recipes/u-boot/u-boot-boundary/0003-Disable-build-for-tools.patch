@@ -1,4 +1,4 @@
-From 22c5a278b98cf6ea4e4a402bca19d1354ab3c431 Mon Sep 17 00:00:00 2001
+From baed831959ba41b8d1cebfb5d960ddfa847ae915 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@qt.io>
 Date: Tue, 25 Sep 2018 16:05:17 +0300
 Subject: [PATCH] Disable build for tools and use mkimage from sysroot
@@ -11,10 +11,10 @@ fails when trying to compile with host gcc: unable to execute
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 119ad49eec..022690e26e 100644
+index 7d5f801eea..d5d44c5def 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -698,7 +698,7 @@ libs-y += $(if $(BOARDDIR),board/$(BOARDDIR)/)
+@@ -730,7 +730,7 @@ libs-y += $(if $(BOARDDIR),board/$(BOARDDIR)/)
  
  libs-y := $(sort $(libs-y))
  
@@ -24,13 +24,15 @@ index 119ad49eec..022690e26e 100644
  u-boot-alldirs	:= $(sort $(u-boot-dirs) $(patsubst %/,%,$(filter %/, $(libs-))))
  
 diff --git a/scripts/Makefile.lib b/scripts/Makefile.lib
-index 80ddb08474..e86c949f08 100644
+index f8c3fff1d1..f24ea9cc25 100644
 --- a/scripts/Makefile.lib
 +++ b/scripts/Makefile.lib
-@@ -493,5 +493,5 @@ cmd_xzmisc = (cat $(filter-out FORCE,$^) | \
+@@ -508,7 +508,7 @@ cmd_xzmisc = (cat $(filter-out FORCE,$^) | \
  # ---------------------------------------------------------------------------
  MKIMAGEOUTPUT ?= /dev/null
  quiet_cmd_mkimage = MKIMAGE $@
 -cmd_mkimage = $(objtree)/tools/mkimage $(MKIMAGEFLAGS_$(@F)) -d $< $@ \
 +cmd_mkimage = mkimage $(MKIMAGEFLAGS_$(@F)) -d $< $@ \
- 	$(if $(KBUILD_VERBOSE:1=), >$(MKIMAGEOUTPUT))
+ 	>$(MKIMAGEOUTPUT) $(if $(KBUILD_VERBOSE:0=), && cat $(MKIMAGEOUTPUT))
+ 
+ # fdtgrep
