@@ -57,6 +57,6 @@ fakeroot tar_sdk_sdkmingw32() {
         if [ -e ${SDK_DEPLOY}/${TOOLCHAIN_OUTPUTNAME}.7z ]; then
                 rm ${SDK_DEPLOY}/${TOOLCHAIN_OUTPUTNAME}.7z
         fi
-        7zr a ${SDK_DEPLOY}/${TOOLCHAIN_OUTPUTNAME}.7z *
+        7za a ${SDK_DEPLOY}/${TOOLCHAIN_OUTPUTNAME}.7z *
 }
 
