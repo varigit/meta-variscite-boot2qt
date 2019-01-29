@@ -27,5 +27,11 @@
 ##
 ############################################################################
 
-INITRAMFS_SCRIPTS += "initramfs-module-rtsx-pci-sdmmc"
-PACKAGE_INSTALL += "kernel-module-rtsx-pci-sdmmc"
+INITRAMFS_SCRIPTS += "\
+    initramfs-module-rtsx-pci-sdmmc \
+    initramfs-module-r8169 \
+    "
+PACKAGE_INSTALL += "\
+    kernel-module-rtsx-pci-sdmmc \
+    kernel-module-r8169 \
+    "
