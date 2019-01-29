@@ -27,39 +27,40 @@
 ##
 ############################################################################
 
-DESCRIPTION = "VirtualBox Guest Additions for Linux: mount"
+DESCRIPTION = "Kernel drivers for the VirtualBox guest additions"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/VirtualBox-${PV}/COPYING;md5=e197d5641bb35b29d46ca8c4bf7f2660"
 
-SRC_URI = "http://download.virtualbox.org/virtualbox/${PV}/VirtualBox-${PV}.tar.bz2 \
-          file://mount-vboxsf.sh \
-          file://mount-vboxsf.service \
-          "
+inherit module
 
-SRC_URI[md5sum] = "d8e291525b84569356773eef507c49ce"
-SRC_URI[sha256sum] = "ed0a7efd56c7f39fae79c7ec3321473da412ef0d7914457b66f42679d513efcf"
+MACHINE_KERNEL_PR_append = "a"
+PR = "${MACHINE_KERNEL_PR}"
 
-S = "${WORKDIR}/VirtualBox-${PV}/src/VBox/Additions/linux/sharedfolders"
+SRC_URI = "http://download.virtualbox.org/virtualbox/${PV}/VirtualBox-${PV}.tar.bz2"
+
+SRC_URI[md5sum] = "4e84cd1aecb67e3f59b3ee06292bb2d0"
+SRC_URI[sha256sum] = "4debe583463be3917ac60ad76a31f6db27586423d86f1f53c060d70d5e70d467"
+
+S = "${WORKDIR}/vbox"
+
+export KERN_DIR="${STAGING_KERNEL_DIR}"
+export KERN_VER="${KERNEL_VERSION}"
+export KBUILD_VERBOSE="1"
+export BUILD_TARGET_ARCH="${ARCH}"
 
 do_compile() {
-    ${CC} ${LDFLAGS} -I../../../../../include -DIN_RING3 mount.vboxsf.c vbsfmount.c -o mount.vboxsf
+    ${WORKDIR}/VirtualBox-${PV}/src/VBox/Additions/linux/export_modules.sh ${WORKDIR}/vbox.tar.gz
+    tar xf ${WORKDIR}/vbox.tar.gz -C ${WORKDIR}/vbox
+    find ${WORKDIR}/vbox -name Makefile.include.header | xargs sed -i -e '/KERN_DIR :=/d'
+
+    oe_runmake all || die "make failed"
 }
 
 do_install() {
-    install -m 0755 -d ${D}${bindir}/
-    install -m 0755 mount.vboxsf ${D}${bindir}/
-    install -m 0755 ${WORKDIR}/mount-vboxsf.sh ${D}${bindir}/
-
-    install -m 0755 -d ${D}${sysconfdir}/init.d
-    ln -s ${bindir}/mount-vboxsf.sh ${D}${sysconfdir}/init.d/
-
-    install -m 0755 -d ${D}${systemd_unitdir}/system
-    install -m 0644 ${WORKDIR}/mount-vboxsf.service ${D}${systemd_unitdir}/system/
+    install -m 0755 -d ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/vbox
+    install -m 0644 vboxsf.ko ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/vbox
+    install -m 0644 vboxguest.ko ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/vbox
+    install -m 0644 vboxvideo.ko ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/vbox
 }
 
-INITSCRIPT_NAME = "mount-vboxsf.sh"
-INITSCRIPT_PARAMS = "defaults 33"
-
-SYSTEMD_SERVICE_${PN} = "mount-vboxsf.service"
-
-inherit update-rc.d systemd
+PKG_${PN} = "kernel-module-vbox"
