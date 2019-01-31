@@ -55,3 +55,7 @@ IMAGE_BOOT_FILES += " \
 # use 1.14.0 that matches the imx version of gstreamer
 PREFERRED_VERSION_gstreamer1.0-plugins-ugly = "1.14.0"
 PREFERRED_VERSION_gstreamer1.0-libav = "1.14.0"
+
+# override tezi bbclass
+IMAGE_CLASSES_remove = " image_type_tezi"
+IMAGE_CLASSES_append = " image_type_tezi_thud"
