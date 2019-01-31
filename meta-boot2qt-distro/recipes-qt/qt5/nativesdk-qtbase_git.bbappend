@@ -46,3 +46,6 @@ fakeroot do_generate_qt_environment_file_mingw32() {
 }
 
 SRC_URI_append_mingw32 = "file://0001-disable-qt_random_cpu.patch"
+
+# qdatetime.cpp: error: 'localtime_r' was not declared in this scope
+QT_CONFIG_FLAGS_append_mingw32 = " -D_POSIX_C_SOURCE"
