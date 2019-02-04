@@ -46,7 +46,7 @@ PV = "5.12.1+git${SRCPV}"
 
 BRANCH = "5.12"
 
-SRCREV = "76322dd776d99367c8425f1bd116ad3dec66e52a"
+SRCREV = "ec7cc518acc087f9366db2fc34139807df4e7398"
 
 SRC_URI[video1.md5sum] = "25d9e963a02675a4f3ba83abeebb32da"
 SRC_URI[video1.sha256sum] = "33125518c2eb7848f378ddb6bebaf39f3327c92f1e33daa7fc09e4260e54d54a"
