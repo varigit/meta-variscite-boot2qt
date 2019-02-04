@@ -37,10 +37,14 @@ PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
 MACHINE_EXTRA_INSTALL_SDK ?= ""
 
+GCC-SANITIZERS ?= "gcc-sanitizers"
+GCC-SANITIZERS_mipsarch = ""
+GCC-SANITIZERS_libc-musl = ""
+
 RDEPENDS_${PN} += " \
     ${MACHINE_EXTRA_INSTALL_SDK} \
     packagegroup-core-standalone-sdk-target \
-    ${@contains_regex('MACHINEOVERRIDES', '(x86_64|i.86|powerpc|sparc|s390|arm|aarch64)', 'gcc-sanitizers', '', d)} \
+    ${GCC-SANITIZERS} \
     \
     qt3d-dev \
     qt3d-runtime-dev \
