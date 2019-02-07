@@ -1,7 +1,7 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
-## Copyright (C) 2018 Pelagicore AG.
+## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2019 Pelagicore AG.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -45,7 +45,7 @@ SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "be372dec5a64cdfc2b2ba66ea240d9fa1cdbe3eb"
+SRCREV = "025de2bf790fa83a89a8846e2d536a1d7df04ce0"
 
 QMAKE_PROFILES = "${S}/neptune3-ui.pro"
 
