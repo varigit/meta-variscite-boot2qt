@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -43,7 +43,7 @@ SRC_URI += " \
     file://ebikedata.service \
     "
 
-SRCREV = "64f65e26feb4f6b0b3ac31cfc4e22c5971c1c41d"
+SRCREV = "747d70eaa865aad25b0ee680a0090c059a0549a9"
 
 DEPENDS = "\
     qtbase qtdeclarative qtquickcontrols2 \

@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -42,11 +42,11 @@ SRC_URI = " \
     https://qt-files.s3.amazonaws.com/examples/Videos/The+Future+is+Written+with+Qt.mp4;name=video3 \
     "
 
-PV = "5.12.1+git${SRCPV}"
+PV = "5.13.0+git${SRCPV}"
 
-BRANCH = "5.12"
+BRANCH = "5.13"
 
-SRCREV = "76322dd776d99367c8425f1bd116ad3dec66e52a"
+SRCREV = "0ea39397893edb54454bfceabde4b83fc5b60a2e"
 
 SRC_URI[video1.md5sum] = "25d9e963a02675a4f3ba83abeebb32da"
 SRC_URI[video1.sha256sum] = "33125518c2eb7848f378ddb6bebaf39f3327c92f1e33daa7fc09e4260e54d54a"
