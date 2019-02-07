@@ -1,6 +1,8 @@
+#!/bin/sh
+
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,7 +29,19 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-SRC_URI += " \
-    file://0001-egl_viv-cast-EGLNative-types-from-vivante-functions.patch \
-    "
+network_enabled() {
+    return 0
+}
+
+network_run() {
+    if [ -n "$bootparam_ip" ]; then
+        load_kernel_module r8169
+        if [ "${bootparam_ip}" -ne "dhcp" ]; then
+            echo "WARN: DHCP only supported at this time."
+        fi
+        ip link set dev eth0 up
+        udhcpc
+    fi
+}
+
+
