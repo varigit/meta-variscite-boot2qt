@@ -35,7 +35,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
                     file://LICENSE.GPL3-EXCEPT;md5=763d8c535a234d9a3fb682c7ecb6c073 \
                     file://LICENSE.LGPL3;md5=e6a600fd5e1d9cbde2d983680233ad02"
 
-DEPENDS = "qtbase qtdeclarative qtmultimedia qtivi-native"
+DEPENDS = "qtbase qtdeclarative qtmultimedia qtivi-native qtquickcontrols2"
 DEPENDS_class-native = "qtbase"
 DEPENDS_class-nativesdk = "qtbase qtivi-native"
 
