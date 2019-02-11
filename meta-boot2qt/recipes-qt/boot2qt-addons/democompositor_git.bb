@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -37,7 +37,7 @@ require recipes-qt/qt5/qt5-git.inc
 QT_GIT_PROJECT = "qt-apps"
 QT_MODULE = "boot2qt-demos"
 
-SRCREV = "b9585b440819e1444b20f30435f81c46801158c5"
+SRCREV = "0ea39397893edb54454bfceabde4b83fc5b60a2e"
 
 S = "${WORKDIR}/git/wayland/democompositor/"
 
