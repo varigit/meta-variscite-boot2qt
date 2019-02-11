@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -42,4 +42,4 @@ DEPENDS = "qtbase qtdeclarative"
 
 QT_MODULE_BRANCH = "dev"
 
-SRCREV = "42415a5b7a13b92701ccc7be70f9cdb7e522a3ea"
+SRCREV = "149b6cd3e46aa6b1ba76cf1ccc6d0510c5ff94b4"
