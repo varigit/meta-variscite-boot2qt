@@ -35,12 +35,12 @@
 
   <project name="meta-freescale"
            remote="freescale"
-           revision="407c6cf408969445031a492e2d25e0e2749582ea"
+           revision="27ca94f8a4336790ba117b4298566f6820e7e74c"
            path="sources/meta-freescale"
            groups="notdefault,external,fsl,toradex,smx6,boundary,fsl-imx8"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="88a29631809d1af0df618245430db29f2a7012b5"
+           revision="82037216280a39957fb4272581637abec734ad50"
            path="sources/meta-freescale-3rdparty"
            groups="notdefault,external,fsl,toradex,smx6,boundary,fsl-imx8"/>
   <project name="meta-raspberrypi"
