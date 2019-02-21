@@ -27,8 +27,4 @@
 ##
 ############################################################################
 
-include conf/distro/include/rcar-gen3.inc
-
-DEPLOY_CONF_NAME = "Renesas R-Car-H3 Starter Kit Premier"
-
-UBOOT_MACHINE = "r8a7795_ulcb_defconfig"
+DEPENDS_append_draak = " wayland-kms libgbm"

@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,5 +27,7 @@
 ##
 ############################################################################
 
-# pick random header to make build work
-INSTALLED_HEADER_draak = "src/egl/wayland/wayland-egl/wayland-egl-backend.h"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI += " \
+    file://0001-statx-don-t-redefine-if-structs-are-available-from-s.patch \
+    "

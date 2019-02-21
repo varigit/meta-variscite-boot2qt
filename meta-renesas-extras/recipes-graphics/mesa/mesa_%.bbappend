@@ -27,8 +27,13 @@
 ##
 ############################################################################
 
-include conf/distro/include/rcar-gen3.inc
+# pick random header to make build work
+INSTALLED_HEADER_draak = "src/egl/wayland/wayland-egl/wayland-egl-backend.h"
 
-DEPLOY_CONF_NAME = "Renesas R-Car-H3 Starter Kit Premier"
+do_install_append() {
+    # ... and remove it
+    rm ${D}${includedir}/wayland-egl-backend.h
+}
 
-UBOOT_MACHINE = "r8a7795_ulcb_defconfig"
+# previously in libwayland-egl
+FILES_${PN}-dev_append_draak = " ${includedir}/EGL/eglmesaext.h"

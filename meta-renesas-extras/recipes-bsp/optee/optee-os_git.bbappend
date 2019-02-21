@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,4 +27,5 @@
 ##
 ############################################################################
 
-EXTRA_OEMAKE_append_draak = " COMMON_FLAGS="-Wno-error=expansion-to-defined""
+# disable -Werror=cast-function-type
+EXTRA_OEMAKE += "NOWERROR=1"

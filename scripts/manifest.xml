@@ -70,7 +70,7 @@
            groups="notdefault,external,renesas-draak"/>
   <project name="meta-linaro"
            remote="linaro"
-           revision="282b47a10940c26854c1cca0ec40950192af16fc"
+           revision="edb7ffc2a121df7596385595abe75180296103e0"
            path="sources/meta-linaro"
            groups="notdefault,external,renesas-gen3,renesas-draak"/>
   <project name="meta-toradex-bsp-common"

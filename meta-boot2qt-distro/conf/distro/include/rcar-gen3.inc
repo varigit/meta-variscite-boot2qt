@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -74,4 +74,11 @@ FILESEXTRAPATHS_append = "${BSPDIR}/sources/renesas-rcar-gen3/${PN}:"
 BBMASK += "\
     meta-linaro/meta-optee/recipes-security/optee \
     meta-rcar-gen3/recipes-core/packagegroups \
+    meta-rcar-gen3/recipes-devtools/perl \
+    meta-rcar-gen3/recipes-graphics/wayland/weston \
+    meta-rcar-gen3/recipes-graphics/xorg-xserver \
+    meta-rcar-gen3/recipes-multimedia/alsa \
+    meta-rcar-gen3/recipes-multimedia/gstreamer/gstreamer1.0-omx_1.12.4.bbappend \
+    meta-rcar-gen3/recipes-multimedia/gstreamer/gstreamer1.0-plugins-bad_1.12.4.bbappend \
+    meta-rcar-gen3/recipes-multimedia/gstreamer/gstreamer1.0-plugins-good_1.12.4.bbappend \
     "

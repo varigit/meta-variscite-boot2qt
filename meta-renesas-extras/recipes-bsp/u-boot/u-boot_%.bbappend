@@ -29,7 +29,11 @@
 
 FILESEXTRAPATHS_prepend_draak := "${THISDIR}/${PN}:"
 
-SRC_URI_append_draak = " file://0001-compiler-.h-sync-include-linux-compiler-.h-with-Linu.patch"
+DEPENDS += "bison-native"
+
+BRANCH = "v2018.09/rcar-3.9.1"
+SRCREV = "4d322dccdcf49c0aab18eb703663128aec81cffc"
+LIC_FILES_CHKSUM = "file://Licenses/README;md5=30503fd321432fc713238f582193b78e"
 
 LICENSE_draak = "GPLv2+"
 

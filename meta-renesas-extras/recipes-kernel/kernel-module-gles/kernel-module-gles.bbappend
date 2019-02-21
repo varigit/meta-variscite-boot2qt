@@ -27,8 +27,4 @@
 ##
 ############################################################################
 
-include conf/distro/include/rcar-gen3.inc
-
-DEPLOY_CONF_NAME = "Renesas R-Car-H3 Starter Kit Premier"
-
-UBOOT_MACHINE = "r8a7795_ulcb_defconfig"
+EXTRA_OEMAKE += "COMMON_FLAGS="-Wno-error=expansion-to-defined -Wno-error=cast-function-type -Wno-error=sizeof-pointer-div -Wno-error=stringop-truncation -Wno-error=packed-not-aligned""
