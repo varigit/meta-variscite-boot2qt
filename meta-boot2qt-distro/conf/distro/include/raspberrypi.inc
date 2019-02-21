@@ -53,3 +53,5 @@ KERNEL_DEVICETREE += "\
     overlays/mcp2515-can0.dtbo \
     overlays/mcp2515-can1.dtbo \
     "
+
+BBMASK += "dynamic-layers/qt5-layer/recipes-qt/qt5"
