@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-require recipes-multimedia/gstreamer/gstreamer1.0-libav_1.14.2.bb
+require recipes-multimedia/gstreamer/gstreamer1.0-libav_1.14.4.bb
 
 FILESEXTRAPATHS_prepend := "${BSPDIR}/sources/poky/meta/recipes-multimedia/gstreamer/${PN}:"
 
