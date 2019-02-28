@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -39,7 +39,6 @@ RDEPENDS_${PN} += " \
     qt3d-runtime \
     qt3d-runtime-tools \
     qtbase \
-    qtcanvas3d \
     qtcharts \
     qtconnectivity \
     qtdatavis3d \

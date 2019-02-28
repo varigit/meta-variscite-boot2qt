@@ -51,7 +51,6 @@ RDEPENDS_${PN} += " \
     qtbase-dev \
     qtbase-staticdev \
     qtbase-doc \
-    qtcanvas3d-dev \
     qtcharts-dev \
     qtconnectivity-dev \
     qtdatavis3d-dev \
