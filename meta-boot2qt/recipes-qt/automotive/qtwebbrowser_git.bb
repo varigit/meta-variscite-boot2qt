@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -37,7 +37,7 @@ require recipes-qt/qt5/qt5-git.inc
 QT_GIT_PROJECT = "qt-apps"
 QT_MODULE_BRANCH = "dev"
 
-SRCREV = "09d629199fa153ea7954321d81f647d5eb52fb6c"
+SRCREV = "93637d1b4f32a1f73613f70b29544f232059d600"
 
 DEPENDS = "qtbase qtdeclarative qtwebengine"
 
