@@ -38,10 +38,6 @@ PACKAGECONFIG_remove_mingw32 += "openssl"
 
 PACKAGECONFIG[openssl] = "-openssl,-no-openssl,openssl,libssl"
 
-FILES_${PN}-dev += " \
-   ${datadir}/cmake \
-"
-
 fakeroot do_generate_qt_environment_file_mingw32() {
 }
 
