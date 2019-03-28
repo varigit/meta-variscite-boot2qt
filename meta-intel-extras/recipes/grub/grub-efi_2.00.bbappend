@@ -30,8 +30,6 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += "file://grub.cfg"
 
-CFLAGS_append_class-native = " -Wno-error=packed-not-aligned"
-
 do_install[depends] += " \
     virtual/kernel:do_deploy \
     ${INITRAMFS_IMAGE}:do_image_complete \
