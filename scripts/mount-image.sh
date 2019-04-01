@@ -48,8 +48,12 @@ mkdir -p root
 
 sudo umount boot root || true
 
-OFFSET=$(parted "${IMAGE}" unit B print | grep "^ 1" | awk {'print $2'} | cut -d B -f 1)
-sudo mount -o loop,offset=${OFFSET} "${IMAGE}" boot
+PARTITION=$(parted "${IMAGE}" unit B print | grep "^ 1")
+OFFSET=$(echo ${PARTITION} | awk {'print $2'} | cut -d B -f 1)
+SIZE=$(echo ${PARTITION}| awk {'print $4'} | cut -d B -f 1)
+sudo mount -o loop,offset=${OFFSET},sizelimit=${SIZE} "${IMAGE}" boot
 
-OFFSET=$(parted "${IMAGE}" unit B print | grep "^ 2" | awk {'print $2'} | cut -d B -f 1)
-sudo mount -o loop,offset=${OFFSET} "${IMAGE}" root
+PARTITION=$(parted "${IMAGE}" unit B print | grep "^ 2")
+OFFSET=$(echo ${PARTITION}| awk {'print $2'} | cut -d B -f 1)
+SIZE=$(echo ${PARTITION}| awk {'print $4'} | cut -d B -f 1)
+sudo mount -o loop,offset=${OFFSET},sizelimit=${SIZE} "${IMAGE}" root
