@@ -56,6 +56,14 @@ EOF
     echo "QMAKE_CXXFLAGS *= ${TARGET_CC_ARCH}" >> ${SDK_DEVICE_PRI}
     echo "QMAKE_LFLAGS *= ${TARGET_CC_ARCH} ${TARGET_LDFLAGS}" >> ${SDK_DEVICE_PRI}
 
+    # Move FORTIFY_SOURCE to release flags
+    if [ -n "${lcl_maybe_fortify}" ]; then
+        sed -i -e 's/${lcl_maybe_fortify}//' ${SDK_DEVICE_PRI}
+        echo "QMAKE_CFLAGS_RELEASE *= ${lcl_maybe_fortify}" >> ${SDK_DEVICE_PRI}
+        echo "QMAKE_CXXFLAGS_RELEASE *= ${lcl_maybe_fortify}" >> ${SDK_DEVICE_PRI}
+        echo "QMAKE_LFLAGS_RELEASE *= ${lcl_maybe_fortify}" >> ${SDK_DEVICE_PRI}
+    fi
+
     # Setup qt.conf to point at the device mkspec by default
     qtconf=${SDK_OUTPUT}/${SDKPATHNATIVE}${OE_QMAKE_PATH_HOST_BINS}/qt.conf
     echo 'HostSpec = linux-g++' >> $qtconf
