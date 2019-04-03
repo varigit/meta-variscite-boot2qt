@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,27 +27,28 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Device Creation specific Qt packages"
-LICENSE = "The-Qt-Company-Commercial"
+inherit qmake5
 
-inherit packagegroup
+QT_GIT_PROJECT = ""
 
-PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
+FILESEXTRAPATHS_prepend := "${THISDIR}/boot2qt-demos:"
 
-BOOT2QT_DEMOS ?= "\
-    boot2qt-demo-ebike \
-    boot2qt-demo-mediaplayer \
-    boot2qt-demo-qtcharts \
-    boot2qt-demo-qtgraphicaleffects \
-    boot2qt-demo-qtquickcontrols2 \
-    boot2qt-demo-qtvirtualkeyboard \
-    ${@bb.utils.contains("DISTRO_FEATURES", "webengine", "boot2qt-demo-qtwebbrowser", "", d)} \
-    ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "democompositor", "", d)} \
+SRC_URI = " \
+    ${QT_GIT}qt-apps/boot2qt-demos.git;branch=${BRANCH} \
     "
 
-RDEPENDS_${PN} += " \
-    boot2qt-appcontroller \
-    boot2qt-launcher \
-    ${BOOT2QT_DEMOS} \
-    qdb \
+PV = "5.12.3+git${SRCPV}"
+
+BRANCH = "5.12"
+
+SRCREV = "34310ed69919f452dbcdae42f350254a40a06113"
+
+FILES_${PN} += " \
+    /data/user \
+    "
+FILES_${PN}-dbg += " \
+    /data/user/qt/qmlplugins/*/.debug/ \
+    "
+FILES_${PN}-staticdev += " \
+    /data/user/qt/qmlplugins/*/*.a \
     "

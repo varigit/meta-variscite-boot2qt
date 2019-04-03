@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,27 +27,25 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Device Creation specific Qt packages"
-LICENSE = "The-Qt-Company-Commercial"
+DESCRIPTION = "Boot to Qt Demo - E-Bike DataCollector"
+LICENSE = "(LGPL-3.0 | GPL-2.0+) | The-Qt-Company-Commercial"
+LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=948f8877345cd66106f11031977a4625"
 
-inherit packagegroup
+require boot2qt-demo.inc
 
-PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
+S = "${WORKDIR}/git/basicsuite/datacollector"
 
-BOOT2QT_DEMOS ?= "\
-    boot2qt-demo-ebike \
-    boot2qt-demo-mediaplayer \
-    boot2qt-demo-qtcharts \
-    boot2qt-demo-qtgraphicaleffects \
-    boot2qt-demo-qtquickcontrols2 \
-    boot2qt-demo-qtvirtualkeyboard \
-    ${@bb.utils.contains("DISTRO_FEATURES", "webengine", "boot2qt-demo-qtwebbrowser", "", d)} \
-    ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "democompositor", "", d)} \
+DEPENDS += "qtbase"
+
+SRC_URI += " \
+    file://ebikedata.service \
     "
 
-RDEPENDS_${PN} += " \
-    boot2qt-appcontroller \
-    boot2qt-launcher \
-    ${BOOT2QT_DEMOS} \
-    qdb \
-    "
+do_install_append() {
+    install -m 0755 -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/ebikedata.service ${D}${systemd_unitdir}/system
+}
+
+SYSTEMD_SERVICE_${PN} = "ebikedata.service"
+
+inherit systemd
