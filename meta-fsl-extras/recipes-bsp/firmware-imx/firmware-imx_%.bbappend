@@ -27,13 +27,5 @@
 ##
 ############################################################################
 
-include conf/distro/include/fsl-imx8.inc
-
-FSL_EULA_FILE := "${COREBASE}/../meta-fsl-bsp-release-toradex/imx/EULA.txt"
-
-DEPLOY_CONF_NAME = "Toradex Apalis iMX8"
-
-IMAGE_BOOT_FILES += "\
-    dpfw.bin \
-    hdmitxfw.bin \
-    "
+# need to use MACHINE_ARCH since the recipe deploys machine specific files
+PACKAGE_ARCH_mx8 = "${MACHINE_ARCH}"
