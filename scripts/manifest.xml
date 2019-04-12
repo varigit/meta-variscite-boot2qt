@@ -21,11 +21,11 @@
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
-           revision="b40116cf457b88a2db14b86fda9627fb34d56ae6"
+           revision="997caf9146cd3797cd054e2adebd1fbb4df91911"
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="qtyocto"
-           revision="49e9d9a73b5c6e3d6eab88dc0005305e85b1a62d"
+           revision="4c5923675f5c3a647b2048391783f37f07983d05"
            path="sources/meta-qt5"/>
   <project name="meta-mingw"
            remote="qtyocto"
@@ -69,7 +69,7 @@
            groups="notdefault,external,renesas-gen3"/>
   <project name="meta-linaro"
            remote="linaro"
-           revision="c44bd0ebc8ca2e6201996ef7cba8b71421d3aff7"
+           revision="d73e794c7e7ebb1cc5bf495a52a72b26fb118250"
            path="sources/meta-linaro"
            groups="notdefault,external,renesas-gen3"/>
   <project name="meta-toradex-bsp-common"

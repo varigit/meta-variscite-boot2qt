@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,22 +27,4 @@
 ##
 ############################################################################
 
-VM_ROOTFS_TYPE = "ext3"
-ROOT_VM = "root=/dev/hda2"
-LABELS_VM = "boot"
-AUTO_SYSLINUXMENU = "0"
-SYSLINUX_DEFAULT_CONSOLE = "console=ttyS0,115200"
-
-inherit image_types image-vm
-
-create_hdd_image () {
-    cd ${IMGDEPLOYDIR}
-    rm -f ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.hdd
-    ln -s ${IMAGE_NAME}.hdddirect ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.hdd
-}
-
-python do_hddimg() {
-        bb.build.exec_func('create_hdd_image', d)
-}
-
-addtask hddimg after do_bootdirectdisk before do_image_complete
+inherit perlnative
