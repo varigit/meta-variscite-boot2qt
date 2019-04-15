@@ -60,7 +60,7 @@ DEPENDS = "\
     "
 RDEPENDS_${PN} = "\
     dbus \
-    otf-noto ttf-opensans \
+    otf-noto otf-noto-arabic ttf-opensans \
     qtapplicationmanager qtapplicationmanager-tools \
     qtvirtualkeyboard \
     qtquickcontrols2-qmlplugins \
