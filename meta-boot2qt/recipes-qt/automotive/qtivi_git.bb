@@ -51,7 +51,7 @@ SRC_URI += " \
     file://0001-Use-QT_HOST_BINS-get-for-getting-correct-path.patch \
 "
 
-SRCREV_qtivi = "9f86bd27564ada6bcd8e200f347b642578935934"
+SRCREV_qtivi = "e95bf04999acd225f77891daf637a020a76a3240"
 SRCREV_qface = "0a3ae7686e1100be452b8c435bdcd84ec242340e"
 SRCREV = "${SRCREV_qtivi}"
 SRCREV_FORMAT = "qtivi_qface"
@@ -64,9 +64,7 @@ PACKAGECONFIG[geniviextras-only] = "QMAKE_EXTRA_ARGS+=--geniviextras-only"
 PACKAGECONFIG[ivigenerator] = "QMAKE_EXTRA_ARGS+=-system-ivigenerator"
 PACKAGECONFIG[ivigenerator-native] = "QMAKE_EXTRA_ARGS+=-qt-ivigenerator,,python3 python3-virtualenv"
 PACKAGECONFIG[host-tools-only] = "QMAKE_EXTRA_ARGS+=-host-tools-only"
-PACKAGECONFIG[simulator] = "QMAKE_EXTRA_ARGS+=-feature-simulator,QMAKE_EXTRA_ARGS+=-no-feature-simulator,qtsimulator"
-PACKAGECONFIG[simulator-native] = "QMAKE_EXTRA_ARGS+=-feature-simulator QMAKE_EXTRA_ARGS+=--force-ivigenerator-qtsimulator"
-PACKAGECONFIG[remoteobjects] = "QMAKE_EXTRA_ARGS+=-feature-remoteobjects,QMAKE_EXTRA_ARGS+=-no-feature-simulator,qtremoteobjects"
+PACKAGECONFIG[remoteobjects] = "QMAKE_EXTRA_ARGS+=-feature-remoteobjects,,qtremoteobjects qtremoteobjects-native"
 PACKAGECONFIG[remoteobjects-native] = "QMAKE_EXTRA_ARGS+=-feature-remoteobjects QMAKE_EXTRA_ARGS+=--force-ivigenerator-qtremoteobjects"
 
 PACKAGECONFIG_class-native ??= "host-tools-only ivigenerator-native remoteobjects-native"
