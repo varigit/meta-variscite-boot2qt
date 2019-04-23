@@ -36,6 +36,7 @@ if [ $# -lt 1 ]; then
 fi
 
 SHA1S=$(git -C $1 submodule status --recursive |  cut -c2- | awk '{print $1$2}')
+SHA1S=${SHA1S,,}
 LAYERDIR=${2:-$PWD}
 
 for S in $SHA1S; do
