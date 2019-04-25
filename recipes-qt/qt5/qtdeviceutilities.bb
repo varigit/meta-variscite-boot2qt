@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -39,6 +39,6 @@ PACKAGECONFIG[wpasupplicant] = "CONFIG+=wpasupplicant,,wpa-supplicant"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
-SRCREV = "127d46999676ec672d861e6ac5f8dfc06c812208"
+SRCREV = "880eb8d91a6239e6c3e12cc4e02b91f6c7f78ff7"
 
 DEPENDS = "qtbase qtdeclarative qtconnectivity"
