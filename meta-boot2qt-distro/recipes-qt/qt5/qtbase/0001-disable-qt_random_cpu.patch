@@ -1,4 +1,4 @@
-From 655618933b78f53bb4338c8b7e3109da780ad3c6 Mon Sep 17 00:00:00 2001
+From b6ce0e176c0c3520ce6b42cea8cc9e2c6c760879 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@qt.io>
 Date: Thu, 23 Nov 2017 11:28:47 +0200
 Subject: [PATCH] disable qt_random_cpu
@@ -11,15 +11,15 @@ Change-Id: Ieba798a9599a6d683c6630c6cd3731b2b909b628
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/corelib/global/qrandom.cpp b/src/corelib/global/qrandom.cpp
-index 6769190..c1a775a 100644
+index 2ee8f0dd01..7e082f6f6c 100644
 --- a/src/corelib/global/qrandom.cpp
 +++ b/src/corelib/global/qrandom.cpp
-@@ -92,7 +92,7 @@ DECLSPEC_IMPORT BOOLEAN WINAPI SystemFunction036(PVOID RandomBuffer, ULONG Rando
+@@ -90,7 +90,7 @@ DECLSPEC_IMPORT BOOLEAN WINAPI SystemFunction036(PVOID RandomBuffer, ULONG Rando
  
  QT_BEGIN_NAMESPACE
  
 -#if defined(Q_PROCESSOR_X86) && QT_COMPILER_SUPPORTS_HERE(RDRND)
 +#if 0
- static qsizetype qt_random_cpu(void *buffer, qsizetype count) Q_DECL_NOTHROW;
+ static qsizetype qt_random_cpu(void *buffer, qsizetype count) noexcept;
  
  #  ifdef Q_PROCESSOR_X86_64
