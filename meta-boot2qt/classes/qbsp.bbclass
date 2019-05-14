@@ -94,6 +94,7 @@ patch_installer_files() {
         -e "s#@LICENSEDEPENDENCY@#${LICENSE_DEPENDENCY}#" \
         -e "s#@LICENSEFILE@#${QBSP_LICENSE_FILE}#" \
         -e "s#@LICENSENAME@#${QBSP_LICENSE_NAME}#" \
+        -e "s#@TOOLCHAIN_HOST_SYSROOT@#${SDK_SYS}#" \
         -i ${1}/*
 }
 
