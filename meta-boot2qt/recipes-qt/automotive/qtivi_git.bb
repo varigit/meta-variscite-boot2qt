@@ -51,7 +51,7 @@ SRC_URI += " \
     file://0001-Use-QT_HOST_BINS-get-for-getting-correct-path.patch \
 "
 
-SRCREV_qtivi = "e95bf04999acd225f77891daf637a020a76a3240"
+SRCREV_qtivi = "07c631aa4c1ac5199b4919087e43815a00154867"
 SRCREV_qface = "0a3ae7686e1100be452b8c435bdcd84ec242340e"
 SRCREV = "${SRCREV_qtivi}"
 SRCREV_FORMAT = "qtivi_qface"
