@@ -50,7 +50,7 @@
            groups="notdefault,external,rpi"/>
   <project name="meta-intel"
            remote="intel"
-           revision="90af97d23fb2a56187c2fe2a3f4f4190d7cc2605"
+           revision="ba5f7ecd26630b74b6338c1828847a64ab172453"
            path="sources/meta-intel"
            groups="notdefault,external,intel"/>
   <project name="meta-tegra"
