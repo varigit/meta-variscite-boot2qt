@@ -39,13 +39,13 @@ inherit qt5-module systemd
 require recipes-qt/qt5/qt5-git.inc
 
 QT_GIT_PROJECT = "qt-apps"
-QT_MODULE_BRANCH = "dev"
+QT_MODULE_BRANCH = "5.13"
 
 SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "4bab67e8ce8ffb552be46c2291ec17e35a1ebe71"
+SRCREV = "889d4bac1751b43dbef7ea0f58cb17c8fd2da456"
 
 QMAKE_PROFILES = "${S}/neptune3-ui.pro"
 

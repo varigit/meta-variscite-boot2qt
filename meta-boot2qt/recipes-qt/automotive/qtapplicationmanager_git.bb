@@ -34,7 +34,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
-QT_MODULE_BRANCH = "dev"
+QT_MODULE_BRANCH = "5.13"
 SRCREV = "8174e3be0d437096246968c3e4d2527b5005625b"
 
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \
