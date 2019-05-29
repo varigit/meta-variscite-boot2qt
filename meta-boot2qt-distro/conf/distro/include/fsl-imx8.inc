@@ -35,9 +35,14 @@ FSL_EULA_FILE := "${COREBASE}/../meta-fsl-bsp-release/imx/EULA.txt"
 DISTRO_FEATURES_remove = "vulkan"
 
 BBMASK += "\
-    meta-boot2qt/meta-fsl-extras/recipes/u-boot/u-boot-toradex_%.bbappend \
+    meta-boot2qt/meta-fsl-extras/recipes-bsp/u-boot/u-boot-toradex_%.bbappend \
     meta-freescale/recipes-graphics/drm/libdrm_%.bbappend \
     imx/meta-bsp/recipes-browser \
+    imx/meta-bsp/recipes-connectivity/nfs-utils \
+    imx/meta-bsp/recipes-core/systemd/systemd_%.bbappend \
+    imx/meta-bsp/recipes-graphics/cantarell-fonts \
+    imx/meta-bsp/recipes-multimedia/alsa/alsa-lib_%.bbappend \
+    imx/meta-bsp/recipes-multimedia/pulseaudio \
     imx/meta-sdk/recipes-fsl/fsl-rc-local \
     imx/meta-sdk/recipes-fsl/images \
     imx/meta-sdk/recipes-fsl/packagegroup/packagegroup-fsl-gstreamer1.0.bbappend \
@@ -45,6 +50,7 @@ BBMASK += "\
     imx/meta-sdk/recipes-fsl/packagegroup/packagegroup-fsl-tools-testapps.bbappend \
     imx/meta-sdk/recipes-graphics/devil \
     imx/meta-sdk/dynamic-layers/qt5-layer \
+    meta-openembedded/meta-oe/recipes-core/opencl-headers \
     "
 
 KERNEL_MODULE_PACKAGE_SUFFIX ?= "-${@d.getVar('KERNEL_VERSION').replace('_','-')}"
@@ -57,3 +63,6 @@ IMAGE_BOOT_FILES = "\
     Image \
     fsl-*.dtb \
     "
+
+HOST_CC_ARCH_append_pn-optee-client-imx = " -U_FORTIFY_SOURCE -Wno-error=format-truncation"
+HOST_CC_ARCH_append_pn-optee-test-imx = " -Wno-error=array-bounds -Wno-error=stringop-overflow"
