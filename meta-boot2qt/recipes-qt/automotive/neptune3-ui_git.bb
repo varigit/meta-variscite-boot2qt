@@ -69,6 +69,11 @@ RDEPENDS_${PN} = "\
     ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)} \
     "
 
+PACKAGECONFIG ?= "${@bb.utils.filter('DISTRO_FEATURES', 'qtsaferenderer', d)}"
+PACKAGECONFIG[qtsaferenderer] = "CONFIG+=use_qsr,,qtsaferenderer qtsaferenderer-native"
+
+EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
+
 do_install_append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/neptune.service ${D}${systemd_unitdir}/system/

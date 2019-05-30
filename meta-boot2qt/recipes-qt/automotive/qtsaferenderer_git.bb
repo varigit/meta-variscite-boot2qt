@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,16 +27,33 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Host packages for B2Qt automotive Qt5 SDK"
-LICENSE = "The-Qt-Company-Commercial"
-PR = "r0"
+DESCRIPTION = "Qt Safe Renderer"
 
-inherit nativesdk packagegroup
+LICENSE = "GPL-3.0 | The-Qt-Company-Commercial"
+LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=948f8877345cd66106f11031977a4625"
 
-RDEPENDS_${PN} += "\
-    nativesdk-packagegroup-b2qt-embedded-qt5-toolchain-host \
-    nativesdk-qtapplicationmanager-tools \
-    nativesdk-qtivi-tools \
+inherit qt5-module sdk-sources distro_features_check
+
+# the sources are not generally available, support must be explicitly enabled
+REQUIRED_DISTRO_FEATURES = "qtsaferenderer"
+
+require recipes-qt/qt5/qt5-git.inc
+
+PACKAGECONFIG ?= ""
+PACKAGECONFIG_class-native = "tools-only"
+PACKAGECONFIG_class-nativesdk = "tools-only"
+PACKAGECONFIG[tools-only] = "CONFIG+=tools-only,,"
+
+EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
+
+PV = "1.1"
+BRANCH = "1.1"
+SRC_URI = "\
+    git://codereview.qt-project.org/tqtc-boot2qt/qtsaferenderer;branch=${BRANCH};protocol=ssh;sdk-uri=Src/QtSafeRenderer-1.1.0 \
+    file://0001-Fix-yocto-build-issues.patch \
     "
+SRCREV = "fef1fe5cd46c51d74127ae77b67f0f296fd828c9"
 
-RDEPENDS_${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'qtsaferenderer', 'nativesdk-qtsaferenderer-tools', '', d)}"
+DEPENDS = "qtbase qtdeclarative"
+
+BBCLASSEXTEND = "nativesdk native"

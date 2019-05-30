@@ -33,7 +33,7 @@ SRC_URI += "\
     file://0001-Add-win32-g-oe-mkspec-that-uses-the-OE_-environment.patch \
     "
 
-PACKAGECONFIG += "openssl"
+PACKAGECONFIG += "openssl gui imageformats"
 PACKAGECONFIG_remove_mingw32 += "openssl"
 
 PACKAGECONFIG[openssl] = "-openssl,-no-openssl,openssl,libssl"
