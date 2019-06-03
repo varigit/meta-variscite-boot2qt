@@ -27,13 +27,29 @@
 ##
 ############################################################################
 
-include conf/distro/include/fsl-imx8.inc
+# POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf
+# changes incompatibly
+POKY_BBLAYERS_CONF_VERSION = "2"
 
-FSL_EULA_FILE := "${COREBASE}/../meta-fsl-bsp-release-toradex/imx/EULA.txt"
+BBPATH = "${TOPDIR}"
+BBFILES ?= ""
+BSPDIR := "${@os.path.abspath(os.path.dirname(d.getVar('FILE')) + '/../..')}"
 
-DEPLOY_CONF_NAME = "Toradex Apalis iMX8"
-
-IMAGE_BOOT_FILES += "\
-    dpfw.bin \
-    hdmitxfw.bin \
-    "
+BBLAYERS ?= " \
+  ${BSPDIR}/sources/poky/meta \
+  ${BSPDIR}/sources/poky/meta-poky \
+  ${BSPDIR}/sources/meta-fsl-bsp-release-toradex/imx/meta-bsp \
+  ${BSPDIR}/sources/meta-fsl-bsp-release-toradex/imx/meta-sdk \
+  ${BSPDIR}/sources/meta-freescale \
+  ${BSPDIR}/sources/meta-freescale-3rdparty \
+  ${BSPDIR}/sources/meta-openembedded/meta-oe \
+  ${BSPDIR}/sources/meta-openembedded/meta-python \
+  ${BSPDIR}/sources/meta-openembedded/meta-networking \
+  ${BSPDIR}/sources/meta-openembedded/meta-initramfs \
+  ${BSPDIR}/sources/meta-openembedded/meta-multimedia \
+  ${BSPDIR}/sources/meta-boot2qt/meta-boot2qt \
+  ${BSPDIR}/sources/meta-boot2qt/meta-boot2qt-distro \
+  ${BSPDIR}/sources/meta-boot2qt/meta-fsl-extras \
+  ${BSPDIR}/sources/meta-mingw \
+  ${BSPDIR}/sources/meta-qt5 \
+  "

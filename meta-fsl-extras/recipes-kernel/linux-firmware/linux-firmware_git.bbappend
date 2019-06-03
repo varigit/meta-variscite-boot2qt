@@ -27,13 +27,12 @@
 ##
 ############################################################################
 
-include conf/distro/include/fsl-imx8.inc
+# Package firmware-qca6174 wants to install file .../etc/bluetooth/firmware.conf
+# But that file is already provided by package  * linux-firmware-qca
+do_install_append () {
+    rm -f ${D}${sysconfdir}/bluetooth/firmware.conf
+}
 
-FSL_EULA_FILE := "${COREBASE}/../meta-fsl-bsp-release-toradex/imx/EULA.txt"
-
-DEPLOY_CONF_NAME = "Toradex Apalis iMX8"
-
-IMAGE_BOOT_FILES += "\
-    dpfw.bin \
-    hdmitxfw.bin \
-    "
+FILES_${PN}-qca_remove = " \
+  ${sysconfdir}/bluetooth/firmware.conf \
+"
