@@ -36,12 +36,12 @@
 
   <project name="meta-freescale"
            remote="freescale"
-           revision="9d1463c9af81edadf8c5a343a030555b6156f8cf"
+           revision="b73854c078b0a174613135b60da3377a1055f477"
            path="sources/meta-freescale"
            groups="notdefault,external,fsl,toradex,smx6,boundary,fsl-imx8,toradex-imx8"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="47848bff9478999019947f69a719b3d2c2a6b558"
+           revision="c4b5ac6b20e4245ce0630e9197313aaef999a331"
            path="sources/meta-freescale-3rdparty"
            groups="notdefault,external,fsl,toradex,smx6,boundary,fsl-imx8,toradex-imx8"/>
   <project name="meta-raspberrypi"
@@ -86,7 +86,7 @@
            groups="notdefault,external,toradex"/>
   <project name="meta-boundary"
            remote="boundary"
-           revision="0533dbf42abee6e07be572eacc3d965772aad7a4"
+           revision="d1a51cff1d295f60aa84be99adafb6fbab26e6d6"
            path="sources/meta-boundary"
            groups="notdefault,external,boundary"/>
   <project name="meta-fsl-bsp-release"
