@@ -56,8 +56,11 @@ BUILDDIRECTORY=${BUILDDIRECTORY:-build-${MACHINE}}
 
 if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
   case ${MACHINE} in
-    apalis-imx8|imx8qmlpddr4arm2)
+    imx8qmmek|imx8mqevk)
       LAYERSCONF="bblayers.conf.fsl-imx8.sample"
+    ;;
+    apalis-imx8|colibri-imx8qxp)
+      LAYERSCONF="bblayers.conf.toradex-imx8.sample"
     ;;
     apalis-imx6|colibri-imx6|colibri-imx6ull|colibri-vf|colibri-imx7|colibri-imx7-emmc)
       LAYERSCONF="bblayers.conf.toradex.sample"

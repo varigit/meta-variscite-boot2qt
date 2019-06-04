@@ -1,4 +1,4 @@
-From 4b59d8fa3ba5647834d29fad58b9231c154b9136 Mon Sep 17 00:00:00 2001
+From bad20e3aebf7dc18621ee711defdfbce17f27c79 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@qt.io>
 Date: Tue, 16 Oct 2018 13:43:43 +0300
 Subject: [PATCH] Workaround missing eglGetProcAddress
@@ -9,11 +9,25 @@ symbol at runtime, instead do it already at link time.
 Task-number: QTBUG-71152
 Change-Id: Ibc4251c0ab7e878a65d8c6e7b4da3952807cbc91
 ---
+ src/core/core_module.pro           | 2 ++
  src/core/ozone/gl_ozone_egl_qt.cpp | 3 +++
- 1 file changed, 3 insertions(+)
+ 2 files changed, 5 insertions(+)
 
+diff --git a/src/core/core_module.pro b/src/core/core_module.pro
+index 2bfbc65b9..c6b48fe35 100644
+--- a/src/core/core_module.pro
++++ b/src/core/core_module.pro
+@@ -85,6 +85,8 @@ win32 {
+ # and doesn't let Chromium get access to libc symbols through dlsym.
+ CONFIG -= bsymbolic_functions
+ 
++qtConfig(egl): CONFIG += egl
++
+ linux:qtConfig(separate_debug_info): QMAKE_POST_LINK="cd $(DESTDIR) && $(STRIP) --strip-unneeded $(TARGET)"
+ 
+ REPACK_DIR = $$OUT_PWD/$$getConfigDir()
 diff --git a/src/core/ozone/gl_ozone_egl_qt.cpp b/src/core/ozone/gl_ozone_egl_qt.cpp
-index 2fa86d79..d2362477 100644
+index 2fa86d79b..d23624776 100644
 --- a/src/core/ozone/gl_ozone_egl_qt.cpp
 +++ b/src/core/ozone/gl_ozone_egl_qt.cpp
 @@ -98,6 +98,9 @@ bool GLOzoneEGLQt::LoadGLES2Bindings(gl::GLImplementation /*implementation*/)

@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -28,52 +28,41 @@
 ############################################################################
 
 include conf/distro/include/fsl.inc
+include conf/distro/include/fsl-imx-preferred-env.inc
 
 FSL_EULA_FILE := "${COREBASE}/../meta-fsl-bsp-release/imx/EULA.txt"
 
 DISTRO_FEATURES_remove = "vulkan"
 
-RDEPENDS_gstreamer1.0-meta-base_remove_pn-gstreamer1.0-meta-base = " gstreamer1.0-plugins-good-souphttpsrc"
-RDEPENDS_gstreamer1.0-meta-base_append_pn-gstreamer1.0-meta-base = " gstreamer1.0-plugins-good-soup"
-
 BBMASK += "\
-    meta-boot2qt-distro/recipes-connectivity/connman/connman_%.bbappend \
-    meta-boot2qt/meta-fsl-extras/recipes/u-boot/u-boot-toradex_%.bbappend \
-    meta-freescale/recipes-graphics/wayland/weston \
-    meta-fsl-bsp-release/imx/meta-bsp/recipes-browser \
-    meta-fsl-bsp-release/imx/meta-bsp/recipes-bsp/imx-test \
-    meta-fsl-bsp-release/imx/meta-bsp/recipes-connectivity/bluez5 \
-    meta-fsl-bsp-release/imx/meta-bsp/recipes-connectivity/connman \
-    meta-fsl-bsp-release/imx/meta-bsp/recipes-connectivity/nfs-utils \
-    meta-fsl-bsp-release/imx/meta-bsp/recipes-connectivity/wpa-supplicant \
-    meta-fsl-bsp-release/imx/meta-bsp/recipes-core/systemd/systemd_%.bbappend \
-    meta-fsl-bsp-release/imx/meta-bsp/recipes-devtools/gdb \
-    meta-fsl-bsp-release/imx/meta-bsp/recipes-extended/logrotate \
-    meta-fsl-bsp-release/imx/meta-bsp/recipes-graphics/opencv \
-    meta-fsl-bsp-release/imx/meta-bsp/recipes-graphics/xorg-driver \
-    meta-fsl-bsp-release/imx/meta-bsp/recipes-kernel/cryptodev \
-    meta-fsl-bsp-release/imx/meta-bsp/recipes-multimedia/alsa \
-    meta-fsl-bsp-release/imx/meta-bsp/recipes-multimedia/pulseaudio \
-    meta-fsl-bsp-release/imx/meta-sdk/recipes-fsl/fsl-rc-local \
-    meta-fsl-bsp-release/imx/meta-sdk/recipes-fsl/images \
-    meta-fsl-bsp-release/imx/meta-sdk/recipes-fsl/packagegroup \
-    meta-fsl-bsp-release/imx/meta-sdk/recipes-graphics/devil \
-    meta-fsl-bsp-release/imx/meta-sdk/recipes-qt5/qt5 \
+    meta-boot2qt/meta-fsl-extras/recipes-bsp/u-boot/u-boot-toradex_%.bbappend \
+    meta-freescale/recipes-graphics/drm/libdrm_%.bbappend \
+    imx/meta-bsp/recipes-browser \
+    imx/meta-bsp/recipes-connectivity/nfs-utils \
+    imx/meta-bsp/recipes-core/systemd/systemd_%.bbappend \
+    imx/meta-bsp/recipes-graphics/cantarell-fonts \
+    imx/meta-bsp/recipes-multimedia/alsa/alsa-lib_%.bbappend \
+    imx/meta-bsp/recipes-multimedia/pulseaudio \
+    imx/meta-sdk/recipes-fsl/fsl-rc-local \
+    imx/meta-sdk/recipes-fsl/images \
+    imx/meta-sdk/recipes-fsl/packagegroup/packagegroup-fsl-gstreamer1.0.bbappend \
+    imx/meta-sdk/recipes-fsl/packagegroup/packagegroup-fsl-tools-gpu.bbappend \
+    imx/meta-sdk/recipes-fsl/packagegroup/packagegroup-fsl-tools-testapps.bbappend \
+    imx/meta-sdk/recipes-graphics/devil \
+    imx/meta-sdk/dynamic-layers/qt5-layer \
+    meta-openembedded/meta-oe/recipes-core/opencl-headers \
     "
 
 KERNEL_MODULE_PACKAGE_SUFFIX ?= "-${@d.getVar('KERNEL_VERSION').replace('_','-')}"
-EXTRA_OECONF_append_pn-gstreamer1.0-plugins-base = " --disable-introspection"
 
-MACHINE_GSTREAMER_1_0_PLUGIN += "imx-gst1.0-plugin"
-
-WKS_FILE = "imx8-uboot-bootpart.wks"
+WKS_FILE = "imx8-uboot-bootpart.wks.in"
 WIC_CREATE_EXTRA_ARGS = "--no-fstab-update"
 WKS_FILE_DEPENDS += "imx-boot"
-
-BOOT_CONFIG_MACHINE_pn-imx-boot = "${BOOT_NAME}-${UBOOT_CONFIG}.bin"
 
 IMAGE_BOOT_FILES = "\
     Image \
     fsl-*.dtb \
-    hdmitxfw.bin \
     "
+
+HOST_CC_ARCH_append_pn-optee-client-imx = " -U_FORTIFY_SOURCE -Wno-error=format-truncation"
+HOST_CC_ARCH_append_pn-optee-test-imx = " -Wno-error=array-bounds -Wno-error=stringop-overflow"

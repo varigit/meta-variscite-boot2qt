@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,8 +27,12 @@
 ##
 ############################################################################
 
-include conf/distro/include/fsl-imx8.inc
+DESCRIPTION = "Boot to Qt Demo - QtCharts"
+LICENSE = "BSD | The-Qt-Company-Commercial"
+LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=948f8877345cd66106f11031977a4625"
 
-DEPLOY_CONF_NAME = "NXP iMX8QM"
+require boot2qt-demo.inc
 
-PREFERRED_PROVIDER_virtual/bootloader = "u-boot-imx"
+S = "${WORKDIR}/git/basicsuite/enterprise-charts/"
+
+DEPENDS += "qtbase qtdeclarative qtquickcontrols2 qtcharts"

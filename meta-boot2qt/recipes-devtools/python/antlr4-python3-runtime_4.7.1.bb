@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 Luxoft
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,27 +27,12 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Device Creation specific Qt packages"
-LICENSE = "The-Qt-Company-Commercial"
+PYPI_PACKAGE = "antlr4-python3-runtime"
+inherit pypi setuptools3
 
-inherit packagegroup
+LICENSE = "BSD"
+LIC_FILES_CHKSUM = "file://PKG-INFO;md5=82cf535e84b8bb409a9f58ee1475511a"
+SRC_URI[md5sum] = "9535eeef56e96699106c04c8937c2ef6"
+SRC_URI[sha256sum] = "1b26b72c4492cef310542da10bf6b2ab4aa1775618fc6003f75b55ae9eaa3fd3"
 
-PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
-
-BOOT2QT_DEMOS ?= "\
-    boot2qt-demo-ebike \
-    boot2qt-demo-mediaplayer \
-    boot2qt-demo-qtcharts \
-    boot2qt-demo-qtgraphicaleffects \
-    boot2qt-demo-qtquickcontrols2 \
-    boot2qt-demo-qtvirtualkeyboard \
-    ${@bb.utils.contains("DISTRO_FEATURES", "webengine", "boot2qt-demo-qtwebbrowser", "", d)} \
-    ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "democompositor", "", d)} \
-    "
-
-RDEPENDS_${PN} += " \
-    boot2qt-appcontroller \
-    boot2qt-launcher \
-    ${BOOT2QT_DEMOS} \
-    qdb \
-    "
+BBCLASSEXTEND = "nativesdk native"

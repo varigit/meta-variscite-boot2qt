@@ -40,10 +40,9 @@ SRC_URI += " \
     file://b2qt-startup.sh \
     file://qtlauncher.service \
     file://b2qt.service \
-    file://ebikedata.service \
     "
 
-SRCREV = "747d70eaa865aad25b0ee680a0090c059a0549a9"
+SRCREV = "04cecef50d9316d98c11e8b82be5a492ef9bde70"
 
 DEPENDS = "\
     qtbase qtdeclarative qtquickcontrols2 \
@@ -58,12 +57,11 @@ do_install_append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/qtlauncher.service ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/b2qt.service ${D}${systemd_unitdir}/system/
-    install -m 0644 ${WORKDIR}/ebikedata.service ${D}${systemd_unitdir}/system/
 }
 
 INITSCRIPT_NAME = "b2qt-startup.sh"
 INITSCRIPT_PARAMS = "defaults 30"
 
-SYSTEMD_SERVICE_${PN} = "qtlauncher.service b2qt.service ebikedata.service"
+SYSTEMD_SERVICE_${PN} = "qtlauncher.service b2qt.service"
 
 inherit update-rc.d systemd

@@ -34,6 +34,7 @@ LOCALVERSION = "-warp7"
 FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 SRC_URI += " \
         file://0001-Fix-dev-hwrng-by-enabling-warp7-crypto-device.patch \
+        file://0001-ARM-fix-put_user-for-gcc-8.patch \
         "
 
 do_configure_prepend() {

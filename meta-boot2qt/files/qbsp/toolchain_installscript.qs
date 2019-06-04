@@ -35,15 +35,16 @@ Component.prototype.createOperations = function()
 {
     component.createOperations();
 
-    var device = "@MACHINE@"
-    var platform = "@NAME@"
-    var sysroot = "@SYSROOT@"
-    var target_sys = "@TARGET_SYS@"
-    var target = "@TARGET@"
-    var abi = "@ABI@-linux-poky-elf-@BITS@bit"
-    var installPath = "@INSTALLPATH@/toolchain"
-    var sdkPath = "@SDKPATH@"
-    var sdkFile = "@SDKFILE@"
+    var device = "@MACHINE@";
+    var platform = "@NAME@";
+    var sysroot = "@SYSROOT@";
+    var target_sys = "@TARGET_SYS@";
+    var target = "@TARGET@";
+    var abi = "@ABI@-linux-poky-elf-@BITS@bit";
+    var installPath = "@INSTALLPATH@/toolchain";
+    var sdkPath = "@SDKPATH@";
+    var sdkFile = "@SDKFILE@";
+    var hostSysroot = "@TOOLCHAIN_HOST_SYSROOT@";
 
     var path = installer.value("TargetDir") + installPath;
     if (systemInfo.kernelType !== "winnt") {
@@ -54,10 +55,10 @@ Component.prototype.createOperations = function()
     } else {
         path = path.replace(/\\/g,"/");
         component.addOperation("Replace",
-                                path + "/sysroots/i686-pokysdk-mingw32/usr/bin/qt.conf",
+                                path + "/sysroots/" + hostSysroot + "/usr/bin/qt.conf",
                                 sdkPath, path);
         component.addOperation("Replace",
-                                path + "/sysroots/i686-pokysdk-mingw32/usr/share/cmake/OEToolchainConfig.cmake.d/" + device + ".cmake",
+                                path + "/sysroots/" + hostSysroot + "/usr/share/cmake/OEToolchainConfig.cmake.d/" + device + ".cmake",
                                 sdkPath, path);
     }
     var basecomponent = component.name.substring(0, component.name.lastIndexOf("."));
@@ -68,10 +69,8 @@ Component.prototype.createOperations = function()
     var cmakeGenerator = "Unix Makefiles";
     var icon = installer.value("B2QtDeviceIcon");
     var executableExt = "";
-    var hostSysroot = "x86_64-pokysdk-linux";
     if (systemInfo.kernelType === "winnt") {
         executableExt = ".exe";
-        hostSysroot = "i686-pokysdk-mingw32";
         toolchainId = "ProjectExplorer.ToolChain.Mingw:" + component.name;
         cmakeGenerator = "MinGW Makefiles";
     }
