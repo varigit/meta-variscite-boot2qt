@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 Luxoft
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,27 +27,25 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Device Creation specific Qt packages"
-LICENSE = "The-Qt-Company-Commercial"
+inherit pypi setuptools3
 
-inherit packagegroup
+DEPENDS += " python3-jinja2 \
+             python3-click \
+             python3-pyyaml \
+             python3-pytest \
+             python3-six \
+             python3-path.py \
+             antlr4-python3-runtime \
+             python3-watchdog \
+             python3-markupsafe \
+           "
 
-PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=eee61e10a40b0e3045ee5965bcd9a8b5"
+SRC_URI = "git://code.qt.io/qt/qtivi-qface.git;protocol=https;nobranch=1"
+SRCREV = "0a3ae7686e1100be452b8c435bdcd84ec242340e"
+PV = "1.10"
+S = "${WORKDIR}/git"
+CLEANBROKEN = "1"
 
-BOOT2QT_DEMOS ?= "\
-    boot2qt-demo-ebike \
-    boot2qt-demo-mediaplayer \
-    boot2qt-demo-qtcharts \
-    boot2qt-demo-qtgraphicaleffects \
-    boot2qt-demo-qtquickcontrols2 \
-    boot2qt-demo-qtvirtualkeyboard \
-    ${@bb.utils.contains("DISTRO_FEATURES", "webengine", "boot2qt-demo-qtwebbrowser", "", d)} \
-    ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "democompositor", "", d)} \
-    "
-
-RDEPENDS_${PN} += " \
-    boot2qt-appcontroller \
-    boot2qt-launcher \
-    ${BOOT2QT_DEMOS} \
-    qdb \
-    "
+BBCLASSEXTEND = "nativesdk native"

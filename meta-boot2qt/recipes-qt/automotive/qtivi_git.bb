@@ -1,6 +1,7 @@
 ############################################################################
 ##
 ## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2019 Luxoft
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -43,26 +44,21 @@ inherit qt5-module
 inherit python3native
 require recipes-qt/qt5/qt5-git.inc
 
-QT_MODULE_BRANCH = "dev"
-QT_MODULE_BRANCH_QFACE = "upstream/master"
+QT_MODULE_BRANCH = "5.13"
 
 SRC_URI += " \
-    ${QT_GIT}/qtivi-qface.git;name=qface;branch=${QT_MODULE_BRANCH_QFACE};protocol=${QT_GIT_PROTOCOL};destsuffix=git/src/3rdparty/qface \
     file://0001-Use-QT_HOST_BINS-get-for-getting-correct-path.patch \
 "
 
-SRCREV_qtivi = "e95bf04999acd225f77891daf637a020a76a3240"
-SRCREV_qface = "0a3ae7686e1100be452b8c435bdcd84ec242340e"
-SRCREV = "${SRCREV_qtivi}"
-SRCREV_FORMAT = "qtivi_qface"
+SRCREV = "977bcc9e49b769f230fb76e57b421042c4f2fbef"
 
 PACKAGECONFIG ?= "taglib ivigenerator remoteobjects"
 PACKAGECONFIG[taglib] = "QMAKE_EXTRA_ARGS+=-feature-taglib,QMAKE_EXTRA_ARGS+=-no-feature-taglib,taglib"
 PACKAGECONFIG[dlt] = "QMAKE_EXTRA_ARGS+=-feature-dlt,QMAKE_EXTRA_ARGS+=-no-feature-dlt,dlt-daemon"
 PACKAGECONFIG[geniviextras-only] = "QMAKE_EXTRA_ARGS+=--geniviextras-only"
 # For cross-compiling tell qtivi to use the system-ivigenerator, which is installed by the native recipe"
-PACKAGECONFIG[ivigenerator] = "QMAKE_EXTRA_ARGS+=-system-ivigenerator"
-PACKAGECONFIG[ivigenerator-native] = "QMAKE_EXTRA_ARGS+=-qt-ivigenerator,,python3 python3-virtualenv"
+PACKAGECONFIG[ivigenerator] = "QMAKE_EXTRA_ARGS+=-system-qface QMAKE_EXTRA_ARGS+=-system-ivigenerator"
+PACKAGECONFIG[ivigenerator-native] = "QMAKE_EXTRA_ARGS+=-system-qface QMAKE_EXTRA_ARGS+=-qt-ivigenerator,,qface"
 PACKAGECONFIG[host-tools-only] = "QMAKE_EXTRA_ARGS+=-host-tools-only"
 PACKAGECONFIG[remoteobjects] = "QMAKE_EXTRA_ARGS+=-feature-remoteobjects,,qtremoteobjects qtremoteobjects-native"
 PACKAGECONFIG[remoteobjects-native] = "QMAKE_EXTRA_ARGS+=-feature-remoteobjects QMAKE_EXTRA_ARGS+=--force-ivigenerator-qtremoteobjects"
@@ -75,37 +71,5 @@ ALLOW_EMPTY_${PN}-tools = "1"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS} ${@bb.utils.contains_any('PACKAGECONFIG', 'ivigenerator ivigenerator-native', '', 'QMAKE_EXTRA_ARGS+=-no-ivigenerator', d)}"
 
-set_python_paths() {
-    # Otherwise pip might cache or reuse something from our home folder
-    export HOME="${STAGING_DATADIR_NATIVE}"
-    # This is needed as otherwise the virtualenv tries to use the libs from the host
-    export LD_LIBRARY_PATH="${STAGING_LIBDIR_NATIVE}"
-    # Let qtivi use the python3-native binaries
-    export PYTHON3_PATH="${STAGING_BINDIR_NATIVE}/python3-native"
-}
-do_compile_prepend() {
-    set_python_paths
-}
-do_install_prepend() {
-    set_python_paths
-}
-
-# This needs a modified python3 recipe which copies the binary into a path where this recipe can pick it up
-# This is needed to provide a proper executable using the correct interpreter in the SDK.
-# See https://bugreports.qt.io/browse/AUTOSUITE-176
-do_install_append_class-nativesdk() {
-    export IVIGENERATOR_ENABLED="${@bb.utils.contains("PACKAGECONFIG", "ivigenerator-native", "1", "0", d)}"
-
-    if [ "${IVIGENERATOR_ENABLED}" = "1" ]; then
-        cp ${STAGING_BINDIR}/qt5/python3* ${D}/${OE_QMAKE_PATH_BINS}/ivigenerator/qtivi_qface_virtualenv/bin/
-        rm -f ${D}/${OE_QMAKE_PATH_BINS}/ivigenerator/qtivi_qface_virtualenv/bin/python
-        ln -sf python3 ${D}/${OE_QMAKE_PATH_BINS}/ivigenerator/qtivi_qface_virtualenv/bin/python
-    fi
-}
-
-
 BBCLASSEXTEND += "native nativesdk"
 
-INSANE_SKIP_${PN}_class-native = "already-stripped"
-INSANE_SKIP_${PN}_class-nativesdk = "already-stripped"
-INSANE_SKIP_${PN}-tools_class-nativesdk = "staticdev file-rdeps libdir build-deps"

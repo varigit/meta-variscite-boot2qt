@@ -27,26 +27,19 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Boot to Qt Demos"
+DESCRIPTION = "Boot to Qt Demo - Mediaplayer"
 LICENSE = "BSD | The-Qt-Company-Commercial"
-LIC_FILES_CHKSUM = "file://about-b2qt/AboutBoot2Qt.qml;md5=b0a1a6eef4a172b0a8cb4dad9a167d91;beginline=1;endline=49"
+LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=948f8877345cd66106f11031977a4625"
 
-inherit qmake5
+require boot2qt-demo.inc
 
-QT_GIT_PROJECT=""
+S = "${WORKDIR}/git/basicsuite/mediaplayer"
 
-SRC_URI = " \
-    ${QT_GIT}qt-apps/boot2qt-demos.git;branch=${BRANCH};name=demos \
+SRC_URI += " \
     https://qt-files.s3.amazonaws.com/examples/Videos/Qt+for+Designers+and+Developers.mp4;name=video1 \
     https://qt-files.s3.amazonaws.com/examples/Videos/Qt+for+Device+Creation.mp4;name=video2 \
     https://qt-files.s3.amazonaws.com/examples/Videos/The+Future+is+Written+with+Qt.mp4;name=video3 \
     "
-
-PV = "5.13.0+git${SRCPV}"
-
-BRANCH = "5.13"
-
-SRCREV = "0ea39397893edb54454bfceabde4b83fc5b60a2e"
 
 SRC_URI[video1.md5sum] = "25d9e963a02675a4f3ba83abeebb32da"
 SRC_URI[video1.sha256sum] = "33125518c2eb7848f378ddb6bebaf39f3327c92f1e33daa7fc09e4260e54d54a"
@@ -55,51 +48,11 @@ SRC_URI[video2.sha256sum] = "eba7d3322e63ce47c3433e920f423febfc3533ab05d13ca2f09
 SRC_URI[video3.md5sum] = "00966663950a8e7ddcfd6def2a87d57a"
 SRC_URI[video3.sha256sum] = "b20ba98464e85cb979f1c505387b0407c4fbec2eaa2170d1360a77ec4c1c2700"
 
-S = "${WORKDIR}/git/basicsuite"
-
-DEPENDS = " \
-    qtbase qtdeclarative qtxmlpatterns qtquickcontrols2 qtgraphicaleffects qtmultimedia qtcharts qtlocation \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'qt5-static', 'qtdeclarative-native', '', d)} \
-    "
+DEPENDS += "qtbase qtdeclarative qtquickcontrols2"
 
 do_install_append() {
-    # we only need plugins from the demos
-    rm -rf ${D}/data/user/camera
-    rm -rf ${D}/data/user/sensorexplorer
-    rm -rf ${D}/data/user/qtwebbrowser
-
-    # we need all qml and content files from the demos we want to use
-    cp -r ${S}/datacollector ${D}/data/user/qt/
-    cp -r ${S}/ebike-ui ${D}/data/user/qt/
-    cp -r ${S}/enterprise-charts ${D}/data/user/qt/
-    cp -r ${S}/graphicaleffects ${D}/data/user/qt/
-    cp -r ${S}/launchersettings ${D}/data/user/qt/
-    cp -r ${S}/mediaplayer ${D}/data/user/qt/
-    cp -r ${S}/qtquickcontrols2 ${D}/data/user/qt/
-    cp -r ${S}/textinput ${D}/data/user/qt/
-    cp -r ${S}/shared ${D}/data/user/qt/
-    cp -r ${S}/qtwebbrowser ${D}/data/user/qt/
-    cp ${S}/demos.xml ${D}/data/user/qt/
-
-    # but none of the source files
-    find ${D}/data/user/qt/ \( -name '*.cpp' -or -name '*.h' -or -name '*.pro' \) -delete
-    rm -rf ${D}/data/user/qt/qtwebbrowser/tqtc-qtwebbrowser
-    rm -rf ${D}/data/user/qt/qtwebbrowser/qmldir
-
     install -d -m 0755 ${D}/data/videos
     install -m 0644 ${WORKDIR}/*.mp4 ${D}/data/videos
 }
 
-FILES_${PN} += " \
-    /data/images/ \
-    /data/videos/ \
-    /data/user \
-    "
-
-FILES_${PN}-dbg += " \
-    /data/user/qt/qmlplugins/*/.debug/ \
-    "
-FILES_${PN}-staticdev += " \
-    /data/user/qt/qmlplugins/*/*.a \
-    "
+FILES_${PN} += "/data/videos/"

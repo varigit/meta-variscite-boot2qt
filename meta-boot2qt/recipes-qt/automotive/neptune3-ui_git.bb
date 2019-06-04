@@ -39,13 +39,13 @@ inherit qt5-module systemd
 require recipes-qt/qt5/qt5-git.inc
 
 QT_GIT_PROJECT = "qt-apps"
-QT_MODULE_BRANCH = "dev"
+QT_MODULE_BRANCH = "5.13"
 
 SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "7175428236b75f30825b879206fa5fa1ae0cc9e9"
+SRCREV = "1e6364dfbbc737e468588af2ea372ef033ff2506"
 
 QMAKE_PROFILES = "${S}/neptune3-ui.pro"
 
@@ -65,6 +65,7 @@ RDEPENDS_${PN} = "\
     qtvirtualkeyboard \
     qtquickcontrols2-qmlplugins \
     qtgraphicaleffects-qmlplugins \
+    qttools-tools \
     ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)} \
     "
 
