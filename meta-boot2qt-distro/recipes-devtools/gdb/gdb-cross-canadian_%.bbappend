@@ -53,5 +53,4 @@ EOF
 do_install_append_sdkmingw32() {
     ln -s ../python35.dll ${D}${bindir}/
     ln -s ../python35.zip ${D}${bindir}/
-    ln -s ../libwinpthread-1.dll ${D}${bindir}/
 }
