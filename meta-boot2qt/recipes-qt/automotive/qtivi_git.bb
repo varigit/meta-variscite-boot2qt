@@ -39,6 +39,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
 DEPENDS = "qtbase qtdeclarative qtmultimedia qtivi-native qtquickcontrols2"
 DEPENDS_class-native = "qtbase"
 DEPENDS_class-nativesdk = "qtbase qtivi-native"
+RDEPENDS_${PN}-tools += " ${@bb.utils.contains('PACKAGECONFIG','ivigenerator-native','qface','', d)}"
 
 inherit qt5-module
 inherit python3native
