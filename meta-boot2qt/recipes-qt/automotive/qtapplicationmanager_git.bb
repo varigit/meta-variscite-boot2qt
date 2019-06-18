@@ -35,7 +35,7 @@ inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
 QT_MODULE_BRANCH = "5.13"
-SRCREV = "8af211f506fa8b1843781d720ccb982bc01afd4d"
+SRCREV = "c82f080ea314ac673ef85f1bd991099b38ba8ac3"
 
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \
            ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "qtwayland qtwayland-native", "", d)}"
