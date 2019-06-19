@@ -51,7 +51,7 @@ SRC_URI += " \
     file://0001-Use-QT_HOST_BINS-get-for-getting-correct-path.patch \
 "
 
-SRCREV = "3f3a2c7ea622d0da2ba161fbac698b23bad44dbc"
+SRCREV = "4d9c51423f0beb852c6855d51c0ea068ce13dfea"
 
 PACKAGECONFIG ?= "taglib ivigenerator remoteobjects"
 PACKAGECONFIG[taglib] = "QMAKE_EXTRA_ARGS+=-feature-taglib,QMAKE_EXTRA_ARGS+=-no-feature-taglib,taglib"
