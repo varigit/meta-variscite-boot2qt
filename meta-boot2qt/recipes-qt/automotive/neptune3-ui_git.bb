@@ -65,7 +65,7 @@ RDEPENDS_${PN} = "\
     qtvirtualkeyboard \
     qtquickcontrols2-qmlplugins \
     qtgraphicaleffects-qmlplugins \
-    qttools-tools \
+    qttools-tools qtivi-tools \
     ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)} \
     "
 
