@@ -44,6 +44,11 @@ QT_MODULE_BRANCH = "5.13"
 SRC_URI += " \
     file://neptune.service \
     "
+SRC_URI_append_nitrogen6x = " file://0001_hardware_variant_low.patch"
+SRC_URI_append_imx6dlsabresd = " file://0001_hardware_variant_low.patch"
+SRC_URI_append_imx6qsabresd = " file://0001_hardware_variant_low.patch"
+SRC_URI_append_apalis-imx6 = " file://0001_hardware_variant_low.patch"
+SRC_URI_append_colibri-imx6 = " file://0001_hardware_variant_low.patch"
 
 SRCREV = "b4c12895fc59873d6cfaa5ccf8d3c3eddea32cd5"
 
