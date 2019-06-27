@@ -43,7 +43,7 @@ RDEPENDS_${PN} += " \
     ${@contains_regex('MACHINEOVERRIDES', '(x86_64|i.86|powerpc|sparc|s390|arm|aarch64)', 'gcc-sanitizers', '', d)} \
     \
     qt3d-dev \
-    qt3d-runtime-dev \
+    ogl-runtime-dev \
     qtbase-dev \
     qtbase-staticdev \
     qtbase-doc \
