@@ -40,6 +40,7 @@ DEPENDS = "qtbase qtdeclarative qtmultimedia qtivi-native qtquickcontrols2"
 DEPENDS_class-native = "qtbase"
 DEPENDS_class-nativesdk = "qtbase qtivi-native"
 RDEPENDS_${PN}-tools += " ${@bb.utils.contains('PACKAGECONFIG','ivigenerator-native','qface','', d)}"
+RDEPENDS_${PN}-dev += " ${PN}-staticdev"
 
 inherit qt5-module
 inherit python3native
