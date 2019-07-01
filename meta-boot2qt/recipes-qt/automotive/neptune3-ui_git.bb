@@ -50,7 +50,7 @@ SRC_URI_append_imx6qsabresd = " file://0001_hardware_variant_low.patch"
 SRC_URI_append_apalis-imx6 = " file://0001_hardware_variant_low.patch"
 SRC_URI_append_colibri-imx6 = " file://0001_hardware_variant_low.patch"
 
-SRCREV = "b4c12895fc59873d6cfaa5ccf8d3c3eddea32cd5"
+SRCREV = "c34ba34891bc686b8573e1346d91be5a15785412"
 
 QMAKE_PROFILES = "${S}/neptune3-ui.pro"
 
