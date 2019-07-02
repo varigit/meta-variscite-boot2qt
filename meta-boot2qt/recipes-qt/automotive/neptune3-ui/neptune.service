@@ -3,6 +3,7 @@ Description=Neptune
 After=dbus.service dbus-session.service systemd-user-sessions.service
 
 [Service]
+User=root
 ExecStart=/usr/bin/appcontroller /opt/neptune3/neptune3-ui -r --dbus session -c am-config-neptune.yaml
 Restart=on-failure
 WorkingDirectory=/opt/neptune3
