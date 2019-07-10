@@ -40,9 +40,10 @@ SRC_URI += " \
     file://b2qt-startup.sh \
     file://qtlauncher.service \
     file://b2qt.service \
+    file://QtLauncher.conf \
     "
 
-SRCREV = "8d82e92fcb04d42fa5efbd23e155ac9f076c7c9c"
+SRCREV = "051174fb571e889bb70056e5cab25de1d4630d76"
 
 DEPENDS = "\
     qtbase qtdeclarative qtquickcontrols2 \
@@ -57,10 +58,17 @@ do_install_append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/qtlauncher.service ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/b2qt.service ${D}${systemd_unitdir}/system/
+
+    install -m 0755 -d ${D}/home/root/.config/Qt
+    install -m 0644 ${WORKDIR}/QtLauncher.conf ${D}/home/root/.config/Qt/
 }
 
 INITSCRIPT_NAME = "b2qt-startup.sh"
 INITSCRIPT_PARAMS = "defaults 30"
+
+FILES_${PN} += " \
+        /home/root/.config/ \
+        "
 
 SYSTEMD_SERVICE_${PN} = "qtlauncher.service b2qt.service"
 
