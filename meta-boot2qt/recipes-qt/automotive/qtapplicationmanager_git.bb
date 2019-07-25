@@ -44,7 +44,7 @@ RDEPENDS_${PN} = "libcrypto ${PN}-tools"
 RDEPENDS_${PN}_remove_mingw32 = "libcrypto"
 
 EXTRA_QMAKEVARS_PRE += "\
-    ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "-config force-multiprocess", "-config force-singleprocess", d)} \
+    ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "-config force-multi-process", "-config force-single-process", d)} \
     -config install-prefix=/usr \
     -config systemd-workaround \
     -config hardware-id=neptune \
