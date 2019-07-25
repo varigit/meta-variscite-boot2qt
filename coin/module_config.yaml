@@ -13,37 +13,22 @@ environment: &environment
   type: Group
   instructions:
     - type: EnvironmentVariable
-      variableName: QT_QPA_PLATFORM
-      variableValue: offscreen
-    - type: Group
-      instructions:
-        - type: EnvironmentVariable
-          variableName: MACHINE
-          variableValue: jetson-tx1
-        - type: EnvironmentVariable
-          variableName: QEMU_LD_PREFIX
-          variableValue: "{{.Env.QEMUARM64_TOOLCHAIN_SYSROOT}}"
+      variableName: MACHINE
+      variableValue: jetson-tx2
       enable_if:
         condition: property
         property: target.arch
         equals_value: ARM64
     - type: EnvironmentVariable
       variableName: MACHINE
-      variableValue: nitrogen6x
-      disable_if:
-        condition: property
-        property: target.arch
-        equals_value: ARM64
-    - type: EnvironmentVariable
-      variableName: QEMU_LD_PREFIX
-      variableValue: "{{.Env.QEMUARMV7_TOOLCHAIN_SYSROOT}}"
+      variableValue: apalis-imx6
       enable_if:
         condition: property
         property: target.arch
         equals_value: ARMv7
     - type: EnvironmentVariable
-      variableName: QEMU_LD_PREFIX
-      variableValue: "{{.Env.QEMUMIPS64_TOOLCHAIN_SYSROOT}}"
+      variableName: MACHINE
+      variableValue: intel-corei7-64
       enable_if:
         condition: property
         property: target.arch
@@ -69,8 +54,8 @@ build_instructions:
       source ./setup-environment.sh
       export BB_ENV_EXTRAWHITE="$BB_ENV_EXTRAWHITE SSTATE_DIR DL_DIR"
       export SSTATE_DIR=/mnt/yocto-cache/sstate-caches/$(sed -n -e "s/DISTRO_CODENAME.*\"\(.*\)\"/\1/p" ../sources/poky/meta-*/conf/distro/poky.conf)
-      bitbake b2qt-embedded-qt5-image meta-toolchain-b2qt-embedded-qt5-sdk
-      SDKMACHINE=i686-mingw32 bitbake meta-toolchain-b2qt-embedded-qt5-sdk
+      bitbake meta-b2qt-embedded-qbsp
+      SDKMACHINE=i686-mingw32 bitbake meta-b2qt-embedded-qbsp
     filename: "{{.BuildDir}}/start-build"
     fileMode: 420
   - type: ExecuteCommand
