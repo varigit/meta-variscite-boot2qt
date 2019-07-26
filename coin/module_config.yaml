@@ -3,11 +3,11 @@ accept_configuration:
   condition: and
   conditions:
     - condition: property
-      property: host.osVersion
-      equals_value: Ubuntu_18_04
+      property: host.compiler
+      equals_value: Yocto
     - condition: property
-      property: target.osVersion
-      equals_value: QEMU
+      property: target.arch
+      in_values: [TARGET1, TARGET2, TARGET3, TARGET4, TARGET5]
 
 environment: &environment
   type: Group
@@ -18,21 +18,36 @@ environment: &environment
       enable_if:
         condition: property
         property: target.arch
-        equals_value: ARM64
+        equals_value: TARGET1
     - type: EnvironmentVariable
       variableName: MACHINE
       variableValue: apalis-imx6
       enable_if:
         condition: property
         property: target.arch
-        equals_value: ARMv7
+        equals_value: TARGET2
+    - type: EnvironmentVariable
+      variableName: MACHINE
+      variableValue: colibri-imx7
+      enable_if:
+        condition: property
+        property: target.arch
+        equals_value: TARGET3
     - type: EnvironmentVariable
       variableName: MACHINE
       variableValue: intel-corei7-64
       enable_if:
         condition: property
         property: target.arch
-        equals_value: MIPS64
+        equals_value: TARGET4
+    - type: EnvironmentVariable
+      variableName: MACHINE
+      variableValue: emulator
+      enable_if:
+        condition: property
+        property: target.arch
+        equals_value: TARGET5
+
 
 build_instructions:
   - *environment
