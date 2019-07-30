@@ -43,7 +43,7 @@ SRC_URI += " \
     file://QtLauncher.conf \
     "
 
-SRCREV = "051174fb571e889bb70056e5cab25de1d4630d76"
+SRCREV = "f89cf3ae354de42df46588d50a3ad0816cc8fc28"
 
 DEPENDS = "\
     qtbase qtdeclarative qtquickcontrols2 \
