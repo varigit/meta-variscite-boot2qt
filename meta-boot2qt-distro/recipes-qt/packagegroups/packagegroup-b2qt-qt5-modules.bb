@@ -34,9 +34,11 @@ inherit packagegroup
 
 PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
+OGL_RUNTIME ?= "ogl-runtime"
+
 RDEPENDS_${PN} += " \
+    ${OGL_RUNTIME} \
     qt3d \
-    ogl-runtime \
     qtbase \
     qtcanvas3d \
     qtcharts \

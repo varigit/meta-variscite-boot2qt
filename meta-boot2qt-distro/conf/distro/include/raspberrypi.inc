@@ -38,6 +38,10 @@ MACHINE_EXTRA_INSTALL += "\
         omxplayer \
         "
 
+# ogl-runtime depends on gles3
+OGL_RUNTIME = ""
+OGL_RUNTIME_DEV = ""
+
 KERNEL_MODULE_AUTOLOAD += "snd-bcm2835 bcm2835-v4l2"
 KERNEL_MODULE_PROBECONF += "bcm2835-v4l2"
 module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"

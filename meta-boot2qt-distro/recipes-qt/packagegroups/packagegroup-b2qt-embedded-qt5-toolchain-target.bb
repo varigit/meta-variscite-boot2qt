@@ -37,13 +37,15 @@ PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
 MACHINE_EXTRA_INSTALL_SDK ?= ""
 
+OGL_RUNTIME_DEV ?= "ogl-runtime-dev"
+
 RDEPENDS_${PN} += " \
     ${MACHINE_EXTRA_INSTALL_SDK} \
     packagegroup-core-standalone-sdk-target \
     ${@contains_regex('MACHINEOVERRIDES', '(x86_64|i.86|powerpc|sparc|s390|arm|aarch64)', 'gcc-sanitizers', '', d)} \
     \
+    ${OGL_RUNTIME_DEV} \
     qt3d-dev \
-    ogl-runtime-dev \
     qtbase-dev \
     qtbase-staticdev \
     qtbase-doc \
