@@ -39,6 +39,8 @@ LIC_FILES_CHKSUM = "file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
 DEPENDS = "qtbase qtdeclarative qtmultimedia qtivi-native qtquickcontrols2"
 DEPENDS_class-native = "qtbase"
 DEPENDS_class-nativesdk = "qtbase qtivi-native"
+RDEPENDS_${PN}-tools += " ${@bb.utils.contains('PACKAGECONFIG','ivigenerator-native','qface','', d)}"
+RDEPENDS_${PN}-dev += " ${PN}-staticdev"
 
 inherit qt5-module
 inherit python3native
@@ -50,7 +52,7 @@ SRC_URI += " \
     file://0001-Use-QT_HOST_BINS-get-for-getting-correct-path.patch \
 "
 
-SRCREV = "b53aed00e4ea42b835d263ff3435f2e72b50a3e2"
+SRCREV = "56c5e6901960240efd98f40421debb19251b8c5a"
 
 PACKAGECONFIG ?= "taglib ivigenerator remoteobjects"
 PACKAGECONFIG[taglib] = "QMAKE_EXTRA_ARGS+=-feature-taglib,QMAKE_EXTRA_ARGS+=-no-feature-taglib,taglib"
