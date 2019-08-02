@@ -28,7 +28,9 @@
 ############################################################################
 
 PYPI_PACKAGE = "watchdog3"
-DEPENDS = "python3-pathtools"
+DEPS = "python3-pathtools"
+DEPENDS = "${DEPS}"
+RDEPENDS_${PN} = "${DEPS}"
 inherit pypi setuptools3
 
 LICENSE = "Apache-2.0"
