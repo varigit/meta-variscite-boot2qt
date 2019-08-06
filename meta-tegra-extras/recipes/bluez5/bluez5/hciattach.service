@@ -1,0 +1,14 @@
+[Unit]
+Description=Run hciattach when HCI UART device becomes available
+Before=bluetooth.service
+Wants=dev-ttyTHS3.device
+After=dev-ttyTHS3.device
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/hciattach ttyTHS3 any
+ExecStartPost=/usr/sbin/rfkill unblock bluetooth
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
