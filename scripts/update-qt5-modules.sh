@@ -55,12 +55,6 @@ for S in $SHA1S; do
     elif [ "${PROJECT}" = "qtlocation/src/3rdparty/mapbox-gl-native" ]; then
         RECIPE="qtlocation"
         TAG="SRCREV_qtlocation-mapboxgl"
-    elif [ "${PROJECT}" = "qtivi" ]; then
-        RECIPE="qtivi"
-        TAG="SRCREV_qtivi"
-    elif [ "${PROJECT}" = "qtivi/src/3rdparty/qface" ]; then
-        RECIPE="qtivi"
-        TAG="SRCREV_qface"
     else
         RECIPE="${PROJECT}"
         TAG="SRCREV"
