@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,33 +27,15 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Packagegroup for B2Qt embedded Linux image"
-LICENSE = "The-Qt-Company-Commercial"
-PR = "r0"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-inherit packagegroup
+SRC_URI += " \
+    file://hciattach.service \
+    "
 
-MACHINE_EXTRA_INSTALL ?= ""
+SYSTEMD_SERVICE_${PN} += "hciattach.service"
 
-RDEPENDS_${PN} = "\
-        kernel-modules \
-        linux-firmware \
-        ca-certificates \
-        liberation-fonts \
-        ttf-devanagari \
-        ttf-opensans \
-        ttf-dejavu-common \
-        ttf-dejavu-sans \
-        ttf-freefont-mono \
-        ttf-tlwg \
-        otf-noto \
-        dbus-session-init \
-        tzdata \
-        tzdata-americas \
-        tzdata-asia \
-        tzdata-europe \
-        connman \
-        rng-tools \
-        ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "weston weston-examples", "", d)} \
-        ${MACHINE_EXTRA_INSTALL} \
-        "
+do_install_append() {
+    install -d ${D}/${systemd_unitdir}/system
+    install -m 644 ${WORKDIR}/hciattach.service ${D}/${systemd_unitdir}/system
+}

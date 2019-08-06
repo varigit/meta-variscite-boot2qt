@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,33 +27,6 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Packagegroup for B2Qt embedded Linux image"
-LICENSE = "The-Qt-Company-Commercial"
-PR = "r0"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-inherit packagegroup
-
-MACHINE_EXTRA_INSTALL ?= ""
-
-RDEPENDS_${PN} = "\
-        kernel-modules \
-        linux-firmware \
-        ca-certificates \
-        liberation-fonts \
-        ttf-devanagari \
-        ttf-opensans \
-        ttf-dejavu-common \
-        ttf-dejavu-sans \
-        ttf-freefont-mono \
-        ttf-tlwg \
-        otf-noto \
-        dbus-session-init \
-        tzdata \
-        tzdata-americas \
-        tzdata-asia \
-        tzdata-europe \
-        connman \
-        rng-tools \
-        ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "weston weston-examples", "", d)} \
-        ${MACHINE_EXTRA_INSTALL} \
-        "
+SRC_URI += "file://0001-Enable-viewer-for-boot2qt-builds.patch"

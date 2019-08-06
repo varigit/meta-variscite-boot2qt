@@ -46,8 +46,6 @@ inherit qt5-module
 inherit python3native
 require recipes-qt/qt5/qt5-git.inc
 
-QT_MODULE_BRANCH = "5.13"
-
 SRC_URI += " \
     file://0001-Use-QT_HOST_BINS-get-for-getting-correct-path.patch \
 "
