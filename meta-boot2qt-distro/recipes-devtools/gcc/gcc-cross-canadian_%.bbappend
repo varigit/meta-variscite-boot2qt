@@ -31,3 +31,8 @@ do_install_append () {
     # remove real-ld symlink
     rm ${D}${libexecdir}/gcc/${TARGET_SYS}/${BINV}/real-ld${EXEEXT}
 }
+
+do_install_append_sdkmingw32() {
+    ln -sf ../libwinpthread-1.dll ${D}${bindir}
+    ln -sf ${BINRELPATH}/libwinpthread-1.dll $dest
+}

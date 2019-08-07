@@ -284,6 +284,12 @@ INHERIT += "internal-build"
 ACCEPT_FSL_EULA = "1"
 LICENSE_FLAGS_WHITELIST = "commercial"
 
+# Path to the Qt online SDK installation, used for sources that are available only from
+# the online installer.
 QT_SDK_PATH = ""
+
+# If you have access to QtSafeRenderer sources, either from git or QtSDK,
+# you can enable it by uncommenting following line
+#DISTRO_FEATURES_BACKFILL_append = " qtsaferenderer"
 
 include conf/distro/include/${MACHINE}.pre.inc

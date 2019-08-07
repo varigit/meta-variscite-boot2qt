@@ -41,3 +41,6 @@ RDEPENDS_${PN} += " \
     qtapplicationmanager-dev \
     qtapplicationmanager-staticdev \
     "
+
+RDEPENDS_${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'qtsaferenderer', \
+                                        'qtsaferenderer-dev qtsaferenderer-staticdev', '', d)}"

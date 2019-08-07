@@ -38,3 +38,5 @@ RDEPENDS_${PN} += "\
     nativesdk-qtapplicationmanager-tools \
     nativesdk-qtivi-tools \
     "
+
+RDEPENDS_${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'qtsaferenderer', 'nativesdk-qtsaferenderer-tools', '', d)}"

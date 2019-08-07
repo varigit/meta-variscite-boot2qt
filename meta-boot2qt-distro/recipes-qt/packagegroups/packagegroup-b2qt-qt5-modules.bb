@@ -34,10 +34,11 @@ inherit packagegroup
 
 PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
+OGL_RUNTIME ?= "ogl-runtime ogl-runtime-tools"
+
 RDEPENDS_${PN} += " \
+    ${OGL_RUNTIME} \
     qt3d \
-    qt3d-runtime \
-    qt3d-runtime-tools \
     qtbase \
     qtcharts \
     qtconnectivity \

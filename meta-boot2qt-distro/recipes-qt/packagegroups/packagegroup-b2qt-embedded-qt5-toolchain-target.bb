@@ -37,6 +37,7 @@ PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
 MACHINE_EXTRA_INSTALL_SDK ?= ""
 
+OGL_RUNTIME_DEV ?= "ogl-runtime-dev"
 GCC-SANITIZERS ?= "gcc-sanitizers"
 GCC-SANITIZERS_mipsarch = ""
 GCC-SANITIZERS_libc-musl = ""
@@ -46,8 +47,8 @@ RDEPENDS_${PN} += " \
     packagegroup-core-standalone-sdk-target \
     ${GCC-SANITIZERS} \
     \
+    ${OGL_RUNTIME_DEV} \
     qt3d-dev \
-    qt3d-runtime-dev \
     qtbase-dev \
     qtbase-staticdev \
     qtbase-doc \
