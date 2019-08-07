@@ -1,4 +1,4 @@
-From c1099dfa376de7bf16763dee364698078f015848 Mon Sep 17 00:00:00 2001
+From d1f999566c5f346104d78568b51e96dec42b60c7 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@theqtcompany.com>
 Date: Wed, 27 Jan 2016 13:07:39 +0200
 Subject: [PATCH] Add support for koe tx31d200vm0baa display
@@ -8,18 +8,18 @@ Subject: [PATCH] Add support for koe tx31d200vm0baa display
  1 file changed, 12 insertions(+)
 
 diff --git a/arch/arm/boot/dts/imx6qdl-nitrogen6x.dtsi b/arch/arm/boot/dts/imx6qdl-nitrogen6x.dtsi
-index efbe51d..3704e14 100644
+index 7b4c3d9bb8e6..9be478d89745 100644
 --- a/arch/arm/boot/dts/imx6qdl-nitrogen6x.dtsi
 +++ b/arch/arm/boot/dts/imx6qdl-nitrogen6x.dtsi
-@@ -498,6 +498,7 @@
+@@ -493,6 +493,7 @@
  		pwm_lvds = &pwm4;
  		rtc1 = &snvs_rtc;
  		t_lvds = &t_lvds;
 +		koe = &koe;
  	};
  
- 	backlight_lcd: backlight_lcd {
-@@ -1075,6 +1076,17 @@
+ 	backlight_lcd: backlight-lcd {
+@@ -1058,6 +1059,17 @@
  				hsync-len = <32>;
  				vsync-len = <6>;
  			};

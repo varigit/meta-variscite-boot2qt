@@ -44,3 +44,5 @@ RDEPENDS_${PN} += " \
     qmllive \
     qdb \
     "
+
+RDEPENDS_${PN} += "${@bb.utils.filter('DISTRO_FEATURES', 'qtsaferenderer', d)}"

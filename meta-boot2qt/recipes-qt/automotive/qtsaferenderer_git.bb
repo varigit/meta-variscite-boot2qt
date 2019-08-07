@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 Luxoft
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,28 +27,33 @@
 ##
 ############################################################################
 
-inherit pypi setuptools3
+DESCRIPTION = "Qt Safe Renderer"
 
-DEPS += " python3-jinja2 \
-          python3-click \
-          python3-pyyaml \
-          python3-pytest \
-          python3-six \
-          python3-path.py \
-          antlr4-python3-runtime \
-          python3-watchdog \
-          python3-markupsafe \
-          python3-setuptools \
-        "
-DEPENDS += "${DEPS}"
-RDEPENDS_${PN} += "${DEPS}"
+LICENSE = "GPL-3.0 | The-Qt-Company-Commercial"
+LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=948f8877345cd66106f11031977a4625"
 
-LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=eee61e10a40b0e3045ee5965bcd9a8b5"
-SRC_URI = "git://code.qt.io/qt/qtivi-qface.git;protocol=https;nobranch=1"
-SRCREV = "0a3ae7686e1100be452b8c435bdcd84ec242340e"
-PV = "1.10"
-S = "${WORKDIR}/git"
-CLEANBROKEN = "1"
+inherit qt5-module sdk-sources distro_features_check
+
+# the sources are not generally available, support must be explicitly enabled
+REQUIRED_DISTRO_FEATURES = "qtsaferenderer"
+
+require recipes-qt/qt5/qt5-git.inc
+
+PACKAGECONFIG ?= ""
+PACKAGECONFIG_class-native = "tools-only"
+PACKAGECONFIG_class-nativesdk = "tools-only"
+PACKAGECONFIG[tools-only] = "CONFIG+=tools-only,,"
+
+EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
+
+PV = "1.1"
+BRANCH = "1.1"
+SRC_URI = "\
+    git://codereview.qt-project.org/tqtc-boot2qt/qtsaferenderer;branch=${BRANCH};protocol=ssh;sdk-uri=Src/QtSafeRenderer-1.1.0 \
+    file://0001-Fix-yocto-build-issues.patch \
+    "
+SRCREV = "fef1fe5cd46c51d74127ae77b67f0f296fd828c9"
+
+DEPENDS = "qtbase qtdeclarative"
 
 BBCLASSEXTEND = "nativesdk native"

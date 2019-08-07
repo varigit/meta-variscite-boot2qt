@@ -1,0 +1,96 @@
+version: 1
+accept_configuration:
+  condition: and
+  conditions:
+    - condition: property
+      property: host.compiler
+      equals_value: Yocto
+    - condition: property
+      property: target.arch
+      in_values: [TARGET1, TARGET2, TARGET3, TARGET4, TARGET5]
+
+environment: &environment
+  type: Group
+  instructions:
+    - type: EnvironmentVariable
+      variableName: MACHINE
+      variableValue: jetson-tx2
+      enable_if:
+        condition: property
+        property: target.arch
+        equals_value: TARGET1
+    - type: EnvironmentVariable
+      variableName: MACHINE
+      variableValue: apalis-imx6
+      enable_if:
+        condition: property
+        property: target.arch
+        equals_value: TARGET2
+    - type: EnvironmentVariable
+      variableName: MACHINE
+      variableValue: colibri-imx7
+      enable_if:
+        condition: property
+        property: target.arch
+        equals_value: TARGET3
+    - type: EnvironmentVariable
+      variableName: MACHINE
+      variableValue: intel-corei7-64
+      enable_if:
+        condition: property
+        property: target.arch
+        equals_value: TARGET4
+    - type: EnvironmentVariable
+      variableName: MACHINE
+      variableValue: emulator
+      enable_if:
+        condition: property
+        property: target.arch
+        equals_value: TARGET5
+
+
+build_instructions:
+  - *environment
+  - type: SetBuildDirectory
+    directory: "{{.AgentWorkingDir}}/build"
+  - type: MakeDirectory
+    directory: "{{.BuildDir}}"
+  - type: ChangeDirectory
+    directory: "{{.BuildDir}}"
+  - type: ExecuteCommand
+    command: ["sudo", "mkdir", "-p", "/mnt/yocto-cache"]
+    userMessageOnFailure: "Could not create '/mnt/yocto-cache' directory"
+  - type: ExecuteCommand
+    command: ["sudo", "mount", "yocto-cache.intra.qt.io:/srv/yocto-cache", "/mnt/yocto-cache"]
+    userMessageOnFailure: "Could not mount yocto cache."
+  - type: WriteFile
+    fileContents: |
+      #!/bin/bash -xe
+      source ./setup-environment.sh
+      export BB_ENV_EXTRAWHITE="$BB_ENV_EXTRAWHITE SSTATE_DIR DL_DIR"
+      export SSTATE_DIR=/mnt/yocto-cache/sstate-caches/$(sed -n -e "s/DISTRO_CODENAME.*\"\(.*\)\"/\1/p" ../sources/poky/meta-*/conf/distro/poky.conf)
+      bitbake meta-b2qt-embedded-qbsp
+      SDKMACHINE=i686-mingw32 bitbake meta-b2qt-embedded-qbsp
+    filename: "{{.BuildDir}}/start-build"
+    fileMode: 420
+  - type: ExecuteCommand
+    command: ["chmod", "+x", "{{.BuildDir}}/start-build"]
+    userMessageOnFailure: "Could not add execution right to the start-build."
+  - type: EnvironmentVariable
+    variableName: DL_DIR
+    variableValue: "/mnt/yocto-cache/downloads"
+  - type: ExecuteCommand
+    command: ["{{.SourceDir}}/b2qt-init-build-env", "init", "--device", "{{.Env.MACHINE}}", "--reference", "/mnt/yocto-cache/mirror"]
+    maxTimeInSeconds: 1800
+    maxTimeBetweenOutput: 1800
+    userMessageOnFailure: "Failed to download the yocto recipes repositories"
+  - type: ExecuteCommand
+    command: ["{{.BuildDir}}/start-build"]
+    maxTimeInSeconds: 28800
+    maxTimeBetweenOutput: 28800
+    userMessageOnFailure: "Build failed."
+  - type: ExecuteCommand
+    command: ["sudo", "umount", "/mnt/yocto-cache"]
+    userMessageOnFailure: "Unmounting cache failed."
+
+test_instructions: []

@@ -31,3 +31,5 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += "\
     file://0001-fbcon-Compare-variable-screen-info-instead-of-modes-.patch \
     "
+
+KERNEL_ROOTSPEC = "root=/dev/mmcblk\${devnum}p1 rw rootwait"

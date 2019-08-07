@@ -45,6 +45,7 @@ RDEPENDS_${PN} = "\
         ttf-dejavu-common \
         ttf-dejavu-sans \
         ttf-freefont-mono \
+        ttf-tlwg \
         otf-noto \
         dbus-session-init \
         tzdata \

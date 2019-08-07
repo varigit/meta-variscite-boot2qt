@@ -31,7 +31,6 @@ FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 SRC_URI += " \
         file://0001-Add-support-for-KOE-tx31d200vm0baa-display.patch \
         file://0002-set-CMA-reserved-size-to-384MB.patch \
-        file://0003-Disable-build-for-tools.patch \
         "
 
 DEPENDS += "u-boot-mkimage-native"

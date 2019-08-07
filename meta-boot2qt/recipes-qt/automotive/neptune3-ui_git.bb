@@ -39,13 +39,18 @@ inherit qt5-module systemd
 require recipes-qt/qt5/qt5-git.inc
 
 QT_GIT_PROJECT = "qt-apps"
-QT_MODULE_BRANCH = "5.13"
 
 SRC_URI += " \
     file://neptune.service \
     "
+SRC_URI_append_nitrogen6x = " file://0001_hardware_variant_low.patch"
+SRC_URI_append_imx6dlsabresd = " file://0001_hardware_variant_low.patch"
+SRC_URI_append_imx6qsabresd = " file://0001_hardware_variant_low.patch"
+SRC_URI_append_apalis-imx6 = " file://0001_hardware_variant_low.patch"
+SRC_URI_append_colibri-imx6 = " file://0001_hardware_variant_low.patch"
+SRC_URI_append_rpi = " file://0001_hardware_variant_low.patch"
 
-SRCREV = "1e6364dfbbc737e468588af2ea372ef033ff2506"
+SRCREV = "58d1b6c6d1efa2d85c3f6135b820035dc5b221a6"
 
 QMAKE_PROFILES = "${S}/neptune3-ui.pro"
 
@@ -65,9 +70,14 @@ RDEPENDS_${PN} = "\
     qtvirtualkeyboard \
     qtquickcontrols2-qmlplugins \
     qtgraphicaleffects-qmlplugins \
-    qttools-tools \
+    qttools-tools qtivi-tools \
     ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)} \
     "
+
+PACKAGECONFIG ?= "${@bb.utils.filter('DISTRO_FEATURES', 'qtsaferenderer', d)}"
+PACKAGECONFIG[qtsaferenderer] = "CONFIG+=use_qsr,,qtsaferenderer qtsaferenderer-native"
+
+EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
 do_install_append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system

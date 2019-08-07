@@ -31,6 +31,7 @@ include conf/distro/include/fsl.inc
 
 BBMASK += " \
     meta-boundary/recipes-core/init-ifupdown \
+    meta-boundary/recipes-boundary/images \
     "
 
 MACHINE_EXTRA_INSTALL += "\

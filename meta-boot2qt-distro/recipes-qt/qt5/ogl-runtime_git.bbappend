@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 Luxoft
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,28 +27,6 @@
 ##
 ############################################################################
 
-inherit pypi setuptools3
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-DEPS += " python3-jinja2 \
-          python3-click \
-          python3-pyyaml \
-          python3-pytest \
-          python3-six \
-          python3-path.py \
-          antlr4-python3-runtime \
-          python3-watchdog \
-          python3-markupsafe \
-          python3-setuptools \
-        "
-DEPENDS += "${DEPS}"
-RDEPENDS_${PN} += "${DEPS}"
-
-LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=eee61e10a40b0e3045ee5965bcd9a8b5"
-SRC_URI = "git://code.qt.io/qt/qtivi-qface.git;protocol=https;nobranch=1"
-SRCREV = "0a3ae7686e1100be452b8c435bdcd84ec242340e"
-PV = "1.10"
-S = "${WORKDIR}/git"
-CLEANBROKEN = "1"
-
-BBCLASSEXTEND = "nativesdk native"
+SRC_URI += "file://0001-Enable-viewer-for-boot2qt-builds.patch"
