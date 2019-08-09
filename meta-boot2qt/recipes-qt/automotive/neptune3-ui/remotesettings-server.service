@@ -1,0 +1,13 @@
+[Unit]
+Description=remotesettings-server
+PartOf=ivi-services.target
+Before=ivi-services.target
+
+[Service]
+User=root
+ExecStart=/opt/neptune3/remotesettings-server
+Restart=on-failure
+Environment=SERVER_CONF_PATH=/opt/neptune3/server.conf
+
+[Install]
+WantedBy=ivi-services.target

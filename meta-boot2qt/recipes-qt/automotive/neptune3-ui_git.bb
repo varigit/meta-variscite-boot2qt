@@ -42,6 +42,9 @@ QT_GIT_PROJECT = "qt-apps"
 
 SRC_URI += " \
     file://neptune.service \
+    file://neptune-qsr.service \
+    file://drivedata-simulation-server.service \
+    file://remotesettings-server.service \
     "
 SRC_URI_append_nitrogen6x = " file://0001_hardware_variant_low.patch"
 SRC_URI_append_imx6dlsabresd = " file://0001_hardware_variant_low.patch"
@@ -82,6 +85,9 @@ EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 do_install_append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/neptune.service ${D}${systemd_unitdir}/system/
+    install -m 0644 ${WORKDIR}/neptune-qsr.service ${D}${systemd_unitdir}/system/
+    install -m 0644 ${WORKDIR}/drivedata-simulation-server.service ${D}${systemd_unitdir}/system/
+    install -m 0644 ${WORKDIR}/remotesettings-server.service ${D}${systemd_unitdir}/system/
 
     # Move the fonts to the system-wide font location
     install -m 0755 -d ${D}${datadir}/fonts/ttf/
@@ -104,4 +110,9 @@ FILES_${PN}-dev += "\
     /opt/neptune3/lib/*.so \
     "
 
-SYSTEMD_SERVICE_${PN} = "neptune.service"
+SYSTEMD_SERVICE_${PN} = "\
+    neptune.service \
+    neptune-qsr.service \
+    drivedata-simulation-server.service \
+    remotesettings-server.service \
+    "

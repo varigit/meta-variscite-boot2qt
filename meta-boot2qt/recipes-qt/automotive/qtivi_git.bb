@@ -44,10 +44,14 @@ RDEPENDS_${PN}-dev += " ${PN}-staticdev"
 
 inherit qt5-module
 inherit python3native
+inherit systemd
 require recipes-qt/qt5/qt5-git.inc
 
 SRC_URI += " \
     file://0001-Use-QT_HOST_BINS-get-for-getting-correct-path.patch \
+    file://ivimedia-simulation-server.service \
+    file://ivivehiclefunctions-simulation-server.service \
+    file://ivi-services.target \
 "
 
 SRCREV = "7d7781ad41b7145330ea7eb07bfdaf416849bc46"
@@ -70,6 +74,22 @@ PACKAGECONFIG_class-nativesdk_mingw32 ??= "host-tools-only"
 ALLOW_EMPTY_${PN}-tools = "1"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS} ${@bb.utils.contains_any('PACKAGECONFIG', 'ivigenerator ivigenerator-native', '', 'QMAKE_EXTRA_ARGS+=-no-ivigenerator', d)}"
+
+do_install_append() {
+    install -m 0755 -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/ivimedia-simulation-server.service ${D}${systemd_unitdir}/system/
+    install -m 0644 ${WORKDIR}/ivivehiclefunctions-simulation-server.service ${D}${systemd_unitdir}/system/
+    install -m 0644 ${WORKDIR}/ivi-services.target ${D}${systemd_unitdir}/system/
+}
+
+SYSTEMD_PACKAGES = "${PN}-tools"
+SYSTEMD_SERVICE_${PN}-tools = " \
+    ivimedia-simulation-server.service \
+    ivivehiclefunctions-simulation-server.service \
+    ivi-services.target \
+    "
+
+FILES_${PN}-tools += "${systemd_unitdir}/system"
 
 BBCLASSEXTEND += "native nativesdk"
 
