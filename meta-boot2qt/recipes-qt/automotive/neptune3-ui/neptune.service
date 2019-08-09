@@ -8,8 +8,6 @@ ExecStart=/usr/bin/appcontroller /opt/neptune3/neptune3-ui -r --dbus session -c 
 Restart=on-failure
 WorkingDirectory=/opt/neptune3
 Environment=AM_STARTUP_TIMER=1
-#Fix/workaround for AUTOSUITE-1060
-Environment=Q3DS_DISTANCE_FIELD_DISABLED=1
 
 [Install]
 WantedBy=multi-user.target
