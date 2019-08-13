@@ -1,5 +1,3 @@
-SRC_URI_remove = "file://python-3.3-multilib.patch"
-
 # We need to install the python3 binary into the sysroot to let qtivi install that binary
 # into the correct location.
 # We can't install it directly into ${bindir} as this would be picked up by other recipes

@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,6 +27,4 @@
 ##
 ############################################################################
 
-PACKAGECONFIG += "${@bb.utils.contains('DISTRO_FEATURES', 'alsa', 'alsa', '', d)} \
-                  ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio', '', d)} \
-                  ${@bb.utils.contains('DISTRO_FEATURES', 'gstreamer010', 'gstreamer010', 'gstreamer', d)}"
+PACKAGECONFIG += "${@bb.utils.filter('DISTRO_FEATURES', 'alsa pulseaudio gstreamer', d)}"

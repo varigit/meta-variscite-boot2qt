@@ -33,8 +33,10 @@ include conf/distro/include/fsl.inc
 require conf/machine/include/${MACHINE}.inc
 
 BBMASK += "\
+   meta-toradex-nxp/recipes-graphics/wayland \
    meta-toradex-nxp/recipes-graphics/xorg-xserver \
    meta-toradex-nxp/recipes-multimedia/gstreamer \
+   meta-toradex-nxp/recipes-multimedia/imx-codec \
    meta-toradex-bsp-common/recipes-devtools/python \
    meta-toradex-bsp-common/recipes-devtools/e2fsprogs \
    meta-toradex-bsp-common/recipes-core/systemd \
@@ -52,10 +54,5 @@ IMAGE_BOOT_FILES += " \
     ${MACHINE}/*;${MACHINEDIR}/ \
     "
 
-# use 1.14.0 that matches the imx version of gstreamer
-PREFERRED_VERSION_gstreamer1.0-plugins-ugly = "1.14.0"
-PREFERRED_VERSION_gstreamer1.0-libav = "1.14.0"
-
 # override tezi bbclass
-IMAGE_CLASSES_remove = " image_type_tezi"
-IMAGE_CLASSES_append = " image_type_tezi_thud"
+IMAGE_CLASSES_append = " image_type_tezi_warrior"

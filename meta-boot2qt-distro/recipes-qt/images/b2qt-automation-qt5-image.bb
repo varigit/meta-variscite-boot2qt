@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -48,7 +48,6 @@ inherit consistent_timestamps
 IMAGE_INSTALL += "\
     packagegroup-b2qt-embedded-base \
     packagegroup-b2qt-embedded-tools \
-    ${@bb.utils.contains("DISTRO_FEATURES", "gstreamer010", "packagegroup-b2qt-embedded-gstreamer010", "", d)} \
     ${@bb.utils.contains("DISTRO_FEATURES", "gstreamer", "packagegroup-b2qt-embedded-gstreamer", "", d)} \
     packagegroup-b2qt-qt5-modules \
     packagegroup-b2qt-embedded-addons \

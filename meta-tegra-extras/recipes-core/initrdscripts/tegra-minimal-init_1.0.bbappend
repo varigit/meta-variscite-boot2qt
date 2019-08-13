@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,40 +27,7 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Additional gstreamer packagegroup for B2Qt embedded Linux image"
-LICENSE = "The-Qt-Company-Commercial"
-PR = "r0"
-
-inherit packagegroup
-
-RDEPENDS_${PN} = "\
-        gst-meta-video \
-        gst-meta-audio \
-        gst-plugins-good \
-        gst-plugins-base-app \
-        gst-plugins-base-audiorate \
-        gst-plugins-base-videorate \
-        gst-plugins-base-encodebin \
-        gst-plugins-good-videofilter \
-        gst-plugins-good-id3demux \
-        gst-plugins-good-auparse \
-        gst-plugins-good-isomp4 \
-        gst-plugins-good-icydemux \
-        gst-plugins-good-video4linux2 \
-        gst-plugins-good-multifile \
-        gst-plugins-good-videocrop \
-        gst-plugins-good-jpeg \
-        gst-plugins-ugly-rmdemux \
-        gst-plugins-ugly-asf \
-        gst-plugins-ugly-a52dec \
-        gst-plugins-bad-mpegdemux \
-        gst-plugins-bad-faad \
-        gst-plugins-bad-camerabin2 \
-        gst-plugins-bad-jpegformat \
-        gst-plugins-ugly-mad \
-        gst-plugins-ugly-mpegaudioparse \
-        gst-plugins-ugly-mpeg2dec \
-        gst-plugins-ugly-mpegstream \
-        gst-plugins-bad-mpegvideoparse \
-        gst-ffmpeg \
-        "
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI += "\
+    file://init-boot.sh \
+    "
