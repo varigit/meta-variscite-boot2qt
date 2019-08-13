@@ -49,7 +49,7 @@ SRC_URI += " \
 SRC_URI_append_mx6 = " file://0001_hardware_variant_low.patch"
 SRC_URI_append_rpi = " file://0001_hardware_variant_low.patch"
 
-SRCREV = "e8bed9eb2bf5d764c6bd19b1852ffbd603c29bc0"
+SRCREV = "63dce6f69a00ebc7b15230da74b4e24af3fc78a5"
 
 QMAKE_PROFILES = "${S}/neptune3-ui.pro"
 
@@ -81,9 +81,12 @@ EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 do_install_append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/neptune.service ${D}${systemd_unitdir}/system/
-    install -m 0644 ${WORKDIR}/neptune-qsr.service ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/drivedata-simulation-server.service ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/remotesettings-server.service ${D}${systemd_unitdir}/system/
+
+    if ${@bb.utils.contains('PACKAGECONFIG','qtsaferenderer','true','false',d)}; then
+        install -m 0644 ${WORKDIR}/neptune-qsr.service ${D}${systemd_unitdir}/system/
+    fi
 
     # Don't install duplicate fonts, they are same as ttf-opensans
     rm -rf ${D}/opt/neptune3/imports_shared/assets/fonts/
@@ -106,7 +109,7 @@ FILES_${PN}-dev += "\
 
 SYSTEMD_SERVICE_${PN} = "\
     neptune.service \
-    neptune-qsr.service \
     drivedata-simulation-server.service \
     remotesettings-server.service \
+    ${@bb.utils.contains('PACKAGECONFIG','qtsaferenderer','neptune-qsr.service','',d)} \
     "

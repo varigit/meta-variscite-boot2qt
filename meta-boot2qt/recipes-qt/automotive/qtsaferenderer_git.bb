@@ -46,13 +46,13 @@ PACKAGECONFIG[tools-only] = "CONFIG+=tools-only,,"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
-PV = "1.1"
+PV = "1.1.1"
 BRANCH = "1.1"
 SRC_URI = "\
-    git://codereview.qt-project.org/tqtc-boot2qt/qtsaferenderer;branch=${BRANCH};protocol=ssh;sdk-uri=Src/QtSafeRenderer-1.1.0 \
+    git://codereview.qt-project.org/tqtc-boot2qt/qtsaferenderer;branch=${BRANCH};protocol=ssh;sdk-uri=Src/QtSafeRenderer-1.1.1 \
     file://0001-Fix-yocto-build-issues.patch \
     "
-SRCREV = "9d0ef153e6e564eba144913874ebf4316ec3bcb5"
+SRCREV = "847bb0e27decb1e391755a787a91cc6692a202c3"
 
 DEPENDS = "qtbase qtdeclarative"
 
