@@ -37,7 +37,7 @@ SRC_URI = " \
     ${QT_GIT}qt-apps/boot2qt-demos.git;branch=${BRANCH} \
     "
 
-PV = "5.13.0+git${SRCPV}"
+PV = "5.13.1+git${SRCPV}"
 
 BRANCH = "5.13"
 
