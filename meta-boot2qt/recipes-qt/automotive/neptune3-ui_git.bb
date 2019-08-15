@@ -85,9 +85,7 @@ do_install_append() {
     install -m 0644 ${WORKDIR}/drivedata-simulation-server.service ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/remotesettings-server.service ${D}${systemd_unitdir}/system/
 
-    # Move the fonts to the system-wide font location
-    install -m 0755 -d ${D}${datadir}/fonts/ttf/
-    mv ${D}/opt/neptune3/imports_shared/assets/fonts/*.ttf ${D}${datadir}/fonts/ttf/
+    # Don't install duplicate fonts, they are same as ttf-opensans
     rm -rf ${D}/opt/neptune3/imports_shared/assets/fonts/
 
     # Don't package tests
