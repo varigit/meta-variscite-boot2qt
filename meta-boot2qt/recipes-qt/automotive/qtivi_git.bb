@@ -75,7 +75,7 @@ ALLOW_EMPTY_${PN}-tools = "1"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS} ${@bb.utils.contains_any('PACKAGECONFIG', 'ivigenerator ivigenerator-native', '', 'QMAKE_EXTRA_ARGS+=-no-ivigenerator', d)}"
 
-do_install_append() {
+do_install_append_class-target() {
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/ivimedia-simulation-server.service ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/ivivehiclefunctions-simulation-server.service ${D}${systemd_unitdir}/system/
