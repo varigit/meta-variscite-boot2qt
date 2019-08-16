@@ -27,5 +27,9 @@
 ##
 ############################################################################
 
-PACKAGECONFIG += "geoservices_mapboxgl"
+PACKAGECONFIG += " \
+    geoservices_mapbox \
+    geoservices_itemsoverlay \
+    geoservices_mapboxgl \
+"
 
