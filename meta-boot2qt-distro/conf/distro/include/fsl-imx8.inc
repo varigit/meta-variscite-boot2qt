@@ -39,9 +39,11 @@ BBMASK += "\
     meta-freescale/recipes-graphics/drm/libdrm_%.bbappend \
     imx/meta-bsp/recipes-browser \
     imx/meta-bsp/recipes-connectivity/nfs-utils \
+    imx/meta-bsp/recipes-connectivity/wpa-supplicant \
     imx/meta-bsp/recipes-core/systemd/systemd_%.bbappend \
     imx/meta-bsp/recipes-graphics/cantarell-fonts \
     imx/meta-bsp/recipes-multimedia/alsa/alsa-lib_%.bbappend \
+    imx/meta-bsp/recipes-multimedia/gstreamer \
     imx/meta-bsp/recipes-multimedia/pulseaudio \
     imx/meta-sdk/recipes-fsl/fsl-rc-local \
     imx/meta-sdk/recipes-fsl/images \
@@ -52,6 +54,11 @@ BBMASK += "\
     imx/meta-sdk/dynamic-layers/qt5-layer \
     meta-openembedded/meta-oe/recipes-core/opencl-headers \
     "
+
+PREFERRED_VERSION_gstreamer1.0-plugins-base = "1.14.imx"
+PREFERRED_VERSION_gstreamer1.0-plugins-bad  = "1.14.imx"
+PREFERRED_VERSION_gstreamer1.0-plugins-good = "1.14.imx"
+PREFERRED_VERSION_gstreamer1.0              = "1.14.imx"
 
 KERNEL_MODULE_PACKAGE_SUFFIX ?= "-${@d.getVar('KERNEL_VERSION').replace('_','-')}"
 
