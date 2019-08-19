@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -28,11 +28,10 @@
 ############################################################################
 
 DESCRIPTION = "Qt Quick Timeline"
-LICENSE = "( GPL-2.0+ | LGPL-3.0 ) | The-Qt-Company-Commercial"
+LICENSE = "GPL-2.0+ | The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = " \
     file://LICENSE.GPL2;md5=b234ee4d69f5fce4486a80fdaf4a4263 \
     file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504 \
-    file://LICENSE.LGPL3;md5=e6a600fd5e1d9cbde2d983680233ad02 \
     "
 
 inherit qt5-module
@@ -42,4 +41,4 @@ DEPENDS = "qtbase qtdeclarative"
 
 QT_MODULE_BRANCH = "dev"
 
-SRCREV = "42415a5b7a13b92701ccc7be70f9cdb7e522a3ea"
+SRCREV = "6e6d4927f4620e58bd6acf71a0c6f54513f47c5f"
