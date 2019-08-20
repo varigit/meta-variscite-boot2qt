@@ -74,7 +74,7 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     smarc-samx6i)
       LAYERSCONF="bblayers.conf.smx6.sample"
     ;;
-    raspberrypi0|raspberrypi|raspberrypi2|raspberrypi3)
+    raspberrypi*)
       LAYERSCONF="bblayers.conf.rpi.sample"
     ;;
     intel-corei7-64)

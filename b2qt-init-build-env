@@ -133,7 +133,7 @@ get_groups() {
     smarc-samx6i)
       PROJECT_GROUPS="smx6"
     ;;
-    raspberrypi0|raspberrypi|raspberrypi2|raspberrypi3)
+    raspberrypi*)
       PROJECT_GROUPS="rpi"
     ;;
     intel-corei7-64)
