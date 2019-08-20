@@ -39,7 +39,7 @@ PACKAGECONFIG[wpasupplicant] = "CONFIG+=wpasupplicant,,wpa-supplicant"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
-SRCREV = "f6e140a21996c90c698eff15f3f828b182c3c03d"
+SRCREV = "51cd8493b5d3d7d4e74d3733df6d8ad12f1866fe"
 
 DEPENDS = "\
     qtbase qtdeclarative qtconnectivity qtdeclarative-native \
