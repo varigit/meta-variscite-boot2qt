@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,12 +27,9 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
-SRC_URI += "file://kms.conf"
-
-FILES_${PN} += "${sysconfdir}/kms.conf"
-
-do_install_append() {
-    install -m 0644 ${WORKDIR}/kms.conf ${D}${sysconfdir}/
+do_configure_append_emulator() {
+    echo "QT_QPA_GENERIC_PLUGINS=simulator" >> ${WORKDIR}/defaults
+    echo "QT_QPA_EGLFS_HIDECURSOR=1" >> ${WORKDIR}/defaults
+    echo "QTGLESSTREAM_DISPLAY=192.168.56.1" >> ${WORKDIR}/defaults
+    echo "SIMULATOR_HOSTNAME=192.168.56.1" >> ${WORKDIR}/defaults
 }

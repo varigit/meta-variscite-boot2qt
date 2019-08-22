@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,26 +27,6 @@
 ##
 ############################################################################
 
-include conf/distro/include/toradex.inc
-
-DEPLOY_CONF_NAME = "Toradex Colibri iMX7"
-
-QBSP_IMAGE_CONTENT += "\
-    ${IMAGE_LINK_NAME}.tezi.tar \
-    "
-
-IMAGE_BOOT_FILES += " \
-    u-boot-nand.imx;${MACHINEDIR}/u-boot-nand.imx \
-    "
-
-PREFERRED_PROVIDER_virtual/egl = "opengldummy"
-PREFERRED_PROVIDER_virtual/libgles2 = "opengldummy"
-
-DISTRO_FEATURES_remove = "webengine wayland vulkan"
-
-BOOT2QT_DEMOS_remove = "boot2qt-demo-mediaplayer boot2qt-demo-qtgraphicaleffects boot2qt-demo-qtwebbrowser"
-
-QT_USE_SOFTWARE_CONTEXT = "1"
-
-# try to limit the maximum size of the tezi image
-RDEPENDS_packagegroup-b2qt-embedded-base_remove_pn-packagegroup-b2qt-embedded-base = "linux-firmware"
+do_configure_append() {
+    echo "QT_QPA_EGLFS_FORCE888=1" >> ${WORKDIR}/defaults
+}

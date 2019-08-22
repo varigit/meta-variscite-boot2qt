@@ -36,22 +36,20 @@ require recipes-qt/qt5/qt5-git.inc
 
 QT_GIT_PROJECT = "qt-apps"
 
-SRC_URI += "file://appcontroller.conf"
-
-SRCREV = "5ab7fdbf0845c40418272bafa565295511055d3b"
+SRCREV = "474fa4b7aee62e704158d213d9e67eba74c69401"
 
 DEPENDS = "qtbase"
+RDEPENDS_${PN} = " \
+    default-qt-envs \
+    "
 
 do_configure_append() {
-    sed -i -e '/^platform=/d' ${WORKDIR}/appcontroller.conf
-    echo platform=${MACHINE} >> ${WORKDIR}/appcontroller.conf
+    echo "base=linux" >> ${WORKDIR}/appcontroller.conf
+    echo "platform=${MACHINE}" >> ${WORKDIR}/appcontroller.conf
+    echo "environmentFile=/etc/default/qt" >> ${WORKDIR}/appcontroller.conf
 }
 
 do_install_append() {
     install -m 0755 -d ${D}${sysconfdir}
     install -m 0755 ${WORKDIR}/appcontroller.conf ${D}${sysconfdir}/
-
-    # loginctl enable-linger root
-    install -d ${D}/var/lib/systemd/linger
-    touch ${D}/var/lib/systemd/linger/root
 }

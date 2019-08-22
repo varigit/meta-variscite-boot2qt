@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,12 +27,25 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+DESCRIPTION = "Common default environment variables for running Qt applications"
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
-SRC_URI += "file://kms.conf"
+SRC_URI += "file://defaults"
 
-FILES_${PN} += "${sysconfdir}/kms.conf"
+do_configure() {
+    if [ "${QT_USE_SOFTWARE_CONTEXT}" ]; then
+        echo "QMLSCENE_DEVICE=softwarecontext" >> ${WORKDIR}/defaults
+        echo "QT_QPA_PLATFORM=linuxfb" >>  ${WORKDIR}/defaults
+        echo "QSG_RENDER_LOOP=basic" >>  ${WORKDIR}/defaults
+    fi
+}
 
 do_install_append() {
-    install -m 0644 ${WORKDIR}/kms.conf ${D}${sysconfdir}/
+    install -m 0755 -d ${D}${sysconfdir}/default
+    install -m 0755 ${WORKDIR}/defaults ${D}${sysconfdir}/default/qt
+
+    # loginctl enable-linger root
+    install -d ${D}/var/lib/systemd/linger
+    touch ${D}/var/lib/systemd/linger/root
 }
