@@ -1,0 +1,36 @@
+From 052f7e5db0d793155015530b639c4e42d37eb7eb Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Fri, 23 Aug 2019 10:10:43 +0300
+Subject: [PATCH] Always use config/os/mingw32-w64 for mingw builds
+
+Make sure we use the w64 version of the configs, since that's what
+meta-mingw is using.
+
+Signed-off-by: Samuli Piippo <samuli.piippo@qt.io>
+---
+ libstdc++-v3/configure.host | 12 ++----------
+ 1 file changed, 2 insertions(+), 10 deletions(-)
+
+diff --git a/libstdc++-v3/configure.host b/libstdc++-v3/configure.host
+index 155a3cdea..adbda8784 100644
+--- a/libstdc++-v3/configure.host
++++ b/libstdc++-v3/configure.host
+@@ -277,16 +277,8 @@ case "${host_os}" in
+     os_include_dir="os/hpux"
+     ;;
+   mingw32*)
+-    case "$host" in
+-      *-w64-*)
+-        os_include_dir="os/mingw32-w64"
+-        error_constants_dir="os/mingw32-w64"
+-        ;;
+-      *)
+-        os_include_dir="os/mingw32"
+-        error_constants_dir="os/mingw32"
+-        ;;
+-    esac
++    os_include_dir="os/mingw32-w64"
++    error_constants_dir="os/mingw32-w64"
+     OPT_LDFLAGS="${OPT_LDFLAGS} \$(lt_host_flags)"
+     ;;
+   netbsd*)

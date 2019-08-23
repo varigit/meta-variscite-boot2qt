@@ -28,4 +28,7 @@
 ############################################################################
 
 FILESEXTRAPATHS_append := "${THISDIR}/gcc:"
-SRC_URI += "file://0001-PR-c-88568.patch"
+SRC_URI += "\
+    file://0001-PR-c-88568.patch \
+    file://0001-Always-use-config-os-mingw32-w64-for-mingw-builds.patch \
+"
