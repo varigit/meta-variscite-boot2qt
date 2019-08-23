@@ -60,6 +60,10 @@ PREFERRED_VERSION_gstreamer1.0-plugins-bad  = "1.14.imx"
 PREFERRED_VERSION_gstreamer1.0-plugins-good = "1.14.imx"
 PREFERRED_VERSION_gstreamer1.0              = "1.14.imx"
 
+# match linux-imx kernel versions
+PREFERRED_VERSION_linux-libc-headers_imx = "4.14.98"
+PV_pn-linux-libc-headers = "4.14.98"
+
 KERNEL_MODULE_PACKAGE_SUFFIX ?= "-${@d.getVar('KERNEL_VERSION').replace('_','-')}"
 
 WKS_FILE = "imx8-uboot-bootpart.wks.in"

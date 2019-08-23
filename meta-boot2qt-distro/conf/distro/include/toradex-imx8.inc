@@ -27,6 +27,11 @@
 ##
 ############################################################################
 
-include conf/distro/include/toradex-imx8.inc
+include conf/distro/include/fsl-imx8.inc
 
-DEPLOY_CONF_NAME = "Toradex Colibri iMX8QXP"
+FSL_EULA_FILE := "${COREBASE}/../meta-fsl-bsp-release-toradex/imx/EULA.txt"
+
+# Keep the original version
+PREFERRED_VERSION_linux-libc-headers_imx = "4.14"
+PV_pn-linux-libc-headers = "4.14"
+
