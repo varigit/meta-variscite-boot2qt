@@ -142,9 +142,6 @@ get_groups() {
     tegra-x1|tegra-t18x)
       PROJECT_GROUPS="nvidia-tegra"
     ;;
-    emulator)
-      PROJECT_GROUPS="emulator"
-    ;;
     jetson-tx1|jetson-tx2|jetson-tk1)
       PROJECT_GROUPS="jetson"
     ;;

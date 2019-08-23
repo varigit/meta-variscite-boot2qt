@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -29,9 +29,6 @@
 
 PACKAGECONFIG_GL = "${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'gles2 eglfs', 'no-opengl', d)}"
 
-# emulator is exception due to qtglesstream
-PACKAGECONFIG_GL_emulator = "gles2 eglfs"
-
 PACKAGECONFIG += " \
     accessibility \
     cups \
@@ -50,9 +47,6 @@ PACKAGECONFIG += " \
     "
 
 PACKAGECONFIG_remove = "tests"
-
-# Disable on emulator due to QTBUG-69252
-PACKAGECONFIG_remove_emulator = "ltcg"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
