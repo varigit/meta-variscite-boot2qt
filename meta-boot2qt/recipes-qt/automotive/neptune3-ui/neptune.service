@@ -1,14 +1,15 @@
 [Unit]
 Description=Neptune
-After=dbus.service dbus-session.service systemd-user-sessions.service ivi-services.target
-Wants=ivi-services.target
+After=dbus.service dbus-session@root.service systemd-user-sessions.service ivi-services.target
+Wants=ivi-services.target dbus-session@root.service
 Conflicts=neptune-qsr.service
 
 [Service]
 User=root
-ExecStart=/usr/bin/appcontroller /opt/neptune3/neptune3-ui -r --dbus session -c am-config-neptune.yaml
+ExecStart=/opt/neptune3/neptune3-ui -r --dbus session -c am-config-neptune.yaml
 Restart=on-failure
 WorkingDirectory=/opt/neptune3
+EnvironmentFile=/etc/default/qt
 Environment=AM_STARTUP_TIMER=1
 
 [Install]

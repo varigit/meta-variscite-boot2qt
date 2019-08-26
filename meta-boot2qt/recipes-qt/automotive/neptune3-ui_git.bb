@@ -63,7 +63,8 @@ DEPENDS = "\
     qtremoteobjects qtremoteobjects-native \
     "
 RDEPENDS_${PN} = "\
-    dbus \
+    dbus dbus-session \
+    default-qt-envs \
     otf-noto otf-noto-arabic ttf-opensans \
     qtapplicationmanager qtapplicationmanager-tools \
     qtvirtualkeyboard \
