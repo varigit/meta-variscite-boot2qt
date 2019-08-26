@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,30 +27,24 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Boot to Qt Appcontroller"
-LICENSE = "The-Qt-Company-Commercial"
-LIC_FILES_CHKSUM = "file://main.cpp;md5=f25c7436dbc72d4719a5684b28dbcf4b;beginline=1;endline=17"
+SUMMARY = "D-BUS Session Message Bus"
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-inherit qmake5
-require recipes-qt/qt5/qt5-git.inc
+inherit systemd
 
-QT_GIT_PROJECT = "qt-apps"
-
-SRCREV = "474fa4b7aee62e704158d213d9e67eba74c69401"
-
-DEPENDS = "qtbase"
-RDEPENDS_${PN} = " \
-    default-qt-envs \
-    dbus-session \
+SRC_URI = " \
+    file://dbus-session@.service \
+    file://dbus-session-address.sh \
     "
 
-do_configure_append() {
-    echo "base=linux" >> ${WORKDIR}/appcontroller.conf
-    echo "platform=${MACHINE}" >> ${WORKDIR}/appcontroller.conf
-    echo "environmentFile=/etc/default/qt" >> ${WORKDIR}/appcontroller.conf
+do_install() {
+    install -m 0755 -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/dbus-session@.service ${D}${systemd_unitdir}/system
+
+    install -d ${D}${sysconfdir}/profile.d
+    install -m 0644 ${WORKDIR}/dbus-session-address.sh ${D}${sysconfdir}/profile.d
 }
 
-do_install_append() {
-    install -m 0755 -d ${D}${sysconfdir}
-    install -m 0755 ${WORKDIR}/appcontroller.conf ${D}${sysconfdir}/
-}
+SYSTEMD_SERVICE_${PN} = "dbus-session@.service"
+SYSTEMD_AUTO_ENABLE = "disable"

@@ -1,5 +1,0 @@
-#!/bin/sh
-
-if [ -e /var/run/dbus/session_bus_address ]; then
-  . /var/run/dbus/session_bus_address
-fi
