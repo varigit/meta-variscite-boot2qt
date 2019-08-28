@@ -29,7 +29,7 @@
 
 inherit meta nopackages abi-arch siteinfo
 
-FILESEXTRAPATHS_prepend := "${B2QTBASE}/files/qbsp:"
+FILESEXTRAPATHS_prepend := "${BOOT2QTBASE}/files/qbsp:"
 
 SRC_URI = "\
     file://base_package.xml \

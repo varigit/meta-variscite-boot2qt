@@ -30,7 +30,7 @@
 DESCRIPTION = "OpenGL dummy library provides headers and a dummy library for EGL/GLES"
 SECTION = "devel"
 LICENSE = "The-Qt-Company-Commercial"
-LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=948f8877345cd66106f11031977a4625"
+LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=948f8877345cd66106f11031977a4625"
 
 PV = "1.0.0"
 
