@@ -56,7 +56,7 @@ BUILDDIRECTORY=${BUILDDIRECTORY:-build-${MACHINE}}
 
 if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
   case ${MACHINE} in
-    imx8qmmek|imx8mqevk)
+    imx8*)
       LAYERSCONF="bblayers.conf.fsl-imx8.sample"
     ;;
     apalis-imx8|colibri-imx8qxp)
