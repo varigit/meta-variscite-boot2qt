@@ -53,6 +53,7 @@ RDEPENDS_${PN} += " \
     qtmultimedia \
     qtnetworkauth \
     qtotaupdate \
+    qtquick3d \
     qtquickcontrols \
     qtquickcontrols2 \
     qtquicktimeline \
