@@ -35,7 +35,6 @@ FSL_EULA_FILE := "${COREBASE}/../meta-fsl-bsp-release/imx/EULA.txt"
 DISTRO_FEATURES_remove = "vulkan"
 
 BBMASK += "\
-    meta-boot2qt/meta-fsl-extras/recipes-bsp/u-boot/u-boot-toradex_%.bbappend \
     meta-freescale/recipes-graphics/drm/libdrm_%.bbappend \
     imx/meta-bsp/recipes-browser \
     imx/meta-bsp/recipes-connectivity/nfs-utils \
