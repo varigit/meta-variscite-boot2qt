@@ -34,10 +34,16 @@ usage() {
   echo "Usage: $(basename $0) COMMAND [ARGS]"
   echo
   echo "Initialize build environment:"
-  echo "  $(basename $0) init --device <name> [--reference <mirror path>] [--manifest-dir <dir path>] [--internal]"
-  echo "    --device <name>: target device name or 'all'"
-  echo "    --reference <mirror path>: path to local mirror, initialized previously with '$(basename $0) mirror'"
+  echo "  $(basename $0) init [--device <name>] "
+  echo "                           [--group <group>] [--bsp <layer name>]"
+  echo "                           [--manifest <manifest xml>] [--manifest-dir <dir path>]"
+  echo "                           [--reference <mirror path>] [--internal]"
+  echo "    --device <name>: target device name, default is 'all'"
+  echo "    --group <group>: target group of the device when using boot2qt bsp layer, default is 'default'"
+  echo "    --bsp <layer name>: name of the boot2qt bsp layer which was used for the repo init"
+  echo "    --manifest <manifest xml>: name of the manifest to be used for initialization"
   echo "    --manifest-dir <dir path>: path to a directory containing repo manifest file(s)"
+  echo "    --reference <mirror path>: path to local mirror, initialized previously with '$(basename $0) mirror'"
   echo "    --internal: fetch internal repositories, available only inside The Qt Company network."
   echo "Initialize local mirror:"
   echo "  $(basename $0) mirror"
@@ -59,13 +65,25 @@ while test -n "$1"; do
       shift
       DEVICE=$1
       ;;
+    "--group" | "-g")
+      shift
+      PROJECT_GROUPS=$1
+      ;;
     "--repo-url")
       shift
       REPO_URL="--repo-url $1"
       ;;
+    "--manifest")
+      shift
+      MANIFEST=$1
+      ;;
     "--manifest-dir")
       shift
       MANIFEST_DIR=$1
+      ;;
+    "--bsp")
+      shift
+      BSPLAYER=$1
       ;;
     "--internal")
       INTERNAL="y"
@@ -87,9 +105,13 @@ if [ -z "${COMMAND}" ]; then
   exit 1
 fi
 
-DIR=$(readlink -f $(dirname $0))
+DIR=$(dirname $(readlink -f $0))
 if [ -n "${REFERENCE}" ]; then
   REFERENCE="--reference $(readlink -f ${REFERENCE})"
+fi
+
+if [ -L $0 ]; then
+  USING_BSP_LAYER=1
 fi
 
 if [ -n "${MANIFEST_DIR}" ]; then
@@ -98,6 +120,16 @@ fi
 
 if [ -z "${REPO_URL}" ]; then
   REPO_URL="--repo-url git://github.com/theqtcompany/git-repo"
+fi
+
+DEVICE=${DEVICE:-all}
+
+if [ -z "${MANIFEST}" ]; then
+  if [ -n "${USING_BSP_LAYER}" ]; then
+    MANIFEST="conf/manifest.xml"
+  else
+    MANIFEST="manifest.xml"
+  fi
 fi
 
 get_repo() {
@@ -111,51 +143,49 @@ get_repo() {
 }
 
 get_groups() {
-  case ${DEVICE} in
-    all)
-      PROJECT_GROUPS="external"
-      ;;
-    imx8qmmek|imx8mqevk)
-      PROJECT_GROUPS="fsl-imx8"
-      ;;
-    apalis-imx8|colibri-imx8qxp)
-      PROJECT_GROUPS="toradex-imx8"
-      ;;
-    apalis-imx6|colibri-imx6|colibri-imx6ull|colibri-vf|colibri-imx7|colibri-imx7-emmc)
-      PROJECT_GROUPS="toradex"
-      ;;
-    nitrogen6x|nitrogen7|nitrogen8m|nitrogen8mm)
-      PROJECT_GROUPS="boundary"
-      ;;
-    imx6qdlsabresd|imx7dsabresd|imx7s-warp)
-      PROJECT_GROUPS="fsl"
-      ;;
-    smarc-samx6i)
-      PROJECT_GROUPS="smx6"
-      ;;
-    raspberrypi*)
-      PROJECT_GROUPS="rpi"
-      ;;
-    intel-corei7-64)
-      PROJECT_GROUPS="intel"
-      ;;
-    tegra-x1|tegra-t18x)
-      PROJECT_GROUPS="nvidia-tegra"
-      ;;
-    jetson-tx1|jetson-tx2|jetson-tk1)
-      PROJECT_GROUPS="jetson"
-      ;;
-    salvator-x|h3ulcb|m3ulcb|ebisu)
-      PROJECT_GROUPS="renesas-gen3"
-      ;;
-    draak)
-      PROJECT_GROUPS="renesas-draak"
-      ;;
-    *)
-      echo "Unknown device configuration, including all meta layers"
-      PROJECT_GROUPS="external"
-      ;;
-  esac
+  if [ -z "${PROJECT_GROUPS}" ]; then
+    case ${DEVICE} in
+      all)
+        PROJECT_GROUPS="external"
+        ;;
+      imx8qmmek|imx8mqevk)
+        PROJECT_GROUPS="fsl-imx8"
+        ;;
+      apalis-imx8|colibri-imx8qxp)
+        PROJECT_GROUPS="toradex-imx8"
+        ;;
+      apalis-imx6|colibri-imx6|colibri-imx6ull|colibri-vf|colibri-imx7|colibri-imx7-emmc)
+        PROJECT_GROUPS="toradex"
+        ;;
+      nitrogen6x|nitrogen7|nitrogen8m|nitrogen8mm)
+        PROJECT_GROUPS="boundary"
+        ;;
+      imx6qdlsabresd|imx7dsabresd|imx7s-warp)
+        PROJECT_GROUPS="fsl"
+        ;;
+      smarc-samx6i)
+        PROJECT_GROUPS="smx6"
+        ;;
+      raspberrypi*)
+        PROJECT_GROUPS="rpi"
+        ;;
+      intel-corei7-64)
+        PROJECT_GROUPS="intel"
+        ;;
+      tegra-x1|tegra-t18x)
+        PROJECT_GROUPS="nvidia-tegra"
+        ;;
+      jetson-tx1|jetson-tx2|jetson-tk1)
+        PROJECT_GROUPS="jetson"
+        ;;
+      salvator-x|h3ulcb|m3ulcb|ebisu)
+        PROJECT_GROUPS="renesas-gen3"
+        ;;
+      draak)
+        PROJECT_GROUPS="renesas-draak"
+        ;;
+    esac
+  fi
 
   PROJECT_GROUPS="${PROJECT_GROUPS} default"
   if [ "${INTERNAL}" = "y" ]; then
@@ -171,39 +201,39 @@ list_devices() {
 }
 
 copy_manifests() {
-  mkdir -p .repo/manifests
-  rm -f .repo/manifests/manifest*.xml
-  if [ -z "${MANIFEST_DIR}" ]; then
-    cp ${DIR}/scripts/manifest*.xml .repo/manifests/
-  else
-    cp ${MANIFEST_DIR}/manifest*.xml .repo/manifests/
+  if [ -z "${USING_BSP_LAYER}" ]; then
+    mkdir -p .repo/manifests
+    rm -f .repo/manifests/manifest*.xml
+    if [ -z "${MANIFEST_DIR}" ]; then
+      cp ${DIR}/scripts/manifest*.xml .repo/manifests/
+    else
+      cp ${MANIFEST_DIR}/manifest*.xml .repo/manifests/
+    fi
   fi
 }
 
 mirror() {
-  copy_manifests
-  MANIFEST="manifest.xml"
-  DEVICE=${DEVICE:-all}
-  get_groups
-  ${REPO} init ${REPO_URL} -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g "${PROJECT_GROUPS}" --mirror
-  ${REPO} sync
-}
-
-init() {
-  if [ -z "${DEVICE}" ]; then
-    echo "device not defined"
-    usage
+  if [ -n "${USING_BSP_LAYER}" ]; then
+    echo "mirroring is not supported with boot2qt bsp layers"
     exit 1
   fi
 
   get_groups
   copy_manifests
-  if [ -f .repo/manifests/manifest_${DEVICE}.xml ]; then
-    MANIFEST="manifest_${DEVICE}.xml"
+  ${REPO} init ${REPO_URL} -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g "${PROJECT_GROUPS}" --mirror
+  ${REPO} sync
+}
+
+init() {
+  get_groups
+  copy_manifests
+
+  if [ -n "${USING_BSP_LAYER}" ]; then
+    # re-init without url if we are using boot2qt bsp layer
+    ${REPO} init -m ${MANIFEST} -g "${PROJECT_GROUPS}" ${REFERENCE}
   else
-    MANIFEST="manifest.xml"
+    ${REPO} init ${REPO_URL} -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g "${PROJECT_GROUPS}" ${REFERENCE}
   fi
-  ${REPO} init ${REPO_URL} -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g "${PROJECT_GROUPS}" ${REFERENCE}
   ${REPO} sync --optimized-fetch
 
   if [ ! -e "sources/meta-boot2qt" ]; then
@@ -213,6 +243,16 @@ init() {
   if [ ! -e "setup-environment.sh" ]; then
     ln -s ${DIR}/scripts/setup-environment.sh setup-environment.sh
   fi
+
+  if [ -n "${USING_BSP_LAYER}" ] && [ ! -e "sources/${BSPLAYER}" ]; then
+    ln -s ../.repo/manifests sources/${BSPLAYER}
+  fi
+
+  # handle lfs repos which need manual lfs pull
+  LFS_REPOS=$(grep filter=lfs -l sources/*/.gitattributes 2>/dev/null || true)
+  for repo in ${LFS_REPOS}; do
+    ( cd $(dirname ${repo}); git lfs pull )
+  done
 }
 
 get_repo

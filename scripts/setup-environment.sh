@@ -1,7 +1,7 @@
 #!/bin/sh
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -31,8 +31,12 @@
 while test -n "$1"; do
   case "$1" in
     "--help" | "-h")
-      echo "Usage: . $0 [build directory]"
+      echo "Usage: . $0 [--bsp <layer name>] [build directory]"
       return 0
+      ;;
+    "--bsp")
+      shift
+      BSPLAYER=sources/$1
       ;;
     *)
       BUILDDIRECTORY=$1
@@ -54,52 +58,60 @@ fi
 
 BUILDDIRECTORY=${BUILDDIRECTORY:-build-${MACHINE}}
 
-if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
-  case ${MACHINE} in
-    imx8qmmek|imx8mqevk)
-      LAYERSCONF="bblayers.conf.fsl-imx8.sample"
-      ;;
-    apalis-imx8|colibri-imx8qxp)
-      LAYERSCONF="bblayers.conf.toradex-imx8.sample"
-      ;;
-    apalis-imx6|colibri-imx6|colibri-imx6ull|colibri-vf|colibri-imx7|colibri-imx7-emmc)
-      LAYERSCONF="bblayers.conf.toradex.sample"
-      ;;
-    nitrogen6x|nitrogen7|nitrogen8m|nitrogen8mm)
-      LAYERSCONF="bblayers.conf.boundary.sample"
-      ;;
-    imx6qdlsabresd|imx7dsabresd|imx7s-warp)
-      LAYERSCONF="bblayers.conf.fsl.sample"
-      ;;
-    smarc-samx6i)
-      LAYERSCONF="bblayers.conf.smx6.sample"
-      ;;
-    raspberrypi*)
-      LAYERSCONF="bblayers.conf.rpi.sample"
-      ;;
-    intel-corei7-64)
-      LAYERSCONF="bblayers.conf.intel.sample"
-      ;;
-    tegra-x1|tegra-t18x)
-      LAYERSCONF="bblayers.conf.nvidia-tegra.sample"
-      ;;
-    salvator-x|h3ulcb|m3ulcb|ebisu)
-      LAYERSCONF="bblayers.conf.rcar-gen3.sample"
-      ;;
-    draak)
-      LAYERSCONF="bblayers.conf.draak.sample"
-      ;;
-    jetson-tx1|jetson-tx2|jetson-tk1)
-      LAYERSCONF="bblayers.conf.jetson.sample"
-      ;;
-    *)
-      LAYERSCONF="bblayers.conf.sample"
-      echo "Unknown MACHINE, bblayers.conf might need manual editing"
-      ;;
-  esac
+if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
+  if [ -e "${BSPLAYER}/conf/bblayers.conf.sample" ]; then
+    LAYERSCONF=${BSPLAYER}/conf/bblayers.conf.sample
+  else
+    case ${MACHINE} in
+      imx8qmmek|imx8mqevk)
+        LAYERSCONF="bblayers.conf.fsl-imx8.sample"
+        ;;
+      apalis-imx8|colibri-imx8qxp)
+        LAYERSCONF="bblayers.conf.toradex-imx8.sample"
+        ;;
+      apalis-imx6|colibri-imx6|colibri-imx6ull|colibri-vf|colibri-imx7|colibri-imx7-emmc)
+        LAYERSCONF="bblayers.conf.toradex.sample"
+        ;;
+      nitrogen6x|nitrogen7|nitrogen8m|nitrogen8mm)
+        LAYERSCONF="bblayers.conf.boundary.sample"
+        ;;
+      imx6qdlsabresd|imx7dsabresd|imx7s-warp)
+        LAYERSCONF="bblayers.conf.fsl.sample"
+        ;;
+      smarc-samx6i)
+        LAYERSCONF="bblayers.conf.smx6.sample"
+        ;;
+      raspberrypi*)
+        LAYERSCONF="bblayers.conf.rpi.sample"
+        ;;
+      intel-corei7-64)
+        LAYERSCONF="bblayers.conf.intel.sample"
+        ;;
+      tegra-x1|tegra-t18x)
+        LAYERSCONF="bblayers.conf.nvidia-tegra.sample"
+        ;;
+      salvator-x|h3ulcb|m3ulcb|ebisu)
+        LAYERSCONF="bblayers.conf.rcar-gen3.sample"
+        ;;
+      draak)
+        LAYERSCONF="bblayers.conf.draak.sample"
+        ;;
+      jetson-tx1|jetson-tx2|jetson-tk1)
+        LAYERSCONF="bblayers.conf.jetson.sample"
+        ;;
+      *)
+        LAYERSCONF="bblayers.conf.sample"
+        echo "Unknown MACHINE, bblayers.conf might need manual editing"
+        ;;
+    esac
+    LAYERSCONF=${PWD}/sources/meta-boot2qt/meta-boot2qt-distro/conf/${LAYERSCONF}
+  fi
 
   mkdir -p ${PWD}/${BUILDDIRECTORY}/conf
-  cp ${PWD}/sources/meta-boot2qt/meta-boot2qt-distro/conf/${LAYERSCONF} ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf
+  cp ${LAYERSCONF} ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf
+  if [ -e "${BSPLAYER}/conf/local.conf.sample" ]; then
+    cp ${BSPLAYER}/conf/local.conf.sample  ${PWD}/${BUILDDIRECTORY}/conf/local.conf
+  fi
 
   if [ -e ${PWD}/sources/meta-boot2qt/.QT-FOR-DEVICE-CREATION-LICENSE-AGREEMENT ]; then
     QT_SDK_PATH=$(readlink -f ${PWD}/sources/meta-boot2qt/../../../../)
@@ -116,3 +128,4 @@ unset BUILDDIRECTORY
 unset QT_SDK_PATH
 unset TEMPLATECONF
 unset LAYERSCONF
+unset BSPLAYER
