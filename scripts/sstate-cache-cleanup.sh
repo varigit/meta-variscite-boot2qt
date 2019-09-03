@@ -36,7 +36,7 @@ if [ $# -lt 1 ]; then
     exit 1
 fi
 
-DAYS_TO_KEEP=7
+DAYS_TO_KEEP=${2:-7}
 NOW=$(date +%s)
 
 for cachedir in $@; do
