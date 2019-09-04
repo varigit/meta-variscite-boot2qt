@@ -31,18 +31,18 @@
 set -e
 
 usage() {
-   echo "Usage: $(basename $0) COMMAND [ARGS]"
-   echo
-   echo "Initialize build environment:"
-   echo "  $(basename $0) init --device <name> [--reference <mirror path>] [--manifest-dir <dir path>] [--internal]"
-   echo "    --device <name>: target device name or 'all'"
-   echo "    --reference <mirror path>: path to local mirror, initialized previously with '$(basename $0) mirror'"
-   echo "    --manifest-dir <dir path>: path to a directory containing repo manifest file(s)"
-   echo "    --internal: fetch internal repositories, available only inside The Qt Company network."
-   echo "Initialize local mirror:"
-   echo "  $(basename $0) mirror"
-   echo "List available devices:"
-   echo "  $(basename $0) list-devices"
+  echo "Usage: $(basename $0) COMMAND [ARGS]"
+  echo
+  echo "Initialize build environment:"
+  echo "  $(basename $0) init --device <name> [--reference <mirror path>] [--manifest-dir <dir path>] [--internal]"
+  echo "    --device <name>: target device name or 'all'"
+  echo "    --reference <mirror path>: path to local mirror, initialized previously with '$(basename $0) mirror'"
+  echo "    --manifest-dir <dir path>: path to a directory containing repo manifest file(s)"
+  echo "    --internal: fetch internal repositories, available only inside The Qt Company network."
+  echo "Initialize local mirror:"
+  echo "  $(basename $0) mirror"
+  echo "List available devices:"
+  echo "  $(basename $0) list-devices"
 }
 
 while test -n "$1"; do
@@ -83,21 +83,21 @@ while test -n "$1"; do
 done
 
 if [ -z "${COMMAND}" ]; then
-    usage
-    exit 1
+  usage
+  exit 1
 fi
 
 DIR=$(readlink -f $(dirname $0))
 if [ -n "${REFERENCE}" ]; then
-    REFERENCE="--reference $(readlink -f ${REFERENCE})"
+  REFERENCE="--reference $(readlink -f ${REFERENCE})"
 fi
 
 if [ -n "${MANIFEST_DIR}" ]; then
-    MANIFEST_DIR="$(readlink -f ${MANIFEST_DIR})"
+  MANIFEST_DIR="$(readlink -f ${MANIFEST_DIR})"
 fi
 
 if [ -z "${REPO_URL}" ]; then
-    REPO_URL="--repo-url git://github.com/theqtcompany/git-repo"
+  REPO_URL="--repo-url git://github.com/theqtcompany/git-repo"
 fi
 
 get_repo() {
@@ -114,47 +114,47 @@ get_groups() {
   case ${DEVICE} in
     all)
       PROJECT_GROUPS="external"
-    ;;
+      ;;
     imx8qmmek|imx8mqevk)
       PROJECT_GROUPS="fsl-imx8"
-    ;;
+      ;;
     apalis-imx8|colibri-imx8qxp)
       PROJECT_GROUPS="toradex-imx8"
-    ;;
+      ;;
     apalis-imx6|colibri-imx6|colibri-imx6ull|colibri-vf|colibri-imx7|colibri-imx7-emmc)
       PROJECT_GROUPS="toradex"
-    ;;
+      ;;
     nitrogen6x|nitrogen7|nitrogen8m|nitrogen8mm)
       PROJECT_GROUPS="boundary"
-    ;;
+      ;;
     imx6qdlsabresd|imx7dsabresd|imx7s-warp)
       PROJECT_GROUPS="fsl"
-    ;;
+      ;;
     smarc-samx6i)
       PROJECT_GROUPS="smx6"
-    ;;
+      ;;
     raspberrypi*)
       PROJECT_GROUPS="rpi"
-    ;;
+      ;;
     intel-corei7-64)
       PROJECT_GROUPS="intel"
-    ;;
+      ;;
     tegra-x1|tegra-t18x)
       PROJECT_GROUPS="nvidia-tegra"
-    ;;
+      ;;
     jetson-tx1|jetson-tx2|jetson-tk1)
       PROJECT_GROUPS="jetson"
-    ;;
+      ;;
     salvator-x|h3ulcb|m3ulcb|ebisu)
       PROJECT_GROUPS="renesas-gen3"
-    ;;
+      ;;
     draak)
       PROJECT_GROUPS="renesas-draak"
-    ;;
+      ;;
     *)
       echo "Unknown device configuration, including all meta layers"
       PROJECT_GROUPS="external"
-    ;;
+      ;;
   esac
 
   PROJECT_GROUPS="${PROJECT_GROUPS} default"
@@ -174,9 +174,9 @@ copy_manifests() {
   mkdir -p .repo/manifests
   rm -f .repo/manifests/manifest*.xml
   if [ -z "${MANIFEST_DIR}" ]; then
-      cp ${DIR}/scripts/manifest*.xml .repo/manifests/
+    cp ${DIR}/scripts/manifest*.xml .repo/manifests/
   else
-      cp ${MANIFEST_DIR}/manifest*.xml .repo/manifests/
+    cp ${MANIFEST_DIR}/manifest*.xml .repo/manifests/
   fi
 }
 
@@ -220,16 +220,16 @@ get_repo
 case "$COMMAND" in
   "init")
     init
-  ;;
+    ;;
   "mirror")
     mirror
-  ;;
+    ;;
   "list-devices")
     list_devices
-  ;;
+    ;;
   *)
     echo "Unknown command"
     usage
     exit 1
-  ;;
+    ;;
 esac

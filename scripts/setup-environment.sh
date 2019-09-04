@@ -36,15 +36,15 @@ while test -n "$1"; do
       ;;
     *)
       BUILDDIRECTORY=$1
-    ;;
+      ;;
   esac
   shift
 done
 
 THIS_SCRIPT="setup-environment.sh"
 if [ "$(basename -- $0)" = "${THIS_SCRIPT}" ]; then
-    echo "Error: This script needs to be sourced. Please run as '. $0'"
-    return 1
+  echo "Error: This script needs to be sourced. Please run as '. $0'"
+  return 1
 fi
 
 if [ -z "$MACHINE" ]; then
@@ -58,44 +58,44 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
   case ${MACHINE} in
     imx8qmmek|imx8mqevk)
       LAYERSCONF="bblayers.conf.fsl-imx8.sample"
-    ;;
+      ;;
     apalis-imx8|colibri-imx8qxp)
       LAYERSCONF="bblayers.conf.toradex-imx8.sample"
-    ;;
+      ;;
     apalis-imx6|colibri-imx6|colibri-imx6ull|colibri-vf|colibri-imx7|colibri-imx7-emmc)
       LAYERSCONF="bblayers.conf.toradex.sample"
-    ;;
+      ;;
     nitrogen6x|nitrogen7|nitrogen8m|nitrogen8mm)
       LAYERSCONF="bblayers.conf.boundary.sample"
-    ;;
+      ;;
     imx6qdlsabresd|imx7dsabresd|imx7s-warp)
       LAYERSCONF="bblayers.conf.fsl.sample"
-    ;;
+      ;;
     smarc-samx6i)
       LAYERSCONF="bblayers.conf.smx6.sample"
-    ;;
+      ;;
     raspberrypi*)
       LAYERSCONF="bblayers.conf.rpi.sample"
-    ;;
+      ;;
     intel-corei7-64)
       LAYERSCONF="bblayers.conf.intel.sample"
-    ;;
+      ;;
     tegra-x1|tegra-t18x)
       LAYERSCONF="bblayers.conf.nvidia-tegra.sample"
-    ;;
+      ;;
     salvator-x|h3ulcb|m3ulcb|ebisu)
       LAYERSCONF="bblayers.conf.rcar-gen3.sample"
-    ;;
+      ;;
     draak)
       LAYERSCONF="bblayers.conf.draak.sample"
-    ;;
+      ;;
     jetson-tx1|jetson-tx2|jetson-tk1)
       LAYERSCONF="bblayers.conf.jetson.sample"
-    ;;
+      ;;
     *)
       LAYERSCONF="bblayers.conf.sample"
       echo "Unknown MACHINE, bblayers.conf might need manual editing"
-    ;;
+      ;;
   esac
 
   mkdir -p ${PWD}/${BUILDDIRECTORY}/conf
