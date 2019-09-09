@@ -47,7 +47,6 @@ RDEPENDS_${PN} = "\
         ttf-freefont-mono \
         ttf-tlwg \
         otf-noto \
-        dbus-session-init \
         tzdata \
         tzdata-americas \
         tzdata-asia \

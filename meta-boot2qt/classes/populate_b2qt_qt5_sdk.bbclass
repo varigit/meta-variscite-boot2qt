@@ -97,7 +97,7 @@ create_sdk_files_append_sdkmingw32 () {
 
 create_qtcreator_configure_script () {
     # add qtcreator configuration script
-    install -m 0755 ${B2QTBASE}/files/configure-qtcreator.sh ${SDK_OUTPUT}/${SDKPATH}
+    install -m 0755 ${BOOT2QTBASE}/files/configure-qtcreator.sh ${SDK_OUTPUT}/${SDKPATH}
     sed -i -e '/^CONFIG=/c\CONFIG="${SDKPATH}/environment-setup-${REAL_MULTIMACH_TARGET_SYS}"' ${SDK_OUTPUT}/${SDKPATH}/configure-qtcreator.sh
     sed -i -e '/^ABI=/c\ABI="${ABI}-linux-poky-elf-${SITEINFO_BITS}bit"' ${SDK_OUTPUT}/${SDKPATH}/configure-qtcreator.sh
 }
