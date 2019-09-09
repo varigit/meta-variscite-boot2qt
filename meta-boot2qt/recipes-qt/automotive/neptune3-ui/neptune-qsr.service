@@ -1,0 +1,13 @@
+[Unit]
+Description=Neptune
+After=dbus.service dbus-session.service systemd-user-sessions.service ivi-services.target
+Wants=ivi-services.target
+Conflicts=neptune.service
+
+[Service]
+User=root
+ExecStart=/usr/bin/appcontroller /opt/neptune3/neptune3-ui-qsr-cluster
+Restart=on-failure
+WorkingDirectory=/opt/neptune3
+Environment=AM_STARTUP_TIMER=1
+Environment=QT_QPA_PLATFORM=linuxfb

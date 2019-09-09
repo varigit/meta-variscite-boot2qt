@@ -42,15 +42,14 @@ QT_GIT_PROJECT = "qt-apps"
 
 SRC_URI += " \
     file://neptune.service \
+    file://neptune-qsr.service \
+    file://drivedata-simulation-server.service \
+    file://remotesettings-server.service \
     "
-SRC_URI_append_nitrogen6x = " file://0001_hardware_variant_low.patch"
-SRC_URI_append_imx6dlsabresd = " file://0001_hardware_variant_low.patch"
-SRC_URI_append_imx6qsabresd = " file://0001_hardware_variant_low.patch"
-SRC_URI_append_apalis-imx6 = " file://0001_hardware_variant_low.patch"
-SRC_URI_append_colibri-imx6 = " file://0001_hardware_variant_low.patch"
+SRC_URI_append_mx6 = " file://0001_hardware_variant_low.patch"
 SRC_URI_append_rpi = " file://0001_hardware_variant_low.patch"
 
-SRCREV = "58d1b6c6d1efa2d85c3f6135b820035dc5b221a6"
+SRCREV = "63dce6f69a00ebc7b15230da74b4e24af3fc78a5"
 
 QMAKE_PROFILES = "${S}/neptune3-ui.pro"
 
@@ -64,7 +63,8 @@ DEPENDS = "\
     qtremoteobjects qtremoteobjects-native \
     "
 RDEPENDS_${PN} = "\
-    dbus \
+    dbus dbus-session \
+    default-qt-envs \
     otf-noto otf-noto-arabic ttf-opensans \
     qtapplicationmanager qtapplicationmanager-tools \
     qtvirtualkeyboard \
@@ -82,10 +82,14 @@ EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 do_install_append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/neptune.service ${D}${systemd_unitdir}/system/
+    install -m 0644 ${WORKDIR}/drivedata-simulation-server.service ${D}${systemd_unitdir}/system/
+    install -m 0644 ${WORKDIR}/remotesettings-server.service ${D}${systemd_unitdir}/system/
 
-    # Move the fonts to the system-wide font location
-    install -m 0755 -d ${D}${datadir}/fonts/ttf/
-    mv ${D}/opt/neptune3/imports_shared/assets/fonts/*.ttf ${D}${datadir}/fonts/ttf/
+    if ${@bb.utils.contains('PACKAGECONFIG','qtsaferenderer','true','false',d)}; then
+        install -m 0644 ${WORKDIR}/neptune-qsr.service ${D}${systemd_unitdir}/system/
+    fi
+
+    # Don't install duplicate fonts, they are same as ttf-opensans
     rm -rf ${D}/opt/neptune3/imports_shared/assets/fonts/
 
     # Don't package tests
@@ -104,4 +108,9 @@ FILES_${PN}-dev += "\
     /opt/neptune3/lib/*.so \
     "
 
-SYSTEMD_SERVICE_${PN} = "neptune.service"
+SYSTEMD_SERVICE_${PN} = "\
+    neptune.service \
+    drivedata-simulation-server.service \
+    remotesettings-server.service \
+    ${@bb.utils.contains('PACKAGECONFIG','qtsaferenderer','neptune-qsr.service','',d)} \
+    "

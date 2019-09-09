@@ -1,0 +1,8 @@
+[Unit]
+Description=D-BUS Session Message Bus.
+After=dbus.service systemd-user-sessions.service
+
+[Service]
+User=%i
+ExecStart=/usr/bin/dbus-daemon --session --nofork --address=unix:path=/run/user/%U/dbus_session_socket
+ExecReload=/usr/bin/dbus-send --print-reply --session --type=method_call --dest=org.freedesktop.DBus / org.freedesktop.DBus.ReloadConfig

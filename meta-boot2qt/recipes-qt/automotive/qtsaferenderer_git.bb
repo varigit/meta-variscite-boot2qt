@@ -30,7 +30,7 @@
 DESCRIPTION = "Qt Safe Renderer"
 
 LICENSE = "GPL-3.0 | The-Qt-Company-Commercial"
-LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=948f8877345cd66106f11031977a4625"
+LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=948f8877345cd66106f11031977a4625"
 
 inherit qt5-module sdk-sources distro_features_check
 
@@ -46,13 +46,13 @@ PACKAGECONFIG[tools-only] = "CONFIG+=tools-only,,"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
-PV = "1.1"
+PV = "1.1.1"
 BRANCH = "1.1"
 SRC_URI = "\
-    git://codereview.qt-project.org/tqtc-boot2qt/qtsaferenderer;branch=${BRANCH};protocol=ssh;sdk-uri=Src/QtSafeRenderer-1.1.0 \
+    git://codereview.qt-project.org/tqtc-boot2qt/qtsaferenderer;branch=${BRANCH};protocol=ssh;sdk-uri=Src/QtSafeRenderer-1.1.1 \
     file://0001-Fix-yocto-build-issues.patch \
     "
-SRCREV = "fef1fe5cd46c51d74127ae77b67f0f296fd828c9"
+SRCREV = "d539df4ddb0f6189b7294e5a67d611ab39b7bf72"
 
 DEPENDS = "qtbase qtdeclarative"
 

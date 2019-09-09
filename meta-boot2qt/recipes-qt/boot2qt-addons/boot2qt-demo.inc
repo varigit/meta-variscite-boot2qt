@@ -28,16 +28,12 @@
 ############################################################################
 
 inherit qmake5
+require recipes-qt/qt5/qt5-git.inc
 
-QT_GIT_PROJECT = ""
+QT_GIT_PROJECT = "qt-apps"
+QT_MODULE = "boot2qt-demos"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/boot2qt-demos:"
-
-SRC_URI = " \
-    ${QT_GIT}qt-apps/boot2qt-demos.git;branch=${BRANCH} \
-    "
-
-PV = "5.13.0+git${SRCPV}"
 
 BRANCH = "5.13"
 

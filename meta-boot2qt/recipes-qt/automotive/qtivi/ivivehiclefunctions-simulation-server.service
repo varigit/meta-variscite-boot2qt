@@ -1,0 +1,12 @@
+[Unit]
+Description=ivivehiclefunctions-simulation-server
+PartOf=ivi-services.target
+Before=ivi-services.target
+
+[Service]
+User=root
+ExecStart=/usr/bin/ivivehiclefunctions-simulation-server
+Restart=on-failure
+
+[Install]
+WantedBy=ivi-services.target
