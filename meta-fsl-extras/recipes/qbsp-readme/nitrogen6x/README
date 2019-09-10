@@ -1,0 +1,69 @@
+To successfully set up the Boot to Qt software stack,
+follow the instructions in https://doc.qt.io/QtForDeviceCreation/qtdc-qbsp-installation-guide.html#.
+
+In Boundary Devices i.MX6 Board target devices, see also the U-Boot and
+Nitrogen6_Lite device specific instructions:
+
+
+2. Installing QBSP on Host Platform
+
+After you have flashed the device with Flashing Wizard, you may need to update U-Boot:
+
+* If you are updating your Boundary Devices i.MX6 Board from an older image,
+update the U-Boot version on the device. See 2.1 Updating U-Boot.
+* If your target device is Nitrogen6_Lite Device, see 1.2 Setup for Nitrogen6_Lite Device.
+
+Note: Sometimes U-Boot fails to select a suitable display for your target device
+and sets an incorrect display resolution.
+https://doc.qt.io/QtForDeviceCreation/qtee-customization.html#configuring-display-resolution
+instructs how you can configure the display and resolution used in your target device.
+
+
+2.1 Updating U-Boot
+
+If you are updating from an older image, you may also need to update the version
+of U-Boot on the device.
+
+The prebuilt image already contains U-Boot versions for most of the device variants
+from Boundary Devices, but the update needs to be done manually when first starting
+the device. Correct device type is selected by setting the uboot_defconfig
+U-Boot environment variable.
+
+More information available from https://boundarydevices.com/compiling-latest-u-boot-for-i-mx6-2015-edition/.
+
+Access the device's console and run the following commands on the U-Boot prompt:
+
+setenv uboot_defconfig <device type>
+setenv devnum 1 # or 0, if using SD slot
+setenv devtype mmc
+run upgradeu
+
+Reset or power cycle the device to start the new U-Boot. To reset the U-Boot
+environment to new default values, enter the following commands in the U-Boot
+command line:
+
+env default -a
+saveenv
+
+
+2.2 Setup for Nitrogen6_Lite Device
+
+The boot script requires the environment variables, dtbname and gpumem, to identify
+the device as Nitrogen6_Lite. Otherwise, the device is booted with the default
+GPU memory setting of 512MiB, which is more than what is available on the
+Nitrogen_Lite devices (128MibB).
+
+Use one of the two following options to enable the scripts boot the device with
+correct GPU memory setting:
+
+* Write a uEnv.txt file on to the boot partition of SD card with the following content:
+
+gpumem=67108864
+dtbname=imx6dl-nit6xlite.dtb
+
+* Access the device's console and run the following commands on the U-Boot prompt:
+
+U-Boot > setenv gpumem 67108864
+U-Boot > setenv dtbname imx6dl-nit6xlite.dtb
+U-Boot > saveenv
+
