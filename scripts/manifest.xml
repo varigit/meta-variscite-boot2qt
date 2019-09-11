@@ -10,8 +10,6 @@
   <remote fetch="git://github.com/openembedded" name="oe-mirror"/>
   <remote fetch="git://github.com/madisongh" name="madisongh"/>
   <remote fetch="ssh://git@git.qt.io/boot2qt" name="playground"/>
-  <remote fetch="git://github.com/renesas-rcar" name="renesas"/>
-  <remote fetch="git://git.linaro.org/openembedded" name="linaro"/>
   <remote fetch="git://git.toradex.com" name="toradex"/>
   <remote fetch="git://github.com/boundarydevices" name="boundary"/>
   <remote fetch="git://github.com/toradex" name="toradex-github"/>
@@ -59,21 +57,6 @@
            revision="40d61e3c7aa4cfe993685bb4011e16617edc24fa"
            path="sources/meta-tegra"
            groups="notdefault,jetson"/>
-  <project name="meta-renesas"
-           remote="renesas"
-           revision="276e6ae724d7e604e0d28e4670b8c9edea2957e3"
-           path="sources/meta-renesas"
-           groups="notdefault,renesas-gen3"/>
-  <project name="meta-renesas"
-           remote="renesas"
-           revision="0f865eb8b464ca717b1651e10c4ddc0c4f798423"
-           path="sources/meta-renesas-D3"
-           groups="notdefault,renesas-draak"/>
-  <project name="meta-linaro"
-           remote="linaro"
-           revision="edb7ffc2a121df7596385595abe75180296103e0"
-           path="sources/meta-linaro"
-           groups="notdefault,renesas-gen3,renesas-draak"/>
   <project name="meta-toradex-bsp-common"
            remote="toradex"
            revision="3fa96f28bb30643cac3b8a49d3abd7c976acb704"
@@ -109,11 +92,6 @@
            remote="playground"
            revision="a3dc22511ed845b7fe85a7b26c64b1c37a4763c4"
            path="sources/drive-t186"
-           groups="notdefault,internal"/>
-  <project name="renesas-rcar-gen3"
-           remote="playground"
-           revision="53a345942e4207b2fa1b19d932b5b72bd5c4761c"
-           path="sources/renesas-rcar-gen3"
            groups="notdefault,internal"/>
   <project name="meta-smx6"
            remote="playground"

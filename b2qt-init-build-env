@@ -178,12 +178,6 @@ get_groups() {
       jetson-tx1|jetson-tx2|jetson-tk1)
         PROJECT_GROUPS="jetson"
         ;;
-      salvator-x|h3ulcb|m3ulcb|ebisu)
-        PROJECT_GROUPS="renesas-gen3"
-        ;;
-      draak)
-        PROJECT_GROUPS="renesas-draak"
-        ;;
     esac
   fi
 

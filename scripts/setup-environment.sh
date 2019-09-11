@@ -90,12 +90,6 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
       tegra-x1|tegra-t18x)
         LAYERSCONF="bblayers.conf.nvidia-tegra.sample"
         ;;
-      salvator-x|h3ulcb|m3ulcb|ebisu)
-        LAYERSCONF="bblayers.conf.rcar-gen3.sample"
-        ;;
-      draak)
-        LAYERSCONF="bblayers.conf.draak.sample"
-        ;;
       jetson-tx1|jetson-tx2|jetson-tk1)
         LAYERSCONF="bblayers.conf.jetson.sample"
         ;;
