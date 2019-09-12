@@ -216,6 +216,12 @@ init() {
   if [ ! -e "setup-environment.sh" ]; then
     ln -s ${DIR}/scripts/setup-environment.sh setup-environment.sh
   fi
+
+  # handle lfs repos which need manual lfs pull
+  LFS_REPOS=$(grep filter=lfs -l sources/*/.gitattributes 2>/dev/null || true)
+  for repo in ${LFS_REPOS}; do
+    ( cd $(dirname ${repo}); git lfs pull )
+  done
 }
 
 get_repo
