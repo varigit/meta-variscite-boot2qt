@@ -78,9 +78,6 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
       imx6qdlsabresd|imx7dsabresd|imx7s-warp)
         LAYERSCONF="bblayers.conf.fsl.sample"
         ;;
-      smarc-samx6i)
-        LAYERSCONF="bblayers.conf.smx6.sample"
-        ;;
       raspberrypi*)
         LAYERSCONF="bblayers.conf.rpi.sample"
         ;;

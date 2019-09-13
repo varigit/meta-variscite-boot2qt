@@ -36,12 +36,12 @@
            remote="freescale"
            revision="deb8750093fa8c44df0871131c82284fa4edc22f"
            path="sources/meta-freescale"
-           groups="notdefault,external,fsl,toradex,smx6,boundary,fsl-imx8,toradex-imx8"/>
+           groups="notdefault,external,fsl,toradex,boundary,fsl-imx8,toradex-imx8"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
            revision="da422478d38e744283bcf61123c4a526396c7030"
            path="sources/meta-freescale-3rdparty"
-           groups="notdefault,external,fsl,toradex,smx6,boundary,fsl-imx8,toradex-imx8"/>
+           groups="notdefault,external,fsl,toradex,boundary,fsl-imx8,toradex-imx8"/>
   <project name="meta-raspberrypi"
            remote="yocto"
            revision="c2f2eaf4451691c24f17fd28b11d228e07e911dd"
@@ -82,10 +82,4 @@
            revision="55754a3cc79759f18fa1df88ae2ffa91fbd87d84"
            path="sources/meta-fsl-bsp-release-toradex"
            groups="notdefault,external,toradex-imx8"/>
-
-  <project name="meta-smx6"
-           remote="playground"
-           revision="ba2b99a9a5895033f081ffce25b0fd45e847c4c2"
-           path="sources/meta-smx6"
-           groups="notdefault,internal"/>
 </manifest>

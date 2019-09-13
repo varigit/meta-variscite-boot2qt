@@ -163,9 +163,6 @@ get_groups() {
       imx6qdlsabresd|imx7dsabresd|imx7s-warp)
         PROJECT_GROUPS="fsl"
         ;;
-      smarc-samx6i)
-        PROJECT_GROUPS="smx6"
-        ;;
       raspberrypi*)
         PROJECT_GROUPS="rpi"
         ;;
