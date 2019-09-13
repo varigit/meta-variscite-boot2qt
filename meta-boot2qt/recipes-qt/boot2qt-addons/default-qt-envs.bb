@@ -39,6 +39,10 @@ do_configure() {
         echo "QT_QPA_PLATFORM=linuxfb" >>  ${WORKDIR}/defaults
         echo "QSG_RENDER_LOOP=basic" >>  ${WORKDIR}/defaults
     fi
+
+    if ${@bb.utils.contains("DISTRO_FEATURES", "opengl", "true", "false", d)}; then
+        echo "QT_GSTREAMER_USE_OPENGL_PLUGIN=1" >> ${WORKDIR}/defaults
+    fi
 }
 
 do_install_append() {
