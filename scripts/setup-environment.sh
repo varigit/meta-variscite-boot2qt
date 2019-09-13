@@ -87,9 +87,6 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
       intel-corei7-64)
         LAYERSCONF="bblayers.conf.intel.sample"
         ;;
-      tegra-x1|tegra-t18x)
-        LAYERSCONF="bblayers.conf.nvidia-tegra.sample"
-        ;;
       jetson-tx1|jetson-tx2|jetson-tk1)
         LAYERSCONF="bblayers.conf.jetson.sample"
         ;;

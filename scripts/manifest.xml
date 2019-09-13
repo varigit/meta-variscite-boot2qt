@@ -83,16 +83,6 @@
            path="sources/meta-fsl-bsp-release-toradex"
            groups="notdefault,toradex-imx8"/>
 
-  <project name="nvidia-layer"
-           remote="playground"
-           revision="af6f41cb527f35263cf7bfde222d92600f5e66e2"
-           path="sources/nvidia-layer"
-           groups="notdefault,internal"/>
-  <project name="drive-t186"
-           remote="playground"
-           revision="a3dc22511ed845b7fe85a7b26c64b1c37a4763c4"
-           path="sources/drive-t186"
-           groups="notdefault,internal"/>
   <project name="meta-smx6"
            remote="playground"
            revision="ba2b99a9a5895033f081ffce25b0fd45e847c4c2"
