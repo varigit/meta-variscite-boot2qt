@@ -69,7 +69,7 @@ PREFERRED_PROVIDER_virtual/libgbm = "libgbm"
 BBMASK += "mesa-gl"
 
 # internal copy of R-Car_Series_Evaluation_Software_Packages used for CI
-FILESEXTRAPATHS_append = "${BSPDIR}/sources/renesas-rcar-gen3/${PN}:"
+FILESEXTRAPATHS_append = "${BSPDIR}/sources/renesas-rcar3/${PN}:"
 
 BBMASK += "\
     meta-linaro/meta-optee/recipes-security/optee \

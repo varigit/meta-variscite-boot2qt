@@ -110,10 +110,10 @@
            revision="a3dc22511ed845b7fe85a7b26c64b1c37a4763c4"
            path="sources/drive-t186"
            groups="notdefault,internal"/>
-  <project name="renesas-rcar-gen3"
+  <project name="renesas-rcar3"
            remote="playground"
-           revision="53a345942e4207b2fa1b19d932b5b72bd5c4761c"
-           path="sources/renesas-rcar-gen3"
+           revision="608be66578521f2d8ec7b226205b57b3b989f655"
+           path="sources/renesas-rcar3"
            groups="notdefault,internal"/>
   <project name="meta-smx6"
            remote="playground"
