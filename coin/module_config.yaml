@@ -58,6 +58,12 @@ build_instructions:
   - type: ChangeDirectory
     directory: "{{.BuildDir}}"
   - type: ExecuteCommand
+    command: ["sudo", "ln", "-sf", "gcc-7", "/usr/bin/gcc"]
+    userMessageOnFailure: "Could not create link for gcc-7"
+  - type: ExecuteCommand
+    command: ["sudo", "ln", "-sf", "g++-7", "/usr/bin/g++"]
+    userMessageOnFailure: "Could not create link for g++-7"
+  - type: ExecuteCommand
     command: ["sudo", "mkdir", "-p", "/mnt/yocto-cache"]
     userMessageOnFailure: "Could not create '/mnt/yocto-cache' directory"
   - type: ExecuteCommand
