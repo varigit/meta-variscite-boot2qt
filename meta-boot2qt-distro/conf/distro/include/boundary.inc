@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -32,6 +32,7 @@ include conf/distro/include/fsl.inc
 BBMASK += " \
     meta-boundary/recipes-core/init-ifupdown \
     meta-boundary/recipes-boundary/images \
+    meta-boundary/recipes-graphics/xorg-xserver \
     "
 
 MACHINE_EXTRA_INSTALL += "\
