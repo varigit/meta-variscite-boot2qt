@@ -39,6 +39,4 @@ require recipes-qt/qt5/qt5-git.inc
 
 DEPENDS = "qtbase qtdeclarative"
 
-QT_MODULE_BRANCH = "dev"
-
 SRCREV = "6e6d4927f4620e58bd6acf71a0c6f54513f47c5f"
