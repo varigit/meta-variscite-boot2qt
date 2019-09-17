@@ -63,7 +63,7 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
     LAYERSCONF=${BSPLAYER}/conf/bblayers.conf.sample
   else
     case ${MACHINE} in
-      imx8qmmek|imx8mqevk)
+      imx8*)
         LAYERSCONF="bblayers.conf.fsl-imx8.sample"
         ;;
       apalis-imx8|colibri-imx8qxp)
