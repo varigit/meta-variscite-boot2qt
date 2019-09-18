@@ -49,7 +49,7 @@ SRC_URI += " \
 SRC_URI_append_mx6 = " file://0001_hardware_variant_low.patch"
 SRC_URI_append_rpi = " file://0001_hardware_variant_low.patch"
 
-SRCREV = "cbbfd19ba50ac65d33b72f3d47dfaa1aca74cccd"
+SRCREV = "b79b8dde706537b3c03597cee7843fabda57f96c"
 
 QMAKE_PROFILES = "${S}/neptune3-ui.pro"
 
