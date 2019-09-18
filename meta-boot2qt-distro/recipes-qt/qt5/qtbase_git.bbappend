@@ -46,6 +46,8 @@ PACKAGECONFIG += " \
     xkbcommon \
     "
 
+PACKAGECONFIG_append_mx8 = "gbm kms"
+
 PACKAGECONFIG_remove = "tests"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
