@@ -30,29 +30,31 @@
 include conf/distro/include/fsl.inc
 
 # include file from meta-toradex-nxp
-require conf/machine/include/${MACHINE}.inc
+include conf/machine/include/${MACHINE}.inc
 
 BBMASK += "\
-   meta-toradex-nxp/recipes-graphics/wayland \
-   meta-toradex-nxp/recipes-graphics/xorg-xserver \
-   meta-toradex-nxp/recipes-multimedia/gstreamer \
-   meta-toradex-nxp/recipes-multimedia/imx-codec \
-   meta-toradex-bsp-common/recipes-devtools/python \
-   meta-toradex-bsp-common/recipes-devtools/e2fsprogs \
-   meta-toradex-bsp-common/recipes-core/systemd \
-   "
+    meta-toradex-nxp/recipes-graphics/xorg-xserver \
+    meta-toradex-bsp-common/recipes-core/systemd \
+"
 
-PREFERRED_PROVIDER_u-boot = "u-boot-toradex"
+BBMASK_append_mx6 = "\
+    meta-toradex-nxp/recipes-graphics/wayland/weston_4.0.0.imx.bbappend \
+"
 
-WKS_FILE_DEPENDS += "u-boot-script-toradex"
+PREFERRED_VERSION_wayland-protocols_mx6 = "1.16.imx"
+
+WKS_FILE_DEPENDS_append_mx6 = " u-boot-script-toradex"
+WKS_FILE_DEPENDS_append_mx7 = " u-boot-script-toradex"
 
 MACHINEDIR = "${@d.getVar('MACHINE').replace('-','_')}"
-IMAGE_BOOT_FILES += " \
+
+SCRIPTS = "\
     fwd_blk.img;flash_blk.img \
     fwd_eth.img;flash_eth.img \
     fwd_mmc.img;flash_mmc.img \
     ${MACHINE}/*;${MACHINEDIR}/ \
-    "
+"
+IMAGE_BOOT_FILES_append_mx6 += "${SCRIPTS}"
+IMAGE_BOOT_FILES_append_mx7 += "${SCRIPTS}"
 
-# override tezi bbclass
-IMAGE_CLASSES_append = " image_type_tezi_warrior"
+IMAGE_FSTYPES += "teziimg"

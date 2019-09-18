@@ -66,10 +66,7 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
       imx8*)
         LAYERSCONF="bblayers.conf.fsl-imx8.sample"
         ;;
-      apalis-imx8|colibri-imx8qxp)
-        LAYERSCONF="bblayers.conf.toradex-imx8.sample"
-        ;;
-      apalis-imx6|colibri-imx6|colibri-imx6ull|colibri-vf|colibri-imx7|colibri-imx7-emmc)
+      apalis-*|colibri-*)
         LAYERSCONF="bblayers.conf.toradex.sample"
         ;;
       nitrogen6x|nitrogen7|nitrogen8m|nitrogen8mm)

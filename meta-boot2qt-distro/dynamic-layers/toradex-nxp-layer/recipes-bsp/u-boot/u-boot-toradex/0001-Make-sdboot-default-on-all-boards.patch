@@ -1,71 +1,68 @@
-From 74ffd57e80fd3f4e2d2d0b60e42a3b570aeb9c97 Mon Sep 17 00:00:00 2001
+From 1c9c4c4e663c9649e1103a777a3d43c7972b514e Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@qt.io>
 Date: Mon, 15 May 2017 15:31:36 +0300
 Subject: [PATCH] Make sdboot default on all boards
 
 ... and remove console=tty1 from kernel args
 ---
- include/configs/apalis_imx6.h  | 5 +++--
- include/configs/colibri_imx6.h | 5 +++--
- include/configs/colibri_imx7.h | 2 +-
+ include/configs/apalis_imx6.h  | 3 ++-
+ include/configs/colibri_imx6.h | 3 ++-
+ include/configs/colibri_imx7.h | 3 ++-
  include/configs/colibri_vf.h   | 2 +-
- 4 files changed, 8 insertions(+), 6 deletions(-)
+ 4 files changed, 7 insertions(+), 4 deletions(-)
 
 diff --git a/include/configs/apalis_imx6.h b/include/configs/apalis_imx6.h
-index fa40c629c3..ad0284de8a 100644
+index db37fa7b73..b871e25eb3 100644
 --- a/include/configs/apalis_imx6.h
 +++ b/include/configs/apalis_imx6.h
-@@ -177,8 +177,9 @@
- #ifdef CONFIG_TDX_EASY_INSTALLER
- #define CONFIG_BOOTCOMMAND "run distro_bootcmd"
- #else
--#define CONFIG_BOOTCOMMAND "run emmcboot; echo; echo emmcboot failed; " \
--		"run distro_bootcmd; usb start; " \
-+#define CONFIG_BOOTCOMMAND "run sdboot; echo; echo sdboot failed; " \
-+		"run emmcboot; echo; echo emmcboot failed; " \
-+                "run distro_bootcmd; usb start; " \
- 		"setenv stdout serial,vga; setenv stdin serial,usbkbd"
+@@ -205,7 +205,8 @@
  #endif
- 
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	BOOTENV \
+-	"bootcmd=run emmcboot ; echo ; echo emmcboot failed ; " \
++	"bootcmd=run sdboot ;  echo ; echo sdboot failed ; " \
++		"run emmcboot ; echo ; echo emmcboot failed ; " \
+ 		"setenv fdtfile ${fdt_file}; run distro_bootcmd ; " \
+ 		"usb start ; " \
+ 		"setenv stdout serial,vga ; setenv stdin serial,usbkbd\0" \
 diff --git a/include/configs/colibri_imx6.h b/include/configs/colibri_imx6.h
-index fda171bd9e..df49efc9ef 100644
+index 86f3f0d4fa..f6b4295209 100644
 --- a/include/configs/colibri_imx6.h
 +++ b/include/configs/colibri_imx6.h
-@@ -157,8 +157,9 @@
- #ifdef CONFIG_TDX_EASY_INSTALLER
- #define CONFIG_BOOTCOMMAND "run distro_bootcmd"
- #else
--#define CONFIG_BOOTCOMMAND "run emmcboot; echo; echo emmcboot failed; " \
--		"run distro_bootcmd; usb start; " \
-+#define CONFIG_BOOTCOMMAND "run sdboot; echo; echo sdboot failed; " \
-+                "run emmcboot ; echo ; echo emmcboot failed ; " \
-+                "run distro_bootcmd; usb start; " \
- 		"setenv stdout serial,vga; setenv stdin serial,usbkbd"
- #endif
- 
+@@ -187,7 +187,8 @@
+ #define FDT_FILE "imx6dl-colibri-eval-v3.dtb"
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	BOOTENV \
+-	"bootcmd=run emmcboot ; echo ; echo emmcboot failed ; " \
++	"bootcmd=run sdboot ;  echo ; echo sdboot failed ; " \
++		"run emmcboot ; echo ; echo emmcboot failed ; " \
+ 		"setenv fdtfile ${fdt_file}; run distro_bootcmd ; " \
+ 		"usb start ; " \
+ 		"setenv stdout serial,vga ; setenv stdin serial,usbkbd\0" \
 diff --git a/include/configs/colibri_imx7.h b/include/configs/colibri_imx7.h
-index 6c91951878..4200512fea 100644
+index 5408577661..d5918d1e2d 100644
 --- a/include/configs/colibri_imx7.h
 +++ b/include/configs/colibri_imx7.h
-@@ -128,7 +128,7 @@
- #define CONFIG_BOOTCOMMAND "setenv fdtfile ${soc}-colibri-${fdt_board}.dtb && " \
- 	"run bootcmd_mmc0; run ubiboot; run distro_bootcmd"
- #else
--#define CONFIG_BOOTCOMMAND "run ubiboot; " \
-+#define CONFIG_BOOTCOMMAND "run sdboot; run ubiboot; " \
- 	"setenv fdtfile ${soc}-colibri-${fdt_board}.dtb && run distro_bootcmd"
- #endif
+@@ -115,7 +115,8 @@
+ 		"run fdt_fixup && bootz ${kernel_addr_r} - ${fdt_addr_r}\0" \
  
+ #if defined(CONFIG_TARGET_COLIBRI_IMX7_NAND)
+-#define CONFIG_BOOTCOMMAND "run ubiboot ; echo ; echo ubiboot failed ; " \
++#define CONFIG_BOOTCOMMAND "run sdboot ;  echo ; echo sdboot failed ; " \
++	"run ubiboot ; echo ; echo ubiboot failed ; " \
+ 	"setenv fdtfile ${soc}-colibri-${fdt_board}.dtb && run distro_bootcmd;"
+ #define MODULE_EXTRA_ENV_SETTINGS \
+ 	"mtdparts=" CONFIG_MTDPARTS_DEFAULT "\0" \
 diff --git a/include/configs/colibri_vf.h b/include/configs/colibri_vf.h
-index 0579bfdc4e..65a5dada5f 100644
+index da9a8426ec..51d29560bf 100644
 --- a/include/configs/colibri_vf.h
 +++ b/include/configs/colibri_vf.h
-@@ -155,7 +155,7 @@
- 		"ubi read ${fdt_addr_r} dtb && " \
- 		"run fdt_fixup && bootz ${kernel_addr_r} - ${fdt_addr_r}\0" \
+@@ -93,7 +93,7 @@
+ 	"ubi read ${fdt_addr_r} dtb && " \
+ 	"run fdt_fixup && bootz ${kernel_addr_r} - ${fdt_addr_r}\0" \
  
 -#define CONFIG_BOOTCOMMAND "run ubiboot; " \
 +#define CONFIG_BOOTCOMMAND "run sdboot; run ubiboot; " \
  	"setenv fdtfile ${soc}-colibri-${fdt_board}.dtb && run distro_bootcmd;"
  
- #define BOOTENV_RUN_NET_USB_START ""
+ #define BOOT_TARGET_DEVICES(func) \

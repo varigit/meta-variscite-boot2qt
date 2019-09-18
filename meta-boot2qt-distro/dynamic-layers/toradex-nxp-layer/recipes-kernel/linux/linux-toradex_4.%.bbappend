@@ -29,9 +29,6 @@
 
 RDEPENDS_${KERNEL_PACKAGE_NAME}-base = "${KERNEL_PACKAGE_NAME}-image ${KERNEL_PACKAGE_NAME}-devicetree"
 
-# remove from imx8 kernel build
-SRC_URI_remove = " file://Install-dma-buf-h.patch"
-
 do_preconfigure_prepend () {
     # FunctionFS for qdbd
     echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig

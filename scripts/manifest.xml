@@ -12,7 +12,6 @@
   <remote fetch="ssh://git@git.qt.io/boot2qt" name="playground"/>
   <remote fetch="git://git.toradex.com" name="toradex"/>
   <remote fetch="git://github.com/boundarydevices" name="boundary"/>
-  <remote fetch="git://github.com/toradex" name="toradex-github"/>
   <remote fetch="git://source.codeaurora.org/external/imx" name="aurora-imx"/>
 
   <project name="poky"
@@ -59,12 +58,12 @@
            groups="notdefault,external,jetson"/>
   <project name="meta-toradex-bsp-common"
            remote="toradex"
-           revision="3fa96f28bb30643cac3b8a49d3abd7c976acb704"
+           revision="d7265604f72ddcc5ca1c443847c1244952700f2d"
            path="sources/meta-toradex-bsp-common"
            groups="notdefault,external,toradex"/>
   <project name="meta-toradex-nxp"
            remote="toradex"
-           revision="cf24e18cc50c2f0cab6b44fd3f03fa39cfca4e9f"
+           revision="ba278cfe4fa79db91727b783f7f900ab72833d36"
            path="sources/meta-toradex-nxp"
            groups="notdefault,external,toradex"/>
   <project name="meta-boundary"
@@ -77,9 +76,4 @@
            revision="cb65aa03c70d0b88cdc2b06eb56ab59ae01f54bf"
            path="sources/meta-fsl-bsp-release"
            groups="notdefault,external,fsl-imx8"/>
-  <project name="meta-fsl-bsp-release"
-           remote="toradex-github"
-           revision="55754a3cc79759f18fa1df88ae2ffa91fbd87d84"
-           path="sources/meta-fsl-bsp-release-toradex"
-           groups="notdefault,external,toradex-imx8"/>
 </manifest>

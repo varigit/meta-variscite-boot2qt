@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,6 +27,9 @@
 ##
 ############################################################################
 
-include conf/distro/include/toradex-imx8.inc
-
-DEPLOY_CONF_NAME = "Toradex Colibri iMX8QXP"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI += " \
+        file://0001-Make-sdboot-default-on-all-boards.patch \
+        file://0002-apalis-imx6-test-for-Capacitive-Touch-Display-7-Para.patch \
+        file://0004-apalis-imx6-lower-default-resolution-on-HDMI-to-720p.patch \
+        "
