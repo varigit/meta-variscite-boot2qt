@@ -151,7 +151,7 @@ get_groups() {
       apalis-*|colibri-*)
         PROJECT_GROUPS="toradex freescale"
         ;;
-      nitrogen6x|nitrogen7|nitrogen8m|nitrogen8mm)
+      nitrogen*)
         PROJECT_GROUPS="boundary freescale"
         ;;
       imx*)
@@ -163,7 +163,7 @@ get_groups() {
       intel-corei7-64)
         PROJECT_GROUPS="intel"
         ;;
-      jetson-tx1|jetson-tx2|jetson-tk1)
+      jetson-*)
         PROJECT_GROUPS="jetson"
         ;;
     esac

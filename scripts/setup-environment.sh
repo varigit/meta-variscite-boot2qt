@@ -66,7 +66,7 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
       apalis-*|colibri-*)
         LAYERSCONF="bblayers.conf.toradex.sample"
         ;;
-      nitrogen6x|nitrogen7|nitrogen8m|nitrogen8mm)
+      nitrogen*)
         LAYERSCONF="bblayers.conf.boundary.sample"
         ;;
       imx*)
@@ -78,7 +78,7 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
       intel-corei7-64)
         LAYERSCONF="bblayers.conf.intel.sample"
         ;;
-      jetson-tx1|jetson-tx2|jetson-tk1)
+      jetson-*)
         LAYERSCONF="bblayers.conf.jetson.sample"
         ;;
       *)
