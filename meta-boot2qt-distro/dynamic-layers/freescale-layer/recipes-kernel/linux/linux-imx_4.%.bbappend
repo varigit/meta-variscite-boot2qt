@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -29,9 +29,6 @@
 
 # kernel image files are not needed in the image
 RDEPENDS_${KERNEL_PACKAGE_NAME}-base = ""
-
-# remove from imx8 kernel build
-SRC_URI_remove = " file://Install-dma-buf-h.patch"
 
 do_preconfigure_prepend() {
     # FunctionFS for qdbd

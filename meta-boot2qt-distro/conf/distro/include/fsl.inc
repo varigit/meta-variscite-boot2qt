@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,12 +27,22 @@
 ##
 ############################################################################
 
-BBMASK += "meta-freescale/dynamic-layers/qt5-layer/recipes-qt/qt5"
+BBMASK += "\
+    meta-freescale/dynamic-layers/qt5-layer/recipes-qt/qt5 \
+    meta-freescale/dynamic-layers/openembedded-layer/recipes-support/opencv/opencv_4.%.bbappend \
+    meta-freescale/recipes-multimedia/gstreamer/gstreamer1.0-plugins-base_1.16.%.bbappend \
+"
 
 IMAGE_FSTYPES += "ext3 wic"
-IMAGE_CLASSES += "image_types_fsl"
 
 QBSP_IMAGE_CONTENT ?= "\
     ${IMAGE_LINK_NAME}.img \
     ${IMAGE_LINK_NAME}.conf \
     "
+
+# Use gstreamer 1.14 from meta-freescale
+PREFERRED_VERSION_gstreamer1.0 ?= "1.14.imx"
+PREFERRED_VERSION_gstreamer1.0-plugins-base ?= "1.14.imx"
+PREFERRED_VERSION_gstreamer1.0-plugins-good ?= "1.14.imx"
+PREFERRED_VERSION_gstreamer1.0-plugins-bad ?= "1.14.imx"
+PREFERRED_VERSION_gstreamer1.0-libav ?= "1.14.0"

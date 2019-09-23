@@ -41,7 +41,7 @@ BBMASK_append_mx6 = "\
     meta-toradex-nxp/recipes-graphics/wayland/weston_4.0.0.imx.bbappend \
 "
 
-PREFERRED_VERSION_wayland-protocols_mx6 = "1.16.imx"
+PREFERRED_VERSION_wayland-protocols_mx8 = "1.17.imx"
 
 WKS_FILE_DEPENDS_append_mx6 = " u-boot-script-toradex"
 WKS_FILE_DEPENDS_append_mx7 = " u-boot-script-toradex"

@@ -63,16 +63,13 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
     LAYERSCONF=${BSPLAYER}/conf/bblayers.conf.sample
   else
     case ${MACHINE} in
-      imx8*)
-        LAYERSCONF="bblayers.conf.fsl-imx8.sample"
-        ;;
       apalis-*|colibri-*)
         LAYERSCONF="bblayers.conf.toradex.sample"
         ;;
       nitrogen6x|nitrogen7|nitrogen8m|nitrogen8mm)
         LAYERSCONF="bblayers.conf.boundary.sample"
         ;;
-      imx6qdlsabresd|imx7dsabresd|imx7s-warp)
+      imx*)
         LAYERSCONF="bblayers.conf.fsl.sample"
         ;;
       raspberrypi*)

@@ -12,7 +12,6 @@
   <remote fetch="ssh://git@git.qt.io/boot2qt" name="playground"/>
   <remote fetch="git://git.toradex.com" name="toradex"/>
   <remote fetch="git://github.com/boundarydevices" name="boundary"/>
-  <remote fetch="git://source.codeaurora.org/external/imx" name="aurora-imx"/>
 
   <project name="poky"
            remote="yocto"
@@ -33,14 +32,14 @@
 
   <project name="meta-freescale"
            remote="freescale"
-           revision="deb8750093fa8c44df0871131c82284fa4edc22f"
+           revision="b61675eccc5ac3cf73f9e24bc651a08ab37110de"
            path="sources/meta-freescale"
-           groups="notdefault,external,fsl,toradex,boundary,fsl-imx8,toradex-imx8"/>
+           groups="notdefault,external,freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
            revision="da422478d38e744283bcf61123c4a526396c7030"
            path="sources/meta-freescale-3rdparty"
-           groups="notdefault,external,fsl,toradex,boundary,fsl-imx8,toradex-imx8"/>
+           groups="notdefault,external,freescale"/>
   <project name="meta-raspberrypi"
            remote="yocto"
            revision="c2f2eaf4451691c24f17fd28b11d228e07e911dd"
@@ -71,9 +70,4 @@
            revision="d1a51cff1d295f60aa84be99adafb6fbab26e6d6"
            path="sources/meta-boundary"
            groups="notdefault,external,boundary"/>
-  <project name="meta-fsl-bsp-release"
-           remote="aurora-imx"
-           revision="cb65aa03c70d0b88cdc2b06eb56ab59ae01f54bf"
-           path="sources/meta-fsl-bsp-release"
-           groups="notdefault,external,fsl-imx8"/>
 </manifest>

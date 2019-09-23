@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,5 +27,10 @@
 ##
 ############################################################################
 
-# dependency missing in meta-fsl-bsp-release
-RDEPENDS_${PN} += "libdrm"
+# patch is still available in meta-freescale
+SRC_URI += " \
+    file://0002-opencv-Fix-build-with-opencv-3.4.5.patch \
+"
+
+# depend on vulkan instead of vulkan-loader
+PACKAGECONFIG[vulkan]          = "--enable-vulkan,--disable-vulkan,vulkan"
