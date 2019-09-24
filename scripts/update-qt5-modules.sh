@@ -1,7 +1,7 @@
 #!/bin/bash
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -43,7 +43,13 @@ for S in $SHA1S; do
     SHA1=${S:0:40}
     PROJECT=${S:40}
 
-    if [ "${PROJECT}" = "qtwebengine" ]; then
+    if [ "${PROJECT}" = "qtquick3d" ]; then
+        RECIPE="qtquick3d"
+        TAG="SRCREV_qtquick3d"
+    elif [ "${PROJECT}" = "qtquick3d/src/3rdparty/assimp/src" ]; then
+        RECIPE="qtquick3d"
+        TAG="SRCREV_assimp"
+    elif [ "${PROJECT}" = "qtwebengine" ]; then
         RECIPE="qtwebengine"
         TAG="SRCREV_qtwebengine"
     elif [ "${PROJECT}" = "qtwebengine/src/3rdparty" ]; then
