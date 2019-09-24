@@ -27,6 +27,12 @@
 ##
 ############################################################################
 
-PACKAGECONFIG += "kms"
+PACKAGECONFIG_append_mx8 = " gbm kms"
 
-QT_QPA_EGLFS_INTEGRATION ?= "eglfs_kms_egldevice"
+QT_QPA_DEFAULT_PLATFORM ?= "eglfs"
+QT_QPA_DEFAULT_PLATFORM_mx6ull ?= "linuxfb"
+QT_QPA_DEFAULT_PLATFORM_mx7 ?= "linuxfb"
+
+QT_QPA_EGLFS_INTEGRATION_mx ?= "eglfs_viv"
+QT_QPA_EGLFS_INTEGRATION_mx6ull ?= ""
+QT_QPA_EGLFS_INTEGRATION_mx7 ?= ""

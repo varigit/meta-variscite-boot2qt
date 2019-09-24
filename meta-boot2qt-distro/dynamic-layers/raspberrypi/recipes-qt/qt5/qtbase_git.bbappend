@@ -27,6 +27,4 @@
 ##
 ############################################################################
 
-PACKAGECONFIG += "kms"
-
-QT_QPA_EGLFS_INTEGRATION ?= "eglfs_kms_egldevice"
+QT_QPA_EGLFS_INTEGRATION ?= "eglfs_brcm"

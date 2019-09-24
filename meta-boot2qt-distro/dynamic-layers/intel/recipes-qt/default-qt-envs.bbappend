@@ -27,8 +27,6 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
 SRC_URI += "file://kms.conf"
 
 do_configure_append() {

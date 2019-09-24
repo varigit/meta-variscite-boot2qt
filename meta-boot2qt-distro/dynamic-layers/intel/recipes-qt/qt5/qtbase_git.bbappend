@@ -28,3 +28,5 @@
 ############################################################################
 
 PACKAGECONFIG += "gbm kms"
+
+QT_QPA_EGLFS_INTEGRATION ?= "eglfs_kms"

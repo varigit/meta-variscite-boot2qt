@@ -46,17 +46,22 @@ PACKAGECONFIG += " \
     xkbcommon \
     "
 
-PACKAGECONFIG_append_mx8 = "gbm kms"
-
 PACKAGECONFIG_remove = "tests"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
-    file://oe-device-extra.pri \
     file://0001-Add-win32-g-oe-mkspec-that-uses-the-OE_-environment.patch \
     file://0002-Disable-ltcg-for-windows-and-static-libs.patch \
     "
+
+QT_QPA_DEFAULT_PLATFORM ??= "eglfs"
+QT_QPA_EGLFS_INTEGRATION ??= ""
+
 do_configure_prepend() {
-    install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
+    echo "QMAKE_PLATFORM          += boot2qt" >> ${S}/mkspecs/oe-device-extra.pri
+    echo "QT_QPA_DEFAULT_PLATFORM  = ${QT_QPA_DEFAULT_PLATFORM}" >> ${S}/mkspecs/oe-device-extra.pri
+    if [ -n "${QT_QPA_EGLFS_INTEGRATION}" ]; then
+        echo "EGLFS_DEVICE_INTEGRATION = ${QT_QPA_EGLFS_INTEGRATION}" >> ${S}/mkspecs/oe-device-extra.pri
+    fi
 }
