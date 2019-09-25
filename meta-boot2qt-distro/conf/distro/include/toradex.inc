@@ -58,3 +58,7 @@ IMAGE_BOOT_FILES_append_mx6 += "${SCRIPTS}"
 IMAGE_BOOT_FILES_append_mx7 += "${SCRIPTS}"
 
 IMAGE_FSTYPES += "teziimg"
+
+QBSP_IMAGE_CONTENT += "\
+    ${IMAGE_LINK_NAME}.tezi.tar \
+"
