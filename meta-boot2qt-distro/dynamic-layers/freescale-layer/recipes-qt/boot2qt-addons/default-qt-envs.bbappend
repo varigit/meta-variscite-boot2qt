@@ -27,6 +27,8 @@
 ##
 ############################################################################
 
+SRC_URI_append_mx8 = " file://kms.conf"
+
 do_configure_append() {
     echo "FB_MULTI_BUFFER=2" >> ${WORKDIR}/defaults
     echo "QT_QPA_EGLFS_FORCEVSYNC=1" >> ${WORKDIR}/defaults
@@ -35,4 +37,9 @@ do_configure_append() {
 
 do_configure_append_mx8() {
     echo "QT_QPA_EGLFS_FORCE888=1" >> ${WORKDIR}/defaults
+    echo "QT_QPA_KMS_CONFIG=/etc/kms.conf" >> ${WORKDIR}/defaults
+}
+
+do_install_append_mx8() {
+    install -m 0644 ${WORKDIR}/kms.conf ${D}${sysconfdir}/
 }
