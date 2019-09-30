@@ -37,6 +37,7 @@ do_configure_append() {
 
 do_configure_append_mx8() {
     echo "QT_QPA_EGLFS_FORCE888=1" >> ${WORKDIR}/defaults
+    echo "QT_QPA_EGLFS_KMS_ATOMIC=1" >> ${WORKDIR}/defaults
     echo "QT_QPA_KMS_CONFIG=/etc/kms.conf" >> ${WORKDIR}/defaults
 }
 
