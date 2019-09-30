@@ -31,6 +31,8 @@ inherit meta nopackages abi-arch siteinfo
 
 FILESEXTRAPATHS_prepend := "${BOOT2QTBASE}/files/qbsp:"
 
+QBSP_README ?= "README"
+
 SRC_URI = "\
     file://base_package.xml \
     file://base_installscript.qs \
@@ -47,6 +49,7 @@ do_qbsp[depends] += "\
     installer-framework-native:do_populate_sysroot \
     ${QBSP_SDK_TASK}:do_populate_sdk \
     ${QBSP_IMAGE_TASK}:do_image_complete \
+    qbsp-readme:do_deploy \
     "
 
 QBSP_VERSION ?= "${PV}${VERSION_AUTO_INCREMENT}"
@@ -128,6 +131,10 @@ prepare_qbsp() {
 
     mkdir -p ${B}/images/${QBSP_INSTALL_PATH}/images
     7za x ${DEPLOY_DIR_IMAGE}/${IMAGE_PACKAGE} -o${B}/images/${QBSP_INSTALL_PATH}/images/
+
+    if [ -n "${QBSP_README}" ]; then
+        cp ${DEPLOY_DIR_IMAGE}/${QBSP_README} ${B}/images/${QBSP_INSTALL_PATH}/images/
+    fi
 
     cd ${B}/images
     7za a ${COMPONENT_PATH}/data/image.7z *
