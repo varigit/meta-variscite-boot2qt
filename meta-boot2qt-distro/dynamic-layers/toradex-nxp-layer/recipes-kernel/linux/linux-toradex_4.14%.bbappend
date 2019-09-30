@@ -29,4 +29,7 @@
 
 FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 
-SRC_URI += "file://0001-Enable-atmel-mxt-multitouch-controller.patch"
+SRC_URI += "\
+    file://0001-Enable-atmel-mxt-multitouch-controller.patch \
+    file://0001-Add-dtb-for-DSI-to-HDMI-Adapter-V1.0.patch \
+"
