@@ -35,11 +35,10 @@ inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
 PACKAGECONFIG ??= ""
-PACKAGECONFIG[wpasupplicant] = "CONFIG+=wpasupplicant,,wpa-supplicant"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
-SRCREV = "51cd8493b5d3d7d4e74d3733df6d8ad12f1866fe"
+SRCREV = "330b6f000ea0e2120a14e43a11dd1d0b68d369a3"
 
 DEPENDS = "\
     qtbase qtdeclarative qtconnectivity qtdeclarative-native \
