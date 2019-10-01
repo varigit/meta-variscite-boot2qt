@@ -7,6 +7,7 @@ Before=ivi-services.target
 User=root
 ExecStart=/usr/bin/ivivehiclefunctions-simulation-server
 Restart=on-failure
+Environment=SERVER_CONF_PATH=/opt/neptune3/server.conf
 
 [Install]
 WantedBy=ivi-services.target
