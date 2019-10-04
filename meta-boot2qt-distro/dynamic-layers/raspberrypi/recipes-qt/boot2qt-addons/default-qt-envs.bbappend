@@ -29,5 +29,5 @@
 
 do_configure_append() {
     echo "QT_QPA_EGLFS_FORCE888=1" >> ${WORKDIR}/defaults
-    echo "QT_GSTREAMER_USE_OPENGL_PLUGIN=1" >> ${WORKDIR}/defaults
+    echo "QT_QPA_EGLFS_KMS_ATOMIC=1" >> ${WORKDIR}/defaults
 }

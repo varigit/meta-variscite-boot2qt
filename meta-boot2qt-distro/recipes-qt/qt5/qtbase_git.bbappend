@@ -46,7 +46,7 @@ PACKAGECONFIG += " \
     xkbcommon \
     "
 
-PACKAGECONFIG_remove = "tests"
+PACKAGECONFIG_remove = "tests examples"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 

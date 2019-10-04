@@ -240,5 +240,3 @@ RPI_KERNEL_DEVICETREE_OVERLAYS = "\
     overlays/w1-gpio-pullup.dtbo \
     overlays/wittypi.dtbo \
     "
-
-BBMASK += "dynamic-layers/qt5-layer/recipes-qt/qt5"
