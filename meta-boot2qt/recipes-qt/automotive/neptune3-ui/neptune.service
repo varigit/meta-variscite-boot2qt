@@ -12,6 +12,7 @@ ExecStart=/opt/neptune3/neptune3-ui -r --dbus session -c am-config-neptune.yaml
 WorkingDirectory=/opt/neptune3
 EnvironmentFile=/etc/default/qt
 Environment=AM_STARTUP_TIMER=1
+Environment=QT_QPA_EGLFS_HIDECURSOR=1
 
 [Install]
 WantedBy=multi-user.target
