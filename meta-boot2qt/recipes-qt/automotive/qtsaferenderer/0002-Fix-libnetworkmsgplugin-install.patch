@@ -1,0 +1,33 @@
+From 6e3acb41295b93127b2b0e3da3068303406d7b13 Mon Sep 17 00:00:00 2001
+From: Teemu Holappa <teemu.holappa@qt.io>
+Date: Tue, 8 Oct 2019 14:43:22 +0300
+Subject: [PATCH] Fix libnetworkmsgplugin install
+
+Task-number: QSR-559
+Change-Id: I27438325bcdaac0bff9156cfdb183898a40210d1
+Reviewed-by: Samuli Piippo <samuli.piippo@qt.io>
+---
+ src/messagesenderplugin/networkmsg/networkmsg.pro | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/messagesenderplugin/networkmsg/networkmsg.pro b/src/messagesenderplugin/networkmsg/networkmsg.pro
+index 6094fb9..1925238 100644
+--- a/src/messagesenderplugin/networkmsg/networkmsg.pro
++++ b/src/messagesenderplugin/networkmsg/networkmsg.pro
+@@ -3,7 +3,9 @@ TARGET = $$qtLibraryTarget(networkmsgplugin)
+ TEMPLATE = lib
+ CONFIG += plugin
+ 
+-DESTDIR=$$[QT_INSTALL_PLUGINS]/$$replace(uri, \\., /)/saferenderer
++PLUGIN_TYPE = saferenderer
++target.path = $$[QT_INSTALL_PLUGINS]/$$PLUGIN_TYPE
++INSTALLS += target
+ 
+ # The following define makes your compiler emit warnings if you use
+ # any feature of Qt which has been marked as deprecated (the exact warnings
+@@ -27,5 +29,3 @@ HEADERS += \
+         $$PWD/../messagesenderinterface_p.h \
+         $$PWD/../../saferenderer/qsafeevent.h
+ DISTFILES += networkmsgplugin.json
+-
+-
