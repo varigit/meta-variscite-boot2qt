@@ -27,6 +27,18 @@
 ##
 ############################################################################
 
-do_configure_append() {
-    echo "QSG_RENDER_LOOP=basic" >> ${WORKDIR}/defaults
+SUMMARY = "Device specific installation instructions for the QBSP"
+LICENSE = "The-Qt-Company-Commercial"
+LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=948f8877345cd66106f11031977a4625"
+
+inherit deploy nopackages
+
+SRC_URI = "file://README"
+QBSP_README ?= "README"
+
+do_deploy() {
+    install -d ${DEPLOYDIR}
+    install -m 0644 ${WORKDIR}/${QBSP_README} ${DEPLOYDIR}
 }
+
+addtask do_deploy after do_compile before do_build

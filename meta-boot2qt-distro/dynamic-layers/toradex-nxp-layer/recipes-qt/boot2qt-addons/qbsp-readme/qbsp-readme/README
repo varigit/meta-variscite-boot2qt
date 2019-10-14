@@ -1,0 +1,66 @@
+To successfully set up the Boot to Qt software stack,
+follow the instructions in https://doc.qt.io/QtForDeviceCreation/qtdc-qbsp-installation-guide.html#.
+
+In 2. Installing Boot to Qt on Target Device, see also the following device specific instructions:
+
+
+2. Installing Boot to Qt on Target Device
+
+To flash the image, you can use either Toradex Easy Installer
+(https://developer.toradex.com/software/toradex-easy-installer#) or Qt's Flashing Wizard.
+With Toradex Easy Installer, the image is flashed to the device's internal eMMC
+flash memory.
+
+
+2.1 Flashing with Toradex Easy Installer:
+
+When Toradex Easy Installer is connected to the Internet, it automatically provides
+the latest Boot to Qt image in its image list but that is not necessarily compatible
+with your Boot to Qt installation. When you flash with Toradex Easy Installer,
+you should always use the *.tezi.tar package that is included into the Boot to Qt
+installation.
+
+Flash the Boot to Qt image with Toradex Easy Installer as follows:
+
+1. If your target device does not have the pre-installed Toradex Easy Installer,
+follow instructions in https://developer.toradex.com/software/toradex-easy-installer#load-toradex-easy-installer#
+to load Toradex Easy Installer.
+2. Your Boot to Qt installation has the *.tezi.tar package under
+<Qt installation directory>/<Qt version>/Boot2Qt/<target>/images. Extract the package
+to an SD card or a USB flash drive.
+3. Flash the image from the SD card or the USB flash drive with Toradex Easy Installer.
+See https://developer.toradex.com/software/toradex-easy-installer#installing-the-images.
+
+
+2.2 Flashing with Qt's Flashing Wizard
+
+Use Flashing Wizard to flash the image to your device:
+
+1. Connect your SD card reader to the development host. Make sure that the SD card size is at least 4 GB.
+2. Launch Qt Creator.
+3. Select Tools > Flash Boot to Qt Device, and follow the instructions in Flashing Wizard.
+
+In order to boot from the external SD card, U-Boot needs to be updated.
+
+
+2.3 Booting from External SD Card
+
+Connect a serial cable to the device and enter into the U-Boot environment by
+pressing any key before the autoboot.
+
+Enter following commands into U-Boot:
+
+run setupdate
+run update
+
+Reset or power cycle the device to start the new U-Boot.
+To reset the U-Boot environment to new default values, enter the following commands in the U-Boot command line:
+
+env default -a
+saveenv
+
+New U-Boot commands are now stored into the device.
+
+For more information about the boot process on the Toradex Colibri devices,
+see https://developer.toradex.com/knowledge-base/linux-booting.
+

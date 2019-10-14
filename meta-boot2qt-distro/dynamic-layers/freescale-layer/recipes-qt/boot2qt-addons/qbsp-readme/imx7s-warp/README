@@ -1,0 +1,21 @@
+To successfully set up the Boot to Qt software stack,
+follow the instructions in https://doc.qt.io/QtForDeviceCreation/qtdc-qbsp-installation-guide.html#.
+
+In 2. Installing Boot to Qt on Target Device, see also the WaRP7 specific instructions:
+
+
+2. Installing Boot to Qt on Target Device
+
+Follow the steps in this documentation to flash your WaRP7 with an image containing
+the Boot to Qt stack:
+
+1.Use the USB cable to access the serial terminal on WaRP7.
+2. Power on your WaRP7 device and press any key to stop the autoboot.
+3. Run the following command in U-Boot:
+
+ ums 0 mmc 0
+
+4. Use Flashing Wizard to flash the image to the device:
+   4.1 Launch Qt Creator.
+   4.2 Select Tools > Flash Boot to Qt Device, and follow the instructions in Flashing Wizard.
+5. Press Ctrl+C in the U-Boot console and run the reset command.

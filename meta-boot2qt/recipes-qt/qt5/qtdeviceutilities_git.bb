@@ -34,12 +34,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
-PACKAGECONFIG ??= ""
-PACKAGECONFIG[wpasupplicant] = "CONFIG+=wpasupplicant,,wpa-supplicant"
-
-EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
-
-SRCREV = "eda53febdee5bbeddd2c59bd4a107fbd92b38356"
+SRCREV = "f9a7453281699078d45ce7a06835898b7e2cf5c5"
 
 DEPENDS = "\
     qtbase qtdeclarative qtconnectivity qtdeclarative-native \
