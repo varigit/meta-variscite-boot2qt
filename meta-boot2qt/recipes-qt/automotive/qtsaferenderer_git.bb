@@ -51,6 +51,7 @@ BRANCH = "1.1"
 SRC_URI = "\
     git://codereview.qt-project.org/tqtc-boot2qt/qtsaferenderer;branch=${BRANCH};protocol=ssh;sdk-uri=Src/QtSafeRenderer-1.1.1 \
     file://0001-Fix-yocto-build-issues.patch \
+    file://0002-Fix-libnetworkmsgplugin-install.patch \
     "
 SRCREV = "e31a035f69bbc7280fc6e01e0c1031ac569b84a7"
 

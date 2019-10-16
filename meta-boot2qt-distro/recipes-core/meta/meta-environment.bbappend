@@ -33,3 +33,8 @@ toolchain_create_sdk_version_append () {
     echo 'Layer Revisions:' >> $versionfile
     echo '${@get_layer_revs(d)}' >> $versionfile
 }
+
+# Fix bad cmd flag
+toolchain_create_sdk_env_script_append_sdkmingw32() {
+    sed -i -e '/@%COMSPEC/s/\\/\//' $script
+}
