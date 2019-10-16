@@ -6,7 +6,31 @@ In 2. Installing Boot to Qt on Target Device, see also the following device spec
 
 2. Installing Boot to Qt on Target Device
 
-Use Flashing Wizard to flash the image to your Toradex board:
+To flash the image, you can use either Toradex Easy Installer
+(https://developer.toradex.com/software/toradex-easy-installer#) or Qt's Flashing Wizard.
+
+
+2.1 Flashing with Toradex Easy Installer:
+
+When Toradex Easy Installer is connected to the Internet, it automatically provides
+the latest Boot to Qt image in its image list but that is not necessarily compatible
+with your Boot to Qt installation. When you flash with Toradex Easy Installer,
+you should always use the *.tezi.tar package that is included into the Boot to Qt
+installation.
+
+Flash the Boot to Qt image with Toradex Easy Installer as follows:
+
+1. If your target device does not have the pre-installed Toradex Easy Installer,
+follow instructions in https://developer.toradex.com/software/toradex-easy-installer#load-toradex-easy-installer#
+to load Toradex Easy Installer.
+2. Your Boot to Qt installation has the *.tezi.tar package under
+<Qt installation directory>/<Qt version>/Boot2Qt/<target>/images. Extract the package
+to an SD card or a USB flash drive.
+3. Flash the image from the SD card or the USB flash drive with Toradex Easy Installer.
+See https://developer.toradex.com/software/toradex-easy-installer#installing-the-images.
+
+
+2.2 Flashing with Qt's Flashing Wizard
 
 1. Use the RS-232 cable to access the serial terminal on Toradex board.
 2. Power on your device and press any key to stop the autoboot.
@@ -18,6 +42,8 @@ ums 0 mmc 0
    4.1 Launch Qt Creator.
    4.2 Select Tools > Flash Boot to Qt Device, and follow the instructions in Flashing Wizard.
 5. Press Ctrl+C in the U-Boot console and run the reset command.
+
+Note: The u-boot is not updated when using the Flashing Wizard.
 
 For more information about flashing the Toradex devices,
 see https://developer.toradex.com/software/linux/linux-software/build-apalis-imx8-yoctoopenembedded-bring-up-image#emmc-boot#.
