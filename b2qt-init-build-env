@@ -34,12 +34,9 @@ usage() {
   echo "Usage: $(basename $0) COMMAND [ARGS]"
   echo
   echo "Initialize build environment:"
-  echo "  $(basename $0) init [--device <name>] "
-  echo "                           [--group <group>] [--bsp <layer name>]"
+  echo "  $(basename $0) init [--bsp <layer name>]"
   echo "                           [--manifest <manifest xml>] [--manifest-dir <dir path>]"
   echo "                           [--reference <mirror path>] [--internal]"
-  echo "    --device <name>: target device name, default is 'all'"
-  echo "    --group <group>: target group of the device when using boot2qt bsp layer, default is 'default'"
   echo "    --bsp <layer name>: name of the boot2qt bsp layer which was used for the repo init"
   echo "    --manifest <manifest xml>: name of the manifest to be used for initialization"
   echo "    --manifest-dir <dir path>: path to a directory containing repo manifest file(s)"
@@ -63,11 +60,7 @@ while test -n "$1"; do
       ;;
     "--device" | "-d")
       shift
-      DEVICE=$1
-      ;;
-    "--group" | "-g")
-      shift
-      PROJECT_GROUPS=$1
+      # ignored
       ;;
     "--repo-url")
       shift
@@ -86,7 +79,7 @@ while test -n "$1"; do
       BSPLAYER=$1
       ;;
     "--internal")
-      INTERNAL="y"
+      PROJECT_GROUPS="all"
       ;;
     *)
       if [ -n "$COMMAND" ]; then
@@ -122,7 +115,7 @@ if [ -z "${REPO_URL}" ]; then
   REPO_URL="--repo-url git://github.com/theqtcompany/git-repo"
 fi
 
-DEVICE=${DEVICE:-all}
+PROJECT_GROUPS=${PROJECT_GROUPS:-default}
 
 if [ -z "${MANIFEST}" ]; then
   if [ -n "${USING_BSP_LAYER}" ]; then
@@ -139,39 +132,6 @@ get_repo() {
   elif [ ! -x "./repo" ]; then
     curl -s https://storage.googleapis.com/git-repo-downloads/repo > "./repo"
     chmod +x ./repo
-  fi
-}
-
-get_groups() {
-  if [ -z "${PROJECT_GROUPS}" ]; then
-    case ${DEVICE} in
-      all)
-        PROJECT_GROUPS="external"
-        ;;
-      apalis-*|colibri-*)
-        PROJECT_GROUPS="toradex freescale"
-        ;;
-      nitrogen*)
-        PROJECT_GROUPS="boundary freescale"
-        ;;
-      imx*)
-        PROJECT_GROUPS="freescale"
-        ;;
-      raspberrypi*)
-        PROJECT_GROUPS="rpi"
-        ;;
-      intel-corei7-64)
-        PROJECT_GROUPS="intel"
-        ;;
-      jetson-*)
-        PROJECT_GROUPS="jetson"
-        ;;
-    esac
-  fi
-
-  PROJECT_GROUPS="${PROJECT_GROUPS} default"
-  if [ "${INTERNAL}" = "y" ]; then
-    PROJECT_GROUPS="${PROJECT_GROUPS} internal"
   fi
 }
 
@@ -200,14 +160,12 @@ mirror() {
     exit 1
   fi
 
-  get_groups
   copy_manifests
   ${REPO} init ${REPO_URL} -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g "${PROJECT_GROUPS}" --mirror
   ${REPO} sync
 }
 
 init() {
-  get_groups
   copy_manifests
 
   if [ -n "${USING_BSP_LAYER}" ]; then
