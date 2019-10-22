@@ -31,12 +31,8 @@
 while test -n "$1"; do
   case "$1" in
     "--help" | "-h")
-      echo "Usage: . $0 [--bsp <layer name>] [build directory]"
+      echo "Usage: . $0 [build directory]"
       return 0
-      ;;
-    "--bsp")
-      shift
-      BSPLAYER=sources/$1
       ;;
     *)
       BUILDDIRECTORY=$1
@@ -59,40 +55,39 @@ fi
 BUILDDIRECTORY=${BUILDDIRECTORY:-build-${MACHINE}}
 
 if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
-  if [ -e "${BSPLAYER}/conf/bblayers.conf.sample" ]; then
-    LAYERSCONF=${BSPLAYER}/conf/bblayers.conf.sample
-  else
-    case ${MACHINE} in
-      apalis-*|colibri-*)
-        LAYERSCONF="bblayers.conf.toradex.sample"
-        ;;
-      nitrogen*)
-        LAYERSCONF="bblayers.conf.boundary.sample"
-        ;;
-      imx*)
-        LAYERSCONF="bblayers.conf.fsl.sample"
-        ;;
-      raspberrypi*)
-        LAYERSCONF="bblayers.conf.rpi.sample"
-        ;;
-      intel-corei7-64)
-        LAYERSCONF="bblayers.conf.intel.sample"
-        ;;
-      jetson-*)
-        LAYERSCONF="bblayers.conf.jetson.sample"
-        ;;
-      *)
-        LAYERSCONF="bblayers.conf.sample"
-        echo "Unknown MACHINE, bblayers.conf might need manual editing"
-        ;;
-    esac
-    LAYERSCONF=${PWD}/sources/meta-boot2qt/meta-boot2qt-distro/conf/${LAYERSCONF}
+  case ${MACHINE} in
+    apalis-*|colibri-*)
+      LAYERSCONF="bblayers.conf.toradex.sample"
+      ;;
+    nitrogen*)
+      LAYERSCONF="bblayers.conf.boundary.sample"
+      ;;
+    imx*)
+      LAYERSCONF="bblayers.conf.fsl.sample"
+      ;;
+    raspberrypi*)
+      LAYERSCONF="bblayers.conf.rpi.sample"
+      ;;
+    intel-corei7-64)
+      LAYERSCONF="bblayers.conf.intel.sample"
+      ;;
+    jetson-*)
+      LAYERSCONF="bblayers.conf.jetson.sample"
+      ;;
+    *)
+      LAYERSCONF="bblayers.conf.sample"
+      ;;
+  esac
+  LAYERSCONF=${PWD}/sources/templates/${LAYERSCONF}
+  if [ ! -e ${LAYERSCONF} ]; then
+    echo "Error: Could not find layer conf '${LAYERSCONF}'"
+    return 1
   fi
 
   mkdir -p ${PWD}/${BUILDDIRECTORY}/conf
   cp ${LAYERSCONF} ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf
-  if [ -e "${BSPLAYER}/conf/local.conf.sample" ]; then
-    cp ${BSPLAYER}/conf/local.conf.sample  ${PWD}/${BUILDDIRECTORY}/conf/local.conf
+  if [ ! -e "${PWD}/sources/templates/local.conf.sample" ]; then
+    cp ${PWD}/sources/meta-boot2qt/meta-boot2qt-distro/conf/local.conf.sample  ${PWD}/${BUILDDIRECTORY}/conf/local.conf
   fi
 
   if [ -e ${PWD}/sources/meta-boot2qt/.QT-FOR-DEVICE-CREATION-LICENSE-AGREEMENT ]; then
@@ -100,7 +95,7 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
   fi
 fi
 
-export TEMPLATECONF="${PWD}/sources/meta-boot2qt/meta-boot2qt-distro/conf"
+export TEMPLATECONF="${PWD}/sources/templates"
 . sources/poky/oe-init-build-env ${BUILDDIRECTORY}
 
 # use sources from Qt SDK if that is available
@@ -110,4 +105,3 @@ unset BUILDDIRECTORY
 unset QT_SDK_PATH
 unset TEMPLATECONF
 unset LAYERSCONF
-unset BSPLAYER
