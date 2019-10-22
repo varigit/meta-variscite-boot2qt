@@ -1,0 +1,17 @@
+
+### Shell environment set up for builds. ###
+
+You can now run 'bitbake <target>'
+
+Common targets are:
+    b2qt-embedded-qt5-image
+    meta-toolchain-b2qt-embedded-qt5-sdk
+
+QBSP target is:
+    meta-b2qt-embedded-qbsp
+
+For creating toolchain or QBSP for Windows, set environment variable before running bitbake:
+    SDKMACHINE=i686-mingw32
+
+For more information about Boot to Qt, see https://doc.qt.io/QtForDeviceCreation/
+
