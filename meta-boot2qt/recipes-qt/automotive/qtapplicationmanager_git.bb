@@ -39,8 +39,7 @@ SRCREV = "f73ca6c1fa06d83fb44c7f56189c659b29db0ea0"
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \
            ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "qtwayland qtwayland-native", "", d)}"
 
-RDEPENDS_${PN} = "libcrypto ${PN}-tools"
-RDEPENDS_${PN}_remove_mingw32 = "libcrypto"
+RDEPENDS_${PN}_class-target = "libcrypto ${PN}-tools"
 
 EXTRA_QMAKEVARS_PRE += "\
     ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "-config force-multi-process", "-config force-single-process", d)} \
@@ -58,7 +57,7 @@ FILES_${PN} += "\
     /opt/am \
     "
 
-BBCLASSEXTEND += "nativesdk"
+BBCLASSEXTEND += "nativesdk native"
 
 # nativesdk-qtdeclarative is added only to make build deterministic, can be removed once
 # there is a configure option to disable its usage.
@@ -66,5 +65,8 @@ DEPENDS_class-nativesdk = "qtbase nativesdk-qtdeclarative nativesdk-glibc-locale
 DEPENDS_class-nativesdk_remove_mingw32 = "nativesdk-glibc-locale nativesdk-libarchive"
 
 EXTRA_QMAKEVARS_PRE_class-nativesdk = "\
+    -config tools-only \
+    "
+EXTRA_QMAKEVARS_PRE_class-native = "\
     -config tools-only \
     "
