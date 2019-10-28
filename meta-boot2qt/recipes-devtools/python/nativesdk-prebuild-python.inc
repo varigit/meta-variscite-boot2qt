@@ -39,15 +39,64 @@ PV = "3.5.2"
 
 S = "${WORKDIR}"
 
+PROVIDES += " \
+    python3 \
+    python3-watchdog \
+    python3-path.py \
+    antlr4-python3-runtime \
+    python3-jinja2 \
+    python3-markupsafe \
+    qface \
+    "
+
+RPROVIDES_${PN} += " \
+    python3-pkgutil \
+    python3-xml \
+    python3-crypt \
+    python3-compile \
+    python3-netserver \
+    python3-compression \
+    python3-numbers \
+    python3-unittest \
+    python3-netclient \
+    python3-math \
+    python3-ctypes \
+    python3-html \
+    python3-json \
+    python3-datetime \
+    python3-distutils \
+    python3-shell \
+    python3-stringold \
+    python3-email \
+    python3-threading \
+    python3-pprint \
+    python3-plistlib \
+    python3-io \
+    python3-pickle \
+    \
+    qface \
+    python3-jinja2 \
+    python3-watchdog \
+    python3-path.py \
+    python3-markupsafe \
+    antlr4-python3-runtime \
+    "
+
 do_install() {
     install -d ${D}${includedir}/${PYTHON_DIR}
     install -m 0644 ${S}/include/* ${D}${includedir}/${PYTHON_DIR}
 
-    install -d ${D}${libdir}
-    install -m 0644 ${S}/libs/*.a ${D}${libdir}
-
     install -d ${D}${bindir}
+    install -d ${D}${libdir}
+    install -d ${D}${libdir}/${PYTHON_DIR}
+    install -m 0644 ${S}/libs/*.a ${D}${libdir}
+    cp -r --no-preserve=ownership ${S}/Lib/* ${D}/${libdir}/${PYTHON_DIR}/
+    cp -r --no-preserve=ownership ${S}/Lib/site-packages/* ${D}/${bindir}/
+
+    install -m 0644 ${S}/*.pyd ${D}/${bindir}/
     install -m 0644 ${S}/python.exe ${D}${bindir}
+    install -m 0644 ${S}/python.exe ${D}${bindir}/python3.exe
     install -m 0644 ${S}/python35.dll ${D}${bindir}
     install -m 0644 ${S}/python35.zip ${D}${bindir}
+    install -m 0644 ${S}/Scripts/* ${D}${bindir}
 }

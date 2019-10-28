@@ -69,7 +69,6 @@ PACKAGECONFIG[remoteobjects-native] = "QMAKE_EXTRA_ARGS+=-feature-remoteobjects 
 
 PACKAGECONFIG_class-native ??= "host-tools-only ivigenerator-native remoteobjects-native"
 PACKAGECONFIG_class-nativesdk ??= "${PACKAGECONFIG_class-native}"
-PACKAGECONFIG_class-nativesdk_mingw32 ??= "host-tools-only"
 
 ALLOW_EMPTY_${PN}-tools = "1"
 
