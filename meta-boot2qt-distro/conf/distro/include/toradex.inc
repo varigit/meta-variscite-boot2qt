@@ -34,7 +34,6 @@ include conf/machine/include/${MACHINE}.inc
 
 BBMASK += "\
     meta-toradex-nxp/recipes-graphics/xorg-xserver \
-    meta-toradex-bsp-common/recipes-core/systemd \
 "
 
 BBMASK_append_mx6 = "\
