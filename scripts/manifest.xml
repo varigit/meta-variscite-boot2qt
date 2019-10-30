@@ -3,18 +3,18 @@
   <remote fetch="git://git.yoctoproject.org" name="yocto"/>
   <project name="poky"
            remote="yocto"
-           revision="38d5c8ea98cfa49825c473eba8984c12edf062be"
+           revision="94f6b31befda5c496f65e863a6f8152b42d7ebf0"
            path="sources/poky"/>
   <project name="meta-mingw"
            remote="yocto"
-           revision="10695afe8cd406844e0d0dd868c11677e07557d4"
+           revision="756963cc28ebc163df7d7f4b4ee004c18d3d3260"
            path="sources/meta-mingw"/>
 
   <remote fetch="git://git.openembedded.org" name="oe"/>
   <remote fetch="git://github.com/openembedded" name="oe-mirror"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
-           revision="8d5dcd6522e9d15e68637b6d7dda0401f9bb91d0"
+           revision="1bfaa2e63a184e21a2db5c286444828d5948a8b4"
            path="sources/meta-openembedded"/>
 
   <!-- Qt -->
@@ -31,42 +31,42 @@
   <remote fetch="git://github.com/Freescale" name="freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="b61675eccc5ac3cf73f9e24bc651a08ab37110de"
+           revision="218e7c48e6d7b95f61a9991c0d3c3bf4b38a34c4"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="da422478d38e744283bcf61123c4a526396c7030"
+           revision="aea3771baa77e74762358ceb673d407e36637e5f"
            path="sources/meta-freescale-3rdparty"/>
 
   <!-- Raspberry Pi -->
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="c2f2eaf4451691c24f17fd28b11d228e07e911dd"
+           revision="cee2557dc872ddaf721e6badb981c7772503f8ea"
            path="sources/meta-raspberrypi"/>
 
   <!-- Intel -->
   <remote fetch="git://git.yoctoproject.org" name="intel"/>
   <project name="meta-intel"
            remote="intel"
-           revision="e84c763090f91196a5d234f62ee39bcf296c7f2e"
+           revision="eacd8eb9f762c90cec2825736e8c4d483966c4d4"
            path="sources/meta-intel"/>
 
   <!-- NVIDIA -->
   <remote fetch="git://github.com/madisongh" name="madisongh"/>
   <project name="meta-tegra"
            remote="madisongh"
-           revision="40d61e3c7aa4cfe993685bb4011e16617edc24fa"
+           revision="ef2fb97203639b40d48ee2f6f70cfab7fbb56810"
            path="sources/meta-tegra"/>
 
   <!-- Toradex -->
   <remote fetch="git://git.toradex.com" name="toradex"/>
   <project name="meta-toradex-bsp-common"
            remote="toradex"
-           revision="d7265604f72ddcc5ca1c443847c1244952700f2d"
+           revision="5af9cec247f0cb570b00245dd87f56fe84bc5cf5"
            path="sources/meta-toradex-bsp-common"/>
   <project name="meta-toradex-nxp"
            remote="toradex"
-           revision="ba278cfe4fa79db91727b783f7f900ab72833d36"
+           revision="13b800c3eebf96640bdd7e6fc781ba71ebf68f3d"
            path="sources/meta-toradex-nxp"/>
 
   <!-- BoundaryDevices -->
