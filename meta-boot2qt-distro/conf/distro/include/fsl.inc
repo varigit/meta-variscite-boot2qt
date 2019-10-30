@@ -29,8 +29,6 @@
 
 BBMASK += "\
     meta-freescale/dynamic-layers/qt5-layer/recipes-qt/qt5 \
-    meta-freescale/dynamic-layers/openembedded-layer/recipes-support/opencv/opencv_4.%.bbappend \
-    meta-freescale/recipes-multimedia/gstreamer/gstreamer1.0-plugins-base_1.16.%.bbappend \
 "
 
 IMAGE_FSTYPES += "ext3 wic"
@@ -45,4 +43,5 @@ PREFERRED_VERSION_gstreamer1.0 ?= "1.14.imx"
 PREFERRED_VERSION_gstreamer1.0-plugins-base ?= "1.14.imx"
 PREFERRED_VERSION_gstreamer1.0-plugins-good ?= "1.14.imx"
 PREFERRED_VERSION_gstreamer1.0-plugins-bad ?= "1.14.imx"
+PREFERRED_VERSION_gstreamer1.0-plugins-ugly ?= "1.14.4"
 PREFERRED_VERSION_gstreamer1.0-libav ?= "1.14.0"
