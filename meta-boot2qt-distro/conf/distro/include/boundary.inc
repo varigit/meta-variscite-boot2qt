@@ -34,6 +34,7 @@ BBMASK += " \
     meta-boundary/recipes-boundary/images \
     meta-boundary/recipes-graphics/wayland \
     meta-boundary/recipes-graphics/xorg-xserver \
+    meta-boundary/recipes-kernel/linux-firmware/linux-firmware_git.bbappend \
     "
 
 MACHINE_EXTRA_INSTALL += "\
