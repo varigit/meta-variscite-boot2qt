@@ -48,15 +48,10 @@ replace_sysroot_symlink() {
 
 do_populate_sdk[depends] += "p7zip-native:do_populate_sysroot"
 
-fakeroot tar_sdk_sdkmingw32() {
+fakeroot archive_sdk_sdkmingw32() {
         replace_sysroot_symlink ${SDK_OUTPUT}${SDKTARGETSYSROOT} ${SDK_OUTPUT}${SDKTARGETSYSROOT}
         replace_sysroot_symlink ${SDK_OUTPUT}${SDKPATHNATIVE} ${SDK_OUTPUT}${SDKPATHNATIVE}
         # Package it up
-        mkdir -p ${SDK_DEPLOY}
         cd ${SDK_OUTPUT}/${SDKPATH}
-        if [ -e ${SDK_DEPLOY}/${TOOLCHAIN_OUTPUTNAME}.7z ]; then
-                rm ${SDK_DEPLOY}/${TOOLCHAIN_OUTPUTNAME}.7z
-        fi
-        7za a ${SDK_DEPLOY}/${TOOLCHAIN_OUTPUTNAME}.7z *
+        7za a ${SDKDEPLOYDIR}/${TOOLCHAIN_OUTPUTNAME}.7z *
 }
-
