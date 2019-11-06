@@ -29,3 +29,5 @@
 
 PERF_SRC_append_imx7s-warp = " lib"
 PERF_SRC_remove_imx7s-warp = "tools/arch"
+
+EXTRA_OEMAKE_append_imx7s-warp = " EXTRA_CFLAGS=-Wno-error=stringop-truncation"
