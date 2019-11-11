@@ -1,0 +1,31 @@
+From 9e9a36ee651502b69717895385387951a2d0802a Mon Sep 17 00:00:00 2001
+From: Volker Krause <vkrause@kde.org>
+Date: Thu, 27 Sep 2018 16:33:49 +0200
+Subject: [PATCH] Fix infinite loop when walking up the directory hierarchy
+ (#1183)
+
+A single find_package(harfbuzz) line in user code resulted in this loop
+getting stuck when _harfbuzz_libdir_iter became "/".
+---
+ src/harfbuzz-config.cmake.in | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/harfbuzz-config.cmake.in b/src/harfbuzz-config.cmake.in
+index 87b15721..304410d9 100644
+--- a/src/harfbuzz-config.cmake.in
++++ b/src/harfbuzz-config.cmake.in
+@@ -12,7 +12,11 @@ set(_harfbuzz_libdir "@libdir@")
+ string(REPLACE "${_harfbuzz_remove_string}/" "" _harfbuzz_libdir "${_harfbuzz_libdir}")
+ set(_harfbuzz_libdir_iter "${_harfbuzz_libdir}")
+ while (_harfbuzz_libdir_iter)
++  set(_harfbuzz_libdir_prev_iter "${_harfbuzz_libdir_iter}")
+   get_filename_component(_harfbuzz_libdir_iter "${_harfbuzz_libdir_iter}" DIRECTORY)
++  if (_harfbuzz_libdir_prev_iter STREQUAL _harfbuzz_libdir_iter)
++    break()
++  endif ()
+   get_filename_component(_harfbuzz_prefix "${_harfbuzz_prefix}" DIRECTORY)
+ endwhile ()
+ unset(_harfbuzz_libdir_iter)
+-- 
+2.20.1
+
