@@ -38,6 +38,7 @@ PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 MACHINE_EXTRA_INSTALL_SDK ?= ""
 
 OGL_RUNTIME_DEV ?= "ogl-runtime-dev"
+OGL_RUNTIME_DEV_mipsarch ?= ""
 GCC-SANITIZERS ?= "gcc-sanitizers"
 GCC-SANITIZERS_mipsarch = ""
 GCC-SANITIZERS_libc-musl = ""
