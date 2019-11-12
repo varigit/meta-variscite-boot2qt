@@ -51,7 +51,7 @@ SRC_URI += " \
 SRC_URI_append_mx6 = " file://0001_hardware_variant_low.patch"
 SRC_URI_append_rpi = " file://0001_hardware_variant_low.patch"
 
-SRCREV = "d1e180a525775b86da5dd071f167578464dab98f"
+SRCREV = "9a5900994961569e780c097a368dc9476e0a0550"
 
 QMAKE_PROFILES = "${S}/neptune3-ui.pro"
 
@@ -60,7 +60,7 @@ DEPENDS = "\
     qtdeclarative \
     qttools-native \
     qtquickcontrols2 \
-    qtapplicationmanager \
+    qtapplicationmanager qtapplicationmanager-native \
     qtivi qtivi-native \
     qtremoteobjects qtremoteobjects-native \
     "
