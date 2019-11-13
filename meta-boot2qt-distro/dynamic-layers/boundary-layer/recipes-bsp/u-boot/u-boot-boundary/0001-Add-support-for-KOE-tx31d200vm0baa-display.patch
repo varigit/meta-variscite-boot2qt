@@ -1,4 +1,4 @@
-From ea15ee300074cb1453dce6a068feec0771a28418 Mon Sep 17 00:00:00 2001
+From be9c74e711876d6c4d830e98bf083ddda7eaecc2 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@theqtcompany.com>
 Date: Thu, 11 Feb 2016 10:17:51 +0200
 Subject: [PATCH] Add support for KOE tx31d200vm0baa display
@@ -8,14 +8,14 @@ Used for the cluster demo
  arch/arm/include/asm/mach-imx/fbpanel.h      | 27 ++++++++++++++++++++
  board/boundary/nitrogen6_max/nitrogen6_max.c |  3 ++-
  board/boundary/nitrogen6sx/nitrogen6sx.c     |  3 ++-
- board/boundary/nitrogen6x/nitrogen6x.c       |  3 ++-
- 4 files changed, 33 insertions(+), 3 deletions(-)
+ board/boundary/nitrogen6x/nitrogen6x.c       |  1 +
+ 4 files changed, 32 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm/include/asm/mach-imx/fbpanel.h b/arch/arm/include/asm/mach-imx/fbpanel.h
-index 4b924d2ac8..d4ef998faf 100644
+index 9f7714831f..9d1b43df07 100644
 --- a/arch/arm/include/asm/mach-imx/fbpanel.h
 +++ b/arch/arm/include/asm/mach-imx/fbpanel.h
-@@ -174,6 +174,33 @@ void fbp_setup_env_cmds(void);
+@@ -189,6 +189,33 @@ void fbp_setup_env_cmds(void);
  	.fbtype = FB_##_mode,\
  	.fbflags = _flags
  
@@ -50,10 +50,10 @@ index 4b924d2ac8..d4ef998faf 100644
  #define VDF_1280_720M_60(_mode, _name, _fmt, _flags, _detect, _bus, _addr) \
  {\
 diff --git a/board/boundary/nitrogen6_max/nitrogen6_max.c b/board/boundary/nitrogen6_max/nitrogen6_max.c
-index 12e3af89d0..3be475efc0 100644
+index 805e7d1f95..a608b9cc1d 100644
 --- a/board/boundary/nitrogen6_max/nitrogen6_max.c
 +++ b/board/boundary/nitrogen6_max/nitrogen6_max.c
-@@ -499,7 +499,8 @@ int fbp_detect_serializer(struct display_info_t const *di)
+@@ -503,7 +503,8 @@ int fbp_detect_serializer(struct display_info_t const *di)
  }
  
  static const struct display_info_t displays[] = {
@@ -64,7 +64,7 @@ index 12e3af89d0..3be475efc0 100644
  	VD_1920_1080M_60(HDMI, NULL, 1, 0x50),
  	VD_1024_768M_60(HDMI, NULL, 1, 0x50),
 diff --git a/board/boundary/nitrogen6sx/nitrogen6sx.c b/board/boundary/nitrogen6sx/nitrogen6sx.c
-index 5581637424..5ded443c78 100644
+index 4b550c440f..2f090d5208 100644
 --- a/board/boundary/nitrogen6sx/nitrogen6sx.c
 +++ b/board/boundary/nitrogen6sx/nitrogen6sx.c
 @@ -435,7 +435,8 @@ void board_enable_lcd(const struct display_info_t *di, int enable)
@@ -78,16 +78,14 @@ index 5581637424..5ded443c78 100644
  	VDF_1920_1080M_60(LCD, "1920x1080M@60", RGB24, 0, NULL, 2, 0x50),
  	VDF_1024_768M_60(LCD, "1024x768M@60", RGB24, 0, NULL, 2, 0x50),
 diff --git a/board/boundary/nitrogen6x/nitrogen6x.c b/board/boundary/nitrogen6x/nitrogen6x.c
-index 8ee7f641bf..dbf1bd4a99 100644
+index 5c0f11cdda..873fc0aab0 100644
 --- a/board/boundary/nitrogen6x/nitrogen6x.c
 +++ b/board/boundary/nitrogen6x/nitrogen6x.c
-@@ -362,7 +362,8 @@ void board_pre_enable(const struct display_info_t *di)
- }
- 
- static const struct display_info_t displays[] = {
--	/* hdmi */
+@@ -365,6 +365,7 @@ static const struct display_info_t displays[] = {
+ #ifdef CONFIG_DEFAULT_DISPLAY_WXGA
+ 	VD_WXGA(LVDS, NULL, fbp_bus_gp(0, 0, GP_LVDS_BKL_EN, 0), 0x00),
+ #endif
 +	IMX_VD_KOE(LVDS, 0, 2),
-+        /* hdmi */
+ 	/* hdmi */
  	VD_1280_720M_60(HDMI, fbp_detect_i2c, 1, 0x50),
  	VD_1920_1080M_60(HDMI, NULL, 1, 0x50),
- 	VD_1024_768M_60(HDMI, NULL, 1, 0x50),
