@@ -60,6 +60,8 @@ build_instructions:
     userMessageOnFailure: "Could not create '/mnt/yocto-cache' directory"
   - type: ExecuteCommand
     command: ["sudo", "mount", "yocto-cache.intra.qt.io:/srv/yocto-cache", "/mnt/yocto-cache"]
+    maxTimeInSeconds: 60
+    maxTimeBetweenOutput: 60
     userMessageOnFailure: "Could not mount yocto cache."
   - type: WriteFile
     fileContents: |
