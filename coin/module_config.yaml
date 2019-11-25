@@ -1,0 +1,62 @@
+version: 1
+accept_configuration:
+  condition: and
+  conditions:
+    - condition: property
+      property: host.osVersion
+      equals_value: Ubuntu_16_04
+
+environment: &environment
+  type: Group
+  instructions:
+    - type: EnvironmentVariable
+      variableName: MACHINE
+      variableValue: nitrogen6x
+
+build_instructions:
+  - *environment
+  - type: SetBuildDirectory
+    directory: "{{.AgentWorkingDir}}/build"
+  - type: MakeDirectory
+    directory: "{{.BuildDir}}"
+  - type: ChangeDirectory
+    directory: "{{.BuildDir}}"
+  - type: ExecuteCommand
+    command: ["sudo", "mkdir", "-p", "/mnt/yocto-cache"]
+    userMessageOnFailure: "Could not create '/mnt/yocto-cache' directory"
+  - type: ExecuteCommand
+    command: ["sudo", "mount", "yocto-cache.intra.qt.io:/srv/yocto-cache", "/mnt/yocto-cache"]
+    maxTimeInSeconds: 60
+    maxTimeBetweenOutput: 60
+    userMessageOnFailure: "Could not mount yocto cache."
+  - type: WriteFile
+    fileContents: |
+      #!/bin/bash -xe
+      source ./setup-environment.sh
+      export BB_ENV_EXTRAWHITE="$BB_ENV_EXTRAWHITE SSTATE_DIR DL_DIR"
+      export SSTATE_DIR=/mnt/yocto-cache/sstate-caches/$(sed -n -e "s/DISTRO_CODENAME.*\"\(.*\)\"/\1/p" ../sources/poky/meta-*/conf/distro/poky.conf)
+      bitbake b2qt-embedded-qt5-image meta-toolchain-b2qt-embedded-qt5-sdk
+      SDKMACHINE=i686-mingw32 bitbake meta-toolchain-b2qt-embedded-qt5-sdk
+    filename: "{{.BuildDir}}/start-build"
+    fileMode: 420
+  - type: ExecuteCommand
+    command: ["chmod", "+x", "{{.BuildDir}}/start-build"]
+    userMessageOnFailure: "Could not add execution right to the start-build."
+  - type: EnvironmentVariable
+    variableName: DL_DIR
+    variableValue: "/mnt/yocto-cache/downloads"
+  - type: ExecuteCommand
+    command: ["{{.SourceDir}}/b2qt-init-build-env", "init", "--device", "{{.Env.MACHINE}}", "--reference", "/mnt/yocto-cache/mirror"]
+    maxTimeInSeconds: 1800
+    maxTimeBetweenOutput: 1800
+    userMessageOnFailure: "Failed to download the yocto recipes repositories"
+  - type: ExecuteCommand
+    command: ["{{.BuildDir}}/start-build"]
+    maxTimeInSeconds: 28800
+    maxTimeBetweenOutput: 28800
+    userMessageOnFailure: "Build failed."
+  - type: ExecuteCommand
+    command: ["sudo", "umount", "/mnt/yocto-cache"]
+    userMessageOnFailure: "Unmounting cache failed."
+
+test_instructions: []
