@@ -60,7 +60,7 @@ DEPENDS = "\
     qtdeclarative \
     qttools-native \
     qtquickcontrols2 \
-    qtapplicationmanager \
+    qtapplicationmanager qtapplicationmanager-native \
     qtivi qtivi-native \
     qtremoteobjects qtremoteobjects-native \
     "
