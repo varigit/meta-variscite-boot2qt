@@ -38,6 +38,8 @@ LIC_FILES_CHKSUM = "\
 inherit qt5-module systemd
 require recipes-qt/qt5/qt5-git.inc
 
+QT_GIT = "git://codereview.qt-project.org/${QT_GIT_PROJECT}"
+QT_GIT_PROTOCOL = "http"
 QT_GIT_PROJECT = "qt-apps"
 
 SRC_URI += " \
@@ -51,7 +53,7 @@ SRC_URI += " \
 SRC_URI_append_mx6 = " file://0001_hardware_variant_low.patch"
 SRC_URI_append_rpi = " file://0001_hardware_variant_low.patch"
 
-SRCREV = "0a4b1ac8021c759a981214f3683fc5860abe73c7"
+SRCREV = "53e1320f4c1f4ba3cfaa0d0b38b06c0963c2af0a"
 
 QMAKE_PROFILES = "${S}/neptune3-ui.pro"
 
