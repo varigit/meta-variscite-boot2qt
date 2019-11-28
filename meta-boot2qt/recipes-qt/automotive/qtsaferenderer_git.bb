@@ -53,6 +53,7 @@ SRC_URI = "\
     file://0001-Fix-yocto-build-issues.patch \
     file://0002-Fix-libnetworkmsgplugin-install.patch \
     file://0003-Remove-superfluous-header-installation.patch \
+    file://0004-Add-missing-includes.patch \
     "
 SRCREV = "e31a035f69bbc7280fc6e01e0c1031ac569b84a7"
 

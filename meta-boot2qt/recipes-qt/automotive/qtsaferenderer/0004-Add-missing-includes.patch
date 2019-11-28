@@ -1,0 +1,41 @@
+From aa464b04f2d06e85441503bcd258d81686a72907 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Wed, 27 Nov 2019 13:37:12 +0200
+Subject: [PATCH] Add missing includes
+
+Build fails now with Qt 5.14 where syncqt has been fixed to not create
+incorrect QList header which was used here as well.
+
+Task-number: QSR-592
+Change-Id: I8fdc2f37e02fcb3422680721670c76c3a3b08856
+---
+ tools/qtsafelayouttool/item.h | 2 ++
+ tools/qtsafelayouttool/node.h | 1 +
+ 2 files changed, 3 insertions(+)
+
+diff --git a/tools/qtsafelayouttool/item.h b/tools/qtsafelayouttool/item.h
+index 257be61..689231d 100644
+--- a/tools/qtsafelayouttool/item.h
++++ b/tools/qtsafelayouttool/item.h
+@@ -28,7 +28,9 @@
+ #ifndef ITEM_H
+ #define ITEM_H
+ 
++#include <QObject>
+ #include <QPoint>
++#include <QRect>
+ #include "node.h"
+ 
+ QT_BEGIN_NAMESPACE
+diff --git a/tools/qtsafelayouttool/node.h b/tools/qtsafelayouttool/node.h
+index d4c2298..43274e4 100644
+--- a/tools/qtsafelayouttool/node.h
++++ b/tools/qtsafelayouttool/node.h
+@@ -30,6 +30,7 @@
+ 
+ #include <QString>
+ #include <QList>
++#include <QMap>
+ 
+ QT_BEGIN_NAMESPACE
+ 
