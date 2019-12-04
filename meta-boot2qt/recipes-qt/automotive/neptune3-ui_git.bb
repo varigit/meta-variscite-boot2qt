@@ -38,13 +38,15 @@ LIC_FILES_CHKSUM = "\
 inherit qt5-module systemd
 require recipes-qt/qt5/qt5-git.inc
 
+QT_GIT = "git://codereview.qt-project.org/${QT_GIT_PROJECT}"
+QT_GIT_PROTOCOL = "http"
 QT_GIT_PROJECT = "qt-apps"
 
 SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "f7034f3f6f436df4714d659851b7683945c6405b"
+SRCREV = "8e31c7a3149ff0bd7bda2c45f9094fa4eaafc6f7"
 
 QMAKE_PROFILES = "${S}/neptune3-ui.pro"
 
