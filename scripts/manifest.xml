@@ -84,6 +84,6 @@
           fetch="git://github.com/boundarydevices"/>
   <project name="meta-boundary"
            remote="boundary"
-           revision="13495b17cd8567d42ee00307886f61436bfaf793"
+           revision="ba7a39934da1bde1c0e6f7bf5feb9fb75b7a99ed"
            path="sources/meta-boundary"/>
 </manifest>
