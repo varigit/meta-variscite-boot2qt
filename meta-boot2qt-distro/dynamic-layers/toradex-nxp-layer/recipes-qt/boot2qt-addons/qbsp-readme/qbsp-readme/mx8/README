@@ -38,10 +38,11 @@ See https://developer.toradex.com/software/toradex-easy-installer#installing-the
 
 ums 0 mmc 0
 
-4. Use Flashing Wizard to flash the image to the device:
-   4.1 Launch Qt Creator.
-   4.2 Select Tools > Flash Boot to Qt Device, and follow the instructions in Flashing Wizard.
-5. Press Ctrl+C in the U-Boot console and run the reset command.
+4. Connect your device to the development host using USB On-The-Go (OTG).
+5. Use Flashing Wizard to flash the image to the device:
+   5.1 Launch Qt Creator.
+   5.2 Select Tools > Flash Boot to Qt Device, and follow the instructions in Flashing Wizard.
+6. Press Ctrl+C in the U-Boot console and run the reset command.
 
 Note: The u-boot is not updated when using the Flashing Wizard.
 
