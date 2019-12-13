@@ -30,6 +30,8 @@
 inherit qmake5
 require recipes-qt/qt5/qt5-git.inc
 
+QT_GIT = "git://codereview.qt-project.org/${QT_GIT_PROJECT}"
+QT_GIT_PROTOCOL = "http"
 QT_GIT_PROJECT = "qt-apps"
 QT_MODULE = "boot2qt-demos"
 
@@ -37,7 +39,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/boot2qt-demos:"
 
 BRANCH = "5.12"
 
-SRCREV = "34310ed69919f452dbcdae42f350254a40a06113"
+SRCREV = "9d16b5263f10e73e078ad51d94b7ad5763098a73"
 
 FILES_${PN} += " \
     /data/user \
