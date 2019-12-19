@@ -33,6 +33,7 @@ SRC_URI += "file://kms.conf"
 
 do_configure_append() {
     echo "QT_QPA_EGLFS_KMS_CONFIG=/etc/kms.conf" >> ${WORKDIR}/defaults
+    echo "QSG_RENDER_LOOP=basic" >> ${WORKDIR}/defaults
 }
 
 do_install_append() {
