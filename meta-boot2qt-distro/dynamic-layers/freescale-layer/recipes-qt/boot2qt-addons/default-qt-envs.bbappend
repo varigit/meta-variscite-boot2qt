@@ -44,3 +44,8 @@ do_configure_append_mx8() {
 do_install_append_mx8() {
     install -m 0644 ${WORKDIR}/kms.conf ${D}${sysconfdir}/
 }
+
+do_configure_append_mx8mm() {
+    # QtWebEngine screen tearing issues with imx8mm (QTBUG-80665)
+    echo "QTWEBENGINE_DISABLE_GPU_THREAD=1" >> ${WORKDIR}/defaults
+}
