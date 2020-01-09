@@ -64,3 +64,7 @@ do_configure_prepend() {
         echo "EGLFS_DEVICE_INTEGRATION = ${QT_QPA_EGLFS_INTEGRATION}" >> ${S}/mkspecs/oe-device-extra.pri
     fi
 }
+
+# revert postinst steps from upstream recipe
+pkg_postinst_${PN}-mkspecs () {
+}
