@@ -29,7 +29,7 @@
 
 DESCRIPTION = "Boot to Qt Demo - QtVirtualKeyboard"
 LICENSE = "BSD | The-Qt-Company-Commercial"
-LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=948f8877345cd66106f11031977a4625"
+LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=c8b6dd132d52c6e5a545df07a4e3e283"
 
 require boot2qt-demo.inc
 
