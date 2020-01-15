@@ -39,11 +39,13 @@ RDEPENDS_${PN} = "\
         binutils-symlinks \
         connman-client \
         gcc-sanitizers \
+        e2fsprogs-resize2fs \
         htop \
         i2c-tools \
         iproute2 \
         ldd \
         openssh-sftp-server \
+        parted \
         procps \
         rsync \
         tslib-calibrate \
