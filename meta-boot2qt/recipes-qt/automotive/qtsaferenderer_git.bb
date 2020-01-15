@@ -30,7 +30,7 @@
 DESCRIPTION = "Qt Safe Renderer"
 
 LICENSE = "GPL-3.0 | The-Qt-Company-Commercial"
-LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=948f8877345cd66106f11031977a4625"
+LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=c8b6dd132d52c6e5a545df07a4e3e283"
 
 inherit qt5-module sdk-sources distro_features_check
 
@@ -52,6 +52,8 @@ SRC_URI = "\
     git://codereview.qt-project.org/tqtc-boot2qt/qtsaferenderer;branch=${BRANCH};protocol=ssh;sdk-uri=Src/QtSafeRenderer-1.1.1 \
     file://0001-Fix-yocto-build-issues.patch \
     file://0002-Fix-libnetworkmsgplugin-install.patch \
+    file://0003-Remove-superfluous-header-installation.patch \
+    file://0004-Add-missing-includes.patch \
     "
 SRCREV = "e31a035f69bbc7280fc6e01e0c1031ac569b84a7"
 

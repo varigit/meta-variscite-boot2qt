@@ -34,13 +34,12 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
-SRCREV = "3bc3dc4c8e912beb18aec7ab84af40c0129d84c0"
+SRCREV = "2d848e6d6562ac057a95ccc723408038b45e34bc"
 
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \
            ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "qtwayland qtwayland-native", "", d)}"
 
-RDEPENDS_${PN} = "libcrypto ${PN}-tools"
-RDEPENDS_${PN}_remove_mingw32 = "libcrypto"
+RDEPENDS_${PN}_class-target = "libcrypto ${PN}-tools"
 
 EXTRA_QMAKEVARS_PRE += "\
     ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "-config force-multi-process", "-config force-single-process", d)} \
@@ -58,7 +57,7 @@ FILES_${PN} += "\
     /opt/am \
     "
 
-BBCLASSEXTEND += "nativesdk"
+BBCLASSEXTEND += "nativesdk native"
 
 # nativesdk-qtdeclarative is added only to make build deterministic, can be removed once
 # there is a configure option to disable its usage.
@@ -66,5 +65,8 @@ DEPENDS_class-nativesdk = "qtbase nativesdk-qtdeclarative nativesdk-glibc-locale
 DEPENDS_class-nativesdk_remove_mingw32 = "nativesdk-glibc-locale nativesdk-libarchive"
 
 EXTRA_QMAKEVARS_PRE_class-nativesdk = "\
+    -config tools-only \
+    "
+EXTRA_QMAKEVARS_PRE_class-native = "\
     -config tools-only \
     "

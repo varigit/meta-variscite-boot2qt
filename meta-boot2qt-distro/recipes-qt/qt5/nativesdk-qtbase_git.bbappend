@@ -36,8 +36,6 @@ SRC_URI += "\
 PACKAGECONFIG += "openssl gui imageformats"
 PACKAGECONFIG_remove_mingw32 += "openssl"
 
-PACKAGECONFIG[openssl] = "-openssl,-no-openssl,openssl,libssl"
-
 fakeroot do_generate_qt_environment_file_mingw32() {
 }
 

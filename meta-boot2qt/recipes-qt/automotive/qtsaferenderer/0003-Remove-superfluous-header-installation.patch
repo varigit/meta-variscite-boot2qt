@@ -1,0 +1,28 @@
+From 0ceae9a8c8807f0d9aac013c7043bf3c72aba8dd Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Wed, 13 Nov 2019 08:53:32 +0200
+Subject: [PATCH] Remove superfluous header installation
+
+The headers are already installed from using the qt_module,
+second installation can lead to build breaks.
+
+Task-number: QSR-568
+Change-Id: Ia93a038d34882372500b4863181dacf97be9b07d
+Reviewed-by: Teemu Holappa <teemu.holappa@qt.io>
+---
+ src/saferenderer/saferenderer.pro | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/src/saferenderer/saferenderer.pro b/src/saferenderer/saferenderer.pro
+index 00b91e8..8a84dfb 100644
+--- a/src/saferenderer/saferenderer.pro
++++ b/src/saferenderer/saferenderer.pro
+@@ -12,8 +12,3 @@ include(saferenderer.pri)
+ 
+ target.path = $$[QT_INSTALL_LIBS]
+ INSTALLS += target
+-
+-headersDataFiles.path = $$[QT_INSTALL_HEADERS]/QtSafeRenderer/
+-headersDataFiles.files += $$HEADERS
+-
+-INSTALLS += headersDataFiles

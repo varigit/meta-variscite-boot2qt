@@ -27,28 +27,4 @@
 ##
 ############################################################################
 
-DESCRIPTION = "B2Qt Automotive Qt5 image"
-LICENSE = "The-Qt-Company-Commercial"
-LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=c8b6dd132d52c6e5a545df07a4e3e283"
-
-DEPLOY_CONF_TYPE = "Qt Automotive Suite $QT_VERSION"
-
-IMAGE_FEATURES += "\
-        package-management \
-        ssh-server-dropbear \
-        tools-debug \
-        tools-profile \
-        debug-tweaks \
-        hwcodecs \
-        "
-
-inherit core-image qbsp-image
-inherit consistent_timestamps
-
-IMAGE_INSTALL += "\
-    packagegroup-b2qt-embedded-base \
-    packagegroup-b2qt-embedded-tools \
-    ${@bb.utils.contains("DISTRO_FEATURES", "gstreamer", "packagegroup-b2qt-embedded-gstreamer", "", d)} \
-    packagegroup-b2qt-qt5-modules \
-    packagegroup-b2qt-automotive-addons \
-    "
+PACKAGECONFIG += "webrtc"

@@ -35,6 +35,7 @@ inherit packagegroup
 PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
 OGL_RUNTIME ?= "ogl-runtime ogl-runtime-tools"
+OGL_RUNTIME_mipsarch ?= ""
 
 RDEPENDS_${PN} += " \
     ${OGL_RUNTIME} \

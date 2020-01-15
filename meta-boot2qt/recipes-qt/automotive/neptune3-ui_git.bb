@@ -38,6 +38,8 @@ LIC_FILES_CHKSUM = "\
 inherit qt5-module systemd
 require recipes-qt/qt5/qt5-git.inc
 
+QT_GIT = "git://codereview.qt-project.org/${QT_GIT_PROJECT}"
+QT_GIT_PROTOCOL = "http"
 QT_GIT_PROJECT = "qt-apps"
 
 SRC_URI += " \
@@ -51,7 +53,7 @@ SRC_URI += " \
 SRC_URI_append_mx6 = " file://0001_hardware_variant_low.patch"
 SRC_URI_append_rpi = " file://0001_hardware_variant_low.patch"
 
-SRCREV = "0a4b1ac8021c759a981214f3683fc5860abe73c7"
+SRCREV = "53e1320f4c1f4ba3cfaa0d0b38b06c0963c2af0a"
 
 QMAKE_PROFILES = "${S}/neptune3-ui.pro"
 
@@ -60,7 +62,7 @@ DEPENDS = "\
     qtdeclarative \
     qttools-native \
     qtquickcontrols2 \
-    qtapplicationmanager \
+    qtapplicationmanager qtapplicationmanager-native \
     qtivi qtivi-native \
     qtremoteobjects qtremoteobjects-native \
     "
@@ -76,8 +78,9 @@ RDEPENDS_${PN} = "\
     ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)} \
     "
 
-PACKAGECONFIG ?= "${@bb.utils.filter('DISTRO_FEATURES', 'qtsaferenderer', d)}"
+PACKAGECONFIG ?= "${@bb.utils.filter('DISTRO_FEATURES', 'qtsaferenderer', d)} ogl-runtime"
 PACKAGECONFIG[qtsaferenderer] = "CONFIG+=use_qsr,,qtsaferenderer qtsaferenderer-native"
+PACKAGECONFIG[ogl-runtime] = ",,ogl-runtime,ogl-runtime"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 

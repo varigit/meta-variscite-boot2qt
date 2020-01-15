@@ -30,7 +30,6 @@
 PACKAGECONFIG_GL = "${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'gles2 eglfs', 'no-opengl', d)}"
 
 PACKAGECONFIG += " \
-    accessibility \
     cups \
     fontconfig \
     getentropy \
@@ -64,4 +63,8 @@ do_configure_prepend() {
     if [ -n "${QT_QPA_EGLFS_INTEGRATION}" ]; then
         echo "EGLFS_DEVICE_INTEGRATION = ${QT_QPA_EGLFS_INTEGRATION}" >> ${S}/mkspecs/oe-device-extra.pri
     fi
+}
+
+# revert postinst steps from upstream recipe
+pkg_postinst_${PN}-mkspecs () {
 }

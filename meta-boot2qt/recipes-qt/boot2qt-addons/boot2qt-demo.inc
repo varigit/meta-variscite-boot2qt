@@ -35,9 +35,9 @@ QT_MODULE = "boot2qt-demos"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/boot2qt-demos:"
 
-BRANCH = "5.13"
+BRANCH = "5.14"
 
-SRCREV = "c10b4e842adaf096bf46ed5f98e236f3fee87870"
+SRCREV = "be1e3a7c2c3c78679603cd03d559309fe764992d"
 
 FILES_${PN} += " \
     /data/user \

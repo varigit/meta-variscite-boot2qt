@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remote fetch="git://git.yoctoproject.org" name="yocto"/>
+  <!-- Yocto -->
+  <remote name="yocto"
+          fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
            revision="94f6b31befda5c496f65e863a6f8152b42d7ebf0"
@@ -10,8 +12,11 @@
            revision="756963cc28ebc163df7d7f4b4ee004c18d3d3260"
            path="sources/meta-mingw"/>
 
-  <remote fetch="git://git.openembedded.org" name="oe"/>
-  <remote fetch="git://github.com/openembedded" name="oe-mirror"/>
+  <!-- OpenEmbedded -->
+  <remote name="oe"
+          fetch="git://git.openembedded.org"/>
+  <remote name="oe-mirror"
+          fetch="git://github.com/openembedded"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
            revision="1bfaa2e63a184e21a2db5c286444828d5948a8b4"
@@ -21,14 +26,16 @@
   <remote name="qt"
           fetch="git://code.qt.io/yocto"
           pushurl="ssh://codereview.qt-project.org/yocto"/>
-  <remote fetch="ssh://codereview.qt-project.org/yocto" name="gerrit"/>
+  <remote name="gerrit"
+          fetch="ssh://codereview.qt-project.org/yocto"/>
   <project name="meta-qt5"
            remote="qt"
            revision="370845a0acaa28d34800dcb08bf76e0d7aeeadb0"
            path="sources/meta-qt5"/>
 
   <!-- NXP -->
-  <remote fetch="git://github.com/Freescale" name="freescale"/>
+  <remote name="freescale"
+          fetch="git://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
            revision="218e7c48e6d7b95f61a9991c0d3c3bf4b38a34c4"
@@ -45,21 +52,24 @@
            path="sources/meta-raspberrypi"/>
 
   <!-- Intel -->
-  <remote fetch="git://git.yoctoproject.org" name="intel"/>
+  <remote name="intel"
+          fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
            revision="eacd8eb9f762c90cec2825736e8c4d483966c4d4"
            path="sources/meta-intel"/>
 
   <!-- NVIDIA -->
-  <remote fetch="git://github.com/madisongh" name="madisongh"/>
+  <remote name="madisongh"
+          fetch="git://github.com/madisongh"/>
   <project name="meta-tegra"
            remote="madisongh"
            revision="ef2fb97203639b40d48ee2f6f70cfab7fbb56810"
            path="sources/meta-tegra"/>
 
   <!-- Toradex -->
-  <remote fetch="git://git.toradex.com" name="toradex"/>
+  <remote name="toradex"
+          fetch="git://git2.toradex.com"/>
   <project name="meta-toradex-bsp-common"
            remote="toradex"
            revision="5af9cec247f0cb570b00245dd87f56fe84bc5cf5"
@@ -70,9 +80,10 @@
            path="sources/meta-toradex-nxp"/>
 
   <!-- BoundaryDevices -->
-  <remote fetch="git://github.com/boundarydevices" name="boundary"/>
+  <remote name="boundary"
+          fetch="git://github.com/boundarydevices"/>
   <project name="meta-boundary"
            remote="boundary"
-           revision="d1a51cff1d295f60aa84be99adafb6fbab26e6d6"
+           revision="8340c919f42b9aab35fcf0cb7b857835981b01ee"
            path="sources/meta-boundary"/>
 </manifest>
