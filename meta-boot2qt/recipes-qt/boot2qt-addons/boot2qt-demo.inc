@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -37,9 +37,9 @@ QT_MODULE = "boot2qt-demos"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/boot2qt-demos:"
 
-BRANCH = "5.14"
+BRANCH = "5.15"
 
-SRCREV = "be1e3a7c2c3c78679603cd03d559309fe764992d"
+SRCREV = "6c6644c19f61d79ef9e11bac48e8efc9a0d624dc"
 
 FILES_${PN} += " \
     /data/user \
