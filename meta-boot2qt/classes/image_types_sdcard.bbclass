@@ -79,23 +79,67 @@ END
     ln -sf ${IMAGE_NAME}.flasher.tar.gz ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.flasher.tar.gz
 }
 
-# fix: basehash value changed from ... to ....
-# The metadata is not deterministic and this needs to be fixed.
-IMAGE_CMD_teziimg[vardepsexclude] = "DATE"
 do_image_teziimg[depends] += "qtbase-native:do_populate_sysroot"
 IMAGE_CMD_teziimg_append() {
     ${IMAGE_CMD_TAR} --transform 's,^,${IMAGE_NAME}-Tezi_${PV}/,' -rhf ${IMGDEPLOYDIR}/${IMAGE_NAME}-Tezi_${PV}${TDX_VERDATE}.tar TEZI_B2QT_EULA.TXT Built_with_Qt.png
     ln -fs ${IMAGE_NAME}-Tezi_${PV}${TDX_VERDATE}.tar ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.tezi.tar
 }
-python rootfs_tezi_json_append() {
+
+def rootfs_tezi_json_b2qt(d, flash_type, flash_data, json_file, uenv_file):
+    import json
+    from collections import OrderedDict
+    from datetime import datetime
     import subprocess
     qtversion = subprocess.check_output(['qmake', '-query', 'QT_VERSION']).decode('utf-8').strip()
 
+    deploydir = d.getVar('DEPLOY_DIR_IMAGE')
+    # Patched in IMAGE_CMD_teziimg() below
+    release_date = "%release_date%"
+
+    data = OrderedDict({ "config_format": 2, "autoinstall": False })
+
+    # Use image recipes SUMMARY/DESCRIPTION/PV...
+    data["name"] = d.getVar('SUMMARY')
+    data["description"] = d.getVar('DESCRIPTION')
+    data["version"] = "Qt " + qtversion
+    data["release_date"] = release_date
+    data["u_boot_env"] = uenv_file
+    if os.path.exists(os.path.join(deploydir, "prepare.sh")):
+        data["prepare_script"] = "prepare.sh"
+    if os.path.exists(os.path.join(deploydir, "wrapup.sh")):
+        data["wrapup_script"] = "wrapup.sh"
+    if os.path.exists(os.path.join(deploydir, "marketing.tar")):
+        data["marketing"] = "marketing.tar"
     data["license_title"] = "QT DEMO IMAGE END USER LICENSE AGREEMENT"
     data["license"] = "TEZI_B2QT_EULA.TXT"
-    data["version"] = "Qt " + qtversion
     data["icon"] = "Built_with_Qt.png"
 
-    with open(os.path.join(deploy_dir, 'image.json'), 'w') as outfile:
+    product_ids = d.getVar('TORADEX_PRODUCT_IDS')
+    if product_ids is None:
+        bb.fatal("Supported Toradex product ids missing, assign TORADEX_PRODUCT_IDS with a list of product ids.")
+
+    dtmapping = d.getVarFlags('TORADEX_PRODUCT_IDS')
+    data["supported_product_ids"] = []
+
+    # If no varflags are set, we assume all product ids supported with single image/U-Boot
+    if dtmapping is not None:
+        for f, v in dtmapping.items():
+            dtbflashtypearr = v.split(',')
+            if len(dtbflashtypearr) < 2 or dtbflashtypearr[1] == flash_type:
+                data["supported_product_ids"].append(f)
+    else:
+        data["supported_product_ids"].extend(product_ids.split())
+
+    if flash_type == "rawnand":
+        data["mtddevs"] = flash_data
+    elif flash_type == "emmc":
+        data["blockdevs"] = flash_data
+
+    with open(os.path.join(deploydir, json_file), 'w') as outfile:
         json.dump(data, outfile, indent=4)
+    bb.note("Toradex Easy Installer metadata file {0} written.".format(json_file))
+
+python rootfs_tezi_run_json_append() {
+    # rewrite image.json with our data
+    rootfs_tezi_json_b2qt(d, flash_type, flash_data, "image.json", uenv_file)
 }
