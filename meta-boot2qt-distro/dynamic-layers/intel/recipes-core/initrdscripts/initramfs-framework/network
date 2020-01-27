@@ -39,8 +39,8 @@ network_run() {
         if [ "${bootparam_ip}" -ne "dhcp" ]; then
             echo "WARN: DHCP only supported at this time."
         fi
-        ip link set dev eth0 up
-        udhcpc
+        ip link set dev enp3s0 up
+        udhcpc -i enp3s0
     fi
 }
 
