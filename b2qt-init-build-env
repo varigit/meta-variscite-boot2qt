@@ -115,6 +115,9 @@ get_groups() {
     all)
       PROJECT_GROUPS="external"
     ;;
+    imx8mm-var-dart|imx8mq-var-dart|imx8qm-var-som|imx8qxp-var-som)
+      PROJECT_GROUPS="variscite-imx"
+    ;;
     imx8*)
       PROJECT_GROUPS="fsl-imx8"
     ;;
