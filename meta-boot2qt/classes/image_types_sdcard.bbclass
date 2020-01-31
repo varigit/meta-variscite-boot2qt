@@ -79,7 +79,7 @@ END
     ln -sf ${IMAGE_NAME}.flasher.tar.gz ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.flasher.tar.gz
 }
 
-do_image_teziimg[depends] += "qtbase-native:do_populate_sysroot"
+do_image[depends] += "qtbase-native:do_populate_sysroot"
 IMAGE_CMD_teziimg_append() {
     ${IMAGE_CMD_TAR} --transform 's,^,${IMAGE_NAME}-Tezi_${PV}/,' -rhf ${IMGDEPLOYDIR}/${IMAGE_NAME}-Tezi_${PV}${TDX_VERDATE}.tar TEZI_B2QT_EULA.TXT Built_with_Qt.png
     ln -fs ${IMAGE_NAME}-Tezi_${PV}${TDX_VERDATE}.tar ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.tezi.tar
