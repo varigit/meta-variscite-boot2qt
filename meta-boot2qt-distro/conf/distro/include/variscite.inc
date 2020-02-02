@@ -44,6 +44,7 @@ IMAGE_INSTALL_append = " \
     evtest \
     imx-gst1.0-plugin-gplay \
     iperf3 \
+    pulseaudio-misc \
     pulseaudio-server \
     tar \
     "
