@@ -46,4 +46,4 @@ PREFERRED_VERSION_gstreamer1.0-plugins-bad ?= "1.14.imx"
 PREFERRED_VERSION_gstreamer1.0-plugins-ugly ?= "1.14.4"
 PREFERRED_VERSION_gstreamer1.0-libav ?= "1.14.0"
 
-MACHINE_GSTREAMER_1_0_PLUGIN_append_imxvpu = " imx-gst1.0-plugin"
+MACHINE_GSTREAMER_1_0_PLUGIN_append_imxgpu = " imx-gst1.0-plugin"
