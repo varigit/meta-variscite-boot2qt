@@ -64,7 +64,7 @@
           fetch="git://github.com/madisongh"/>
   <project name="meta-tegra"
            remote="madisongh"
-           revision="40d61e3c7aa4cfe993685bb4011e16617edc24fa"
+           revision="90ad5095b54f21495f073f0b5c555b85522e4b06"
            path="sources/meta-tegra"/>
 
   <!-- Toradex -->
