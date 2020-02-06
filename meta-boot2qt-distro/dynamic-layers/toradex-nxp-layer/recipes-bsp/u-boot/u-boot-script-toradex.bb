@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -31,7 +31,7 @@ LICENSE = "The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=c8b6dd132d52c6e5a545df07a4e3e283"
 DEPENDS = "u-boot-mkimage-native"
 
-PV = "3.0b2"
+PV = "3.0b3"
 
 SRC_URI = " \
     file://fwd_mmc.scr \
@@ -69,4 +69,4 @@ do_compile[noexec] = "1"
 do_install[noexec] = "1"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
-COMPATIBLE_MACHINE = "(apalis-imx6|colibri-vf|colibri-imx6|colibri-imx7)"
+COMPATIBLE_MACHINE = "(apalis-imx6|colibri-imx6|colibri-imx7)"
