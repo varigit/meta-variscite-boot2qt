@@ -44,6 +44,7 @@ RDEPENDS_${PN} = "\
         i2c-tools \
         iproute2 \
         ldd \
+        mtd-utils \
         openssh-sftp-server \
         parted \
         procps \
