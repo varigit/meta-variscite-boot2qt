@@ -65,7 +65,7 @@ create_tegraflash_pkg_append() {
 #!/bin/sh -e
 if [ ! -e "${IMAGE_BASENAME}.img" ]; then
     dd if=../${IMAGE_LINK_NAME}.img of=${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE} skip=1 bs=$(expr ${IMAGE_ROOTFS_ALIGNMENT} \* 1024) count=$(expr ${ROOTFS_SIZE} / 1024)
-    ./tegra*-flash/mksparse -v --fillpattern=0 ${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE} ${IMAGE_BASENAME}.img
+    ./mksparse -v --fillpattern=0 ${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE} ${IMAGE_BASENAME}.img
     rm -f ${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE}
 fi
 echo "Flash image ready"
