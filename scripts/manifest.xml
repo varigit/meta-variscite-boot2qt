@@ -64,8 +64,16 @@
           fetch="git://github.com/madisongh"/>
   <project name="meta-tegra"
            remote="madisongh"
-           revision="ef2fb97203639b40d48ee2f6f70cfab7fbb56810"
+           revision="b97c15cbb87323a56e73873efd825ef1901e6172"
            path="sources/meta-tegra"/>
+  <!-- internal layer for the nvidia devnet downloads -->
+  <remote name="playground"
+          fetch="ssh://git@git.qt.io/boot2qt"/>
+  <project name="nvidia-devnet-mirror"
+           remote="playground"
+           revision="8ee9cd3c025cf8b36343fddc77545e597c0d874d"
+           path="sources/nvidia-devnet-mirror"
+           groups="notdefault"/>
 
   <!-- Toradex -->
   <remote name="toradex"

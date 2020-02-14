@@ -44,3 +44,5 @@ QBSP_IMAGE_CONTENT = "\
 
 # NVIDIA's Vulkan support is for X only
 DISTRO_FEATURES_remove = "vulkan"
+
+NVIDIA_DEVNET_MIRROR ?= "file://${BSPDIR}/sources/nvidia-devnet-mirror"
