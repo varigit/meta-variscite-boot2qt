@@ -2,7 +2,7 @@ SUMMARY = "GammaRay Qt introspection probe"
 HOMEPAGE = "http://www.kdab.com/gammaray"
 
 LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://LICENSE.GPL.txt;md5=c50976002ebbff1d426f08a9ea6d6df9"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL.txt;md5=8e548852e33582cbae6f1b1d5c520202"
 
 inherit cmake_qt5
 
