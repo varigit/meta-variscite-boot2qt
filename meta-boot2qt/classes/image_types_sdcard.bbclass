@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -81,8 +81,8 @@ END
 
 do_image[depends] += "qtbase-native:do_populate_sysroot"
 IMAGE_CMD_teziimg_append() {
-    ${IMAGE_CMD_TAR} --transform 's,^,${IMAGE_NAME}-Tezi_${PV}/,' -rhf ${IMGDEPLOYDIR}/${IMAGE_NAME}-Tezi_${PV}${TDX_VERDATE}.tar TEZI_B2QT_EULA.TXT Built_with_Qt.png
-    ln -fs ${IMAGE_NAME}-Tezi_${PV}${TDX_VERDATE}.tar ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.tezi.tar
+    ${IMAGE_CMD_TAR} --transform 's,^,${IMAGE_NAME}-Tezi_${TEZI_VERSION}/,' -rhf ${IMGDEPLOYDIR}/${IMAGE_NAME}-Tezi_${TEZI_VERSION}.tar TEZI_B2QT_EULA.TXT Built_with_Qt.png
+    ln -fs ${TEZI_IMAGE_NAME}-Tezi_${TEZI_VERSION}.tar ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.tezi.tar
 }
 
 def rootfs_tezi_json_b2qt(d, flash_type, flash_data, json_file, uenv_file):
@@ -95,7 +95,7 @@ def rootfs_tezi_json_b2qt(d, flash_type, flash_data, json_file, uenv_file):
     deploydir = d.getVar('DEPLOY_DIR_IMAGE')
     data = OrderedDict({ "config_format": 2, "autoinstall": False })
 
-    # Use image recipes SUMMARY/DESCRIPTION/PV...
+    # Use image recipes SUMMARY/DESCRIPTION...
     data["name"] = d.getVar('SUMMARY')
     data["description"] = d.getVar('DESCRIPTION')
     data["version"] = "Qt " + qtversion
@@ -132,11 +132,11 @@ def rootfs_tezi_json_b2qt(d, flash_type, flash_data, json_file, uenv_file):
     elif flash_type == "emmc":
         data["blockdevs"] = flash_data
 
-    with open(os.path.join(deploydir, json_file), 'w') as outfile:
+    with open(os.path.join(d.getVar('IMGDEPLOYDIR'), json_file), 'w') as outfile:
         json.dump(data, outfile, indent=4)
     bb.note("Toradex Easy Installer metadata file {0} written.".format(json_file))
 
 python rootfs_tezi_run_json_append() {
     # rewrite image.json with our data
-    rootfs_tezi_json_b2qt(d, flash_type, flash_data, "image.json", uenv_file)
+    rootfs_tezi_json_b2qt(d, flash_type, flash_data, "image-%s.json" % d.getVar('IMAGE_BASENAME'), uenv_file)
 }

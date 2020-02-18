@@ -38,7 +38,7 @@
           fetch="git://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="218e7c48e6d7b95f61a9991c0d3c3bf4b38a34c4"
+           revision="e9d075e2e1084538a8f7e233f7982507213540e7"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
@@ -80,11 +80,11 @@
           fetch="git://git2.toradex.com"/>
   <project name="meta-toradex-bsp-common"
            remote="toradex"
-           revision="5af9cec247f0cb570b00245dd87f56fe84bc5cf5"
+           revision="fbd77af45f32e88e96d0efe0317d346a55e5580a"
            path="sources/meta-toradex-bsp-common"/>
   <project name="meta-toradex-nxp"
            remote="toradex"
-           revision="13b800c3eebf96640bdd7e6fc781ba71ebf68f3d"
+           revision="e5049a9c1bf8575beec0d7aab06f5d9cc7093283"
            path="sources/meta-toradex-nxp"/>
 
   <!-- BoundaryDevices -->
