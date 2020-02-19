@@ -27,9 +27,6 @@
 ##
 ############################################################################
 
-# use mmc0
-ROOTFS_DEVICE = "mmcblk1p1"
-
 INITRAMFS_MAXSIZE = "165888"
 IMAGE_CLASSES += "image_types_tegra"
 IMAGE_FSTYPES += "tegraflash"
