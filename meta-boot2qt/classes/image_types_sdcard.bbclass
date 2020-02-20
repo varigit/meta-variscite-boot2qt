@@ -81,8 +81,8 @@ END
 
 do_image[depends] += "qtbase-native:do_populate_sysroot"
 IMAGE_CMD_teziimg_append() {
-    ${IMAGE_CMD_TAR} --transform 's,^,${IMAGE_NAME}-Tezi_${PV}/,' -rhf ${IMGDEPLOYDIR}/${IMAGE_NAME}-Tezi_${PV}${TDX_VERDATE}.tar TEZI_B2QT_EULA.TXT Built_with_Qt.png
-    ln -fs ${IMAGE_NAME}-Tezi_${PV}${TDX_VERDATE}.tar ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.tezi.tar
+    ${IMAGE_CMD_TAR} --transform 's,^,${IMAGE_NAME}-Tezi_${PV}/,' -rhf ${IMGDEPLOYDIR}/${IMAGE_NAME}-Tezi_${PV}-${DATE}.tar TEZI_B2QT_EULA.TXT Built_with_Qt.png
+    ln -fs ${IMAGE_NAME}-Tezi_${PV}-${DATE}.tar ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.tezi.tar
 }
 
 def rootfs_tezi_json_b2qt(d, flash_type, flash_data, json_file, uenv_file):
