@@ -46,16 +46,13 @@ PACKAGECONFIG[tools-only] = "CONFIG+=tools-only,,"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
-PV = "1.1.1"
+PV = "1.1.2"
 BRANCH = "1.1"
 SRC_URI = "\
-    git://codereview.qt-project.org/tqtc-boot2qt/qtsaferenderer;branch=${BRANCH};protocol=ssh;sdk-uri=Src/QtSafeRenderer-1.1.1 \
+    git://codereview.qt-project.org/tqtc-boot2qt/qtsaferenderer;branch=${BRANCH};protocol=ssh;sdk-uri=Src/QtSafeRenderer-1.1.2 \
     file://0001-Fix-yocto-build-issues.patch \
-    file://0002-Fix-libnetworkmsgplugin-install.patch \
-    file://0003-Remove-superfluous-header-installation.patch \
-    file://0004-Add-missing-includes.patch \
     "
-SRCREV = "e31a035f69bbc7280fc6e01e0c1031ac569b84a7"
+SRCREV = "398bf434849e9a64f6d69d708a9d5a2480a80eb6"
 
 DEPENDS = "qtbase qtdeclarative"
 
