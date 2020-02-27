@@ -43,7 +43,7 @@ inherit qt5-module
 inherit python3native
 require recipes-qt/qt5/qt5-git.inc
 
-QT_MODULE_BRANCH_QFACE = "upstream/master"
+QT_MODULE_BRANCH_QFACE = "upstream/1.10.1-patch"
 
 SRC_URI += " \
     ${QT_GIT}/qtivi-qface.git;name=qface;branch=${QT_MODULE_BRANCH_QFACE};protocol=${QT_GIT_PROTOCOL};destsuffix=git/src/3rdparty/qface \
