@@ -41,6 +41,3 @@ fakeroot do_generate_qt_environment_file_mingw32() {
 
 # qdatetime.cpp: error: 'localtime_r' was not declared in this scope
 QT_CONFIG_FLAGS_append_mingw32 = " -D_POSIX_C_SOURCE"
-
-# workaround for QTBUG-64707
-QT_CONFIG_FLAGS_append_mingw32 = " -no-feature-rdrnd"
