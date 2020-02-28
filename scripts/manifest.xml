@@ -69,7 +69,7 @@
 
   <!-- Toradex -->
   <remote name="toradex"
-          fetch="git://git2.toradex.com"/>
+          fetch="git://git.toradex.com"/>
   <project name="meta-toradex-bsp-common"
            remote="toradex"
            revision="ac6df0b7458c551e915cf186481c23401a4b6824"
