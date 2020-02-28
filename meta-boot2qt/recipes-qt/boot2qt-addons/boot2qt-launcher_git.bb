@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -43,7 +43,7 @@ SRC_URI += " \
     file://QtLauncher.conf \
     "
 
-SRCREV = "dc4c9d051737598e3880b7a8d5c4226020fa020b"
+SRCREV = "5058c4b7cbbeace3136dac6ead31d4aacfb0a877"
 
 DEPENDS = "\
     qtbase qtdeclarative qtquickcontrols2 \
