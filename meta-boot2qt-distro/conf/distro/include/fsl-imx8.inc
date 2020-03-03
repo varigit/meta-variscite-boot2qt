@@ -28,11 +28,17 @@
 ############################################################################
 
 include conf/distro/include/fsl.inc
-include conf/distro/include/fsl-imx-preferred-env.inc
 
 FSL_EULA_FILE := "${COREBASE}/../meta-fsl-bsp-release/imx/EULA.txt"
 
 DISTRO_FEATURES_remove = "vulkan"
+
+PREFERRED_PROVIDER_virtual/bootloader_imx = "u-boot-imx"
+PREFERRED_VERSION_linux-libc-headers_imx ?= "4.14"
+PREFERRED_VERSION_gstreamer1.0-plugins-base = "1.14.4.imx"
+PREFERRED_VERSION_gstreamer1.0-plugins-bad  = "1.14.4.imx"
+PREFERRED_VERSION_gstreamer1.0-plugins-good = "1.14.4.imx"
+PREFERRED_VERSION_gstreamer1.0              = "1.14.4.imx"
 
 BBMASK += "\
     meta-boot2qt/meta-fsl-extras/recipes/u-boot/u-boot-toradex_%.bbappend \
