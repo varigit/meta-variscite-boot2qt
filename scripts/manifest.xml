@@ -18,9 +18,13 @@
   <remote name="oe-mirror"
           fetch="git://github.com/openembedded"/>
   <project name="meta-openembedded"
-           remote="oe-mirror"
+           remote="oe"
            revision="a24acf94d48d635eca668ea34598c6e5c857e3f8"
            path="sources/meta-openembedded"/>
+  <project name="meta-python2"
+           remote="oe"
+           revision="8fc9be701d430388b4c5234c97e623debd26a1df"
+           path="sources/meta-python2"/>
 
   <!-- Qt -->
   <remote name="qt"
@@ -30,7 +34,7 @@
           fetch="ssh://codereview.qt-project.org/yocto"/>
   <project name="meta-qt5"
            remote="qt"
-           revision="9be6548e07e46d037ea991955e0ddd9be635ad5a"
+           revision="de2ecaa13fde8f30b1a6558bbbbdfecfd3cd4bd8"
            path="sources/meta-qt5"/>
 
   <!-- NXP -->

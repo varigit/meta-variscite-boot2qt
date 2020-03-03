@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -26,27 +26,12 @@
 ## $QT_END_LICENSE$
 ##
 ############################################################################
+inherit qmake5_paths
 
-# POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf
-# changes incompatibly
-POKY_BBLAYERS_CONF_VERSION = "2"
+PACKAGECONFIG_append = " qt5"
 
-BBPATH = "${TOPDIR}"
-BBFILES ?= ""
-BSPDIR := "${@os.path.abspath(os.path.dirname(d.getVar('FILE')) + '/../..')}"
-
-BBLAYERS ?= " \
-  ${BSPDIR}/sources/poky/meta \
-  ${BSPDIR}/sources/poky/meta-poky \
-  ${BSPDIR}/sources/meta-intel \
-  ${BSPDIR}/sources/meta-openembedded/meta-oe \
-  ${BSPDIR}/sources/meta-openembedded/meta-python \
-  ${BSPDIR}/sources/meta-openembedded/meta-networking \
-  ${BSPDIR}/sources/meta-openembedded/meta-initramfs \
-  ${BSPDIR}/sources/meta-openembedded/meta-multimedia \
-  ${BSPDIR}/sources/meta-python2 \
-  ${BSPDIR}/sources/meta-boot2qt/meta-boot2qt \
-  ${BSPDIR}/sources/meta-boot2qt/meta-boot2qt-distro \
-  ${BSPDIR}/sources/meta-mingw \
-  ${BSPDIR}/sources/meta-qt5 \
-  "
+PACKAGECONFIG[qt5] = '--enable-qt \
+                      --with-moc="${OE_QMAKE_PATH_EXTERNAL_HOST_BINS}/moc" \
+                      --with-uic="${OE_QMAKE_PATH_EXTERNAL_HOST_BINS}/uic" \
+                      --with-rcc="${OE_QMAKE_PATH_EXTERNAL_HOST_BINS}/rcc" \
+                     ,--disable-qt,gstreamer1.0-plugins-base qtbase qtdeclarative qtbase-native'
