@@ -19,7 +19,7 @@
           fetch="git://github.com/openembedded"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
-           revision="e855ecc6d35677e79780adc57b2552213c995731"
+           revision="bb65c27a772723dfe2c15b5e1b27bcc1a1ed884c"
            path="sources/meta-openembedded"/>
 
   <!-- Qt -->
