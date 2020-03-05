@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,33 +27,4 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Packagegroup for B2Qt embedded Linux image"
-LICENSE = "The-Qt-Company-Commercial"
-PR = "r0"
-
-inherit packagegroup
-
-MACHINE_EXTRA_INSTALL ?= ""
-
-RDEPENDS_${PN} = "\
-        kernel-modules \
-        linux-firmware \
-        ca-certificates \
-        liberation-fonts \
-        ttf-devanagari \
-        ttf-opensans \
-        ttf-dejavu-common \
-        ttf-dejavu-sans \
-        ttf-freefont-mono \
-        ttf-tlwg \
-        otf-noto \
-        tzdata \
-        tzdata-americas \
-        tzdata-asia \
-        tzdata-europe \
-        connman \
-        rng-tools \
-        ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "weston weston-examples", "", d)} \
-        ${@bb.utils.contains("DISTRO_FEATURES", "pulseaudio", "pulseaudio-server pulseaudio-misc", "", d)} \
-        ${MACHINE_EXTRA_INSTALL} \
-        "
+PACKAGECONFIG_append = " autospawn-for-root"
