@@ -29,6 +29,8 @@
 
 include conf/distro/include/fsl-imx8.inc
 
+DISTRO_FEATURES_append = " pulseaudio"
+
 IMAGE_BOOT_FILES_remove = "Image"
 IMAGE_BOOT_FILES_prepend = "Image.gz"
 
