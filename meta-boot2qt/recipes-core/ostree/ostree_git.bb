@@ -46,6 +46,7 @@ SRC_URI = " \
     file://Print-pull-progress-also-when-not-on-console.patch \
     file://Workaround-the-SIGCHLD-handler-issue.patch \
     file://workaround-gtkdocize-configure-issue-in-autog.patch \
+    file://Avoid-race-condition-in-case-tests-directory-does-no.patch \
     "
 
 SRCREV = "8ece4d6d51bdbe3e41ab318259276bb83e553aa0"
