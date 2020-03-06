@@ -49,6 +49,7 @@ SRC_URI = " \
     file://Print-pull-progress-also-when-not-on-console.patch \
     file://Workaround-the-SIGCHLD-handler-issue.patch \
     file://workaround-gtkdocize-configure-issue-in-autog.patch \
+    file://Avoid-race-condition-in-case-tests-directory-does-no.patch \
     "
 SRC_URI += " \
     git://gitlab.gnome.org/GNOME/libglnx;name=libglnx;branch=master;protocol=https;destsuffix=git/libglnx \
