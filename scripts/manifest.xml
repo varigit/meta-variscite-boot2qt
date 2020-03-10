@@ -18,9 +18,13 @@
   <remote name="oe-mirror"
           fetch="git://github.com/openembedded"/>
   <project name="meta-openembedded"
-           remote="oe-mirror"
+           remote="oe"
            revision="bb65c27a772723dfe2c15b5e1b27bcc1a1ed884c"
            path="sources/meta-openembedded"/>
+  <project name="meta-python2"
+           remote="oe"
+           revision="8fc9be701d430388b4c5234c97e623debd26a1df"
+           path="sources/meta-python2"/>
 
   <!-- Qt -->
   <remote name="qt"
@@ -77,7 +81,7 @@
 
   <!-- Toradex -->
   <remote name="toradex"
-          fetch="git://git2.toradex.com"/>
+          fetch="git://git.toradex.com"/>
   <project name="meta-toradex-bsp-common"
            remote="toradex"
            revision="fbd77af45f32e88e96d0efe0317d346a55e5580a"
