@@ -1,6 +1,7 @@
 [Unit]
 Description=D-BUS Session Message Bus.
-After=dbus.service systemd-user-sessions.service
+After=dbus.service systemd-user-sessions.service user-runtime-dir@%i.service
+Wants=user-runtime-dir@%i.service
 
 [Service]
 User=%i

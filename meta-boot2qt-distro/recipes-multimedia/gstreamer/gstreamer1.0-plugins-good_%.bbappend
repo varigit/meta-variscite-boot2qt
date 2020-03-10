@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -26,17 +26,12 @@
 ## $QT_END_LICENSE$
 ##
 ############################################################################
+inherit qmake5_paths
 
-DESCRIPTION = "Qt Quick Timeline"
-LICENSE = "GPL-2.0+ | The-Qt-Company-Commercial"
-LIC_FILES_CHKSUM = " \
-    file://LICENSE.GPL2;md5=b234ee4d69f5fce4486a80fdaf4a4263 \
-    file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504 \
-    "
+PACKAGECONFIG_append = " qt5"
 
-inherit qt5-module
-require recipes-qt/qt5/qt5-git.inc
-
-DEPENDS = "qtbase qtdeclarative"
-
-SRCREV = "6e6d4927f4620e58bd6acf71a0c6f54513f47c5f"
+PACKAGECONFIG[qt5] = '--enable-qt \
+                      --with-moc="${OE_QMAKE_PATH_EXTERNAL_HOST_BINS}/moc" \
+                      --with-uic="${OE_QMAKE_PATH_EXTERNAL_HOST_BINS}/uic" \
+                      --with-rcc="${OE_QMAKE_PATH_EXTERNAL_HOST_BINS}/rcc" \
+                     ,--disable-qt,gstreamer1.0-plugins-base qtbase qtdeclarative qtbase-native'
