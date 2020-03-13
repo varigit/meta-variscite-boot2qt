@@ -23,7 +23,7 @@
            path="sources/meta-openembedded"/>
   <project name="meta-python2"
            remote="oe"
-           revision="8fc9be701d430388b4c5234c97e623debd26a1df"
+           revision="4400f9155ec193d028208cf0c66aeed2ba2b00ab"
            path="sources/meta-python2"/>
 
   <!-- Qt -->
