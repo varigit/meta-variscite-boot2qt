@@ -56,3 +56,6 @@ WKS_FILE = "imx8-uboot-singlepart.wks.in"
 BBMASK += " \
     meta-variscite-imx/recipes-fsl/images/fsl-image-gui.bbappend \
     "
+
+# unwanted B2QT demos
+BOOT2QT_DEMOS_remove = "boot2qt-demo-mediaplayer"
