@@ -29,10 +29,10 @@
 ############################################################################
 
 DESCRIPTION = "Neptune 3 IVI UI"
-LICENSE = "Apache-2.0 & ( GPL-3.0 | The-Qt-Company-Commercial )"
+LICENSE = "BitstreamVera & ( GPL-3.0 | The-Qt-Company-Commercial )"
 LIC_FILES_CHKSUM = "\
     file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504 \
-    file://imports_shared/assets/fonts/LICENSE.txt;md5=3b83ef96387f14655fc854ddc3c6bd57 \
+    file://imports_shared/assets/fonts/LICENSE;md5=b5c5273ad988fb6b52bcb7b5a2a1f370 \
 "
 
 inherit qt5-module systemd
@@ -46,7 +46,7 @@ SRC_URI += " \
     file://neptune.service \
     "
 
-SRCREV = "8e31c7a3149ff0bd7bda2c45f9094fa4eaafc6f7"
+SRCREV = "a0a4afe3ac6f34763e864cf6b0ae7e5ba26e860b"
 
 QMAKE_PROFILES = "${S}/neptune3-ui.pro"
 
