@@ -1,0 +1,63 @@
+From 65e73f26191192d6a55a778eece753851623a346 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Mon, 16 Mar 2020 08:23:27 +0200
+Subject: [PATCH] Fix build with Qt 5.15
+
+Adapt to internal QML API changes.
+
+Task-number: QSR-643
+Change-Id: Iec2ff7276dccce5eca7f6816f6e459177aa21850
+---
+ tools/qtsafelayouttool/qmlvisitor.cpp     | 2 +-
+ tools/qtsafelayouttool/qmlvisitor.h       | 4 ++--
+ tools/qtsafelayouttool/qsafeqmlparser.cpp | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tools/qtsafelayouttool/qmlvisitor.cpp b/tools/qtsafelayouttool/qmlvisitor.cpp
+index 85976a1..95aaae4 100644
+--- a/tools/qtsafelayouttool/qmlvisitor.cpp
++++ b/tools/qtsafelayouttool/qmlvisitor.cpp
+@@ -210,7 +210,7 @@ void QmlSafeLayoutVisitor::endVisit(QQmlJS::AST::FunctionDeclaration*)
+     //Not implemented
+ }
+ 
+-QString QmlSafeLayoutVisitor::nodeValue(const QQmlJS::AST::SourceLocation &start, const QQmlJS::AST::SourceLocation &end)
++QString QmlSafeLayoutVisitor::nodeValue(const QQmlJS::SourceLocation &start, const QQmlJS::SourceLocation &end)
+ {
+     QString ret = QStringRef(&document, start.offset, end.offset + end.length - start.offset).toString();
+ 
+diff --git a/tools/qtsafelayouttool/qmlvisitor.h b/tools/qtsafelayouttool/qmlvisitor.h
+index 98596ad..e96d8d0 100644
+--- a/tools/qtsafelayouttool/qmlvisitor.h
++++ b/tools/qtsafelayouttool/qmlvisitor.h
+@@ -75,7 +75,7 @@ public:
+                   QQmlJS::Engine *engine, QObject *parent=nullptr);
+     virtual ~QmlSafeLayoutVisitor() Q_DECL_OVERRIDE;
+ 
+-    QQmlJS::AST::SourceLocation precedingComment(quint32 offset) const;
++    QQmlJS::SourceLocation precedingComment(quint32 offset) const;
+     bool visit(QQmlJS::AST::UiImport *) Q_DECL_OVERRIDE;
+     void endVisit(QQmlJS::AST::UiImport *definition) Q_DECL_OVERRIDE;
+ 
+@@ -118,7 +118,7 @@ signals:
+ 
+ protected:
+     QString getFullyQualifiedId(QQmlJS::AST::UiQualifiedId *id);
+-    QString nodeValue(const QQmlJS::AST::SourceLocation &start, const QQmlJS::AST::SourceLocation &end);
++    QString nodeValue(const QQmlJS::SourceLocation &start, const QQmlJS::SourceLocation &end);
+     QString removeLeadingAndTrailingChars(QString str);
+     Node* createNode(const QString& type, Node* parent);
+     void setNameValuePair(Node* node, const QString& name, const QString& value);
+diff --git a/tools/qtsafelayouttool/qsafeqmlparser.cpp b/tools/qtsafelayouttool/qsafeqmlparser.cpp
+index 16216fb..23b7ae4 100644
+--- a/tools/qtsafelayouttool/qsafeqmlparser.cpp
++++ b/tools/qtsafelayouttool/qsafeqmlparser.cpp
+@@ -114,7 +114,7 @@ void QSafeQmlParser::parseSourceFile(const QString& filePath, const NodeContaine
+             }
+ 
+             for (auto msg : parser.diagnosticMessages()) {
+-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
++#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0) && QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
+                 qDebug().nospace() << qPrintable(filePath) << ':' << msg.line
+                                    << ": QML syntax error at col " << msg.column
+                                    << ": " << qPrintable(msg.message);
