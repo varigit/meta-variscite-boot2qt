@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-do_configure_append() {
-    echo "QT_QPA_EGLFS_FORCE888=1" >> ${WORKDIR}/defaults
-    echo "QT_QPA_EGLFS_KMS_ATOMIC=0" >> ${WORKDIR}/defaults
+do_deploy_append_raspberrypi4() {
+    echo "# enable both hdmi outputs" >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
+    echo "max_framebuffers=2" >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
 }
