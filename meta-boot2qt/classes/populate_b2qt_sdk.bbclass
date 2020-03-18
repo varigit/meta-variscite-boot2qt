@@ -29,6 +29,11 @@
 
 inherit populate_sdk
 
+quiet_sdk_extraction() {
+EXTRA_TAR_OPTIONS="$EXTRA_TAR_OPTIONS --checkpoint=9999999"
+}
+SDK_PRE_INSTALL_COMMAND = "${quiet_sdk_extraction}"
+
 replace_sysroot_symlink() {
         SYMLINK_SYSROOT=$1
         SEARCH_FOLDER=$2
