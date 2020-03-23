@@ -46,7 +46,7 @@
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="aea3771baa77e74762358ceb673d407e36637e5f"
+           revision="649a51aab6b53f74f655583bab6056be9ae032f5"
            path="sources/meta-freescale-3rdparty"/>
 
   <!-- Raspberry Pi -->
@@ -96,6 +96,6 @@
           fetch="git://github.com/boundarydevices"/>
   <project name="meta-boundary"
            remote="boundary"
-           revision="e05a6e225482d7fe6ea8c2287635d224085aa8fe"
+           revision="03877f0a9d5b0e59a892ec4cb57c1981ec5a9538"
            path="sources/meta-boundary"/>
 </manifest>
