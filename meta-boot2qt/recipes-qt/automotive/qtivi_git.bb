@@ -54,7 +54,7 @@ SRC_URI += " \
     file://ivi-services.target \
 "
 
-SRCREV = "6dbb252ce1001fa6ab7c8281ff8a9e2c48acf91c"
+SRCREV = "9a1d79ac5cc2abf4eccacf0a50143e127e444a77"
 
 PACKAGECONFIG ?= "taglib ivigenerator remoteobjects"
 PACKAGECONFIG[taglib] = "QMAKE_EXTRA_ARGS+=-feature-taglib,QMAKE_EXTRA_ARGS+=-no-feature-taglib,taglib"
