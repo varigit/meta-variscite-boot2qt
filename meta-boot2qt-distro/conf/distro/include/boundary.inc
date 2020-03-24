@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -34,6 +34,7 @@ BBMASK += " \
     meta-boundary/recipes-boundary/images \
     meta-boundary/recipes-graphics/wayland \
     meta-boundary/recipes-graphics/xorg-xserver \
+    meta-boundary/recipes-graphics/mesa/mesa_%.bbappend \
     meta-boundary/recipes-kernel/linux-firmware/linux-firmware_git.bbappend \
     "
 
