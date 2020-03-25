@@ -30,12 +30,8 @@
 include conf/distro/include/fsl.inc
 
 BBMASK += " \
-    meta-boundary/recipes-core/init-ifupdown \
     meta-boundary/recipes-boundary/images \
-    meta-boundary/recipes-graphics/wayland \
-    meta-boundary/recipes-graphics/xorg-xserver \
     meta-boundary/recipes-graphics/mesa/mesa_%.bbappend \
-    meta-boundary/recipes-kernel/linux-firmware/linux-firmware_git.bbappend \
     "
 
 MACHINE_EXTRA_INSTALL += "\
