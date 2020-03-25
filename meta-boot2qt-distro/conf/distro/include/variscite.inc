@@ -49,6 +49,7 @@ IMAGE_INSTALL_append = " \
     pulseaudio-misc \
     pulseaudio-server \
     tar \
+    udev-extraconf \
     "
 
 WKS_FILE = "imx8-uboot-singlepart.wks.in"
