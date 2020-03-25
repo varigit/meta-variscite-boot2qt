@@ -60,7 +60,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
-           revision="eacd8eb9f762c90cec2825736e8c4d483966c4d4"
+           revision="1e6dcb762fed9ab5d0265477e4a2ab56748750da"
            path="sources/meta-intel"/>
 
   <!-- NVIDIA -->
