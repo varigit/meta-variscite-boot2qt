@@ -154,6 +154,9 @@ get_groups() {
     draak)
       PROJECT_GROUPS="renesas-draak"
     ;;
+    var-som-mx6|imx6ul-var-dart|imx7-var-som)
+      PROJECT_GROUPS="variscite"
+    ;;
     *)
       echo "Unknown device configuration, including all meta layers"
       PROJECT_GROUPS="external"

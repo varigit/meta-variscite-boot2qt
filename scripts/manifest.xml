@@ -16,6 +16,7 @@
   <remote fetch="git://github.com/boundarydevices" name="boundary"/>
   <remote fetch="git://github.com/toradex" name="toradex-github"/>
   <remote fetch="git://source.codeaurora.org/external/imx" name="aurora-imx"/>
+  <remote fetch="git://github.com/varigit" name="variscite"/>
 
   <project name="poky"
            remote="yocto"
@@ -38,12 +39,12 @@
            remote="freescale"
            revision="b73854c078b0a174613135b60da3377a1055f477"
            path="sources/meta-freescale"
-           groups="notdefault,external,fsl,toradex,smx6,boundary,fsl-imx8,toradex-imx8"/>
+           groups="notdefault,external,fsl,toradex,smx6,boundary,fsl-imx8,toradex-imx8,variscite"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
            revision="c4b5ac6b20e4245ce0630e9197313aaef999a331"
            path="sources/meta-freescale-3rdparty"
-           groups="notdefault,external,fsl,toradex,smx6,boundary,fsl-imx8,toradex-imx8"/>
+           groups="notdefault,external,fsl,toradex,smx6,boundary,fsl-imx8,toradex-imx8,variscite"/>
   <project name="meta-raspberrypi"
            remote="yocto"
            revision="89bdf97beaf3b136c24c4d6f86c0bcbb47fe3043"
@@ -99,6 +100,16 @@
            revision="55754a3cc79759f18fa1df88ae2ffa91fbd87d84"
            path="sources/meta-fsl-bsp-release-toradex"
            groups="notdefault,external,toradex-imx8"/>
+  <project name="meta-freescale-distro"
+           remote="freescale"
+           revision="4a244af3993ae662624c6f615464e6806cc719a2"
+           path="sources/meta-freescale-distro"
+           groups="notdefault,external,variscite"/>
+  <project name="meta-variscite-fslc"
+           remote="variscite"
+           revision="2e03db0e9b85596ebe392b21fd0ff8eb072324d8"
+           path="sources/meta-variscite-fslc"
+           groups="notdefault,external,variscite"/>
 
   <project name="nvidia-layer"
            remote="playground"
