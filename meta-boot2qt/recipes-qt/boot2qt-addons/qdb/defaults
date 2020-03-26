@@ -6,3 +6,4 @@ else
   SERIAL=$(hostname)-$(cat /etc/machine-id)
 fi
 export QT_HASH_SEED=0
+USB_ETHERNET_PROTOCOL=rndis

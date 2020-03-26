@@ -37,65 +37,96 @@
 ## $QT_END_LICENSE$
 ###############################################################################
 MANUFACTURER="The Qt Company"
-PRODUCT_STRING="Boot2Qt Ethernet/RNDIS connection"
-
-DAEMON=/usr/bin/qdbd
-CONFIGFS_PATH=/sys/kernel/config
-
-GADGET_CONFIG=$CONFIGFS_PATH/usb_gadget/g1
+QDBDAEMON=/usr/bin/qdbd
+CONFIG_GADGET_DIR_PATH=/sys/kernel/config/usb_gadget/g1
+CONFIG_NAME_AND_NUMBER="c.1"
+FUNCTIONFS_PATH=/dev/usb-ffs
 
 . /etc/default/qdbd
 
-case "$1" in
-start)
+function_fs_mountpoint()
+{
+    mkdir -p $FUNCTIONFS_PATH
+    chmod 770 $FUNCTIONFS_PATH
+    mkdir -p $FUNCTIONFS_PATH/qdb
+    chmod 770 $FUNCTIONFS_PATH/qdb
+    mount -t functionfs qdb $FUNCTIONFS_PATH/qdb -o uid=0,gid=0
+}
+
+configure_gadget()
+{
+    CONFIG_GADGET_PRODUCT_STRING=$1
+    CONFIG_CONFIGURATION_NAME=$2
+    CONFIG_FUNCTION_SYMLINK=$3
+    mkdir -p $CONFIG_GADGET_DIR_PATH
+    echo $VENDOR > $CONFIG_GADGET_DIR_PATH/idVendor
+    echo $PRODUCT > $CONFIG_GADGET_DIR_PATH/idProduct
+    mkdir -p $CONFIG_GADGET_DIR_PATH/strings/0x409
+    echo $MANUFACTURER > $CONFIG_GADGET_DIR_PATH/strings/0x409/manufacturer
+    echo $CONFIG_GADGET_PRODUCT_STRING > $CONFIG_GADGET_DIR_PATH/strings/0x409/product
+    echo ${SERIAL:0:32} > $CONFIG_GADGET_DIR_PATH/strings/0x409/serialnumber
+    mkdir -p $CONFIG_GADGET_DIR_PATH/configs/$CONFIG_NAME_AND_NUMBER/strings/0x409
+    echo $CONFIG_CONFIGURATION_NAME > $CONFIG_GADGET_DIR_PATH/configs/$CONFIG_NAME_AND_NUMBER/strings/0x409/configuration
+    mkdir -p $CONFIG_GADGET_DIR_PATH/functions/$CONFIG_FUNCTION_SYMLINK
+    mkdir -p $CONFIG_GADGET_DIR_PATH/functions/ffs.qdb
+    ln -sf $CONFIG_GADGET_DIR_PATH/functions/$CONFIG_FUNCTION_SYMLINK $CONFIG_GADGET_DIR_PATH/configs/$CONFIG_NAME_AND_NUMBER
+    ln -sf $CONFIG_GADGET_DIR_PATH/functions/ffs.qdb $CONFIG_GADGET_DIR_PATH/configs/$CONFIG_NAME_AND_NUMBER
+}
+
+unconfigure_gadget()
+{
+    CONFIG_FUNCTION_SYMLINK=$1
+    rm $CONFIG_GADGET_DIR_PATH/configs/$CONFIG_NAME_AND_NUMBER/$CONFIG_FUNCTION_SYMLINK
+    rm $CONFIG_GADGET_DIR_PATH/configs/$CONFIG_NAME_AND_NUMBER/ffs.qdb
+    rmdir $CONFIG_GADGET_DIR_PATH/configs/$CONFIG_NAME_AND_NUMBER/strings/0x409
+    rmdir $CONFIG_GADGET_DIR_PATH/configs/$CONFIG_NAME_AND_NUMBER
+    rmdir $CONFIG_GADGET_DIR_PATH/functions/$CONFIG_FUNCTION_SYMLINK
+    rmdir $CONFIG_GADGET_DIR_PATH/functions/ffs.qdb
+    rmdir $CONFIG_GADGET_DIR_PATH/strings/0x409
+    rmdir $CONFIG_GADGET_DIR_PATH
+}
+
+if [ $USB_ETHERNET_PROTOCOL = "rndis" ]
+then
+    FUNCTION_NAME="rndis.usb0"
+    PRODUCT_STRING="Boot2Qt-USB-Ethernet-RNDIS"
+    CONFIG_NAME="USB-Ethernet_RNDIS+QDB"
+
+elif [ $USB_ETHERNET_PROTOCOL = "cdcecm" ]
+then
+    FUNCTION_NAME="ecm.usb1"
+    PRODUCT_STRING="Boot2Qt-USB-Ethernet-CDC/ECM"
+    CONFIG_NAME="USB-Ethernet_CDC-ECM+QDB"
+else
+    echo "Supported configs in /etc/default/qdbd: 'cdcecm' Mac&Linux, 'rndis' Win10&Linux. Not supported:" $USB_ETHERNET_PROTOCOL
+    exit 1
+fi
+
+if [ "$1" = "start" ]
+then
+    echo "start" $USB_ETHERNET_PROTOCOL
     b2qt-gadget-network.sh --reset
     modprobe libcomposite
     sleep 1
-    # Gadget configuration
-    mkdir -p $GADGET_CONFIG
-    echo $VENDOR > $GADGET_CONFIG/idVendor
-    echo $PRODUCT > $GADGET_CONFIG/idProduct
-    mkdir -p $GADGET_CONFIG/strings/0x409
-    echo $MANUFACTURER > $GADGET_CONFIG/strings/0x409/manufacturer
-    echo $PRODUCT_STRING > $GADGET_CONFIG/strings/0x409/product
-    echo ${SERIAL:0:32} > $GADGET_CONFIG/strings/0x409/serialnumber
-    mkdir -p $GADGET_CONFIG/configs/c.1/strings/0x409
-    echo "USB Ethernet + QDB" > $GADGET_CONFIG/configs/c.1/strings/0x409/configuration
-    mkdir -p $GADGET_CONFIG/functions/rndis.usb0
-    mkdir -p $GADGET_CONFIG/functions/ffs.qdb
-    ln -sf $GADGET_CONFIG/functions/rndis.usb0 $GADGET_CONFIG/configs/c.1
-    ln -sf $GADGET_CONFIG/functions/ffs.qdb $GADGET_CONFIG/configs/c.1
-    # Function fs mountpoints
-    mkdir -p /dev/usb-ffs
-    chmod 770 /dev/usb-ffs
-    mkdir -p /dev/usb-ffs/qdb
-    chmod 770 /dev/usb-ffs/qdb
-    mount -t functionfs qdb /dev/usb-ffs/qdb -o uid=0,gid=0
-    shift
-    start-stop-daemon --start --quiet --exec $DAEMON -- $@ &
-    ;;
-stop)
-    start-stop-daemon --stop --quiet --exec $DAEMON
+    configure_gadget $PRODUCT_STRING $CONFIG_NAME $FUNCTION_NAME
+    function_fs_mountpoint
+    start-stop-daemon --start --quiet --background --exec $QDBDAEMON -- --usb-ethernet-function-name $FUNCTION_NAME
+elif [ "$1" = "stop" ]
+then
+    echo "stop" $USB_ETHERNET_PROTOCOL
+    start-stop-daemon --stop --quiet --exec $QDBDAEMON
     sleep 1
-    umount /dev/usb-ffs/qdb
-    rm $GADGET_CONFIG/configs/c.1/rndis.usb0
-    rm $GADGET_CONFIG/configs/c.1/ffs.qdb
-    rmdir $GADGET_CONFIG/configs/c.1/strings/0x409
-    rmdir $GADGET_CONFIG/configs/c.1
-    rmdir $GADGET_CONFIG/functions/rndis.usb0
-    rmdir $GADGET_CONFIG/functions/ffs.qdb
-    rmdir $GADGET_CONFIG/strings/0x409
-    rmdir $GADGET_CONFIG
-    ;;
-restart)
-    start-stop-daemon --stop --quiet --exec $DAEMON
+    umount $FUNCTIONFS_PATH/qdb
+    unconfigure_gadget $FUNCTION_NAME
+elif [ "$1" = "restart" ]
+then
+    echo "restart" $USB_ETHERNET_PROTOCOL
+    start-stop-daemon --stop --quiet --exec $QDBDAEMON
     b2qt-gadget-network.sh --reset
     sleep 1
-    shift
-    start-stop-daemon --start --quiet --exec $DAEMON -- $@ &
-    ;;
-*)
+    start-stop-daemon --start --quiet --background --exec $QDBDAEMON -- --usb-ethernet-function-name $FUNCTION_NAME
+else
     echo "Usage: $0 {start|stop|restart}"
     exit 1
-esac
+fi
 exit 0
