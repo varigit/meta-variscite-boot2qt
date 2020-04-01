@@ -1,0 +1,28 @@
+From c479704a66219157b9666cd6a960dc06b14f1107 Mon Sep 17 00:00:00 2001
+From: Andy Nichols <andy.nichols@qt.io>
+Date: Fri, 14 Feb 2020 17:33:44 +0100
+Subject: [PATCH] Make it possible to set the EGL_DEFAULT_DISPLAY
+
+Change-Id: I564f1ce72501bc12b960c87c953343fd64ee9011
+---
+ src/plugins/platforms/eglfs/api/qeglfsdeviceintegration.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/plugins/platforms/eglfs/api/qeglfsdeviceintegration.cpp b/src/plugins/platforms/eglfs/api/qeglfsdeviceintegration.cpp
+index e3145aa0b0..b985386a4e 100644
+--- a/src/plugins/platforms/eglfs/api/qeglfsdeviceintegration.cpp
++++ b/src/plugins/platforms/eglfs/api/qeglfsdeviceintegration.cpp
+@@ -185,7 +185,9 @@ void QEglFSDeviceIntegration::platformDestroy()
+ 
+ EGLNativeDisplayType QEglFSDeviceIntegration::platformDisplay() const
+ {
+-    return EGL_DEFAULT_DISPLAY;
++    bool displayOk;
++    const int defaultDisplay = qEnvironmentVariableIntValue("QT_QPA_EGLFS_DEFAULT_DISPLAY", &displayOk);
++    return displayOk ? EGLNativeDisplayType(quintptr(defaultDisplay)) : EGL_DEFAULT_DISPLAY;
+ }
+ 
+ EGLDisplay QEglFSDeviceIntegration::createDisplay(EGLNativeDisplayType nativeDisplay)
+-- 
+2.17.1
+
