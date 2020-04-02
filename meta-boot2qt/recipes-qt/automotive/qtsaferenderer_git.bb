@@ -53,7 +53,7 @@ SRC_URI = "\
     file://0001-Fix-yocto-build-issues.patch \
     file://0001-Fix-build-with-Qt-5.15.patch \
     "
-SRCREV = "5b0a004c3c985c507ae713e239d8d7b13f495531"
+SRCREV = "ac0349c1f5d5486e1f8ecaf1db2e1221ff9f0837"
 
 DEPENDS = "qtbase qtdeclarative"
 
