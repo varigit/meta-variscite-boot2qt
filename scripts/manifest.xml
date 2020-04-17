@@ -52,7 +52,7 @@
   <!-- Raspberry Pi -->
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="cee2557dc872ddaf721e6badb981c7772503f8ea"
+           revision="0e05098853eea77032bff9cf81955679edd2f35d"
            path="sources/meta-raspberrypi"/>
 
   <!-- Intel -->
@@ -60,7 +60,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
-           revision="1e6dcb762fed9ab5d0265477e4a2ab56748750da"
+           revision="55b53335c1bf5e120e8038f86ab69d5417bf3e73"
            path="sources/meta-intel"/>
 
   <!-- NVIDIA -->
@@ -96,6 +96,6 @@
           fetch="git://github.com/boundarydevices"/>
   <project name="meta-boundary"
            remote="boundary"
-           revision="bef7cc4a3bc779dfaa5f5424c1f6158a114ec1ae"
+           revision="317c4f037b8b82811be56a271266fb31cdd1fc7a"
            path="sources/meta-boundary"/>
 </manifest>
