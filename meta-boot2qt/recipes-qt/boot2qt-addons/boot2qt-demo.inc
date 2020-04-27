@@ -39,7 +39,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/boot2qt-demos:"
 
 BRANCH = "5.15"
 
-SRCREV = "f3bb027f6f533fde7a931b64d70f3aebc3b5f846"
+SRCREV = "9d6a97f0fb5ff22a12f5c1dc0761fcbfb3490c0a"
 
 FILES_${PN} += " \
     /data/user \
