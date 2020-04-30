@@ -40,3 +40,5 @@ DEPENDS = "\
     qtbase qtdeclarative qtconnectivity qtdeclarative-native \
     ${@bb.utils.contains('DISTRO_FEATURES', 'qt5-static', 'qtsvg qtvirtualkeyboard', '', d)} \
     "
+
+RDEPENDS_${PN} = "qtxmlpatterns"

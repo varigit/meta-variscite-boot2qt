@@ -51,6 +51,12 @@ DEPENDS = "\
     ${@bb.utils.contains('DISTRO_FEATURES', 'qt5-static', 'qtdeclarative-native qtvirtualkeyboard qtdeviceutilities', '', d)} \
     "
 
+RDEPENDS_${PN} = "\
+    qtvirtualkeyboard \
+    qtdeviceutilities \
+    qtgraphicaleffects \
+"
+
 do_install_append() {
     install -m 0755 -d ${D}${sysconfdir}/init.d
     install -m 0755 ${WORKDIR}/b2qt-startup.sh ${D}${sysconfdir}/init.d/

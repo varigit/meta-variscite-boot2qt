@@ -36,3 +36,4 @@ require boot2qt-demo.inc
 S = "${WORKDIR}/git/basicsuite/qtwebbrowser"
 
 DEPENDS += "qtbase qtdeclarative qtwebengine"
+RDEPENDS_${PN} += "qtquickcontrols"
