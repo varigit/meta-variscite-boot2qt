@@ -40,6 +40,7 @@ RDEPENDS_${PN} += " \
     libarchive-dev \
     qtapplicationmanager-dev \
     qtapplicationmanager-staticdev \
+    avs-device-sdk \
     "
 
 RDEPENDS_${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'qtsaferenderer', \
