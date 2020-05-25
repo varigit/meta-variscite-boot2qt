@@ -56,6 +56,7 @@ WKS_FILE = "imx8-uboot-singlepart.wks.in"
 
 BBMASK += " \
     meta-variscite-imx/recipes-fsl/images/fsl-image-gui.bbappend \
+    meta-variscite-imx/dynamic-layers/qt5-layer/recipes-fsl/images/fsl-image-qt5.bbappend \
     "
 
 # unwanted B2QT demos
