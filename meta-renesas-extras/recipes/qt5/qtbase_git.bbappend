@@ -30,3 +30,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 PACKAGECONFIG += "gbm kms"
+
+SRC_URI += "\
+    file://0001-Make-it-possible-to-set-the-EGL_DEFAULT_DISPLAY.patch \
+"
