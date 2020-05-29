@@ -35,10 +35,17 @@ do_configure_append() {
     echo "QT_GSTREAMER_CAMERABIN_VIDEOSRC=mxc_v4l2=imxv4l2videosrc,v4l2src" >> ${WORKDIR}/defaults
 }
 
+IMXCONVERTER ?= ""
+IMXCONVERTER_mx8 = "imxvideoconvert_g2d"
+IMXCONVERTER_mx8mm = ""
+
 do_configure_append_mx8() {
     echo "QT_QPA_EGLFS_FORCE888=1" >> ${WORKDIR}/defaults
     echo "QT_QPA_EGLFS_KMS_ATOMIC=1" >> ${WORKDIR}/defaults
     echo "QT_QPA_EGLFS_KMS_CONFIG=/etc/kms.conf" >> ${WORKDIR}/defaults
+    if [ -n "${IMXCONVERTER}" ]; then
+        echo "QT_GSTREAMER_PLAYBIN_CONVERT=${IMXCONVERTER}" >> ${WORKDIR}/defaults
+    fi
 }
 
 do_install_append_mx8() {
