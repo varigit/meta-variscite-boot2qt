@@ -32,6 +32,9 @@ SRC_URI_append_mx8 = " file://kms.conf"
 do_configure_append() {
     echo "FB_MULTI_BUFFER=2" >> ${WORKDIR}/defaults
     echo "QT_QPA_EGLFS_FORCEVSYNC=1" >> ${WORKDIR}/defaults
+}
+
+do_configure_append_mx6() {
     echo "QT_GSTREAMER_CAMERABIN_VIDEOSRC=mxc_v4l2=imxv4l2videosrc,v4l2src" >> ${WORKDIR}/defaults
 }
 
