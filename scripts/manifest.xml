@@ -42,11 +42,11 @@
           fetch="git://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="e9d075e2e1084538a8f7e233f7982507213540e7"
+           revision="f535ddcd5cd3da846a34b1721ceda3c8b18b37a0"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="076c3132bb244b73c0f54b698d64c48b1ffbb58f"
+           revision="dbcc686f52c3c84db8cb86aa8973a4e373651b98"
            path="sources/meta-freescale-3rdparty"/>
 
   <!-- Raspberry Pi -->
