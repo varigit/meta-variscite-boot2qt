@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -26,6 +26,8 @@
 ## $QT_END_LICENSE$
 ##
 ############################################################################
+
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 DEPENDS_remove_mingw32 = "ncurses"
 
