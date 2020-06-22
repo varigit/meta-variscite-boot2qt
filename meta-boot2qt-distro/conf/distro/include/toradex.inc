@@ -54,6 +54,11 @@ IMAGE_BOOT_FILES_append_mx7 += "${SCRIPTS}"
 
 IMAGE_FSTYPES += "teziimg"
 
+# Placeholder for TEZI_DATE introduced in meta-toradex-bsp-common layer.
+# We don't use it as we override the tezi rootfs creation with our own version
+# but it causes a build failure if not defined
+TEZI_DATE = "20200101090000"
+
 QBSP_IMAGE_CONTENT += "\
     ${IMAGE_LINK_NAME}.tezi.tar \
 "

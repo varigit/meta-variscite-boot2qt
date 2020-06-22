@@ -1,4 +1,4 @@
-From f976eba0ddc8bc97ab3049a6a2e4f87110ada029 Mon Sep 17 00:00:00 2001
+From 406117d80603f8364a50e948e5afbe197d2c6082 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@qt.io>
 Date: Fri, 6 Oct 2017 15:54:35 +0300
 Subject: [PATCH] Enable atmel mxt multitouch controller for ixora v1.1 dtb
@@ -12,13 +12,13 @@ controller to work.
  3 files changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/arch/arm/boot/dts/imx6q-apalis-ixora-v1.1.dts b/arch/arm/boot/dts/imx6q-apalis-ixora-v1.1.dts
-index 6c4aa68999a9..6ce362066c3b 100644
+index 92bdfe2528b5..2f1ae8e2fb21 100644
 --- a/arch/arm/boot/dts/imx6q-apalis-ixora-v1.1.dts
 +++ b/arch/arm/boot/dts/imx6q-apalis-ixora-v1.1.dts
 @@ -243,7 +243,7 @@
  		interrupt-parent = <&gpio6>;
  		interrupts = <10 IRQ_TYPE_EDGE_FALLING>;
- 		reset-gpios = <&gpio6 9 GPIO_ACTIVE_HIGH>; /* SODIMM 13 */
+ 		reset-gpios = <&gpio6 9 GPIO_ACTIVE_HIGH>; /* MXM3 13 */
 -		status = "disabled";
 +		status = "okay";
  	};
@@ -33,13 +33,13 @@ index 6c4aa68999a9..6ce362066c3b 100644
  
  	/* M41T0M6 real time clock on carrier board */
 diff --git a/arch/arm/boot/dts/imx6q-apalis-ixora-v1.2.dts b/arch/arm/boot/dts/imx6q-apalis-ixora-v1.2.dts
-index c6ffe7477650..cfb6011d7b5c 100644
+index aec021fc1213..8a7c14fbd911 100644
 --- a/arch/arm/boot/dts/imx6q-apalis-ixora-v1.2.dts
 +++ b/arch/arm/boot/dts/imx6q-apalis-ixora-v1.2.dts
 @@ -259,7 +259,7 @@
  		interrupt-parent = <&gpio6>;
  		interrupts = <10 IRQ_TYPE_EDGE_FALLING>;
- 		reset-gpios = <&gpio6 9 GPIO_ACTIVE_HIGH>; /* SODIMM 13 */
+ 		reset-gpios = <&gpio6 9 GPIO_ACTIVE_HIGH>; /* MXM3 13 */
 -		status = "disabled";
 +		status = "okay";
  	};
@@ -54,13 +54,13 @@ index c6ffe7477650..cfb6011d7b5c 100644
  
  	/* M41T0M6 real time clock on carrier board */
 diff --git a/arch/arm/boot/dts/imx6q-apalis-ixora.dts b/arch/arm/boot/dts/imx6q-apalis-ixora.dts
-index 755ea18dcc14..d9947bff9bbe 100644
+index cf396b1a4235..be1b978393fa 100644
 --- a/arch/arm/boot/dts/imx6q-apalis-ixora.dts
 +++ b/arch/arm/boot/dts/imx6q-apalis-ixora.dts
 @@ -234,7 +234,7 @@
  		interrupt-parent = <&gpio6>;
  		interrupts = <10 IRQ_TYPE_EDGE_FALLING>;
- 		reset-gpios = <&gpio6 9 GPIO_ACTIVE_HIGH>; /* SODIMM 13 */
+ 		reset-gpios = <&gpio6 9 GPIO_ACTIVE_HIGH>; /* MXM3 13 */
 -		status = "disabled";
 +		status = "okay";
  	};
