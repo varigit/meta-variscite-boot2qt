@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -34,10 +34,6 @@ include conf/machine/include/${MACHINE}.inc
 
 BBMASK += "\
     meta-toradex-nxp/recipes-graphics/xorg-xserver \
-"
-
-BBMASK_append_mx6 = "\
-    meta-toradex-nxp/recipes-graphics/wayland/weston_4.0.0.imx.bbappend \
 "
 
 PREFERRED_VERSION_wayland-protocols_mx8 = "1.17.imx"
