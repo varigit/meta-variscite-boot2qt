@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -37,6 +37,9 @@ QBSP_IMAGE_CONTENT ?= "\
     ${IMAGE_LINK_NAME}.img \
     ${IMAGE_LINK_NAME}.conf \
     "
+
+# meta-freescale sets mx8qxp to cortexa35-crypto unavailable in zeus
+DEFAULTTUNE_mx8qxp = "aarch64"
 
 # Use gstreamer 1.14 from meta-freescale
 PREFERRED_VERSION_gstreamer1.0 ?= "1.14.imx"
