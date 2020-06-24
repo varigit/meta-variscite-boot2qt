@@ -27,5 +27,5 @@
 ##
 ############################################################################
 
-# use old class name still in use in warrior
-inherit distro_features_check
+# Bump to later revision to support imx8
+SRCREV = "b3b93d3c78db7598b4fd43268c1f368ba2372f10"

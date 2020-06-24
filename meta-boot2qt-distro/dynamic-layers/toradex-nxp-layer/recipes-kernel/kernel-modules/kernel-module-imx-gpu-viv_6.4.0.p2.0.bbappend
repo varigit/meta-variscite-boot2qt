@@ -1,4 +1,4 @@
-############################################################################
+############################################################################                                                                                                                                                                                           [0/1958]
 ##
 ## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
@@ -27,39 +27,6 @@
 ##
 ############################################################################
 
-include conf/distro/include/fsl.inc
-
-# include file from meta-toradex-nxp
-include conf/machine/include/${MACHINE}.inc
-
-BBMASK += "\
-    meta-toradex-nxp/recipes-graphics/xorg-xserver \
-"
-
-WKS_FILE_DEPENDS_append_mx6 = " u-boot-script-toradex"
-WKS_FILE_DEPENDS_append_mx7 = " u-boot-script-toradex"
-
-MACHINEDIR = "${@d.getVar('MACHINE').replace('-','_')}"
-
-SCRIPTS = "\
-    fwd_blk.img;flash_blk.img \
-    fwd_eth.img;flash_eth.img \
-    fwd_mmc.img;flash_mmc.img \
-    ${MACHINE}/*;${MACHINEDIR}/ \
-"
-IMAGE_BOOT_FILES_append_mx6 += "${SCRIPTS}"
-IMAGE_BOOT_FILES_append_mx7 += "${SCRIPTS}"
-
-IMAGE_FSTYPES += "teziimg"
-
-# Placeholder for TEZI_DATE introduced in meta-toradex-bsp-common layer.
-# We don't use it as we override the tezi rootfs creation with our own version
-# but it causes a build failure if not defined
-TEZI_DATE = "20200101090000"
-
-# use u-boot-toradex-initial instead of u-boot-initial
-UBOOT_ENV_TEZI = "${@ 'u-boot-toradex-initial-env-%s' % d.getVar('UBOOT_CONFIG') if d.getVar('UBOOT_CONFIG') else 'u-boot-toradex-initial-env'}"
-
-QBSP_IMAGE_CONTENT += "\
-    ${IMAGE_LINK_NAME}.tezi.tar \
-"
+# workaround for missing master branch causing
+# Exception: subprocess.CalledProcessError: Command '['git', 'log', '-1', '--pretty=%ct']' returned non-zero exit status 128.
+BUILD_REPRODUCIBLE_BINARIES = "0"

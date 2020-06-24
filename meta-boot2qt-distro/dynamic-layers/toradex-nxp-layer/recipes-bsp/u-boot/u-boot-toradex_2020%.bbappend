@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -28,4 +28,7 @@
 ############################################################################
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-SRC_URI += "file://0001-arm-Fix-SIGBUS-on-ARM-when-compiled-with-binutils-2..patch"
+SRC_URI += " \
+        file://0002-apalis-imx6-test-for-Capacitive-Touch-Display-7-Para.patch \
+        file://0004-apalis-imx6-lower-default-resolution-on-HDMI-to-720p.patch \
+        "

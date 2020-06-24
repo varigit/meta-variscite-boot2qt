@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,15 +27,4 @@
 ##
 ############################################################################
 
-# Define the osmesa block in PACKAGECONFIG for target, this block is
-# not defined in the master recipe, effectively causing the osmesa
-# feature to be disabled and -Dosmesa=none set.
-PACKAGECONFIG_append_mx6 = " osmesa"
-
-# Solve 'Problem encountered: OSMesa classic requires dri (classic) swrast.'
-# by defining the dri swrast for mx8mm machine
-DRIDRIVERS_append_mx6 = "swrast"
-
-# Solve 'ERROR: Problem encountered: Only one swrast provider can be built'
-# by excluding gallium support, dri is used together with 'classic' mesa backend.
-PACKAGECONFIG_remove_mx6 = "gallium"
+USE_OSMESA_ONLY_mx6 = "yes"

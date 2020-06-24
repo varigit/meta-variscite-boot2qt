@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -35,6 +35,7 @@ EXTRA_TAR_OPTIONS="$EXTRA_TAR_OPTIONS --checkpoint=9999999"
 SDK_PRE_INSTALL_COMMAND = "${quiet_sdk_extraction}"
 
 replace_sysroot_symlink() {
+        IFS=$'\n'
         SYMLINK_SYSROOT=$1
         SEARCH_FOLDER=$2
         for SOURCE in `find ${SEARCH_FOLDER} -type l`
@@ -49,6 +50,7 @@ replace_sysroot_symlink() {
                         touch "${SOURCE}"
                 fi
         done
+        unset IFS
 }
 
 do_populate_sdk[depends] += "p7zip-native:do_populate_sysroot"

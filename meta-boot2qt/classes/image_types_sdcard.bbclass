@@ -93,7 +93,7 @@ def rootfs_tezi_json_b2qt(d, flash_type, flash_data, json_file, uenv_file):
     qtversion = subprocess.check_output(['qmake', '-query', 'QT_VERSION']).decode('utf-8').strip()
 
     deploydir = d.getVar('DEPLOY_DIR_IMAGE')
-    data = OrderedDict({ "config_format": 2, "autoinstall": False })
+    data = OrderedDict({ "config_format": d.getVar('TEZI_CONFIG_FORMAT'), "autoinstall": False })
 
     # Use image recipes SUMMARY/DESCRIPTION...
     data["name"] = d.getVar('SUMMARY')

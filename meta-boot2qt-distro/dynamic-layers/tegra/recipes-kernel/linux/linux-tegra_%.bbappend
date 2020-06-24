@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -26,6 +26,9 @@
 ## $QT_END_LICENSE$
 ##
 ############################################################################
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+
+SRC_URI += "file://0001-perf-Make-perf-able-to-build-with-latest-libbfd.patch"
 
 KERNEL_ROOTSPEC = "root=/dev/mmcblk\${devnum}p1 rw rootwait"
 

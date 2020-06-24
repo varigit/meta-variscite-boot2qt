@@ -38,16 +38,13 @@ QBSP_IMAGE_CONTENT ?= "\
     ${IMAGE_LINK_NAME}.conf \
     "
 
-# meta-freescale sets mx8qxp to cortexa35-crypto unavailable in zeus
-DEFAULTTUNE_mx8qxp = "aarch64"
-
-# Use gstreamer 1.14 from meta-freescale
-PREFERRED_VERSION_gstreamer1.0 ?= "1.14.imx"
-PREFERRED_VERSION_gstreamer1.0-plugins-base ?= "1.14.imx"
-PREFERRED_VERSION_gstreamer1.0-plugins-good ?= "1.14.imx"
-PREFERRED_VERSION_gstreamer1.0-plugins-bad ?= "1.14.imx"
-PREFERRED_VERSION_gstreamer1.0-plugins-ugly ?= "1.14.4"
-PREFERRED_VERSION_gstreamer1.0-libav ?= "1.14.0"
+# Use gstreamer 1.16 from meta-freescale
+PREFERRED_VERSION_gstreamer1.0_use-nxp-bsp ?= "1.16.imx"
+PREFERRED_VERSION_gstreamer1.0-plugins-base_use-nxp-bsp ?= "1.16.imx"
+PREFERRED_VERSION_gstreamer1.0-plugins-good_use-nxp-bsp ?= "1.16.imx"
+PREFERRED_VERSION_gstreamer1.0-plugins-bad_use-nxp-bsp ?= "1.16.imx"
+PREFERRED_VERSION_gstreamer1.0-plugins-ugly_use-nxp-bsp ?= "1.16.0"
+PREFERRED_VERSION_gstreamer1.0-libav_use-nxp-bsp ?= "1.16.0"
 
 MACHINE_GSTREAMER_1_0_PLUGIN_append_imxgpu = " imx-gst1.0-plugin"
 
