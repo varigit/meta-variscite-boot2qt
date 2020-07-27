@@ -56,7 +56,7 @@ BUILDDIRECTORY=${BUILDDIRECTORY:-build-${MACHINE}}
 
 if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
   case ${MACHINE} in
-    imx8mm-var-dart|imx8mq-var-dart|imx8qm-var-som|imx8qxp-var-som)
+    imx8mm-var-dart|imx8mq-var-dart|imx8qm-var-som|imx8qxp-var-som|imx8qxpb0-var-som)
       LAYERSCONF="bblayers.conf.variscite-imx.sample"
     ;;
     imx8*)
