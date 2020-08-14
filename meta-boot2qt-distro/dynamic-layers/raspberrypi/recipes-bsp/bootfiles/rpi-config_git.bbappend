@@ -28,6 +28,6 @@
 ############################################################################
 
 do_deploy_append_raspberrypi4() {
-    echo "# enable both hdmi outputs" >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
-    echo "max_framebuffers=2" >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
+    echo "# enable both hdmi outputs" >> ${DEPLOYDIR}/${BOOTFILES_DIR_NAME}/config.txt
+    echo "max_framebuffers=2" >> ${DEPLOYDIR}/${BOOTFILES_DIR_NAME}/config.txt
 }
