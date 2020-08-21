@@ -34,7 +34,6 @@
 INCOMPATIBLE_LICENSE += "*GPLv3"
 
 IMAGE_FEATURES_remove_pn-b2qt-embedded-qt5-image = "tools-debug debug-tweaks"
-IMAGE_FEATURES_remove_pn-b2qt-automotive-qt5-image = "tools-debug debug-tweaks"
 
 RDEPENDS_packagegroup-b2qt-embedded-tools_remove_pn-packagegroup-b2qt-embedded-tools = "binutils binutils-symlinks perf"
 RDEPENDS_packagegroup-b2qt-embedded-base_remove_pn-packagegroup-b2qt-embedded-base = "ttf-freefont-mono"
