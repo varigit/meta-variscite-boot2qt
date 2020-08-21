@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,44 +27,38 @@
 ##
 ############################################################################
 
-PACKAGECONFIG_GL = "${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'gles2 eglfs', 'no-opengl', d)}"
+DESCRIPTION = "Qt6 modules"
+LICENSE = "The-Qt-Company-Commercial"
 
-PACKAGECONFIG += " \
-    cups \
-    fontconfig \
-    getentropy \
-    gif \
-    glib \
-    harfbuzz \
-    ico \
-    icu \
-    libinput \
-    linuxfb \
-    sql-sqlite \
-    tslib \
-    xkbcommon \
+inherit packagegroup
+
+PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
+
+RDEPENDS_${PN} += " \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qt3d', '', d)} \
+    qtbase \
+    qtconnectivity \
+    qtdeclarative \
+    qtdeclarative-tools \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtgraphicaleffects', '', d)} \
+    qtimageformats \
+    qtnetworkauth \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtquick3d', '', d)} \
+    qtquickcontrols2 \
+    qtquicktimeline \
+    qtremoteobjects \
+    qtserialbus \
+    qtserialport \
+    qtsvg \
+    qttools \
+    qttools-tools \
+    qttranslations-qtbase \
+    qttranslations-qtdeclarative \
+    qttranslations-qtconnectivity \
+    qttranslations-qtserialport \
+    qttranslations-qtwebsockets \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland', '', d)} \
+    qtwebsockets \
+    qtwebchannel \
+    qtvirtualkeyboard \
     "
-
-PACKAGECONFIG_remove = "tests examples"
-
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
-SRC_URI += " \
-    file://0001-Add-win32-g-oe-mkspec-that-uses-the-OE_-environment.patch \
-    file://0002-Disable-ltcg-for-windows-and-static-libs.patch \
-    "
-
-QT_QPA_DEFAULT_PLATFORM ??= "eglfs"
-QT_QPA_EGLFS_INTEGRATION ??= ""
-
-do_configure_prepend() {
-    echo "QMAKE_PLATFORM          += boot2qt" >> ${S}/mkspecs/oe-device-extra.pri
-    echo "QT_QPA_DEFAULT_PLATFORM  = ${QT_QPA_DEFAULT_PLATFORM}" >> ${S}/mkspecs/oe-device-extra.pri
-    if [ -n "${QT_QPA_EGLFS_INTEGRATION}" ]; then
-        echo "EGLFS_DEVICE_INTEGRATION = ${QT_QPA_EGLFS_INTEGRATION}" >> ${S}/mkspecs/oe-device-extra.pri
-    fi
-}
-
-# revert postinst steps from upstream recipe
-pkg_postinst_${PN}-mkspecs () {
-}

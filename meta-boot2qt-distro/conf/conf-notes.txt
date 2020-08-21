@@ -4,8 +4,8 @@
 You can now run 'bitbake <target>'
 
 Common targets are:
-    b2qt-embedded-qt5-image
-    meta-toolchain-b2qt-embedded-qt5-sdk
+    b2qt-embedded-qt6-image
+    meta-toolchain-b2qt-embedded-qt6-sdk
 
 QBSP target is:
     meta-b2qt-embedded-qbsp

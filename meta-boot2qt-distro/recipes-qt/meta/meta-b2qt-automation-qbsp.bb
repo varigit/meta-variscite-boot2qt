@@ -33,7 +33,7 @@ LICENSE = "The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=c8b6dd132d52c6e5a545df07a4e3e283"
 
 # get Qt version number
-require recipes-qt/qt5/qt5-git.inc
+require recipes-qt/qt6/qt6-git.inc
 S = "${WORKDIR}"
 
 inherit qbsp
@@ -46,5 +46,5 @@ QBSP_MACHINE = "${@d.getVar('MACHINE').replace('-','')}"
 QBSP_INSTALLER_COMPONENT = "automation.${VERSION_SHORT}.yocto.${QBSP_MACHINE}"
 QBSP_INSTALL_PATH = "/${PV}/Automation/${MACHINE}"
 
-QBSP_SDK_TASK = "meta-toolchain-b2qt-automation-qt5-sdk"
-QBSP_IMAGE_TASK = "b2qt-automation-qt5-image"
+QBSP_SDK_TASK = "meta-toolchain-b2qt-automation-qt6-sdk"
+QBSP_IMAGE_TASK = "b2qt-automation-qt6-image"

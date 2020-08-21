@@ -27,6 +27,6 @@
 ##
 ############################################################################
 
-require recipes-qt/meta/meta-toolchain-b2qt-embedded-qt5-sdk.bb
+require recipes-qt/meta/meta-toolchain-b2qt-embedded-qt6-sdk.bb
 
 SDKIMAGE_FEATURES = "dev-pkgs"

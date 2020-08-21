@@ -31,8 +31,8 @@ DESCRIPTION = "Boot to Qt Appcontroller"
 LICENSE = "The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://main.cpp;md5=f25c7436dbc72d4719a5684b28dbcf4b;beginline=1;endline=17"
 
-inherit qmake5
-require recipes-qt/qt5/qt5-git.inc
+inherit qt6-qmake
+require recipes-qt/qt6/qt6-git.inc
 
 QT_GIT_PROJECT = "qt-apps"
 

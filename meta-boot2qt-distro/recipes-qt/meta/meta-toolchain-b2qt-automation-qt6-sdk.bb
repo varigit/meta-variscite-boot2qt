@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -32,7 +32,8 @@ DESCRIPTION = "B2Qt embedded Qt5 SDK toolchain"
 LICENSE = "The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=c8b6dd132d52c6e5a545df07a4e3e283"
 
-inherit populate_b2qt_qt5_sdk
+inherit populate_b2qt_qt6_sdk
 
-TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-b2qt-embedded-qt5-toolchain-host"
-TOOLCHAIN_TARGET_TASK += "packagegroup-b2qt-embedded-qt5-toolchain-target"
+TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-b2qt-embedded-qt6-toolchain-host"
+TOOLCHAIN_TARGET_TASK += "packagegroup-b2qt-embedded-qt6-toolchain-target \
+                          packagegroup-b2qt-automation-qt6-toolchain-target"

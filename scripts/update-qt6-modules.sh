@@ -1,7 +1,7 @@
 #!/bin/bash
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -29,9 +29,9 @@
 ############################################################################
 
 if [ $# -lt 1 ]; then
-    echo "Usage: $0 <qt5.git> [<layerdir>]"
+    echo "Usage: $0 <gitdir> [<layerdir>]"
     echo "Update SRCREVs for all Qt modules in the current layer."
-    echo "The <qt5.git> is path to the qt5 super repo, where modules' SHA1 is taken."
+    echo "The <gitdir> is path to the super repo, where modules' SHA1 is taken."
     exit 1
 fi
 

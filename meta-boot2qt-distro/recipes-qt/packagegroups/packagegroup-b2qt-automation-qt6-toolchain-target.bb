@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2018 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,59 +27,15 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Qt5 modules"
+DESCRIPTION = "Target packages for B2Qt Automation Qt5 SDK"
 LICENSE = "The-Qt-Company-Commercial"
+PR = "r0"
 
 inherit packagegroup
 
 PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
-OGL_RUNTIME ?= "ogl-runtime ogl-runtime-tools"
-OGL_RUNTIME_mipsarch ?= ""
-
 RDEPENDS_${PN} += " \
-    ${OGL_RUNTIME} \
-    qt3d \
-    qtbase \
-    qtcharts \
-    qtconnectivity \
-    qtdatavis3d \
-    qtdeclarative \
-    qtdeclarative-tools \
-    qtdeviceutilities \
-    qtgamepad \
-    qtgraphicaleffects \
-    qtimageformats \
-    qtlocation \
-    qtmultimedia \
-    qtnetworkauth \
-    qtotaupdate \
-    qtquick3d \
-    qtquickcontrols \
-    qtquickcontrols2 \
-    qtquicktimeline \
-    qtremoteobjects \
-    qtscxml \
-    qtsensors \
-    qtserialbus \
-    qtserialport \
-    qtsvg \
-    qttools \
-    qttools-tools \
-    qttranslations-qtbase \
-    qttranslations-qtdeclarative \
-    qttranslations-qtconnectivity \
-    qttranslations-qtlocation \
-    qttranslations-qtmultimedia \
-    qttranslations-qtquickcontrols \
-    qttranslations-qtserialport \
-    qttranslations-qtwebsockets \
-    qttranslations-qtxmlpatterns \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine qttranslations-qtwebengine qtwebview', '', d)} \
-    qtwebsockets \
-    qtwebchannel \
-    qtwebglplugin \
-    qtxmlpatterns \
-    qtvirtualkeyboard \
+    qtmqtt-dev \
+    qtopcua-dev \
     "

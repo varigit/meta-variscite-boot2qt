@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2019 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Target packages for B2Qt Automation Qt5 SDK"
+DESCRIPTION = "Target packages for B2Qt embedded Qt5 SDK"
 LICENSE = "The-Qt-Company-Commercial"
 PR = "r0"
 
@@ -35,8 +35,36 @@ inherit packagegroup
 
 PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
+MACHINE_EXTRA_INSTALL_SDK ?= ""
+
+GCC-SANITIZERS ?= "gcc-sanitizers"
+GCC-SANITIZERS_mipsarch = ""
+GCC-SANITIZERS_libc-musl = ""
+
 RDEPENDS_${PN} += " \
-    qtmqtt-dev \
-    qtknx-dev \
-    qtopcua-dev \
+    ${MACHINE_EXTRA_INSTALL_SDK} \
+    packagegroup-core-standalone-sdk-target \
+    ${GCC-SANITIZERS} \
+    \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qt3d-dev', '', d)} \
+    qtbase-dev \
+    qtbase-staticdev \
+    qtconnectivity-dev \
+    qtdeclarative-dev \
+    qtdeclarative-staticdev \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtgraphicaleffects-dev', '', d)} \
+    qtimageformats-dev \
+    qtnetworkauth-dev \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtquick3d-dev', '', d)} \
+    qtquickcontrols2-dev \
+    qtquicktimeline-dev \
+    qtremoteobjects-dev \
+    qtserialbus-dev \
+    qtserialport-dev \
+    qtsvg-dev \
+    qttools-dev \
+    qtvirtualkeyboard-dev \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland-dev', '', d)} \
+    qtwebsockets-dev \
+    qtwebchannel-dev \
     "

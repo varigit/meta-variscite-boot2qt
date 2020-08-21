@@ -27,17 +27,28 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/qtbase:"
+SUMMARY = "Qt for Device Creation Demo Image"
+LICENSE = "The-Qt-Company-Commercial"
+LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=c8b6dd132d52c6e5a545df07a4e3e283"
 
-SRC_URI += "\
-    file://0001-Add-win32-g-oe-mkspec-that-uses-the-OE_-environment.patch \
+DEPLOY_CONF_TYPE = "Boot2Qt $QT_VERSION"
+
+IMAGE_FEATURES += "\
+        package-management \
+        ssh-server-dropbear \
+        tools-debug \
+        tools-profile \
+        debug-tweaks \
+        hwcodecs \
+        "
+
+inherit core-image qbsp-image
+inherit consistent_timestamps
+
+IMAGE_INSTALL += "\
+    packagegroup-b2qt-embedded-base \
+    packagegroup-b2qt-embedded-tools \
+    ${@bb.utils.contains("DISTRO_FEATURES", "gstreamer", "packagegroup-b2qt-embedded-gstreamer", "", d)} \
+    packagegroup-b2qt-qt6-modules \
+    packagegroup-b2qt-embedded-addons \
     "
-
-PACKAGECONFIG += "openssl gui imageformats"
-PACKAGECONFIG_remove_mingw32 += "openssl"
-
-fakeroot do_generate_qt_environment_file_mingw32() {
-}
-
-# qdatetime.cpp: error: 'localtime_r' was not declared in this scope
-QT_CONFIG_FLAGS_append_mingw32 = " -D_POSIX_C_SOURCE"

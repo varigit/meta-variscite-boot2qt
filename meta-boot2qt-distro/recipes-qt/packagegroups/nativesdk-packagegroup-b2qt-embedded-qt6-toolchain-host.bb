@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2016 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,29 +27,30 @@
 ##
 ############################################################################
 
-DESCRIPTION = "B2Qt Automation Qt5 image"
+DESCRIPTION = "Host packages for B2Qt embedded Qt5 SDK"
 LICENSE = "The-Qt-Company-Commercial"
-LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=c8b6dd132d52c6e5a545df07a4e3e283"
+PR = "r0"
 
-DEPLOY_CONF_TYPE = "Qt for Automation ($QT_VERSION)"
+inherit nativesdk packagegroup
 
-IMAGE_FEATURES += "\
-        package-management \
-        ssh-server-dropbear \
-        tools-debug \
-        tools-profile \
-        debug-tweaks \
-        hwcodecs \
-        "
+python __anonymous() {
+    overrides = d.getVar("OVERRIDES").split(":")
+    if "mingw32" not in overrides:
+        d.appendVar("OVERRIDES", ":linux")
+}
 
-inherit core-image qbsp-image
-inherit consistent_timestamps
+RDEPENDS_${PN} += "\
+    nativesdk-packagegroup-b2qt-embedded-toolchain-host \
+    nativesdk-qtbase \
+    nativesdk-qtbase-dev \
+    nativesdk-qtbase-staticdev \
+    nativesdk-qtbase-tools \
+    nativesdk-qtdeclarative-staticdev \
+    nativesdk-qtdeclarative-tools \
+    nativesdk-qtremoteobjects-tools \
+    nativesdk-qttools-tools \
+    "
 
-IMAGE_INSTALL += "\
-    packagegroup-b2qt-embedded-base \
-    packagegroup-b2qt-embedded-tools \
-    ${@bb.utils.contains("DISTRO_FEATURES", "gstreamer", "packagegroup-b2qt-embedded-gstreamer", "", d)} \
-    packagegroup-b2qt-qt5-modules \
-    packagegroup-b2qt-embedded-addons \
-    packagegroup-b2qt-automation-addons \
+RDEPENDS_${PN}_append_linux = "\
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'nativesdk-qtwayland-tools', '', d)} \
     "

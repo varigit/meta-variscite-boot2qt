@@ -32,10 +32,10 @@
           pushurl="ssh://codereview.qt-project.org/yocto"/>
   <remote name="gerrit"
           fetch="ssh://codereview.qt-project.org/yocto"/>
-  <project name="meta-qt5"
+  <project name="meta-qt6"
            remote="qt"
-           revision="2d49c5f7205f6f62199ee81ef57cd8032bf468ed"
-           path="sources/meta-qt5"/>
+           revision="5d294b331d02b05824f1a3669410ac1edb1be389"
+           path="sources/meta-qt6"/>
 
   <!-- NXP -->
   <remote name="freescale"

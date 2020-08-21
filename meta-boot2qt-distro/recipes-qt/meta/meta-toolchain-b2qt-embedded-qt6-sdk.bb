@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2016 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,14 +27,12 @@
 ##
 ############################################################################
 
-FEATURES := "${THISDIR}/features/${QT_MODULE}.opt"
-do_configure[file-checksums] += "${FEATURES}:True"
+DESCRIPTION = "B2Qt embedded Qt5 SDK toolchain"
 
-def qt_features(d):
-    featurefile = d.getVar('FEATURES')
-    with open(featurefile, 'r') as f:
-        features = f.read().replace('\n', ' ')
-    return features
+LICENSE = "The-Qt-Company-Commercial"
+LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=c8b6dd132d52c6e5a545df07a4e3e283"
 
-QT_CONFIG_FLAGS_append_class-target = " ${@qt_features(d)}"
-EXTRA_QMAKEVARS_CONFIGURE_append_class-target = " ${@qt_features(d)}"
+inherit populate_b2qt_qt6_sdk
+
+TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-b2qt-embedded-qt6-toolchain-host"
+TOOLCHAIN_TARGET_TASK += "packagegroup-b2qt-embedded-qt6-toolchain-target"

@@ -31,8 +31,8 @@ DESCRIPTION = "Boot to Qt Wayland Demo Compositor"
 LICENSE = "BSD | The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://main.cpp;md5=b0a1a6eef4a172b0a8cb4dad9a167d91;beginline=1;endline=49"
 
-inherit qmake5
-require recipes-qt/qt5/qt5-git.inc
+inherit qt6-qmake
+require recipes-qt/qt6/qt6-git.inc
 
 QT_GIT_PROJECT = "qt-apps"
 QT_MODULE = "boot2qt-demos"
