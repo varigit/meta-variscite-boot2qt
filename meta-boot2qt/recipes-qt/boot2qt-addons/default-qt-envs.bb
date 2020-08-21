@@ -31,7 +31,12 @@ DESCRIPTION = "Common default environment variables for running Qt applications"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
-SRC_URI += "file://defaults"
+inherit systemd
+
+SRC_URI += "\
+    file://defaults \
+    file://b2qt.service \
+"
 
 do_configure() {
     if [ "${QT_USE_SOFTWARE_CONTEXT}" ]; then
@@ -45,7 +50,13 @@ do_install_append() {
     install -m 0755 -d ${D}${sysconfdir}/default
     install -m 0755 ${WORKDIR}/defaults ${D}${sysconfdir}/default/qt
 
+    install -m 0755 -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/b2qt.service ${D}${systemd_unitdir}/system/
+
     # loginctl enable-linger root
     install -d ${D}/var/lib/systemd/linger
     touch ${D}/var/lib/systemd/linger/root
 }
+
+SYSTEMD_SERVICE_${PN} = "b2qt.service"
+
