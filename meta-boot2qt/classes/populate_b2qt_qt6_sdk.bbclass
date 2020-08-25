@@ -29,66 +29,12 @@
 
 inherit populate_b2qt_sdk populate_sdk_qt6_base abi-arch siteinfo
 
-SDK_MKSPEC_DIR = "${SDK_OUTPUT}${SDKTARGETSYSROOT}${libdir}/${QT_DIR_NAME}/mkspecs"
-NATIVE_SDK_MKSPEC_DIR = "${SDK_OUTPUT}${SDKPATHNATIVE}${libdir}/${QT_DIR_NAME}/mkspecs"
-SDK_MKSPEC = "devices/linux-oe-generic-g++"
-SDK_DEVICE_PRI = "${SDK_MKSPEC_DIR}/qdevice.pri"
-MACHINE_CMAKE = "${SDK_OUTPUT}${SDKPATHNATIVE}${datadir}/cmake/OEToolchainConfig.cmake.d/${MACHINE}.cmake"
-
 create_sdk_files_append () {
-    # Create the toolchain user's generic device mkspec
-    install -d ${SDK_MKSPEC_DIR}/${SDK_MKSPEC}
-    cat > ${SDK_MKSPEC_DIR}/${SDK_MKSPEC}/qmake.conf <<EOF
-include(../common/linux_device_pre.conf)
-exists(../../oe-device-extra.pri):include(../../oe-device-extra.pri)
-include(../common/linux_device_post.conf)
-load(qt_config)
-EOF
-
-    cat > ${SDK_MKSPEC_DIR}/${SDK_MKSPEC}/qplatformdefs.h <<EOF
-#include "../../linux-g++/qplatformdefs.h"
-EOF
-
-    # Fill in the qdevice.pri file which will be used by the device mkspec
-    echo "MACHINE = ${MACHINE}" > ${SDK_DEVICE_PRI}
-    echo "CROSS_COMPILE = \$\$[QT_HOST_PREFIX]${bindir_nativesdk}/${TARGET_SYS}/${TARGET_PREFIX}" >> ${SDK_DEVICE_PRI}
-    echo "QMAKE_CFLAGS *= ${TARGET_CC_ARCH}" >> ${SDK_DEVICE_PRI}
-    echo "QMAKE_CXXFLAGS *= ${TARGET_CC_ARCH}" >> ${SDK_DEVICE_PRI}
-    echo "QMAKE_LFLAGS *= ${TARGET_CC_ARCH} ${TARGET_LDFLAGS}" >> ${SDK_DEVICE_PRI}
-
-    # Move FORTIFY_SOURCE to release flags
-    if [ -n "${lcl_maybe_fortify}" ]; then
-        sed -i -e 's/${lcl_maybe_fortify}//' ${SDK_DEVICE_PRI}
-        echo "QMAKE_CFLAGS_RELEASE *= ${lcl_maybe_fortify}" >> ${SDK_DEVICE_PRI}
-        echo "QMAKE_CXXFLAGS_RELEASE *= ${lcl_maybe_fortify}" >> ${SDK_DEVICE_PRI}
-        echo "QMAKE_LFLAGS_RELEASE *= ${lcl_maybe_fortify}" >> ${SDK_DEVICE_PRI}
-    fi
-
-    # Setup qt.conf to point at the device mkspec by default
-    qtconf=${SDK_OUTPUT}/${SDKPATHNATIVE}${OE_QMAKE_PATH_HOST_BINS}/qt.conf
-    echo 'HostSpec = linux-g++' >> $qtconf
-    echo 'TargetSpec = ${SDK_MKSPEC}' >> $qtconf
-
-    # Update correct host_build ARCH and ABI to mkspecs/qconfig.pri
-    QT_ARCH=$(grep QT_ARCH ${NATIVE_SDK_MKSPEC_DIR}/qconfig.pri | tail -1)
-    QT_BUILDABI=$(grep QT_BUILDABI ${NATIVE_SDK_MKSPEC_DIR}/qconfig.pri | tail -1)
-
-    sed -e "0,/QT_ARCH/s/^.*QT_ARCH.*/$QT_ARCH/" \
-        -e "0,/QT_BUILDABI/s/^.*QT_BUILDABI.*/$QT_BUILDABI/" \
-        -i ${SDK_MKSPEC_DIR}/qconfig.pri
 
     create_qtcreator_configure_script
 
     # Link /etc/resolv.conf is broken in the toolchain sysroot, remove it
     rm -f ${SDK_OUTPUT}${SDKTARGETSYSROOT}${sysconfdir}/resolv.conf
-
-    # Create and add cmake toolchain file
-    echo "set(CMAKE_SYSROOT ${SDKTARGETSYSROOT})" > ${MACHINE_CMAKE}
-    echo "set(CMAKE_PREFIX_PATH ${SDKTARGETSYSROOT}${OE_QMAKE_PATH_LIBS}/cmake)" >> ${MACHINE_CMAKE}
-    echo "set(compiler_flags \"${TARGET_CC_ARCH}\")" >> ${MACHINE_CMAKE}
-    echo "set(CMAKE_C_COMPILER_ARG1 \"\${compiler_flags}\")" >> ${MACHINE_CMAKE}
-    echo "set(CMAKE_CXX_COMPILER_ARG1 \"\${compiler_flags}\")" >> ${MACHINE_CMAKE}
-    echo "set(OE_QMAKE_PATH_EXTERNAL_HOST_BINS ${SDKPATHNATIVE}${OE_QMAKE_PATH_HOST_BINS})" >> ${MACHINE_CMAKE}
 }
 
 create_sdk_files_append_sdkmingw32 () {
@@ -100,6 +46,7 @@ create_qtcreator_configure_script () {
     install -m 0755 ${BOOT2QTBASE}/files/configure-qtcreator.sh ${SDK_OUTPUT}/${SDKPATH}
     sed -i -e '/^CONFIG=/c\CONFIG="${SDKPATH}/environment-setup-${REAL_MULTIMACH_TARGET_SYS}"' ${SDK_OUTPUT}/${SDKPATH}/configure-qtcreator.sh
     sed -i -e '/^ABI=/c\ABI="${ABI}-linux-poky-elf-${SITEINFO_BITS}bit"' ${SDK_OUTPUT}/${SDKPATH}/configure-qtcreator.sh
+    sed -i -e '/^MACHINE=/c\MACHINE="${MACHINE}"' ${SDK_OUTPUT}/${SDKPATH}/configure-qtcreator.sh
 }
 
 create_qtcreator_configure_script_sdkmingw32 () {

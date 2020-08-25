@@ -1,7 +1,7 @@
 #!/bin/bash
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -32,6 +32,7 @@ set -e
 
 ABI="arm-linux-poky-elf-32bit"
 CONFIG=""
+MACHINE=""
 
 printUsage ()
 {
@@ -81,15 +82,7 @@ fi
 
 source $CONFIG
 
-MKSPEC="devices/linux-oe-generic-g++"
-MKSPECPATH=$(find ${OECORE_TARGET_SYSROOT} -name $(basename ${MKSPEC}) 2>/dev/null || true)
-if [ ! -d "${MKSPECPATH}" ]; then
-    echo "Error: could not find mkspec ${MKSPEC} from the toolchain"
-    exit 1
-fi
-
-MACHINE=$(grep '^MACHINE' ${MKSPECPATH}/../../qdevice.pri | cut -d'=' -f2 | tr -d ' ')
-
+MKSPEC=$(qmake -query QMAKE_XSPEC)
 RELEASE=$(qmake -query QT_VERSION)
 
 NAME=${NAME:-"Custom Qt ${RELEASE} ${MACHINE}"}
@@ -109,7 +102,7 @@ fi
 
 ${SDKTOOL} addAbiFlavor \
     --flavor poky \
-    --oses linux || true
+    --oses linux 2>/dev/null || true
 
 ${SDKTOOL} addTC \
     --id "ProjectExplorer.ToolChain.Gcc:${BASEID}.gcc" \
@@ -155,9 +148,8 @@ ${SDKTOOL} addKit \
     --icon ":/boot2qt/images/B2Qt_QtC_icon.png" \
     --mkspec "${MKSPEC}" \
     --cmake "${BASEID}.cmake" \
-    --cmake-config "CMAKE_TOOLCHAIN_FILE:FILEPATH=${OECORE_NATIVE_SYSROOT}/usr/share/cmake/OEToolchainConfig.cmake" \
-    --cmake-config "CMAKE_MAKE_PROGRAM:FILEPATH=$(type -p make)" \
-    --cmake-config "CMAKE_CXX_COMPILER:FILEPATH=$(type -p ${CXX})" \
-    --cmake-config "CMAKE_C_COMPILER:FILEPATH=$(type -p ${CC})"
+    --cmake-config "CMAKE_TOOLCHAIN_FILE:FILEPATH=${OECORE_NATIVE_SYSROOT}/usr/share/cmake/Qt6Toolchain.cmake" \
+    --cmake-config "CMAKE_MAKE_PROGRAM:FILEPATH=$(type -p ninja)" \
+    --cmake-generator "Ninja"
 
 echo "Configured Qt Creator with new kit: ${NAME}"
