@@ -43,6 +43,7 @@ RDEPENDS_${PN} += " \
     gammaray \
     qmllive \
     qdb \
+    avs-device-sdk \
     "
 
 RDEPENDS_${PN} += "${@bb.utils.filter('DISTRO_FEATURES', 'qtsaferenderer', d)}"
