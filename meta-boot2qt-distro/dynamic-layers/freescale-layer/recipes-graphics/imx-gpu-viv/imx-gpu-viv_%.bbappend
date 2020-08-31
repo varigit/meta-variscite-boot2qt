@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,21 +27,4 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Target packages for B2Qt Automotive Qt5 SDK"
-LICENSE = "The-Qt-Company-Commercial"
-PR = "r0"
-
-inherit packagegroup
-
-PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
-
-RDEPENDS_${PN} += " \
-    qtivi-dev \
-    libarchive-dev \
-    qtapplicationmanager-dev \
-    qtapplicationmanager-staticdev \
-    avs-device-sdk \
-    "
-
-RDEPENDS_${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'qtsaferenderer', \
-                                        'qtsaferenderer-dev qtsaferenderer-staticdev', '', d)}"
+LIC_FILES_CHKSUM_LAYER[vardepsexclude] += "FSL_EULA_FILE"
