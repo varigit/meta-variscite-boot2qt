@@ -14,28 +14,28 @@ environment: &environment
   instructions:
     - type: EnvironmentVariable
       variableName: MACHINE
-      variableValue: jetson-tx2
+      variableValue: apalis-imx6
       enable_if:
         condition: property
         property: target.arch
         equals_value: TARGET1
     - type: EnvironmentVariable
       variableName: MACHINE
-      variableValue: apalis-imx6
+      variableValue: colibri-imx6ull
       enable_if:
         condition: property
         property: target.arch
         equals_value: TARGET2
     - type: EnvironmentVariable
       variableName: MACHINE
-      variableValue: colibri-imx7
+      variableValue: imx8qmmek
       enable_if:
         condition: property
         property: target.arch
         equals_value: TARGET3
     - type: EnvironmentVariable
       variableName: MACHINE
-      variableValue: intel-corei7-64
+      variableValue: imx8mmevk
       enable_if:
         condition: property
         property: target.arch
@@ -63,9 +63,6 @@ build_instructions:
         IdentityFile "/home/qt/.ssh/test_farm_id_rsa"
       EOF
 
-      sudo ln -sf gcc-7 /usr/bin/gcc
-      sudo ln -sf g++-7 /usr/bin/g++
-
       sudo mkdir -p /mnt/yocto-cache
       sudo mount yocto-cache.intra.qt.io:/srv/yocto-cache /mnt/yocto-cache
 
@@ -75,7 +72,6 @@ build_instructions:
       export BB_ENV_EXTRAWHITE="$BB_ENV_EXTRAWHITE SSTATE_DIR DL_DIR"
       export SSTATE_DIR=/mnt/yocto-cache/sstate-caches/$(sed -n -e "s/DISTRO_CODENAME.*\"\(.*\)\"/\1/p" ../sources/poky/meta-*/conf/distro/poky.conf)
       bitbake meta-b2qt-embedded-qbsp
-      SDKMACHINE=i686-mingw32 bitbake meta-b2qt-embedded-qbsp
 
       sudo umount /mnt/yocto-cache
     filename: "{{.BuildDir}}/start-build"
