@@ -36,20 +36,6 @@ BBMASK += "\
     meta-toradex-nxp/recipes-graphics/xorg-xserver \
 "
 
-WKS_FILE_DEPENDS_append_mx6 = " u-boot-script-toradex"
-WKS_FILE_DEPENDS_append_mx7 = " u-boot-script-toradex"
-
-MACHINEDIR = "${@d.getVar('MACHINE').replace('-','_')}"
-
-SCRIPTS = "\
-    fwd_blk.img;flash_blk.img \
-    fwd_eth.img;flash_eth.img \
-    fwd_mmc.img;flash_mmc.img \
-    ${MACHINE}/*;${MACHINEDIR}/ \
-"
-IMAGE_BOOT_FILES_append_mx6 += "${SCRIPTS}"
-IMAGE_BOOT_FILES_append_mx7 += "${SCRIPTS}"
-
 IMAGE_FSTYPES += "teziimg"
 
 # Placeholder for TEZI_DATE introduced in meta-toradex-bsp-common layer.
