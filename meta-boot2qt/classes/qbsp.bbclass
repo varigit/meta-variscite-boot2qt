@@ -40,7 +40,6 @@ SRC_URI = "\
     file://toolchain_package.xml \
     file://toolchain_installscript.qs \
     file://license_package.xml \
-    file://NXP-EULA \
     "
 
 INHIBIT_DEFAULT_DEPS = "1"
@@ -56,10 +55,8 @@ QBSP_VERSION ?= "${PV}${VERSION_AUTO_INCREMENT}"
 QBSP_INSTALLER_COMPONENT ?= "${@d.getVar('MACHINE').replace('-','')}"
 QBSP_INSTALL_PATH ?= "/Extras/${MACHINE}"
 
-QBSP_LICENSE_FILE ?= ""
-QBSP_LICENSE_NAME ?= ""
-QBSP_LICENSE_FILE_imx = "NXP-EULA"
-QBSP_LICENSE_NAME_imx = "NXP Semiconductors Software License Agreement"
+QBSP_LICENSE_FILE ??= ""
+QBSP_LICENSE_NAME ??= ""
 
 VERSION_AUTO_INCREMENT = "-${DATETIME}"
 VERSION_AUTO_INCREMENT[vardepsexclude] = "DATETIME"
@@ -95,7 +92,7 @@ patch_installer_files() {
         -e "s#@SDKPATH@#${SDKPATH}#" \
         -e "s#@SDKFILE@#${SDK_NAME}#" \
         -e "s#@LICENSEDEPENDENCY@#${LICENSE_DEPENDENCY}#" \
-        -e "s#@LICENSEFILE@#${QBSP_LICENSE_FILE}#" \
+        -e "s#@LICENSEFILE@#$(basename ${QBSP_LICENSE_FILE})#" \
         -e "s#@LICENSENAME@#${QBSP_LICENSE_NAME}#" \
         -e "s#@TOOLCHAIN_HOST_SYSROOT@#${SDK_SYS}#" \
         -i ${1}/*
@@ -147,7 +144,7 @@ prepare_qbsp() {
         mkdir -p ${COMPONENT_PATH}/meta
 
         cp ${WORKDIR}/license_package.xml ${COMPONENT_PATH}/meta/package.xml
-        cp ${WORKDIR}/${QBSP_LICENSE_FILE} ${COMPONENT_PATH}/meta/
+        cp ${QBSP_LICENSE_FILE} ${COMPONENT_PATH}/meta/
         patch_installer_files ${COMPONENT_PATH}/meta
     fi
 
