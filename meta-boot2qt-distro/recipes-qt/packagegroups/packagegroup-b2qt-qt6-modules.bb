@@ -37,16 +37,14 @@ PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 RDEPENDS_${PN} += " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qt3d', '', d)} \
     qtbase \
-    qtconnectivity \
     qtdeclarative \
     qtdeclarative-tools \
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtgraphicaleffects', '', d)} \
     qtimageformats \
     qtnetworkauth \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtquick3d', '', d)} \
+    qtquick3d \
     qtquickcontrols2 \
     qtquicktimeline \
-    qtremoteobjects \
     qtserialbus \
     qtserialport \
     qtsvg \
@@ -54,11 +52,9 @@ RDEPENDS_${PN} += " \
     qttools-tools \
     qttranslations-qtbase \
     qttranslations-qtdeclarative \
-    qttranslations-qtconnectivity \
     qttranslations-qtserialport \
     qttranslations-qtwebsockets \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland', '', d)} \
     qtwebsockets \
-    qtwebchannel \
     qtvirtualkeyboard \
     "

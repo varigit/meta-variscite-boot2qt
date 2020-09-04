@@ -47,7 +47,6 @@ RDEPENDS_${PN} += "\
     nativesdk-qtbase-tools \
     nativesdk-qtdeclarative-staticdev \
     nativesdk-qtdeclarative-tools \
-    nativesdk-qtremoteobjects-tools \
     nativesdk-qttools-tools \
     "
 

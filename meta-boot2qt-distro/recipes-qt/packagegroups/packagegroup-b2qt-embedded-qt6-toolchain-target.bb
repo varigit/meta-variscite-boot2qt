@@ -49,16 +49,14 @@ RDEPENDS_${PN} += " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qt3d-dev', '', d)} \
     qtbase-dev \
     qtbase-staticdev \
-    qtconnectivity-dev \
     qtdeclarative-dev \
     qtdeclarative-staticdev \
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtgraphicaleffects-dev', '', d)} \
     qtimageformats-dev \
     qtnetworkauth-dev \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtquick3d-dev', '', d)} \
+    qtquick3d-dev \
     qtquickcontrols2-dev \
     qtquicktimeline-dev \
-    qtremoteobjects-dev \
     qtserialbus-dev \
     qtserialport-dev \
     qtsvg-dev \
@@ -66,5 +64,4 @@ RDEPENDS_${PN} += " \
     qtvirtualkeyboard-dev \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland-dev', '', d)} \
     qtwebsockets-dev \
-    qtwebchannel-dev \
     "

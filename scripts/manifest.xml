@@ -29,8 +29,8 @@
   <remote name="gerrit"
           fetch="ssh://codereview.qt-project.org/yocto"/>
   <project name="meta-qt6"
-           remote="qt"
-           revision="5d294b331d02b05824f1a3669410ac1edb1be389"
+           remote="gerrit"
+           revision="a37fb5e1a0c7393d582bd1301eff73473718b505"
            path="sources/meta-qt6"/>
 
   <!-- NXP -->
