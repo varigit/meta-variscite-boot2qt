@@ -59,9 +59,6 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
     apalis-*|colibri-*)
       LAYERSCONF="bblayers.conf.toradex.sample"
       ;;
-    nitrogen*)
-      LAYERSCONF="bblayers.conf.boundary.sample"
-      ;;
     imx*)
       LAYERSCONF="bblayers.conf.fsl.sample"
       ;;

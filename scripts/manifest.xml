@@ -87,11 +87,4 @@
            revision="fddb6cc10a1df717cc77b6958ce5e233cef9a80a"
            path="sources/meta-toradex-nxp"/>
 
-  <!-- BoundaryDevices -->
-  <remote name="boundary"
-          fetch="git://github.com/boundarydevices"/>
-  <project name="meta-boundary"
-           remote="boundary"
-           revision="317c4f037b8b82811be56a271266fb31cdd1fc7a"
-           path="sources/meta-boundary"/>
 </manifest>
