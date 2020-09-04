@@ -49,6 +49,12 @@ for S in $SHA1S; do
     elif [ "${PROJECT}" = "qtquick3d/src/3rdparty/assimp/src" ]; then
         RECIPE="qtquick3d"
         TAG="SRCREV_assimp"
+    elif [ "${PROJECT}" = "qt3d" ]; then
+        RECIPE="qt3d"
+        TAG="SRCREV_qt3d"
+    elif [ "${PROJECT}" = "qt3d/src/3rdparty/assimp/src" ]; then
+        RECIPE="qt3d"
+        TAG="SRCREV_assimp"
     elif [ "${PROJECT}" = "qtwebengine" ]; then
         RECIPE="qtwebengine"
         TAG="SRCREV_qtwebengine"
