@@ -32,10 +32,6 @@ include conf/distro/include/fsl.inc
 # include file from meta-toradex-nxp
 include conf/machine/include/${MACHINE}.inc
 
-BBMASK += "\
-    meta-toradex-nxp/recipes-graphics/xorg-xserver \
-"
-
 IMAGE_FSTYPES += "teziimg"
 
 # Placeholder for TEZI_DATE introduced in meta-toradex-bsp-common layer.
