@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -121,23 +121,25 @@ prepare_qbsp() {
     cd ${B}/toolchain
     7za a ${COMPONENT_PATH}/data/toolchain.7z *
 
-    # Image component
-    COMPONENT_PATH="${B}/pkg/${QBSP_INSTALLER_COMPONENT}.system"
-    mkdir -p ${COMPONENT_PATH}/meta
-    mkdir -p ${COMPONENT_PATH}/data
+    # Image component, only if we have the qbsp-image
+    if [ -e ${DEPLOY_DIR_IMAGE}/${IMAGE_PACKAGE} ]; then
+        COMPONENT_PATH="${B}/pkg/${QBSP_INSTALLER_COMPONENT}.system"
+        mkdir -p ${COMPONENT_PATH}/meta
+        mkdir -p ${COMPONENT_PATH}/data
 
-    cp ${WORKDIR}/image_package.xml ${COMPONENT_PATH}/meta/package.xml
-    patch_installer_files ${COMPONENT_PATH}/meta
+        cp ${WORKDIR}/image_package.xml ${COMPONENT_PATH}/meta/package.xml
+        patch_installer_files ${COMPONENT_PATH}/meta
 
-    mkdir -p ${B}/images/${QBSP_INSTALL_PATH}/images
-    7za x ${DEPLOY_DIR_IMAGE}/${IMAGE_PACKAGE} -o${B}/images/${QBSP_INSTALL_PATH}/images/
+        mkdir -p ${B}/images/${QBSP_INSTALL_PATH}/images
+        7za x ${DEPLOY_DIR_IMAGE}/${IMAGE_PACKAGE} -o${B}/images/${QBSP_INSTALL_PATH}/images/
 
-    if [ -n "${QBSP_README}" ]; then
-        cp ${DEPLOY_DIR_IMAGE}/${QBSP_README} ${B}/images/${QBSP_INSTALL_PATH}/images/
+        if [ -n "${QBSP_README}" ]; then
+            cp ${DEPLOY_DIR_IMAGE}/${QBSP_README} ${B}/images/${QBSP_INSTALL_PATH}/images/
+        fi
+
+        cd ${B}/images
+        7za a ${COMPONENT_PATH}/data/image.7z *
     fi
-
-    cd ${B}/images
-    7za a ${COMPONENT_PATH}/data/image.7z *
 
     # License component
     if [ -n "${QBSP_LICENSE_FILE}" ]; then
