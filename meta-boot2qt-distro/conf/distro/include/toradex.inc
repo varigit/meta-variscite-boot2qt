@@ -39,9 +39,6 @@ IMAGE_FSTYPES += "teziimg"
 # but it causes a build failure if not defined
 TEZI_DATE = "20200101090000"
 
-# use u-boot-toradex-initial instead of u-boot-initial
-UBOOT_ENV_TEZI = "${@ 'u-boot-toradex-initial-env-%s' % d.getVar('UBOOT_CONFIG') if d.getVar('UBOOT_CONFIG') else 'u-boot-toradex-initial-env'}"
-
 QBSP_IMAGE_CONTENT += "\
     ${IMAGE_LINK_NAME}.tezi.tar \
 "
