@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -28,5 +28,3 @@
 ############################################################################
 
 PACKAGECONFIG += "kms"
-
-QT_QPA_EGLFS_INTEGRATION ?= "eglfs_kms_egldevice"

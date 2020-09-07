@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -28,11 +28,3 @@
 ############################################################################
 
 PACKAGECONFIG_append_mx8 = " gbm kms"
-
-QT_QPA_DEFAULT_PLATFORM ?= "eglfs"
-QT_QPA_DEFAULT_PLATFORM_mx6ull ?= "linuxfb"
-QT_QPA_DEFAULT_PLATFORM_mx7 ?= "linuxfb"
-
-QT_QPA_EGLFS_INTEGRATION_mx6 ?= "eglfs_viv"
-QT_QPA_EGLFS_INTEGRATION_mx6ull ?= ""
-QT_QPA_EGLFS_INTEGRATION_mx8 ?= "eglfs_kms"
