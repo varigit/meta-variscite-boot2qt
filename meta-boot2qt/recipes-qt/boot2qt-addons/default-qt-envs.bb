@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -37,14 +37,6 @@ SRC_URI += "\
     file://defaults \
     file://b2qt.service \
 "
-
-do_configure() {
-    if [ "${QT_USE_SOFTWARE_CONTEXT}" ]; then
-        echo "QMLSCENE_DEVICE=softwarecontext" >> ${WORKDIR}/defaults
-        echo "QT_QPA_PLATFORM=linuxfb" >>  ${WORKDIR}/defaults
-        echo "QSG_RENDER_LOOP=basic" >>  ${WORKDIR}/defaults
-    fi
-}
 
 do_install_append() {
     install -m 0755 -d ${D}${sysconfdir}/default
