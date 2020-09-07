@@ -1,0 +1,38 @@
+From 3caa4282924e615a2ab25276f06380e2525df629 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Mon, 7 Sep 2020 10:38:29 +0300
+Subject: [PATCH] Add include for QIODevice
+
+Change-Id: I0bd1e7de0cf56fc1c6a2594bcb963ead1c03ba4c
+---
+ libqdb/protocol/qdbtransport.cpp | 1 +
+ libqdb/streampacket.h            | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/libqdb/protocol/qdbtransport.cpp b/libqdb/protocol/qdbtransport.cpp
+index 39e3323..204897b 100644
+--- a/libqdb/protocol/qdbtransport.cpp
++++ b/libqdb/protocol/qdbtransport.cpp
+@@ -32,6 +32,7 @@
+ 
+ #include <QtCore/qdatastream.h>
+ #include <QtCore/qdebug.h>
++#include <QtCore/QIODevice>
+ #include <QtCore/qloggingcategory.h>
+ 
+ Q_LOGGING_CATEGORY(transportC, "qdb.transport");
+diff --git a/libqdb/streampacket.h b/libqdb/streampacket.h
+index 63896a6..2030962 100644
+--- a/libqdb/streampacket.h
++++ b/libqdb/streampacket.h
+@@ -31,6 +31,7 @@
+ 
+ #include <QtCore/qbytearray.h>
+ #include <QtCore/qdatastream.h>
++#include <QtCore/QIODevice>
+ 
+ class StreamPacket
+ {
+-- 
+2.17.1
+

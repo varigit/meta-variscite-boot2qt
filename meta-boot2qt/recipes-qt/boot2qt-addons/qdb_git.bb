@@ -37,16 +37,17 @@ inherit qt6-qmake
 require recipes-qt/qt6/qt6-git.inc
 
 QT_GIT_PROJECT = "qt-apps"
-QT_MODULE_BRANCH = "5.9"
+QT_MODULE_BRANCH = "master"
 
-SRC_URI += "file://b2qt-gadget-network.sh \
-           file://defaults \
-           file://qdbd.service \
-           file://qdbd-init.sh \
-          "
+SRC_URI += "\
+    file://b2qt-gadget-network.sh \
+    file://defaults \
+    file://qdbd.service \
+    file://qdbd-init.sh \
+"
 
-SRCREV = "b6553515d42cfe97a826533ec70947280bd1ee17"
-PV = "1.2.0+git${SRCPV}"
+SRCREV = "e4e958a68ffc0c9167e1ac22236410a30db15144"
+PV = "1.2.1+git${SRCPV}"
 
 REQUIRED_DISTRO_FEATURES = "systemd"
 DEPENDS = "qtbase"
