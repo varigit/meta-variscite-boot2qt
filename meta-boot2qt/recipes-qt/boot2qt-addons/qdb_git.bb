@@ -46,7 +46,7 @@ SRC_URI += "\
     file://qdbd-init.sh \
 "
 
-SRCREV = "e4e958a68ffc0c9167e1ac22236410a30db15144"
+SRCREV = "1ff0ec46770254328e5ec492cbce1364936eda72"
 PV = "1.2.1+git${SRCPV}"
 
 REQUIRED_DISTRO_FEATURES = "systemd"
