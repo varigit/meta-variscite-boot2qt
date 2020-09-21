@@ -29,7 +29,7 @@
   <remote name="gerrit"
           fetch="ssh://codereview.qt-project.org/yocto"/>
   <project name="meta-qt6"
-           remote="gerrit"
+           remote="qt"
            revision="1bfc6219e95299f200d54d136f3fc3b9bb49c794"
            path="sources/meta-qt6"/>
 
