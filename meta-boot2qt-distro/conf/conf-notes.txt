@@ -11,7 +11,7 @@ QBSP target is:
     meta-b2qt-embedded-qbsp
 
 For creating toolchain or QBSP for Windows, set environment variable before running bitbake:
-    SDKMACHINE=i686-mingw32
+    SDKMACHINE=x86_64-mingw32
 
 For more information about Boot to Qt, see https://doc.qt.io/QtForDeviceCreation/
 

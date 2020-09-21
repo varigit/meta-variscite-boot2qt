@@ -5,7 +5,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
-           revision="569b1f5d67c57de957e243997c53ec2f81dc8dfe"
+           revision="44ab5a84770bfe28a1b52678abb58b166231dfc6"
            path="sources/poky"/>
   <project name="meta-mingw"
            remote="yocto"
@@ -30,7 +30,7 @@
           fetch="ssh://codereview.qt-project.org/yocto"/>
   <project name="meta-qt6"
            remote="qt"
-           revision="1bfc6219e95299f200d54d136f3fc3b9bb49c794"
+           revision="9e69b0f3b08669f29ee2a151578fd534a05dc73c"
            path="sources/meta-qt6"/>
 
   <!-- NXP -->

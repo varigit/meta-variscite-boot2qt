@@ -35,28 +35,20 @@ inherit nativesdk packagegroup
 
 MACHINE_EXTRA_INSTALL_SDK_HOST ?= ""
 
-python __anonymous() {
-    overrides = d.getVar("OVERRIDES").split(":")
-    if "mingw32" not in overrides:
-        d.appendVar("OVERRIDES", ":linux")
-}
-
 RDEPENDS_${PN} = "\
-    nativesdk-gperf \
-    nativesdk-cmake \
-    nativesdk-make \
     ${MACHINE_EXTRA_INSTALL_SDK_HOST} \
-    "
-
-RDEPENDS_${PN}_append_linux = "\
+    nativesdk-cmake \
+    nativesdk-gperf \
+    nativesdk-make \
+    nativesdk-ninja \
+    nativesdk-perl-modules \
     nativesdk-python3-modules \
     nativesdk-python3-misc \
-    nativesdk-perl-modules \
     ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "nativesdk-wayland-dev", "", d)} \
     "
 
-RDEPENDS_${PN}_append_mingw32 = "\
-    nativesdk-make \
-    nativesdk-libgcc \
-    nativesdk-libstdc++ \
+RDEPENDS_${PN}_remove_mingw32 = "\
+    nativesdk-python3-modules \
+    nativesdk-python3-misc \
+    nativesdk-perl-modules \
     "

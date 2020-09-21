@@ -37,10 +37,6 @@ create_sdk_files_append () {
     rm -f ${SDK_OUTPUT}${SDKTARGETSYSROOT}${sysconfdir}/resolv.conf
 }
 
-create_sdk_files_append_sdkmingw32 () {
-    echo "set(OE_QMAKE_BIN_SUFFIX .exe)" >> ${MACHINE_CMAKE}
-}
-
 create_qtcreator_configure_script () {
     # add qtcreator configuration script
     install -m 0755 ${BOOT2QTBASE}/files/configure-qtcreator.sh ${SDK_OUTPUT}/${SDKPATH}
