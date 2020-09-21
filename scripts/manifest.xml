@@ -84,11 +84,11 @@
           fetch="git://git.toradex.com"/>
   <project name="meta-toradex-bsp-common"
            remote="toradex"
-           revision="7ed9958daea91fa3116132b5788495caa18db51d"
+           revision="a8f298d69fe4cdab6c59a8965fbc5cdba83f3a7e"
            path="sources/meta-toradex-bsp-common"/>
   <project name="meta-toradex-nxp"
            remote="toradex"
-           revision="ac5028651745ea2b541dbc0a847ffd737fc5ef76"
+           revision="d7121ef91af1b15f1038cb4cb51e53bab8c53d89"
            path="sources/meta-toradex-nxp"/>
 
   <!-- BoundaryDevices -->

@@ -1,4 +1,4 @@
-From 37ecb16d9432b6aab050f4d609f268ce7553f85d Mon Sep 17 00:00:00 2001
+From a979b2d404962cbf2cbb8b77352c5739793e4221 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@qt.io>
 Date: Fri, 19 May 2017 12:41:38 +0300
 Subject: [PATCH] apalis-imx6: test for Capacitive Touch Display 7" Parallel
@@ -13,11 +13,11 @@ support for the atmel_mxt_ts touch controller.
  1 file changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/include/configs/apalis_imx6.h b/include/configs/apalis_imx6.h
-index b871e25eb3..1ad8697c89 100644
+index 51942e0c32..5774e7d858 100644
 --- a/include/configs/apalis_imx6.h
 +++ b/include/configs/apalis_imx6.h
-@@ -198,7 +198,7 @@
- 
+@@ -135,7 +135,7 @@
+ 		"&& setenv dtbparam \" - ${fdt_addr_r}\" && true\0"
  
  #ifndef CONFIG_TDX_APALIS_IMX6_V1_0
 -#define FDT_FILE "imx6q-apalis-eval.dtb"
@@ -25,7 +25,7 @@ index b871e25eb3..1ad8697c89 100644
  #define FDT_FILE_V1_0 "imx6q-apalis_v1_0-eval.dtb"
  #else
  #define FDT_FILE "imx6q-apalis_v1_0-eval.dtb"
-@@ -229,9 +229,14 @@
+@@ -160,9 +160,14 @@
  		"|| setenv drive 2; mmc rescan; load ${interface} ${drive}:1" \
  		" ${loadaddr} flash_blk.img && " \
  		"source ${loadaddr}\0" \
