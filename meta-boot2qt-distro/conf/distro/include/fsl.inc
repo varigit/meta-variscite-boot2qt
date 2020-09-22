@@ -31,7 +31,7 @@ BBMASK += "\
     meta-freescale/dynamic-layers/qt5-layer/recipes-qt/qt5 \
 "
 
-IMAGE_FSTYPES += "ext3 wic"
+IMAGE_FSTYPES += "wic"
 
 QBSP_IMAGE_CONTENT ?= "\
     ${IMAGE_LINK_NAME}.img \
