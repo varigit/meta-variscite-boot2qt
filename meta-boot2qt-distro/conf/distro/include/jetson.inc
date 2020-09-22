@@ -28,8 +28,6 @@
 ############################################################################
 
 INITRAMFS_MAXSIZE = "165888"
-IMAGE_CLASSES += "image_types_tegra"
-IMAGE_FSTYPES += "tegraflash"
 IMAGE_ROOTFS_ALIGNMENT = "1024"
 UBOOT_SUFFIX = "bin"
 
