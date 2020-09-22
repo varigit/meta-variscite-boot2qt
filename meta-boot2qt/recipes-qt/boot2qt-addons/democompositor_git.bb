@@ -34,10 +34,12 @@ LIC_FILES_CHKSUM = "file://main.cpp;md5=b0a1a6eef4a172b0a8cb4dad9a167d91;beginli
 inherit qmake5
 require recipes-qt/qt5/qt5-git.inc
 
+QT_GIT = "git://codereview.qt-project.org/${QT_GIT_PROJECT}"
+QT_GIT_PROTOCOL = "http"
 QT_GIT_PROJECT = "qt-apps"
 QT_MODULE = "boot2qt-demos"
 
-SRCREV = "0ea39397893edb54454bfceabde4b83fc5b60a2e"
+SRCREV = "9d6a97f0fb5ff22a12f5c1dc0761fcbfb3490c0a"
 
 S = "${WORKDIR}/git/wayland/democompositor/"
 
