@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2018 The Qt Company Ltd.
+** Copyright (C) 2020 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
 ** This file is part of the Boot to Qt meta layer.
@@ -57,22 +57,17 @@ Component.prototype.createOperations = function()
         component.addOperation("Replace",
                                 path + "/sysroots/" + hostSysroot + "/usr/bin/qt.conf",
                                 sdkPath, path);
-        component.addOperation("Replace",
-                                path + "/sysroots/" + hostSysroot + "/usr/share/cmake/OEToolchainConfig.cmake.d/" + device + ".cmake",
-                                sdkPath, path);
     }
     var basecomponent = component.name.substring(0, component.name.lastIndexOf("."));
     var toolchainId = "ProjectExplorer.ToolChain.Gcc:" + component.name;
     var debuggerId = basecomponent + ".gdb";
     var qtId = basecomponent + ".qt";
     var cmakeId = basecomponent + ".cmake";
-    var cmakeGenerator = "Unix Makefiles";
     var icon = installer.value("B2QtDeviceIcon");
     var executableExt = "";
     if (systemInfo.kernelType === "winnt") {
         executableExt = ".exe";
         toolchainId = "ProjectExplorer.ToolChain.Mingw:" + component.name;
-        cmakeGenerator = "MinGW Makefiles";
     }
 
     component.addOperation("Execute", "{0,2}",
@@ -128,11 +123,10 @@ Component.prototype.createOperations = function()
         "UNDOEXECUTE",
         "@SDKToolBinary@", "rmCMake", "--id", cmakeId]);
 
-    component.addOperation("Execute",
-        ["@SDKToolBinary@", "addKit",
+    var addKitOperations = ["@SDKToolBinary@", "addKit",
          "--id", basecomponent,
          "--name", platform + " " + target,
-         "--mkspec", "devices/linux-oe-generic-g++",
+         "--mkspec", "linux-oe-g++",
          "--qt", qtId,
          "--debuggerid", debuggerId,
          "--sysroot", path + "/sysroots/" + sysroot,
@@ -141,11 +135,16 @@ Component.prototype.createOperations = function()
          "--Cxxtoolchain", toolchainId + ".g++",
          "--icon", icon,
          "--cmake", cmakeId,
-         "--cmake-generator", cmakeGenerator,
-         "--cmake-config", "CMAKE_TOOLCHAIN_FILE:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/share/cmake/OEToolchainConfig.cmake",
-         "--cmake-config", "CMAKE_MAKE_PROGRAM:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/bin/make" + executableExt,
-         "--cmake-config", "CMAKE_CXX_COMPILER:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/bin/" + target_sys + "/" + target_sys + "-g++" + executableExt,
-         "--cmake-config", "CMAKE_C_COMPILER:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/bin/" + target_sys + "/" + target_sys + "-gcc" + executableExt,
-         "UNDOEXECUTE",
-         "@SDKToolBinary@", "rmKit", "--id", basecomponent]);
+         "--cmake-generator", "Ninja",
+         "--cmake-config", "CMAKE_TOOLCHAIN_FILE:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/share/cmake/Qt6Toolchain.cmake",
+         "--cmake-config", "CMAKE_MAKE_PROGRAM:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/bin/ninja" + executableExt];
+
+    if (systemInfo.kernelType === "winnt") {
+        addKitOperations.push("--cmake-config", "CMAKE_BUILD_WITH_INSTALL_RPATH=ON");
+        addKitOperations.push("--env", "SDKPATH=" + path);
+    }
+
+    addKitOperations.push("UNDOEXECUTE", "@SDKToolBinary@", "rmKit", "--id", basecomponent);
+
+    component.addOperation("Execute", addKitOperations);
 }
