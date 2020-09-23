@@ -28,3 +28,4 @@
 ############################################################################
 
 PACKAGECONFIG_append_mx8 = " gbm kms"
+PACKAGECONFIG_append_use-mainline-bsp = "${@bb.utils.contains('DISTRO_FEATURES', 'opengl', ' gbm kms', '', d)}"
