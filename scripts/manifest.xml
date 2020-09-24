@@ -30,7 +30,7 @@
           fetch="ssh://codereview.qt-project.org/yocto"/>
   <project name="meta-qt6"
            remote="qt"
-           revision="ff154cda1e1bbe421843443e37b6f9642735f074"
+           revision="e754f28566467659fc2d884d0569cd22f21c0340"
            path="sources/meta-qt6"/>
 
   <!-- NXP -->
@@ -38,11 +38,11 @@
           fetch="git://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="be4bd4650170a5e9c38875809be440daa65aa0aa"
+           revision="2da53ce8330d4bb0f7cb7a2ae186b7475ba02d52"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="340a581013eb136ba44a0857fe55ca44e4917ca8"
+           revision="e2d8ca60114b4e854c804f941bced514b97c16a1"
            path="sources/meta-freescale-3rdparty"/>
 
   <!-- Raspberry Pi -->
@@ -80,11 +80,11 @@
           fetch="git://git.toradex.com"/>
   <project name="meta-toradex-bsp-common"
            remote="toradex"
-           revision="1914b33f70f13b5460152daaf49de7511e4990ee"
+           revision="f41e59ffc05aaa49315253cfc1ca7cf5fe9eb2c8"
            path="sources/meta-toradex-bsp-common"/>
   <project name="meta-toradex-nxp"
            remote="toradex"
-           revision="fb9bd93e2bddb73570d5c6bca070a9c0298cd21c"
+           revision="7cac35a178f3cfc936b52fcd5bdf60ed0dc464dd"
            path="sources/meta-toradex-nxp"/>
 
   <!-- BoundaryDevices -->
