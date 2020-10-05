@@ -27,24 +27,4 @@
 ##
 ############################################################################
 
-IMAGE_FSTYPES += "wic"
-
-IMX_DEFAULT_BSP = "nxp"
-
-QBSP_IMAGE_CONTENT ?= "\
-    ${IMAGE_LINK_NAME}.img \
-    ${IMAGE_LINK_NAME}.conf \
-    "
-
-QBSP_LICENSE_FILE ?= "${FSL_EULA_FILE}"
-QBSP_LICENSE_NAME ?= "NXP Semiconductors Software License Agreement"
-
-# Use gstreamer 1.16 from meta-freescale
-PREFERRED_VERSION_gstreamer1.0_use-nxp-bsp ?= "1.16.imx"
-PREFERRED_VERSION_gstreamer1.0-plugins-base_use-nxp-bsp ?= "1.16.imx"
-PREFERRED_VERSION_gstreamer1.0-plugins-good_use-nxp-bsp ?= "1.16.imx"
-PREFERRED_VERSION_gstreamer1.0-plugins-bad_use-nxp-bsp ?= "1.16.imx"
-PREFERRED_VERSION_gstreamer1.0-plugins-ugly_use-nxp-bsp ?= "1.16.0"
-PREFERRED_VERSION_gstreamer1.0-libav_use-nxp-bsp ?= "1.16.0"
-
-MACHINE_GSTREAMER_1_0_PLUGIN_append_imxgpu = " imx-gst1.0-plugin"
+RRECOMMENDS_${PN}_use-nxp-bsp = "libvulkan-imx"

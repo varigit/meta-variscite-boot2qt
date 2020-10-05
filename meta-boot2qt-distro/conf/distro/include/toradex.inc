@@ -32,6 +32,8 @@ include conf/distro/include/fsl.inc
 # include file from meta-toradex-nxp
 include conf/machine/include/${MACHINE}.inc
 
+PREFERRED_PROVIDER_virtual/dtb_use-nxp-bsp = "device-tree-overlays"
+
 # Placeholder for TEZI_DATE introduced in meta-toradex-bsp-common layer.
 # We don't use it as we override the tezi rootfs creation with our own version
 # but it causes a build failure if not defined
