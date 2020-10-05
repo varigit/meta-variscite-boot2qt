@@ -39,22 +39,15 @@ RDEPENDS_${PN} += " \
     qtbase \
     qtdeclarative \
     qtdeclarative-tools \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtgraphicaleffects', '', d)} \
     qtimageformats \
     qtnetworkauth \
     qtquick3d \
     qtquickcontrols2 \
     qtquicktimeline \
-    qtserialbus \
-    qtserialport \
     qtsvg \
     qttools \
     qttools-tools \
     qttranslations-qtbase \
     qttranslations-qtdeclarative \
-    qttranslations-qtserialport \
-    qttranslations-qtwebsockets \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland', '', d)} \
-    qtwebsockets \
-    qtvirtualkeyboard \
     "

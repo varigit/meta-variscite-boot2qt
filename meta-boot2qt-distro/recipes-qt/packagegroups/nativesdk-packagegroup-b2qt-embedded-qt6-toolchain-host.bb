@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Host packages for B2Qt embedded Qt5 SDK"
+DESCRIPTION = "Host packages for B2Qt embedded Qt6 SDK"
 LICENSE = "The-Qt-Company-Commercial"
 PR = "r0"
 

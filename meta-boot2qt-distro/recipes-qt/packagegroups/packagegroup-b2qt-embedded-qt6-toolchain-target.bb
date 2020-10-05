@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Target packages for B2Qt embedded Qt5 SDK"
+DESCRIPTION = "Target packages for B2Qt embedded Qt6 SDK"
 LICENSE = "The-Qt-Company-Commercial"
 PR = "r0"
 
@@ -51,17 +51,12 @@ RDEPENDS_${PN} += " \
     qtbase-staticdev \
     qtdeclarative-dev \
     qtdeclarative-staticdev \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtgraphicaleffects-dev', '', d)} \
     qtimageformats-dev \
     qtnetworkauth-dev \
     qtquick3d-dev \
     qtquickcontrols2-dev \
     qtquicktimeline-dev \
-    qtserialbus-dev \
-    qtserialport-dev \
     qtsvg-dev \
     qttools-dev \
-    qtvirtualkeyboard-dev \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland-dev', '', d)} \
-    qtwebsockets-dev \
     "
