@@ -81,7 +81,7 @@ for S in $SHA1S; do
         sed -i -e "/^${TAG}/s/\".*\"/\"${SHA1}\"/" ${RECIPES}
         echo "${PROJECT} -> ${SHA1}"
     else
-        echo "${PROJECT} -> no recipe found"
+        echo -e "\e[31m${PROJECT} -> no recipe found\e[0m "
     fi
 done
 
