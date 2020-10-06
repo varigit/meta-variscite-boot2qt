@@ -42,6 +42,7 @@ LAYERDIR=${2:-$PWD}
 for S in $SHA1S; do
     SHA1=${S:0:40}
     PROJECT=${S:40}
+    BASEPROJECT=$(echo $PROJECT | cut -d / -f 1)
 
     if [ "${PROJECT}" = "qtquick3d" ]; then
         RECIPE="qtquick3d"
@@ -74,7 +75,9 @@ for S in $SHA1S; do
 
     RECIPES=$(find ${LAYERDIR} -regextype egrep -regex ".*/(nativesdk-)?${RECIPE}(-native)?_git.bb(append)?")
 
-    if [ "${RECIPES}" != "" ]; then
+    if sed -n "/\"${BASEPROJECT}\"/,/status/p" $1/.gitmodules | grep -q ignore ; then
+        echo "${PROJECT} -> ignored"
+    elif [ "${RECIPES}" != "" ]; then
         sed -i -e "/^${TAG}/s/\".*\"/\"${SHA1}\"/" ${RECIPES}
         echo "${PROJECT} -> ${SHA1}"
     else
