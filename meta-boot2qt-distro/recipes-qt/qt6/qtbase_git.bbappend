@@ -34,3 +34,7 @@ PACKAGECONFIG += " \
     tslib \
     xkbcommon \
     "
+
+do_configure_prepend() {
+    echo "QMAKE_PLATFORM += boot2qt" >> ${S}/mkspecs/oe-device-extra.pri
+}
