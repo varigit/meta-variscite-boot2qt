@@ -51,6 +51,7 @@ RDEPENDS_${PN} += " \
     qtbase-staticdev \
     qtdeclarative-dev \
     qtdeclarative-staticdev \
+    qtshadertools-dev \
     qtimageformats-dev \
     qtnetworkauth-dev \
     qtquick3d-dev \

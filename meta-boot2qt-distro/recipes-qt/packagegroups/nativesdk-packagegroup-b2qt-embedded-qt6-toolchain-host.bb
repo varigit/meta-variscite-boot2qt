@@ -37,10 +37,14 @@ RDEPENDS_${PN} += "\
     nativesdk-packagegroup-b2qt-embedded-toolchain-host \
     nativesdk-qtbase \
     nativesdk-qtbase-dev \
-    nativesdk-qtbase-staticdev \
     nativesdk-qtbase-tools \
-    nativesdk-qtdeclarative-staticdev \
+    nativesdk-qtdeclarative-dev \
     nativesdk-qtdeclarative-tools \
+    nativesdk-qtquick3d-dev \
+    nativesdk-qtquick3d-tools \
+    nativesdk-qtshadertools-dev \
+    nativesdk-qtshadertools-tools \
+    nativesdk-qttools-dev \
     nativesdk-qttools-tools \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'nativesdk-qtwayland-tools', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'nativesdk-qtwayland-dev nativesdk-qtwayland-tools', '', d)} \
     "
