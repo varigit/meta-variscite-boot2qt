@@ -38,11 +38,11 @@
           fetch="git://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="2da53ce8330d4bb0f7cb7a2ae186b7475ba02d52"
+           revision="4da095837c93b84d52c7029d5c83796602c6834e"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="e2d8ca60114b4e854c804f941bced514b97c16a1"
+           revision="ac7476ea5aef52eb5fda4ce00756e7e0ddfe1174"
            path="sources/meta-freescale-3rdparty"/>
 
   <!-- Raspberry Pi -->
@@ -80,11 +80,11 @@
           fetch="git://git.toradex.com"/>
   <project name="meta-toradex-bsp-common"
            remote="toradex"
-           revision="f41e59ffc05aaa49315253cfc1ca7cf5fe9eb2c8"
+           revision="51927b354280c398b11b7b6bd64c1617825f17d1"
            path="sources/meta-toradex-bsp-common"/>
   <project name="meta-toradex-nxp"
            remote="toradex"
-           revision="7cac35a178f3cfc936b52fcd5bdf60ed0dc464dd"
+           revision="fddb6cc10a1df717cc77b6958ce5e233cef9a80a"
            path="sources/meta-toradex-nxp"/>
 
   <!-- BoundaryDevices -->

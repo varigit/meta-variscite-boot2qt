@@ -42,3 +42,9 @@ TEZI_DATE = "20200101090000"
 QBSP_IMAGE_CONTENT += "\
     ${IMAGE_LINK_NAME}.tezi.tar \
 "
+
+BBMASK += "\
+    meta-toradex-nxp/qt5-layer \
+    meta-toradex-nxp/recipes-graphics/imx-gpu-viv \
+    meta-toradex-nxp/recipes-bsp/imx-atf \
+"
