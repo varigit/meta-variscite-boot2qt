@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,15 +27,32 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Device Creation specific Qt packages"
-LICENSE = "The-Qt-Company-Commercial"
+DESCRIPTION = "Boot to Qt Startup Screen"
+LICENSE = "BSD | The-Qt-Company-Commercial"
+LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=c8b6dd132d52c6e5a545df07a4e3e283"
 
-inherit packagegroup
+inherit qt6-cmake systemd
+require recipes-qt/qt6/qt6-git.inc
 
-PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
+QT_GIT = "git://codereview.qt-project.org"
+QT_GIT_PROTOCOL = "http"
+QT_GIT_PROJECT = "qt-apps"
+QT_MODULE = "boot2qt-demos"
 
-RDEPENDS_${PN} += " \
-    boot2qt-appcontroller \
-    boot2qt-startupscreen \
-    qdb \
-    "
+SRC_URI += "\
+    file://startupscreen.service \
+"
+
+DEPENDS += "qtbase qtdeclarative qtdeclarative-native"
+
+S = "${WORKDIR}/git/startupscreen"
+
+do_install_append() {
+    install -m 0755 -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/startupscreen.service ${D}${systemd_unitdir}/system/
+}
+
+
+SYSTEMD_SERVICE_${PN} = "startupscreen.service"
+
+SRCREV = "84726988dad28ad4b7e77dcda7baddda094b90dd"

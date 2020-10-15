@@ -1,0 +1,11 @@
+[Unit]
+Description=Boot to Qt Startup Screen
+After=systemd-user-sessions.service
+ConditionPathExists=!/usr/bin/b2qt
+
+[Service]
+User=root
+ExecStart=-/usr/bin/appcontroller /usr/bin/statupscreen
+
+[Install]
+WantedBy=multi-user.target
