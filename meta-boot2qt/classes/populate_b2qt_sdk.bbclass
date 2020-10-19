@@ -35,14 +35,12 @@ EXTRA_TAR_OPTIONS="$EXTRA_TAR_OPTIONS --checkpoint=9999999"
 SDK_PRE_INSTALL_COMMAND = "${quiet_sdk_extraction}"
 
 replace_sysroot_symlink() {
-        IFS=$'\n'
-        SYMLINK_SYSROOT=$1
-        SEARCH_FOLDER=$2
-        for SOURCE in `find ${SEARCH_FOLDER} -type l`
+        SYSROOT=$1
+        find ${SYSROOT} -type l | while read SOURCE
         do
                 TARGET=`readlink -m "${SOURCE}"`
                 #check whether TARGET is inside the sysroot when not prepend the sysroot
-                TARGET=`echo ${TARGET} | grep "^${SYMLINK_SYSROOT}" || echo ${SYMLINK_SYSROOT}${TARGET}`
+                TARGET=`echo ${TARGET} | grep "^${SYSROOT}" || echo ${SYSROOT}${TARGET}`
                 rm "${SOURCE}"
                 if [ -f "${TARGET}" ]; then
                         cp "${TARGET}" "${SOURCE}"
@@ -50,14 +48,13 @@ replace_sysroot_symlink() {
                         touch "${SOURCE}"
                 fi
         done
-        unset IFS
 }
 
 do_populate_sdk[depends] += "p7zip-native:do_populate_sysroot"
 
 fakeroot archive_sdk_sdkmingw32() {
-        replace_sysroot_symlink ${SDK_OUTPUT}${SDKTARGETSYSROOT} ${SDK_OUTPUT}${SDKTARGETSYSROOT}
-        replace_sysroot_symlink ${SDK_OUTPUT}${SDKPATHNATIVE} ${SDK_OUTPUT}${SDKPATHNATIVE}
+        replace_sysroot_symlink ${SDK_OUTPUT}${SDKTARGETSYSROOT}
+        replace_sysroot_symlink ${SDK_OUTPUT}${SDKPATHNATIVE}
         # Package it up
         cd ${SDK_OUTPUT}/${SDKPATH}
         7za a ${SDKDEPLOYDIR}/${TOOLCHAIN_OUTPUTNAME}.7z *
