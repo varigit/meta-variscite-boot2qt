@@ -5,7 +5,7 @@ ConditionPathExists=!/usr/bin/b2qt
 
 [Service]
 User=root
-ExecStart=-/usr/bin/appcontroller /usr/bin/statupscreen
+ExecStart=-/usr/bin/appcontroller /usr/bin/startupscreen
 
 [Install]
 WantedBy=multi-user.target
