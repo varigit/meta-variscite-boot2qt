@@ -43,7 +43,7 @@ SRC_URI += "\
     file://startupscreen.service \
 "
 
-DEPENDS += "qtbase qtdeclarative qtdeclarative-native"
+DEPENDS += "qtbase qtdeclarative qtdeclarative-native qtquickcontrols2"
 
 S = "${WORKDIR}/git/startupscreen"
 
@@ -55,4 +55,4 @@ do_install_append() {
 
 SYSTEMD_SERVICE_${PN} = "startupscreen.service"
 
-SRCREV = "84726988dad28ad4b7e77dcda7baddda094b90dd"
+SRCREV = "a15beba02f95e56d1fe50eaf13b59b95b23d0e2c"
