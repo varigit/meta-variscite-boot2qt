@@ -5,7 +5,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
-           revision="44ab5a84770bfe28a1b52678abb58b166231dfc6"
+           revision="012ad10a89a889c21e67c27dc37d22520212548f"
            path="sources/poky"/>
   <project name="meta-mingw"
            remote="yocto"
@@ -19,7 +19,7 @@
           fetch="git://github.com/openembedded"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="654ad8bea49f142d20b2b96c0dd44810a6be233a"
+           revision="2a5c534d2b9f01e9c0f39701fccd7fc874945b1c"
            path="sources/meta-openembedded"/>
 
   <!-- Qt -->
