@@ -55,4 +55,4 @@ do_install_append() {
 
 SYSTEMD_SERVICE_${PN} = "startupscreen.service"
 
-SRCREV = "a15beba02f95e56d1fe50eaf13b59b95b23d0e2c"
+SRCREV = "bb9fdbf7401e552bac36132a34512fe3a075ef41"
