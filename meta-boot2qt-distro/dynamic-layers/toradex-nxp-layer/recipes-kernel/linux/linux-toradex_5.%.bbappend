@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -31,5 +31,18 @@ FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 
 SRC_URI += "\
     file://0001-Enable-atmel-mxt-multitouch-controller.patch \
-    file://0001-Add-dtb-for-DSI-to-HDMI-Adapter-V1.0.patch \
 "
+
+RDEPENDS_${KERNEL_PACKAGE_NAME}-base = "${KERNEL_PACKAGE_NAME}-image ${KERNEL_PACKAGE_NAME}-devicetree"
+
+do_preconfigure_prepend () {
+    # FunctionFS for qdbd
+    echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
+
+    # disable all console messages from framebuffers
+    echo "CONFIG_FRAMEBUFFER_CONSOLE=n" >> ${WORKDIR}/defconfig
+
+    # Enable uprobe for profiling
+    echo "CONFIG_UPROBE_EVENT=y" >> ${WORKDIR}/defconfig
+    echo "CONFIG_FTRACE=y"       >> ${WORKDIR}/defconfig
+}
