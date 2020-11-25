@@ -38,6 +38,7 @@ QT_GIT = "git://codereview.qt-project.org"
 QT_GIT_PROTOCOL = "http"
 QT_GIT_PROJECT = "qt-apps"
 QT_MODULE = "boot2qt-demos"
+QT_MODULE_BRANCH = "dev"
 
 SRC_URI += "\
     file://startupscreen.service \

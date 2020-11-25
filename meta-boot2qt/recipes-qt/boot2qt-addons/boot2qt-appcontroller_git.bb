@@ -35,6 +35,7 @@ inherit qt6-qmake
 require recipes-qt/qt6/qt6-git.inc
 
 QT_GIT_PROJECT = "qt-apps"
+QT_MODULE_BRANCH = "5.15"
 
 SRCREV = "474fa4b7aee62e704158d213d9e67eba74c69401"
 
