@@ -43,7 +43,7 @@ PV := "${@d.getVar('PV').split('+')[0]}"
 VERSION_SHORT = "${@d.getVar('PV').replace('.','')}"
 QBSP_NAME = "Automation ${PV}"
 QBSP_MACHINE = "${@d.getVar('MACHINE').replace('-','')}"
-QBSP_INSTALLER_COMPONENT = "automation.${VERSION_SHORT}.yocto.${QBSP_MACHINE}"
+QBSP_INSTALLER_COMPONENT = "automation.${VERSION_SHORT}.${QBSP_MACHINE}"
 QBSP_INSTALL_PATH = "/${PV}/Automation/${MACHINE}"
 
 QBSP_SDK_TASK = "meta-toolchain-b2qt-automation-qt6-sdk"

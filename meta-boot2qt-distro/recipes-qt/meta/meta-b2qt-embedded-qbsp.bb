@@ -43,7 +43,7 @@ PV := "${@d.getVar('PV').split('+')[0]}"
 VERSION_SHORT = "${@d.getVar('PV').replace('.','')}"
 QBSP_NAME = "Boot2Qt ${PV}"
 QBSP_MACHINE = "${@d.getVar('MACHINE').replace('-','')}"
-QBSP_INSTALLER_COMPONENT = "embedded.b2qt.${VERSION_SHORT}.yocto.${QBSP_MACHINE}"
+QBSP_INSTALLER_COMPONENT = "embedded.b2qt.${VERSION_SHORT}.${QBSP_MACHINE}"
 QBSP_INSTALL_PATH = "/${PV}/Boot2Qt/${MACHINE}"
 
 QBSP_SDK_TASK = "meta-toolchain-b2qt-embedded-qt6-sdk"
