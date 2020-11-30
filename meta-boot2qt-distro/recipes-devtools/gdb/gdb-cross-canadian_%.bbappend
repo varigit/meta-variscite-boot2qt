@@ -53,5 +53,5 @@ EOF
 do_install_append_sdkmingw32() {
     ln -s ../python35.dll ${D}${bindir}/
     ln -s ../python35.zip ${D}${bindir}/
-    ln -s ../libgcc_s_dw2-1.dll ${D}${bindir}/
+    ln -s ../libgcc_s_seh-1.dll ${D}${bindir}/
 }
