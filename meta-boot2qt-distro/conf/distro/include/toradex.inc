@@ -47,4 +47,5 @@ BBMASK += "\
     meta-toradex-nxp/qt5-layer \
     meta-toradex-nxp/recipes-graphics/imx-gpu-viv \
     meta-toradex-nxp/recipes-bsp/imx-atf \
+    meta-toradex-bsp-common/recipes-kernel/linux-firmware \
 "
