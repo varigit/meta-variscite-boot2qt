@@ -30,7 +30,7 @@
           fetch="ssh://codereview.qt-project.org/yocto"/>
   <project name="meta-qt6"
            remote="qt"
-           revision="b1adc3fa3a86a1aeca27727fa8caef8b9c69637e"
+           revision="bb03bf6e28d816dcb951851df68f189c640a073e"
            path="sources/meta-qt6"/>
 
   <!-- NXP -->
