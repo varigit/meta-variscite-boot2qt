@@ -48,7 +48,7 @@
   <!-- Raspberry Pi -->
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="f20ccfa11db4c0d1608cf6f3e654d29c5bfc3dd3"
+           revision="987993209716302eb8f314f69a2a3340555f94d8"
            path="sources/meta-raspberrypi"/>
 
   <!-- Intel -->
