@@ -41,7 +41,7 @@ QT_MODULE = "boot2qt-demos"
 
 SRCREV = "9d6a97f0fb5ff22a12f5c1dc0761fcbfb3490c0a"
 
-S = "${WORKDIR}/git/wayland/democompositor/"
+S = "${WORKDIR}/git/wayland/democompositor"
 
 DEPENDS = "qtbase qtwayland"
 
