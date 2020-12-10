@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,6 +27,5 @@
 ##
 ############################################################################
 
-require recipes-qt/meta/meta-toolchain-b2qt-embedded-qt6-sdk.bb
-
-SDKIMAGE_FEATURES = "dev-pkgs"
+# build avahi without GTK UI
+AVAHI_GTK = ""

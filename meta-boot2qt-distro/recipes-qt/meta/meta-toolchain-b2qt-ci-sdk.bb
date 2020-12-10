@@ -1,7 +1,6 @@
-#!/bin/sh
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2020 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -28,22 +27,40 @@
 ##
 ############################################################################
 
-set -x
-set -e
+DESCRIPTION = "Qt6 SDK toolchain for CI use"
 
-RELEASE=$(grep PV ../sources/meta-qt6/recipes-qt/qt6/qt6-git.inc | grep -o [0-9.]*)
-UPLOADPATH=QT@ci-files02-hki.intra.qt.io:/srv/jenkins_data/enterprise/b2qt/yocto/${RELEASE}/
-UPLOADS="\
-    tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt6-image-${MACHINE}.7z \
-    tmp/deploy/sdk/b2qt-x86_64-meta-toolchain-b2qt-${PROJECT}-qt6-sdk-${MACHINE}.sh \
-    tmp/deploy/sdk/b2qt-${MINGW}-meta-toolchain-b2qt-${PROJECT}-qt6-sdk-${MACHINE}.7z \
-    tmp/deploy/sdk/b2qt-x86_64-meta-toolchain-b2qt-ci-sdk-${MACHINE}.sh \
-    tmp/deploy/qbsp/meta-b2qt-${PROJECT}-qbsp-x86_64-${MACHINE}-${RELEASE}.qbsp \
-    tmp/deploy/qbsp/meta-b2qt-${PROJECT}-qbsp-${MINGW}-${MACHINE}-${RELEASE}.qbsp \
+LICENSE = "The-Qt-Company-Commercial"
+LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=c8b6dd132d52c6e5a545df07a4e3e283"
+
+inherit populate_sdk
+
+SDKIMAGE_FEATURES = "dev-pkgs"
+
+TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-b2qt-embedded-toolchain-host"
+TOOLCHAIN_TARGET_TASK += "packagegroup-b2qt-qt6-modules ${MACHINE_EXTRA_INSTALL_SDK}"
+
+PACKAGE_EXCLUDE += "\
+    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qt3d-dev', '', d)} \
+    qtbase-dev \
+    qtbase-staticdev \
+    qtdeclarative-dev \
+    qtdeclarative-staticdev \
+    qtshadertools-dev \
+    qtimageformats-dev \
+    qtnetworkauth-dev \
+    qtquick3d-dev \
+    qtquickcontrols2-dev \
+    qtquicktimeline-dev \
+    qtsvg-dev \
+    qttools-dev \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland-dev', '', d)} \
     "
 
-for f in ${UPLOADS}; do
-    if [ -e ${f} ]; then
-        rsync -L ${f} ${UPLOADPATH}/
-    fi
-done
+SDK_POSTPROCESS_COMMAND_prepend = "apply_ci_fixes;"
+
+apply_ci_fixes () {
+    # If the request has more than two labels, it is rejected (e.g., apache2.test-net.qt.local)
+    sed -i -e '/^hosts:/s/mdns4_minimal/mdns4/' ${SDK_OUTPUT}${SDKTARGETSYSROOT}${sysconfdir}/nsswitch.conf
+    # root is expected to be 0755
+    chmod g-w ${SDK_OUTPUT}${SDKTARGETSYSROOT}
+}
