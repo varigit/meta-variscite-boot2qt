@@ -29,7 +29,7 @@
 
 DESCRIPTION = "Boot to Qt Startup Screen"
 LICENSE = "BSD | The-Qt-Company-Commercial"
-LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=c8b6dd132d52c6e5a545df07a4e3e283"
+LIC_FILES_CHKSUM = "file://main.cpp;md5=5c11ee2d9fe17c24e80b866d1b758458;beginline=1;endline=49"
 
 inherit qt6-cmake systemd
 require recipes-qt/qt6/qt6-git.inc
