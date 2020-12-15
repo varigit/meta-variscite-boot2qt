@@ -63,7 +63,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
-           revision="81cfa07db0ca5f756179af2af5799a2fce5ee7ee"
+           revision="7fe349c03bad8a2609429b6783c0909d2aef3694"
            upstream="dunfell"
            path="sources/meta-intel"/>
 
