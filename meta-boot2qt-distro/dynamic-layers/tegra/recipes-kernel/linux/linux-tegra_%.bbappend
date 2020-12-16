@@ -28,8 +28,10 @@
 ############################################################################
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-SRC_URI += "file://0001-perf-Make-perf-able-to-build-with-latest-libbfd.patch"
+SRC_URI += "\
+    file://0001-perf-Make-perf-able-to-build-with-latest-libbfd.patch \
+    file://0001-perf-bench-Share-some-global-variables-to-fix-build-.patch \
+    file://0001-libtraceevent-Fix-build-with-binutils-2.35.patch \
+"
 
 KERNEL_ROOTSPEC = "root=/dev/mmcblk\${devnum}p1 rw rootwait"
-
-export KCFLAGS = "-Wno-error=address-of-packed-member -Wno-error=missing-attributes"
