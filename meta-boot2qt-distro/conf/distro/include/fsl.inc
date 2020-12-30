@@ -49,3 +49,5 @@ PREFERRED_VERSION_gstreamer1.0-libav ?= "1.14.0"
 MACHINE_GSTREAMER_1_0_PLUGIN_append_imxgpu = " imx-gst1.0-plugin"
 
 MACHINE_EXTRA_INSTALL_append_mx8 = "${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'libvulkan-imx', '', d)}"
+
+MACHINE_FIRMWARE_append_mx8 = " firmware-imx-vpu-imx8"
