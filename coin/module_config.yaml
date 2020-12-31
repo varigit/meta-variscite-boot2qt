@@ -63,6 +63,9 @@ build_instructions:
         IdentityFile "/home/qt/.ssh/test_farm_id_rsa"
       EOF
 
+      # make hostname unique for NFS
+      sudo hostname $(hostname -s)-$(date +%s%N)
+
       sudo mkdir -p /mnt/yocto-cache
       sudo mount yocto-cache.intra.qt.io:/srv/yocto-cache /mnt/yocto-cache
 
