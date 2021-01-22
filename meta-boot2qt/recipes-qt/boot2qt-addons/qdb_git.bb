@@ -33,7 +33,7 @@ LICENSE = "GPL-3.0 | The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit features_check
-inherit qt6-qmake
+inherit qt6-cmake
 require recipes-qt/qt6/qt6-git.inc
 
 QT_GIT_PROJECT = "qt-apps"
@@ -46,14 +46,13 @@ SRC_URI += "\
     file://qdbd-init.sh \
 "
 
-SRCREV = "1ff0ec46770254328e5ec492cbce1364936eda72"
-PV = "1.2.1+git${SRCPV}"
+SRCREV = "72bd22db9f72c4d93774c79cae0760bdc39ce0de"
+PV = "1.3.0+git${SRCPV}"
 
 REQUIRED_DISTRO_FEATURES = "systemd"
-DEPENDS = "qtbase"
+DEPENDS = "qtbase qtdeclarative qtdeclarative-native"
 RRECOMMENDS_${PN} += "kernel-module-usb-f-fs kernel-module-usb-f-rndis"
-
-EXTRA_QMAKEVARS_PRE = "CONFIG+=daemon_only"
+EXTRA_OECMAKE += "-DDAEMON_ONLY=ON"
 
 do_install_append() {
     install -m 0755 ${WORKDIR}/b2qt-gadget-network.sh ${D}${bindir}/
