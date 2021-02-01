@@ -1,4 +1,4 @@
-From 55ef4d476ac572de16fe66da4e02ad0b1b4873e6 Mon Sep 17 00:00:00 2001
+From 5b5a26f3222d84687b026683fd221b115537dbf2 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@qt.io>
 Date: Wed, 18 Oct 2017 13:20:25 +0300
 Subject: [PATCH] apalis-imx6: lower default resolution on HDMI to 720p
@@ -8,15 +8,15 @@ Subject: [PATCH] apalis-imx6: lower default resolution on HDMI to 720p
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/configs/apalis_imx6.h b/include/configs/apalis_imx6.h
-index 3749fc3258..279d0b065b 100644
+index c01c2e490c..79bae9c2b2 100644
 --- a/include/configs/apalis_imx6.h
 +++ b/include/configs/apalis_imx6.h
-@@ -177,7 +177,7 @@
+@@ -163,7 +163,7 @@
  	"splashpos=m,m\0" \
  	"splashimage=" __stringify(CONFIG_LOADADDR) "\0" \
  	"vidargs=mxc_hdmi.only_cea=1 " \
--		"video=mxcfb0:dev=hdmi,1920x1080M@60,if=RGB24 " \
-+		"video=mxcfb0:dev=hdmi,1280x720M@60,if=RGB24 " \
- 		"video=mxcfb1:off video=mxcfb2:off video=mxcfb3:off " \
+-		"video=mxcfb1:dev=hdmi,1920x1080M@60,if=RGB24 " \
++		"video=mxcfb1:dev=hdmi,1280x720M@60,if=RGB24 " \
+ 		"video=mxcfb0:off video=mxcfb2:off video=mxcfb3:off " \
  		"fbmem=32M\0 "
  

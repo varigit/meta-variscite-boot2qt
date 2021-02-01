@@ -1,4 +1,4 @@
-From 406117d80603f8364a50e948e5afbe197d2c6082 Mon Sep 17 00:00:00 2001
+From b13c1bb76bc78333a04c29d88ce33b45e7a9fe9f Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@qt.io>
 Date: Fri, 6 Oct 2017 15:54:35 +0300
 Subject: [PATCH] Enable atmel mxt multitouch controller for ixora v1.1 dtb
@@ -6,25 +6,17 @@ Subject: [PATCH] Enable atmel mxt multitouch controller for ixora v1.1 dtb
 Need to disable fusion touch to get the new atmel mxt multitouch
 controller to work.
 ---
- arch/arm/boot/dts/imx6q-apalis-ixora-v1.1.dts | 3 ++-
- arch/arm/boot/dts/imx6q-apalis-ixora-v1.2.dts | 3 ++-
- arch/arm/boot/dts/imx6q-apalis-ixora.dts      | 3 ++-
- 3 files changed, 6 insertions(+), 3 deletions(-)
+ arch/arm/boot/dts/imx6q-apalis-ixora-v1.1.dts | 1 +
+ arch/arm/boot/dts/imx6q-apalis-ixora-v1.2.dts | 1 +
+ arch/arm/boot/dts/imx6q-apalis-ixora.dts      | 1 +
+ arch/arm/boot/dts/imx6qdl-apalis.dtsi         | 2 +-
+ 4 files changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm/boot/dts/imx6q-apalis-ixora-v1.1.dts b/arch/arm/boot/dts/imx6q-apalis-ixora-v1.1.dts
-index 92bdfe2528b5..2f1ae8e2fb21 100644
+index af14f9b13d8d..24f43f10c9a2 100644
 --- a/arch/arm/boot/dts/imx6q-apalis-ixora-v1.1.dts
 +++ b/arch/arm/boot/dts/imx6q-apalis-ixora-v1.1.dts
-@@ -243,7 +243,7 @@
- 		interrupt-parent = <&gpio6>;
- 		interrupts = <10 IRQ_TYPE_EDGE_FALLING>;
- 		reset-gpios = <&gpio6 9 GPIO_ACTIVE_HIGH>; /* MXM3 13 */
--		status = "disabled";
-+		status = "okay";
- 	};
- 
- 	pcap@10 {
-@@ -253,6 +253,7 @@
+@@ -141,6 +141,7 @@
  		gpios = <&gpio6 10 GPIO_ACTIVE_HIGH /* MXM3 11, Pen down interrupt */
  			 &gpio6  9 GPIO_ACTIVE_HIGH /* MXM3 13, Reset */
  			>;
@@ -33,19 +25,10 @@ index 92bdfe2528b5..2f1ae8e2fb21 100644
  
  	/* M41T0M6 real time clock on carrier board */
 diff --git a/arch/arm/boot/dts/imx6q-apalis-ixora-v1.2.dts b/arch/arm/boot/dts/imx6q-apalis-ixora-v1.2.dts
-index aec021fc1213..8a7c14fbd911 100644
+index 80cc07ed429f..77cdbfff517a 100644
 --- a/arch/arm/boot/dts/imx6q-apalis-ixora-v1.2.dts
 +++ b/arch/arm/boot/dts/imx6q-apalis-ixora-v1.2.dts
-@@ -259,7 +259,7 @@
- 		interrupt-parent = <&gpio6>;
- 		interrupts = <10 IRQ_TYPE_EDGE_FALLING>;
- 		reset-gpios = <&gpio6 9 GPIO_ACTIVE_HIGH>; /* MXM3 13 */
--		status = "disabled";
-+		status = "okay";
- 	};
- 
- 	pcap@10 {
-@@ -269,6 +269,7 @@
+@@ -159,6 +159,7 @@
  		gpios = <&gpio6 10 GPIO_ACTIVE_HIGH /* MXM3 11, Pen down interrupt */
  			 &gpio6  9 GPIO_ACTIVE_HIGH /* MXM3 13, Reset */
  			>;
@@ -54,19 +37,10 @@ index aec021fc1213..8a7c14fbd911 100644
  
  	/* M41T0M6 real time clock on carrier board */
 diff --git a/arch/arm/boot/dts/imx6q-apalis-ixora.dts b/arch/arm/boot/dts/imx6q-apalis-ixora.dts
-index cf396b1a4235..be1b978393fa 100644
+index 1a0bade9a43d..fa30382063c5 100644
 --- a/arch/arm/boot/dts/imx6q-apalis-ixora.dts
 +++ b/arch/arm/boot/dts/imx6q-apalis-ixora.dts
-@@ -234,7 +234,7 @@
- 		interrupt-parent = <&gpio6>;
- 		interrupts = <10 IRQ_TYPE_EDGE_FALLING>;
- 		reset-gpios = <&gpio6 9 GPIO_ACTIVE_HIGH>; /* MXM3 13 */
--		status = "disabled";
-+		status = "okay";
- 	};
- 
- 	pcap@10 {
-@@ -244,6 +244,7 @@
+@@ -132,6 +132,7 @@
  		gpios = <&gpio6 10 GPIO_ACTIVE_HIGH /* MXM3 11, Pen down interrupt */
  			 &gpio6  9 GPIO_ACTIVE_HIGH /* MXM3 13, Reset */
  			>;
@@ -74,3 +48,16 @@ index cf396b1a4235..be1b978393fa 100644
  	};
  
  	eeprom@50 {
+diff --git a/arch/arm/boot/dts/imx6qdl-apalis.dtsi b/arch/arm/boot/dts/imx6qdl-apalis.dtsi
+index 84d08f01ab44..e2da50327d2d 100644
+--- a/arch/arm/boot/dts/imx6qdl-apalis.dtsi
++++ b/arch/arm/boot/dts/imx6qdl-apalis.dtsi
+@@ -559,7 +559,7 @@
+ 		interrupt-parent = <&gpio6>;
+ 		interrupts = <10 IRQ_TYPE_EDGE_FALLING>;
+ 		reset-gpios = <&gpio6 9 GPIO_ACTIVE_HIGH>;
+-		status = "disabled";
++		status = "okay";
+ 	};
+ };
+ 

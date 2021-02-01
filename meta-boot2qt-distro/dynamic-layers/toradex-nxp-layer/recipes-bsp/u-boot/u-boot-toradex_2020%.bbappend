@@ -28,7 +28,7 @@
 ############################################################################
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-SRC_URI += " \
+SRC_URI_append_apalis-imx6 = " \
         file://0002-apalis-imx6-test-for-Capacitive-Touch-Display-7-Para.patch \
         file://0004-apalis-imx6-lower-default-resolution-on-HDMI-to-720p.patch \
         "
