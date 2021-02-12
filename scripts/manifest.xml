@@ -5,13 +5,13 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
-           revision="5d75168a13d00253460020e536b2a87833ec67d2"
-           upstream="gatesgarth"
+           revision="9294bc4bb4bb5b62c8895dfa0f44219b6146f981"
+           upstream="master"
            path="sources/poky"/>
   <project name="meta-mingw"
            remote="yocto"
-           revision="d2809d7c93bdb46014e1f8b3b0a4f42030078905"
-           upstream="gatesgarth"
+           revision="580d308c46e9ec490fa48752797b78ebc5e83d58"
+           upstream="master"
            path="sources/meta-mingw"/>
 
   <!-- OpenEmbedded -->
@@ -21,8 +21,8 @@
           fetch="git://github.com/openembedded"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="b9dcf17700014dec679307dc1247882dccd439ca"
-           upstream="gatesgarth"
+           revision="8cb6756a835b997d39530934289f5f077e6d5eb8"
+           upstream="master"
            path="sources/meta-openembedded"/>
 
   <!-- Qt -->
@@ -33,7 +33,7 @@
           fetch="ssh://codereview.qt-project.org/yocto"/>
   <project name="meta-qt6"
            remote="qt"
-           revision="f7ba29657711ac24ff9fed227a0c3158b626e997"
+           revision="7057c72ca92c40b6cd7e2020e5be347c47c5cbae"
            upstream="dev"
            path="sources/meta-qt6"/>
 
@@ -42,20 +42,20 @@
           fetch="git://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="646ce62bea2246896b226e728c5df590151ff004"
-           upstream="gatesgarth"
+           revision="0aee7e404825e8cef372fc71c7dd8eae2f58132a"
+           upstream="master"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="0a3dcb1a2fefaa0156039b0af790b18309e40f36"
-           upstream="gatesgarth"
+           revision="cbc829722952e37fd697880b457a38bb88bdb1c5"
+           upstream="master"
            path="sources/meta-freescale-3rdparty"/>
 
   <!-- Raspberry Pi -->
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="09a3c11696c75593f8e475da5dfb401016c6aaca"
-           upstream="gatesgarth"
+           revision="f5fe02c30cc82e3f47c36de76d7b73d2482018bf"
+           upstream="master"
            path="sources/meta-raspberrypi"/>
 
   <!-- Intel -->
@@ -63,8 +63,8 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
-           revision="5492270c796daf8b7a7cc9cd93880c2bb25523c0"
-           upstream="gatesgarth"
+           revision="9deb61d0ffdcc83fb1d267e6bed6af6e0af07ac3"
+           upstream="master"
            path="sources/meta-intel"/>
 
   <!-- NVIDIA -->
@@ -72,8 +72,8 @@
           fetch="git://github.com/madisongh"/>
   <project name="meta-tegra"
            remote="madisongh"
-           revision="0d963e918b6a210c1bd3c6e094d15896858b8731"
-           upstream="gatesgarth"
+           revision="46b020ef63550bd5c6534319824082347e25b58b"
+           upstream="master"
            path="sources/meta-tegra"/>
   <!-- internal layer for the nvidia devnet downloads -->
   <remote name="playground"
