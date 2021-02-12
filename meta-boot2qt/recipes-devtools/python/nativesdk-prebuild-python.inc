@@ -33,7 +33,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=4b8a9367e6bb2acb6f26dc08654f6ee5"
 
 do_unpack[depends] += "p7zip-native:do_populate_sysroot"
 
-inherit bin_package nativesdk python3-dir
+inherit bin_package python3-dir nativesdk
 
 PV = "3.5.2"
 
