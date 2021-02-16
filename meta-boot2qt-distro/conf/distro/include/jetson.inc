@@ -51,3 +51,5 @@ NVIDIA_DEVNET_MIRROR[vardepsexclude] = "BSPDIR"
 # cboot-t18x fails to build with:
 # multiple definition of `sdmmc_context_t'
 PREFERRED_PROVIDER_cboot = "cboot-prebuilt"
+
+require conf/include/gstreamer-1.14.conf
