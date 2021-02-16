@@ -28,14 +28,14 @@ environment: &environment
         equals_value: TARGET2
     - type: EnvironmentVariable
       variableName: MACHINE
-      variableValue: imx8qmmek
+      variableValue: imx8qm-mek
       enable_if:
         condition: property
         property: target.arch
         equals_value: TARGET3
     - type: EnvironmentVariable
       variableName: MACHINE
-      variableValue: imx8mmevk
+      variableValue: imx8mm-lpddr4-evk
       enable_if:
         condition: property
         property: target.arch
