@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2020 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,27 +27,7 @@
 ##
 ############################################################################
 
-BBMASK += "\
-    meta-freescale/dynamic-layers/qt5-layer/recipes-qt/qt5 \
-"
-
-IMAGE_FSTYPES += "wic"
-
-QBSP_IMAGE_CONTENT ?= "\
-    ${IMAGE_LINK_NAME}.img \
-    ${IMAGE_LINK_NAME}.conf \
-    "
-
-# Use gstreamer 1.14 from meta-freescale
-PREFERRED_VERSION_gstreamer1.0 ?= "1.14.imx"
-PREFERRED_VERSION_gstreamer1.0-plugins-base ?= "1.14.imx"
-PREFERRED_VERSION_gstreamer1.0-plugins-good ?= "1.14.imx"
-PREFERRED_VERSION_gstreamer1.0-plugins-bad ?= "1.14.imx"
-PREFERRED_VERSION_gstreamer1.0-plugins-ugly ?= "1.14.4"
-PREFERRED_VERSION_gstreamer1.0-libav ?= "1.14.0"
-
-MACHINE_GSTREAMER_1_0_PLUGIN_append_imxgpu = " imx-gst1.0-plugin"
-
-MACHINE_EXTRA_INSTALL_append_mx8 = "${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'libvulkan-imx', '', d)}"
-
-MACHINE_FIRMWARE_append_mx8 = " firmware-imx-vpu-imx8"
+RPIFW_DATE_raspberrypi4 = "20200512"
+SRCREV_raspberrypi4 = "20354bebcc2a8448128f2348e19e155910d25122"
+SRC_URI[md5sum] = "66835915392ccf1a00d6f9d477b6e234"
+SRC_URI[sha256sum] = "ef6656598b03f3032e8fb5167d096a358349d8a6be2d91d8d7bdd73d14237944"
