@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,9 +27,5 @@
 ##
 ############################################################################
 
-include conf/distro/include/toradex.inc
-
-DEPLOY_CONF_NAME = "Toradex Colibri iMX8X"
-
-ATF_PLATFORM = "imx8qx"
-IMX_BOOT_SOC_TARGET = "iMX8QX"
+# the specs says 32, but 33 boots our B0 board.
+IMX_BOOT_SEEK = "33"

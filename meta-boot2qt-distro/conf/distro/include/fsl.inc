@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2020 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -26,6 +26,16 @@
 ## $QT_END_LICENSE$
 ##
 ############################################################################
+
+DEPLOY_CONF_NAME_imx6qdlsabresd = "NXP i.MX6QP/Q/DL SABRE Smart Device"
+DEPLOY_CONF_NAME_imx7dsabresd = "NXP SABRE SD i.MX7 Dual"
+DEPLOY_CONF_NAME_imx8mm-ddr4-evk = "NXP i.MX 8M Mini DDR4 EVK"
+DEPLOY_CONF_NAME_imx8mm-lpddr4-evk = "NXP i.MX 8M Mini LPDDR4 EVK"
+DEPLOY_CONF_NAME_imx8mn-ddr4-evk = "NXP i.MX 8M Nano DDR4 EVK"
+DEPLOY_CONF_NAME_imx8mn-lpddr4-evk = "NXP i.MX 8M Nano LPDDR4 EVK"
+DEPLOY_CONF_NAME_imx8mq-evk = "NXP i.MX 8MQuad EVK"
+DEPLOY_CONF_NAME_imx8qm-mek = "NXP i.MX 8QuadMax MEK"
+DEPLOY_CONF_NAME_imx8qpx-mek = "NXP i.MX 8QuadXPlus MEK"
 
 IMAGE_FSTYPES += "wic"
 

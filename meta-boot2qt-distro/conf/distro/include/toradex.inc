@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2020 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -46,3 +46,18 @@ QBSP_IMAGE_CONTENT += "\
 BBMASK += "\
     meta-toradex-nxp/qt5-layer \
 "
+
+# Use Toradex defined names
+DEPLOY_CONF_NAME = "Toradex ${MACHINE_NAME}"
+
+ATF_PLATFORM_mx8qm = "imx8qm"
+ATF_PLATFORM_mx8x = "imx8qx"
+IMX_BOOT_SOC_TARGET_mx8qm = "iMX8QM"
+IMX_BOOT_SOC_TARGET_mx8x = "iMX8QX"
+
+GPULESS_FEATURES = "wayland opengl vulkan"
+GPULESS_FEATURES_imxgpu = ""
+DISTRO_FEATURES_remove = "${GPULESS_FEATURES}"
+
+# remove support for 256MB version colibri-imx6ull in tezi image, since image will be too large for it.
+TORADEX_PRODUCT_IDS_remove_colibri-imx6ull = "0036"

@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -26,6 +26,13 @@
 ## $QT_END_LICENSE$
 ##
 ############################################################################
+
+DEPLOY_CONF_NAME_raspberrypi = "Raspberry Pi"
+DEPLOY_CONF_NAME_raspberrypi0 = "Raspberry Pi Zero"
+DEPLOY_CONF_NAME_raspberrypi2 = "Raspberry Pi 2"
+DEPLOY_CONF_NAME_raspberrypi3 = "Raspberry Pi 3"
+DEPLOY_CONF_NAME_raspberrypi4 = "Raspberry Pi 4"
+DEPLOY_CONF_NAME_raspberrypi4-64 = "Raspberry Pi 4 64-bit"
 
 IMAGE_FSTYPES += "wic"
 
@@ -56,6 +63,11 @@ dtparam=audio=on \n\
 
 # enable device mode from usb-c
 ENABLE_DWC2_PERIPHERAL_raspberrypi4 = "1"
+
+# additional memory for GPU
+GPU_MEM_256 = "128"
+GPU_MEM_512 = "256"
+GPU_MEM_1024= "256"
 
 MACHINE_FEATURES += "pitft"
 

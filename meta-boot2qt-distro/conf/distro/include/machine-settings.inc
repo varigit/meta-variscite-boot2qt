@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,12 +27,24 @@
 ##
 ############################################################################
 
-include conf/distro/include/raspberrypi.inc
+MACHINE_FAMILY ??= "empty"
+MACHINE_FAMILY_imx = "fsl"
+MACHINE_FAMILY_intel-x86-common = "intel"
+MACHINE_FAMILY_qemuall = "qemu"
+MACHINE_FAMILY_rpi = "raspberrypi"
+MACHINE_FAMILY_tegra = "jetson"
 
-DEPLOY_CONF_NAME = "Raspberry Pi"
+# Toradex has no overrides that would distinguish them from other nxp boards
+MACHINE_FAMILY_apalis-imx6 = "toradex"
+MACHINE_FAMILY_apalis-imx8 = "toradex"
+MACHINE_FAMILY_colibri-imx6 = "toradex"
+MACHINE_FAMILY_colibri-imx6ull = "toradex"
+MACHINE_FAMILY_colibri-imx7 = "toradex"
+MACHINE_FAMILY_colibri-imx7-emmc = "toradex"
+MACHINE_FAMILY_colibri-imx8x = "toradex"
 
-DISTRO_FEATURES_remove = "webengine"
+include conf/distro/include/${MACHINE_FAMILY}.inc
+include conf/distro/include/${MACHINE}.inc
 
-
-# additional memory for GPU
-GPU_MEM = "128"
+# prefer .inc, but include .conf for backwards compatibility
+include conf/distro/include/${MACHINE}.conf
