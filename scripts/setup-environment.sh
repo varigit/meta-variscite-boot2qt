@@ -65,7 +65,7 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
     raspberrypi*)
       LAYERSCONF="bblayers.conf.rpi.sample"
       ;;
-    intel-corei7-64)
+    intel-*)
       LAYERSCONF="bblayers.conf.intel.sample"
       ;;
     jetson-*)

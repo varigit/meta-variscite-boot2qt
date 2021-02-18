@@ -42,6 +42,6 @@ PACKAGECONFIG_remove_pn-qtvirtualkeyboard = "hunspell"
 PACKAGECONFIG_remove_pn-python3-pygobject = "cairo"
 
 # intel nuc specific changes
-IMAGE_FSTYPES_intel-corei7-64 = "tar.gz"
-MACHINE_EXTRA_INSTALL_remove_intel-corei7-64 = "grub-efi-config"
-QBSP_IMAGE_CONTENT_intel-corei7-64 = ""
+IMAGE_FSTYPES_intel-x86-common = "tar.gz"
+MACHINE_EXTRA_INSTALL_remove_intel-x86-common = "grub-efi-config"
+QBSP_IMAGE_CONTENT_intel-x86-common = ""

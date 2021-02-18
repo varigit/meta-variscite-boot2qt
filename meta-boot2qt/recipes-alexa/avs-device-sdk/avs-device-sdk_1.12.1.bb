@@ -11,4 +11,4 @@ SRC_URI[sha256sum] = "fba17b343c011410584330d8e268d09f449d16d62007b1a797751721a5
 
 # Enable OPUS by default
 PACKAGECONFIG += "opus portaudio"
-PACKAGECONFIG_append_intel-corei7-64 = " kittai "
+PACKAGECONFIG_append_intel-x86-common = " kittai "
