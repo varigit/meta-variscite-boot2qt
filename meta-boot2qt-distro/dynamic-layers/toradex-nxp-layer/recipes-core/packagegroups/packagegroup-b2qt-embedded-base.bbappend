@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,13 +27,10 @@
 ##
 ############################################################################
 
-include conf/distro/include/toradex.inc
+# try to limit the maximum size of the tezi image
+FIRMWARE ?= ""
+FIRMWARE_colibri-imx6ull = "linux-firmware"
+FIRMWARE_colibri-imx7 = "linux-firmware"
+FIRMWARE_colibri-imx7-emcc = "linux-firmware"
 
-DEPLOY_CONF_NAME = "Toradex Colibri iMX6ULL"
-
-UBOOT_MAKE_TARGET = "u-boot.imx"
-
-DISTRO_FEATURES_remove = "webengine wayland vulkan opengl"
-
-# remove support for 256MB version in tezi image, since image will be too large for it.
-TORADEX_PRODUCT_IDS_remove = "0036"
+RDEPENDS_${PN}_remove = "${FIRMWARE}"
