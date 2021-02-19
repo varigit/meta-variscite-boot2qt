@@ -54,6 +54,9 @@ Enable the onboard ALSA audio \n\
 dtparam=audio=on \n\
 "
 
+# enable device mode from usb-c
+ENABLE_DWC2_PERIPHERAL_raspberrypi4 = "1"
+
 MACHINE_FEATURES += "pitft"
 
 MACHINE_GSTREAMER_1_0_PLUGIN += "gstreamer1.0-omx"
