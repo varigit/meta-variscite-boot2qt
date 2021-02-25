@@ -29,10 +29,6 @@
 
 FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 
-SRC_URI += "\
-    file://0001-Enable-atmel-mxt-multitouch-controller.patch \
-"
-
 RDEPENDS_${KERNEL_PACKAGE_NAME}-base = "${KERNEL_PACKAGE_NAME}-image ${KERNEL_PACKAGE_NAME}-devicetree"
 
 do_preconfigure_prepend () {
