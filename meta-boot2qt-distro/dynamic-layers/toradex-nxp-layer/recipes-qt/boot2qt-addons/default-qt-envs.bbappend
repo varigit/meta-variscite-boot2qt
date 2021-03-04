@@ -28,36 +28,3 @@
 ############################################################################
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
-SRC_URI_append_mx8 = " file://kms.conf"
-
-do_configure_append() {
-    echo "FB_MULTI_BUFFER=2" >> ${WORKDIR}/defaults
-    echo "QT_QPA_EGLFS_FORCEVSYNC=1" >> ${WORKDIR}/defaults
-}
-
-do_configure_append_mx6() {
-    echo "QT_GSTREAMER_CAMERABIN_VIDEOSRC=mxc_v4l2=imxv4l2videosrc,v4l2src" >> ${WORKDIR}/defaults
-}
-
-IMXCONVERTER ?= ""
-IMXCONVERTER_mx8 = "imxvideoconvert_g2d"
-IMXCONVERTER_mx8mm = ""
-
-do_configure_append_mx8() {
-    echo "QT_QPA_EGLFS_FORCE888=1" >> ${WORKDIR}/defaults
-    echo "QT_QPA_EGLFS_KMS_ATOMIC=1" >> ${WORKDIR}/defaults
-    echo "QT_QPA_EGLFS_KMS_CONFIG=/etc/kms.conf" >> ${WORKDIR}/defaults
-    if [ -n "${IMXCONVERTER}" ]; then
-        echo "QT_GSTREAMER_PLAYBIN_CONVERT=${IMXCONVERTER}" >> ${WORKDIR}/defaults
-    fi
-}
-
-do_install_append_mx8() {
-    install -m 0644 ${WORKDIR}/kms.conf ${D}${sysconfdir}/
-}
-
-do_configure_append_mx8mm() {
-    # QtWebEngine screen tearing issues with imx8mm (QTBUG-80665)
-    echo "QTWEBENGINE_DISABLE_GPU_THREAD=1" >> ${WORKDIR}/defaults
-}
