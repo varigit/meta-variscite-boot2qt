@@ -52,8 +52,12 @@ DEPLOY_CONF_NAME = "Toradex ${MACHINE_NAME}"
 
 ATF_PLATFORM_mx8qm = "imx8qm"
 ATF_PLATFORM_mx8x = "imx8qx"
+ATF_PLATFORM_mx8mm = "imx8mm"
+ATF_PLATFORM_mx8mp = "imx8mp"
 IMX_BOOT_SOC_TARGET_mx8qm = "iMX8QM"
 IMX_BOOT_SOC_TARGET_mx8x = "iMX8QX"
+IMX_BOOT_SOC_TARGET_mx8mm = "iMX8MM"
+IMX_BOOT_SOC_TARGET_mx8mp = "iMX8MP"
 
 GPULESS_FEATURES = "wayland opengl vulkan"
 GPULESS_FEATURES_imxgpu = ""

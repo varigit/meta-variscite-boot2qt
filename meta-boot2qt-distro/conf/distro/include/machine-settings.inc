@@ -42,6 +42,8 @@ MACHINE_FAMILY_colibri-imx6ull = "toradex"
 MACHINE_FAMILY_colibri-imx7 = "toradex"
 MACHINE_FAMILY_colibri-imx7-emmc = "toradex"
 MACHINE_FAMILY_colibri-imx8x = "toradex"
+MACHINE_FAMILY_verdin-imx8mm = "toradex"
+MACHINE_FAMILY_verdin-imx8mp = "toradex"
 
 include conf/distro/include/${MACHINE_FAMILY}.inc
 include conf/distro/include/${MACHINE}.inc
