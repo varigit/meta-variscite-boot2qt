@@ -56,7 +56,7 @@ sed -i -e '/<project name="meta-qt/i\
 \  <project name="meta-boot2qt"\
            remote="qt"\
            revision="'${REV}'"\
-           branch="'${BRANCH}'"\
+           upstream="'${BRANCH}'"\
            path="sources/meta-boot2qt">\
     <linkfile dest="setup-environment.sh" src="scripts/setup-environment.sh"/>\
     <linkfile dest="sources/templates" src="meta-boot2qt-distro/conf"/>\
