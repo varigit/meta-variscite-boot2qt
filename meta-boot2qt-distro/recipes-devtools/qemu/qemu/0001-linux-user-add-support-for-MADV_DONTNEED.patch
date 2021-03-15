@@ -1,4 +1,4 @@
-From 8fa39dc69b2565e3932979bbe89b24059715ddf8 Mon Sep 17 00:00:00 2001
+From 50031cf4eb6511d41c090f3011021041f3a2a752 Mon Sep 17 00:00:00 2001
 From: Simon Hausmann <simon.hausmann@qt.io>
 Date: Fri, 24 Aug 2018 10:38:29 +0200
 Subject: [PATCH] linux-user: add support for MADV_DONTNEED
@@ -15,10 +15,10 @@ mappings.
  3 files changed, 15 insertions(+), 1 deletion(-)
 
 diff --git a/linux-user/mmap.c b/linux-user/mmap.c
-index 46a6e3a7..da9edc1e 100644
+index 00c05e6a0..ec40305aa 100644
 --- a/linux-user/mmap.c
 +++ b/linux-user/mmap.c
-@@ -767,3 +767,16 @@ abi_long target_mremap(abi_ulong old_addr, abi_ulong old_size,
+@@ -795,3 +795,16 @@ abi_long target_mremap(abi_ulong old_addr, abi_ulong old_size,
      mmap_unlock();
      return new_addr;
  }
@@ -36,10 +36,10 @@ index 46a6e3a7..da9edc1e 100644
 +    return 0;
 +}
 diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index f6f5fe5f..3d1d8716 100644
+index 534753ca1..604107f55 100644
 --- a/linux-user/qemu.h
 +++ b/linux-user/qemu.h
-@@ -441,6 +441,7 @@ int target_munmap(abi_ulong start, abi_ulong len);
+@@ -475,6 +475,7 @@ int target_munmap(abi_ulong start, abi_ulong len);
  abi_long target_mremap(abi_ulong old_addr, abi_ulong old_size,
                         abi_ulong new_size, unsigned long flags,
                         abi_ulong new_addr);
@@ -48,15 +48,15 @@ index f6f5fe5f..3d1d8716 100644
  extern abi_ulong mmap_next_start;
  abi_ulong mmap_find_vma(abi_ulong, abi_ulong, abi_ulong);
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 171c0cae..a4b72f51 100644
+index 27adee908..bcfe61e22 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -11035,7 +11035,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+@@ -11776,7 +11776,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
             turns private file-backed mappings into anonymous mappings.
             This will break MADV_DONTNEED.
             This is a hint, so ignoring and returning success is ok.  */
 -        return 0;
 +        return get_errno(target_madvise(arg1, arg2, arg3));
  #endif
- #if TARGET_ABI_BITS == 32
+ #ifdef TARGET_NR_fcntl64
      case TARGET_NR_fcntl64:
