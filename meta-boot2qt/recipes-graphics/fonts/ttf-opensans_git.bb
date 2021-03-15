@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -37,7 +37,7 @@ INHIBIT_DEFAULT_DEPS = "1"
 
 inherit allarch fontcache
 
-SRC_URI = "git://github.com/google/fonts"
+SRC_URI = "git://github.com/google/fonts;branch=main"
 SRCREV = "beaec0837bd21524b57ecb435158f9011fc03999"
 
 S = "${WORKDIR}/git"
