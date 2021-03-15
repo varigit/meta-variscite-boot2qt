@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -38,7 +38,7 @@ INHIBIT_DEFAULT_DEPS = "1"
 inherit allarch fontcache
 
 PV = "1.004"
-SRC_URI = "git://github.com/googlei18n/noto-cjk.git"
+SRC_URI = "git://github.com/googlei18n/noto-cjk.git;branch=main"
 SRCREV = "40d9f5b179a59a06b98373c76bdc3e2119e4e6b2"
 
 S = "${WORKDIR}/git"
