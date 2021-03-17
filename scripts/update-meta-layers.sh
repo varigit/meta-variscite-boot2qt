@@ -32,5 +32,5 @@
 
 MANIFEST=$(dirname $(realpath $0))/manifest.xml
 
-repo sync -n
-repo forall $@ -c "git checkout \$REPO_REMOTE/\$REPO_UPSTREAM ; sed -i -e s:\$REPO_LREV:\$(git rev-parse HEAD): ${MANIFEST}"
+repo sync $@ -n
+repo forall $@ -c "git checkout \$REPO_REMOTE/\$REPO_UPSTREAM ; sed -i -e /\${REPO_PROJECT}/,/path/s/revision.*/revision=\\\"\$(git rev-parse HEAD)\\\"/ ${MANIFEST}"
