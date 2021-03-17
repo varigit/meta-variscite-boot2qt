@@ -44,7 +44,7 @@ QBSP_IMAGE_CONTENT += "\
 "
 
 BBMASK += "\
-    meta-toradex-nxp/qt5-layer \
+    meta-toradex-nxp/backports \
 "
 
 # Use Toradex defined names
