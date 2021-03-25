@@ -33,4 +33,9 @@
 MANIFEST=$(dirname $(realpath $0))/manifest.xml
 
 repo sync $@ -n
-repo forall $@ -c "git checkout \$REPO_REMOTE/\$REPO_UPSTREAM ; sed -i -e /\${REPO_PROJECT}/,/path/s/revision.*/revision=\\\"\$(git rev-parse HEAD)\\\"/ ${MANIFEST}"
+repo forall $@ -c "\
+ OLD_REV=\$(grep -A2 \${REPO_PROJECT} ${MANIFEST} | grep revision | sed -e 's/.*\"\(.*\)\"/\1/') ; \
+ git checkout \$REPO_REMOTE/\$REPO_UPSTREAM ; \
+ echo Changelog for \$REPO_PROJECT: ; \
+ git log --pretty=format:'%h %s' --abbrev-commit \${OLD_REV}..HEAD ; \
+ sed -i -e /\${REPO_PROJECT}/,/path/s/revision.*/revision=\\\"\$(git rev-parse HEAD)\\\"/ ${MANIFEST}"
