@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2020 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Target packages for B2Qt embedded Qt6 SDK"
+DESCRIPTION = "Target packages for B2Qt embedded SDK"
 LICENSE = "The-Qt-Company-Commercial"
 PR = "r0"
 
@@ -42,22 +42,7 @@ GCC-SANITIZERS_mipsarch = ""
 GCC-SANITIZERS_libc-musl = ""
 
 RDEPENDS_${PN} += " \
-    ${MACHINE_EXTRA_INSTALL_SDK} \
     packagegroup-core-standalone-sdk-target \
     ${GCC-SANITIZERS} \
-    \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qt3d-dev', '', d)} \
-    qtbase-dev \
-    qtbase-staticdev \
-    qtdeclarative-dev \
-    qtdeclarative-staticdev \
-    qtshadertools-dev \
-    qtimageformats-dev \
-    qtnetworkauth-dev \
-    qtquick3d-dev \
-    qtquickcontrols2-dev \
-    qtquicktimeline-dev \
-    qtsvg-dev \
-    qttools-dev \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland-dev', '', d)} \
+    ${MACHINE_EXTRA_INSTALL_SDK} \
     "

@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -38,4 +38,6 @@ RDEPENDS_${PN} += " \
     boot2qt-appcontroller \
     boot2qt-startupscreen \
     qdb \
+    qtdeclarative-tools \
+    qttools-tools \
     "

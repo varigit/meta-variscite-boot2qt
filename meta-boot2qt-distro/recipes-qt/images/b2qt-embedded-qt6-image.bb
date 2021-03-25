@@ -49,6 +49,6 @@ IMAGE_INSTALL += "\
     packagegroup-b2qt-embedded-base \
     packagegroup-b2qt-embedded-tools \
     ${@bb.utils.contains("DISTRO_FEATURES", "gstreamer", "packagegroup-b2qt-embedded-gstreamer", "", d)} \
-    packagegroup-b2qt-qt6-modules \
+    packagegroup-qt6-modules \
     packagegroup-b2qt-embedded-addons \
     "
