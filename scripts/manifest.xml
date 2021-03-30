@@ -98,4 +98,10 @@
            upstream="dunfell-5.x.y"
            path="sources/meta-toradex-nxp"/>
 
+  <!-- Variscite -->
+  <remote fetch="git://github.com/varigit" name="variscite"/>
+  <project name="meta-variscite-fslc"
+           remote="variscite"
+           revision="bf6ef0facb630882c8bacb634d7d66586105e765"
+           path="sources/meta-variscite-fslc"/>
 </manifest>
