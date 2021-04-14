@@ -36,14 +36,16 @@ INITRAMFS_MAXSIZE = "165888"
 IMAGE_ROOTFS_ALIGNMENT = "1024"
 UBOOT_SUFFIX = "bin"
 
-IMAGE_FSTYPES += "wic"
+IMAGE_FSTYPES += "wic.xz"
 WKS_FILE = "tegra-bootdisk.wks.in"
 
 DEPLOY_CONF_NAME_jetson-tx1-devkit = "NVIDIA Jetson TX1 Development Kit"
 DEPLOY_CONF_NAME_jetson-tx2-devkit = "NVIDIA Jetson TX2 Development Kit"
 
+DEPLOY_CONF_IMAGE_TYPE = "wic.xz"
+
 QBSP_IMAGE_CONTENT += "\
-    ${IMAGE_LINK_NAME}.img \
+    ${IMAGE_LINK_NAME}.${DEPLOY_CONF_IMAGE_TYPE} \
     ${IMAGE_LINK_NAME}.conf \
     ${IMAGE_LINK_NAME}.flasher.tar.gz \
     "

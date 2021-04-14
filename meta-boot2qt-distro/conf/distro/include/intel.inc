@@ -29,10 +29,14 @@
 
 DEPLOY_CONF_NAME = "Intel NUC"
 
+IMAGE_FSTYPES += "wic.xz"
+
 DISTRO_FEATURES_remove = "usbgadget"
 
+DEPLOY_CONF_IMAGE_TYPE = "wic.xz"
+
 QBSP_IMAGE_CONTENT += "\
-    ${IMAGE_LINK_NAME}.img \
+    ${IMAGE_LINK_NAME}.${DEPLOY_CONF_IMAGE_TYPE} \
     ${IMAGE_LINK_NAME}.conf \
     "
 

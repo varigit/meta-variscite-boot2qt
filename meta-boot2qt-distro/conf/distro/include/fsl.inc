@@ -37,13 +37,15 @@ DEPLOY_CONF_NAME_imx8mq-evk = "NXP i.MX 8MQuad EVK"
 DEPLOY_CONF_NAME_imx8qm-mek = "NXP i.MX 8QuadMax MEK"
 DEPLOY_CONF_NAME_imx8qpx-mek = "NXP i.MX 8QuadXPlus MEK"
 
-IMAGE_FSTYPES += "wic"
+IMAGE_FSTYPES += "wic.xz"
 
 IMX_DEFAULT_BSP = "nxp"
 IMX_DEFAULT_KERNEL = "linux-imx"
 
+DEPLOY_CONF_IMAGE_TYPE = "wic.xz"
+
 QBSP_IMAGE_CONTENT += "\
-    ${IMAGE_LINK_NAME}.img \
+    ${IMAGE_LINK_NAME}.${DEPLOY_CONF_IMAGE_TYPE} \
     ${IMAGE_LINK_NAME}.conf \
     "
 

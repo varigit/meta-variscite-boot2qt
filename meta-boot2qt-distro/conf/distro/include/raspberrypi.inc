@@ -34,10 +34,12 @@ DEPLOY_CONF_NAME_raspberrypi3 = "Raspberry Pi 3"
 DEPLOY_CONF_NAME_raspberrypi4 = "Raspberry Pi 4"
 DEPLOY_CONF_NAME_raspberrypi4-64 = "Raspberry Pi 4 64-bit"
 
-IMAGE_FSTYPES += "wic"
+IMAGE_FSTYPES += "wic.xz"
+
+DEPLOY_CONF_IMAGE_TYPE = "wic.xz"
 
 QBSP_IMAGE_CONTENT += "\
-    ${IMAGE_LINK_NAME}.img \
+    ${IMAGE_LINK_NAME}.${DEPLOY_CONF_IMAGE_TYPE} \
     ${IMAGE_LINK_NAME}.conf \
     "
 
