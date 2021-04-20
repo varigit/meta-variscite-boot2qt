@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2020 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,17 +27,4 @@
 ##
 ############################################################################
 
-include conf/distro/include/fsl.inc
-
-# include file from meta-toradex-nxp
-include conf/machine/include/${MACHINE}.inc
-
-PREFERRED_PROVIDER_virtual/dtb_use-nxp-bsp = "device-tree-overlays"
-
-QBSP_IMAGE_CONTENT += "\
-    ${IMAGE_LINK_NAME}.tezi.tar \
-"
-
-BBMASK += "\
-    meta-toradex-nxp/qt5-layer \
-"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"

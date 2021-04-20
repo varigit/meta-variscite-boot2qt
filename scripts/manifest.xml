@@ -33,7 +33,7 @@
           fetch="ssh://codereview.qt-project.org/yocto"/>
   <project name="meta-qt6"
            remote="qt"
-           revision="76043f9679b5c6cc4c4fc25643591ed6fe05b9f2"
+           revision="1dcedd1b5d10d5733b34086f4da187be2f394e55"
            upstream="6.0"
            path="sources/meta-qt6"/>
 
@@ -63,7 +63,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
-           revision="4922e10c7b8169585ff9322b0d913dadc525c68e"
+           revision="4bd62a7e154b8c9e8a114f452d3b062d8d058118"
            upstream="dunfell"
            path="sources/meta-intel"/>
 
