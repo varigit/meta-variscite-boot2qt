@@ -105,15 +105,11 @@ prepare_qbsp() {
     cp ${WORKDIR}/toolchain_installscript.qs ${COMPONENT_PATH}/meta/installscript.qs
     patch_installer_files ${COMPONENT_PATH}/meta
 
-    mkdir -p ${B}/toolchain/${QBSP_INSTALL_PATH}/toolchain
     if [ "${SDK_POSTFIX}" = "7z" ]; then
-        7za x ${DEPLOY_DIR}/sdk/${SDK_NAME} -o${B}/toolchain/${QBSP_INSTALL_PATH}/toolchain/
+        cp ${DEPLOY_DIR}/sdk/${SDK_NAME} ${COMPONENT_PATH}/data/toolchain.7z
     else
-        cp ${DEPLOY_DIR}/sdk/${SDK_NAME} ${B}/toolchain/${QBSP_INSTALL_PATH}/toolchain/
+        7za a -mx=0 ${COMPONENT_PATH}/data/toolchain.7z ${DEPLOY_DIR}/sdk/${SDK_NAME}
     fi
-
-    cd ${B}/toolchain
-    7za a ${COMPONENT_PATH}/data/toolchain.7z *
 
     # Image component, only if we have the qbsp-image
     if [ -e ${DEPLOY_DIR_IMAGE}/${IMAGE_PACKAGE} ]; then
@@ -124,11 +120,7 @@ prepare_qbsp() {
         cp ${WORKDIR}/image_package.xml ${COMPONENT_PATH}/meta/package.xml
         patch_installer_files ${COMPONENT_PATH}/meta
 
-        mkdir -p ${B}/images/${QBSP_INSTALL_PATH}/images
-        7za x ${DEPLOY_DIR_IMAGE}/${IMAGE_PACKAGE} -o${B}/images/${QBSP_INSTALL_PATH}/images/
-
-        cd ${B}/images
-        7za a ${COMPONENT_PATH}/data/image.7z *
+        cp ${DEPLOY_DIR_IMAGE}/${IMAGE_PACKAGE} ${COMPONENT_PATH}/data/image.7z
     fi
 
     # License component

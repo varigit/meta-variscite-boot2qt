@@ -6,4 +6,9 @@
   <Description>System image for @TARGET@ hardware</Description>
   <DownloadableArchives>image.7z</DownloadableArchives>
   <Default>true</Default>
+  <Operations>
+    <Operation name="Extract">
+      <Argument>@TargetDir@@INSTALLPATH@/images</Argument>
+    </Operation>
+  </Operations>
 </Package>

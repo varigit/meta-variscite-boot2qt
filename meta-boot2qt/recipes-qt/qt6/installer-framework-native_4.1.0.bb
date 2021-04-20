@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2017 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -35,12 +35,12 @@ inherit bin_package native
 
 do_unpack[depends] += "p7zip-native:do_populate_sysroot"
 
-SRC_URI = "http://download.qt.io/development_releases/installer-framework/${PV}/installer-framework-build-stripped-${PV}-linux-x64.7z"
+SRC_URI = "https://download.qt.io/development_releases/installer-framework/${PV}/installer-framework-Linux-RHEL_7_4-GCC-Linux-RHEL_7_4-X86_64.7z"
 
-SRC_URI[md5sum] = "68b7c1f761ca0dba18f1d165d66005d6"
-SRC_URI[sha256sum] = "c2eb769351025e0c7df2882116390fffaf958368f873a2abab99e37caee0a498"
+SRC_URI[md5sum] = "8b87aef981dc7205d8574c486401a7c2"
+SRC_URI[sha256sum] = "212094b446bad04629045c08cb274eb7e9a4cc5c1ddd5c7c8fcbfe10af783e1b"
 
-S = "${WORKDIR}/ifw-pkg"
+S = "${WORKDIR}"
 
 do_install() {
     install -d ${D}${bindir}

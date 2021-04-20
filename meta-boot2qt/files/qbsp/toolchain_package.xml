@@ -8,4 +8,9 @@
   <Dependencies>qt.tools.qtcreator</Dependencies>
   <Script>installscript.qs</Script>
   <Default>true</Default>
+  <Operations>
+    <Operation name="Extract">
+      <Argument>@TargetDir@@INSTALLPATH@/toolchain</Argument>
+    </Operation>
+  </Operations>
 </Package>
