@@ -57,6 +57,7 @@ IMAGE_INSTALL_append = " \
     udev-extraconf \
     usbutils \
     util-linux \
+    v4l-utils \
     "
 
 # let's save space
