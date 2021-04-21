@@ -1,7 +1,7 @@
 #!/bin/bash
 ############################################################################
 ##
-## Copyright (C) 2020 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -109,14 +109,14 @@ ${SDKTOOL} addTC \
     --name "GCC (${NAME})" \
     --path "$(type -p ${CC})" \
     --abi "${ABI}" \
-    --language 1
+    --language C
 
 ${SDKTOOL} addTC \
     --id "ProjectExplorer.ToolChain.Gcc:${BASEID}.g++" \
     --name "G++ (${NAME})" \
     --path "$(type -p ${CXX})" \
     --abi "${ABI}" \
-    --language 2
+    --language Cxx
 
 ${SDKTOOL} addDebugger \
     --id "${BASEID}.gdb" \
