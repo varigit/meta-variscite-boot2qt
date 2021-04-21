@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -28,8 +28,12 @@
 ############################################################################
 
 QBSP_IMAGE_CONTENT ??= ""
+QBSP_IMAGE_DEPENDS ??= ""
 
-do_image_complete[depends] += "p7zip-native:do_populate_sysroot"
+do_image_complete[depends] += "\
+    p7zip-native:do_populate_sysroot \
+    ${QBSP_IMAGE_DEPENDS} \
+"
 
 fakeroot do_qbsp_image () {
     if [ -z "${QBSP_IMAGE_CONTENT}" ]; then

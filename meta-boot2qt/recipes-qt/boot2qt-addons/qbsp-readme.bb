@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -34,11 +34,10 @@ LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5
 inherit deploy nopackages
 
 SRC_URI = "file://README"
-QBSP_README ?= "README"
 
 do_deploy() {
     install -d ${DEPLOYDIR}
-    install -m 0644 ${WORKDIR}/${QBSP_README} ${DEPLOYDIR}
+    install -m 0644 ${WORKDIR}/README ${DEPLOYDIR}
 }
 
 addtask do_deploy after do_compile before do_build
