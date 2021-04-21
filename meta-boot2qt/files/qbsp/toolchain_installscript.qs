@@ -81,7 +81,7 @@ Component.prototype.createOperations = function()
         "--name", "GCC (" + platform + " " + target + ")",
         "--path", path + "/sysroots/" + hostSysroot + "/usr/bin/" + target_sys + "/" + target_sys + "-gcc" + executableExt,
         "--abi", abi,
-        "--language", "1",
+        "--language", "C",
         "UNDOEXECUTE",
         "@SDKToolBinary@", "rmTC", "--id", toolchainId + ".gcc"]);
 
@@ -91,7 +91,7 @@ Component.prototype.createOperations = function()
         "--name", "G++ (" + platform + " " + target + ")",
         "--path", path + "/sysroots/" + hostSysroot + "/usr/bin/" + target_sys + "/" + target_sys + "-g++" + executableExt,
         "--abi", abi,
-        "--language", "2",
+        "--language", "Cxx",
         "UNDOEXECUTE",
         "@SDKToolBinary@", "rmTC", "--id", toolchainId + ".g++"]);
 
