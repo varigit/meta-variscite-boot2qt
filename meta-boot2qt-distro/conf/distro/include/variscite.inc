@@ -58,6 +58,7 @@ IMAGE_INSTALL_append = " \
     usbutils \
     util-linux \
     v4l-utils \
+    expect \
     "
 
 # let's save space
