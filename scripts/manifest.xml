@@ -34,7 +34,7 @@
 
   <project name="meta-freescale"
            remote="freescale"
-           revision="ab03682ac4590245e2f4b8113000a6161bc8e9a7"
+           revision="b2071ddf724009f1c878686556d28f903dc2239c"
            path="sources/meta-freescale"
            groups="notdefault,external,fsl,toradex,ti,smx6,renesas-gen3,variscite"/>
   <project name="meta-freescale-3rdparty"
