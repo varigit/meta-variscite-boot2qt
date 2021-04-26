@@ -27,10 +27,5 @@
 ##
 ############################################################################
 
-BBMASK += " \
-    meta-variscite-fslc/recipes-fsl/packagegroups/packagegroup-fsl-tools-gpu.bbappend \
-    meta-variscite-fslc/recipes-fsl/packagegroups/packagegroup-fsl-tools-testapps.bbappend \
-    "
-
 # let's save space
 RDEPENDS_packagegroup-b2qt-embedded-base_remove_pn-packagegroup-b2qt-embedded-base = "linux-firmware"
