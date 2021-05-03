@@ -36,6 +36,9 @@ INITRAMFS_MAXSIZE = "165888"
 IMAGE_ROOTFS_ALIGNMENT = "1024"
 UBOOT_SUFFIX = "bin"
 
+IMAGE_FSTYPES += "wic"
+WKS_FILE = "tegra-bootdisk.wks.in"
+
 DEPLOY_CONF_NAME_jetson-tx1-devkit = "NVIDIA Jetson TX1 Development Kit"
 DEPLOY_CONF_NAME_jetson-tx2-devkit = "NVIDIA Jetson TX2 Development Kit"
 

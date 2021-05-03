@@ -1,0 +1,3 @@
+# template for tegra SD card boot disk
+part / --source rootfs --fstype=${IMAGE_TEGRAFLASH_FS_TYPE} --label root --align ${IMAGE_ROOTFS_ALIGNMENT} --overhead-factor 1.0
+bootloader --ptable gpt
