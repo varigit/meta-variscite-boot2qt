@@ -1,0 +1,27 @@
+From b9ba22e4c3a5baf2eabb56c8fc17c921bf2ec3cc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pasi=20Pet=C3=A4j=C3=A4j=C3=A4rvi?= <pasi.petajajarvi@qt.io>
+Date: Wed, 5 May 2021 18:34:23 +0300
+Subject: [PATCH] nvidia: Fix sd card boot for jetson tx2
+
+If image is flashed to emmc and then same image is flashed for sd card,
+it will not boot as mmc1 device is taken by mmc sdio wifi.
+---
+ include/configs/p2771-0000.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/configs/p2771-0000.h b/include/configs/p2771-0000.h
+index eb85e4bc8e..dd87d30030 100644
+--- a/include/configs/p2771-0000.h
++++ b/include/configs/p2771-0000.h
+@@ -17,7 +17,7 @@
+ 
+ /* SD, eMMC, USB, NVME, PXE, DHCP */
+ #define BOOT_TARGET_DEVICES(func) \
+-	func(MMC, mmc, 1) \
++	func(MMC, mmc, 2) \
+ 	func(MMC, mmc, 0) \
+ 	func(USB, usb, 0) \
+ 	func(NVME, nvme, 0) \
+-- 
+2.25.1
+
