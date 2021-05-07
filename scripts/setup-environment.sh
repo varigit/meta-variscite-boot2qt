@@ -62,7 +62,7 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
     nitrogen*)
       LAYERSCONF="bblayers.conf.boundary.sample"
       ;;
-    imx6ul-var-dart)
+    imx6ul-var-dart|imx8mp-var-dart)
       LAYERSCONF="bblayers.conf.variscite.sample"
       ;;
     imx*)

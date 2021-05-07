@@ -26,6 +26,7 @@
 ## $QT_END_LICENSE$
 ##
 ############################################################################
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append_mx8 = " file://kms.conf"
 
