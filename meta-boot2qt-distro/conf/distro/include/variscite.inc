@@ -52,6 +52,7 @@ IMAGE_INSTALL_append = " \
     dosfstools \
     e2fsprogs-mke2fs \
     evtest \
+    imx-kobs \
     iperf3 \
     pciutils \
     pulseaudio-misc \
