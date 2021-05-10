@@ -15,4 +15,5 @@ IMAGE_INSTALL_append = " \
     udev-extraconf \
     usbutils \
     expect \
+    file \
     "
