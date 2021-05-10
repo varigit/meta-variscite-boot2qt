@@ -43,24 +43,5 @@ DISTRO_FEATURES_remove = "vulkan"
 IMAGE_FSTYPES_remove = "ext3"
 IMAGE_FSTYPES += "multiubi tar.gz"
 
-IMAGE_INSTALL_append = " \
-    alsa-utils \
-    boot2qt-demo-camera \
-    can-utils \
-    mtd-utils \
-    mtd-utils-ubifs \
-    dosfstools \
-    e2fsprogs-mke2fs \
-    evtest \
-    imx-kobs \
-    iperf3 \
-    pciutils \
-    pulseaudio-misc \
-    pulseaudio-server \
-    tar \
-    udev-extraconf \
-    usbutils \
-    "
-
 # let's save space
 RDEPENDS_packagegroup-b2qt-embedded-base_remove_pn-packagegroup-b2qt-embedded-base = "linux-firmware"
