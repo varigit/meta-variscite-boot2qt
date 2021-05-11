@@ -38,6 +38,12 @@ SRC_URI += "\
     file://b2qt.service \
 "
 
+QT_QPA_PLATFORM ?= "${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'eglfs', 'linuxfb', d)}"
+
+do_configure() {
+    echo "QT_QPA_PLATFORM=${QT_QPA_PLATFORM}" >> ${WORKDIR}/defaults
+}
+
 do_install_append() {
     install -m 0755 -d ${D}${sysconfdir}/default
     install -m 0755 ${WORKDIR}/defaults ${D}${sysconfdir}/default/qt

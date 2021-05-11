@@ -2,3 +2,4 @@ QT_IM_MODULE=qtvirtualkeyboard
 QTWEBENGINE_DISABLE_SANDBOX=1
 XDG_RUNTIME_DIR=/run/user/0
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/0/dbus_session_socket
+WAYLAND_DISPLAY=/run/wayland-0
