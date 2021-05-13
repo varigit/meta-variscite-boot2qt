@@ -7,7 +7,7 @@ accept_configuration:
       equals_value: Yocto
     - condition: property
       property: target.arch
-      in_values: [TARGET1, TARGET2, TARGET3, TARGET4]
+      in_values: [TARGET1, TARGET2, TARGET3, TARGET4, TARGET5]
 
 environment: &environment
   type: Group
@@ -40,6 +40,13 @@ environment: &environment
         condition: property
         property: target.arch
         equals_value: TARGET4
+    - type: EnvironmentVariable
+      variableName: MACHINE
+      variableValue: jetson-tx2-devkit
+      enable_if:
+        condition: property
+        property: target.arch
+        equals_value: TARGET5
 
 build_instructions:
   - *environment
