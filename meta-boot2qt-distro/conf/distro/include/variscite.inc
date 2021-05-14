@@ -32,6 +32,7 @@ include conf/distro/include/fsl.inc
 BBMASK += " \
     meta-variscite-imx/dynamic-layers/qt5-layer \
     meta-variscite-imx/recipes-fsl/images \
+    meta-boot2qt/meta-boot2qt-distro/recipes-kernel/linux-firmware \
     "
 
 # unwanted B2QT demos
