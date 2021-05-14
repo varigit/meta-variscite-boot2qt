@@ -27,5 +27,9 @@
 ##
 ############################################################################
 
+BBMASK += " \
+    meta-boot2qt/meta-boot2qt-distro/recipes-kernel/linux-firmware \
+    "
+
 # let's save space
 RDEPENDS_packagegroup-b2qt-embedded-base_remove_pn-packagegroup-b2qt-embedded-base = "linux-firmware"
