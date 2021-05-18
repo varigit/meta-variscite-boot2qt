@@ -27,43 +27,22 @@
 ##
 ############################################################################
 
-# without the distro_bootpart that's not supported by stock u-boot
-KERNEL_ROOTSPEC = "root=/dev/mmcblk${devnum}p1 rw rootwait"
-KERNEL_ROOTSPEC_jetson-nano-2gb-devkit = "root=/dev/mmcblk0p1 rw rootwait"
-KERNEL_ROOTSPEC_jetson-nano-devkit = "root=/dev/mmcblk0p1 rw rootwait"
+inherit image-buildinfo
 
-INITRAMFS_MAXSIZE = "165888"
-IMAGE_ROOTFS_ALIGNMENT = "1024"
-UBOOT_SUFFIX = "bin"
+buildinfo[depends] += "qtbase-native:do_populate_sysroot"
 
-IMAGE_FSTYPES += "wic.xz"
-WKS_FILE = "tegra-bootdisk.wks.in"
+IMAGE_BUILDINFO_VARS_append = " QT_VERSION"
 
-DEPLOY_CONF_NAME_jetson-tx1-devkit = "NVIDIA Jetson TX1 Development Kit"
-DEPLOY_CONF_NAME_jetson-tx2-devkit = "NVIDIA Jetson TX2 Development Kit"
+python buildinfo_prepend () {
+    import subprocess
+    qtversion = subprocess.check_output(['qmake', '-query', 'QT_VERSION']).decode('utf-8').strip()
+    d.setVar('QT_VERSION', qtversion)
+}
 
-DEPLOY_CONF_IMAGE_TYPE = "wic.xz"
-
-QBSP_IMAGE_CONTENT += "\
-    ${IMAGE_LINK_NAME}.${DEPLOY_CONF_IMAGE_TYPE} \
-    ${IMAGE_LINK_NAME}.conf \
-    ${IMAGE_LINK_NAME}.info \
-    ${IMAGE_LINK_NAME}.flasher.tar.gz \
-    "
-
-# NVIDIA's Vulkan support is for X only
-DISTRO_FEATURES_remove = "vulkan"
-
-# https://github.com/madisongh/meta-tegra/issues/236
-KERNEL_MODULE_AUTOLOAD_remove = "tegra-udrm"
-KERNEL_MODULE_PROBECONF_remove = "tegra-udrm"
-module_conf_tegra-udrm = ""
-
-NVIDIA_DEVNET_MIRROR ?= "file://${BSPDIR}/sources/nvidia-devnet-mirror"
-NVIDIA_DEVNET_MIRROR[vardepsexclude] = "BSPDIR"
-
-# cboot-t18x fails to build with:
-# multiple definition of `sdmmc_context_t'
-PREFERRED_PROVIDER_cboot = "cboot-prebuilt"
-
-require conf/include/gstreamer-1.14.conf
+python buildinfo_append () {
+    import shutil
+    shutil.copyfile(
+        d.expand('${IMAGE_ROOTFS}${IMAGE_BUILDINFO_FILE}'),
+        d.expand('${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.info')
+    )
+}

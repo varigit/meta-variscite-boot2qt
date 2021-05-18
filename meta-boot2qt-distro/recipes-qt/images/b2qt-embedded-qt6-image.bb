@@ -42,7 +42,7 @@ IMAGE_FEATURES += "\
         hwcodecs \
         "
 
-inherit core-image qbsp-image
+inherit core-image qbsp-image deploy-buildinfo
 inherit consistent_timestamps
 
 IMAGE_INSTALL += "\
