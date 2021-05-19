@@ -33,3 +33,9 @@ IMAGE_INSTALL:append = " \
     libgpiod-tools \
     ${ML_PKGS} \
     "
+
+systemd_disable_vt () {
+    rm ${IMAGE_ROOTFS}${sysconfdir}/systemd/system/getty.target.wants/getty@tty*.service
+}
+
+IMAGE_PREPROCESS_COMMAND:append = " ${@ 'systemd_disable_vt;' if bb.utils.contains('DISTRO_FEATURES', 'systemd', True, False, d) and bb.utils.contains('USE_VT', '0', True, False, d) else ''} "
