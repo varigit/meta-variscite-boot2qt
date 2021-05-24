@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -30,6 +30,10 @@
 do_install_append () {
     # remove real-ld symlink
     rm ${D}${libexecdir}/gcc/${TARGET_SYS}/${BINV}/real-ld${EXEEXT}
+    # add symlinks for ld.bfd and ld.gold
+    for t in ld.bfd ld.gold; do
+        ln -sf ${BINRELPATH}/${TARGET_PREFIX}$t$suffix $dest$t$suffix
+    done
 }
 
 do_install_append_sdkmingw32() {
