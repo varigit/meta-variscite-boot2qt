@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2020 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,16 +27,8 @@
 ##
 ############################################################################
 
-PACKAGECONFIG += " \
-    cups \
-    glib \
-    sql-sqlite \
-    tslib \
-    xkbcommon \
-    "
-
-do_configure_prepend() {
-    echo "QMAKE_PLATFORM += boot2qt" >> ${S}/mkspecs/oe-device-extra.pri
-}
-
-EXTRA_OECMAKE_remove = "-DQT_AVOID_CMAKE_ARCHIVING_API=ON"
+FILESEXTRAPATHS_prepend_mingw32 := "${THISDIR}/${PN}:"
+SRC_URI_append_mingw32 = " file://0001-Makefile-fix-build-for-mingw.patch"
+OS_mingw32 = "Windows"
+export OS
+FILES_${PN}_append_mingw32 = " ${libdir}/*.dll"

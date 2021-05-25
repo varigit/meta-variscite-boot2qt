@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2020 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,16 +27,5 @@
 ##
 ############################################################################
 
-PACKAGECONFIG += " \
-    cups \
-    glib \
-    sql-sqlite \
-    tslib \
-    xkbcommon \
-    "
-
-do_configure_prepend() {
-    echo "QMAKE_PLATFORM += boot2qt" >> ${S}/mkspecs/oe-device-extra.pri
-}
-
-EXTRA_OECMAKE_remove = "-DQT_AVOID_CMAKE_ARCHIVING_API=ON"
+PACKAGECONFIG[zstd] = "--with-zstd,--without-zstd,zstd,"
+PACKAGECONFIG_append = " zstd"
