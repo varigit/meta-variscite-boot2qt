@@ -37,23 +37,46 @@ inherit populate_sdk
 SDKIMAGE_FEATURES = "dev-pkgs"
 
 TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-b2qt-embedded-toolchain-host"
-TOOLCHAIN_TARGET_TASK += "packagegroup-b2qt-qt6-modules ${MACHINE_EXTRA_INSTALL_SDK}"
+TOOLCHAIN_TARGET_TASK += "packagegroup-qt6-modules ${MACHINE_EXTRA_INSTALL_SDK}"
 
 PACKAGE_EXCLUDE += "\
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qt3d-dev', '', d)} \
+    qt5compat-dev \
     qtbase-dev \
     qtbase-staticdev \
+    qtcharts-dev \
+    qtcoap-dev \
+    qtconnectivity-dev \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtdatavis3d-dev', '', d)} \
     qtdeclarative-dev \
     qtdeclarative-staticdev \
-    qtshadertools-dev \
+    qtdeviceutilities-dev \
+    qtgraphicaleffects-dev \
     qtimageformats-dev \
+    qtlottie-dev \
+    qtmqtt-dev \
+    qtmultimedia-dev \
     qtnetworkauth-dev \
+    qtopcua-dev \
+    qtpositioning-dev \
     qtquick3d-dev \
     qtquickcontrols2-dev \
+    qtquickdesigner-components-dev \
     qtquicktimeline-dev \
+    qtremoteobjects-dev \
+    qtscxml-dev \
+    qtsensors-dev \
+    qtserialbus-dev \
+    qtserialport-dev \
+    qtshadertools-dev \
+    qtspeech-dev \
     qtsvg-dev \
     qttools-dev \
+    qttranslations-dev \
+    qtvirtualkeyboard-dev \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland-dev', '', d)} \
+    qtwebchannel-dev \
+    qtwebsockets-dev \
     "
 
 SDK_POSTPROCESS_COMMAND_prepend = "apply_ci_fixes;"
