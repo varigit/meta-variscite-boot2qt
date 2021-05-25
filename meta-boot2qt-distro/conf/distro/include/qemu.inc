@@ -28,3 +28,4 @@
 ############################################################################
 
 MACHINE_EXTRA_INSTALL_SDK += "libnss-mdns"
+MACHINE_EXTRA_INSTALL_SDK += "libdrm fontconfig pixman openssl pango cairo pciutils nss libcap"
