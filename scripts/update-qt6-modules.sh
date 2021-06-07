@@ -68,6 +68,15 @@ for S in $SHA1S; do
     elif [ "${PROJECT}" = "qtlocation/src/3rdparty/mapbox-gl-native" ]; then
         RECIPE="qtlocation"
         TAG="SRCREV_qtlocation-mapboxgl"
+    elif [ "${PROJECT}" = "qttools" ]; then
+        RECIPE="qttools"
+        TAG="SRCREV_qttools"
+    elif [ "${PROJECT}" = "qttools/src/assistant/qlitehtml" ]; then
+        RECIPE="qttools"
+        TAG="SRCREV_qlitehtml"
+    elif [ "${PROJECT}" = "qttools/src/assistant/qlitehtml/src/3rdparty/litehtml" ]; then
+        RECIPE="qttools"
+        TAG="SRCREV_litehtml"
     else
         RECIPE="${PROJECT}"
         TAG="SRCREV"
