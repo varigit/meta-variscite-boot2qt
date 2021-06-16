@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2020 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -44,6 +44,7 @@ SRC_URI += "\
     file://defaults \
     file://qdbd.service \
     file://qdbd-init.sh \
+    file://0001-CMake-adapt-to-new-CMake-API.patch \
 "
 
 SRCREV = "72bd22db9f72c4d93774c79cae0760bdc39ce0de"

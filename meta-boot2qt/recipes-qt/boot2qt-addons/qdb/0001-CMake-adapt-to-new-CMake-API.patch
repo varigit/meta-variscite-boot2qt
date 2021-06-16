@@ -1,0 +1,37 @@
+From 24d652f1dd4c67e4947314e57581d689bc5f727a Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Mon, 14 Jun 2021 13:31:48 +0300
+Subject: [PATCH] CMake: adapt to new CMake API
+
+Update dependencies and adapt to the new Qt CMake API.
+
+Change-Id: Ib8b52f00da8f2be5f0f8706f091487a109e34848
+---
+ libqdb/CMakeLists.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/libqdb/CMakeLists.txt b/libqdb/CMakeLists.txt
+index 7454a2c..00759d8 100644
+--- a/libqdb/CMakeLists.txt
++++ b/libqdb/CMakeLists.txt
+@@ -16,17 +16,17 @@ qt_internal_add_cmake_library(libqdb
+         Qt::Core
+ )
+ 
+-qt_extend_target(libqdb CONDITION WIN32
++qt_internal_extend_target(libqdb CONDITION WIN32
+     SOURCES
+         interruptsignalhandler_win.cpp
+ )
+ 
+-qt_extend_target(libqdb CONDITION WIN64
++qt_internal_extend_target(libqdb CONDITION WIN64
+     SOURCES
+         interruptsignalhandler_win.cpp
+ )
+ 
+-qt_extend_target(libqdb CONDITION UNIX
++qt_internal_extend_target(libqdb CONDITION UNIX
+     SOURCES
+         interruptsignalhandler_unix.cpp
+ )
