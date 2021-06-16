@@ -44,10 +44,9 @@ SRC_URI += "\
     file://defaults \
     file://qdbd.service \
     file://qdbd-init.sh \
-    file://0001-CMake-adapt-to-new-CMake-API.patch \
 "
 
-SRCREV = "72bd22db9f72c4d93774c79cae0760bdc39ce0de"
+SRCREV = "937877d9f73e37655228b0b01ffcc60761bd0c2f"
 PV = "1.3.0+git${SRCPV}"
 
 REQUIRED_DISTRO_FEATURES = "systemd"
