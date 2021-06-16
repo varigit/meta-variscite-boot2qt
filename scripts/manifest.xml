@@ -34,7 +34,7 @@
   <project name="meta-qt6"
            remote="qt"
            revision="ac597001df5553bba6e22d562ae2c1fddf11a357"
-           upstream="dev"
+           upstream="6.2"
            path="sources/meta-qt6"/>
 
   <!-- NXP -->
