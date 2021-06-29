@@ -40,6 +40,7 @@ QBSP_IMAGE_CONTENT += "\
 
 BBMASK += "\
     meta-toradex-nxp/backports \
+    meta-toradex-nxp/recipes-bsp/u-boot/u-boot-tools_%.bbappend \
 "
 
 # Use Toradex defined names
