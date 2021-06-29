@@ -54,8 +54,8 @@
   <!-- Raspberry Pi -->
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="d4d1441bd217f1a3dc353a6c20eadceb819c8e37"
-           upstream="master"
+           revision="064f5404ea90f02bd15088de6317692098d9f770"
+           upstream="hardknott"
            path="sources/meta-raspberrypi"/>
 
   <!-- Intel -->
