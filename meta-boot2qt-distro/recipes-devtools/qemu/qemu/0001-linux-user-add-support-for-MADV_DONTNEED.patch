@@ -31,7 +31,7 @@ index 00c05e6a0..ec40305aa 100644
 +       may rely on to zero out pages, so we pass that through.
 +       Otherwise returning success is ok. */
 +    if (flags & MADV_DONTNEED) {
-+        return madvise(g2h(start), len, MADV_DONTNEED);
++        return madvise(g2h_untagged(start), len, MADV_DONTNEED);
 +    }
 +    return 0;
 +}
