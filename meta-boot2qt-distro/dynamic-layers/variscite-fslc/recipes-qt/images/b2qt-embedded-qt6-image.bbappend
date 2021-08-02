@@ -25,6 +25,8 @@ IMAGE_INSTALL_append = " \
     util-linux \
     v4l-utils \
     expect \
+    libgpiod \
+    libgpiod-tools \
     "
 
 systemd_disable_vt () {
