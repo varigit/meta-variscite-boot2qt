@@ -16,4 +16,6 @@ IMAGE_INSTALL_append = " \
     usbutils \
     expect \
     file \
+    libgpiod \
+    libgpiod-tools \
     "
