@@ -55,7 +55,7 @@ IMX_BOOT_SOC_TARGET:mx8x = "iMX8QX"
 IMX_BOOT_SOC_TARGET:mx8mm = "iMX8MM"
 IMX_BOOT_SOC_TARGET:mx8mp = "iMX8MP"
 
-GPULESS_FEATURES = "wayland opengl vulkan"
+GPULESS_FEATURES = "wayland opengl vulkan webengine"
 GPULESS_FEATURES:imxgpu = ""
 DISTRO_FEATURES:remove = "${GPULESS_FEATURES}"
 
