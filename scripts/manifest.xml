@@ -24,6 +24,11 @@
            revision="aaa1c12b2cdea197d420953c8df873e8af5cc507"
            upstream="hardknott"
            path="sources/meta-openembedded"/>
+  <project name="meta-python2"
+           remote="oe"
+           revision="810d6d842f103eb59f18b06426106462b15de7e2"
+           upsream="hardknott"
+           path="sources/meta-python2"/>
 
   <!-- Qt -->
   <remote name="qt"
@@ -33,7 +38,7 @@
           fetch="ssh://codereview.qt-project.org/yocto"/>
   <project name="meta-qt6"
            remote="qt"
-           revision="6ce601a4d55a5e61f97e34cda7cce860a61e6ffb"
+           revision="7f83b930828419c75ccff66e72776d695cc1f79d"
            upstream="6.2"
            path="sources/meta-qt6"/>
 
