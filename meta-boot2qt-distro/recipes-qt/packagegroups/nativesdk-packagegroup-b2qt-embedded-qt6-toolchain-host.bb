@@ -33,7 +33,7 @@ PR = "r0"
 
 inherit packagegroup nativesdk
 
-RDEPENDS_${PN} += "\
+RDEPENDS:${PN} += "\
     nativesdk-packagegroup-b2qt-embedded-toolchain-host \
     nativesdk-qtbase \
     nativesdk-qtbase-dev \

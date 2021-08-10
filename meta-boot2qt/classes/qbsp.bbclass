@@ -29,7 +29,7 @@
 
 inherit meta nopackages abi-arch siteinfo
 
-FILESEXTRAPATHS_prepend := "${BOOT2QTBASE}/files/qbsp:"
+FILESEXTRAPATHS:prepend := "${BOOT2QTBASE}/files/qbsp:"
 
 SRC_URI = "\
     file://base_package.xml \
@@ -64,7 +64,7 @@ RELEASEDATE = "${@time.strftime('%Y-%m-%d',time.gmtime())}"
 IMAGE_PACKAGE = "${QBSP_IMAGE_TASK}-${MACHINE}.7z"
 SDK_NAME = "${DISTRO}-${SDK_MACHINE}-${QBSP_SDK_TASK}-${MACHINE}.${SDK_POSTFIX}"
 SDK_POSTFIX = "sh"
-SDK_POSTFIX_sdkmingw32 = "7z"
+SDK_POSTFIX:sdkmingw32 = "7z"
 REAL_MULTIMACH_TARGET_SYS = "${TUNE_PKGARCH}${TARGET_VENDOR}-${TARGET_OS}"
 SDK_MACHINE = "${@d.getVar('SDKMACHINE') or '${SDK_ARCH}'}"
 

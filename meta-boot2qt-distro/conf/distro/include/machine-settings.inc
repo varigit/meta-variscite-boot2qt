@@ -30,7 +30,7 @@
 MACHINE_FAMILY ??= "empty"
 MACHINE_FAMILY_imx = "fsl"
 MACHINE_FAMILY_intel-x86-common = "intel"
-MACHINE_FAMILY_qemuall = "qemu"
+MACHINE_FAMILY:qemuall = "qemu"
 MACHINE_FAMILY_rpi = "raspberrypi"
 MACHINE_FAMILY_tegra = "jetson"
 

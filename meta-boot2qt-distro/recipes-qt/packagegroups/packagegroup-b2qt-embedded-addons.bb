@@ -34,7 +34,7 @@ inherit packagegroup
 
 PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
     boot2qt-appcontroller \
     boot2qt-startupscreen \
     qdb \

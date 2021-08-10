@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI += "\
     file://TEZI_B2QT_EULA.TXT \
@@ -38,7 +38,7 @@ SRC_URI += "\
 SRC_URI[md5sum] = "281877560900c6481eee019a923f5e28"
 SRC_URI[sha256sum] = "36c31c812e6d6223f46f2a32cad37f46060a7c05420a4ba491cbea6193039eee"
 
-do_deploy_append () {
+do_deploy:append () {
     install -m 644 ${WORKDIR}/TEZI_B2QT_EULA.TXT ${DEPLOYDIR}
     install -m 644 ${WORKDIR}/Built_with_Qt.png ${DEPLOYDIR}
 }

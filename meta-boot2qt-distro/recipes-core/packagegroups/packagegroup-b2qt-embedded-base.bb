@@ -35,7 +35,7 @@ inherit packagegroup
 
 MACHINE_EXTRA_INSTALL ?= ""
 
-RDEPENDS_${PN} = "\
+RDEPENDS:${PN} = "\
         kernel-modules \
         linux-firmware \
         ca-certificates \

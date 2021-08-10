@@ -28,9 +28,9 @@
 ############################################################################
 
 # kernel image files are not needed in the image
-RDEPENDS_${KERNEL_PACKAGE_NAME}-base = ""
+RDEPENDS:${KERNEL_PACKAGE_NAME}-base = ""
 
-do_preconfigure_prepend() {
+do_preconfigure:prepend() {
     # FunctionFS for qdbd
     echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
 

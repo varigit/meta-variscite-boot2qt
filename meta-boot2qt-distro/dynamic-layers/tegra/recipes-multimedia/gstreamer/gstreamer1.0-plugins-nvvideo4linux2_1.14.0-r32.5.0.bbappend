@@ -26,7 +26,7 @@
 ## $QT_END_LICENSE$
 ##
 ############################################################################
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += "\
     file://0001-Fix-multiple-definition-of-default_nvbuf_api_version.patch \

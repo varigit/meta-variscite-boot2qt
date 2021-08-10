@@ -30,7 +30,7 @@
 PYPI_PACKAGE = "watchdog"
 DEPS = "python3-pathtools"
 DEPENDS = "${DEPS}"
-RDEPENDS_${PN} = "${DEPS}"
+RDEPENDS:${PN} = "${DEPS}"
 inherit pypi setuptools3
 
 LICENSE = "Apache-2.0"

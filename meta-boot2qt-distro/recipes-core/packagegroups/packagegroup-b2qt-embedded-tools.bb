@@ -33,7 +33,7 @@ PR = "r0"
 
 inherit packagegroup
 
-RDEPENDS_${PN} = "\
+RDEPENDS:${PN} = "\
         alsa-utils-amixer \
         binutils \
         binutils-symlinks \

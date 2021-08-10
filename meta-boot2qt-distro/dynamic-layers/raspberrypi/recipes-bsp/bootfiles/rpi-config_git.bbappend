@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-do_deploy_append_raspberrypi4() {
+do_deploy:append_raspberrypi4() {
     echo "# enable both hdmi outputs" >> ${DEPLOYDIR}/${BOOTFILES_DIR_NAME}/config.txt
     echo "max_framebuffers=2" >> ${DEPLOYDIR}/${BOOTFILES_DIR_NAME}/config.txt
 }

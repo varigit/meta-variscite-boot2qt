@@ -27,4 +27,4 @@
 ##
 ############################################################################
 
-RRECOMMENDS_${PN}_use-nxp-bsp = "libvulkan-imx"
+RRECOMMENDS:${PN}_use-nxp-bsp = "libvulkan-imx"

@@ -51,10 +51,10 @@ PV = "1.3.0+git${SRCPV}"
 
 REQUIRED_DISTRO_FEATURES = "systemd"
 DEPENDS = "qtbase qtdeclarative qtdeclarative-native"
-RRECOMMENDS_${PN} += "kernel-module-usb-f-fs kernel-module-usb-f-rndis"
+RRECOMMENDS:${PN} += "kernel-module-usb-f-fs kernel-module-usb-f-rndis"
 EXTRA_OECMAKE += "-DDAEMON_ONLY=ON"
 
-do_install_append() {
+do_install:append() {
     install -m 0755 ${WORKDIR}/b2qt-gadget-network.sh ${D}${bindir}/
 
     install -m 0755 ${WORKDIR}/qdbd-init.sh ${D}${bindir}/
@@ -66,6 +66,6 @@ do_install_append() {
     install -m 0644 ${WORKDIR}/defaults ${D}${sysconfdir}/default/qdbd
 }
 
-SYSTEMD_SERVICE_${PN} = "qdbd.service"
+SYSTEMD_SERVICE:${PN} = "qdbd.service"
 
 inherit systemd

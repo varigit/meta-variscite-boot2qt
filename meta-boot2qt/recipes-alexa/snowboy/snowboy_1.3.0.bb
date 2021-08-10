@@ -16,7 +16,7 @@ SRC_URI[sha256sum] = "93658cc5d4d83dd7a6e954d0dc1e18d1c70b1dd8623181850c4804d3ac
 
 COMPATIBLE_HOST = "x86_64-.*-linux"
 
-INSANE_SKIP_${PN} += "already-stripped"
+INSANE_SKIP:${PN} += "already-stripped"
 
 def get_snowboy_arch(d):
     import re
@@ -43,4 +43,4 @@ do_install() {
     install -m 0755 ${S}/resources/alexa/alexa-avs-sample-app/alexa.umdl ${D}${datadir}/snowboy/
 }
 
-FILES_${PN} = "${datadir}/snowboy/alexa.umdl ${datadir}/snowboy/common.res"
+FILES:${PN} = "${datadir}/snowboy/alexa.umdl ${datadir}/snowboy/common.res"

@@ -79,7 +79,7 @@ PACKAGE_EXCLUDE += "\
     qtwebsockets-dev \
     "
 
-SDK_POSTPROCESS_COMMAND_prepend = "apply_ci_fixes;"
+SDK_POSTPROCESS_COMMAND:prepend = "apply_ci_fixes;"
 
 apply_ci_fixes () {
     # If the request has more than two labels, it is rejected (e.g., apache2.test-net.qt.local)

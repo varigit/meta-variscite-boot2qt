@@ -38,10 +38,10 @@ PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 MACHINE_EXTRA_INSTALL_SDK ?= ""
 
 GCC-SANITIZERS ?= "gcc-sanitizers"
-GCC-SANITIZERS_mipsarch = ""
-GCC-SANITIZERS_libc-musl = ""
+GCC-SANITIZERS:mipsarch = ""
+GCC-SANITIZERS:libc-musl = ""
 
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
     packagegroup-core-standalone-sdk-target \
     ${GCC-SANITIZERS} \
     ${MACHINE_EXTRA_INSTALL_SDK} \

@@ -35,7 +35,7 @@ inherit packagegroup
 
 MACHINE_GSTREAMER_1_0_PLUGIN ?= ""
 
-RDEPENDS_${PN} = "\
+RDEPENDS:${PN} = "\
         gstreamer1.0-meta-base \
         gstreamer1.0-meta-video \
         gstreamer1.0-meta-audio \
