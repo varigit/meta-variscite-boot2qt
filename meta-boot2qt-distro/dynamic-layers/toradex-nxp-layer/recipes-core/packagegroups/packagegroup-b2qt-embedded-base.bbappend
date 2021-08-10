@@ -29,8 +29,8 @@
 
 # try to limit the maximum size of the tezi image
 FIRMWARE ?= ""
-FIRMWARE_colibri-imx6ull = "linux-firmware"
-FIRMWARE_colibri-imx7 = "linux-firmware"
-FIRMWARE_colibri-imx7-emmc = "linux-firmware"
+FIRMWARE:colibri-imx6ull = "linux-firmware"
+FIRMWARE:colibri-imx7 = "linux-firmware"
+FIRMWARE:colibri-imx7-emmc = "linux-firmware"
 
 RDEPENDS:${PN}:remove = "${FIRMWARE}"

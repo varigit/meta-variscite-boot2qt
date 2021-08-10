@@ -29,8 +29,8 @@
 
 # without the distro_bootpart that's not supported by stock u-boot
 KERNEL_ROOTSPEC = "root=/dev/mmcblk${devnum}p1 rw rootwait"
-KERNEL_ROOTSPEC_jetson-nano-2gb-devkit = "root=/dev/mmcblk0p1 rw rootwait"
-KERNEL_ROOTSPEC_jetson-nano-devkit = "root=/dev/mmcblk0p1 rw rootwait"
+KERNEL_ROOTSPEC:jetson-nano-2gb-devkit = "root=/dev/mmcblk0p1 rw rootwait"
+KERNEL_ROOTSPEC:jetson-nano-devkit = "root=/dev/mmcblk0p1 rw rootwait"
 
 INITRAMFS_MAXSIZE = "165888"
 IMAGE_ROOTFS_ALIGNMENT = "1024"
@@ -39,8 +39,8 @@ UBOOT_SUFFIX = "bin"
 IMAGE_FSTYPES += "wic.xz"
 WKS_FILE = "tegra-bootdisk.wks.in"
 
-DEPLOY_CONF_NAME_jetson-tx1-devkit = "NVIDIA Jetson TX1 Development Kit"
-DEPLOY_CONF_NAME_jetson-tx2-devkit = "NVIDIA Jetson TX2 Development Kit"
+DEPLOY_CONF_NAME:jetson-tx1-devkit = "NVIDIA Jetson TX1 Development Kit"
+DEPLOY_CONF_NAME:jetson-tx2-devkit = "NVIDIA Jetson TX2 Development Kit"
 
 DEPLOY_CONF_IMAGE_TYPE = "wic.xz"
 
