@@ -27,12 +27,12 @@
 ##
 ############################################################################
 
-DEPLOY_CONF_NAME_raspberrypi = "Raspberry Pi"
-DEPLOY_CONF_NAME_raspberrypi0 = "Raspberry Pi Zero"
-DEPLOY_CONF_NAME_raspberrypi2 = "Raspberry Pi 2"
-DEPLOY_CONF_NAME_raspberrypi3 = "Raspberry Pi 3"
-DEPLOY_CONF_NAME_raspberrypi4 = "Raspberry Pi 4"
-DEPLOY_CONF_NAME_raspberrypi4-64 = "Raspberry Pi 4 64-bit"
+DEPLOY_CONF_NAME:raspberrypi = "Raspberry Pi"
+DEPLOY_CONF_NAME:raspberrypi0 = "Raspberry Pi Zero"
+DEPLOY_CONF_NAME:raspberrypi2 = "Raspberry Pi 2"
+DEPLOY_CONF_NAME:raspberrypi3 = "Raspberry Pi 3"
+DEPLOY_CONF_NAME:raspberrypi4 = "Raspberry Pi 4"
+DEPLOY_CONF_NAME:raspberrypi4-64 = "Raspberry Pi 4 64-bit"
 
 IMAGE_FSTYPES += "wic.xz"
 
@@ -65,7 +65,7 @@ dtparam=audio=on \n\
 "
 
 # enable device mode from usb-c
-ENABLE_DWC2_PERIPHERAL_raspberrypi4 = "1"
+ENABLE_DWC2_PERIPHERAL:raspberrypi4 = "1"
 
 # additional memory for GPU
 GPU_MEM_256 = "128"

@@ -27,20 +27,20 @@
 ##
 ############################################################################
 
-DEPLOY_CONF_NAME_imx6qdlsabresd = "NXP i.MX6QP/Q/DL SABRE Smart Device"
-DEPLOY_CONF_NAME_imx7dsabresd = "NXP SABRE SD i.MX7 Dual"
-DEPLOY_CONF_NAME_imx8mm-ddr4-evk = "NXP i.MX 8M Mini DDR4 EVK"
-DEPLOY_CONF_NAME_imx8mm-lpddr4-evk = "NXP i.MX 8M Mini LPDDR4 EVK"
-DEPLOY_CONF_NAME_imx8mn-ddr4-evk = "NXP i.MX 8M Nano DDR4 EVK"
-DEPLOY_CONF_NAME_imx8mn-lpddr4-evk = "NXP i.MX 8M Nano LPDDR4 EVK"
-DEPLOY_CONF_NAME_imx8mq-evk = "NXP i.MX 8MQuad EVK"
-DEPLOY_CONF_NAME_imx8qm-mek = "NXP i.MX 8QuadMax MEK"
-DEPLOY_CONF_NAME_imx8qpx-mek = "NXP i.MX 8QuadXPlus MEK"
+DEPLOY_CONF_NAME:imx6qdlsabresd = "NXP i.MX6QP/Q/DL SABRE Smart Device"
+DEPLOY_CONF_NAME:imx7dsabresd = "NXP SABRE SD i.MX7 Dual"
+DEPLOY_CONF_NAME:imx8mm-ddr4-evk = "NXP i.MX 8M Mini DDR4 EVK"
+DEPLOY_CONF_NAME:imx8mm-lpddr4-evk = "NXP i.MX 8M Mini LPDDR4 EVK"
+DEPLOY_CONF_NAME:imx8mn-ddr4-evk = "NXP i.MX 8M Nano DDR4 EVK"
+DEPLOY_CONF_NAME:imx8mn-lpddr4-evk = "NXP i.MX 8M Nano LPDDR4 EVK"
+DEPLOY_CONF_NAME:imx8mq-evk = "NXP i.MX 8MQuad EVK"
+DEPLOY_CONF_NAME:imx8qm-mek = "NXP i.MX 8QuadMax MEK"
+DEPLOY_CONF_NAME:imx8qpx-mek = "NXP i.MX 8QuadXPlus MEK"
 
 IMAGE_FSTYPES += "wic.xz"
 
 IMX_DEFAULT_BSP = "nxp"
-IMX_DEFAULT_KERNEL_b2qt = "linux-imx"
+IMX_DEFAULT_KERNEL:b2qt = "linux-imx"
 
 DEPLOY_CONF_IMAGE_TYPE = "wic.xz"
 
@@ -54,11 +54,11 @@ QBSP_LICENSE_FILE ?= "${FSL_EULA_FILE}"
 QBSP_LICENSE_NAME ?= "NXP Semiconductors Software License Agreement"
 
 # Use gstreamer 1.16 from meta-freescale
-PREFERRED_VERSION_gstreamer1.0_use-nxp-bsp ?= "1.16.2.imx"
-PREFERRED_VERSION_gstreamer1.0-plugins-base_use-nxp-bsp ?= "1.16.2.imx"
-PREFERRED_VERSION_gstreamer1.0-plugins-good_use-nxp-bsp ?= "1.16.3.imx"
-PREFERRED_VERSION_gstreamer1.0-plugins-bad_use-nxp-bsp ?= "1.16.3.imx"
-PREFERRED_VERSION_gstreamer1.0-plugins-ugly_use-nxp-bsp ?= "1.16.0"
-PREFERRED_VERSION_gstreamer1.0-libav_use-nxp-bsp ?= "1.16.0"
+PREFERRED_VERSION_gstreamer1.0:use-nxp-bsp ?= "1.16.2.imx"
+PREFERRED_VERSION_gstreamer1.0-plugins-base:use-nxp-bsp ?= "1.16.2.imx"
+PREFERRED_VERSION_gstreamer1.0-plugins-good:use-nxp-bsp ?= "1.16.3.imx"
+PREFERRED_VERSION_gstreamer1.0-plugins-bad:use-nxp-bsp ?= "1.16.3.imx"
+PREFERRED_VERSION_gstreamer1.0-plugins-ugly:use-nxp-bsp ?= "1.16.0"
+PREFERRED_VERSION_gstreamer1.0-libav:use-nxp-bsp ?= "1.16.0"
 
-MACHINE_GSTREAMER_1_0_PLUGIN:append_imxgpu = " imx-gst1.0-plugin"
+MACHINE_GSTREAMER_1_0_PLUGIN:append:imxgpu = " imx-gst1.0-plugin"

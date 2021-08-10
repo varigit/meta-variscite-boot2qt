@@ -27,5 +27,5 @@
 ##
 ############################################################################
 
-PACKAGECONFIG:append_mx8 = " gbm kms"
-PACKAGECONFIG:append_use-mainline-bsp = "${@bb.utils.contains('DISTRO_FEATURES', 'opengl', ' gbm kms', '', d)}"
+PACKAGECONFIG:append:mx8 = " gbm kms"
+PACKAGECONFIG:append:use-mainline-bsp = "${@bb.utils.contains('DISTRO_FEATURES', 'opengl', ' gbm kms', '', d)}"

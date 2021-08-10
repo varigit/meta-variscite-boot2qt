@@ -28,22 +28,22 @@
 ############################################################################
 
 MACHINE_FAMILY ??= "empty"
-MACHINE_FAMILY_imx = "fsl"
-MACHINE_FAMILY_intel-x86-common = "intel"
+MACHINE_FAMILY:imx = "fsl"
+MACHINE_FAMILY:intel-x86-common = "intel"
 MACHINE_FAMILY:qemuall = "qemu"
-MACHINE_FAMILY_rpi = "raspberrypi"
-MACHINE_FAMILY_tegra = "jetson"
+MACHINE_FAMILY:rpi = "raspberrypi"
+MACHINE_FAMILY:tegra = "jetson"
 
 # Toradex has no overrides that would distinguish them from other nxp boards
-MACHINE_FAMILY_apalis-imx6 = "toradex"
-MACHINE_FAMILY_apalis-imx8 = "toradex"
-MACHINE_FAMILY_colibri-imx6 = "toradex"
-MACHINE_FAMILY_colibri-imx6ull = "toradex"
-MACHINE_FAMILY_colibri-imx7 = "toradex"
-MACHINE_FAMILY_colibri-imx7-emmc = "toradex"
-MACHINE_FAMILY_colibri-imx8x = "toradex"
-MACHINE_FAMILY_verdin-imx8mm = "toradex"
-MACHINE_FAMILY_verdin-imx8mp = "toradex"
+MACHINE_FAMILY:apalis-imx6 = "toradex"
+MACHINE_FAMILY:apalis-imx8 = "toradex"
+MACHINE_FAMILY:colibri-imx6 = "toradex"
+MACHINE_FAMILY:colibri-imx6ull = "toradex"
+MACHINE_FAMILY:colibri-imx7 = "toradex"
+MACHINE_FAMILY:colibri-imx7-emmc = "toradex"
+MACHINE_FAMILY:colibri-imx8x = "toradex"
+MACHINE_FAMILY:verdin-imx8mm = "toradex"
+MACHINE_FAMILY:verdin-imx8mp = "toradex"
 
 include conf/distro/include/${MACHINE_FAMILY}.inc
 include conf/distro/include/${MACHINE}.inc

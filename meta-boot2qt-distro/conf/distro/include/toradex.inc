@@ -32,7 +32,7 @@ include conf/distro/include/fsl.inc
 # include file from meta-toradex-nxp
 include conf/machine/include/${MACHINE}.inc
 
-PREFERRED_PROVIDER_virtual/dtb_use-nxp-bsp = "device-tree-overlays"
+PREFERRED_PROVIDER_virtual/dtb:use-nxp-bsp = "device-tree-overlays"
 
 QBSP_IMAGE_CONTENT += "\
     ${IMAGE_LINK_NAME}.tezi.tar \
@@ -45,29 +45,29 @@ BBMASK += "\
 # Use Toradex defined names
 DEPLOY_CONF_NAME = "Toradex ${MACHINE_NAME}"
 
-ATF_PLATFORM_mx8qm = "imx8qm"
-ATF_PLATFORM_mx8x = "imx8qx"
-ATF_PLATFORM_mx8mm = "imx8mm"
-ATF_PLATFORM_mx8mp = "imx8mp"
-IMX_BOOT_SOC_TARGET_mx8qm = "iMX8QM"
-IMX_BOOT_SOC_TARGET_mx8x = "iMX8QX"
-IMX_BOOT_SOC_TARGET_mx8mm = "iMX8MM"
-IMX_BOOT_SOC_TARGET_mx8mp = "iMX8MP"
+ATF_PLATFORM:mx8qm = "imx8qm"
+ATF_PLATFORM:mx8x = "imx8qx"
+ATF_PLATFORM:mx8mm = "imx8mm"
+ATF_PLATFORM:mx8mp = "imx8mp"
+IMX_BOOT_SOC_TARGET:mx8qm = "iMX8QM"
+IMX_BOOT_SOC_TARGET:mx8x = "iMX8QX"
+IMX_BOOT_SOC_TARGET:mx8mm = "iMX8MM"
+IMX_BOOT_SOC_TARGET:mx8mp = "iMX8MP"
 
 GPULESS_FEATURES = "wayland opengl vulkan webengine"
-GPULESS_FEATURES_imxgpu = ""
+GPULESS_FEATURES:imxgpu = ""
 DISTRO_FEATURES:remove = "${GPULESS_FEATURES}"
 
 # Suitable DRI device
-DRI_DEVICE_apalis-imx6 = "card1"
-DRI_DEVICE_colibri-imx6 = "card1"
-DRI_DEVICE_colibri-imx7-emmc = "card0"
-DRI_DEVICE_apalis-imx8 = "card1"
-DRI_DEVICE_apalis-imx8x = "card0"
-DRI_DEVICE_colibri-imx8x = "card1"
-DRI_DEVICE_colibri-imx8x-v10b = "card1"
-DRI_DEVICE_verdin-imx8mm = "card0"
-DRI_DEVICE_verdin-imx8mp = "card0"
+DRI_DEVICE:apalis-imx6 = "card1"
+DRI_DEVICE:colibri-imx6 = "card1"
+DRI_DEVICE:colibri-imx7-emmc = "card0"
+DRI_DEVICE:apalis-imx8 = "card1"
+DRI_DEVICE:apalis-imx8x = "card0"
+DRI_DEVICE:colibri-imx8x = "card1"
+DRI_DEVICE:colibri-imx8x-v10b = "card1"
+DRI_DEVICE:verdin-imx8mm = "card0"
+DRI_DEVICE:verdin-imx8mp = "card0"
 
 # remove support for 256MB version colibri-imx6ull in tezi image, since image will be too large for it.
-TORADEX_PRODUCT_IDS:remove_colibri-imx6ull = "0036"
+TORADEX_PRODUCT_IDS:remove:colibri-imx6ull = "0036"
