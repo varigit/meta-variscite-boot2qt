@@ -43,33 +43,30 @@ for S in $SHA1S; do
     SHA1=${S:0:40}
     PROJECT=${S:40}
     BASEPROJECT=$(echo $PROJECT | cut -d / -f 1)
+    RECIPE="${PROJECT}"
+    TAG="SRCREV"
 
     if [ "${PROJECT}" = "qtquick3d" ]; then
-        RECIPE="qtquick3d"
         TAG="SRCREV_qtquick3d"
     elif [ "${PROJECT}" = "qtquick3d/src/3rdparty/assimp/src" ]; then
         RECIPE="qtquick3d"
         TAG="SRCREV_assimp"
     elif [ "${PROJECT}" = "qt3d" ]; then
-        RECIPE="qt3d"
         TAG="SRCREV_qt3d"
     elif [ "${PROJECT}" = "qt3d/src/3rdparty/assimp/src" ]; then
         RECIPE="qt3d"
         TAG="SRCREV_assimp"
     elif [ "${PROJECT}" = "qtwebengine" ]; then
-        RECIPE="qtwebengine"
         TAG="SRCREV_qtwebengine"
     elif [ "${PROJECT}" = "qtwebengine/src/3rdparty" ]; then
         RECIPE="qtwebengine"
         TAG="SRCREV_chromium"
     elif [ "${PROJECT}" = "qtlocation" ]; then
-        RECIPE="qtlocation"
-        TAG="SRCREV_qtlocation"
+        RECIPE="qtpositioning"
     elif [ "${PROJECT}" = "qtlocation/src/3rdparty/mapbox-gl-native" ]; then
         RECIPE="qtlocation"
         TAG="SRCREV_qtlocation-mapboxgl"
     elif [ "${PROJECT}" = "qttools" ]; then
-        RECIPE="qttools"
         TAG="SRCREV_qttools"
     elif [ "${PROJECT}" = "qttools/src/assistant/qlitehtml" ]; then
         RECIPE="qttools"
@@ -77,12 +74,9 @@ for S in $SHA1S; do
     elif [ "${PROJECT}" = "qttools/src/assistant/qlitehtml/src/3rdparty/litehtml" ]; then
         RECIPE="qttools"
         TAG="SRCREV_litehtml"
-    else
-        RECIPE="${PROJECT}"
-        TAG="SRCREV"
     fi
 
-    RECIPES=$(find ${LAYERDIR} -regextype egrep -regex ".*/(nativesdk-)?${RECIPE}(-native)?_git.bb(append)?")
+    RECIPES=$(find ${LAYERDIR} -regextype egrep -regex ".*/(nativesdk-)?${RECIPE}(-native)?(_git)?\..*")
 
     if sed -n "/\"${BASEPROJECT}\"/,/status/p" $1/.gitmodules | grep -q ignore ; then
         echo "${PROJECT} -> ignored"
