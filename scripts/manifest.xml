@@ -102,7 +102,7 @@
            groups="notdefault,external,toradex-imx8"/>
   <project name="meta-variscite-imx"
            remote="variscite"
-           revision="fb6f66aaca809efe97fc4d5bfe830219e2c1829c"
+           revision="f20dd9daebc0a00897d8b7c899731f0eadddd4bd"
            path="sources/meta-variscite-imx"
            groups="notdefault,external,variscite-imx"/>
 
