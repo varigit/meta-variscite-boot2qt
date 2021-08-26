@@ -61,3 +61,9 @@ DISTRO_FEATURES:remove = "${GPULESS_FEATURES}"
 
 # remove support for 256MB version colibri-imx6ull in tezi image, since image will be too large for it.
 TORADEX_PRODUCT_IDS:remove:colibri-imx6ull = "0036"
+
+# fix u-boot build
+UBOOT_SUFFIX:colibri-imx6ull = "img"
+
+# fix tezi build
+TAR_IMAGE_ROOTFS:task-image-bootfs = "${WORKDIR}/bootfs"
