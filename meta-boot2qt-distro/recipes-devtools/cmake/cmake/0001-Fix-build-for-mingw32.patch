@@ -1,0 +1,25 @@
+From 969f188d6c1e4697af2344c7398fbfc8c5bc8369 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Fri, 27 Aug 2021 09:59:24 +0300
+Subject: [PATCH] Fix build for mingw32
+
+SystemTools.cxx:3091:13: error: 'SYMBOLIC_LINK_FLAG_DIRECTORY' was not declared in this scope
+---
+ Source/kwsys/CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/Source/kwsys/CMakeLists.txt b/Source/kwsys/CMakeLists.txt
+index 7da5971..634401a 100644
+--- a/Source/kwsys/CMakeLists.txt
++++ b/Source/kwsys/CMakeLists.txt
+@@ -927,6 +927,10 @@ if(MSVC OR (WIN32 AND (CMAKE_C_COMPILER_ID STREQUAL "Intel" OR
+     )
+ endif()
+ 
++if(WIN32)
++  add_definitions(-D_WIN32_LEAN_AND_MEAN -D_WIN32_WINNT=0x0600)
++endif()
++
+ if(WIN32)
+   # Help enforce the use of wide Windows apis.
+   add_definitions(-DUNICODE -D_UNICODE)
