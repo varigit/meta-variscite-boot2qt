@@ -31,6 +31,6 @@
 FIRMWARE ?= ""
 FIRMWARE_colibri-imx6ull = "linux-firmware"
 FIRMWARE_colibri-imx7 = "linux-firmware"
-FIRMWARE_colibri-imx7-emcc = "linux-firmware"
+FIRMWARE_colibri-imx7-emmc = "linux-firmware"
 
 RDEPENDS_${PN}_remove = "${FIRMWARE}"
