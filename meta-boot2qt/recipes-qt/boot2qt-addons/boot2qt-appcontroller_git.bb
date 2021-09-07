@@ -31,13 +31,13 @@ DESCRIPTION = "Boot to Qt Appcontroller"
 LICENSE = "The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://main.cpp;md5=f25c7436dbc72d4719a5684b28dbcf4b;beginline=1;endline=17"
 
-inherit qt6-qmake
+inherit qt6-cmake
 require recipes-qt/qt6/qt6-git.inc
 
 QT_GIT_PROJECT = "qt-apps"
-QT_MODULE_BRANCH = "5.15"
+QT_MODULE_BRANCH = "dev"
 
-SRCREV = "474fa4b7aee62e704158d213d9e67eba74c69401"
+SRCREV = "d9978f10a0ef60563fdff8f8eadcb5a678b9a5b1"
 
 DEPENDS = "qtbase"
 RDEPENDS_${PN} = " \
