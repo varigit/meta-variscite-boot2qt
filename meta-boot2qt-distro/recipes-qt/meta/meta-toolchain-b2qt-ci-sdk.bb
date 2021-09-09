@@ -60,7 +60,6 @@ PACKAGE_EXCLUDE += "\
     qtopcua-dev \
     qtpositioning-dev \
     qtquick3d-dev \
-    qtquickcontrols2-dev \
     qtquickdesigner-components-dev \
     qtquicktimeline-dev \
     qtremoteobjects-dev \

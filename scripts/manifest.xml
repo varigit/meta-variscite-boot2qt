@@ -33,7 +33,7 @@
           fetch="ssh://codereview.qt-project.org/yocto"/>
   <project name="meta-qt6"
            remote="qt"
-           revision="6be91065b688fe691b691c13035e32b8a8dcda9c"
+           revision="c592e2d63ea574c25eef1434ebdb44625081f3b3"
            upstream="dev"
            path="sources/meta-qt6"/>
 

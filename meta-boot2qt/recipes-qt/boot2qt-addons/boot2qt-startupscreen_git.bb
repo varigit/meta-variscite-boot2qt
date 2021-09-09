@@ -44,7 +44,7 @@ SRC_URI += "\
     file://startupscreen.service \
 "
 
-DEPENDS += "qtbase qtdeclarative qtdeclarative-native qtquickcontrols2"
+DEPENDS += "qtbase qtdeclarative qtdeclarative-native"
 
 S = "${WORKDIR}/git/startupscreen"
 
