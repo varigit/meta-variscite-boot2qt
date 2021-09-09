@@ -94,8 +94,8 @@ build_instructions:
     userMessageOnFailure: "Could not add execution right to the start-build."
   - type: ExecuteCommand
     command: ["{{.BuildDir}}/start-build"]
-    maxTimeInSeconds: 28800
-    maxTimeBetweenOutput: 28800
+    maxTimeInSeconds: 43200
+    maxTimeBetweenOutput: 7200
     userMessageOnFailure: "Build failed."
 
 test_instructions: []
