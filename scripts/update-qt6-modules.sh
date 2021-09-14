@@ -1,7 +1,7 @@
 #!/bin/bash
 ############################################################################
 ##
-## Copyright (C) 2020 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -43,48 +43,27 @@ for S in $SHA1S; do
     SHA1=${S:0:40}
     PROJECT=${S:40}
     BASEPROJECT=$(echo $PROJECT | cut -d / -f 1)
-    RECIPE="${PROJECT}"
-    TAG="SRCREV"
+    TAG="${PROJECT}"
 
-    if [ "${PROJECT}" = "qtquick3d" ]; then
-        TAG="SRCREV_qtquick3d"
-    elif [ "${PROJECT}" = "qtquick3d/src/3rdparty/assimp/src" ]; then
-        RECIPE="qtquick3d"
-        TAG="SRCREV_assimp"
-    elif [ "${PROJECT}" = "qt3d" ]; then
-        TAG="SRCREV_qt3d"
+    if [ "${PROJECT}" = "qtquick3d/src/3rdparty/assimp/src" ]; then
+        TAG="qtquick3d-assimp"
     elif [ "${PROJECT}" = "qt3d/src/3rdparty/assimp/src" ]; then
-        RECIPE="qt3d"
-        TAG="SRCREV_assimp"
-    elif [ "${PROJECT}" = "qtwebengine" ]; then
-        TAG="SRCREV_qtwebengine"
+        TAG="qt3d-assimp"
     elif [ "${PROJECT}" = "qtwebengine/src/3rdparty" ]; then
-        RECIPE="qtwebengine"
-        TAG="SRCREV_chromium"
-    elif [ "${PROJECT}" = "qtlocation" ]; then
-        RECIPE="qtpositioning"
+        TAG="qtwebengine-chromium"
     elif [ "${PROJECT}" = "qtlocation/src/3rdparty/mapbox-gl-native" ]; then
-        RECIPE="qtlocation"
-        TAG="SRCREV_qtlocation-mapboxgl"
-    elif [ "${PROJECT}" = "qttools" ]; then
-        TAG="SRCREV_qttools"
+        TAG="qtlocation-mapboxgl"
     elif [ "${PROJECT}" = "qttools/src/assistant/qlitehtml" ]; then
-        RECIPE="qttools"
-        TAG="SRCREV_qlitehtml"
+        TAG="qttools-qlitehtml"
     elif [ "${PROJECT}" = "qttools/src/assistant/qlitehtml/src/3rdparty/litehtml" ]; then
-        RECIPE="qttools"
-        TAG="SRCREV_litehtml"
+        TAG="qttools-qlitehtml-litehtml"
     fi
-
-    RECIPES=$(find ${LAYERDIR} -regextype egrep -regex ".*/(nativesdk-)?${RECIPE}(-native)?(_git)?\..*")
 
     if sed -n "/\"${BASEPROJECT}\"/,/status/p" $1/.gitmodules | grep -q ignore ; then
         echo "${PROJECT} -> ignored"
-    elif [ "${RECIPES}" != "" ]; then
-        sed -i -e "/^${TAG}/s/\".*\"/\"${SHA1}\"/" ${RECIPES}
-        echo "${PROJECT} -> ${SHA1}"
     else
-        echo -e "\e[31m${PROJECT} -> no recipe found\e[0m "
+        echo "${PROJECT} -> ${SHA1}"
+        sed -E -i -e "/^SRCREV_${TAG} /s/\".*\"/\"${SHA1}\"/" ${LAYERDIR}/recipes-qt/qt6/qt6-git.inc
     fi
 done
 
