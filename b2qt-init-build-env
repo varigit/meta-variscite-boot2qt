@@ -34,16 +34,12 @@ usage() {
   echo "Usage: $(basename $0) COMMAND [ARGS]"
   echo
   echo "Initialize build environment:"
-  echo "  $(basename $0) init [--bsp <layer name>]"
-  echo "                           [--manifest <manifest xml>] [--manifest-dir <dir path>]"
+  echo "  $(basename $0) init [--manifest <manifest xml>] [--manifest-dir <dir path>]"
   echo "                           [--reference <mirror path>] [--internal]"
-  echo "    --bsp <layer name>: name of the boot2qt bsp layer which was used for the repo init"
   echo "    --manifest <manifest xml>: name of the manifest to be used for initialization"
   echo "    --manifest-dir <dir path>: path to a directory containing repo manifest file(s)"
   echo "    --reference <mirror path>: path to local mirror, initialized previously with 'repo init --mirror'"
   echo "    --internal: fetch internal repositories, available only inside The Qt Company network."
-  echo "List available devices:"
-  echo "  $(basename $0) list-devices"
 }
 
 while test -n "$1"; do
@@ -71,10 +67,6 @@ while test -n "$1"; do
     "--manifest-dir")
       shift
       MANIFEST_DIR="$(readlink -f $1)"
-      ;;
-    "--bsp")
-      shift
-      BSPLAYER=$1
       ;;
     "--internal")
       PROJECT_GROUPS="all"
@@ -119,20 +111,10 @@ get_repo() {
   fi
 }
 
-list_devices() {
-  echo "Available device configurations:"
-  for device in $(ls ${DIR}/meta-boot2qt-distro/conf/distro/include/*.conf); do
-    echo "  $(basename ${device%%.conf})"
-  done
-}
-
 init() {
-  # local manifests are used with boot2qt bsp layers that don't need init
-  if [ ! -d ".repo/local_manifests" ]; then
-    mkdir -p .repo/manifests
-    cp ${MANIFEST_DIR}/${MANIFEST} .repo/manifests/default.xml
-    ${REPO} init ${REPO_URL} -u ${PWD}/.repo/repo -b default -g "${PROJECT_GROUPS}" ${REFERENCE}
-  fi
+  mkdir -p .repo/manifests
+  cp ${MANIFEST_DIR}/${MANIFEST} .repo/manifests/default.xml
+  ${REPO} init ${REPO_URL} -u ${PWD}/.repo/repo -b default -g "${PROJECT_GROUPS}" ${REFERENCE}
   ${REPO} sync --optimized-fetch
 
   if [ ! -e "sources/meta-boot2qt" ]; then
@@ -143,15 +125,7 @@ init() {
     ln -s ${DIR}/scripts/setup-environment.sh setup-environment.sh
   fi
 
-  if [ -n "${BSPLAYER}" ] && [ ! -e "sources/${BSPLAYER}" ]; then
-    ln -s ../.repo/manifests sources/${BSPLAYER}
-  fi
-
-  if [ -n "${BSPLAYER}" ]; then
-    ln -sfn ${BSPLAYER}/conf sources/templates
-  else
-    ln -sfn meta-boot2qt/meta-boot2qt-distro/conf sources/templates
-  fi
+  ln -sfn meta-boot2qt/meta-boot2qt-distro/conf sources/templates
 
   # handle lfs repos which need manual lfs pull
   LFS_REPOS=$(grep filter=lfs -l sources/*/.gitattributes 2>/dev/null || true)
@@ -168,9 +142,6 @@ case "$COMMAND" in
     ;;
   "mirror")
     mirror
-    ;;
-  "list-devices")
-    list_devices
     ;;
   *)
     echo "Unknown command"
