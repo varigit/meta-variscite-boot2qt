@@ -39,3 +39,5 @@ TOOLCHAIN_TARGET_TASK += "\
     packagegroup-b2qt-embedded-toolchain-target \
     packagegroup-qt6-modules \
 "
+
+PACKAGE_EXCLUDE += "qtwebengine-dbg"
