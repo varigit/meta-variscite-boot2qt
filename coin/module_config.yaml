@@ -9,6 +9,10 @@ accept_configuration:
       property: target.arch
       in_values: [TARGET1, TARGET2, TARGET3, TARGET4, TARGET5]
 
+machine_type:
+    Build:
+        cores: 16
+
 environment: &environment
   type: Group
   instructions:
@@ -81,6 +85,7 @@ build_instructions:
       source ./setup-environment.sh build
       export BB_ENV_EXTRAWHITE="$BB_ENV_EXTRAWHITE SSTATE_DIR DL_DIR"
       export SSTATE_DIR=/mnt/yocto-cache/sstate-caches/$(sed -n -e "s/DISTRO_CODENAME.*\"\(.*\)\"/\1/p" ../sources/poky/meta-*/conf/distro/poky.conf)
+      export BB_NUMBER_THREADS=8
       bitbake meta-b2qt-embedded-qbsp
       SDKMACHINE=x86_64-mingw32 bitbake meta-b2qt-embedded-qbsp
 
