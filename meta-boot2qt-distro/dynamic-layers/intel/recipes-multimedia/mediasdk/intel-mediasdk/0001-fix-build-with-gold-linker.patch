@@ -1,0 +1,22 @@
+From c0f3c4da036810edc4b9fc43316156b55f7b3c18 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Mon, 20 Sep 2021 06:44:02 +0000
+Subject: [PATCH] fix build with gold linker
+
+---
+ builder/FindPackages.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/builder/FindPackages.cmake b/builder/FindPackages.cmake
+index 1cd93122..0081d132 100644
+--- a/builder/FindPackages.cmake
++++ b/builder/FindPackages.cmake
+@@ -151,7 +151,7 @@ function(configure_libmfx_target target)
+   endif()
+ 
+   set(SCOPE_CFLAGS ${SCOPE_CFLAGS} PARENT_SCOPE)
+-  set(SCOPE_LINKFLAGS "${SCOPE_LINKFLAGS} -Wl,--default-symver" PARENT_SCOPE)
++  #  set(SCOPE_LINKFLAGS "${SCOPE_LINKFLAGS} -Wl,--default-symver" PARENT_SCOPE)
+   set(SCOPE_LIBS ${SCOPE_LIBS} mfx PARENT_SCOPE)
+ endfunction()
+ 
