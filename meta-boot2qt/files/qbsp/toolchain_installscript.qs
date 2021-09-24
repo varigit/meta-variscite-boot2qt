@@ -52,11 +52,6 @@ Component.prototype.createOperations = function()
         component.addOperation("Execute", "{0}", "chmod", "+x", script);
         component.addOperation("Execute", "{0}", script, "-y", "-d", path, "UNDOEXECUTE", "rm", "-rf", path);
         component.addOperation("Execute", "{0}", "/bin/rm", script);
-    } else {
-        path = path.replace(/\\/g,"/");
-        component.addOperation("Replace",
-                                path + "/sysroots/" + hostSysroot + "/usr/bin/qt.conf",
-                                sdkPath, path);
     }
     var basecomponent = component.name.substring(0, component.name.lastIndexOf("."));
     var toolchainId = "ProjectExplorer.ToolChain.Gcc:" + component.name;
