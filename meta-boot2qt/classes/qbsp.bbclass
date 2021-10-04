@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-inherit meta nopackages abi-arch siteinfo
+inherit nopackages abi-arch siteinfo
 
 FILESEXTRAPATHS_prepend := "${BOOT2QTBASE}/files/qbsp:"
 
