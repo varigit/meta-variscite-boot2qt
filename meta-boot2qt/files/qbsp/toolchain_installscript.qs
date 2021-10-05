@@ -52,6 +52,9 @@ Component.prototype.createOperations = function()
         component.addOperation("Execute", "{0}", "chmod", "+x", script);
         component.addOperation("Execute", "{0}", script, "-y", "-d", path, "UNDOEXECUTE", "rm", "-rf", path);
         component.addOperation("Execute", "{0}", "/bin/rm", script);
+    } else {
+        // workaround for QTIFW-2344
+        path = path.replace(/\\/g ,"/");
     }
     var basecomponent = component.name.substring(0, component.name.lastIndexOf("."));
     var toolchainId = "ProjectExplorer.ToolChain.Gcc:" + component.name;
