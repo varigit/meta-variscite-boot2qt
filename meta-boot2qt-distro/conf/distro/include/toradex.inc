@@ -58,5 +58,16 @@ GPULESS_FEATURES = "wayland opengl vulkan webengine"
 GPULESS_FEATURES_imxgpu = ""
 DISTRO_FEATURES_remove = "${GPULESS_FEATURES}"
 
+# Suitable DRI device
+DRI_DEVICE_apalis-imx6 = "card1"
+DRI_DEVICE_colibri-imx6 = "card1"
+DRI_DEVICE_colibri-imx7-emmc = "card0"
+DRI_DEVICE_apalis-imx8 = "card1"
+DRI_DEVICE_apalis-imx8x = "card0"
+DRI_DEVICE_colibri-imx8x = "card1"
+DRI_DEVICE_colibri-imx8x-v10b = "card1"
+DRI_DEVICE_verdin-imx8mm = "card0"
+DRI_DEVICE_verdin-imx8mp = "card0"
+
 # remove support for 256MB version colibri-imx6ull in tezi image, since image will be too large for it.
 TORADEX_PRODUCT_IDS_remove_colibri-imx6ull = "0036"
