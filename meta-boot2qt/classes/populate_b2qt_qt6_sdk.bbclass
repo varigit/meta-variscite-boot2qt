@@ -29,7 +29,7 @@
 
 inherit populate_b2qt_sdk populate_sdk_qt6_base abi-arch siteinfo
 
-create_sdk_files_append () {
+create_sdk_files:append () {
 
     create_qtcreator_configure_script
 
@@ -45,7 +45,7 @@ create_qtcreator_configure_script () {
     sed -i -e '/^MACHINE=/c\MACHINE="${MACHINE}"' ${SDK_OUTPUT}/${SDKPATH}/configure-qtcreator.sh
 }
 
-create_qtcreator_configure_script_sdkmingw32 () {
+create_qtcreator_configure_script:sdkmingw32 () {
     # no script available for mingw
     true
 }

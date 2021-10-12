@@ -27,6 +27,6 @@
 ##
 ############################################################################
 
-do_configure_append() {
+do_configure:append() {
     sed -i -e "/echo/d" ${WORKDIR}/banner.sh
 }

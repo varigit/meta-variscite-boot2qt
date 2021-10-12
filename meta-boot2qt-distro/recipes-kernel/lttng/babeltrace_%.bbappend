@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 SRC_URI += "\
         git://git.efficios.com/babeltrace.git;branch=stable-1.5 \
         "

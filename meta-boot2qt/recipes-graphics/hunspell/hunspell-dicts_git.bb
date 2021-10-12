@@ -44,7 +44,7 @@ inherit bin_package
 # using branch libreoffice-5.4.2 for dictionaries
 SRCREV = "28016713cf482d2ac466d03e007ce91ddb8b76aa"
 
-FILES_${PN} = "${datadir}/hunspell"
+FILES:${PN} = "${datadir}/hunspell"
 
 do_install() {
     install -m 0755 -d ${D}${datadir}/hunspell

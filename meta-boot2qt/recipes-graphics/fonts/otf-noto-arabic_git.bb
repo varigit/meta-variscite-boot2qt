@@ -48,4 +48,4 @@ do_install() {
 }
 
 PACKAGES = "${PN}"
-FILES_${PN} += "${datadir}/fonts/otf/noto"
+FILES:${PN} += "${datadir}/fonts/otf/noto"

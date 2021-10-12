@@ -27,11 +27,11 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:append := "${THISDIR}/${PN}:"
 
-RDEPENDS_${KERNEL_PACKAGE_NAME}-base = "${KERNEL_PACKAGE_NAME}-image ${KERNEL_PACKAGE_NAME}-devicetree"
+RDEPENDS:${KERNEL_PACKAGE_NAME}-base = "${KERNEL_PACKAGE_NAME}-image ${KERNEL_PACKAGE_NAME}-devicetree"
 
-do_preconfigure_prepend () {
+do_preconfigure:prepend () {
     # FunctionFS for qdbd
     echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
 

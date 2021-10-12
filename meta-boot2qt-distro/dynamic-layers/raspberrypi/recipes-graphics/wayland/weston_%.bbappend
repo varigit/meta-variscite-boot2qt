@@ -28,4 +28,4 @@
 ############################################################################
 
 # from https://www.mail-archive.com/yocto@yoctoproject.org/msg33193.html
-PACKAGECONFIG_remove_rpi = "${@bb.utils.contains('MACHINE_FEATURES', 'vc4graphics', 'fbdev', 'kms', d)}"
+PACKAGECONFIG:remove_rpi = "${@bb.utils.contains('MACHINE_FEATURES', 'vc4graphics', 'fbdev', 'kms', d)}"

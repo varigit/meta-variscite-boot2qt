@@ -27,38 +27,38 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += "file://kms.conf.in"
 
 # Default DRI device to use with KMS
 DRI_DEVICE ?= "card0"
 
-do_configure_append() {
+do_configure:append() {
     echo "FB_MULTI_BUFFER=2" >> ${WORKDIR}/defaults
     echo "QT_QPA_EGLFS_FORCEVSYNC=1" >> ${WORKDIR}/defaults
 }
 
-do_configure_append_mx8() {
+do_configure:append_mx8() {
     echo "QT_QPA_EGLFS_FORCE888=1" >> ${WORKDIR}/defaults
     echo "QT_QPA_EGLFS_KMS_ATOMIC=1" >> ${WORKDIR}/defaults
     echo "QT_QPA_EGLFS_KMS_CONFIG=/etc/kms.conf" >> ${WORKDIR}/defaults
     sed -e 's/@DEVICE@/${DRI_DEVICE}/' ${WORKDIR}/kms.conf.in > ${WORKDIR}/kms.conf
 }
 
-do_configure_append_use-mainline-bsp() {
+do_configure:append_use-mainline-bsp() {
     echo "QT_QPA_EGLFS_KMS_ATOMIC=1" >> ${WORKDIR}/defaults
     echo "QT_QPA_EGLFS_KMS_CONFIG=/etc/kms.conf" >> ${WORKDIR}/defaults
     sed -e 's/@DEVICE@/${DRI_DEVICE}/' ${WORKDIR}/kms.conf.in > ${WORKDIR}/kms.conf
 }
 
-do_install_append() {
+do_install:append() {
     if [ -e ${WORKDIR}/kms.conf ]; then
         install -m 0644 ${WORKDIR}/kms.conf ${D}${sysconfdir}/
     fi
 }
 
-do_configure_append_mx8mm() {
+do_configure:append_mx8mm() {
     # QtWebEngine screen tearing issues with imx8mm (QTBUG-80665)
     echo "QTWEBENGINE_DISABLE_GPU_THREAD=1" >> ${WORKDIR}/defaults
 }

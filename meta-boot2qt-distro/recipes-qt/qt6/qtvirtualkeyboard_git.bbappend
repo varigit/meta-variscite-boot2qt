@@ -27,5 +27,5 @@
 ##
 ############################################################################
 
-PACKAGECONFIG_append = " hunspell"
-RDEPENDS_${PN} += "hunspell-dicts"
+PACKAGECONFIG:append = " hunspell"
+RDEPENDS:${PN} += "hunspell-dicts"

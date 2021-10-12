@@ -27,16 +27,16 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend_sdkmingw32 := "${THISDIR}/${BPN}:"
-SRC_URI_append_sdkmingw32 = " file://0001-Do-not-use-win32-specific-filehandling.patch"
+FILESEXTRAPATHS:prepend:sdkmingw32 := "${THISDIR}/${BPN}:"
+SRC_URI:append:sdkmingw32 = " file://0001-Do-not-use-win32-specific-filehandling.patch"
 
-DEPENDS_append_sdkmingw32 = " nativesdk-prebuild-python"
-RDEPENDS_${PN}_append_sdkmingw32 = " nativesdk-prebuild-python"
-EXTRA_OECONF_remove_sdkmingw32 = "--without-python --with-python=no"
-EXTRA_OECONF_append_sdkmingw32 = " --with-python=${WORKDIR}/python_win"
-CXXFLAGS_append_sdkmingw32 = " -D_hypot=hypot"
+DEPENDS:append:sdkmingw32 = " nativesdk-prebuild-python"
+RDEPENDS:${PN}:append:sdkmingw32 = " nativesdk-prebuild-python"
+EXTRA_OECONF:remove:sdkmingw32 = "--without-python --with-python=no"
+EXTRA_OECONF:append:sdkmingw32 = " --with-python=${WORKDIR}/python_win"
+CXXFLAGS:append:sdkmingw32 = " -D_hypot=hypot"
 
-do_configure_prepend_sdkmingw32() {
+do_configure:prepend:sdkmingw32() {
 cat > ${WORKDIR}/python_win << EOF
 #! /bin/sh
 case "\$2" in
@@ -50,7 +50,7 @@ EOF
         chmod +x ${WORKDIR}/python_win
 }
 
-do_install_append_sdkmingw32() {
+do_install:append:sdkmingw32() {
     ln -s ../python35.dll ${D}${bindir}/
     ln -s ../python35.zip ${D}${bindir}/
     ln -s ../libgcc_s_seh-1.dll ${D}${bindir}/

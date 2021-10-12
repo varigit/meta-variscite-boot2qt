@@ -27,6 +27,6 @@
 ##
 ############################################################################
 
-do_configure_prepend() {
+do_configure:prepend() {
     echo "CONFIG_UPROBE_EVENTS=y"            >> ${WORKDIR}/defconfig
 }

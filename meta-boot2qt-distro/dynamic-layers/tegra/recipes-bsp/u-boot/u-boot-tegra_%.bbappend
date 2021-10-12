@@ -26,7 +26,7 @@
 ## $QT_END_LICENSE$
 ##
 ############################################################################
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += "\
     file://0001-nvidia-Fix-sd-card-boot-for-jetson-tx2.patch \

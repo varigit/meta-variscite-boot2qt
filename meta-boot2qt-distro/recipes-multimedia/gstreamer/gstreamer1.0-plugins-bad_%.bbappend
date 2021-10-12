@@ -27,6 +27,6 @@
 ##
 ############################################################################
 
-PACKAGECONFIG_append = " faad"
+PACKAGECONFIG:append = " faad"
 
 PACKAGECONFIG_GL_imxpxp = ""

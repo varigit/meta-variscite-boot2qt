@@ -28,4 +28,4 @@
 ############################################################################
 
 # Enable v8 API
-EXTRA_OECONF_append_class-target = " --with-jpeg8"
+EXTRA_OECONF:append:class-target = " --with-jpeg8"

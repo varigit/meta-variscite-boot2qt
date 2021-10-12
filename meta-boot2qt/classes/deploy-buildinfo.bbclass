@@ -31,15 +31,15 @@ inherit image-buildinfo
 
 buildinfo[depends] += "qtbase-native:do_populate_sysroot"
 
-IMAGE_BUILDINFO_VARS_append = " QT_VERSION"
+IMAGE_BUILDINFO_VARS:append = " QT_VERSION"
 
-python buildinfo_prepend () {
+python buildinfo:prepend () {
     import subprocess
     qtversion = subprocess.check_output(['qmake', '-query', 'QT_VERSION']).decode('utf-8').strip()
     d.setVar('QT_VERSION', qtversion)
 }
 
-python buildinfo_append () {
+python buildinfo:append () {
     import shutil
     shutil.copyfile(
         d.expand('${IMAGE_ROOTFS}${IMAGE_BUILDINFO_FILE}'),

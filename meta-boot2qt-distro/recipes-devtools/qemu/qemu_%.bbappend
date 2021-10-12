@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:append := "${THISDIR}/${PN}:"
 SRC_URI += " \
     file://0001-linux-user-add-support-for-MADV_DONTNEED.patch \
 "

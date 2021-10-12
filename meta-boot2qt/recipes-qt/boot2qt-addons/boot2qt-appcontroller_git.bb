@@ -40,18 +40,18 @@ QT_MODULE_BRANCH = "dev"
 SRCREV = "d9978f10a0ef60563fdff8f8eadcb5a678b9a5b1"
 
 DEPENDS = "qtbase"
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
     default-qt-envs \
     dbus-session \
     "
 
-do_configure_append() {
+do_configure:append() {
     echo "base=linux" >> ${WORKDIR}/appcontroller.conf
     echo "platform=${MACHINE}" >> ${WORKDIR}/appcontroller.conf
     echo "environmentFile=/etc/default/qt" >> ${WORKDIR}/appcontroller.conf
 }
 
-do_install_append() {
+do_install:append() {
     install -m 0755 -d ${D}${sysconfdir}
     install -m 0755 ${WORKDIR}/appcontroller.conf ${D}${sysconfdir}/
 }

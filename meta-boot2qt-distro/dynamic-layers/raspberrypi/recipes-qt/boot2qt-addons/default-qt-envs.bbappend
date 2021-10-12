@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-do_configure_append() {
+do_configure:append() {
     echo "QT_QPA_EGLFS_FORCE888=1" >> ${WORKDIR}/defaults
     echo "QT_QPA_EGLFS_KMS_ATOMIC=0" >> ${WORKDIR}/defaults
 }

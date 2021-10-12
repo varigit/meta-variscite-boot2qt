@@ -28,4 +28,4 @@
 ############################################################################
 
 PACKAGECONFIG[zstd] = "--with-zstd,--without-zstd,zstd,"
-PACKAGECONFIG_append = " zstd"
+PACKAGECONFIG:append = " zstd"

@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-do_install_append () {
+do_install:append () {
     # remove real-ld symlink
     rm ${D}${libexecdir}/gcc/${TARGET_SYS}/${BINV}/real-ld${EXEEXT}
     # add symlinks for ld.bfd and ld.gold
@@ -36,7 +36,7 @@ do_install_append () {
     done
 }
 
-do_install_append_sdkmingw32() {
+do_install:append:sdkmingw32() {
     ln -sf ../libwinpthread-1.dll ${D}${bindir}
     ln -sf ${BINRELPATH}/libwinpthread-1.dll $dest
 }

@@ -27,12 +27,12 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 SRC_URI += " \
     file://usb-rndis.network \
 "
 
-PACKAGECONFIG_append = " networkd"
+PACKAGECONFIG:append = " networkd"
 
 # By default sytemd uses it's build time as epoch. This causes problems when
 # using yocto cache since systemd build time might be more than day older than
@@ -41,9 +41,9 @@ PACKAGECONFIG_append = " networkd"
 # result as failure because last mount time is in the future. This can be worked
 # around by setting TIME_EPOCH to 0, which causes fsck to detect the system time as
 # insane and ignore the mount time error.
-EXTRA_OECONF_append = " --with-time-epoch=0"
+EXTRA_OECONF:append = " --with-time-epoch=0"
 
-do_install_append() {
+do_install:append() {
     # remove login from tty1
     rm -f ${D}${sysconfdir}/systemd/system/getty.target.wants/getty@tty1.service
     # set up link-local IPs for USB network interface

@@ -31,7 +31,7 @@ DEPLOY_CONF_NAME = "Intel NUC"
 
 IMAGE_FSTYPES += "wic.xz"
 
-DISTRO_FEATURES_remove = "usbgadget"
+DISTRO_FEATURES:remove = "usbgadget"
 
 DEPLOY_CONF_IMAGE_TYPE = "wic.xz"
 

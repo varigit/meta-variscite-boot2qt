@@ -49,7 +49,7 @@ PROVIDES += " \
     qface \
     "
 
-RPROVIDES_${PN} += " \
+RPROVIDES:${PN} += " \
     python3-pkgutil \
     python3-xml \
     python3-crypt \

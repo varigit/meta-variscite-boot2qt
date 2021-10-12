@@ -35,8 +35,8 @@ PACKAGECONFIG += " \
     xkbcommon \
     "
 
-do_configure_prepend() {
+do_configure:prepend() {
     echo "QMAKE_PLATFORM += boot2qt" >> ${S}/mkspecs/oe-device-extra.pri
 }
 
-EXTRA_OECMAKE_remove = "-DQT_AVOID_CMAKE_ARCHIVING_API=ON"
+EXTRA_OECMAKE:remove = "-DQT_AVOID_CMAKE_ARCHIVING_API=ON"

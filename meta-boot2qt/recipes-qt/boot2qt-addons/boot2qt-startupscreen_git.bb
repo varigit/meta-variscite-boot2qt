@@ -48,12 +48,12 @@ DEPENDS += "qtbase qtdeclarative qtdeclarative-native"
 
 S = "${WORKDIR}/git/startupscreen"
 
-do_install_append() {
+do_install:append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/startupscreen.service ${D}${systemd_unitdir}/system/
 }
 
 
-SYSTEMD_SERVICE_${PN} = "startupscreen.service"
+SYSTEMD_SERVICE:${PN} = "startupscreen.service"
 
 SRCREV = "e5dc5380f41c281ac751a02dccd24cc445721277"

@@ -27,12 +27,12 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 SRC_URI += "\
     file://blacklist.conf \
     "
 
-do_install_append() {
+do_install:append() {
     ln -s /home/root ${D}/root
     echo ${MACHINE_HOSTNAME} > ${D}${sysconfdir}/hostname
 

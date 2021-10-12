@@ -27,4 +27,4 @@
 ##
 ############################################################################
 
-PACKAGECONFIG_append = " autospawn-for-root"
+PACKAGECONFIG:append = " autospawn-for-root"

@@ -27,4 +27,4 @@
 ##
 ############################################################################
 
-PACKAGECONFIG_remove = "scripting"
+PACKAGECONFIG:remove = "scripting"

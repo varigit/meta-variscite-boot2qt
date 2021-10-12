@@ -46,5 +46,5 @@ do_install() {
     install -m 0644 ${WORKDIR}/dbus-session-address.sh ${D}${sysconfdir}/profile.d
 }
 
-SYSTEMD_SERVICE_${PN} = "dbus-session@.service"
+SYSTEMD_SERVICE:${PN} = "dbus-session@.service"
 SYSTEMD_AUTO_ENABLE = "disable"

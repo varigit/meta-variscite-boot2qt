@@ -47,4 +47,4 @@ do_install() {
     install -m 0755 -t ${D}${bindir} ${S}/bin/*
 }
 
-INSANE_SKIP_${PN} += "already-stripped"
+INSANE_SKIP:${PN} += "already-stripped"

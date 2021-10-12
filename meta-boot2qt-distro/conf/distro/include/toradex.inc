@@ -56,7 +56,7 @@ IMX_BOOT_SOC_TARGET_mx8mp = "iMX8MP"
 
 GPULESS_FEATURES = "wayland opengl vulkan webengine"
 GPULESS_FEATURES_imxgpu = ""
-DISTRO_FEATURES_remove = "${GPULESS_FEATURES}"
+DISTRO_FEATURES:remove = "${GPULESS_FEATURES}"
 
 # Suitable DRI device
 DRI_DEVICE_apalis-imx6 = "card1"
@@ -70,4 +70,4 @@ DRI_DEVICE_verdin-imx8mm = "card0"
 DRI_DEVICE_verdin-imx8mp = "card0"
 
 # remove support for 256MB version colibri-imx6ull in tezi image, since image will be too large for it.
-TORADEX_PRODUCT_IDS_remove_colibri-imx6ull = "0036"
+TORADEX_PRODUCT_IDS:remove_colibri-imx6ull = "0036"

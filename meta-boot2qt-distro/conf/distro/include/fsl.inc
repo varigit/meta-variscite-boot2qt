@@ -61,4 +61,4 @@ PREFERRED_VERSION_gstreamer1.0-plugins-bad_use-nxp-bsp ?= "1.16.3.imx"
 PREFERRED_VERSION_gstreamer1.0-plugins-ugly_use-nxp-bsp ?= "1.16.0"
 PREFERRED_VERSION_gstreamer1.0-libav_use-nxp-bsp ?= "1.16.0"
 
-MACHINE_GSTREAMER_1_0_PLUGIN_append_imxgpu = " imx-gst1.0-plugin"
+MACHINE_GSTREAMER_1_0_PLUGIN:append_imxgpu = " imx-gst1.0-plugin"

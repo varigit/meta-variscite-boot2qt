@@ -35,7 +35,7 @@ inherit packagegroup nativesdk
 
 MACHINE_EXTRA_INSTALL_SDK_HOST ?= ""
 
-RDEPENDS_${PN} = "\
+RDEPENDS:${PN} = "\
     ${MACHINE_EXTRA_INSTALL_SDK_HOST} \
     nativesdk-cmake \
     nativesdk-gperf \
@@ -47,7 +47,7 @@ RDEPENDS_${PN} = "\
     ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "nativesdk-wayland-dev", "", d)} \
     "
 
-RDEPENDS_${PN}_remove_mingw32 = "\
+RDEPENDS:${PN}:remove:mingw32 = "\
     nativesdk-python3-modules \
     nativesdk-python3-misc \
     nativesdk-perl-modules \
