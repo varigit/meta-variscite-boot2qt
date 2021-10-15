@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -44,6 +44,9 @@ IMAGE_FEATURES += "\
 
 inherit core-image qbsp-image deploy-buildinfo
 inherit consistent_timestamps
+
+# add some extra space to the device images
+IMAGE_ROOTFS_EXTRA_SPACE = "100000"
 
 IMAGE_INSTALL += "\
     packagegroup-b2qt-embedded-base \

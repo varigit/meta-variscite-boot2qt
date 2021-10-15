@@ -27,22 +27,23 @@
 ##
 ############################################################################
 
-inherit image-buildinfo
+# create flash package that utilizes the SD card image
+create_tegraflash_pkg:append() {
+    cd ${WORKDIR}/tegraflash
+    cat > prepare-image.sh <<END
+#!/bin/sh -e
+if [ ! -e "${IMAGE_BASENAME}.img" ]; then
+    xz -dc ../${IMAGE_LINK_NAME}.wic.xz | dd of=${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE} iflag=fullblock skip=1 bs=$(expr ${IMAGE_ROOTFS_ALIGNMENT} \* 1024) count=$(expr ${ROOTFS_SIZE} / 1024)
+    ./mksparse -v --fillpattern=0 ${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE} ${IMAGE_BASENAME}.img
+    rm -f ${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE}
+fi
+echo "Flash image ready"
+END
+    chmod +x prepare-image.sh
+    rm ${IMAGE_BASENAME}.img
 
-do_image[depends] += "qtbase-native:do_populate_sysroot"
-
-IMAGE_BUILDINFO_VARS:append = " QT_VERSION"
-
-python buildinfo:prepend () {
-    import subprocess
-    qtversion = subprocess.check_output(['qmake', '-query', 'QT_VERSION']).decode('utf-8').strip()
-    d.setVar('QT_VERSION', qtversion)
-}
-
-python buildinfo:append () {
-    import shutil
-    shutil.copyfile(
-        d.expand('${IMAGE_ROOTFS}${IMAGE_BUILDINFO_FILE}'),
-        d.expand('${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.info')
-    )
+    cd ..
+    rm -f ${IMGDEPLOYDIR}/${IMAGE_NAME}.flasher.tar.gz
+    tar czhf ${IMGDEPLOYDIR}/${IMAGE_NAME}.flasher.tar.gz tegraflash
+    ln -sf ${IMAGE_NAME}.flasher.tar.gz ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.flasher.tar.gz
 }
