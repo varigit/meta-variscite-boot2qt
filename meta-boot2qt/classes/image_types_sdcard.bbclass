@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2020 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -28,11 +28,6 @@
 ############################################################################
 
 IMAGE_ROOTFS_EXTRA_SPACE = "100000"
-
-IMAGE_CMD:wic:append() {
-    rm -f ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
-    ln -s ${IMAGE_NAME}.rootfs.wic ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.img
-}
 
 # create flash package that utilizes the SD card image
 create_tegraflash_pkg:append() {
