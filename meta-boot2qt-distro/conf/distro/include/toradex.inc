@@ -34,6 +34,8 @@ include conf/machine/include/${MACHINE}.inc
 
 PREFERRED_PROVIDER_virtual/dtb:use-nxp-bsp = "device-tree-overlays"
 
+IMAGE_CLASSES += "image_type_tezi_b2qt"
+
 QBSP_IMAGE_CONTENT += "\
     ${IMAGE_LINK_NAME}.tezi.tar \
 "

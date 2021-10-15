@@ -27,29 +27,6 @@
 ##
 ############################################################################
 
-IMAGE_ROOTFS_EXTRA_SPACE = "100000"
-
-# create flash package that utilizes the SD card image
-create_tegraflash_pkg:append() {
-    cd ${WORKDIR}/tegraflash
-    cat > prepare-image.sh <<END
-#!/bin/sh -e
-if [ ! -e "${IMAGE_BASENAME}.img" ]; then
-    xz -dc ../${IMAGE_LINK_NAME}.wic.xz | dd of=${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE} iflag=fullblock skip=1 bs=$(expr ${IMAGE_ROOTFS_ALIGNMENT} \* 1024) count=$(expr ${ROOTFS_SIZE} / 1024)
-    ./mksparse -v --fillpattern=0 ${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE} ${IMAGE_BASENAME}.img
-    rm -f ${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE}
-fi
-echo "Flash image ready"
-END
-    chmod +x prepare-image.sh
-    rm ${IMAGE_BASENAME}.img
-
-    cd ..
-    rm -f ${IMGDEPLOYDIR}/${IMAGE_NAME}.flasher.tar.gz
-    tar czhf ${IMGDEPLOYDIR}/${IMAGE_NAME}.flasher.tar.gz tegraflash
-    ln -sf ${IMAGE_NAME}.flasher.tar.gz ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.flasher.tar.gz
-}
-
 do_image[depends] += "qtbase-native:do_populate_sysroot"
 IMAGE_CMD:teziimg:append() {
     ${IMAGE_CMD_TAR} --transform 's,^,${IMAGE_NAME}-Tezi_${TEZI_VERSION}/,' -rhf ${IMGDEPLOYDIR}/${IMAGE_NAME}-Tezi_${TEZI_VERSION}.tar TEZI_B2QT_EULA.TXT Built_with_Qt.png

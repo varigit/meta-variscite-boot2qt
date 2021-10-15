@@ -44,6 +44,8 @@ DEPLOY_CONF_NAME:jetson-tx2-devkit = "NVIDIA Jetson TX2 Development Kit"
 
 DEPLOY_CONF_IMAGE_TYPE = "wic.xz"
 
+IMAGE_CLASSES += "image_types_tegra_b2qt"
+
 QBSP_IMAGE_CONTENT += "\
     ${IMAGE_LINK_NAME}.${DEPLOY_CONF_IMAGE_TYPE} \
     ${IMAGE_LINK_NAME}.conf \
