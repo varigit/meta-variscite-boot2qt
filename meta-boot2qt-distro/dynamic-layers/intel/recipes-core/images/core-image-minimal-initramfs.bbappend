@@ -34,5 +34,6 @@ INITRAMFS_SCRIPTS += "\
 PACKAGE_INSTALL += "\
     kernel-module-rtsx-pci-sdmmc \
     kernel-module-r8169 \
+    kernel-module-realtek \
     linux-firmware-rtl8168 \
     "
