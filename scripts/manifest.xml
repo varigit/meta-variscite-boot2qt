@@ -5,13 +5,13 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
-           revision="75b79d5c056b5abb44c546af773e3431d4c09476"
-           upstream="master"
+           revision="0b500dba7ad1eb222b1703795967da7f88aeeb50"
+           upstream="honister"
            path="sources/poky"/>
   <project name="meta-mingw"
            remote="yocto"
            revision="f5d761cbd5c957e4405c5d40b0c236d263c916a8"
-           upstream="master"
+           upstream="honister"
            path="sources/meta-mingw"/>
 
   <!-- OpenEmbedded -->
@@ -19,13 +19,13 @@
           fetch="git://git.openembedded.org"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="037f38cc68aabb9e36e92862af258f46874e0c13"
-           upstream="master"
+           revision="33c00e34fc2b085ea538445bbd1ba339024d4d8a"
+           upstream="honister"
            path="sources/meta-openembedded"/>
   <project name="meta-python2"
            remote="oe"
            revision="f522fa70f93a9339f3b9991082af69a09fde675a"
-           upsream="master"
+           upsream="honister"
            path="sources/meta-python2"/>
 
   <!-- Qt -->
@@ -36,7 +36,7 @@
           fetch="ssh://codereview.qt-project.org/yocto"/>
   <project name="meta-qt6"
            remote="qt"
-           revision="b304ef5ca140b5bddcee430bf12f062f6ac70c06"
+           revision="3166786ac3ebb2fb1ab743344121563900c44a4e"
            upstream="dev"
            path="sources/meta-qt6"/>
 
@@ -45,19 +45,19 @@
           fetch="https://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="4928275feb420f6ab819f3899d92db5450d35a30"
-           upstream="master"
+           revision="ef4e079ad065d2296a96905a07cc52d24608a3cd"
+           upstream="honister"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="72ca672346da4d29227163922ff61e591772df54"
-           upstream="master"
+           revision="fd3c4aa47c93b77942dfcf1ab8ded0c54cb589d5"
+           upstream="honister"
            path="sources/meta-freescale-3rdparty"/>
 
   <!-- Raspberry Pi -->
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="9eb4879cf4a289607ec7493577adb0ba97367821"
+           revision="90b3ac6fb3037118bc711a14adcb31d2bcd7dfa4"
            upstream="master"
            path="sources/meta-raspberrypi"/>
 
@@ -66,8 +66,8 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
-           revision="e33256049735d4cec53b9550770ee52c755fab90"
-           upstream="master"
+           revision="fca80fae34f06c42405e45c3895e6958a7a176e0"
+           upstream="honister"
            path="sources/meta-intel"/>
 
   <!-- NVIDIA -->
@@ -76,7 +76,7 @@
   <project name="meta-tegra"
            remote="OE4T"
            revision="d2210822bc262ccecbe6cc3c25a8d4ff5b1de900"
-           upstream="master"
+           upstream="honister"
            path="sources/meta-tegra"/>
   <!-- internal layer for the nvidia devnet downloads -->
   <remote name="playground"
@@ -97,7 +97,7 @@
            path="sources/meta-toradex-bsp-common"/>
   <project name="meta-toradex-nxp"
            remote="toradex"
-           revision="74de15e0e00ebfdd9595563b9b37a8d6f1f43775"
+           revision="130e47657f954098a38321ded0c4af9b840b9a49"
            upstream="master"
            path="sources/meta-toradex-nxp"/>
 
