@@ -17,8 +17,6 @@
   <!-- OpenEmbedded -->
   <remote name="oe"
           fetch="git://git.openembedded.org"/>
-  <remote name="oe-mirror"
-          fetch="git://github.com/openembedded"/>
   <project name="meta-openembedded"
            remote="oe"
            revision="037f38cc68aabb9e36e92862af258f46874e0c13"
@@ -44,7 +42,7 @@
 
   <!-- NXP -->
   <remote name="freescale"
-          fetch="git://github.com/Freescale"/>
+          fetch="https://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
            revision="4928275feb420f6ab819f3899d92db5450d35a30"
@@ -74,7 +72,7 @@
 
   <!-- NVIDIA -->
   <remote name="OE4T"
-          fetch="git://github.com/OE4T"/>
+          fetch="https://github.com/OE4T"/>
   <project name="meta-tegra"
            remote="OE4T"
            revision="d2210822bc262ccecbe6cc3c25a8d4ff5b1de900"
