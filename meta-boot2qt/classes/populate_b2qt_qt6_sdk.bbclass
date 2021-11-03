@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2020 The Qt Company Ltd.
+## Copyright (C) 2021 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-inherit populate_b2qt_sdk populate_sdk_qt6_base abi-arch siteinfo
+inherit populate_sdk populate_sdk_qt6_base abi-arch siteinfo
 
 create_sdk_files:append () {
 
@@ -49,3 +49,8 @@ create_qtcreator_configure_script:sdkmingw32 () {
     # no script available for mingw
     true
 }
+
+quiet_sdk_extraction() {
+EXTRA_TAR_OPTIONS="$EXTRA_TAR_OPTIONS --checkpoint=9999999"
+}
+SDK_PRE_INSTALL_COMMAND = "${quiet_sdk_extraction}"

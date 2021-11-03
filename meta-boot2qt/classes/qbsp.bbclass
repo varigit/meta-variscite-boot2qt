@@ -64,7 +64,7 @@ RELEASEDATE = "${@time.strftime('%Y-%m-%d',time.gmtime())}"
 IMAGE_PACKAGE = "${QBSP_IMAGE_TASK}-${MACHINE}.7z"
 SDK_NAME = "${DISTRO}-${SDK_MACHINE}-${QBSP_SDK_TASK}-${MACHINE}.${SDK_POSTFIX}"
 SDK_POSTFIX = "sh"
-SDK_POSTFIX:sdkmingw32 = "7z"
+SDK_POSTFIX:sdkmingw32 = "tar.xz"
 REAL_MULTIMACH_TARGET_SYS = "${TUNE_PKGARCH}${TARGET_VENDOR}-${TARGET_OS}"
 SDK_MACHINE = "${@d.getVar('SDKMACHINE') or '${SDK_ARCH}'}"
 
@@ -105,8 +105,8 @@ prepare_qbsp() {
     cp ${WORKDIR}/toolchain_installscript.qs ${COMPONENT_PATH}/meta/installscript.qs
     patch_installer_files ${COMPONENT_PATH}/meta
 
-    if [ "${SDK_POSTFIX}" = "7z" ]; then
-        cp ${DEPLOY_DIR}/sdk/${SDK_NAME} ${COMPONENT_PATH}/data/toolchain.7z
+    if [ "${SDK_POSTFIX}" = "${SDK_POSTFIX:sdkmingw32}" ]; then
+        cp ${DEPLOY_DIR}/sdk/${SDK_NAME} ${COMPONENT_PATH}/data/toolchain.${SDK_POSTFIX}
     else
         7za a -mx=0 ${COMPONENT_PATH}/data/toolchain.7z ${DEPLOY_DIR}/sdk/${SDK_NAME}
     fi
