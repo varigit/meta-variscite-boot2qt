@@ -35,7 +35,7 @@ LIC_FILES_CHKSUM = " \
     file://ar/COPYING.txt;md5=ccafd10563b9ffba693011bf470062c6 \
 "
 
-SRC_URI = "git://github.com/libreoffice/dictionaries.git;branch=libreoffice-5-4-2"
+SRC_URI = "git://github.com/libreoffice/dictionaries.git;branch=libreoffice-5-4-2;protocol=https"
 
 S = "${WORKDIR}/git"
 

@@ -37,7 +37,7 @@ INHIBIT_DEFAULT_DEPS = "1"
 
 inherit allarch fontcache
 
-SRC_URI = "git://github.com/google/fonts;branch=main"
+SRC_URI = "git://github.com/google/fonts;branch=main;protocol=https"
 SRCREV = "beaec0837bd21524b57ecb435158f9011fc03999"
 
 S = "${WORKDIR}/git"
