@@ -63,6 +63,3 @@ PREFERRED_VERSION_gstreamer1.0-libav:use-nxp-bsp        ?= "1.18.0"
 PREFERRED_VERSION_gstreamer1.0-rtsp-server:use-nxp-bsp  ?= "1.18.0"
 
 MACHINE_GSTREAMER_1_0_PLUGIN:append:imxgpu = " imx-gst1.0-plugin"
-
-# temporarily disable qca9377 from imx8mm machines
-MACHINE_FEATURES:remove:mx8mm = "qca9377"
