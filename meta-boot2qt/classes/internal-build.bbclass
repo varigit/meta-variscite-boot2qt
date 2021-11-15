@@ -36,6 +36,8 @@ python enable_internal_build () {
 
     # enable qtsaferenderer for internal builds
     e.data.appendVar('DISTRO_FEATURES_BACKFILL', ' qtsaferenderer')
+    # enable qmlcompiler
+    e.data.setVar('ENABLE_QMLCOMPILER', "1")
 
     e.data.setVar('QT_INTERNAL_BUILD', "1")
     e.data.prependVar('SSTATE_MIRRORS', "file://.* http://yocto-cache.intra.qt.io/sstate-caches/${DISTRO_CODENAME}/PATH")
