@@ -40,3 +40,5 @@ do_configure:prepend() {
 }
 
 EXTRA_OECMAKE:remove = "-DQT_AVOID_CMAKE_ARCHIVING_API=ON"
+
+BUILDSDK_CFLAGS:append:mingw32 = " -DNTDDI_VERSION=0x06010000"
