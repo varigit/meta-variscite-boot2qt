@@ -80,7 +80,7 @@ build_instructions:
       sudo hostname $(hostname -s)-$(date +%s%N)
 
       sudo mkdir -p /mnt/yocto-cache
-      sudo mount yocto-cache.intra.qt.io:/srv/yocto-cache /mnt/yocto-cache
+      sudo mount yocto-cache.ci.qt.io:/srv/yocto-cache /mnt/yocto-cache
 
       ${SOURCE_DIR}/b2qt-init-build-env init --device ${MACHINE} --reference /mnt/yocto-cache/mirror --internal
 
