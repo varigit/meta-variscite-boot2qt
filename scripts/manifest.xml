@@ -102,6 +102,6 @@
   <remote fetch="git://github.com/varigit" name="variscite"/>
   <project name="meta-variscite-fslc"
            remote="variscite"
-           revision="23e50da327ebbafa05b11d300ab16e56944f8eec"
+           revision="45a1d271fa9537157c04fbc5fa3def7af7ca5978"
            path="sources/meta-variscite-fslc"/>
 </manifest>
