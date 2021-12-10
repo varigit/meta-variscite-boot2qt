@@ -19,7 +19,7 @@
           fetch="git://git.openembedded.org"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="0b0ab6a2d227f22374268d29fcb8e4f9dab5374b"
+           revision="f72a73b42fa740130b388ba8555cdbefdee8d37d"
            upstream="hardknott"
            path="sources/meta-openembedded"/>
   <project name="meta-python2"
@@ -36,7 +36,7 @@
           fetch="ssh://codereview.qt-project.org/yocto"/>
   <project name="meta-qt6"
            remote="qt"
-           revision="2228551fa073fa66335171390d040cf6e5d99ada"
+           revision="610f2629a5d598b7e9393371917426fb9469fbab"
            upstream="6.2"
            path="sources/meta-qt6"/>
 
@@ -50,14 +50,14 @@
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="f8150f3b37cb83cba1f9e2378e57bb63e02d4610"
+           revision="a690b714f16398031ae78cdef90d0f7801683e8d"
            upstream="hardknott"
            path="sources/meta-freescale-3rdparty"/>
 
   <!-- Raspberry Pi -->
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="9d372828ba657340a42e31875d2326e5f6753403"
+           revision="b4ec97e4eb8e36efd1f7e2f8ae020a9e55cfc239"
            upstream="hardknott"
            path="sources/meta-raspberrypi"/>
 
@@ -75,7 +75,7 @@
           fetch="https://github.com/OE4T"/>
   <project name="meta-tegra"
            remote="OE4T"
-           revision="314431ffe86b7428e478e0936336869ffdfc0cd7"
+           revision="7992b966e17d4d5084e209013a7c115a8486e7ec"
            upstream="hardknott"
            path="sources/meta-tegra"/>
   <!-- internal layer for the nvidia devnet downloads -->
