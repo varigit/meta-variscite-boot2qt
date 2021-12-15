@@ -74,8 +74,6 @@ build_instructions:
         IdentityFile "/home/qt/.ssh/test_farm_id_rsa"
       EOF
 
-      sudo apt install zstd
-
       # make hostname unique for NFS
       sudo hostname $(hostname -s)-$(date +%s%N)
 
