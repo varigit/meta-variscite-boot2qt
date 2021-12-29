@@ -129,7 +129,8 @@ ${SDKTOOL} addQt \
     --id "${BASEID}.qt" \
     --name "${NAME}" \
     --type "Qdb.EmbeddedLinuxQt" \
-    --qmake "$(type -p qmake)"
+    --qmake "$(type -p qmake)" \
+    --abis "${ABI}"
 
 ${SDKTOOL} addCMake \
     --id "${BASEID}.cmake" \
