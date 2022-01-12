@@ -35,7 +35,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=5f30f0716dfdd0d91eb439ebec522ec2"
 inherit autotools pkgconfig systemd
 
 SRC_URI = " \
-    git://github.com/ostreedev/ostree.git \
+    git://github.com/ostreedev/ostree.git;protocol=https \
     file://Mount-boot-partition.patch \
     file://ostree-prepare-root-enabler-for-simpler-kernel-arg.patch \
     file://deploy-add-karg-none-argument.patch \
