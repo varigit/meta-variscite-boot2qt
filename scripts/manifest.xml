@@ -18,7 +18,7 @@
   <remote name="oe"
           fetch="git://git.openembedded.org"/>
   <remote name="oe-mirror"
-          fetch="git://github.com/openembedded"/>
+          fetch="https://github.com/openembedded"/>
   <project name="meta-openembedded"
            remote="oe"
            revision="430ef96fe65f62d8da995f446d5b9b093544f031"
@@ -39,7 +39,7 @@
 
   <!-- NXP -->
   <remote name="freescale"
-          fetch="git://github.com/Freescale"/>
+          fetch="https://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
            revision="4da095837c93b84d52c7029d5c83796602c6834e"
@@ -69,7 +69,7 @@
 
   <!-- NVIDIA -->
   <remote name="OE4T"
-          fetch="git://github.com/OE4T"/>
+          fetch="https://github.com/OE4T"/>
   <project name="meta-tegra"
            remote="OE4T"
            revision="ff2ce9e4fed10ace1f5ed17bdf151c5614c09ea6"
@@ -99,7 +99,7 @@
            path="sources/meta-toradex-nxp"/>
 
   <!-- Variscite -->
-  <remote fetch="git://github.com/varigit" name="variscite"/>
+  <remote fetch="https://github.com/varigit" name="variscite"/>
   <project name="meta-variscite-fslc"
            remote="variscite"
            revision="e6ead29479585b87fc9cefba25deab5a5e025865"
