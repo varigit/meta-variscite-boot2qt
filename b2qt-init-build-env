@@ -88,7 +88,7 @@ if [ -n "${REFERENCE}" ]; then
 fi
 
 if [ -z "${REPO_URL}" ]; then
-    REPO_URL="--repo-url git://github.com/theqtcompany/git-repo"
+    REPO_URL="--repo-url https://github.com/theqtcompany/git-repo"
 fi
 
 get_repo() {

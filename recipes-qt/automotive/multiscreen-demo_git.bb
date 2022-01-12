@@ -38,7 +38,7 @@ QT_GIT_PROJECT = "qt-apps"
 QT_MODULE_BRANCH = "master"
 
 SRC_URI += "\
-    git://github.com/qtproject/qt-apps-demo-assets;protocol=git;name=assets;destsuffix=git/demo-assets \
+    git://github.com/qtproject/qt-apps-demo-assets;protocol=https;name=assets;destsuffix=git/demo-assets \
     file://automotivedemo.service \
     "
 
