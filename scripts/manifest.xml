@@ -16,7 +16,7 @@
   <remote name="oe"
           fetch="git://git.openembedded.org"/>
   <remote name="oe-mirror"
-          fetch="git://github.com/openembedded"/>
+          fetch="https://github.com/openembedded"/>
   <project name="meta-openembedded"
            remote="oe"
            revision="2b5dd1eb81cd08bc065bc76125f2856e9383e98b"
@@ -39,7 +39,7 @@
 
   <!-- NXP -->
   <remote name="freescale"
-          fetch="git://github.com/Freescale"/>
+          fetch="https://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
            revision="14f1a630a47375432f93c556927b879b51d84c4e"
@@ -65,7 +65,7 @@
 
   <!-- NVIDIA -->
   <remote name="madisongh"
-          fetch="git://github.com/madisongh"/>
+          fetch="https://github.com/madisongh"/>
   <project name="meta-tegra"
            remote="madisongh"
            revision="d1b17788a18270d7d6ddcd564d85900834419317"
@@ -93,7 +93,7 @@
 
   <!-- BoundaryDevices -->
   <remote name="boundary"
-          fetch="git://github.com/boundarydevices"/>
+          fetch="https://github.com/boundarydevices"/>
   <project name="meta-boundary"
            remote="boundary"
            revision="733e7b25e179d5ad6da0f32e6103fed8ba2c6688"
@@ -111,7 +111,7 @@
   </project>
 
   <!-- Variscite -->
-  <remote fetch="git://github.com/varigit" name="variscite"/>
+  <remote fetch="https://github.com/varigit" name="variscite"/>
   <project name="meta-variscite-imx"
            remote="variscite"
            revision="908d7d9f4eebc0f1e8ef8145882bb4055d1c9c15"
