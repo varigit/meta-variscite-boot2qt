@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL.txt;md5=c50976002ebbff1d426f08a9ea6d6df9"
 
 inherit cmake_qt5
 
-SRC_URI = "git://github.com/KDAB/GammaRay;branch=${BRANCH}"
+SRC_URI = "git://github.com/KDAB/GammaRay;branch=${BRANCH};protocol=https"
 
 BRANCH = "5.13"
 SRCREV = "ac156bcd118da80d7588d81faeb2b093ec60e4e5"
