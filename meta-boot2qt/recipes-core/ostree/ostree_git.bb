@@ -38,7 +38,7 @@ SRC_URI[libglnx.sha256sum] = "b2de841b0efe12803930f5e21fe46ef4f4c5180fb59576feb5
 inherit autotools pkgconfig systemd
 
 SRC_URI = " \
-    git://github.com/ostreedev/ostree.git \
+    git://github.com/ostreedev/ostree.git;protocol=https \
     file://Mount-boot-partition.patch \
     file://ostree-prepare-root-enabler-for-simpler-kernel-arg.patch \
     file://deploy-add-karg-none-argument.patch \
