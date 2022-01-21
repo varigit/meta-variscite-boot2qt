@@ -149,8 +149,6 @@ ${SDKTOOL} addKit \
     --icon ":/boot2qt/images/B2Qt_QtC_icon.png" \
     --mkspec "${MKSPEC}" \
     --cmake "${BASEID}.cmake" \
-    --cmake-config "CMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}" \
-    --cmake-config "CMAKE_C_COMPILER:STRING=%{Compiler:Executable:C}" \
     --cmake-config "CMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}" \
     --cmake-config "QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}" \
     --cmake-config "CMAKE_TOOLCHAIN_FILE:FILEPATH=${OECORE_NATIVE_SYSROOT}/usr/share/cmake/Qt6Toolchain.cmake" \
