@@ -134,7 +134,7 @@ Component.prototype.createOperations = function()
          "--icon", icon,
          "--cmake", cmakeId,
          "--cmake-generator", "Ninja",
-         "--cmake-config", "CMAKE_TOOLCHAIN_FILE:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/share/cmake/Qt6Toolchain.cmake",
+         "--cmake-config", "CMAKE_TOOLCHAIN_FILE:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/lib/cmake/Qt6/qt.toolchain.cmake",
          "--cmake-config", "CMAKE_MAKE_PROGRAM:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/bin/ninja" + executableExt];
 
     if (systemInfo.kernelType === "winnt") {
