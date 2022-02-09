@@ -30,7 +30,7 @@
 DESCRIPTION = "B2Qt embedded Qt6 SDK toolchain"
 
 LICENSE = "The-Qt-Company-Commercial"
-LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=39d870f757f85e8752ec4afdad1e4e1d"
+LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=71469b4021772fca0f18e08b1ef8ac7e"
 
 inherit populate_b2qt_qt6_sdk
 
