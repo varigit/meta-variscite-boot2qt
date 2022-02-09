@@ -1258,7 +1258,7 @@ only ("Redistributables") are marked with "R" in the below table.
 +----------------------------------------------------------+
 | Qt Quick Ultralite               |     |     | X,R | X,R |
 +----------------------------------------------------------+
-| Qt Safe Renderer (QSR)           |     |     | X,R | X,R |
+| Qt Safe Renderer (QSR)           |     |     |     | X,R |
 +----------------------------------------------------------+
 | Qt Application Manager           |     |     |     | X,R |
 +----------------------------------------------------------+
