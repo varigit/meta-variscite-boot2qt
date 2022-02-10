@@ -40,4 +40,4 @@ TOOLCHAIN_TARGET_TASK += "\
     packagegroup-qt6-modules \
 "
 
-PACKAGE_EXCLUDE += "qtwebengine-dbg"
+PACKAGE_EXCLUDE_COMPLEMENTARY += "qtwebengine-dbg"
