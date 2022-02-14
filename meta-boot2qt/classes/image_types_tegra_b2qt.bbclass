@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2021 The Qt Company Ltd.
+## Copyright (C) 2022 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -28,8 +28,7 @@
 ############################################################################
 
 # create flash package that utilizes the SD card image
-create_tegraflash_pkg:append() {
-    cd ${WORKDIR}/tegraflash
+tegraflash_custom_post:tegra186() {
     cat > prepare-image.sh <<END
 #!/bin/sh -e
 if [ ! -e "${IMAGE_BASENAME}.img" ]; then
@@ -41,9 +40,16 @@ echo "Flash image ready"
 END
     chmod +x prepare-image.sh
     rm ${IMAGE_BASENAME}.img
+}
 
-    cd ..
-    rm -f ${IMGDEPLOYDIR}/${IMAGE_NAME}.flasher.tar.gz
-    tar czhf ${IMGDEPLOYDIR}/${IMAGE_NAME}.flasher.tar.gz tegraflash
-    ln -sf ${IMAGE_NAME}.flasher.tar.gz ${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.flasher.tar.gz
+tegraflash_custom_post() {
+    cat > prepare-image.sh <<END
+#!/bin/sh -e
+if [ ! -e "${IMAGE_BASENAME}.img" ]; then
+    xz -dc ../${IMAGE_LINK_NAME}.wic.xz | dd of=${IMAGE_LINK_NAME}.${IMAGE_TEGRAFLASH_FS_TYPE} iflag=fullblock skip=1 bs=$(expr ${IMAGE_ROOTFS_ALIGNMENT} \* 1024) count=$(expr ${ROOTFS_SIZE} / 1024)
+fi
+echo "Flash image ready"
+END
+    chmod +x prepare-image.sh
+    rm ${IMAGE_BASENAME}.${IMAGE_TEGRAFLASH_FS_TYPE}
 }

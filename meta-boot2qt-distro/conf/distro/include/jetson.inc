@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2021 The Qt Company Ltd.
+## Copyright (C) 2022 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -41,6 +41,7 @@ WKS_FILE = "tegra-bootdisk.wks.in"
 
 DEPLOY_CONF_NAME:jetson-tx1-devkit = "NVIDIA Jetson TX1 Development Kit"
 DEPLOY_CONF_NAME:jetson-tx2-devkit = "NVIDIA Jetson TX2 Development Kit"
+DEPLOY_CONF_NAME:jetson-agx-xavier-devkit = "NVIDIA Jetson AGX Xavier Development Kit"
 
 DEPLOY_CONF_IMAGE_TYPE = "wic.xz"
 
@@ -50,7 +51,7 @@ QBSP_IMAGE_CONTENT += "\
     ${IMAGE_LINK_NAME}.${DEPLOY_CONF_IMAGE_TYPE} \
     ${IMAGE_LINK_NAME}.conf \
     ${IMAGE_LINK_NAME}.info \
-    ${IMAGE_LINK_NAME}.flasher.tar.gz \
+    ${IMAGE_LINK_NAME}.tegraflash.tar.gz \
     "
 
 # NVIDIA's Vulkan support is for X only
