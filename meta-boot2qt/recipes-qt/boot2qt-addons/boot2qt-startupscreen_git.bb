@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Boot to Qt Startup Screen"
-LICENSE = "BSD | The-Qt-Company-Commercial"
+LICENSE = "BSD-3-Clause | The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://main.cpp;md5=5c11ee2d9fe17c24e80b866d1b758458;beginline=1;endline=49"
 
 inherit qt6-cmake systemd

@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-LICENSE = "PSFv2"
+LICENSE = "PSF-2.0"
 
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=4b8a9367e6bb2acb6f26dc08654f6ee5"
 
