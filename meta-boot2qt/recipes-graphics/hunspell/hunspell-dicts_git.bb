@@ -29,7 +29,7 @@
 
 DESCRIPTION = "Hunspell Dictionaries"
 
-LICENSE = "GPL-2.0 & (GPL-2.0|LGPL-2.1|MPL-1.1)"
+LICENSE = "GPL-2.0-only & (GPL-2.0|LGPL-2.1|MPL-1.1)"
 LIC_FILES_CHKSUM = " \
     file://en/license.txt;md5=686e6cb566fd6382c9fcc7a557bf4544 \
     file://ar/COPYING.txt;md5=ccafd10563b9ffba693011bf470062c6 \

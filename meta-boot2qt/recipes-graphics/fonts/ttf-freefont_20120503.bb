@@ -29,7 +29,7 @@
 
 DESCRIPTION = "GNU FreeFont is a free family of scalable outline fonts"
 HOMEPAGE = "http://savannah.gnu.org/projects/freefont"
-LICENSE = "GPLv3"
+LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 require recipes-graphics/ttf-fonts/ttf.inc
