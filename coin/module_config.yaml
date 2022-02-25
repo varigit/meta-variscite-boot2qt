@@ -83,9 +83,8 @@ build_instructions:
       ${SOURCE_DIR}/b2qt-init-build-env init --device ${MACHINE} --reference /mnt/yocto-cache/mirror --internal
 
       source ./setup-environment.sh build
-      export BB_ENV_EXTRAWHITE="$BB_ENV_EXTRAWHITE SSTATE_DIR DL_DIR"
-      export SSTATE_DIR=/mnt/yocto-cache/sstate-caches/$(sed -n -e "s/DISTRO_CODENAME.*\"\(.*\)\"/\1/p" ../sources/poky/meta-*/conf/distro/poky.conf)
-      export BB_NUMBER_THREADS=8
+      echo "require ${SOURCE_DIR}/coin/ci.inc" >> conf/local.conf
+
       bitbake meta-b2qt-embedded-qbsp
       SDKMACHINE=x86_64-mingw32 bitbake meta-b2qt-embedded-qbsp
 
