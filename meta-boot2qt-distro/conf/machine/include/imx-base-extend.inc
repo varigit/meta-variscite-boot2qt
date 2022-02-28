@@ -1,0 +1,1 @@
+MACHINE_FAMILY = "fsl"

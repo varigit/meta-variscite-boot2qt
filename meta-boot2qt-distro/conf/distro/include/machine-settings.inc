@@ -28,7 +28,6 @@
 ############################################################################
 
 MACHINE_FAMILY ??= "empty"
-MACHINE_FAMILY:imx = "fsl"
 MACHINE_FAMILY:intel-x86-common = "intel"
 MACHINE_FAMILY:qemuall = "qemu"
 MACHINE_FAMILY:rpi = "raspberrypi"
