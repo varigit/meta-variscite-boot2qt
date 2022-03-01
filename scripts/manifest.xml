@@ -78,14 +78,6 @@
            revision="7992b966e17d4d5084e209013a7c115a8486e7ec"
            upstream="hardknott"
            path="sources/meta-tegra"/>
-  <!-- internal layer for the nvidia devnet downloads -->
-  <remote name="playground"
-          fetch="ssh://git@git.qt.io/boot2qt"/>
-  <project name="nvidia-devnet-mirror"
-           remote="playground"
-           revision="8ee9cd3c025cf8b36343fddc77545e597c0d874d"
-           path="sources/nvidia-devnet-mirror"
-           groups="notdefault"/>
 
   <!-- Toradex -->
   <remote name="toradex"
