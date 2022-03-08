@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2022 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -28,5 +28,3 @@
 ############################################################################
 
 PACKAGECONFIG:append = " faad"
-
-PACKAGECONFIG_GL:imxpxp = ""
