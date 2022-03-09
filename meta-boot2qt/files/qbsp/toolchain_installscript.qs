@@ -134,12 +134,15 @@ Component.prototype.createOperations = function()
          "--icon", icon,
          "--cmake", cmakeId,
          "--cmake-generator", "Ninja",
+         "--cmake-config", "CMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}",
+         "--cmake-config", "CMAKE_C_COMPILER:STRING=%{Compiler:Executable:C}",
+         "--cmake-config", "CMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}",
+         "--cmake-config", "QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}",
          "--cmake-config", "CMAKE_TOOLCHAIN_FILE:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/lib/cmake/Qt6/qt.toolchain.cmake",
          "--cmake-config", "CMAKE_MAKE_PROGRAM:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/bin/ninja" + executableExt];
 
     if (systemInfo.kernelType === "winnt") {
         addKitOperations.push("--cmake-config", "CMAKE_BUILD_WITH_INSTALL_RPATH=ON");
-        addKitOperations.push("--env", "SDKPATH=" + path);
     }
 
     addKitOperations.push("UNDOEXECUTE", "@SDKToolBinary@", "rmKit", "--id", basecomponent);
