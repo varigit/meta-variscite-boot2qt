@@ -5,7 +5,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
-           revision="c40ac16d79026169639f47be76a3f7b9d8b5178e"
+           revision="refs/tags/hardknott-3.3.5"
            upstream="hardknott"
            path="sources/poky"/>
   <project name="meta-mingw"
@@ -19,7 +19,7 @@
           fetch="git://git.openembedded.org"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="f72a73b42fa740130b388ba8555cdbefdee8d37d"
+           revision="24f4e6e8d0556540e882e6f0933d1247f64d0666"
            upstream="hardknott"
            path="sources/meta-openembedded"/>
   <project name="meta-python2"
