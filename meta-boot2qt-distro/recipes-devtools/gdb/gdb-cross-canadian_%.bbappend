@@ -53,7 +53,6 @@ EOF
 do_install:append:sdkmingw32() {
     ln -s ../python35.dll ${D}${bindir}/
     ln -s ../python35.zip ${D}${bindir}/
-    ln -s ../libgcc_s_seh-1.dll ${D}${bindir}/
     ln -s ../libexpat.dll ${D}${bindir}/
     ln -s ../libiconv-2.dll ${D}${bindir}/
     ln -s ../libintl-8.dll ${D}${bindir}/
