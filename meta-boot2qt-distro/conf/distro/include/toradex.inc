@@ -48,15 +48,6 @@ BBMASK += "\
 # Use Toradex defined names
 DEPLOY_CONF_NAME = "Toradex ${MACHINE_NAME}"
 
-ATF_PLATFORM:mx8qm = "imx8qm"
-ATF_PLATFORM:mx8x = "imx8qx"
-ATF_PLATFORM:mx8mm = "imx8mm"
-ATF_PLATFORM:mx8mp = "imx8mp"
-IMX_BOOT_SOC_TARGET:mx8qm = "iMX8QM"
-IMX_BOOT_SOC_TARGET:mx8x = "iMX8QX"
-IMX_BOOT_SOC_TARGET:mx8mm = "iMX8MM"
-IMX_BOOT_SOC_TARGET:mx8mp = "iMX8MP"
-
 GPULESS_FEATURES = "wayland opengl vulkan webengine"
 GPULESS_FEATURES:imxgpu = ""
 DISTRO_FEATURES:remove = "${GPULESS_FEATURES}"
