@@ -121,7 +121,8 @@ Component.prototype.createOperations = function()
         "UNDOEXECUTE",
         "@SDKToolBinary@", "rmCMake", "--id", cmakeId]);
 
-    var addKitOperations = ["@SDKToolBinary@", "addKit",
+    component.addOperation("Execute",
+        ["@SDKToolBinary@", "addKit",
          "--id", basecomponent,
          "--name", platform + " " + target,
          "--mkspec", "linux-oe-g++",
@@ -139,13 +140,7 @@ Component.prototype.createOperations = function()
          "--cmake-config", "CMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}",
          "--cmake-config", "QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}",
          "--cmake-config", "CMAKE_TOOLCHAIN_FILE:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/lib/cmake/Qt6/qt.toolchain.cmake",
-         "--cmake-config", "CMAKE_MAKE_PROGRAM:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/bin/ninja" + executableExt];
-
-    if (systemInfo.kernelType === "winnt") {
-        addKitOperations.push("--cmake-config", "CMAKE_BUILD_WITH_INSTALL_RPATH=ON");
-    }
-
-    addKitOperations.push("UNDOEXECUTE", "@SDKToolBinary@", "rmKit", "--id", basecomponent);
-
-    component.addOperation("Execute", addKitOperations);
+         "--cmake-config", "CMAKE_MAKE_PROGRAM:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/bin/ninja" + executableExt,
+         "UNDOEXECUTE",
+         "@SDKToolBinary@", "rmKit", "--id", basecomponent]);
 }
