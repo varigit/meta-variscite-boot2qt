@@ -29,7 +29,7 @@
 
 SUMMARY = "Device specific installation instructions for the QBSP"
 LICENSE = "The-Qt-Company-Commercial"
-LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=71469b4021772fca0f18e08b1ef8ac7e"
+LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=38de3b110ade3b6ee2f0b6a95ab16f1a"
 
 inherit deploy nopackages
 
