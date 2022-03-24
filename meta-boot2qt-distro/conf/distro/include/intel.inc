@@ -48,4 +48,4 @@ SYSVINIT_ENABLED_GETTYS = "1"
 SERIAL_CONSOLES += "115200;ttyUSB0"
 
 WKS_FILE = "systemd-bootdisk-microcode-initramfs.wks"
-WKS_FILE_DEPENDS += "microcode-initramfs"
+WKS_FILE_DEPENDS:append = " microcode-initramfs"
