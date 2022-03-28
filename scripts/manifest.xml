@@ -5,12 +5,12 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
-           revision="e5ab3817aa98846c0a1c6d23feb47ff9404b0b90"
+           revision="52cad1fe64c413290c3679f977292ca3b3c30d29"
            upstream="master"
            path="sources/poky"/>
   <project name="meta-mingw"
            remote="yocto"
-           revision="d8875ad5e2561d970413216ec22eb74b49046bb3"
+           revision="a90614a6498c3345704e9611f2842eb933dc51c1"
            upstream="master"
            path="sources/meta-mingw"/>
 
@@ -19,7 +19,7 @@
           fetch="git://git.openembedded.org"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="7f27771b2891018758ea18eee20f4af8d25509e7"
+           revision="31d9f6afcd32766b96cf9e0f6bf205cf876b91e9"
            upstream="master"
            path="sources/meta-openembedded"/>
 
@@ -40,7 +40,7 @@
           fetch="https://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="edcc471497a299871b81c79a60dd56c81bc2ceeb"
+           revision="cf88b9ac6c9d818b312c8aec774db2ae4f9d4f71"
            upstream="master"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
@@ -52,7 +52,7 @@
   <!-- Raspberry Pi -->
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="7a9b2751f0c0822af1e18536a33358002b99cb05"
+           revision="c06ae5eacf3f822baf59aeedc4b2445096b209a7"
            upstream="master"
            path="sources/meta-raspberrypi"/>
 
@@ -61,7 +61,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
-           revision="cc62d49dd968cf7aa154323165bf401424c79e30"
+           revision="c2c0f2ade54375ff5daecace422cee44bc9c61d0"
            upstream="master"
            path="sources/meta-intel"/>
 
@@ -70,7 +70,7 @@
           fetch="https://github.com/OE4T"/>
   <project name="meta-tegra"
            remote="OE4T"
-           revision="515f4005add33836e5d4442d8f067ce2848ca194"
+           revision="c9c342a23738f70f4f1b1d53f5d22b3ba237ea2b"
            upstream="master"
            path="sources/meta-tegra"/>
 
