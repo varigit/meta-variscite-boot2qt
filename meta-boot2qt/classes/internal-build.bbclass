@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2022 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -41,6 +41,7 @@ python enable_internal_build () {
 
     e.data.setVar('QT_INTERNAL_BUILD', "1")
     e.data.prependVar('SSTATE_MIRRORS', "file://.* http://yocto-cache.ci.qt.io/sstate-caches/${DISTRO_CODENAME}/PATH")
+    e.data.setVar("BB_HASHSERVE_UPSTREAM", "yocto-cache.ci.qt.io:8686")
     e.data.prependVar('PREMIRRORS', "\
         ftp://.*/.*   http://yocto-cache.ci.qt.io/sources/ \n \
         http://.*/.*  http://yocto-cache.ci.qt.io/sources/ \n \
