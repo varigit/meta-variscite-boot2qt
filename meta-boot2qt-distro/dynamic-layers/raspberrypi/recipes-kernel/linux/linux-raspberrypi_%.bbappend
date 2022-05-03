@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2018 The Qt Company Ltd.
+## Copyright (C) 2022 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,6 +27,6 @@
 ##
 ############################################################################
 
-do_configure:prepend() {
-    echo "CONFIG_UPROBE_EVENTS=y"            >> ${WORKDIR}/defconfig
-}
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+
+SRC_URI += "file://boot2qt.cfg"
