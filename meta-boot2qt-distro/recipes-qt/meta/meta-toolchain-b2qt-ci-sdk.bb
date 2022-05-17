@@ -39,9 +39,11 @@ SDKIMAGE_FEATURES = "dev-pkgs"
 TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-b2qt-embedded-toolchain-host"
 TOOLCHAIN_TARGET_TASK += "packagegroup-qt6-modules ${MACHINE_EXTRA_INSTALL_SDK}"
 
-PACKAGE_EXCLUDE += "\
+PACKAGE_EXCLUDE_COMPLEMENTARY += "\
+    ${@bb.utils.contains('ENABLE_QMLCOMPILER', '1', 'qmlcompilerplus-dev', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qt3d-dev', '', d)} \
     qt5compat-dev \
+    qtapplicationmanager-dev \
     qtbase-dev \
     qtbase-staticdev \
     qtcharts-dev \
@@ -51,8 +53,8 @@ PACKAGE_EXCLUDE += "\
     qtdeclarative-dev \
     qtdeclarative-staticdev \
     qtdeviceutilities-dev \
-    qtgraphicaleffects-dev \
     qtimageformats-dev \
+    ${@bb.utils.contains('BBFILE_COLLECTIONS', 'meta-python', 'qtinterfaceframework-dev', '', d)} \
     qtlottie-dev \
     qtmqtt-dev \
     qtmultimedia-dev \
@@ -76,6 +78,9 @@ PACKAGE_EXCLUDE += "\
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland-dev', '', d)} \
     qtwebchannel-dev \
     qtwebsockets-dev \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine-dev', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebview-dev', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtpdf-dev', '', d)} \
     "
 
 SDK_POSTPROCESS_COMMAND:prepend = "apply_ci_fixes;"
