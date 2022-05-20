@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2020 The Qt Company Ltd.
+## Copyright (C) 2022 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -56,4 +56,4 @@ do_install:append() {
 
 SYSTEMD_SERVICE:${PN} = "startupscreen.service"
 
-SRCREV = "5df03932a3046b23e26007f439222525fa221c3f"
+SRCREV = "e5dc5380f41c281ac751a02dccd24cc445721277"
