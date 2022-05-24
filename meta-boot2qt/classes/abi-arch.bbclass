@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2016 The Qt Company Ltd.
+## Copyright (C) 2022 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -28,7 +28,7 @@
 ############################################################################
 
 # map target architecture to abi architectures used by Qt Creator
-valid_archs = "arm x86 itanium mips ppc sh"
+valid_archs = "arm x86 itanium mips ppc sh riscv"
 
 def map_abi_arch(a, d):
     import re
@@ -42,8 +42,10 @@ def map_abi_arch(a, d):
     elif re.match('mips(el|64|64el)$', a):      return 'mips'
     elif re.match('p(pc|owerpc)(|64)', a):      return 'ppc'
     elif re.match('sh(3|4)$', a):               return 'sh'
+    elif re.match('riscv(32|64)', a):           return 'riscv'
     elif a in valid_archs:                      return a
     else:
-        bb.error("cannot map '%s' to a abi architecture" % a)
+        bb.warn("cannot map '%s' to a QtCreator abi architecture" % a)
+        return a
 
 ABI = "${@map_abi_arch(d.getVar('TARGET_ARCH'), d)}"
