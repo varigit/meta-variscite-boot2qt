@@ -31,15 +31,15 @@ DESCRIPTION = "Target packages for B2Qt embedded SDK"
 LICENSE = "The-Qt-Company-Commercial"
 PR = "r0"
 
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+
 inherit packagegroup
 
 PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
 MACHINE_EXTRA_INSTALL_SDK ?= ""
 
-GCC-SANITIZERS ?= "gcc-sanitizers"
-GCC-SANITIZERS:mipsarch = ""
-GCC-SANITIZERS:libc-musl = ""
+require gcc-sanitizers.inc
 
 RDEPENDS:${PN} += " \
     packagegroup-core-standalone-sdk-target \

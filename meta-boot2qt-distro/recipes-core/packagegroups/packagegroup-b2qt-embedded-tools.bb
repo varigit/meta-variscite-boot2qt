@@ -31,14 +31,18 @@ DESCRIPTION = "Additional tools packagegroup for B2Qt embedded Linux image"
 LICENSE = "The-Qt-Company-Commercial"
 PR = "r0"
 
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+
 inherit packagegroup
+
+require gcc-sanitizers.inc
 
 RDEPENDS:${PN} = "\
         alsa-utils-amixer \
         binutils \
         binutils-symlinks \
         connman-client \
-        gcc-sanitizers \
+        ${GCC-SANITIZERS} \
         e2fsprogs-resize2fs \
         htop \
         i2c-tools \
