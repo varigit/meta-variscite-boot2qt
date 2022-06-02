@@ -40,7 +40,7 @@ TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-b2qt-embedded-toolchain-host"
 TOOLCHAIN_TARGET_TASK += "packagegroup-qt6-modules ${MACHINE_EXTRA_INSTALL_SDK}"
 
 PACKAGE_EXCLUDE_COMPLEMENTARY += "\
-    ${@bb.utils.contains('ENABLE_QMLCOMPILER', '1', 'qmlcompilerplus-dev', '', d)} \
+    ${@bb.utils.contains('QT_COMMERCIAL_MODULES', '1', 'qmlcompilerplus-dev', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qt3d-dev', '', d)} \
     qt5compat-dev \
     qtapplicationmanager-dev \
