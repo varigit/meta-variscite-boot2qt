@@ -36,52 +36,22 @@ inherit populate_sdk
 
 SDKIMAGE_FEATURES = "dev-pkgs"
 
+MACHINE_EXTRA_INSTALL_SDK ?= ""
+
 TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-b2qt-embedded-toolchain-host"
 TOOLCHAIN_TARGET_TASK += "packagegroup-qt6-modules ${MACHINE_EXTRA_INSTALL_SDK}"
 
 PACKAGE_EXCLUDE_COMPLEMENTARY += "\
-    ${@bb.utils.contains('QT_COMMERCIAL_MODULES', '1', 'qmlcompilerplus-dev', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qt3d-dev', '', d)} \
-    qt5compat-dev \
-    qtapplicationmanager-dev \
-    qtbase-dev \
-    qtbase-staticdev \
-    qtcharts-dev \
-    qtcoap-dev \
-    qtconnectivity-dev \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qtdatavis3d-dev', '', d)} \
-    qtdeclarative-dev \
-    qtdeclarative-staticdev \
-    qtdeviceutilities-dev \
-    qtimageformats-dev \
-    ${@bb.utils.contains('BBFILE_COLLECTIONS', 'meta-python', 'qtinterfaceframework-dev', '', d)} \
-    qtlottie-dev \
-    qtmqtt-dev \
-    qtmultimedia-dev \
-    qtnetworkauth-dev \
-    qtopcua-dev \
-    qtpositioning-dev \
-    qtquick3d-dev \
-    qtquickdesigner-components-dev \
-    qtquicktimeline-dev \
-    qtremoteobjects-dev \
-    qtscxml-dev \
-    qtsensors-dev \
-    qtserialbus-dev \
-    qtserialport-dev \
-    qtshadertools-dev \
-    qtspeech-dev \
-    qtsvg-dev \
-    qttools-dev \
-    qttranslations-dev \
-    qtvirtualkeyboard-dev \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland-dev', '', d)} \
-    qtwebchannel-dev \
-    qtwebsockets-dev \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine-dev', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebview-dev', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtpdf-dev', '', d)} \
-    "
+  ^libqt6 \
+  qmlcompilerplus qt3d qt5compat qtapplicationmanager qtbase qtcharts \
+  qtcoap qtconnectivity qtdatavis3d qtdeclarative qtdeviceutilities \
+  qthttpserver qtimageformats qtinterfaceframework qtlanguageserver qtlottie \
+  qtmqtt qtmultimedia qtnetworkauth qtopcua qtpdf qtpositioning \
+  qtquick3dphysics qtquick3d qtquickdesigner-components qtquicktimeline \
+  qtremoteobjects qtscxml qtsensors qtserialbus qtserialport qtshadertools \
+  qtspeech qtsvg qttools qttranslations qtvirtualkeyboard qtvncserver \
+  qtwayland qtwebchannel qtwebengine qtwebsockets qtwebview \
+"
 
 SDK_POSTPROCESS_COMMAND:prepend = "apply_ci_fixes;"
 
