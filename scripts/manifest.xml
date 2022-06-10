@@ -45,7 +45,7 @@
           fetch="https://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="3158e7f2b505074dec80307ad3db7e9d51b08fab"
+           revision="470da01b34b538d8b2a9bf9da512b89f4f76c7f9"
            upstream="hardknott"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
