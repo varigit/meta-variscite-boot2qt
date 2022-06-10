@@ -88,4 +88,15 @@
            upstream="master"
            path="sources/meta-toradex-nxp"/>
 
+  <!-- Variscite -->
+  <remote name="variscite"
+          fetch="https://github.com/varigit"/>
+  <project name="meta-variscite-bsp"
+           remote="variscite"
+           revision="b61760b3cb49ce16709c82477af95b96a49dc781"
+           path="sources/meta-variscite-bsp"/>
+  <project name="meta-variscite-sdk"
+           remote="variscite"
+           revision="521cea8f7ac4aea55a9954d330a502f247c0af6c"
+           path="sources/meta-variscite-sdk"/>
 </manifest>
