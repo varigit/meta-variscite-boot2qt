@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2021 The Qt Company Ltd.
+## Copyright (C) 2022 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,29 +27,13 @@
 ##
 ############################################################################
 
-MACHINE_FAMILY ??= "empty"
-MACHINE_FAMILY:imx = "fsl"
-MACHINE_FAMILY:intel-x86-common = "intel"
-MACHINE_FAMILY:qemuall = "qemu"
-MACHINE_FAMILY:rpi = "raspberrypi"
-MACHINE_FAMILY:tegra = "jetson"
+include conf/distro/include/fsl.inc
 
-# Toradex has no overrides that would distinguish them from other nxp boards
-MACHINE_FAMILY:apalis-imx6 = "toradex"
-MACHINE_FAMILY:apalis-imx8 = "toradex"
-MACHINE_FAMILY:colibri-imx6 = "toradex"
-MACHINE_FAMILY:colibri-imx6ull = "toradex"
-MACHINE_FAMILY:colibri-imx7 = "toradex"
-MACHINE_FAMILY:colibri-imx7-emmc = "toradex"
-MACHINE_FAMILY:colibri-imx8x = "toradex"
-MACHINE_FAMILY:verdin-imx8mm = "toradex"
-MACHINE_FAMILY:verdin-imx8mp = "toradex"
+DEPLOY_CONF_NAME:imx8mm-var-dart = "Variscite DART-MX8M-MINI"
 
-# Variscite
-MACHINE_FAMILY:imx8mm-var-dart = "variscite"
+BBMASK += " \
+    meta-boot2qt/meta-boot2qt-distro/recipes-kernel/linux-firmware \
+    "
 
-include conf/distro/include/${MACHINE_FAMILY}.inc
-include conf/distro/include/${MACHINE}.inc
-
-# prefer .inc, but include .conf for backwards compatibility
-include conf/distro/include/${MACHINE}.conf
+# let's save space
+RDEPENDS:packagegroup-b2qt-embedded-base:remove:pn-packagegroup-b2qt-embedded-base = "linux-firmware"

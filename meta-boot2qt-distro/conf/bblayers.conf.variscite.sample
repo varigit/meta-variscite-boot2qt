@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2021 The Qt Company Ltd.
+## Copyright (C) 2022 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -27,29 +27,29 @@
 ##
 ############################################################################
 
-MACHINE_FAMILY ??= "empty"
-MACHINE_FAMILY:imx = "fsl"
-MACHINE_FAMILY:intel-x86-common = "intel"
-MACHINE_FAMILY:qemuall = "qemu"
-MACHINE_FAMILY:rpi = "raspberrypi"
-MACHINE_FAMILY:tegra = "jetson"
+# POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf
+# changes incompatibly
+POKY_BBLAYERS_CONF_VERSION = "2"
 
-# Toradex has no overrides that would distinguish them from other nxp boards
-MACHINE_FAMILY:apalis-imx6 = "toradex"
-MACHINE_FAMILY:apalis-imx8 = "toradex"
-MACHINE_FAMILY:colibri-imx6 = "toradex"
-MACHINE_FAMILY:colibri-imx6ull = "toradex"
-MACHINE_FAMILY:colibri-imx7 = "toradex"
-MACHINE_FAMILY:colibri-imx7-emmc = "toradex"
-MACHINE_FAMILY:colibri-imx8x = "toradex"
-MACHINE_FAMILY:verdin-imx8mm = "toradex"
-MACHINE_FAMILY:verdin-imx8mp = "toradex"
+BBPATH = "${TOPDIR}"
+BBFILES ?= ""
+BSPDIR := "${@os.path.abspath(os.path.dirname(d.getVar('FILE')) + '/../..')}"
 
-# Variscite
-MACHINE_FAMILY:imx8mm-var-dart = "variscite"
-
-include conf/distro/include/${MACHINE_FAMILY}.inc
-include conf/distro/include/${MACHINE}.inc
-
-# prefer .inc, but include .conf for backwards compatibility
-include conf/distro/include/${MACHINE}.conf
+BBLAYERS ?= " \
+  ${BSPDIR}/sources/poky/meta \
+  ${BSPDIR}/sources/poky/meta-poky \
+  ${BSPDIR}/sources/meta-freescale \
+  ${BSPDIR}/sources/meta-freescale-3rdparty \
+  ${BSPDIR}/sources/meta-variscite-bsp \
+  ${BSPDIR}/sources/meta-variscite-sdk \
+  ${BSPDIR}/sources/meta-openembedded/meta-oe \
+  ${BSPDIR}/sources/meta-openembedded/meta-python \
+  ${BSPDIR}/sources/meta-openembedded/meta-networking \
+  ${BSPDIR}/sources/meta-openembedded/meta-initramfs \
+  ${BSPDIR}/sources/meta-openembedded/meta-multimedia \
+  ${BSPDIR}/sources/meta-python2 \
+  ${BSPDIR}/sources/meta-boot2qt/meta-boot2qt \
+  ${BSPDIR}/sources/meta-boot2qt/meta-boot2qt-distro \
+  ${BSPDIR}/sources/meta-mingw \
+  ${BSPDIR}/sources/meta-qt6 \
+  "

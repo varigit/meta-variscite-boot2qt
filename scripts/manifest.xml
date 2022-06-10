@@ -93,4 +93,15 @@
            upstream="dunfell-5.x.y"
            path="sources/meta-toradex-nxp"/>
 
+  <!-- Variscite -->
+  <remote name="variscite"
+          fetch="https://github.com/varigit"/>
+  <project name="meta-variscite-bsp"
+           remote="variscite"
+           revision="9b95e61a39c19d83518d3de8da89588b8e8897cd"
+           path="sources/meta-variscite-bsp"/>
+  <project name="meta-variscite-sdk"
+           remote="variscite"
+           revision="f42ab9d27166a6401da6ba650c2cdec480c4ca92"
+           path="sources/meta-variscite-sdk"/>
 </manifest>
