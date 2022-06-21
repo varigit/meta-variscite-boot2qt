@@ -1,3 +1,7 @@
+# Add machine learning packagegroup
+ML_PKGS ?= ""
+ML_PKGS:mx8 = "packagegroup-var-ml"
+
 IMAGE_INSTALL:append = " \
     alsa-utils \
     fbset \
@@ -27,4 +31,5 @@ IMAGE_INSTALL:append = " \
     expect \
     libgpiod \
     libgpiod-tools \
+    ${ML_PKGS} \
     "

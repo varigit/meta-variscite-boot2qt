@@ -40,6 +40,8 @@ BBLAYERS ?= " \
   ${BSPDIR}/sources/poky/meta-poky \
   ${BSPDIR}/sources/meta-freescale \
   ${BSPDIR}/sources/meta-freescale-3rdparty \
+  ${BSPDIR}/sources/meta-freescale-distro \
+  ${BSPDIR}/sources/meta-freescale-ml \
   ${BSPDIR}/sources/meta-variscite-bsp \
   ${BSPDIR}/sources/meta-variscite-sdk \
   ${BSPDIR}/sources/meta-openembedded/meta-oe \
