@@ -31,6 +31,8 @@ include conf/distro/include/fsl.inc
 
 DEPLOY_CONF_NAME:imx8mm-var-dart = "Variscite DART-MX8M-MINI"
 DEPLOY_CONF_NAME:imx8mp-var-dart = "Variscite DART-MX8M-PLUS"
+DEPLOY_CONF_NAME:imx8qxp-var-som = "Variscite VAR-SOM-MX8X"
+DEPLOY_CONF_NAME:imx8qxpb0-var-som = "Variscite VAR-SOM-MX8X B0"
 
 BBMASK += " \
     meta-boot2qt/meta-boot2qt-distro/recipes-kernel/linux-firmware \
