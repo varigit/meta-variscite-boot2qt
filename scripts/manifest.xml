@@ -5,12 +5,12 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
-           revision="refs/tags/yocto-4.0.1"
+           revision="refs/tags/yocto-4.0.2"
            upstream="kirkstone"
            path="sources/poky"/>
   <project name="meta-mingw"
            remote="yocto"
-           revision="refs/tags/yocto-4.0.1"
+           revision="refs/tags/yocto-4.0.2"
            upstream="kirkstone"
            path="sources/meta-mingw"/>
 
@@ -19,7 +19,7 @@
           fetch="git://git.openembedded.org"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="0b78362654262145415df8211052442823b9ec9b"
+           revision="8f2dc1023482863e2630d1b94052c41ce748b38f"
            upstream="kirkstone"
            path="sources/meta-openembedded"/>
 
