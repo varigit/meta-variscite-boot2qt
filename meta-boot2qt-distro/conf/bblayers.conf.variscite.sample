@@ -44,6 +44,7 @@ BBLAYERS ?= " \
   ${BSPDIR}/sources/meta-freescale-ml \
   ${BSPDIR}/sources/meta-variscite-bsp \
   ${BSPDIR}/sources/meta-variscite-sdk \
+  ${BSPDIR}/sources/meta-variscite-hab \
   ${BSPDIR}/sources/meta-openembedded/meta-oe \
   ${BSPDIR}/sources/meta-openembedded/meta-python \
   ${BSPDIR}/sources/meta-openembedded/meta-networking \

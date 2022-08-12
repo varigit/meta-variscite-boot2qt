@@ -113,4 +113,8 @@
            remote="variscite"
            revision="f42ab9d27166a6401da6ba650c2cdec480c4ca92"
            path="sources/meta-variscite-sdk"/>
+  <project name="meta-variscite-hab"
+           remote="variscite"
+           revision="fb1f09ce8cc576122fe2aeda06bb3030f0abb83f"
+           path="sources/meta-variscite-hab"/>
 </manifest>
