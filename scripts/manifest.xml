@@ -70,7 +70,7 @@
           fetch="https://github.com/OE4T"/>
   <project name="meta-tegra"
            remote="OE4T"
-           revision="21187a7f4422490bb4c936fc90d176028af8c910"
+           revision="e8819e9a2a03b768fdd46788578f36e8bf0316c4"
            upstream="kirkstone"
            path="sources/meta-tegra"/>
 
