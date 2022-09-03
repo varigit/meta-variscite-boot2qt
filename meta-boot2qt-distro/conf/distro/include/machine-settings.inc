@@ -48,6 +48,7 @@ MACHINE_FAMILY:verdin-imx8mp = "toradex"
 # Variscite
 MACHINE_FAMILY:imx8mm-var-dart = "variscite"
 MACHINE_FAMILY:imx8mp-var-dart = "variscite"
+MACHINE_FAMILY:imx8qm-var-som = "variscite"
 MACHINE_FAMILY:imx8qxp-var-som = "variscite"
 MACHINE_FAMILY:imx8qxpb0-var-som = "variscite"
 
