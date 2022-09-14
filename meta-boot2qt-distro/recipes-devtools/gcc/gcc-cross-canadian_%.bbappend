@@ -30,10 +30,6 @@
 do_install:append () {
     # remove real-ld symlink
     rm ${D}${libexecdir}/gcc/${TARGET_SYS}/${BINV}/real-ld${EXEEXT}
-    # add symlinks for ld.bfd and ld.gold
-    for t in ld.bfd ld.gold; do
-        ln -sf ${BINRELPATH}/${TARGET_PREFIX}$t$suffix $dest$t$suffix
-    done
 }
 
 do_install:append:sdkmingw32() {
