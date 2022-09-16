@@ -61,7 +61,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
-           revision="refs/tags/17.0-kirkstone-4.0"
+           revision="15cdda250fc5aa762ac0139087f96411ca696036"
            upstream="kirkstone"
            path="sources/meta-intel"/>
 
