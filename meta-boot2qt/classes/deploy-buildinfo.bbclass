@@ -31,7 +31,9 @@ inherit image-buildinfo
 
 do_image[depends] += "qtbase-native:do_populate_sysroot"
 
-IMAGE_BUILDINFO_VARS:append = " QT_VERSION"
+IMAGE_BUILDINFO_VARS:append = " QT_VERSION TARGET_SYSROOT"
+
+TARGET_SYSROOT = "${REAL_MULTIMACH_TARGET_SYS}"
 
 python buildinfo:prepend () {
     import subprocess
