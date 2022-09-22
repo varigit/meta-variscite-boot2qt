@@ -45,8 +45,17 @@ BBMASK += "\
     meta-toradex-nxp/recipes-bsp/u-boot/u-boot-tools_%.bbappend \
 "
 
-# Use Toradex defined names
 DEPLOY_CONF_NAME = "Toradex ${MACHINE_NAME}"
+DEPLOY_CONF_NAME:apalis-imx6 = "Toradex Apalis iMX6"
+DEPLOY_CONF_NAME:apalis-imx8 = "Toradex Apalis iMX8"
+DEPLOY_CONF_NAME:colibri-imx6 = "Toradex Colibri iMX6"
+DEPLOY_CONF_NAME:colibri-imx6ull = "Toradex Colibri iMX6 ULL"
+DEPLOY_CONF_NAME:colibri-imx6ull-emmc = "Toradex Colibri iMX6 ULL eMMC"
+DEPLOY_CONF_NAME:colibri-imx7 = "Toradex Colibri iMX7"
+DEPLOY_CONF_NAME:colibri-imx7-emmc = "Toradex Colibri iMX7 eMMC"
+DEPLOY_CONF_NAME:colibri-imx8x = "Toradex Colibri iMX8X"
+DEPLOY_CONF_NAME:verdin-imx8mm = "Toradex Verdin iMX8M Mini"
+DEPLOY_CONF_NAME:verdin-imx8mp = "Toradex Verdin iMX8M Plus"
 
 GPULESS_FEATURES = "wayland opengl vulkan webengine"
 GPULESS_FEATURES:imxgpu = ""
