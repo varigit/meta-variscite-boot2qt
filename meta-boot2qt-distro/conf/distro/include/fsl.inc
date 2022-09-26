@@ -42,6 +42,7 @@ DEPLOY_CONF_NAME:imx8qpx-mek = "NXP i.MX 8QuadXPlus MEK"
 IMAGE_FSTYPES += "wic.xz"
 
 IMX_DEFAULT_BSP = "nxp"
+IMX_DEFAULT_BOOTLOADER ?= "u-boot-imx"
 IMX_DEFAULT_KERNEL:b2qt = "linux-imx"
 
 DEPLOY_CONF_IMAGE_TYPE = "wic.xz"
