@@ -1,5 +1,5 @@
 To successfully set up the Boot to Qt software stack,
-follow the instructions in https://doc.qt.io/QtForDeviceCreation/qtdc-qbsp-installation-guide.html#.
+follow the instructions in https://doc.qt.io/Boot2Qt/b2qt-qbsp-installation-guide.html#.
 
 In 2. Installing Boot to Qt on Target Device, see also the following device specific instructions.
 
