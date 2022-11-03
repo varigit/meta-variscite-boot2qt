@@ -110,7 +110,7 @@
            groups="variscite"/>
   <project name="meta-variscite-fslc"
            remote="variscite"
-           revision="7c143e620d3dbf3bfa05bb040a9f18c1fbcbf00b"
+           revision="38ddbabfcb91ab364563f5d9a74631cd08ef6453"
            path="sources/meta-variscite-fslc"
            groups="notdefault,internal, variscite"/>
 </manifest>
