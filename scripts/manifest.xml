@@ -49,12 +49,12 @@
            upstream="kirkstone"
            path="sources/meta-freescale-3rdparty"/>
   <project remote="freescale"
-           revision="e6daa26ba1f748326546063d63a085ae671827d9"
-           upstream="hardknott"   name="meta-freescale-distro"
+           revision="d5bbb487b2816dfc74984a78b67f7361ce404253"
+           upstream="kirkstone"   name="meta-freescale-distro"
            path="sources/meta-freescale-distro"/>
   <project remote="freescale"
-           revision="2d9ac9a4b28dafb5cba47d18435572c17159b32b"
-           upstream="hardknott"
+           revision="08dcb7c67072907348cd235d9e110d4ba91e8235"
+           upstream="kirkstone"
            name="meta-freescale-ml"
            path="sources/meta-freescale-ml"/>
 
@@ -110,6 +110,6 @@
            path="sources/meta-variscite-sdk"/>
   <project name="meta-variscite-hab"
            remote="variscite"
-           revision="fb1f09ce8cc576122fe2aeda06bb3030f0abb83f"
+           revision="4acacfdbc4b89ace606b5d640e768b7561435324"
            path="sources/meta-variscite-hab"/>
 </manifest>
