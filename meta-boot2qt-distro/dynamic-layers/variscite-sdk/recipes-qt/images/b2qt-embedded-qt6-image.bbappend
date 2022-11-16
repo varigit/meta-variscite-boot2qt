@@ -1,8 +1,8 @@
 # packagegroup-b2qt-embedded-tools requires openssh-sftp-server, but
 # when populating the SDK this originates a conflict with ssh-server-dropbear
 # required by b2qt-embedded-qt6-image: switch to ssh-server-openssh
-IMAGE_FEATURES_remove += "ssh-server-dropbear"
-IMAGE_FEATURES_append += "ssh-server-openssh"
+IMAGE_FEATURES:remove = "ssh-server-dropbear"
+IMAGE_FEATURES:append = "ssh-server-openssh"
 
 # align sdk target packages to those provided by meta-toolchain-b2qt-embedded-qt6
 TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-b2qt-embedded-qt6-toolchain-host"
@@ -13,7 +13,7 @@ TOOLCHAIN_TARGET_TASK += "\
 
 # Add machine learning packagegroup
 ML_PKGS ?= ""
-ML_PKGS:mx8 = "packagegroup-var-ml"
+ML_PKGS:mx8-nxp-bsp = "packagegroup-var-ml"
 
 IMAGE_INSTALL:append = " \
     alsa-utils \
