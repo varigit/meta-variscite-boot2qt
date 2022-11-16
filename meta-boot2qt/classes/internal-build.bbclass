@@ -29,6 +29,11 @@
 
 python enable_internal_build () {
     import socket
+
+    return
+
+    # The following test WON'T WORK outside Qt internal network
+    # the host name can be resolved but it won't respond, causing endless timeouts
     try:
         socket.gethostbyname('yocto-cache.ci.qt.io')
     except:
