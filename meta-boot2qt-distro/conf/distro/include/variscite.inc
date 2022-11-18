@@ -31,6 +31,12 @@ include conf/distro/include/fsl.inc
 
 DEPLOY_CONF_NAME:imx8mp-var-dart = "Variscite DART-MX8M-PLUS"
 
+# Set a more generic tuning for code reuse across parts
+DEFAULTTUNE:mx8-nxp-bsp:b2qt     ?= "armv8a-crc-crypto"
+DEFAULTTUNE:mx8m-nxp-bsp:b2qt    ?= "armv8a-crc-crypto"
+DEFAULTTUNE:mx8qxp-nxp-bsp:b2qt  ?= "armv8a-crc-crypto"
+DEFAULTTUNE:mx8x-nxp-bsp:b2qt    ?= "armv8a-crc-crypto"
+
 BBMASK += " \
     meta-boot2qt/meta-boot2qt-distro/recipes-kernel/linux-firmware \
     "
