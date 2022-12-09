@@ -29,6 +29,7 @@
 
 include conf/distro/include/fsl.inc
 
+DEPLOY_CONF_NAME:imx8mm-var-dart = "Variscite DART-MX8M-MINI"
 DEPLOY_CONF_NAME:imx8mp-var-dart = "Variscite DART-MX8M-PLUS"
 
 # Set a more generic tuning for code reuse across parts

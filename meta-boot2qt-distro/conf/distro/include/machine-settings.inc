@@ -45,6 +45,7 @@ MACHINE_FAMILY:verdin-imx8mm = "toradex"
 MACHINE_FAMILY:verdin-imx8mp = "toradex"
 
 # Variscite
+MACHINE_FAMILY:imx8mm-var-dart = "variscite"
 MACHINE_FAMILY:imx8mp-var-dart = "variscite"
 
 include conf/distro/include/${MACHINE_FAMILY}.inc
