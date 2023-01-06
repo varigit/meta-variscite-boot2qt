@@ -15,6 +15,9 @@ TOOLCHAIN_TARGET_TASK += "\
 ML_PKGS ?= ""
 ML_PKGS:mx8-nxp-bsp = "packagegroup-var-ml"
 
+# Add security packages
+SEC_PKGS = "packagegroup-var-security"
+
 IMAGE_INSTALL:append = " \
     alsa-utils \
     fbset \
@@ -45,6 +48,7 @@ IMAGE_INSTALL:append = " \
     libgpiod \
     libgpiod-tools \
     ${ML_PKGS} \
+    ${SEC_PKGS} \
     "
 
 systemd_disable_vt () {
