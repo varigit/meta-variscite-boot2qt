@@ -102,7 +102,7 @@
           fetch="https://github.com/varigit"/>
   <project name="meta-variscite-bsp"
            remote="variscite"
-           revision="fa2757a53d2f9c3283c2de4d3142a51b1fa0e3ae"
+           revision="ca8004220b10437f46973b71f9a58596a42220c3"
            path="sources/meta-variscite-bsp"/>
   <project name="meta-variscite-sdk"
            remote="variscite"
