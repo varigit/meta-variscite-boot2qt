@@ -97,6 +97,15 @@
            upstream="master"
            path="sources/meta-toradex-nxp"/>
 
+  <!-- sbabic -->
+  <remote name="sbabic"
+          fetch="https://github.com/sbabic"/>
+  <project name="meta-swupdate"
+           remote="sbabic"
+           revision="fabbcc623d41794fbfa97c38b9da941ed2cdcdcc"
+           upstream="kirkstone"
+           path="sources/meta-swupdate"/>
+
   <!-- Variscite -->
   <remote name="variscite"
           fetch="https://github.com/varigit"/>
