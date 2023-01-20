@@ -115,7 +115,7 @@
            path="sources/meta-variscite-bsp"/>
   <project name="meta-variscite-sdk"
            remote="variscite"
-           revision="0f9c12d422a011cd4c7793cc6d51749a4b815b01"
+           revision="ce03007567a13931b581594e22f3577adb42d2b9"
            path="sources/meta-variscite-sdk"/>
   <project name="meta-variscite-hab"
            remote="variscite"
