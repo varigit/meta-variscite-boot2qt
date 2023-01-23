@@ -13,6 +13,11 @@
            revision="refs/tags/yocto-4.0.4"
            upstream="kirkstone"
            path="sources/meta-mingw"/>
+  <project name="meta-virtualization"
+           remote="yocto"
+           revision="5be54854139acb4796000478394afd66de0792c1"
+           upstream="kirkstone"
+           path="sources/meta-virtualization"/>
 
   <!-- OpenEmbedded -->
   <remote name="oe"
