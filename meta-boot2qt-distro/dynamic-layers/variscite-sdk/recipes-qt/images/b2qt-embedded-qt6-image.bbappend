@@ -18,6 +18,11 @@ ML_PKGS:mx8-nxp-bsp = "packagegroup-var-ml"
 # Add security packages
 SEC_PKGS = "packagegroup-var-security"
 
+# Add docker packages for Variscite SoMs with eMMC
+DOCKER_PKGS			?= ""
+DOCKER_PKGS:mx8-nxp-bsp		= "${@bb.utils.contains('DISTRO_FEATURES', 'virtualization', 'docker-ce python3-docker-compose', '', d)}"
+DOCKER_PKGS:mx9-nxp-bsp		= "${@bb.utils.contains('DISTRO_FEATURES', 'virtualization', 'docker-ce python3-docker-compose', '', d)}"
+
 IMAGE_INSTALL:append = " \
     alsa-utils \
     fbset \
@@ -49,6 +54,7 @@ IMAGE_INSTALL:append = " \
     libgpiod-tools \
     ${ML_PKGS} \
     ${SEC_PKGS} \
+    ${DOCKER_PKGS} \
     "
 
 systemd_disable_vt () {
