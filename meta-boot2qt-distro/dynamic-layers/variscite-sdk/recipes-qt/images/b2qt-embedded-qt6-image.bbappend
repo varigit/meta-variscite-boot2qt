@@ -27,6 +27,7 @@ IMAGE_INSTALL:append = " \
     alsa-utils \
     fbset \
     can-utils \
+    connman-wait-online \
     coreutils \
     cryptodev-module \
     cryptodev-tests \
