@@ -99,11 +99,11 @@
            revision="733e7b25e179d5ad6da0f32e6103fed8ba2c6688"
            path="sources/meta-boundary"/>
 
-  <!-- NXP Code Aurora -->
-  <remote name="aurora-imx"
-          fetch="git://source.codeaurora.org/external/imx"/>
+  <!-- NXP Github -->
+  <remote name="NXP"
+          fetch="https://github.com/nxp-imx"/>
   <project name="meta-imx"
-           remote="aurora-imx"
+           remote="NXP"
            revision="refs/tags/rel_imx_5.4.70_2.3.2"
            path="sources/meta-imx">
         <linkfile dest="imx-setup-release.sh" src="tools/imx-setup-release.sh"/>
