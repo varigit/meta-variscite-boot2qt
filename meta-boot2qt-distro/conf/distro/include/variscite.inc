@@ -33,6 +33,7 @@ include conf/distro/include/fsl-imx-preferred-env.inc
 BBMASK += " \
     meta-variscite-imx/dynamic-layers/qt5-layer \
     meta-variscite-imx/recipes-fsl/images \
+    meta-variscite-imx/recipes-graphics/devil \
     "
 
 # unwanted B2QT demos
