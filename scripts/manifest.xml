@@ -15,7 +15,7 @@
   <remote fetch="git://git.toradex.com" name="toradex"/>
   <remote fetch="https://github.com/boundarydevices" name="boundary"/>
   <remote fetch="https://github.com/toradex" name="toradex-github"/>
-  <remote fetch="git://source.codeaurora.org/external/imx" name="aurora-imx"/>
+  <remote fetch="https://github.com/nxp-imx" name="nxp-imx"/>
   <remote fetch="https://github.com/varigit" name="variscite"/>
 
   <project name="poky"
@@ -91,7 +91,7 @@
            path="sources/meta-boundary"
            groups="notdefault,external,boundary"/>
   <project name="meta-fsl-bsp-release"
-           remote="aurora-imx"
+           remote="nxp-imx"
            revision="cb65aa03c70d0b88cdc2b06eb56ab59ae01f54bf"
            path="sources/meta-fsl-bsp-release"
            groups="notdefault,external,fsl-imx8,variscite-imx"/>
