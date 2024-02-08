@@ -49,3 +49,5 @@ BBMASK += " \
 
 # let's save space
 RDEPENDS:packagegroup-b2qt-embedded-base:remove:pn-packagegroup-b2qt-embedded-base = "linux-firmware"
+
+DISTRO_FEATURES:remove = "ld-is-gold"
