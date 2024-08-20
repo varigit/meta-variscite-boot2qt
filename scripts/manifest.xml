@@ -103,6 +103,6 @@
   <remote fetch="https://github.com/varigit" name="variscite"/>
   <project name="meta-variscite-imx"
            remote="variscite"
-           revision="5e0f3db74995c01956d8d60f74f9b468ad567817"
+           revision="66751432377acbc2ea80d42b215aaac20aa0e92d"
            path="sources/meta-variscite-imx"/>
 </manifest>
