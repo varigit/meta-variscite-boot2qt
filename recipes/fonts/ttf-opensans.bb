@@ -27,19 +27,28 @@
 ##
 ############################################################################
 
+# Maintained by Variscite Ltd. (2025)
+# Modifications by Variscite Ltd. (2025)
+# - Replace Google Fonts URL with a stable Variscite mirror for Open_Sans.zip
+# - Update license file reference
+# - Remove BB_STRICT_CHECKSUM to enforce integrity checks
+#
+# These modifications are released under the same license as the original
+# file.
+
 SUMMARY = "Open Sans Fonts"
 SECTION = "fonts"
-HOMEPAGE = "https://www.google.com/fonts"
+HOMEPAGE = "https://fonts.google.com/"
 LICENSE = "Apache-2.0"
-LIC_FILES_CHKSUM = "file://${WORKDIR}/LICENSE.txt;md5=d273d63619c9aeaf15cdaf76422c4f87"
+LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/Apache-2.0;md5=89aea4e17d99a7cacdbeed46a0096b10"
 
 INHIBIT_DEFAULT_DEPS = "1"
 
 inherit allarch fontcache
 
-SRC_URI = "https://www.google.com/fonts/download?kit=3hvsV99qyKCBS55e5pvb3ltkqrIMaAZWyLYEoB48lSQ;downloadfilename=Open_Sans.zip"
-# Google packs fonts package on demand which results in unpredictable md5sum, so disable checksum check
-BB_STRICT_CHECKSUM = ""
+SRC_URI = "https://variscite-public.nyc3.cdn.digitaloceanspaces.com/mirror/sources/Open_Sans.zip"
+SRC_URI[md5sum] = "603a6be36f1576a7219f0f992b03ce1f"
+SRC_URI[sha256sum] = "8e1b5760267934e3e0c497e6401e958fa1562e6b761e6bb22b5a40218c20c331"
 
 do_install() {
     install -m 0755 -d ${D}${datadir}/fonts/truetype/opensans
